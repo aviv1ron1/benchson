@@ -6,3 +6,16 @@ requires-python = ">=3.13"
 dependencies = [
     "jsonschema",
 ]
+
+[dependency-groups]
+watsonx = [
+    "langchain-ibm>=0.3",
+]
+hf = [
+    "transformers>=4.43",
+    "torch>=2.0",
+    "accelerate>=0.26",
+]
+vllm = [
+    "vllm>=0.5",
+]

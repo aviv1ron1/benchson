@@ -16,15 +16,27 @@ This benchmarkl aims to evaluate how well a model generates JSON according to di
 
 Benchson requires Python `>=3.13` and uses [uv](https://docs.astral.sh/uv/) for dependency management.
 
-Install dependencies:
+Install core dependencies:
 
 ```bash
 uv sync
 ```
 
-Benchson uses lazy loading of pluggable providers. This means that it might install additional dependencies when you execute a provider for the first time.
+### Provider dependencies
 
-For example, if you use OpenAI, its library will be installed automatically on the first time you run.
+Heavy providers (local models, cloud SDKs) are declared as optional dependency groups and must be installed explicitly before use. Lightweight providers (OpenAI, Claude, Google) install themselves automatically on first run.
+
+| Provider | Group | Command |
+|---|---|---|
+| HuggingFace Transformers | `hf` | `uv sync --group hf` |
+| vLLM (Linux/GPU only) | `vllm` | `uv sync --group vllm` |
+| IBM WatsonX | `watsonx` | `uv sync --group watsonx` |
+
+You can combine groups:
+
+```bash
+uv sync --group hf --group watsonx
+```
 
 The evaluation framework is executed via the `main.py` script. You can run it with the following command:
 
@@ -349,14 +361,11 @@ def metric_function(self, test_case, llm_result):
 ## Provider
 
 The `LLMProvider` and `ObservabilityProvider` both extend `Provider`.
-`Provider` implements a means to install the provider dependencies in run time on demand, and uses lazy loading to import the required depenedncy only when used.
 
-We use this methodology to minimize depenedncies in the general requirements.txt file.
+Heavy providers (local models, cloud SDKs) declare their dependencies as uv groups in `pyproject.toml` and must be installed before use — see [Provider dependencies](#provider-dependencies) above.
 
-This way you only need to install and load the dependencies you actually intent to use.
-So if you use WatsonX as your LLM provider, you only need to install the dependencies of WatsonX and not those of OpenAI, Claude, Google etc.
+Lightweight providers (OpenAI, Claude, Google, etc.) use runtime lazy installation via `install_dependency()`, so no pre-install step is needed:
 
-to use this method in your constructor you call:
 ```python
 class MyProvider(Provider):
     def __init__(self):
@@ -364,7 +373,7 @@ class MyProvider(Provider):
         from my_provider_library import MyProviderClass
 ```
 
-The first line will pip install your library. The second one will load it.
+The first line installs the library if absent. The second imports it.
 
 ## LLM Provider
 
