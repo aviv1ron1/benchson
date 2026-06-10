@@ -27,6 +27,10 @@ class CreateBySchema(Evaluation):
                 "role": "user",
                 "content": f"Generate a JSON object that conforms to the following schema: {json.dumps(test_case['data'], indent=2)}",
             },
+            {
+                "role": "assistant",
+                "content": ""
+            }
         ]
 
     def metric_function(self, test_case, llm_result):

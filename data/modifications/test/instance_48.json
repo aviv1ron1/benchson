@@ -1,0 +1,53 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing book that kept me on the edge of my seat!"
+      },
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing book that kept me on the edge of my seat!"
+      }
+    ],
+    "chapters": [
+      {
+        "chapterTitle": "Chapter 1",
+        "pageNumber": 1
+      }
+    ]
+  },
+  "instructions": "Remove duplicate elements from the reviews array.",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing book that kept me on the edge of my seat!"
+      }
+    ],
+    "chapters": [
+      {
+        "chapterTitle": "Chapter 1",
+        "pageNumber": 1
+      }
+    ]
+  },
+  "modification": "One duplicate review by 'Alice' was removed."
+}

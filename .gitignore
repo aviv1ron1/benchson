@@ -136,6 +136,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# langfuse
+caroot.pem
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -170,7 +173,7 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 .DS_Store
-results.csv
+*.csv
 .vscode/
 configs/*
 !configs/example.json

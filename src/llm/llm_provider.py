@@ -1,9 +1,7 @@
-import subprocess
-import sys
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 import importlib
-from provider import Provider
-from observability.observability_provider import ObservabilityProvider
+from src.provider import Provider
+from src.observability.observability_provider import ObservabilityProvider
 
 
 class LLMProvider(Provider):
@@ -12,11 +10,12 @@ class LLMProvider(Provider):
         self, observability_provider: Optional[ObservabilityProvider] = None, **kwargs
     ):
         self.observability_provider = observability_provider
+        self.model = None
         super().__init__(**kwargs)  # Ensure subclass initialization doesn't break
 
     def generate(
         self, messages: List[Dict[str, str]], parameters: Dict[str, Any] = None
-    ) -> str:
+    ) -> tuple[str, Any | None]:
         """
         Generates a response from an LLM, with observability tracking.
         """
@@ -73,6 +72,7 @@ class LLMProvider(Provider):
         except ModuleNotFoundError:
             LLMProvider.install_dependency(provider_module)
             module = importlib.import_module(provider_module)
+            provider_cls = getattr(module, provider_class)
         except Exception as e:
             raise ImportError(
                 f"Unexpected error while loading class {provider_class} from module {provider_module}: {e}"

@@ -1,0 +1,44 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "genre": "Fiction",
+    "publicationYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "dimensions": {
+      "height": 20.5,
+      "width": 13.0,
+      "depth": 2.5
+    }
+  },
+  "instructions": "Increase the price by 2.50.",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "genre": "Fiction",
+    "publicationYear": 2020,
+    "price": 22.49,
+    "inStock": true,
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "dimensions": {
+      "height": 20.5,
+      "width": 13.0,
+      "depth": 2.5
+    }
+  },
+  "modification": "The price was changed from 19.99 to 22.49."
+}

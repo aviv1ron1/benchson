@@ -9,7 +9,7 @@
         }
     ],
     "llm_provider": {
-                "module": "src.llm.openai_provider",
+                "module": "src.llm.openai.openai_provider",
                 "class": "OpenAIProvider",
                 "params": {
                     "api_key": "YOUR API KEY HERE",
@@ -24,7 +24,8 @@
             "params": {
                 "secret_key": "YOUR SECRET KEY HERE",
                 "public_key": "YOUR PUBLIC KEY HERE",
-                "host": "LANGFUSE HOST URL HERE"    
+                "host": "LANGFUSE HOST URL HERE",
+                "httpx_client_file_path": "PEM FILE PATH HERE"
             }
         }
 }

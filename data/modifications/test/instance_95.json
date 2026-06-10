@@ -1,0 +1,68 @@
+{
+  "data": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "9780743273565",
+      "publicationYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "genre": "Fiction",
+      "publisher": {
+        "name": "Scribner",
+        "address": "1230 Avenue of the Americas, New York, NY 10020",
+        "contactEmail": "info@scribner.com"
+      },
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "rating": 5
+        }
+      ]
+    }
+  ],
+  "instructions": "Merge the existing array of books with a new array containing a single book with the title 'To Kill a Mockingbird', author 'Harper Lee', ISBN '9780061120084', publication year 1960, price 8.99, in stock status true, genre 'Fiction', publisher with name 'J.B. Lippincott & Co.', address '227 West 17th Street, New York, NY 10011', contact email 'info@lippincott.com', and a review by 'Jane Smith' with a rating of 4.",
+  "ground_truth": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "9780743273565",
+      "publicationYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "genre": "Fiction",
+      "publisher": {
+        "name": "Scribner",
+        "address": "1230 Avenue of the Americas, New York, NY 10020",
+        "contactEmail": "info@scribner.com"
+      },
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "isbn": "9780061120084",
+      "publicationYear": 1960,
+      "price": 8.99,
+      "inStock": true,
+      "genre": "Fiction",
+      "publisher": {
+        "name": "J.B. Lippincott & Co.",
+        "address": "227 West 17th Street, New York, NY 10011",
+        "contactEmail": "info@lippincott.com"
+      },
+      "reviews": [
+        {
+          "reviewerName": "Jane Smith",
+          "rating": 4
+        }
+      ]
+    }
+  ],
+  "modification": "A new book entry for 'To Kill a Mockingbird' by Harper Lee was added."
+}

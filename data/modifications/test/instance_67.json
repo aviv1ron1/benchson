@@ -1,0 +1,46 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "publisher": {
+      "name": "Book Publisher Inc.",
+      "address": "123 Main St",
+      "contactEmail": "contact@bookpublisher.com"
+    }
+  },
+  "instructions": "Change the value of the publishedYear key to 2021.",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2021,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "publisher": {
+      "name": "Book Publisher Inc.",
+      "address": "123 Main St",
+      "contactEmail": "contact@bookpublisher.com"
+    }
+  },
+  "modification": "The 'publishedYear' field was changed from 2020 to 2021."
+}

@@ -1,0 +1,51 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      },
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "publisher": {
+      "name": "Book Publisher Inc.",
+      "address": "123 Main St",
+      "contactEmail": "contact@bookpublisher.com"
+    }
+  },
+  "instructions": "Remove duplicate elements from the reviews array.",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "publisher": {
+      "name": "Book Publisher Inc.",
+      "address": "123 Main St",
+      "contactEmail": "contact@bookpublisher.com"
+    }
+  },
+  "modification": "One duplicate review by 'Jane Smith' was removed."
+}

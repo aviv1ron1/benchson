@@ -1,6 +1,5 @@
 import json
 import os
-import csv
 from typing import Optional
 from benchson_datasets.dataset import Dataset
 from llm.llm_provider import LLMProvider
@@ -48,9 +47,14 @@ class Evaluation:
 
     def format_for_llm(self, test_case):
         """Formats the test case into an LLM-ready input. Can be overridden."""
-        return f"Process the following data: {test_case['data']}"
+        return [
+            {
+                "role": "user",
+                "content": f"Process the following data: {test_case['data']}",
+            },
+        ]
 
-    def metric_function(self, test_case, llm_result, trace) -> EvaluationResult:
+    def metric_function(self, test_case, llm_result) -> Optional[EvaluationResult]:
         """Computes a similarity score between the LLM result and the ground truth. Can be overridden."""
         ground_truth = test_case.get("ground_truth")
         if ground_truth is None:
@@ -58,6 +62,7 @@ class Evaluation:
 
         return self._compute_similarity(llm_result, ground_truth)
 
+    @staticmethod
     def _compute_similarity(self, result, ground_truth) -> EvaluationResult:
         """Default similarity function (Jaccard similarity). Can be overridden in subclasses."""
         set_result = set(result.split())

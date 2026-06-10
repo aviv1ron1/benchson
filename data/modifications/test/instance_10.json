@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "The Great Gatsby",
+      "description": "A novel by F. Scott Fitzgerald that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in the summer of 1922.",
+      "author": "F. Scott Fitzgerald",
+      "publishedYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "genre": "Fiction",
+      "rating": 4.5,
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "reviewText": "A timeless classic that captures the essence of the American Dream."
+        }
+      ]
+    }
+  ],
+  "instructions": "Increment the price of the book by 2.5, ensuring it does not exceed the maximum allowed value.",
+  "ground_truth": [
+    {
+      "id": 1,
+      "name": "The Great Gatsby",
+      "description": "A novel by F. Scott Fitzgerald that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in the summer of 1922.",
+      "author": "F. Scott Fitzgerald",
+      "publishedYear": 1925,
+      "price": 13.49,
+      "inStock": true,
+      "genre": "Fiction",
+      "rating": 4.5,
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "reviewText": "A timeless classic that captures the essence of the American Dream."
+        }
+      ]
+    }
+  ],
+  "modification": "The price was changed from 10.99 to 13.49."
+}

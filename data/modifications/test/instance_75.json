@@ -1,0 +1,46 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "publisher": {
+      "name": "Books Inc.",
+      "address": "123 Main St",
+      "contactEmail": "info@booksinc.com"
+    }
+  },
+  "instructions": "Append the text ' - A thrilling journey' to the end of the title.",
+  "ground_truth": {
+    "title": "The Great Adventure - A thrilling journey",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "publisher": {
+      "name": "Books Inc.",
+      "address": "123 Main St",
+      "contactEmail": "info@booksinc.com"
+    }
+  },
+  "modification": "The title was changed from 'The Great Adventure' to 'The Great Adventure - A thrilling journey'."
+}

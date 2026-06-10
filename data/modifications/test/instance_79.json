@@ -1,0 +1,51 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "publisher": {
+      "name": "Books Inc.",
+      "address": "123 Main St",
+      "contactEmail": "info@booksinc.com"
+    }
+  },
+  "instructions": "Add a new review to the reviews array with the reviewer 'Alice Johnson', rating 4, and comment 'A thrilling journey!'.",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Jane Smith",
+        "rating": 5,
+        "comment": "An amazing read!"
+      },
+      {
+        "reviewer": "Alice Johnson",
+        "rating": 4,
+        "comment": "A thrilling journey!"
+      }
+    ],
+    "publisher": {
+      "name": "Books Inc.",
+      "address": "123 Main St",
+      "contactEmail": "info@booksinc.com"
+    }
+  },
+  "modification": "A new review by Alice Johnson with a rating of 4 and the comment 'A thrilling journey!' was added."
+}

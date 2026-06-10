@@ -18,7 +18,8 @@ class Dataset:
             )
 
         if not os.path.exists(self.train_path) or not os.path.isdir(self.train_path):
-            raise ValueError(f"Train folder '{self.train_path}' is missing.")
+            # raise ValueError(f"Train folder '{self.train_path}' is missing.")
+            print(f"Train folder '{self.train_path}' is missing.")
 
         if not os.path.exists(self.test_path) or not os.path.isdir(self.test_path):
             raise ValueError(f"Test folder '{self.test_path}' is missing.")

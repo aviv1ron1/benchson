@@ -35,6 +35,7 @@ class ObservabilityProvider(Provider):
         except ModuleNotFoundError:
             ObservabilityProvider.install_dependency(provider_module)
             module = importlib.import_module(provider_module)
+            observability_cls = getattr(module, provider_class)
         except Exception as e:
             raise ImportError(
                 f"Unexpected error while loading class {provider_class} from module {provider_module}: {e}"

@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "9780743273565",
+      "publicationYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "genre": "Fiction",
+      "publisher": {
+        "name": "Scribner",
+        "address": "1230 Avenue of the Americas, New York, NY 10020",
+        "contactEmail": "info@scribner.com"
+      },
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "rating": 5
+        }
+      ]
+    }
+  ],
+  "instructions": "Increase the price of the book by 2.50, ensuring it remains within the allowed range.",
+  "ground_truth": [
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "9780743273565",
+      "publicationYear": 1925,
+      "price": 13.49,
+      "inStock": true,
+      "genre": "Fiction",
+      "publisher": {
+        "name": "Scribner",
+        "address": "1230 Avenue of the Americas, New York, NY 10020",
+        "contactEmail": "info@scribner.com"
+      },
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "rating": 5
+        }
+      ]
+    }
+  ],
+  "modification": "The price was changed from 10.99 to 13.49."
+}

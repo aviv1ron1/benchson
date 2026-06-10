@@ -1,0 +1,39 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "genre": "Fiction",
+    "publicationYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ],
+    "dimensions": {
+      "height": 20.5,
+      "width": 13.0,
+      "depth": 2.5
+    }
+  },
+  "instructions": "Remove the key-value pair for 'dimensions'.",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "genre": "Fiction",
+    "publicationYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing read!"
+      }
+    ]
+  },
+  "modification": "The 'dimensions' field was removed."
+}

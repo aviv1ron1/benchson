@@ -1,0 +1,44 @@
+{
+  "data": {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "9780743273565",
+    "publicationYear": 1925,
+    "price": 10.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "publisher": {
+      "name": "Scribner",
+      "address": "123 Main St"
+    },
+    "reviews": [
+      {
+        "reviewer": "John Doe",
+        "rating": 5,
+        "comment": "A classic novel."
+      }
+    ]
+  },
+  "instructions": "Change the address of the publisher to '456 Elm St'.",
+  "ground_truth": {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "isbn": "9780743273565",
+    "publicationYear": 1925,
+    "price": 10.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "publisher": {
+      "name": "Scribner",
+      "address": "456 Elm St"
+    },
+    "reviews": [
+      {
+        "reviewer": "John Doe",
+        "rating": 5,
+        "comment": "A classic novel."
+      }
+    ]
+  },
+  "modification": "The publisher's address was changed from '123 Main St' to '456 Elm St'."
+}

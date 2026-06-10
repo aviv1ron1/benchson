@@ -3,11 +3,12 @@ import json
 import argparse
 import csv
 from benchson_datasets.dataset import Dataset
-from evaluations.evaluation import Evaluation
 from llm.llm_provider import LLMProvider
 from observability.observability_provider import ObservabilityProvider
 import sys
 import os
+from pathlib import Path
+
 
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -30,7 +31,6 @@ def save_results(results, output_path):
 
 def run_evaluations(config):
     """Runs evaluations based on the provided configuration."""
-    output_path = config.get("output_file", "results.csv")
     results = []
 
     observability_provider = None
@@ -64,7 +64,16 @@ def run_evaluations(config):
         eval_instance = evaluation_class(
             eval_name, datasets, llm_provider, observability_provider
         )
-        results.extend(eval_instance.execute_evaluation())
+        eval_result = eval_instance.execute_evaluation()
+        results.extend(eval_result)
+
+    # compute and append total score
+    total_score = sum(score for (_, _, score) in results)
+    instances_num = len(results)
+
+    orig = Path(config.get("output_file", "results.csv"))
+    new_name = f"{orig.stem}-{total_score}-{instances_num}{orig.suffix}"
+    output_path = str(orig.with_name(new_name))
 
     save_results(results, output_path)
 
@@ -88,7 +97,9 @@ def main():
         return
 
     config = load_config(args.config)
-    config["output_file"] = args.output  # Override output file if provided via CLI
+    # Only override if config did not specify an output_file
+    if config.get("output_file") is None:
+        config["output_file"] = args.output
 
     run_evaluations(config)
 

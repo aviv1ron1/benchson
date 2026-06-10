@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "The Great Gatsby",
+      "description": "A novel by F. Scott Fitzgerald that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in the summer of 1922.",
+      "author": "F. Scott Fitzgerald",
+      "publishedYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "genre": "Fiction",
+      "rating": 4.5,
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "reviewText": "A timeless classic that captures the essence of the American Dream."
+        }
+      ]
+    }
+  ],
+  "instructions": "Append the text ' - A must-read!' to the end of the description of the book with the ID 1.",
+  "ground_truth": [
+    {
+      "id": 1,
+      "name": "The Great Gatsby",
+      "description": "A novel by F. Scott Fitzgerald that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in the summer of 1922. - A must-read!",
+      "author": "F. Scott Fitzgerald",
+      "publishedYear": 1925,
+      "price": 10.99,
+      "inStock": true,
+      "genre": "Fiction",
+      "rating": 4.5,
+      "reviews": [
+        {
+          "reviewerName": "John Doe",
+          "reviewText": "A timeless classic that captures the essence of the American Dream."
+        }
+      ]
+    }
+  ],
+  "modification": "The description field was modified to include the text '- A must-read!'."
+}

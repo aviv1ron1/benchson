@@ -1,0 +1,53 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing book that kept me on the edge of my seat!"
+      }
+    ],
+    "chapters": [
+      {
+        "chapterTitle": "Chapter 1",
+        "pageNumber": 1
+      }
+    ]
+  },
+  "instructions": "Add a new review to the reviews array with reviewer 'Bob', rating 4, and comment 'A thrilling read with a great plot twist.'",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "isbn": "9781234567890",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "An amazing book that kept me on the edge of my seat!"
+      },
+      {
+        "reviewer": "Bob",
+        "rating": 4,
+        "comment": "A thrilling read with a great plot twist."
+      }
+    ],
+    "chapters": [
+      {
+        "chapterTitle": "Chapter 1",
+        "pageNumber": 1
+      }
+    ]
+  },
+  "modification": "A new review by Bob with a rating of 4 and the comment 'A thrilling read with a great plot twist.' was added."
+}

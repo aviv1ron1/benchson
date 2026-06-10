@@ -1,0 +1,53 @@
+{
+  "data": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "rating": 4.5,
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "Amazing book!"
+      }
+    ],
+    "chapters": [
+      {
+        "chapterNumber": 1,
+        "title": "The Beginning"
+      }
+    ]
+  },
+  "instructions": "Add a new review to the reviews array with reviewer 'Bob', rating 4, and comment 'Great read!'.",
+  "ground_truth": {
+    "title": "The Great Adventure",
+    "author": "John Doe",
+    "publishedYear": 2020,
+    "price": 19.99,
+    "inStock": true,
+    "genre": "Fiction",
+    "rating": 4.5,
+    "reviews": [
+      {
+        "reviewer": "Alice",
+        "rating": 5,
+        "comment": "Amazing book!"
+      },
+      {
+        "reviewer": "Bob",
+        "rating": 4,
+        "comment": "Great read!"
+      }
+    ],
+    "chapters": [
+      {
+        "chapterNumber": 1,
+        "title": "The Beginning"
+      }
+    ]
+  },
+  "modification": "A new review by Bob with a rating of 4 and the comment 'Great read!' was added."
+}
