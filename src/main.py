@@ -1,17 +1,15 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import importlib
 import json
 import argparse
 import csv
+from pathlib import Path
 from benchson_datasets.dataset import Dataset
 from llm.llm_provider import LLMProvider
 from observability.observability_provider import ObservabilityProvider
-import sys
-import os
-from pathlib import Path
-
-
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 def load_config(config_path):

@@ -6,18 +6,24 @@ This provider connects to IBM’s WatsonX LLM service.
 ```json
 "llm_provider": {
     "module": "src.llm.watsonx.watsonx_provider",
-    "class": "WatsonXProvider",
+    "class": "IBMWatsonXProvider",
     "params": {
         "api_key": "your-ibm-api-key",
-        "instance_id": "your-watsonx-instance",
-        "model": "ibm/granite-13b"
+        "project_id": "your-watsonx-project-id",
+        "model": "ibm/granite-13b",
+        "model_params": {},
+        "api_endpoint": "https://us-south.ml.cloud.ibm.com/"
     }
 }
 ```
 
 **Required Parameters:**
 - `api_key`: IBM Cloud API key.
-- `instance_id`: WatsonX service instance ID.
-- `model`: The WatsonX model to use.
+- `project_id`: WatsonX project ID.
+- `model_params`: Dictionary of model parameters (e.g. `{"max_new_tokens": 512}`). Pass `{}` for defaults.
+
+**Optional Parameters:**
+- `model`: Model ID (default: `ibm-mistral-7b`).
+- `api_endpoint`: WatsonX API endpoint (default: `https://us-south.ml.cloud.ibm.com/`).
 
 ---

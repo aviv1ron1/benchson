@@ -14,24 +14,22 @@ This benchmarkl aims to evaluate how well a model generates JSON according to di
 
 ## Setup environment and install dependencies
 
-Benchson was tested agaisnt python version `3.13.2`
+Benchson requires Python `>=3.13` and uses [uv](https://docs.astral.sh/uv/) for dependency management.
 
-It is recommended to create activate a virtual environment.
-
-Now install dependencies.
+Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 Benchson uses lazy loading of pluggable providers. This means that it might install additional dependencies when you execute a provider for the first time.
 
-For example, if you use OpenAI,its library will be installed autonatically on the first time you run.
+For example, if you use OpenAI, its library will be installed automatically on the first time you run.
 
 The evaluation framework is executed via the `main.py` script. You can run it with the following command:
 
 ```bash
-python src/main.py --config configs/example.json
+uv run python src/main.py --config configs/example.json
 ```
 
 ### Command-Line Arguments
@@ -63,53 +61,55 @@ All the concepts of this configuration such as `Datasets`, `LLM Provider` etc wi
     "evaluations": [
         {
             "name": "Create valid JSON according to a given schema",
-            "module": "src.evaluations.create_by_schema",
-            "class": "CreateBySchemaEvaluation",
-            "datasets": ["data/schemas"],
-            "llm_provider": {
-                "module": "src.llm.openai_provider",
-                "class": "OpenAIProvider",
-                "params": {
-                    "api_key": "your-api-key",
-                    "model": "gpt-4"
-                }
-            },
-            "observability_provider": {
-                "module": "src.observability.langfuse_observability",
-                "class": "LangfuseObservability",
-                "params": {
-                    "api_key": "your-langfuse-api-key",
-                    "environment": "production"
-                }
-            }
+            "module": "src.evaluations.create_by_schema.create_by_schema",
+            "class": "CreateBySchema",
+            "datasets": ["schemas"]
         }
-    ]
+    ],
+    "llm_provider": {
+        "module": "src.llm.openai.openai_provider",
+        "class": "OpenAIProvider",
+        "params": {
+            "api_key": "your-api-key",
+            "model": "gpt-4"
+        }
+    },
+    "observability_provider": {
+        "module": "src.observability.langfuse.langfuse_observability",
+        "class": "LangfuseObservability",
+        "params": {
+            "secret_key": "your-langfuse-secret-key",
+            "public_key": "your-langfuse-public-key",
+            "host": "your-langfuse-host-url"
+        }
+    }
 }
 ```
 
 ### Configuration Fields
 
-- `output_file`: Path to the CSV file where evaluation results will be saved.
+- `output_file`: Base filename for results (default: `results.csv`). The actual filename is suffixed with the total score and instance count, e.g. `results-17-20.csv`.
+- `output_category`: *(optional)* Subdirectory under `outputs/` where the result file is written (`dynamic` or `strict`). If omitted, the category is inferred automatically: evaluations whose class name contains `"Strict"` go to `outputs/strict/`, all others to `outputs/dynamic/`.
 - `evaluations`: List of evaluations to run.
   - `name`: A user friendly name for the evaluation.
   - `module`: The module (folder path) where the evaluation class is implemented.
   - `class`: The class name of the evaluation.
   - `datasets`: List of dataset paths to use for the evaluation.
-  - `llm_provider`: Defines the LLM provider to use.
-    - `module`: The module where the LLM provider class is implemented.
-    - `class`: The class name of the LLM provider.
-    - `params`: Any necessary parameters (e.g., API keys, model names, etc.).
-  - `observability_provider`: Defines the observability provider (optional).
-    - `module`: The module where the observability provider class is implemented.
-    - `class`: The class name of the observability provider.
-    - `params`: Any necessary parameters.
+- `llm_provider`: Defines the LLM provider to use (shared across all evaluations).
+  - `module`: The module where the LLM provider class is implemented.
+  - `class`: The class name of the LLM provider.
+  - `params`: Any necessary parameters (e.g., API keys, model names, etc.).
+- `observability_provider`: *(optional)* Defines the observability provider (shared across all evaluations).
+  - `module`: The module where the observability provider class is implemented.
+  - `class`: The class name of the observability provider.
+  - `params`: Any necessary parameters.
 
 ### Running With a Custom Configuration
 
 You can create a new configuration file and run it:
 
 ```bash
-python src/main.py --config configs/custom_config.json
+uv run python src/main.py --config configs/custom_config.json
 ```
 
 This allows you to test different evaluations, LLM providers, and datasets without modifying the code.
@@ -224,6 +224,57 @@ If the JSON is invalid:
 }
 ```
 
+### **Evaluation: ModifyJson**
+The `ModifyJson` evaluation tests the LLM's ability to modify a JSON object according to a natural-language instruction.
+
+- Dataset instances must contain `data` (the original JSON), `instructions` (what to change), and `ground_truth` (the expected result).
+- Score is **1** if the modified JSON exactly matches the ground truth, otherwise **0**.
+
+```json
+"evaluations": [
+    {
+        "name": "Modify JSON",
+        "module": "src.evaluations.modify_json_evaluation.modify_json_evaluation",
+        "class": "ModifyJson",
+        "datasets": ["modifications"]
+    }
+]
+```
+
+### **Evaluation: ErrorJson**
+The `ErrorJson` evaluation tests the LLM's ability to fix a broken JSON object so that it conforms to a given schema.
+
+- Dataset instances must contain `erroneous_json`, `schema`, and `valid_json` (ground truth).
+- Score is **1** if the corrected JSON exactly matches the ground truth, otherwise **0**.
+
+```json
+"evaluations": [
+    {
+        "name": "Fix JSON errors",
+        "module": "src.evaluations.json_error_evaluation.json_error_evaluation",
+        "class": "ErrorJson",
+        "datasets": ["errors"]
+    }
+]
+```
+
+### **Evaluation: SchemaFromInstances**
+The `SchemaFromInstances` evaluation tests the LLM's ability to generate a JSON Schema Draft-07 that describes a set of provided JSON instances.
+
+- Dataset instances must contain an `instances` array of JSON objects.
+- Score is **1** if the generated schema is valid Draft-07 and all provided instances validate against it, otherwise **0**.
+
+```json
+"evaluations": [
+    {
+        "name": "Generate schema from instances",
+        "module": "src.evaluations.schema_from_instances.schema_from_instances",
+        "class": "SchemaFromInstances",
+        "datasets": ["schemas"]
+    }
+]
+```
+
 ### **Configuring Evaluations**
 Evaluations are defined in the configuration file:
 
@@ -231,9 +282,9 @@ Evaluations are defined in the configuration file:
 "evaluations": [
     {
         "name": "Schema Validation Test",
-        "module": "src.evaluations.create_by_schema",
-        "class": "CreateBySchemaEvaluation",
-        "datasets": ["data/schemas"]
+        "module": "src.evaluations.create_by_schema.create_by_schema",
+        "class": "CreateBySchema",
+        "datasets": ["schemas"]
     }
 ]
 ```

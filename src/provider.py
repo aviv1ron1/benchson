@@ -13,4 +13,7 @@ class Provider:
             __import__(package)
         except ImportError:
             print(f"Installing missing dependency: {package}")
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+            try:
+                subprocess.check_call(["uv", "pip", "install", package])
+            except (FileNotFoundError, subprocess.CalledProcessError):
+                subprocess.check_call([sys.executable, "-m", "pip", "install", package])
