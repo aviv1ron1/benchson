@@ -23,7 +23,9 @@ This provider connects to IBM’s WatsonX LLM service.
 - `model_params`: Dictionary of model parameters (e.g. `{"max_new_tokens": 512}`). Pass `{}` for defaults.
 
 **Optional Parameters:**
-- `model`: Model ID (default: `ibm-mistral-7b`).
+- `model`: Model ID (default: `ibm/granite-3-1-8b-instruct`).
 - `api_endpoint`: WatsonX API endpoint (default: `https://us-south.ml.cloud.ibm.com/`).
+
+**Note:** Always set `max_new_tokens` in `model_params` — WatsonX defaults to 20 which truncates JSON output. Use at least 1024: `"model_params": {"max_new_tokens": 1024}`.
 
 ---
