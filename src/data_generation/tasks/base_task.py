@@ -114,7 +114,7 @@ class BaseDataTask:
         return [
             {
                 "role": "system",
-                "content": "You are a helpful assistant that generates JSON data based on a given schema. Output only the json with no other text or explanations.",
+                "content": "Reasoning: low\nYou are a helpful assistant that generates JSON data based on a given schema. Output only the json with no other text or explanations.",
             },
             {
                 "role": "user",
@@ -127,7 +127,7 @@ class BaseDataTask:
         return [
             {
                 "role": "system",
-                "content": "You are a helpful assistant that generates JSON data. Output only the JSON with no other text or explanations.",
+                "content": "Reasoning: low\nYou are a helpful assistant that generates JSON data. Output only the JSON with no other text or explanations.",
             },
             {
                 "role": "user",
@@ -144,6 +144,7 @@ class BaseDataTask:
             {
                 "role": "system",
                 "content": (
+                    "Reasoning: high\n"
                     "You are a helpful assistant tasked with fixing JSON objects to conform precisely "
                     "to the provided JSON schema. Return ONLY the corrected JSON object, "
                     "with no additional text or explanation."
