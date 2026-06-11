@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import time
 
 
 _TASK_CLASSES = {}
@@ -55,7 +56,17 @@ class DataGenerator:
                 break
 
             schema_path = random.choice(instances)
-            result = task.generate(schema_path, llm_provider, max_retries)
+            try:
+                result = task.generate(schema_path, llm_provider, max_retries)
+            except Exception as e:
+                err_str = str(e)
+                if "429" in err_str or "rate limit" in err_str.lower() or "too many" in err_str.lower():
+                    wait = 30
+                    print(f"[{task_type}] Rate limited — sleeping {wait}s ({e})")
+                    time.sleep(wait)
+                else:
+                    print(f"[{task_type}] Skipping sample (error: {e})")
+                continue
 
             if result is not None:
                 messages, output = result
