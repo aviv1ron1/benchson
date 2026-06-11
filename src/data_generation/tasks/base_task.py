@@ -5,7 +5,7 @@ import re
 
 class BaseDataTask:
 
-    def load_instances(self, source=None, filter_kw=None, files=None):
+    def load_instances(self, source=None, filter_kw=None, files=None, max_schema_kb=10):
         """Returns a list of schema file paths after applying source/filter/files config."""
         if files:
             result = []
@@ -26,6 +26,10 @@ class BaseDataTask:
 
         if filter_kw:
             paths = [p for p in paths if self._matches_filter(p, filter_kw)]
+
+        if max_schema_kb is not None:
+            limit = max_schema_kb * 1024
+            paths = [p for p in paths if os.path.getsize(p) <= limit]
 
         if not paths:
             raise ValueError(

@@ -46,6 +46,7 @@ class DataGenerator:
             source=task_config.get("source"),
             filter_kw=task_config.get("filter"),
             files=task_config.get("files"),
+            max_schema_kb=task_config.get("max_schema_kb", 10),
         )
 
         collected = 0
