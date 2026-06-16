@@ -5,9 +5,22 @@ The GenAI JSON generation benchmark
 
 ## Description
 
-JSON generation is one of the main tasks of an LLM. LLM's generate json to returns results, call API's and tools and create data.
+JSON generation is one of the main jobs of an LLM — models emit JSON to return results, call APIs and tools, and produce structured data. Benchson measures how well a model does this across realistic, content-grounded tasks.
 
-This benchmarkl aims to evaluate how well a model generates JSON according to different use cases, according to a schema, how well it corrects errors in the JSON or the schema, how well it populates the fields in the JSON etc.
+Unlike "can the model emit *any* schema-valid object" checks (which a stub of empty strings and zeros can pass), Benchson grounds every task in a concrete object and scores the output against a ground truth. It covers three task families:
+
+- **create-by-description** — given a schema and a description of an object, produce the matching JSON.
+- **fix-invalid** — given a schema-violating object, repair it.
+- **modify-by-instruction** — given an object and a free-text change (e.g. *"remove the first two items from the cart"*), return the modified JSON.
+
+Each output is scored on three independent axes: **json_validity** (parseable), **schema_compliance** (passes `jsonschema`), and **semantic_fidelity** (field values match the ground truth).
+
+Benchson is two things in one:
+
+1. **An evaluation framework** (`src/main.py`) — config-driven, provider-agnostic, runs evaluations over datasets and writes a scored CSV.
+2. **A benchmark + training-data generator** — builds the ground-truth datasets above (test *and* train, from disjoint schema pools to avoid contamination) and exports a fine-tuning set.
+
+The benchmark, its tasks, metrics, and build pipeline are documented in **[BENCHMARK.md](BENCHMARK.md)**.
 
 
 # Running Benchson
@@ -48,6 +61,36 @@ uv run python src/main.py --config configs/example.json
 
 - `--config <path>`: Specifies the path to the JSON configuration file.
 - `--output <path>`: Specifies the path to the output CSV file.
+
+## Building the benchmark and training data
+
+Besides running evaluations, Benchson can **generate** the ground-truth datasets it
+scores against. Each stage is a config-driven CLI (see **[BENCHMARK.md](BENCHMARK.md)**
+for full details):
+
+```bash
+# 1. Import real-world schemas from JSONSchemaBench (no API key needed)
+uv run python src/import_jsonschemabench.py --config configs/import_jsonschemabench.json
+
+# 2. Build the ground-truth benchmark (test + train, from disjoint schema pools)
+#    using a strong "builder" model, optionally verified by a separate validator model
+uv run python src/build_benchmark.py --config configs/build_benchmark.json
+
+# 3. Run the benchmark on a target model (scores the held-out test split)
+uv run python src/main.py --config configs/run_benchmark.json
+
+# 4. Export the train split to chat JSONL for fine-tuning
+uv run python src/export_training.py --config configs/export_training.json
+```
+
+The builder mints a valid object per schema, then derives the create / fix / modify
+instances from it, applying quality gates (and an optional round-trip check by a
+second model) so the ground truth is correct by construction. The held-out `test/`
+split is scored; the `train/` split is exported for SFT — never the other way around.
+
+> There is also an older, simpler training-data generator (`src/generate_data.py`)
+> that emits chat/alpaca examples directly from schemas; the benchmark builder above
+> supersedes it for the grounded tasks.
 
 ## Configuration
 
@@ -101,9 +144,8 @@ All the concepts of this configuration such as `Datasets`, `LLM Provider` etc wi
 ### Configuration Fields
 
 - `output_file`: Base filename for results (default: `results.csv`). The actual filename is suffixed with the total score and instance count, e.g. `results-17-20.csv`.
-- `output_category`: *(optional)* Subdirectory under `outputs/` where the result file is written (`dynamic` or `strict`). If omitted, the category is inferred automatically: evaluations whose class name contains `"Strict"` go to `outputs/strict/`, all others to `outputs/dynamic/`.
 - `evaluations`: List of evaluations to run.
-  - `name`: A user friendly name for the evaluation.
+  - `name`: A user-friendly name for the evaluation.
   - `module`: The module (folder path) where the evaluation class is implemented.
   - `class`: The class name of the evaluation.
   - `datasets`: List of dataset paths to use for the evaluation.
@@ -147,8 +189,13 @@ data/
 ```
 
 ### **Train & Test Folders**
-- **`train/`**: Contains instances used for training or reference. This is optional.
+- **`train/`**: Contains instances used for training or reference. This is optional — only `test/` is scored.
 - **`test/`**: Contains instances used for evaluation. These are the instances that Benchson will use to evaluate.
+
+For benchmark datasets built by `build_benchmark.py`, `train/` and `test/` are drawn
+from **disjoint schema pools**, so a model fine-tuned on `train/` is never evaluated
+on a schema it saw during training. This schema-level split is the contamination
+guard; see **[BENCHMARK.md](BENCHMARK.md)**.
 
 ### **Dataset Instances**
 Each dataset instance is stored as a file (e.g., `instance1.json`). The format of each file depends on the evaluation type but generally follows this structure:
@@ -184,16 +231,20 @@ Evaluations are implemented as Python classes and are located in the `src/evalua
 2. It formats each test instance into an LLM prompt.
 3. The LLM generates a response.
 4. The evaluation compares the response against the ground truth or some other metric.
-5. The result is stored, including a **score (0 or 1)** and an optional **explanation** for the score.
+5. The result is stored as an `EvaluationResult` with a primary **score (0 or 1)**, an optional **explanation**, and an optional **`metrics`** dictionary of additional named scores.
+
+The primary score is the `Score` column in the results CSV. Any extra `metrics`
+(e.g. `json_validity`, `semantic_fidelity`) become additional columns, so a single
+run reports multiple axes per instance.
 
 ### **Example Evaluation: CreateBySchema**
 The `CreateBySchemaEvaluation` evaluates how well an LLM generates JSON that conforms to a schema.
 
 #### **How It Works**
-- The test dataset contains JSON schemas.
-- The LLM is prompted to generate JSON matching the schema.
-- The evaluation checks if the generated JSON is valid against the schema.
-- A score of **1** is given if the JSON is valid, otherwise **0**.
+- The test dataset contains JSON schemas, optionally enriched with a `description`/`source_doc` (the object to produce) and a `reference_json` ground truth.
+- The LLM is prompted to generate JSON matching the schema (and the description, when present).
+- `schema_compliance` (the primary score) is **1** if the output is valid against the schema, else **0**.
+- It additionally reports `json_validity` and, when a `reference_json` is present, `semantic_fidelity` (the fraction of ground-truth field values recovered).
 
 #### **Example Test Case**
 ```json
@@ -239,8 +290,8 @@ If the JSON is invalid:
 ### **Evaluation: ModifyJson**
 The `ModifyJson` evaluation tests the LLM's ability to modify a JSON object according to a natural-language instruction.
 
-- Dataset instances must contain `data` (the original JSON), `instructions` (what to change), and `ground_truth` (the expected result).
-- Score is **1** if the modified JSON exactly matches the ground truth, otherwise **0**.
+- Dataset instances contain `data` (the original JSON), `instructions` (what to change), `ground_truth` (the expected result), and optionally a `schema`.
+- Reports `json_validity`, `schema_compliance` (the primary score, when a schema is present — otherwise exact match to ground truth), and `semantic_fidelity` against the ground truth.
 
 ```json
 "evaluations": [
@@ -256,8 +307,8 @@ The `ModifyJson` evaluation tests the LLM's ability to modify a JSON object acco
 ### **Evaluation: ErrorJson**
 The `ErrorJson` evaluation tests the LLM's ability to fix a broken JSON object so that it conforms to a given schema.
 
-- Dataset instances must contain `erroneous_json`, `schema`, and `valid_json` (ground truth).
-- Score is **1** if the corrected JSON exactly matches the ground truth, otherwise **0**.
+- Dataset instances contain `erroneous_json`, `schema`, and `valid_json` (ground truth), and optionally a `description` to help recover removed values.
+- Reports `json_validity`, `schema_compliance` (the primary score), and `semantic_fidelity` against the ground truth.
 
 ```json
 "evaluations": [
@@ -301,7 +352,7 @@ Evaluations are defined in the configuration file:
 ]
 ```
 
-- **`name`**: A user firendly name of the evaluation.
+- **`name`**: A user-friendly name of the evaluation.
 - **`module`**: The Python module where the evaluation class is implemented.
 - **`class`**: The evaluation class name.
 - **`datasets`**: The datasets to use for evaluation.
@@ -498,7 +549,7 @@ Once implemented, reference the provider in the config file:
 
 ## Observability Provider
 
-The **Observability Provider** framework enables logging and tracing of LLM interactions. This allows users to monitor and analyze te evaluation results using third-party observability tools like **Langfuse**.
+The **Observability Provider** framework enables logging and tracing of LLM interactions. This allows users to monitor and analyze the evaluation results using third-party observability tools like **Langfuse**.
 
 ### **1️⃣ How Observability Works**
 Observability providers are dynamically loaded based on the configuration. The framework calls the observability provider before and after each LLM interaction and also after the evaluation.
@@ -525,7 +576,7 @@ Observability providers are configured in the JSON file. Example configuration f
 ```
 - **`module`**: Specifies the module path where the provider is implemented.
 - **`class`**: The class name of the observability provider.
-- **`params`**: Provider-specific parameters (e.g., API keys, environment settings). Each provider has a respectove readme file in its folder that documents the parameters required and other instructions on how to use it.
+- **`params`**: Provider-specific parameters (e.g., API keys, environment settings). Each provider has a respective readme file in its folder that documents the parameters required and other instructions on how to use it.
 
 ---
 
