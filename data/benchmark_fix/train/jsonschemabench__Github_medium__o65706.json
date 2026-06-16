@@ -1,0 +1,77 @@
+{
+  "name": "o65706",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "description": "quota",
+    "properties": {
+      "quota": {
+        "additionalProperties": false,
+        "properties": {
+          "api_export_size": {
+            "default": 500,
+            "description": "Number of zone records allowed",
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "recordset_records": {
+            "default": 20,
+            "description": "Number of recordset records allowed",
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "zone_records": {
+            "default": 500,
+            "description": "Number of zone records allowed",
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "zone_recordsets": {
+            "default": 500,
+            "description": "Number of zone recordsets allowed",
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "zones": {
+            "default": 10,
+            "description": "Number of zones allowed",
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [],
+        "type": "object"
+      }
+    },
+    "required": [
+      "quota"
+    ],
+    "title": "quota"
+  },
+  "erroneous_json": {
+    "quota": {
+      "api_export_size": 800,
+      "recordset_records": 30,
+      "zone_records": 1200,
+      "zone_recordsets": 600,
+      "zones": 15
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "quota": {
+      "api_export_size": 800,
+      "recordset_records": 30,
+      "zone_records": 1200,
+      "zone_recordsets": 600,
+      "zones": 15
+    }
+  },
+  "description": "Subject: Updated Quota Limits for Your Account  \n\nDear Team,\n\nPlease be advised that the quota settings for our DNS service have been revised as follows: the maximum size for API exports is now set to\u202f800, each recordset may contain up to\u202f30\u202frecords, and a single zone is permitted to hold as many as\u202f1,200\u202frecords across\u202f600\u202frecordsets. In addition, the overall limit on the number of zones you can create has been increased to\u202f15.  \n\nThese changes take effect immediately and should provide additional flexibility for upcoming projects. Should you have any questions or require further adjustments, feel free to reach out.  \n\nBest regards,  \nOperations Support"
+}

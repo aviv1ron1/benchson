@@ -1,0 +1,460 @@
+{
+  "name": "o69430",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "additionalProperties": false,
+    "definitions": {
+      "pathType": {
+        "pattern": "^(\\/?((\\.{2})|([a-z0-9\\-]*))($|\\/))*$",
+        "type": "string"
+      }
+    },
+    "not": {
+      "allOf": [
+        {
+          "required": [
+            "cmd"
+          ]
+        },
+        {
+          "required": [
+            "args"
+          ]
+        }
+      ]
+    },
+    "properties": {
+      "acceptedResourceRoles": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "args": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "backoffFactor": {
+        "minimum": 1.0,
+        "type": "number"
+      },
+      "backoffSeconds": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "cmd": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "constraints": {},
+      "container": {
+        "additionalProperties": false,
+        "properties": {
+          "docker": {
+            "additionalProperties": false,
+            "properties": {
+              "forcePullImage": {
+                "type": "boolean"
+              },
+              "image": {
+                "type": "string"
+              },
+              "network": {
+                "type": "string"
+              },
+              "parameters": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "value"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "portMappings": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "containerPort": {
+                      "maximum": 65535,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "hostPort": {
+                      "maximum": 65535,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "protocol": {
+                      "type": "string"
+                    },
+                    "servicePort": {
+                      "maximum": 65535,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "privileged": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "image"
+            ],
+            "type": "object"
+          },
+          "type": {
+            "type": "string"
+          },
+          "volumes": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "containerPath": {
+                  "type": "string"
+                },
+                "hostPath": {
+                  "type": "string"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "cpus": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "dependencies": {
+        "items": {
+          "$ref": "#/definitions/pathType"
+        },
+        "type": "array"
+      },
+      "disk": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "env": {
+        "patternProperties": {
+          ".*": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "executor": {
+        "pattern": "^(|\\/\\/cmd|\\/?[^\\/]+(\\/[^\\/]+)*)$",
+        "type": "string"
+      },
+      "healthChecks": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "command": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            "gracePeriodSeconds": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "ignoreHttp1xx": {
+              "type": "boolean"
+            },
+            "intervalSeconds": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maxConsecutiveFailures": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "path": {
+              "type": "string"
+            },
+            "portIndex": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "protocol": {
+              "type": "string"
+            },
+            "timeoutSeconds": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "id": {
+        "pattern": "^/?(([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])\\.)*([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])$",
+        "type": "string"
+      },
+      "instances": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "labels": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "type": "object"
+      },
+      "maxLaunchDelaySeconds": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "mem": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "ports": {
+        "items": {
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "type": "array",
+        "_uniqueItems": true
+      },
+      "requirePorts": {
+        "type": "boolean"
+      },
+      "storeUrls": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "upgradeStrategy": {
+        "additionalProperties": false,
+        "properties": {
+          "maximumOverCapacity": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "minimumHealthCapacity": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "uris": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "user": {
+        "type": "string"
+      },
+      "version": {
+        "format": "date-time",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "id": "myservice",
+    "cpus": 0.5,
+    "mem": 256,
+    "disk": 10,
+    "instances": 2,
+    "acceptedResourceRoles": [
+      "*"
+    ],
+    "cmd": "echo Hello World",
+    "backoffSeconds": 10,
+    "backoffFactor": 1.5,
+    "env": {
+      "ENV_VAR": "value"
+    },
+    "executor": "",
+    "healthChecks": [
+      {
+        "command": {
+          "value": "curl -f http://localhost/health"
+        },
+        "gracePeriodSeconds": 30,
+        "intervalSeconds": 10,
+        "maxConsecutiveFailures": 3,
+        "path": "/health",
+        "portIndex": 0,
+        "protocol": "HTTP",
+        "timeoutSeconds": 5,
+        "ignoreHttp1xx": false
+      }
+    ],
+    "requirePorts": false,
+    "ports": [
+      8080
+    ],
+    "uris": [
+      "http://example.com/resource.tar.gz"
+    ],
+    "storeUrls": null,
+    "labels": {
+      "team": "devops"
+    },
+    "version": "2023-01-01T12:00:00Z",
+    "user": "appuser",
+    "constraints": [],
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "nginx:latest",
+        "network": "BRIDGE",
+        "forcePullImage": true,
+        "privileged": false,
+        "parameters": [
+          {
+            "key": "log-driver",
+            "value": "json-file"
+          }
+        ],
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "hostPort": 0,
+            "protocol": "tcp",
+            "servicePort": 8080
+          }
+        ]
+      },
+      "volumes": [
+        {
+          "containerPath": "/data",
+          "hostPath": "/var/data",
+          "mode": "RW"
+        }
+      ]
+    },
+    "upgradeStrategy": {
+      "minimumHealthCapacity": 0.5,
+      "maximumOverCapacity": 0.2
+    }
+  },
+  "valid_json": {
+    "id": "myservice",
+    "cpus": 0.5,
+    "mem": 256,
+    "disk": 10,
+    "instances": 2,
+    "acceptedResourceRoles": [
+      "*"
+    ],
+    "cmd": "echo Hello World",
+    "backoffSeconds": 10,
+    "backoffFactor": 1.5,
+    "env": {
+      "ENV_VAR": "value"
+    },
+    "executor": "",
+    "healthChecks": [
+      {
+        "command": {
+          "value": "curl -f http://localhost/health"
+        },
+        "gracePeriodSeconds": 30,
+        "intervalSeconds": 10,
+        "maxConsecutiveFailures": 3,
+        "path": "/health",
+        "portIndex": 0,
+        "protocol": "HTTP",
+        "timeoutSeconds": 5,
+        "ignoreHttp1xx": false
+      }
+    ],
+    "requirePorts": false,
+    "ports": [
+      8080
+    ],
+    "uris": [
+      "http://example.com/resource.tar.gz"
+    ],
+    "storeUrls": [
+      "http://store.example.com"
+    ],
+    "labels": {
+      "team": "devops"
+    },
+    "version": "2023-01-01T12:00:00Z",
+    "user": "appuser",
+    "constraints": [],
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "nginx:latest",
+        "network": "BRIDGE",
+        "forcePullImage": true,
+        "privileged": false,
+        "parameters": [
+          {
+            "key": "log-driver",
+            "value": "json-file"
+          }
+        ],
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "hostPort": 0,
+            "protocol": "tcp",
+            "servicePort": 8080
+          }
+        ]
+      },
+      "volumes": [
+        {
+          "containerPath": "/data",
+          "hostPath": "/var/data",
+          "mode": "RW"
+        }
+      ]
+    },
+    "upgradeStrategy": {
+      "minimumHealthCapacity": 0.5,
+      "maximumOverCapacity": 0.2
+    }
+  },
+  "description": "Subject: Deployment Specification for **myservice** (v\u202f2023\u201101\u201101\u202f12:00\u202fUTC)\n\nThe service **myservice** will run under the Unix user **appuser** and is version\u2011controlled at the timestamp\u202f2023\u201101\u201101T12:00:00Z. It is allocated 0.5\u202fCPU units, 256\u202fMiB of memory, and 10\u202fGiB of disk space, with two instances scheduled to start. The job accepts any resource role (\u201c*\u201d) and will be launched with the command `echo Hello World`; the executor field is intentionally left empty. Environment variables are limited to a single entry, **ENV_VAR=value**. A back\u2011off strategy is configured: after a failure the system will wait 10\u202fseconds before retrying, multiplying subsequent waits by a factor of\u202f1.5. No additional constraints have been defined.\n\nHealth monitoring relies on an HTTP check: the container will execute `curl -f http://localhost/health` targeting path **/health** on port index\u202f0, using the HTTP protocol. The check permits a 30\u2011second grace period, runs every 10\u202fseconds, times out after 5\u202fseconds, and tolerates up to three consecutive failures; HTTP 1xx responses are not ignored. Ports are not required to be pre\u2011allocated (`requirePorts: false`), and the service advertises port\u202f8080. The application fetches its artifact from `http://example.com/resource.tar.gz` and may also pull from the store at `http://store.example.com`.\n\nThe container is defined as type **DOCKER**, pulling the image **nginx:latest** from a Docker registry with `forcePullImage` set to true and running in **BRIDGE** network mode. It is not privileged. Docker launch parameters include `log-driver=json-file`. Port mapping translates container port\u202f80 (TCP) to a dynamically assigned host port, exposing it as service port\u202f8080. A volume mounts the host directory `/var/data` into the container at `/data` with read\u2011write mode. Labels tag the deployment with `team=devops`. Finally, the upgrade strategy specifies that at least 50\u202f% of instances must remain healthy during a rollout (`minimumHealthCapacity: 0.5`) and that no more than 20\u202f% may exceed capacity (`maximumOverCapacity: 0.2`)."
+}

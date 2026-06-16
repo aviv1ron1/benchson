@@ -1,0 +1,141 @@
+{
+  "name": "o83270",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "OpenStack job accounting data",
+    "properties": {
+      "disk_gb": {
+        "type": "string"
+      },
+      "ephermeral_gb": {
+        "type": "string"
+      },
+      "event_type": {
+        "type": "string"
+      },
+      "generated": {
+        "type": "string"
+      },
+      "host": {
+        "type": "string"
+      },
+      "instance_id": {
+        "type": "string"
+      },
+      "instance_type": {
+        "type": "string"
+      },
+      "instance_type_id": {
+        "type": "integer"
+      },
+      "launched_at": {
+        "type": "string",
+        "format": "full-date"
+      },
+      "memory_mb": {
+        "type": "integer"
+      },
+      "message_id": {
+        "type": "string"
+      },
+      "project_id": {
+        "type": "string"
+      },
+      "project_name": {
+        "type": "string"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "resource_id": {
+        "type": "string"
+      },
+      "root_gb": {
+        "type": "integer"
+      },
+      "service": {
+        "type": "string"
+      },
+      "state": {
+        "type": "string"
+      },
+      "tenant_id": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "user_name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "vcpus": {
+        "type": "integer"
+      },
+      "volume_id": {
+        "type": "string"
+      },
+      "domain": {
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "disk_gb": "100",
+    "ephermeral_gb": "20",
+    "event_type": "compute.instance.create.end",
+    "generated": "2026-06-15T12:34:56Z",
+    "host": "compute-node-01",
+    "instance_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "instance_type": "m1.large",
+    "instance_type_id": 3,
+    "launched_at": "2026-06-14",
+    "memory_mb": 8192,
+    "message_id": "9f8e7d6c-5b4a-3210-9abc-def123456789",
+    "project_id": "project-1234",
+    "project_name": "Demo Project",
+    "request_id": "req-0987654321",
+    "resource_id": "res-11223344",
+    "root_gb": "not-a-number",
+    "service": "nova",
+    "state": "active",
+    "tenant_id": "tenant-5678",
+    "user_id": "user-9012",
+    "user_name": "jdoe",
+    "vcpus": 4,
+    "volume_id": "vol-abcdef12",
+    "domain": "default"
+  },
+  "valid_json": {
+    "disk_gb": "100",
+    "ephermeral_gb": "20",
+    "event_type": "compute.instance.create.end",
+    "generated": "2026-06-15T12:34:56Z",
+    "host": "compute-node-01",
+    "instance_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "instance_type": "m1.large",
+    "instance_type_id": 3,
+    "launched_at": "2026-06-14",
+    "memory_mb": 8192,
+    "message_id": "9f8e7d6c-5b4a-3210-9abc-def123456789",
+    "project_id": "project-1234",
+    "project_name": "Demo Project",
+    "request_id": "req-0987654321",
+    "resource_id": "res-11223344",
+    "root_gb": 50,
+    "service": "nova",
+    "state": "active",
+    "tenant_id": "tenant-5678",
+    "user_id": "user-9012",
+    "user_name": "jdoe",
+    "vcpus": 4,
+    "volume_id": "vol-abcdef12",
+    "domain": "default"
+  },
+  "description": "On 2026\u201106\u201114 a new compute instance (ID\u202fa1b2c3d4-5678-90ab-cdef-1234567890ab) was launched on host **compute\u2011node\u201101** under the **nova** service. The instance is of type **m1.large** (type ID\u202f3) and was created as part of the **Demo Project** (project ID\u202fproject\u20111234, tenant\u202ftenant\u20115678) in the **default** domain, owned by user **jdoe** (user ID\u202fuser\u20119012). It carries the request identifier **req\u20110987654321** and is recorded with message ID **9f8e7d6c-5b4a-3210-9abc-def123456789**. The associated resource ID is **res\u201111223344**.\n\nThe instance is currently **active** and provides\u202f4\u202fvCPUs,\u202f8192\u202fMB of memory,\u202f100\u202fGB of attached disk storage,\u202f20\u202fGB of ephemeral storage, and a\u202f50\u202fGB root volume (volume ID\u202fvol\u2011abcdef12). The creation event **compute.instance.create.end** was logged at **2026\u201106\u201115T12:34:56Z**."
+}

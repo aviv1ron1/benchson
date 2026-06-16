@@ -1,0 +1,80 @@
+{
+  "name": "drupal-breakpoints",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/drupal-breakpoints.json",
+    "additionalProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "title": "A human readable label for the breakpoint",
+          "type": "string"
+        },
+        "mediaQuery": {
+          "title": "Media query text proper",
+          "examples": [
+            "all and (min-width: 851px)"
+          ],
+          "type": "string"
+        },
+        "weight": {
+          "title": "Positional weight (order) for the breakpoint",
+          "type": "integer"
+        },
+        "multipliers": {
+          "title": " Supported pixel resolution multipliers",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^\\d+(\\.\\d+)?x$"
+          },
+          "uniqueItems": true
+        },
+        "group": {
+          "title": "Breakpoint group",
+          "type": "string"
+        }
+      }
+    },
+    "title": "JSON schema for Drupal breakpoints file",
+    "type": "object"
+  },
+  "description": "Below is the breakpoint configuration we will be using for the upcoming responsive redesign. The \u201csmall\u201d breakpoint \u2013 labelled **Small (mobile)** \u2013 applies to any viewport up to\u202f599\u202fpx wide (`all and (max-width: 599px)`). It carries the lowest positional weight of\u202f0, supports pixel\u2011ratio multipliers of **1x** and **2x**, and belongs to the default group.\n\nThe next tier, **Medium (tablet)**, targets screens from\u202f600\u202fpx through\u202f899\u202fpx (`all and (min-width: 600px) and (max-width: 899px)`). Assigned a weight of\u202f1, it also sits in the default group and accommodates three resolution multipliers: **1x**, **1.5x**, and **2x**.\n\nFinally, the **Large (desktop)** breakpoint covers viewports of\u202f900\u202fpx and wider (`all and (min-width: 900px)`), with a weight of\u202f2. It remains in the default group and is compatible with **1x**, **2x**, and **3x** multipliers.",
+  "reference_json": {
+    "small": {
+      "label": "Small (mobile)",
+      "mediaQuery": "all and (max-width: 599px)",
+      "weight": 0,
+      "multipliers": [
+        "1x",
+        "2x"
+      ],
+      "group": "default"
+    },
+    "medium": {
+      "label": "Medium (tablet)",
+      "mediaQuery": "all and (min-width: 600px) and (max-width: 899px)",
+      "weight": 1,
+      "multipliers": [
+        "1x",
+        "1.5x",
+        "2x"
+      ],
+      "group": "default"
+    },
+    "large": {
+      "label": "Large (desktop)",
+      "mediaQuery": "all and (min-width: 900px)",
+      "weight": 2,
+      "multipliers": [
+        "1x",
+        "2x",
+        "3x"
+      ],
+      "group": "default"
+    }
+  }
+}

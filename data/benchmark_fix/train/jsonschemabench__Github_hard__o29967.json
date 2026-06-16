@@ -1,0 +1,509 @@
+{
+  "name": "o29967",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "properties": {
+      "aaausername": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "appnamerefresh": {
+        "type": "integer"
+      },
+      "auditlogs": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "builtin": {
+        "enum": [
+          "MODIFIABLE",
+          "DELETABLE",
+          "IMMUTABLE",
+          "PARTITION_ALL"
+        ],
+        "readonly": true,
+        "type": "object"
+      },
+      "cacheinsight": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "clienttrafficonly": {
+        "enum": [
+          "YES",
+          "NO"
+        ],
+        "type": "string"
+      },
+      "connectionchaining": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "cqareporting": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "distributedtracing": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "disttracingsamplingrate": {
+        "type": "integer"
+      },
+      "emailaddress": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "events": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "feature": {
+        "enum": [
+          "WL",
+          "WebLogging",
+          "SP",
+          "SurgeProtection",
+          "LB",
+          "LoadBalancing",
+          "CS",
+          "ContentSwitching",
+          "CR",
+          "CacheRedirection",
+          "SC",
+          "SureConnect",
+          "CMP",
+          "CMPcntl",
+          "CompressionControl",
+          "PQ",
+          "PriorityQueuing",
+          "HDOSP",
+          "HttpDoSProtection",
+          "SSLVPN",
+          "AAA",
+          "GSLB",
+          "GlobalServerLoadBalancing",
+          "SSL",
+          "SSLOffload",
+          "SSLOffloading",
+          "CF",
+          "ContentFiltering",
+          "IC",
+          "IntegratedCaching",
+          "OSPF",
+          "OSPFRouting",
+          "RIP",
+          "RIPRouting",
+          "BGP",
+          "BGPRouting",
+          "REWRITE",
+          "IPv6PT",
+          "IPv6protocoltranslation",
+          "AppFw",
+          "ApplicationFirewall",
+          "RESPONDER",
+          "HTMLInjection",
+          "push",
+          "NSPush",
+          "NetScalerPush",
+          "AppFlow",
+          "CloudBridge",
+          "ISIS",
+          "ISISRouting",
+          "CH",
+          "CallHome",
+          "AppQoE",
+          "ContentAccelerator",
+          "SYSTEM",
+          "RISE",
+          "FEO",
+          "LSN",
+          "LargeScaleNAT",
+          "RDPProxy",
+          "Rep",
+          "Reputation",
+          "URLFiltering",
+          "VideoOptimization",
+          "ForwardProxy",
+          "SSLInterception",
+          "AdaptiveTCP",
+          "CQA",
+          "CI",
+          "ContentInspection",
+          "Bot"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "flowrecordinterval": {
+        "type": "integer"
+      },
+      "gxsessionreporting": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpauthorization": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpcontenttype": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpcookie": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpdomain": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httphost": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httplocation": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpmethod": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpquerywithurl": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpreferer": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpsetcookie": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpsetcookie2": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpurl": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpuseragent": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpvia": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "httpxforwardedfor": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "identifiername": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "identifiersessionname": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "logstreamovernsip": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "lsnlogging": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "metrics": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "observationdomainid": {
+        "type": "integer"
+      },
+      "observationdomainname": {
+        "type": "string"
+      },
+      "observationpointid": {
+        "type": "integer"
+      },
+      "securityinsightrecordinterval": {
+        "type": "integer"
+      },
+      "securityinsighttraffic": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "skipcacheredirectionhttptransaction": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "subscriberawareness": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "subscriberidobfuscation": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "subscriberidobfuscationalgo": {
+        "enum": [
+          "MD5",
+          "SHA256"
+        ],
+        "type": "string"
+      },
+      "tcpattackcounterinterval": {
+        "type": "integer"
+      },
+      "tcpburstreporting": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "tcpburstreportingthreshold": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "templaterefresh": {
+        "type": "integer"
+      },
+      "udppmtu": {
+        "type": "integer"
+      },
+      "urlcategory": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "usagerecordinterval": {
+        "type": "integer"
+      },
+      "videoinsight": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "appflowparam",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "aaausername": "ENABLED",
+    "appnamerefresh": 60,
+    "auditlogs": "ENABLED",
+    "cacheinsight": "ENABLED",
+    "clienttrafficonly": "YES",
+    "connectionchaining": "ENABLED",
+    "cqareporting": "ENABLED",
+    "distributedtracing": "ENABLED",
+    "disttracingsamplingrate": 10,
+    "emailaddress": "ENABLED",
+    "events": "ENABLED",
+    "feature": "WebLogging",
+    "flowrecordinterval": 5,
+    "gxsessionreporting": "ENABLED",
+    "httpauthorization": "ENABLED",
+    "httpcontenttype": "ENABLED",
+    "httpcookie": "ENABLED",
+    "httpdomain": "ENABLED",
+    "httphost": "ENABLED",
+    "httplocation": "ENABLED",
+    "httpmethod": "ENABLED",
+    "httpquerywithurl": "ENABLED",
+    "httpreferer": "ENABLED",
+    "httpsetcookie": "ENABLED",
+    "httpsetcookie2": "ENABLED",
+    "httpurl": "ENABLED",
+    "httpuseragent": "ENABLED",
+    "httpvia": "ENABLED",
+    "httpxforwardedfor": "ENABLED",
+    "identifiername": "ENABLED",
+    "identifiersessionname": "ENABLED",
+    "logstreamovernsip": "ENABLED",
+    "lsnlogging": "ENABLED",
+    "metrics": "ENABLED",
+    "observationdomainid": 1001,
+    "observationdomainname": "DomainA",
+    "observationpointid": 2002,
+    "securityinsightrecordinterval": 60,
+    "securityinsighttraffic": "ENABLED",
+    "skipcacheredirectionhttptransaction": "DISABLED",
+    "subscriberawareness": "ENABLED",
+    "subscriberidobfuscation": "ENABLED",
+    "subscriberidobfuscationalgo": "SHA256",
+    "tcpattackcounterinterval": 30,
+    "tcpburstreporting": "DISABLED",
+    "tcpburstreportingthreshold": 100,
+    "templaterefresh": 120,
+    "udppmtu": 1500,
+    "urlcategory": "ENABLED",
+    "usagerecordinterval": 15,
+    "videoinsight": "DISABLED_INVALID"
+  },
+  "valid_json": {
+    "aaausername": "ENABLED",
+    "appnamerefresh": 60,
+    "auditlogs": "ENABLED",
+    "cacheinsight": "ENABLED",
+    "clienttrafficonly": "YES",
+    "connectionchaining": "ENABLED",
+    "cqareporting": "ENABLED",
+    "distributedtracing": "ENABLED",
+    "disttracingsamplingrate": 10,
+    "emailaddress": "ENABLED",
+    "events": "ENABLED",
+    "feature": "WebLogging",
+    "flowrecordinterval": 5,
+    "gxsessionreporting": "ENABLED",
+    "httpauthorization": "ENABLED",
+    "httpcontenttype": "ENABLED",
+    "httpcookie": "ENABLED",
+    "httpdomain": "ENABLED",
+    "httphost": "ENABLED",
+    "httplocation": "ENABLED",
+    "httpmethod": "ENABLED",
+    "httpquerywithurl": "ENABLED",
+    "httpreferer": "ENABLED",
+    "httpsetcookie": "ENABLED",
+    "httpsetcookie2": "ENABLED",
+    "httpurl": "ENABLED",
+    "httpuseragent": "ENABLED",
+    "httpvia": "ENABLED",
+    "httpxforwardedfor": "ENABLED",
+    "identifiername": "ENABLED",
+    "identifiersessionname": "ENABLED",
+    "logstreamovernsip": "ENABLED",
+    "lsnlogging": "ENABLED",
+    "metrics": "ENABLED",
+    "observationdomainid": 1001,
+    "observationdomainname": "DomainA",
+    "observationpointid": 2002,
+    "securityinsightrecordinterval": 60,
+    "securityinsighttraffic": "ENABLED",
+    "skipcacheredirectionhttptransaction": "DISABLED",
+    "subscriberawareness": "ENABLED",
+    "subscriberidobfuscation": "ENABLED",
+    "subscriberidobfuscationalgo": "SHA256",
+    "tcpattackcounterinterval": 30,
+    "tcpburstreporting": "DISABLED",
+    "tcpburstreportingthreshold": 100,
+    "templaterefresh": 120,
+    "udppmtu": 1500,
+    "urlcategory": "ENABLED",
+    "usagerecordinterval": 15,
+    "videoinsight": "DISABLED"
+  },
+  "description": "The current AppFlow configuration enables most logging and inspection features. AAA username logging is set to **ENABLED**, the app\u2011name refresh interval is **60\u202fseconds**, and audit logs are also **ENABLED**. Cache insight, client\u2011traffic\u2011only mode (**YES**), connection chaining, CQA reporting, and distributed tracing are all **ENABLED** with a tracing sampling rate of **10**. Email address, events, and the WebLogging feature are active, and flow records are captured every **5\u202fseconds**. Gx session reporting, HTTP authorization, content\u2011type, cookie, domain, host, location, method, query\u2011with\u2011URL, referer, HTTPSET cookie\u202f1 and\u202f2, HTTP URL, user\u2011agent, via, and X\u2011Forwarded\u2011For fields are all **ENABLED**, as are identifier name, identifier session name, log streaming over NSIP, LSN logging, and metrics collection. The observation domain is ID **1001** named **DomainA**, with observation point ID **2002**. Security\u2011insight records are taken every **60\u202fseconds** and traffic collection is **ENABLED**. Skip\u2011cache\u2011redirection HTTP transaction is **DISABLED**, while subscriber awareness and subscriber\u2011ID obfuscation are **ENABLED** using the **SHA256** algorithm. TCP\u2011attack counter interval is **30\u202fseconds**, TCP\u2011burst reporting is **DISABLED** with a threshold of **100**, and the template refresh interval is **120\u202fseconds**. UDP MTU is set to **1500**, URL\u2011category collection is **ENABLED**, usage records are logged every **15\u202fseconds**, and video insight is **DISABLED**."
+}

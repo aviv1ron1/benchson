@@ -1,0 +1,215 @@
+{
+  "name": "linutil-tab-data",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/linutil-tab-data.json",
+    "definitions": {
+      "string-property": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "[^ ]"
+      }
+    },
+    "title": "tab data",
+    "description": "Tab data",
+    "type": "object",
+    "required": [
+      "name",
+      "data"
+    ],
+    "properties": {
+      "name": {
+        "$ref": "#/definitions/string-property",
+        "title": "name",
+        "description": "The name of a tab"
+      },
+      "multi_selectable": {
+        "title": "multi_selectable",
+        "description": "Whether the tab entries should be able to multi select",
+        "type": "boolean"
+      },
+      "data": {
+        "title": "data",
+        "description": "The data of a tab",
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "title": "data entry",
+          "description": "The data entry of a tab",
+          "type": "object",
+          "properties": {
+            "name": {
+              "$ref": "#/definitions/string-property",
+              "title": "name",
+              "description": "The name of a tab entry"
+            },
+            "script": {
+              "$ref": "#/definitions/string-property",
+              "title": "script",
+              "description": "The script run of a tab entry"
+            },
+            "description": {
+              "$ref": "#/definitions/string-property",
+              "title": "description",
+              "description": "Description of the tab entry"
+            },
+            "task_list": {
+              "$ref": "#/definitions/string-property",
+              "title": "task_list",
+              "description": "The task list of a tab entry"
+            },
+            "preconditions": {
+              "title": "preconditions",
+              "description": "Preconditions of a tab entry",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "title": "precondition entry",
+                "description": "The precondition entry of a tab entry",
+                "type": "object",
+                "properties": {
+                  "matches": {
+                    "title": "matches",
+                    "description": "Whether to require the condition to match or not for a precondition entry",
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "title": "data",
+                    "description": "The data of a tab precondition entry",
+                    "type": "object",
+                    "properties": {
+                      "environment": {
+                        "$ref": "#/definitions/string-property",
+                        "title": "environment",
+                        "description": "The environment variable of a data"
+                      },
+                      "command_exists": {
+                        "title": "command_exists",
+                        "description": "The command pre-condition of a data",
+                        "type": "null"
+                      },
+                      "file": {
+                        "$ref": "#/definitions/string-property",
+                        "title": "file",
+                        "description": "The file pre-condition of a data"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "values": {
+                    "title": "values",
+                    "description": "The values of a tab precondition entry",
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "title": "entry",
+                      "description": "The entry of values",
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "entries": {
+              "title": "entries",
+              "description": "The entries of a tab entry",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "title": "entry",
+                "description": "The entry",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "$ref": "#/definitions/string-property",
+                    "title": "name",
+                    "description": "The name of a tab entry"
+                  },
+                  "script": {
+                    "$ref": "#/definitions/string-property",
+                    "title": "script",
+                    "description": "The script run of a tab entry"
+                  },
+                  "matches": {
+                    "title": "matches",
+                    "description": "Whether to require the condition to match or not for an entry",
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "$ref": "#/definitions/string-property",
+                    "title": "description",
+                    "description": "Description of the tab entry"
+                  },
+                  "task_list": {
+                    "$ref": "#/definitions/string-property",
+                    "title": "task_list",
+                    "description": "The task list of a tab entry"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false
+  },
+  "description": "Subject: Utilities Tab \u2013 Overview and Configuration Details  \n\nThe\u202f**Utilities** tab is configured to allow multiple selections, so users can pick more than one utility at a time. It contains two main utilities. The first entry, **Disk Cleanup**, runs the script\u202f`cleanup.sh` and is described as \u201cRemove temporary files.\u201d Its associated task list is\u202f`cleanup_tasks`. Before Disk Cleanup can be executed, a precondition must be satisfied: the environment variable\u202f**USER** must be set to either\u202f`root`\u202for\u202f`admin`, and the file\u202f`/var/log/syslog` must exist (the command\u2011existence check is not applicable). Within Disk Cleanup there are two sub\u2011entries:  \n\n- **Clear Cache** \u2013 runs `clear_cache.sh`, matches the precondition, is described as \u201cClears system cache,\u201d and uses the task list\u202f`cache_tasks`.  \n- **Delete Logs** \u2013 runs `delete_logs.sh`, does *not* match the precondition, is described as \u201cDeletes old log files,\u201d and uses the task list\u202f`log_tasks`.  \n\nThe second main utility is **Network Tools**, which runs `net_tools.sh`, is described as \u201cNetwork diagnostics,\u201d and references the task list\u202f`network_tasks`. No additional preconditions or sub\u2011entries are defined for this item.",
+  "reference_json": {
+    "name": "Utilities",
+    "multi_selectable": true,
+    "data": [
+      {
+        "name": "Disk Cleanup",
+        "script": "cleanup.sh",
+        "description": "Remove temporary files",
+        "task_list": "cleanup_tasks",
+        "preconditions": [
+          {
+            "matches": true,
+            "data": {
+              "environment": "USER",
+              "command_exists": null,
+              "file": "/var/log/syslog"
+            },
+            "values": [
+              "root",
+              "admin"
+            ]
+          }
+        ],
+        "entries": [
+          {
+            "name": "Clear Cache",
+            "script": "clear_cache.sh",
+            "matches": true,
+            "description": "Clears system cache",
+            "task_list": "cache_tasks"
+          },
+          {
+            "name": "Delete Logs",
+            "script": "delete_logs.sh",
+            "matches": false,
+            "description": "Deletes old log files",
+            "task_list": "log_tasks"
+          }
+        ]
+      },
+      {
+        "name": "Network Tools",
+        "script": "net_tools.sh",
+        "description": "Network diagnostics",
+        "task_list": "network_tasks"
+      }
+    ]
+  }
+}

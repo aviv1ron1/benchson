@@ -1,0 +1,51 @@
+{
+  "name": "o20473",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "description": "authorization error response",
+    "id": "http://localhost:3000/schemas/authorize-error-code.json#",
+    "properties": {
+      "error": {
+        "description": "The OAuth 2.0 error code, with values (additional codes are specified in OpenID Connect):",
+        "enum": [
+          "invalid_request",
+          "unauthorized_client",
+          "access_denied",
+          "unsupported_response_type",
+          "invalid_scope",
+          "server_error",
+          "temporarily_unavailable"
+        ],
+        "type": "string"
+      },
+      "error_description": {
+        "description": "Optional parameter providing additional human-readable information about the error.",
+        "type": "string"
+      },
+      "error_uri": {
+        "description": "A human-readable web page with information about the error, typically intended for the client developer.",
+        "type": "string"
+      },
+      "state": {
+        "description": "The state value, if one was passed with the request. Clients must validate the value before proceeding.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "error",
+      "error_description"
+    ],
+    "title": "OAuth error response",
+    "type": "object"
+  },
+  "description": "During the recent authorization attempt the server responded with an **access_denied** error, indicating that the resource owner denied the request. For further details you can consult the error documentation at\u202fhttps://example.com/docs/oauth-errors#access_denied. The original request included the state value **xyz123**, which should be validated before proceeding.",
+  "reference_json": {
+    "error": "access_denied",
+    "error_description": "The resource owner denied the request.",
+    "error_uri": "https://example.com/docs/oauth-errors#access_denied",
+    "state": "xyz123"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "name": "o44189",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "schema for type language",
+    "type": "object",
+    "properties": {
+      "Z1K1": {
+        "enum": [
+          "Z180"
+        ]
+      },
+      "Z1K2": {
+        "type": "string",
+        "pattern": "^[a-z_A-Z0-9]+$"
+      },
+      "Z1K3": {},
+      "Z1K4": {},
+      "Z1K5": {},
+      "Z180K1": {},
+      "Z180K2": {
+        "type": "string",
+        "pattern": "^Q[1-9][0-9]*$"
+      }
+    },
+    "required": [
+      "Z1K1",
+      "Z180K1"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "Z1K1": "Z180",
+    "Z1K2": "exampleKey_1",
+    "Z1K3": {
+      "detail": "info"
+    },
+    "Z1K4": 42,
+    "Z1K5": [
+      "item1",
+      "item2"
+    ],
+    "Z180K1": "English",
+    "Z180K2": "Q42"
+  },
+  "instructions": "Please decrease \"Z1K4\" by 1.",
+  "ground_truth": {
+    "Z1K1": "Z180",
+    "Z1K2": "exampleKey_1",
+    "Z1K3": {
+      "detail": "info"
+    },
+    "Z1K4": 41,
+    "Z1K5": [
+      "item1",
+      "item2"
+    ],
+    "Z180K1": "English",
+    "Z180K2": "Q42"
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "Z1K4"
+    ],
+    "precise_instruction": "Decrease \"Z1K4\" by 1."
+  }
+}

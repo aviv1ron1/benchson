@@ -1,0 +1,95 @@
+{
+  "name": "o61645",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "OnDemandMatchAppEnabled": {
+        "description": "This key is placed in the VPN payload sub-dictionary.\n                    If true, the Per-App VPN connection starts automatically when apps linked to this Per-App VPN service initiate network communication.\n                    If false, the Per-App VPN connection must be started manually by the user before apps linked to this Per-App VPN service can initiate network communication.\n                    If this key is not present, the value of the OnDemandEnabled key is used to determine the status of Per-App VPN On Demand.\n                ",
+        "type": "boolean"
+      },
+      "PayloadDescription": {
+        "default": "Per-App VPN Payload",
+        "description": "Description of the payload",
+        "type": "string"
+      },
+      "PayloadDisplayName": {
+        "default": "Per-App VPN Payload",
+        "description": "Name of the payload",
+        "type": "string"
+      },
+      "PayloadIdentifier": {
+        "default": "com.apple.vpn.managed.applayer",
+        "description": "A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier",
+        "type": "string"
+      },
+      "PayloadOrganization": {
+        "description": "This value describes the issuing organization of the profile, as displayed to the user",
+        "type": "string"
+      },
+      "PayloadType": {
+        "default": "com.apple.vpn.managed.applayer",
+        "description": "The type of the payload, a reverse dns string",
+        "type": "string"
+      },
+      "PayloadUUID": {
+        "default": "",
+        "description": "Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)",
+        "pattern": "^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$",
+        "type": "string"
+      },
+      "PayloadVersion": {
+        "default": 1,
+        "description": "The version of the whole configuration profile.",
+        "type": "number"
+      },
+      "SafariDomains": {
+        "description": "This optional key is a special case of App-to-Per App VPN Mapping. It sets up the app mapping for Safari (Webkit) with a specific identifier and a designated requirement. The array contains strings, each of which is a domain that should trigger this VPN connection in Safari.",
+        "items": {
+          "description": "A domain or partial domain name that should trigger this connection",
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "VPNUUID": {
+        "description": "A globally-unique identifier for this VPN configuration. This identifier is used to configure apps so that they use the Per-App VPN service for all of their network communication.",
+        "type": "string"
+      }
+    },
+    "title": "com.apple.vpn.managed.applayer",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "OnDemandMatchAppEnabled": true,
+    "PayloadDescription": "Per-App VPN Payload for corporate apps",
+    "PayloadDisplayName": "Corporate Per-App VPN",
+    "PayloadIdentifier": "com.example.corp.vpn.applayer",
+    "PayloadOrganization": "Example Corp",
+    "PayloadType": null,
+    "PayloadUUID": "A1B2C3D4-5678-9ABC-DEF0-1234567890AB",
+    "PayloadVersion": 1,
+    "SafariDomains": [
+      "internal.example.com",
+      "vpn.example.net",
+      "secure.example.org"
+    ],
+    "VPNUUID": "550e8400-e29b-41d4-a716-446655440000"
+  },
+  "valid_json": {
+    "OnDemandMatchAppEnabled": true,
+    "PayloadDescription": "Per-App VPN Payload for corporate apps",
+    "PayloadDisplayName": "Corporate Per-App VPN",
+    "PayloadIdentifier": "com.example.corp.vpn.applayer",
+    "PayloadOrganization": "Example Corp",
+    "PayloadType": "com.apple.vpn.managed.applayer",
+    "PayloadUUID": "A1B2C3D4-5678-9ABC-DEF0-1234567890AB",
+    "PayloadVersion": 1,
+    "SafariDomains": [
+      "internal.example.com",
+      "vpn.example.net",
+      "secure.example.org"
+    ],
+    "VPNUUID": "550e8400-e29b-41d4-a716-446655440000"
+  },
+  "description": "The configuration profile titled **Corporate Per-App VPN** (PayloadDescription: \u201cPer\u2011App VPN Payload for corporate apps\u201d) is identified by the reverse\u2011DNS string **com.example.corp.vpn.applayer** and is issued by **Example Corp**. It is a Per\u2011App VPN payload of type **com.apple.vpn.managed.applayer**, version\u202f1, and carries the unique payload identifier **A1B2C3D4-5678-9ABC-DEF0-1234567890AB**.\n\nIn this profile, the **OnDemandMatchAppEnabled** flag is set to **true**, meaning the Per\u2011App VPN connection will be launched automatically whenever an associated app initiates network traffic. The VPN service is referenced by the globally\u2011unique VPNUUID **550e8400-e29b-41d4-a716-446655440000**. For Safari, the profile maps the following domains to the VPN: **internal.example.com**, **vpn.example.net**, and **secure.example.org**."
+}

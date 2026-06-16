@@ -1,0 +1,59 @@
+{
+  "name": "o89604",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": [
+      "grid"
+    ],
+    "properties": {
+      "grid": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet"
+          }
+        }
+      },
+      "tabs": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "format": "topic",
+            "default": "events"
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "grid": {
+      "resource": "sensor/temperature"
+    },
+    "tabs": {
+      "parameter": "events"
+    }
+  },
+  "instructions": "Could you delete the \"tabs\" field?",
+  "ground_truth": {
+    "grid": {
+      "resource": "sensor/temperature"
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "tabs"
+    ],
+    "precise_instruction": "Remove the \"tabs\" field."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "o27350",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Build metadata plugin manifest",
+    "type": "object",
+    "properties": {
+      "provider": {
+        "type": "string",
+        "enum": [
+          "ec2"
+        ]
+      },
+      "plugins": {
+        "type": "object",
+        "properties": {
+          "build_metadata": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        },
+        "required": [
+          "build_metadata"
+        ]
+      }
+    },
+    "required": [
+      "plugins"
+    ]
+  },
+  "data": {
+    "provider": "ec2",
+    "plugins": {
+      "build_metadata": {
+        "path": "/opt/build/plugins/metadata"
+      }
+    }
+  },
+  "instructions": "Can you delete the \"provider\" field?",
+  "ground_truth": {
+    "plugins": {
+      "build_metadata": {
+        "path": "/opt/build/plugins/metadata"
+      }
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "provider"
+    ],
+    "precise_instruction": "Remove the \"provider\" field."
+  }
+}

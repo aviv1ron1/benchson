@@ -1,0 +1,132 @@
+{
+  "name": "sp_127_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Mandrill message marked as spam event",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "msg": {
+        "additionalProperties": false,
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "_version": {
+            "type": "string"
+          },
+          "clicks": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "ts": {
+                  "_format": "date-time",
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "email": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "properties": {
+              "user_id": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "opens": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "ts": {
+                  "_format": "date-time",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "sender": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "ts": {
+            "_format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ts": {
+        "_format": "date-time",
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "message_marked_as_spam",
+      "vendor": "com.mandrill",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "description": "On 2023-08-15T14:30:00Z the system logged event\u202fevt_9f6c4b2a5d3e7 indicating that the message\u202fmsg_1234567890 (version\u202f1.0) was marked as spam.  \n\nThe original message was sent at 2023-08-15T14:15:30Z by\u202fmarketing@example.com\u202fto\u202fuser@example.com\u202fwith the subject \u201cExclusive Offer Just for You!\u201d. It carried the tags\u202fpromo,\u202fsummer,\u202fsale and included metadata\u202fuser_id\u202f98765 and\u202fcampaign\u202fsummer_sale. The recipient opened the email at 2023-08-15T14:20:00Z using\u202fGmail, and later clicked the link\u202fhttps://example.com/track?click=1\u202fat 2023-08-15T14:23:45Z. The message state was recorded as\u202fsent.",
+  "reference_json": {
+    "_id": "evt_9f6c4b2a5d3e7",
+    "msg": {
+      "_id": "msg_1234567890",
+      "_version": "1.0",
+      "clicks": [
+        {
+          "ts": "2023-08-15T14:23:45Z",
+          "url": "https://example.com/track?click=1"
+        }
+      ],
+      "email": "user@example.com",
+      "metadata": {
+        "user_id": 98765,
+        "campaign": "summer_sale"
+      },
+      "opens": [
+        {
+          "ts": "2023-08-15T14:20:00Z",
+          "client": "Gmail"
+        }
+      ],
+      "sender": "marketing@example.com",
+      "state": "sent",
+      "subject": "Exclusive Offer Just for You!",
+      "tags": [
+        "promo",
+        "summer",
+        "sale"
+      ],
+      "ts": "2023-08-15T14:15:30Z"
+    },
+    "ts": "2023-08-15T14:30:00Z"
+  }
+}

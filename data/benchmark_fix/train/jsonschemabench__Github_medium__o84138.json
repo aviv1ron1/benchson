@@ -1,0 +1,108 @@
+{
+  "name": "o84138",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "description": "The schema is made for RenderTheFuck stack diagram.",
+    "properties": {
+      "layers": {
+        "items": {
+          "properties": {
+            "items": {
+              "items": {
+                "properties": {
+                  "name": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "parent": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "items"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "settings": {
+        "properties": {
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
+      "wtf": {
+        "enum": [
+          "stack"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "wtf",
+      "settings",
+      "layers"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "wtf": "stack",
+    "settings": {
+      "title": "RenderTheFuck Stack Diagram"
+    },
+    "layers": [
+      "not-an-object",
+      {
+        "items": [
+          {
+            "name": "DetailLayer",
+            "parent": 1
+          }
+        ]
+      }
+    ]
+  },
+  "valid_json": {
+    "wtf": "stack",
+    "settings": {
+      "title": "RenderTheFuck Stack Diagram"
+    },
+    "layers": [
+      {
+        "items": [
+          {
+            "name": "BaseLayer",
+            "parent": 0
+          },
+          {
+            "name": "OverlayLayer"
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "name": "DetailLayer",
+            "parent": 1
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Subject: Overview of the RenderTheFuck Stack Diagram  \n\nThe diagram, titled **RenderTheFuck Stack Diagram**, is organized as a simple stack layout. The first level of the stack comprises two items: **BaseLayer**, which references parent\u202f0, and **OverlayLayer**, which does not specify a parent. The next level contains a single entry, **DetailLayer**, which points back to parent\u202f1.\n\nIn summary, the configuration defines a stack\u2011type structure with three named layers\u2014BaseLayer, OverlayLayer, and DetailLayer\u2014arranged across two hierarchical layers as described above."
+}

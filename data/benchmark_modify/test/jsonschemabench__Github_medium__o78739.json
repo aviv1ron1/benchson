@@ -1,0 +1,510 @@
+{
+  "name": "o78739",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Recommended Sequence",
+    "description": "A sequence of semesters corresponding to a given program as recommended by Concordia University",
+    "type": "object",
+    "properties": {
+      "sequenceInfo": {
+        "description": "Auxiliary info related to the sequence",
+        "type": "object",
+        "properties": {
+          "program": {
+            "type": "string",
+            "pattern": "\\w+"
+          },
+          "option": {
+            "type": "string",
+            "pattern": "\\w+"
+          },
+          "entryType": {
+            "type": "string",
+            "pattern": "\\w+"
+          }
+        },
+        "required": [
+          "program",
+          "option",
+          "entryType"
+        ],
+        "additionalProperties": false
+      },
+      "sourceUrl": {
+        "description": "A visitable web url from which the contents of the sequence were inferred",
+        "type": "string",
+        "pattern": "^https?://"
+      },
+      "minTotalCredits": {
+        "description": "The minimum number of credits needed in order to graduate from the program which this sequence is based upon",
+        "type": "string",
+        "pattern": "^\\d+$"
+      },
+      "yearList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "fall": {
+              "$ref": "#/definitions/semester"
+            },
+            "winter": {
+              "$ref": "#/definitions/semester"
+            },
+            "summer": {
+              "$ref": "#/definitions/semester"
+            }
+          },
+          "required": [
+            "fall",
+            "winter",
+            "summer"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 3
+      }
+    },
+    "required": [
+      "sequenceInfo",
+      "sourceUrl",
+      "minTotalCredits",
+      "yearList"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+      "semester": {
+        "type": "object",
+        "properties": {
+          "courseList": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/regularCourse"
+                },
+                {
+                  "$ref": "#/definitions/electiveCourse"
+                },
+                {
+                  "$ref": "#/definitions/orList"
+                }
+              ]
+            }
+          },
+          "isWorkTerm": {
+            "type": "string",
+            "enum": [
+              "true",
+              "false"
+            ]
+          }
+        },
+        "required": [
+          "courseList",
+          "isWorkTerm"
+        ],
+        "additionalProperties": false
+      },
+      "orList": {
+        "description": "A list of courses where the student can choose any one of them to add to take in the current semester",
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/regularCourse"
+            },
+            {
+              "$ref": "#/definitions/electiveCourse"
+            }
+          ]
+        },
+        "minItems": 2
+      },
+      "regularCourse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^\\w{4}\\s{1}\\d{3}$"
+          },
+          "isElective": {
+            "type": "string",
+            "pattern": "^false$"
+          },
+          "electiveType": {
+            "type": "string",
+            "pattern": "^$"
+          }
+        },
+        "required": [
+          "code",
+          "isElective",
+          "electiveType"
+        ],
+        "additionalProperties": false
+      },
+      "electiveCourse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^$"
+          },
+          "isElective": {
+            "type": "string",
+            "pattern": "^true$"
+          },
+          "electiveType": {
+            "type": "string",
+            "enum": [
+              "Science",
+              "Program",
+              "General"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "isElective",
+          "electiveType"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "data": {
+    "sequenceInfo": {
+      "program": "BENG",
+      "option": "Mechanical",
+      "entryType": "Graduate"
+    },
+    "sourceUrl": "https://www.concordia.ca/programs/beng/mechanical/sequence.html",
+    "minTotalCredits": "120",
+    "yearList": [
+      {
+        "fall": {
+          "courseList": [
+            {
+              "code": "MATH 101",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "PHYS 101",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            [
+              {
+                "code": "CHEM 101",
+                "isElective": "false",
+                "electiveType": ""
+              },
+              {
+                "code": "",
+                "isElective": "true",
+                "electiveType": "Science"
+              }
+            ]
+          ],
+          "isWorkTerm": "false"
+        },
+        "winter": {
+          "courseList": [
+            {
+              "code": "ENGR 200",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "",
+              "isElective": "true",
+              "electiveType": "Program"
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "summer": {
+          "courseList": [],
+          "isWorkTerm": "true"
+        }
+      },
+      {
+        "fall": {
+          "courseList": [
+            {
+              "code": "MECH 210",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "ENGR 250",
+              "isElective": "false",
+              "electiveType": ""
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "winter": {
+          "courseList": [
+            {
+              "code": "MATH 102",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            [
+              {
+                "code": "BIOL 101",
+                "isElective": "false",
+                "electiveType": ""
+              },
+              {
+                "code": "",
+                "isElective": "true",
+                "electiveType": "General"
+              }
+            ]
+          ],
+          "isWorkTerm": "false"
+        },
+        "summer": {
+          "courseList": [],
+          "isWorkTerm": "true"
+        }
+      },
+      {
+        "fall": {
+          "courseList": [
+            {
+              "code": "MECH 310",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "",
+              "isElective": "true",
+              "electiveType": "Program"
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "winter": {
+          "courseList": [
+            {
+              "code": "ELEC 220",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "MATH 201",
+              "isElective": "false",
+              "electiveType": ""
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "summer": {
+          "courseList": [],
+          "isWorkTerm": "true"
+        }
+      }
+    ]
+  },
+  "instructions": "Could you add another item to the \"yearList\" list that\u2019s identical to its first item?",
+  "ground_truth": {
+    "sequenceInfo": {
+      "program": "BENG",
+      "option": "Mechanical",
+      "entryType": "Graduate"
+    },
+    "sourceUrl": "https://www.concordia.ca/programs/beng/mechanical/sequence.html",
+    "minTotalCredits": "120",
+    "yearList": [
+      {
+        "fall": {
+          "courseList": [
+            {
+              "code": "MATH 101",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "PHYS 101",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            [
+              {
+                "code": "CHEM 101",
+                "isElective": "false",
+                "electiveType": ""
+              },
+              {
+                "code": "",
+                "isElective": "true",
+                "electiveType": "Science"
+              }
+            ]
+          ],
+          "isWorkTerm": "false"
+        },
+        "winter": {
+          "courseList": [
+            {
+              "code": "ENGR 200",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "",
+              "isElective": "true",
+              "electiveType": "Program"
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "summer": {
+          "courseList": [],
+          "isWorkTerm": "true"
+        }
+      },
+      {
+        "fall": {
+          "courseList": [
+            {
+              "code": "MECH 210",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "ENGR 250",
+              "isElective": "false",
+              "electiveType": ""
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "winter": {
+          "courseList": [
+            {
+              "code": "MATH 102",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            [
+              {
+                "code": "BIOL 101",
+                "isElective": "false",
+                "electiveType": ""
+              },
+              {
+                "code": "",
+                "isElective": "true",
+                "electiveType": "General"
+              }
+            ]
+          ],
+          "isWorkTerm": "false"
+        },
+        "summer": {
+          "courseList": [],
+          "isWorkTerm": "true"
+        }
+      },
+      {
+        "fall": {
+          "courseList": [
+            {
+              "code": "MECH 310",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "",
+              "isElective": "true",
+              "electiveType": "Program"
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "winter": {
+          "courseList": [
+            {
+              "code": "ELEC 220",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "MATH 201",
+              "isElective": "false",
+              "electiveType": ""
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "summer": {
+          "courseList": [],
+          "isWorkTerm": "true"
+        }
+      },
+      {
+        "fall": {
+          "courseList": [
+            {
+              "code": "MATH 101",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "PHYS 101",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            [
+              {
+                "code": "CHEM 101",
+                "isElective": "false",
+                "electiveType": ""
+              },
+              {
+                "code": "",
+                "isElective": "true",
+                "electiveType": "Science"
+              }
+            ]
+          ],
+          "isWorkTerm": "false"
+        },
+        "winter": {
+          "courseList": [
+            {
+              "code": "ENGR 200",
+              "isElective": "false",
+              "electiveType": ""
+            },
+            {
+              "code": "",
+              "isElective": "true",
+              "electiveType": "Program"
+            }
+          ],
+          "isWorkTerm": "false"
+        },
+        "summer": {
+          "courseList": [],
+          "isWorkTerm": "true"
+        }
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "yearList"
+    ],
+    "precise_instruction": "Add another item to the \"yearList\" list, identical to its first item."
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "name": "o5353",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelArtifactPublishedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "3.0.0"
+            ],
+            "default": "3.0.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "string",
+                "pattern": "^pkg:"
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "authorIdentity": {
+                "type": "string"
+              },
+              "integrityProtection": {
+                "type": "object",
+                "properties": {
+                  "signature": {
+                    "type": "string"
+                  },
+                  "alg": {
+                    "type": "string",
+                    "enum": [
+                      "HS256",
+                      "HS384",
+                      "HS512",
+                      "RS256",
+                      "RS384",
+                      "RS512",
+                      "ES256",
+                      "ES384",
+                      "ES512",
+                      "PS256",
+                      "PS384",
+                      "PS512"
+                    ]
+                  },
+                  "publicKey": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "signature",
+                  "alg"
+                ],
+                "additionalProperties": false
+              },
+              "sequenceProtection": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sequenceName": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "sequenceName",
+                    "position"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "authorIdentity"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "ARTIFACTORY",
+                    "NEXUS",
+                    "PLAIN",
+                    "OTHER"
+                  ]
+                },
+                "uri": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "uri"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "locations"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "meta": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "type": "EiffelArtifactPublishedEvent",
+      "version": "3.0.0",
+      "time": 1723456789,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example-domain",
+        "host": "ci.example.com",
+        "name": "artifact-publisher",
+        "serializer": "pkg:com.example.artifact",
+        "uri": "https://ci.example.com/publish"
+      },
+      "security": {
+        "authorIdentity": "ci-bot@example.com",
+        "integrityProtection": {
+          "signature": "dGVzdFNpZ25hdHVyZQ==",
+          "alg": "RS256",
+          "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "artifactSequence",
+            "position": 42
+          }
+        ]
+      }
+    },
+    "data": null,
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9b2c1e4a-8d5f-4f3a-b9c7-2a6d5e7f8a9b"
+      }
+    ]
+  },
+  "valid_json": {
+    "meta": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "type": "EiffelArtifactPublishedEvent",
+      "version": "3.0.0",
+      "time": 1723456789,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example-domain",
+        "host": "ci.example.com",
+        "name": "artifact-publisher",
+        "serializer": "pkg:com.example.artifact",
+        "uri": "https://ci.example.com/publish"
+      },
+      "security": {
+        "authorIdentity": "ci-bot@example.com",
+        "integrityProtection": {
+          "signature": "dGVzdFNpZ25hdHVyZQ==",
+          "alg": "RS256",
+          "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "artifactSequence",
+            "position": 42
+          }
+        ]
+      }
+    },
+    "data": {
+      "locations": [
+        {
+          "type": "ARTIFACTORY",
+          "uri": "https://artifactory.example.com/libs-release-local/com/example/artifact/1.0.0/artifact-1.0.0.jar"
+        },
+        {
+          "type": "NEXUS",
+          "uri": "https://nexus.example.com/repository/maven-releases/com/example/artifact/1.0.0/artifact-1.0.0.jar"
+        }
+      ],
+      "customData": [
+        {
+          "key": "buildNumber",
+          "value": 1234
+        },
+        {
+          "key": "branch",
+          "value": "main"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9b2c1e4a-8d5f-4f3a-b9c7-2a6d5e7f8a9b"
+      }
+    ]
+  },
+  "description": "The artifact publishing event\u202f\u2014\u202fidentified by\u202f3fa85f64-5717-4562-b3fc-2c963f66afa6\u202f\u2014\u202fis an EiffelArtifactPublishedEvent version\u202f3.0.0 that occurred at Unix time\u202f1723456789. It is tagged both \u201cartifact\u201d and \u201crelease\u201d. The source of the event is the CI system at domain\u202fexample-domain, host\u202fci.example.com, running under the name\u202fartifact\u2011publisher. The payload was serialized with the package identifier\u202fpkg:com.example.artifact and can be accessed via\u202fhttps://ci.example.com/publish. Security was provided by the CI bot (ci-bot@example.com); the integrity protection includes the base\u201164 signature\u202fdGVzdFNpZ25hdHVyZQ==\u202fusing the RS256 algorithm and the public key\u202fssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD.... Sequence protection records the artifactSequence at position\u202f42.  \n\nThe published artifact is available in two repositories. In Artifactory it resides at\u202fhttps://artifactory.example.com/libs-release-local/com/example/artifact/1.0.0/artifact-1.0.0.jar, and in Nexus it can be fetched from\u202fhttps://nexus.example.com/repository/maven-releases/com/example/artifact/1.0.0/artifact-1.0.0.jar. Additional custom data recorded with the event includes a build number of\u202f1234 and the source branch \u201cmain\u201d.  \n\nThis publication was caused by the earlier event\u202f9b2c1e4a-8d5f-4f3a-b9c7-2a6d5e7f8a9b, linked here with the relationship type\u202fCAUSE."
+}

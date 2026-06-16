@@ -1,0 +1,52 @@
+{
+  "name": "o9883",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "experienceSlugId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "creationDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "lastUpdated": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "slug": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 63,
+        "pattern": "^[0-9a-z-]*$"
+      },
+      "version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      }
+    }
+  },
+  "description": "Dear Team,\n\nThe experience identified by the ID\u202f5e4c3b2a1d6f7a8b9c0d1e2f and referenced by the slug \u201cmy-experience-2024\u201d was initially created on 2023-08-15T14:23:45Z. It is associated with the experience slug ID\u202fa1b2c3d4e5f60718293a4b5c and is linked to the application bearing the ID\u202f9f8e7d6c5b4a3c2d1e0f9a8b. The record was most recently updated on 2024-05-02T09:12:30Z, and the current version of this experience is\u202f1.2.0.",
+  "reference_json": {
+    "id": "5e4c3b2a1d6f7a8b9c0d1e2f",
+    "experienceSlugId": "a1b2c3d4e5f60718293a4b5c",
+    "applicationId": "9f8e7d6c5b4a3c2d1e0f9a8b",
+    "creationDate": "2023-08-15T14:23:45Z",
+    "lastUpdated": "2024-05-02T09:12:30Z",
+    "slug": "my-experience-2024",
+    "version": "1.2.0"
+  }
+}

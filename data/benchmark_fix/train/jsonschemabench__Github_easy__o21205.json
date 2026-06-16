@@ -1,0 +1,73 @@
+{
+  "name": "o21205",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "bulk_publishing": {
+        "type": "boolean"
+      },
+      "links": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "facet_values": {
+            "description": "Possible facet_values to show for non-dynamic select facets. All values are shown regardless of the search.",
+            "$ref": "#/definitions/guid_list"
+          },
+          "parent": {
+            "description": "The facet_group this facet belongs to.",
+            "$ref": "#/definitions/guid_list",
+            "maxItems": 1
+          }
+        }
+      },
+      "previous_version": {
+        "type": "string"
+      }
+    },
+    "definitions": {
+      "guid": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+      },
+      "guid_list": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/guid"
+        },
+        "_uniqueItems": true
+      }
+    }
+  },
+  "erroneous_json": {
+    "bulk_publishing": "not-a-bool",
+    "links": {
+      "facet_values": [
+        "123e4567-e89b-12d3-a456-426614174000",
+        "987f6543-21ab-42cd-bcde-9876543210ab"
+      ],
+      "parent": [
+        "0f8fad5b-d9cb-469f-a165-70867728950e"
+      ]
+    },
+    "previous_version": "v2.0"
+  },
+  "valid_json": {
+    "bulk_publishing": false,
+    "links": {
+      "facet_values": [
+        "123e4567-e89b-12d3-a456-426614174000",
+        "987f6543-21ab-42cd-bcde-9876543210ab"
+      ],
+      "parent": [
+        "0f8fad5b-d9cb-469f-a165-70867728950e"
+      ]
+    },
+    "previous_version": "v2.0"
+  },
+  "description": "The current facet configuration is set with bulk publishing turned off. It references the two specific facet values identified by the GUIDs\u202f123e4567-e89b-12d3-a456-426614174000 and\u202f987f6543-21ab-42cd-bcde-9876543210ab, and is linked to its parent facet group whose identifier is\u202f0f8fad5b-d9cb-469f-a165-70867728950e. This setup replaces the previous version, which was labeled\u202fv2.0."
+}

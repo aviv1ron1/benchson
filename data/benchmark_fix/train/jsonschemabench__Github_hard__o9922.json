@@ -1,0 +1,368 @@
+{
+  "name": "o9922",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "title": "Integration",
+          "description": "Schema for a single Integration",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "integrationId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "applicationId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "creationDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastUpdated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            "integrationType": {
+              "type": "string",
+              "enum": [
+                "googlePubSub",
+                "meridian",
+                "mqtt",
+                "particle"
+              ]
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "topics": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "googlePubSubConfig": {
+              "type": "object",
+              "properties": {
+                "projectId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "keyJson": {
+                  "type": "string",
+                  "maxLength": 32767,
+                  "minLength": 4
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "projectId",
+                "keyJson"
+              ]
+            },
+            "mqttConfig": {
+              "type": "object",
+              "properties": {
+                "clientId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "username": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "password": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "clean": {
+                  "type": "boolean"
+                },
+                "port": {
+                  "type": "number",
+                  "minimum": 1,
+                  "maximum": 65535
+                },
+                "protocol": {
+                  "type": "string",
+                  "enum": [
+                    "mqtt",
+                    "mqtts",
+                    "ws",
+                    "wss"
+                  ]
+                },
+                "host": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "privateKey": {
+                  "type": "string",
+                  "maxLength": 32767,
+                  "minLength": 4
+                },
+                "certificate": {
+                  "type": "string",
+                  "maxLength": 32767,
+                  "minLength": 4
+                },
+                "caCertificate": {
+                  "type": "string",
+                  "maxLength": 32767,
+                  "minLength": 4
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "port",
+                "protocol",
+                "host"
+              ]
+            },
+            "particleConfig": {
+              "type": "object",
+              "properties": {
+                "accessToken": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "productSlugOrId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "orgSlugOrId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "deviceNameOrId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "accessToken"
+              ]
+            },
+            "meridianConfig": {
+              "type": "object",
+              "properties": {
+                "authenticationToken": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "locationId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "assetUpdates": {
+                  "type": "boolean"
+                },
+                "zoneUpdates": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "authenticationToken",
+                "locationId"
+              ]
+            },
+            "status": {
+              "lastKeepAlive": {
+                "type": [
+                  "number"
+                ]
+              },
+              "nextAttempt": {
+                "type": [
+                  "number"
+                ]
+              },
+              "connectInfo": {
+                "type": "object",
+                "properties": {
+                  "ts": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "disconnectInfo": {
+                "type": "object",
+                "properties": {
+                  "ts": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "count": {
+        "type": "integer"
+      },
+      "totalCount": {
+        "type": "integer"
+      },
+      "perPage": {
+        "type": "integer"
+      },
+      "page": {
+        "type": "integer"
+      },
+      "filter": {
+        "type": "string"
+      },
+      "filterField": {
+        "type": "string"
+      },
+      "sortField": {
+        "type": "string"
+      },
+      "sortDirection": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc",
+          "ASC",
+          "DESC",
+          ""
+        ]
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "erroneous_json": {
+    "items": null,
+    "count": 2,
+    "totalCount": 20,
+    "perPage": 10,
+    "page": 1,
+    "filter": "enabled:true",
+    "filterField": "enabled",
+    "sortField": "name",
+    "sortDirection": "asc",
+    "applicationId": "7b8c9d0e1f2a3b4c5d6e7f8a"
+  },
+  "valid_json": {
+    "items": [
+      {
+        "id": "5f2c1e3a9b4d6f0a1b2c3d4e",
+        "integrationId": "6a3b4c5d6e7f8a9b0c1d2e3f",
+        "applicationId": "7b8c9d0e1f2a3b4c5d6e7f8a",
+        "creationDate": "2023-08-01T12:34:56Z",
+        "lastUpdated": "2023-09-15T08:22:10Z",
+        "name": "Google Pub/Sub Integration",
+        "integrationType": "googlePubSub",
+        "enabled": true,
+        "topics": [
+          "projects/my-gcp-project/topics/topic1",
+          "projects/my-gcp-project/topics/topic2"
+        ],
+        "googlePubSubConfig": {
+          "projectId": "my-gcp-project",
+          "keyJson": "{\"type\":\"service_account\",\"project_id\":\"my-gcp-project\",\"private_key_id\":\"abcdef1234567890\",\"private_key\":\"-----BEGIN PRIVATE KEY-----\\nMIIEv...\\n-----END PRIVATE KEY-----\\n\",\"client_email\":\"service-account@my-gcp-project.iam.gserviceaccount.com\",\"client_id\":\"12345678901234567890\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://oauth2.googleapis.com/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_x509_cert_url\":\"https://www.googleapis.com/robot/v1/metadata/x509/service-account%40my-gcp-project.iam.gserviceaccount.com\"}"
+        },
+        "status": {
+          "lastKeepAlive": 1694800000,
+          "nextAttempt": 1694810000,
+          "connectInfo": {
+            "ts": 1694800000
+          },
+          "disconnectInfo": {
+            "ts": null,
+            "error": ""
+          }
+        }
+      },
+      {
+        "id": "8c9d0e1f2a3b4c5d6e7f8a9b",
+        "integrationId": "9d0e1f2a3b4c5d6e7f8a9b0c",
+        "applicationId": "7b8c9d0e1f2a3b4c5d6e7f8a",
+        "creationDate": "2023-07-20T09:15:30Z",
+        "lastUpdated": "2023-09-10T14:45:00Z",
+        "name": "MQTT Device Integration",
+        "integrationType": "mqtt",
+        "enabled": false,
+        "topics": [
+          "sensors/temperature",
+          "sensors/humidity"
+        ],
+        "mqttConfig": {
+          "clientId": "mqtt-client-001",
+          "username": "user123",
+          "password": "pass123",
+          "clean": true,
+          "port": 8883,
+          "protocol": "mqtts",
+          "host": "mqtt.example.com",
+          "privateKey": "-----BEGIN PRIVATE KEY-----\\nMIIEv...==\\n-----END PRIVATE KEY-----",
+          "certificate": "-----BEGIN CERTIFICATE-----\\nMIID...==\\n-----END CERTIFICATE-----",
+          "caCertificate": "-----BEGIN CERTIFICATE-----\\nMIID...==\\n-----END CERTIFICATE-----"
+        },
+        "status": {
+          "lastKeepAlive": 1694700000,
+          "nextAttempt": 1694710000,
+          "connectInfo": {
+            "ts": 1694700000
+          },
+          "disconnectInfo": {
+            "ts": 1694705000,
+            "error": "Connection timeout"
+          }
+        }
+      }
+    ],
+    "count": 2,
+    "totalCount": 20,
+    "perPage": 10,
+    "page": 1,
+    "filter": "enabled:true",
+    "filterField": "enabled",
+    "sortField": "name",
+    "sortDirection": "asc",
+    "applicationId": "7b8c9d0e1f2a3b4c5d6e7f8a"
+  },
+  "description": "For the application with ID\u202f7b8c9d0e1f2a3b4c5d6e7f8a, the integration inventory shows two configured integrations on page\u202f1 (10 results per page) out of a total of 20. The view is filtered to show only records where\u202fenabled:true (filter field\u202fenabled) and the results are sorted by\u202fname\u202fin ascending order.\n\nThe first entry is the Google Pub/Sub integration (ID\u202f5f2c1e3a9b4d6f0a1b2c3d4e, integration ID\u202f6a3b4c5d6e7f8a9b0c1d2e3f) created on\u202f2023\u201108\u201101T12:34:56Z and last updated on\u202f2023\u201109\u201115T08:22:10Z. It belongs to the same application (ID\u202f7b8c9d0e1f2a3b4c5d6e7f8a) and is currently\u202fenabled. The integration is named \u201cGoogle Pub/Sub Integration\u201d and its type is\u202fgooglePubSub. It publishes to the topics\u202fprojects/my-gcp-project/topics/topic1\u202fand\u202fprojects/my-gcp-project/topics/topic2. Its Google Pub/Sub configuration specifies the project ID\u202fmy-gcp-project and the service\u2011account credentials JSON:\n\n\"{\\\"type\\\":\\\"service_account\\\",\\\"project_id\\\":\\\"my-gcp-project\\\",\\\"private_key_id\\\":\\\"abcdef1234567890\\\",\\\"private_key\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\nMIIEv...\\\\n-----END PRIVATE KEY-----\\\\n\\\",\\\"client_email\\\":\\\"service-account@my-gcp-project.iam.gserviceaccount.com\\\",\\\"client_id\\\":\\\"12345678901234567890\\\",\\\"auth_uri\\\":\\\"https://accounts.google.com/o/oauth2/auth\\\",\\\"token_uri\\\":\\\"https://oauth2.googleapis.com/token\\\",\\\"auth_provider_x509_cert_url\\\":\\\"https://www.googleapis.com/oauth2/v1/certs\\\",\\\"client_x509_cert_url\\\":\\\"https://www.googleapis.com/robot/v1/metadata/x509/service-account%40my-gcp-project.iam.gserviceaccount.com\\\"}\".  \n\nIts status reports a last keep\u2011alive timestamp of\u202f1694800000, a next retry scheduled for\u202f1694810000, a successful connection recorded at\u202f1694800000, and no recent disconnect (timestamp\u202fnull, error\u202f\u201c\u201d).\n\nThe second entry is an MQTT device integration (ID\u202f8c9d0e1f2a3b4c5d6e7f8a9b, integration ID\u202f9d0e1f2a3b4c5d6e7f8a9b0c) created on\u202f2023\u201107\u201120T09:15:30Z and last updated on\u202f2023\u201109\u201110T14:45:00Z. It also belongs to application\u202f7b8c9d0e1f2a3b4c5d6e7f8a but is currently\u202fdisabled. The integration is titled \u201cMQTT Device Integration\u201d with type\u202fmqtt, and it subscribes to the topics\u202fsensors/temperature\u202fand\u202fsensors/humidity. Its MQTT configuration includes client ID\u202fmqtt-client-001, username\u202fuser123, password\u202fpass123, a clean session flag set to\u202ftrue, port\u202f8883, protocol\u202fmqtts, and host\u202fmqtt.example.com. The security material is supplied as follows: private key\u202f\"-----BEGIN PRIVATE KEY-----\\\\nMIIEv...==\\\\n-----END PRIVATE KEY-----\", certificate\u202f\"-----BEGIN CERTIFICATE-----\\\\nMIID...==\\\\n-----END CERTIFICATE-----\", and CA certificate\u202f\"-----BEGIN CERTIFICATE-----\\\\nMIID...==\\\\n-----END CERTIFICATE-----\".  \n\nStatus for this integration shows a last keep\u2011alive at\u202f1694700000, the next attempt scheduled for\u202f1694710000, a connection timestamp of\u202f1694700000, and a recent disconnect at\u202f1694705000 with the error message \u201cConnection timeout\u201d."
+}

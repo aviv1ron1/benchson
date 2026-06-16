@@ -1,0 +1,48 @@
+{
+  "name": "calculate_area_fe414505",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle or rectangle (if applicable)",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle or rectangle (if applicable)",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle (if applicable)",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of geometric shape (e.g. circle, triangle, rectangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "rectangle",
+    "dimensions": null
+  },
+  "valid_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3,
+      "radius": 0
+    }
+  },
+  "description": "Please prepare a rectangular component with the following specifications: the base should measure 12.5 units and the height 8.3 units. Since the shape is a rectangle, the radius dimension is not applicable and can be recorded as 0. Let me know if you need any clarification before production."
+}

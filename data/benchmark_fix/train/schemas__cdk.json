@@ -1,0 +1,88 @@
+{
+  "name": "cdk",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/cdk.json",
+    "properties": {
+      "app": {
+        "type": "string",
+        "minLength": 1
+      },
+      "build": {
+        "type": "string"
+      },
+      "versionReporting": {
+        "type": "boolean"
+      },
+      "watch": {
+        "type": "object",
+        "properties": {
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exclude": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "context": {
+        "type": "object"
+      }
+    },
+    "title": "Schema for AWS CDK context files (cdk.json)",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "app": null,
+    "build": "npm run build",
+    "versionReporting": true,
+    "watch": {
+      "include": [
+        "src/**/*.ts",
+        "lib/**/*.js"
+      ],
+      "exclude": [
+        "node_modules/**",
+        "dist/**"
+      ]
+    },
+    "context": {
+      "environment": "development",
+      "region": "us-east-1",
+      "featureFlags": {
+        "enableBeta": false
+      }
+    }
+  },
+  "valid_json": {
+    "app": "npx ts-node bin/my-app.ts",
+    "build": "npm run build",
+    "versionReporting": true,
+    "watch": {
+      "include": [
+        "src/**/*.ts",
+        "lib/**/*.js"
+      ],
+      "exclude": [
+        "node_modules/**",
+        "dist/**"
+      ]
+    },
+    "context": {
+      "environment": "development",
+      "region": "us-east-1",
+      "featureFlags": {
+        "enableBeta": false
+      }
+    }
+  },
+  "description": "The CDK application is started with the command\u202f`npx ts-node bin/my-app.ts`, and the project is built using\u202f`npm run build`. Version reporting is enabled, so the toolkit will emit version information during execution. In watch mode, the system monitors all TypeScript files under\u202f`src/**/*.ts` and JavaScript files under\u202f`lib/**/*.js`, while deliberately ignoring any files in\u202f`node_modules/**` and the\u202f`dist/**` directory.\n\nThe context for this deployment is set to a **development** environment in the **us\u2011east\u20111** AWS region. Feature flags are also defined: the \u201cenableBeta\u201d flag is explicitly set to\u202ffalse, ensuring that beta functionality remains turned off."
+}

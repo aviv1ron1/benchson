@@ -1,0 +1,85 @@
+{
+  "name": "generate_invoice_ec3a8e8b",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "description": "The items included in the invoice",
+        "items": {
+          "properties": {
+            "description": {
+              "description": "The description of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price per unit of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "description",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "customer_name": null,
+    "items": [
+      {
+        "description": "Premium Steel Beams",
+        "price": 125.5,
+        "quantity": 40
+      },
+      {
+        "description": "Industrial Safety Gloves",
+        "price": 12.99,
+        "quantity": 150
+      },
+      {
+        "description": "Heavy-Duty Conveyor Belt",
+        "price": 845.0,
+        "quantity": 2
+      }
+    ]
+  },
+  "valid_json": {
+    "customer_name": "Acme Corporation",
+    "items": [
+      {
+        "description": "Premium Steel Beams",
+        "price": 125.5,
+        "quantity": 40
+      },
+      {
+        "description": "Industrial Safety Gloves",
+        "price": 12.99,
+        "quantity": 150
+      },
+      {
+        "description": "Heavy-Duty Conveyor Belt",
+        "price": 845.0,
+        "quantity": 2
+      }
+    ]
+  },
+  "description": "Dear Acme Corporation,\n\nThank you for your recent order. Below is a summary of the items you have requested, including the unit price and the quantity for each product:  \n\n- Premium Steel Beams \u2013 unit price $125.50, quantity 40.  \n- Industrial Safety Gloves \u2013 unit price $12.99, quantity 150.  \n- Heavy\u2011Duty Conveyor Belt \u2013 unit price $845.00, quantity 2.  \n\nWe appreciate your business and look forward to delivering these items promptly."
+}

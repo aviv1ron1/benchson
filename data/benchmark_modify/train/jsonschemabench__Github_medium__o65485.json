@@ -1,0 +1,253 @@
+{
+  "name": "o65485",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Memote Experimental Tests Configuration Schema",
+    "description": "Validate an experimental data configuration file that defines additional memote tests.",
+    "definitions": {
+      "stringSet": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true
+      },
+      "fileName": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^.+\\.(csv|tsv|xls|xlsx|ods)$"
+      },
+      "experiment": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "filename": {
+            "$ref": "#/definitions/fileName"
+          },
+          "medium": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "objective": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "constraints": {
+            "$ref": "#/definitions/stringSet"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "medium": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "filename": {
+            "$ref": "#/definitions/fileName"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "experiments": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "experiments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/definitions/experiment"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "type": "object",
+    "properties": {
+      "version": {
+        "type": "string",
+        "enum": [
+          "0.1"
+        ]
+      },
+      "medium": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "definitions": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/definitions/medium"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "essentiality": {
+        "$ref": "#/definitions/experiments"
+      },
+      "growth": {
+        "$ref": "#/definitions/experiments"
+      },
+      "minimal_growth_rate": {
+        "type": [
+          "number",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "version"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "version": "0.1",
+    "medium": {
+      "path": "data/medium/",
+      "definitions": {
+        "M9": {
+          "filename": "media/M9Minimal.csv",
+          "label": "M9 Minimal Medium"
+        },
+        "LB": {
+          "filename": "media/LB.tsv",
+          "label": "Luria Broth"
+        }
+      }
+    },
+    "essentiality": {
+      "path": "data/essentiality/",
+      "experiments": {
+        "gene_knockout_1": {
+          "filename": "essentiality/ko1.xlsx",
+          "medium": "M9",
+          "objective": "biomass",
+          "constraints": [
+            "EX_glc(e)",
+            "EX_o2(e)"
+          ],
+          "label": "Gene knockout 1"
+        },
+        "gene_knockout_2": {
+          "filename": "essentiality/ko2.tsv",
+          "medium": "LB",
+          "objective": null,
+          "constraints": [],
+          "label": "Gene knockout 2"
+        }
+      }
+    },
+    "growth": {
+      "path": "data/growth/",
+      "experiments": {
+        "growth_curve_1": {
+          "filename": "growth/curve1.csv",
+          "medium": "M9",
+          "objective": "biomass",
+          "constraints": [
+            "EX_glc(e)"
+          ],
+          "label": "Growth curve 1"
+        }
+      }
+    },
+    "minimal_growth_rate": 0.05
+  },
+  "instructions": "Please change the\u202fpath\u202finside\u202fessentiality\u202fto\u202fdata/essentiality/ (updated).",
+  "ground_truth": {
+    "version": "0.1",
+    "medium": {
+      "path": "data/medium/",
+      "definitions": {
+        "M9": {
+          "filename": "media/M9Minimal.csv",
+          "label": "M9 Minimal Medium"
+        },
+        "LB": {
+          "filename": "media/LB.tsv",
+          "label": "Luria Broth"
+        }
+      }
+    },
+    "essentiality": {
+      "path": "data/essentiality/ (updated)",
+      "experiments": {
+        "gene_knockout_1": {
+          "filename": "essentiality/ko1.xlsx",
+          "medium": "M9",
+          "objective": "biomass",
+          "constraints": [
+            "EX_glc(e)",
+            "EX_o2(e)"
+          ],
+          "label": "Gene knockout 1"
+        },
+        "gene_knockout_2": {
+          "filename": "essentiality/ko2.tsv",
+          "medium": "LB",
+          "objective": null,
+          "constraints": [],
+          "label": "Gene knockout 2"
+        }
+      }
+    },
+    "growth": {
+      "path": "data/growth/",
+      "experiments": {
+        "growth_curve_1": {
+          "filename": "growth/curve1.csv",
+          "medium": "M9",
+          "objective": "biomass",
+          "constraints": [
+            "EX_glc(e)"
+          ],
+          "label": "Growth curve 1"
+        }
+      }
+    },
+    "minimal_growth_rate": 0.05
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "essentiality",
+      "path"
+    ],
+    "precise_instruction": "Change \"path\" inside \"essentiality\" to \"data/essentiality/ (updated)\"."
+  }
+}

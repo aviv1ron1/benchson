@@ -5,6 +5,14 @@ import re
 
 class BaseDataTask:
 
+    def __init__(self, system_prompt_prefix=""):
+        self.system_prompt_prefix = system_prompt_prefix
+
+    def _prepend_prefix(self, content):
+        if self.system_prompt_prefix:
+            return self.system_prompt_prefix + "\n" + content
+        return content
+
     def load_instances(self, source=None, filter_kw=None, files=None, max_schema_kb=10):
         """Returns a list of schema file paths after applying source/filter/files config."""
         if files:
@@ -114,7 +122,7 @@ class BaseDataTask:
         return [
             {
                 "role": "system",
-                "content": "Reasoning: low\nYou are a helpful assistant that generates JSON data based on a given schema. Output only the json with no other text or explanations.",
+                "content": self._prepend_prefix("You are a helpful assistant that generates JSON data based on a given schema. Output only the json with no other text or explanations. Always populate fields with realistic values — never return an empty object or array when the schema allows properties."),
             },
             {
                 "role": "user",
@@ -127,7 +135,7 @@ class BaseDataTask:
         return [
             {
                 "role": "system",
-                "content": "Reasoning: low\nYou are a helpful assistant that generates JSON data. Output only the JSON with no other text or explanations.",
+                "content": self._prepend_prefix("You are a helpful assistant that generates JSON data. Output only the JSON with no other text or explanations. Always populate fields with realistic values — never return an empty object or array when the schema allows properties."),
             },
             {
                 "role": "user",
@@ -139,12 +147,57 @@ class BaseDataTask:
             {"role": "assistant", "content": ""},
         ]
 
+    def _build_source_doc_prompt(self, schema, reference_json):
+        return [
+            {
+                "role": "user",
+                "content": (
+                    "You are an assistant that writes natural language documents containing "
+                    "structured information.\n\n"
+                    "You will receive two inputs:\n"
+                    f"1. A JSON Schema describing the structure of some data:\n{json.dumps(schema, indent=2)}\n\n"
+                    "2. A valid JSON object conforming to that schema, containing the actual values:\n"
+                    f"{json.dumps(reference_json, indent=2)}\n\n"
+                    "Your task is to write a short natural language document (1-3 paragraphs) that "
+                    "contains all the information present in the JSON object. The document should read "
+                    "naturally — like a real email, report, config description, or data entry — not like "
+                    "a mechanical list of field values.\n\n"
+                    "Requirements:\n"
+                    "- Every field value in the reference JSON must be recoverable from the document.\n"
+                    "- Do not invent values that are not in the reference JSON.\n"
+                    "- Do not mention the schema or JSON format in the document.\n"
+                    "- The document should be realistic and domain-appropriate given the schema's subject matter.\n\n"
+                    "Output only the document text, no explanations or formatting."
+                ),
+            },
+        ]
+
+    def _build_extraction_prompt(self, schema, source_doc):
+        return [
+            {
+                "role": "system",
+                "content": self._prepend_prefix(
+                    "You are a helpful assistant that extracts information from text into JSON data "
+                    "matching a given schema. Output only the JSON with no other text or explanations."
+                ),
+            },
+            {
+                "role": "user",
+                "content": (
+                    "Extract the information from the following text and return it as a JSON object "
+                    "that conforms to the schema.\n\n"
+                    f"Text:\n{source_doc}\n\n"
+                    f"Schema:\n{json.dumps(schema, indent=2)}"
+                ),
+            },
+            {"role": "assistant", "content": ""},
+        ]
+
     def _build_error_correction_prompt(self, schema, erroneous_json):
         return [
             {
                 "role": "system",
-                "content": (
-                    "Reasoning: high\n"
+                "content": self._prepend_prefix(
                     "You are a helpful assistant tasked with fixing JSON objects to conform precisely "
                     "to the provided JSON schema. Return ONLY the corrected JSON object, "
                     "with no additional text or explanation."
@@ -175,3 +228,7 @@ class BaseDataTask:
             return f"JSON parse error: {e}"
         except jsonschema.ValidationError as e:
             return str(e.message)
+        except Exception as e:
+            # Unresolvable $ref, malformed schema, etc. — treat as invalid so the
+            # fix loop keeps trying (and unusable schemas are skipped, not fatal).
+            return f"schema error: {e}"

@@ -1,0 +1,118 @@
+{
+  "name": "o10617",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "JSON schema for JasmineNodeTestAdapter configuration files (JasmineNodeTestAdapter.json)",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "$schema": {
+        "type": "string",
+        "format": "uri"
+      },
+      "Name": {
+        "description": "The name of the test container.",
+        "type": "string"
+      },
+      "BasePath": {
+        "description": "The base path to use to resolve file paths. Defaults to the directory in which JasmineNodeTestAdapter.json resides.",
+        "type": "string"
+      },
+      "Helpers": {
+        "description": "Non-source, non-spec helper files. Loaded before any specs. Wildcards can be used - see [glob](https://www.npmjs.com/package/glob).",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "Specs": {
+        "description": "Files containing Jasmine specs. Wildcards can be used - see [glob](https://www.npmjs.com/package/glob).",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "Watch": {
+        "description": "A test run is triggered if any file specified in `Helpers` or `Specs` change. Add any files in `Watch` that should also trigger a test run when they change. These will typically be the source files. Wildcards can be used - see [glob](https://www.npmjs.com/package/glob).",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "BatchInterval": {
+        "description": "When the test adapter is watching files for changes, it will wait `BatchInterval` ms before running tests. Default value is 250.",
+        "type": "number"
+      },
+      "Traits": {
+        "description": "Traits to attach to each test.",
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "type": "string"
+                },
+                "Value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Name"
+              ]
+            }
+          ]
+        }
+      },
+      "Extensions": {
+        "description": "Path to a node.js module implementing extensions.",
+        "type": "string"
+      },
+      "Disabled": {
+        "description": "Set to true, if the test adapter should be disabled for this configuration file.",
+        "type": "boolean"
+      },
+      "LogToFile": {
+        "description": "Set to true, if you want the adapter to write log statements to a log file (named JasmineNodeTestAdapter.log).",
+        "type": "boolean"
+      },
+      "LogDirectory": {
+        "description": "Where the log file should be saved (if LogToFile is true). If this property is not specified the directory in which JasmineNodeTestAdapter.json resides is used.",
+        "type": "string"
+      }
+    }
+  },
+  "description": "The test suite is defined by the Jasmine\u202fNode test adapter configuration located at\u202fhttps://example.com/schemas/JasmineNodeTestAdapter.json and is named **MyProjectTests**. Its base directory is\u202f`./test`; all helper files are pulled from the glob pattern\u202f`test/helpers/**/*.js` and are loaded before any specs. The actual spec files are matched by\u202f`test/spec/**/*.spec.js`, while source changes that should trigger a re\u2011run are watched under\u202f`src/**/*.js`. When a change is detected the adapter waits\u202f300\u202fms (the BatchInterval) before executing the tests.\n\nTwo traits are attached to each test: a simple tag **smoke** and a key/value pair **Priority\u202f=\u202fHigh**. The configuration points to a custom extensions module at\u202f`./extensions/customAdapter.js`. The adapter is enabled (Disabled\u202f=\u202ffalse), and logging is active \u2013 logs will be written to a file in the `./logs` directory (LogToFile\u202f=\u202ftrue, LogDirectory\u202f=\u202f`./logs`).",
+  "reference_json": {
+    "$schema": "https://example.com/schemas/JasmineNodeTestAdapter.json",
+    "Name": "MyProjectTests",
+    "BasePath": "./test",
+    "Helpers": [
+      "test/helpers/**/*.js"
+    ],
+    "Specs": [
+      "test/spec/**/*.spec.js"
+    ],
+    "Watch": [
+      "src/**/*.js"
+    ],
+    "BatchInterval": 300,
+    "Traits": [
+      "smoke",
+      {
+        "Name": "Priority",
+        "Value": "High"
+      }
+    ],
+    "Extensions": "./extensions/customAdapter.js",
+    "Disabled": false,
+    "LogToFile": true,
+    "LogDirectory": "./logs"
+  }
+}

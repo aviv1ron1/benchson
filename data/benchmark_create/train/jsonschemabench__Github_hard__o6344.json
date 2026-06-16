@@ -1,0 +1,354 @@
+{
+  "name": "o6344",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "anyOf": [
+      {
+        "$ref": "#/definitions/SkaffoldConfig"
+      }
+    ],
+    "definitions": {
+      "Artifact": {
+        "additionalProperties": false,
+        "description": "represents items that need should be built, along with the context in which they should be built.",
+        "preferredOrder": [
+          "imageName",
+          "dockerfilePath",
+          "workspace",
+          "buildArgs"
+        ],
+        "properties": {
+          "buildArgs": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "default": "{}",
+            "type": "object"
+          },
+          "dockerfilePath": {
+            "type": "string"
+          },
+          "imageName": {
+            "type": "string"
+          },
+          "workspace": {
+            "type": "string"
+          }
+        },
+        "x-intellij-html-description": "represents items that need should be built, along with the context in which they should be built."
+      },
+      "BuildConfig": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "preferredOrder": [
+              "artifacts",
+              "tagPolicy"
+            ],
+            "properties": {
+              "artifacts": {
+                "items": {
+                  "$ref": "#/definitions/Artifact"
+                },
+                "type": "array"
+              },
+              "tagPolicy": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "additionalProperties": false,
+            "preferredOrder": [
+              "artifacts",
+              "tagPolicy",
+              "local"
+            ],
+            "properties": {
+              "artifacts": {
+                "items": {
+                  "$ref": "#/definitions/Artifact"
+                },
+                "type": "array"
+              },
+              "local": {
+                "$ref": "#/definitions/LocalBuild"
+              },
+              "tagPolicy": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "additionalProperties": false,
+            "preferredOrder": [
+              "artifacts",
+              "tagPolicy",
+              "googleCloudBuild"
+            ],
+            "properties": {
+              "artifacts": {
+                "items": {
+                  "$ref": "#/definitions/Artifact"
+                },
+                "type": "array"
+              },
+              "googleCloudBuild": {
+                "$ref": "#/definitions/GoogleCloudBuild"
+              },
+              "tagPolicy": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "description": "contains all the configuration for the build steps",
+        "x-intellij-html-description": "contains all the configuration for the build steps"
+      },
+      "DeployConfig": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "preferredOrder": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "additionalProperties": false,
+            "preferredOrder": [
+              "name",
+              "helm"
+            ],
+            "properties": {
+              "helm": {
+                "$ref": "#/definitions/HelmDeploy"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "additionalProperties": false,
+            "preferredOrder": [
+              "name",
+              "kubectl"
+            ],
+            "properties": {
+              "kubectl": {
+                "$ref": "#/definitions/KubectlDeploy"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "description": "contains all the configuration needed by the deploy steps",
+        "x-intellij-html-description": "contains all the configuration needed by the deploy steps"
+      },
+      "GoogleCloudBuild": {
+        "additionalProperties": false,
+        "preferredOrder": [
+          "projectId"
+        ],
+        "properties": {
+          "projectId": {
+            "type": "string"
+          }
+        }
+      },
+      "HelmDeploy": {
+        "additionalProperties": false,
+        "preferredOrder": [
+          "releases"
+        ],
+        "properties": {
+          "releases": {
+            "items": {
+              "$ref": "#/definitions/HelmRelease"
+            },
+            "type": "array"
+          }
+        }
+      },
+      "HelmRelease": {
+        "additionalProperties": false,
+        "preferredOrder": [
+          "name",
+          "chartPath",
+          "valuesFilePath",
+          "values",
+          "namespace",
+          "version"
+        ],
+        "properties": {
+          "chartPath": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "values": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "default": "{}",
+            "type": "object"
+          },
+          "valuesFilePath": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "KubectlDeploy": {
+        "additionalProperties": false,
+        "description": "contains the configuration needed for deploying with `kubectl apply`",
+        "preferredOrder": [
+          "manifests"
+        ],
+        "properties": {
+          "manifests": {
+            "items": {
+              "$ref": "#/definitions/Manifest"
+            },
+            "type": "array"
+          }
+        },
+        "x-intellij-html-description": "contains the configuration needed for deploying with <code>kubectl apply</code>"
+      },
+      "LocalBuild": {
+        "additionalProperties": false,
+        "description": "contains the fields needed to do a build on the local docker daemon and optionally push to a repository.",
+        "preferredOrder": [
+          "skipPush"
+        ],
+        "properties": {
+          "skipPush": {
+            "type": "boolean"
+          }
+        },
+        "x-intellij-html-description": "contains the fields needed to do a build on the local docker daemon and optionally push to a repository."
+      },
+      "Manifest": {
+        "additionalProperties": false,
+        "preferredOrder": [
+          "paths",
+          "parameters"
+        ],
+        "properties": {
+          "parameters": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "default": "{}",
+            "type": "object"
+          },
+          "paths": {
+            "default": "[]",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        }
+      },
+      "SkaffoldConfig": {
+        "additionalProperties": false,
+        "description": "top level config object that is parsed from a skaffold.yaml",
+        "preferredOrder": [
+          "apiVersion",
+          "kind",
+          "build",
+          "deploy"
+        ],
+        "properties": {
+          "apiVersion": {
+            "type": "string"
+          },
+          "build": {
+            "$ref": "#/definitions/BuildConfig"
+          },
+          "deploy": {
+            "$ref": "#/definitions/DeployConfig"
+          },
+          "kind": {
+            "type": "string"
+          }
+        },
+        "x-intellij-html-description": "top level config object that is parsed from a skaffold.yaml"
+      }
+    },
+    "type": "object"
+  },
+  "description": "Our Skaffold configuration is set to version\u202fskaffold/v4 and defined as a Config object. The build pipeline uses a SHA\u2011256 based tag policy and runs locally without skipping the image push step, so each built image will be pushed to the registry after it is created.\n\nWe are building two Docker images: the frontend image\u202fgcr.io/my-project/frontend, built from the Dockerfile located at\u202ffrontend/Dockerfile within the\u202ffrontend\u202fworkspace, with build arguments\u202fENV=production\u202fand\u202fVERSION=1.2.3; and the backend image\u202fgcr.io/my-project/backend, built from\u202fbackend/Dockerfile\u202fin the\u202fbackend\u202fworkspace, using the build argument\u202fENV=staging. For deployment, we use Helm under the deployment name\u202fmy-app-deployment. The Helm releases include a\u202ffrontend\u202frelease that points to the chart at\u202fcharts/frontend, uses the values file\u202fcharts/frontend/values.yaml, sets\u202freplicaCount\u202fto\u202f3\u202fand\u202fimage.tag\u202fto\u202f{{.IMAGE_TAG}}, deploys to the\u202ffrontend-ns\u202fnamespace, and targets version\u202f1.0.0. The\u202fbackend\u202frelease points to\u202fcharts/backend, uses\u202fcharts/backend/values.yaml, sets\u202freplicaCount\u202fto\u202f2, deploys to\u202fbackend-ns, and targets version\u202f2.1.4.",
+  "reference_json": {
+    "apiVersion": "skaffold/v4",
+    "kind": "Config",
+    "build": {
+      "artifacts": [
+        {
+          "imageName": "gcr.io/my-project/frontend",
+          "dockerfilePath": "frontend/Dockerfile",
+          "workspace": "frontend",
+          "buildArgs": {
+            "ENV": "production",
+            "VERSION": "1.2.3"
+          }
+        },
+        {
+          "imageName": "gcr.io/my-project/backend",
+          "dockerfilePath": "backend/Dockerfile",
+          "workspace": "backend",
+          "buildArgs": {
+            "ENV": "staging"
+          }
+        }
+      ],
+      "tagPolicy": "sha256",
+      "local": {
+        "skipPush": false
+      }
+    },
+    "deploy": {
+      "name": "my-app-deployment",
+      "helm": {
+        "releases": [
+          {
+            "name": "frontend",
+            "chartPath": "charts/frontend",
+            "valuesFilePath": "charts/frontend/values.yaml",
+            "values": {
+              "replicaCount": "3",
+              "image.tag": "{{.IMAGE_TAG}}"
+            },
+            "namespace": "frontend-ns",
+            "version": "1.0.0"
+          },
+          {
+            "name": "backend",
+            "chartPath": "charts/backend",
+            "valuesFilePath": "charts/backend/values.yaml",
+            "values": {
+              "replicaCount": "2"
+            },
+            "namespace": "backend-ns",
+            "version": "2.1.4"
+          }
+        ]
+      }
+    }
+  }
+}

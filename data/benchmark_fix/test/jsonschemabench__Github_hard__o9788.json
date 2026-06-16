@@ -1,0 +1,309 @@
+{
+  "name": "o9788",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "orgId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationTemplateId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "endpointSlug": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 63,
+        "pattern": "^[0-9a-z-]*$"
+      },
+      "expUserTokenCutoff": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "endpointDefaultCors": {
+        "type": "boolean"
+      },
+      "globals": {
+        "type": "array",
+        "maxItems": 100,
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "json": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 32767
+            },
+            "cloudOnly": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 1024
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "key",
+            "json"
+          ]
+        }
+      },
+      "archiveConfig": {
+        "type": "object",
+        "properties": {
+          "directory": {
+            "type": "string",
+            "max": 255
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "all",
+              "whitelist",
+              "blacklist"
+            ]
+          },
+          "deviceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "deviceTags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                }
+              },
+              "additionalProperties": false
+            },
+            "maxItems": 100
+          },
+          "includeDevices": {
+            "type": "boolean",
+            "default": true
+          },
+          "includeEvents": {
+            "type": "boolean",
+            "default": false
+          },
+          "includeDataTables": {
+            "type": "boolean",
+            "default": false
+          },
+          "dataTablesMode": {
+            "type": "string",
+            "enum": [
+              "all",
+              "whitelist",
+              "blacklist"
+            ]
+          },
+          "dataTableIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "maxItems": 1000
+          },
+          "s3": {
+            "type": "object",
+            "properties": {
+              "bucket": {
+                "type": "string",
+                "max": 255
+              },
+              "accessKeyId": {
+                "type": "string",
+                "min": 4,
+                "max": 128
+              },
+              "secretAccessKey": {
+                "type": "string",
+                "min": 4,
+                "max": 128
+              },
+              "region": {
+                "type": "string",
+                "max": 128
+              }
+            },
+            "required": [
+              "bucket",
+              "accessKeyId",
+              "secretAccessKey",
+              "region"
+            ],
+            "additionalProperties": false
+          },
+          "gcs": {
+            "type": "object",
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              },
+              "keyJson": {
+                "type": "string",
+                "maxLength": 32767,
+                "minLength": 4
+              },
+              "bucket": {
+                "type": "string",
+                "max": 255
+              }
+            },
+            "required": [
+              "projectId",
+              "keyJson",
+              "bucket"
+            ],
+            "additionalProperties": false
+          },
+          "azure": {
+            "type": "object",
+            "properties": {
+              "account": {
+                "type": "string",
+                "min": 3,
+                "max": 24
+              },
+              "accountKey": {
+                "type": "string",
+                "max": 255
+              },
+              "bucket": {
+                "type": "string",
+                "min": 3,
+                "max": 63
+              }
+            },
+            "required": [
+              "account",
+              "accountKey",
+              "bucket"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "blobUrlTTL": {
+        "type": "number",
+        "minimum": 3600,
+        "maximum": 604800
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "name"
+    ]
+  },
+  "erroneous_json": {
+    "orgId": "5f2d1c3a9b8e4f6a7b0c1d2e",
+    "applicationTemplateId": "a1b2c3d4e5f60718293a4b5c",
+    "name": "Device Data Export",
+    "description": "Configuration for exporting device data and events to cloud storage.",
+    "endpointSlug": "my-endpoint-01",
+    "expUserTokenCutoff": "2025-12-31T23:59:59Z",
+    "endpointDefaultCors": true,
+    "globals": [
+      {
+        "key": "apiKey",
+        "json": "{\"value\":\"12345-abcde\"}",
+        "cloudOnly": false,
+        "description": "API key used for external services."
+      },
+      {
+        "key": "featureFlag",
+        "json": "{\"enabled\":true}",
+        "description": "Toggle for new feature rollout."
+      }
+    ],
+    "archiveConfig": null,
+    "blobUrlTTL": 86400
+  },
+  "valid_json": {
+    "orgId": "5f2d1c3a9b8e4f6a7b0c1d2e",
+    "applicationTemplateId": "a1b2c3d4e5f60718293a4b5c",
+    "name": "Device Data Export",
+    "description": "Configuration for exporting device data and events to cloud storage.",
+    "endpointSlug": "my-endpoint-01",
+    "expUserTokenCutoff": "2025-12-31T23:59:59Z",
+    "endpointDefaultCors": true,
+    "globals": [
+      {
+        "key": "apiKey",
+        "json": "{\"value\":\"12345-abcde\"}",
+        "cloudOnly": false,
+        "description": "API key used for external services."
+      },
+      {
+        "key": "featureFlag",
+        "json": "{\"enabled\":true}",
+        "description": "Toggle for new feature rollout."
+      }
+    ],
+    "archiveConfig": {
+      "directory": "archives/2025",
+      "mode": "whitelist",
+      "deviceIds": [
+        "a1b2c3d4e5f60718293a4b5c",
+        "d4e5f60718293a4b5ca1b2c3"
+      ],
+      "deviceTags": [
+        {
+          "key": "environment",
+          "value": "production"
+        }
+      ],
+      "includeDevices": true,
+      "includeEvents": false,
+      "includeDataTables": true,
+      "dataTablesMode": "blacklist",
+      "dataTableIds": [
+        "f60718293a4b5ca1b2c3d4e5"
+      ],
+      "s3": {
+        "bucket": "my-archive-bucket",
+        "accessKeyId": "AKIAEXAMPLEKEY",
+        "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+        "region": "us-west-2"
+      }
+    },
+    "blobUrlTTL": 86400
+  },
+  "description": "The configuration titled **Device Data Export** (name) belongs to organization\u202f5f2d1c3a9b8e4f6a7b0c1d2e (orgId) and uses the application template\u202fa1b2c3d4e5f60718293a4b5c (applicationTemplateId). It is intended to export device data and events to cloud storage, as described: \u201cConfiguration for exporting device data and events to cloud storage.\u201d The public endpoint will be accessible via the slug **my\u2011endpoint\u201101**, with CORS enabled by default. User tokens will be considered expired after **2025\u201112\u201131\u202f23:59:59\u202fUTC**, and a blob URL time\u2011to\u2011live of 86\u202f400\u202fseconds (24\u202fhours) is specified. Two global variables are defined: an API key (**key**\u202f=\u202fapiKey) with JSON value `{\"value\":\"12345-abcde\"}`, not limited to the cloud (cloudOnly\u202f=\u202ffalse) and described as \u201cAPI key used for external services,\u201d and a feature flag (**key**\u202f=\u202ffeatureFlag) with JSON value `{\"enabled\":true}` described as \u201cToggle for new feature rollout.\u201d\n\nThe archive settings place files under the directory **archives/2025**, operating in **whitelist** mode. Only the devices with IDs **a1b2c3d4e5f60718293a4b5c** and **d4e5f60718293a4b5ca1b2c3** are included, and devices tagged **environment=production** are also selected. The configuration includes devices (includeDevices\u202f=\u202ftrue) but excludes events (includeEvents\u202f=\u202ffalse) while including data tables (includeDataTables\u202f=\u202ftrue). Data tables are handled in **blacklist** mode, with the table ID **f60718293a4b5ca1b2c3d4e5** explicitly excluded. Archive files are stored in Amazon S3 using bucket **my-archive-bucket**, access key ID **AKIAEXAMPLEKEY**, secret access key **wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY**, and region **us\u2011west\u20112**."
+}

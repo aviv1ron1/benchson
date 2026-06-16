@@ -1,0 +1,33 @@
+{
+  "name": "o21861",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "TableName",
+      "StreamViewType"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "TableName": {
+        "type": "string"
+      },
+      "StreamViewType": {
+        "type": "string",
+        "enum": [
+          "NEW_IMAGE",
+          "OLD_IMAGE",
+          "NEW_AND_OLD_IMAGES",
+          "KEYS_ONLY"
+        ]
+      }
+    }
+  },
+  "description": "The DynamoDB table we\u2019re working with is called **UserActivity**. For this table, the stream has been set to capture both the new and the old images of each item, using the **NEW_AND_OLD_IMAGES** stream view type.",
+  "reference_json": {
+    "TableName": "UserActivity",
+    "StreamViewType": "NEW_AND_OLD_IMAGES"
+  }
+}

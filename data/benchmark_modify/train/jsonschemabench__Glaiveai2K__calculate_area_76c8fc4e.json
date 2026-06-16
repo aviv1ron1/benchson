@@ -1,0 +1,71 @@
+{
+  "name": "calculate_area_76c8fc4e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which to calculate the area (e.g., square, circle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "cylinder",
+    "dimensions": {
+      "radius": 5.2,
+      "height": 12.7,
+      "base": 0,
+      "length": 0,
+      "width": 0
+    }
+  },
+  "instructions": "Could you remove the \u201cwidth\u201d field inside \u201cdimensions\u201d?",
+  "ground_truth": {
+    "shape": "cylinder",
+    "dimensions": {
+      "radius": 5.2,
+      "height": 12.7,
+      "base": 0,
+      "length": 0
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "dimensions",
+      "width"
+    ],
+    "precise_instruction": "Remove the \"width\" field inside \"dimensions\"."
+  }
+}

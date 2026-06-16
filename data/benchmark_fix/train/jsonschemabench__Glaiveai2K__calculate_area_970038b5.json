@@ -1,0 +1,53 @@
+{
+  "name": "calculate_area_970038b5",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "side_length": {
+            "description": "The side length of the square",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (e.g. circle, square, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "triangle",
+    "dimensions": null
+  },
+  "valid_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 5.2,
+      "height": 3.8,
+      "radius": 0,
+      "side_length": 0
+    }
+  },
+  "description": "Subject: Geometry Specification \u2013 Triangle\n\nPlease see below the detailed dimensions for the requested shape. The figure is a triangle with a base measuring **5.2\u202funits** and a height of **3.8\u202funits**. Since this is a triangular shape, the circle\u2011related parameter (radius) is not applicable and is recorded as **0**, and likewise the square\u2011related measurement (side length) is also **0**. Let me know if you need any additional information or adjustments."
+}

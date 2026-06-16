@@ -1,0 +1,69 @@
+{
+  "name": "o5219",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/getDepo.result.scheme.json",
+    "title": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getDepo",
+    "description": "\u0421\u0445\u0435\u043c\u0430 \u043e\u0431\u044a\u0435\u043a\u0442\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getDepo",
+    "type": "object",
+    "properties": {
+      "depo": {
+        "description": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442",
+        "type": "object",
+        "properties": {
+          "depo_limit_locked_buy_value": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_limit_locked_buy_value",
+            "type": "string"
+          },
+          "depo_current_balance": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_current_balance",
+            "type": "string"
+          },
+          "depo_limit_locked_buy": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_limit_locked_buy",
+            "type": "string"
+          },
+          "depo_limit_locked": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_limit_locked",
+            "type": "string"
+          },
+          "depo_limit_available": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_limit_available",
+            "type": "string"
+          },
+          "depo_current_limit": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_current_limit",
+            "type": "string"
+          },
+          "depo_open_balance": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_open_balance",
+            "type": "string"
+          },
+          "depo_open_limit": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 depo_open_limit",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "depo"
+    ]
+  },
+  "description": "As of today, the account shows a current balance of 15,230.78 units, with an opening balance of 10,000.00 units. The current credit limit stands at 15,000.00, matching the opening limit of the same amount.  \n\nCurrently, 5,000.00 units are locked, of which 3,000.00 are specifically locked for buying operations, representing a locked\u2011buy value of 2,500.45. After accounting for the locked amounts, the available limit for new positions is 12,000.00.",
+  "reference_json": {
+    "depo": {
+      "depo_limit_locked_buy_value": "2500.45",
+      "depo_current_balance": "15230.78",
+      "depo_limit_locked_buy": "3000.00",
+      "depo_limit_locked": "5000.00",
+      "depo_limit_available": "12000.00",
+      "depo_current_limit": "15000.00",
+      "depo_open_balance": "10000.00",
+      "depo_open_limit": "15000.00"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "calculate_area_518cb15d",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "dependencies": {
+          "base": [
+            "triangle"
+          ],
+          "height": [
+            "triangle"
+          ],
+          "radius": [
+            "circle"
+          ],
+          "shape": [
+            "rectangle"
+          ]
+        },
+        "properties": {
+          "base": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "length": {
+            "type": "number"
+          },
+          "radius": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which the area will be calculated",
+        "enum": [
+          "rectangle",
+          "circle",
+          "triangle"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Rectangle Dimensions for Upcoming Project\n\nHi Team,\n\nFor the upcoming design phase, we\u2019ll be working with a rectangular component that measures 5 units in length and 3 units in width. Please ensure these dimensions are used in all related calculations and drawings. Let me know if any adjustments are needed.",
+  "reference_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 5,
+      "width": 3
+    }
+  }
+}

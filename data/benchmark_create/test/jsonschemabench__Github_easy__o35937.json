@@ -1,0 +1,67 @@
+{
+  "name": "o35937",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "id": "https://raw.githubusercontent.com/develohpanda/LoadTestSchemas/master/testperiodconfig.schema.json",
+    "title": "JSON Schema for defining the test periods",
+    "type": "array",
+    "additionalProperties": false,
+    "items": {
+      "title": "Test Period",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of this test period."
+        },
+        "periodType": {
+          "type": "string",
+          "description": "The type of period.",
+          "enum": [
+            "RampUp",
+            "RampDown",
+            "Constant"
+          ]
+        },
+        "users": {
+          "type": "integer",
+          "description": "How many users does this period effect?",
+          "minimum": 0
+        },
+        "durationMinutes": {
+          "type": "number",
+          "description": "How long should this period run for in minutes?",
+          "exclusiveMinimumm": true,
+          "minimum": 0
+        }
+      },
+      "required": [
+        "periodType",
+        "durationMinutes"
+      ]
+    }
+  },
+  "description": "Please find the test period configuration for the upcoming load test below. The first phase, **Initial Ramp Up**, is a *RampUp* period that will bring **50 users** online over **10 minutes**. This is followed by the **Steady Load** phase, a *Constant* period maintaining **200 users** for **30 minutes**. Finally, the **Final Ramp Down** phase will gradually reduce the load with a *RampDown* period of **30 users** over **5 minutes**.",
+  "reference_json": [
+    {
+      "name": "Initial Ramp Up",
+      "periodType": "RampUp",
+      "users": 50,
+      "durationMinutes": 10
+    },
+    {
+      "name": "Steady Load",
+      "periodType": "Constant",
+      "users": 200,
+      "durationMinutes": 30
+    },
+    {
+      "name": "Final Ramp Down",
+      "periodType": "RampDown",
+      "users": 30,
+      "durationMinutes": 5
+    }
+  ]
+}

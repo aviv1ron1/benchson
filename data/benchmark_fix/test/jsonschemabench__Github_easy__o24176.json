@@ -1,0 +1,79 @@
+{
+  "name": "o24176",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Codex Location Schema",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "institution": {
+        "type": "string"
+      },
+      "campus": {
+        "type": "string"
+      },
+      "library": {
+        "type": "string"
+      },
+      "parking": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "additionalItems": true,
+        "_uniqueItems": true
+      },
+      "platform": {
+        "type": "string"
+      },
+      "uri": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  },
+  "erroneous_json": {
+    "id": "codex-001",
+    "institution": null,
+    "campus": "North Campus",
+    "library": "Main Library",
+    "parking": [
+      {
+        "lot": "P1",
+        "capacity": 200
+      },
+      {
+        "lot": "P2",
+        "capacity": 150
+      }
+    ],
+    "platform": "Web",
+    "uri": "https://codex.example.edu/locations/001"
+  },
+  "valid_json": {
+    "id": "codex-001",
+    "institution": "University of Example",
+    "campus": "North Campus",
+    "library": "Main Library",
+    "parking": [
+      {
+        "lot": "P1",
+        "capacity": 200
+      },
+      {
+        "lot": "P2",
+        "capacity": 150
+      }
+    ],
+    "platform": "Web",
+    "uri": "https://codex.example.edu/locations/001"
+  },
+  "description": "The location identified as **codex-001** is situated at the University of Example\u2019s North Campus, within the Main Library building. This site is accessible through the web platform, and further details can be found at https://codex.example.edu/locations/001.\n\nFor visitors arriving by car, two parking options are available: Lot\u202fP1, which accommodates up to 200 vehicles, and Lot\u202fP2, with a capacity of 150 spaces."
+}

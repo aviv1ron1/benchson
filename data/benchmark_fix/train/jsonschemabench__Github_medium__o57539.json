@@ -1,0 +1,245 @@
+{
+  "name": "o57539",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "RetryExam test options",
+    "description": "Options for a RetryExam test.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "questionGroups": {
+        "description": "Array of QID difficulty groups, one per difficulty level of questions.",
+        "type": "array",
+        "items": {
+          "description": "Array of QID topic groups, one per topic of questions.",
+          "type": "array",
+          "items": {
+            "description": "Array of question IDs (QIDs) for this topic and difficulty.",
+            "type": "array",
+            "item": {
+              "description": "A single test question.",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "qid": {
+                  "$ref": "#/definitions/questionQID"
+                },
+                "points": {
+                  "$ref": "#/definitions/questionPoints"
+                }
+              },
+              "required": [
+                "qid",
+                "points"
+              ]
+            }
+          }
+        }
+      },
+      "zones": {
+        "description": "Array of \"zones\" in the test, each containing questions that can be randomized within the zone.",
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/zone"
+        }
+      },
+      "unlimitedVariants": {
+        "description": "Whether to generate new variants for all students, rather than using a limited set.",
+        "type": "boolean",
+        "default": false
+      },
+      "variantsPerQuestion": {
+        "description": "Number of variants to select from per question.",
+        "type": "integer",
+        "minimum": 1,
+        "default": 3
+      },
+      "availDate": {
+        "description": "The date after which the test is available for students to view.",
+        "type": "string"
+      },
+      "nQuestions": {
+        "description": "The number of questions to select for each instance of this test.",
+        "type": "integer"
+      },
+      "timeLimitMin": {
+        "description": "The number of minutes allowed for this test.",
+        "type": "integer"
+      },
+      "text": {
+        "description": "HTML text shown on the test overview page.",
+        "type": "string"
+      }
+    },
+    "oneOf": [
+      {
+        "type": "object",
+        "required": [
+          "questionGroups",
+          "nQuestions"
+        ]
+      },
+      {
+        "type": "object",
+        "required": [
+          "zones"
+        ],
+        "not": {
+          "type": "object",
+          "required": [
+            "nQuestions"
+          ]
+        }
+      }
+    ],
+    "definitions": {
+      "zone": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "description": "Zone title, displayed to the students at the top of the question list for the zone.",
+            "type": "string"
+          },
+          "questions": {
+            "description": "Array of questions in the zone.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/definitions/question"
+            }
+          }
+        },
+        "required": [
+          "questions"
+        ]
+      },
+      "question": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "$ref": "#/definitions/questionPoints"
+          },
+          "qid": {
+            "$ref": "#/definitions/questionQID"
+          },
+          "qids": {
+            "description": "Array of possible qids for a question.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/definitions/questionQID"
+            }
+          }
+        },
+        "required": [
+          "points"
+        ],
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "qid"
+            ]
+          },
+          {
+            "type": "object",
+            "required": [
+              "qids"
+            ]
+          }
+        ]
+      },
+      "questionPoints": {
+        "description": "An array of points values.",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "integer"
+        }
+      },
+      "questionQID": {
+        "description": "Question ID.",
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "zones": [
+      {
+        "title": "Algebra Basics",
+        "questions": [
+          {
+            "qid": "ALG101",
+            "points": [
+              5
+            ]
+          },
+          {
+            "qid": "ALG102",
+            "points": [
+              10,
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Geometry",
+        "questions": [
+          {
+            "qid": "GEO201",
+            "points": [
+              8
+            ]
+          }
+        ]
+      }
+    ],
+    "unlimitedVariants": true,
+    "variantsPerQuestion": 4,
+    "availDate": "2026-09-01",
+    "timeLimitMin": "not-a-number",
+    "text": "<p>Welcome to the practice exam. Please read each question carefully.</p>"
+  },
+  "valid_json": {
+    "zones": [
+      {
+        "title": "Algebra Basics",
+        "questions": [
+          {
+            "qid": "ALG101",
+            "points": [
+              5
+            ]
+          },
+          {
+            "qid": "ALG102",
+            "points": [
+              10,
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Geometry",
+        "questions": [
+          {
+            "qid": "GEO201",
+            "points": [
+              8
+            ]
+          }
+        ]
+      }
+    ],
+    "unlimitedVariants": true,
+    "variantsPerQuestion": 4,
+    "availDate": "2026-09-01",
+    "timeLimitMin": 90,
+    "text": "<p>Welcome to the practice exam. Please read each question carefully.</p>"
+  },
+  "description": "The practice exam will become available on September\u202f1,\u202f2026, and students will have a 90\u2011minute window to complete it. Unlimited variants are enabled, and for every question the system will draw from four different variants.\n\nThe test is organized into two zones. In the **Algebra Basics** zone there are two questions: **ALG101**, worth 5 points, and **ALG102**, which can be scored either 10 points or an alternate 5\u2011point version. The **Geometry** zone contains a single question, **GEO201**, valued at 8 points. The overview page will display the following message: `<p>Welcome to the practice exam. Please read each question carefully.</p>`."
+}

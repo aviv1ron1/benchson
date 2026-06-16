@@ -1,0 +1,449 @@
+{
+  "name": "o63519",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "users",
+      "releases",
+      "companies",
+      "repos",
+      "project_types"
+    ],
+    "properties": {
+      "users": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "launchpad_id": {
+              "type": "string",
+              "pattern": "^[a-z\\d\\.-]+$"
+            },
+            "github_id": {
+              "type": "string"
+            },
+            "gerrit_id": {
+              "type": "string"
+            },
+            "ldap_id": {
+              "type": "string"
+            },
+            "user_name": {
+              "type": "string"
+            },
+            "emails": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z\\d_\\.-]+@([a-z\\d\\.-]+\\.)+[a-z]+$"
+              },
+              "minItems": 1
+            },
+            "companies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "company_name": {
+                    "type": "string"
+                  },
+                  "end_date": {
+                    "$ref": "#/definitions/date_format"
+                  }
+                },
+                "required": [
+                  "company_name",
+                  "end_date"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "user_name",
+            "emails"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "releases": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "release_name": {
+              "type": "string"
+            },
+            "end_date": {
+              "$ref": "#/definitions/date_format"
+            }
+          },
+          "required": [
+            "release_name",
+            "end_date"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "repos": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "uri": {
+              "type": "string"
+            },
+            "organization": {
+              "type": "string"
+            },
+            "module": {
+              "type": "string"
+            },
+            "releases": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "tag_from": {
+                    "type": "string"
+                  },
+                  "tag_to": {
+                    "type": "string"
+                  },
+                  "release_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "tag_from",
+                  "tag_to",
+                  "release_name"
+                ]
+              }
+            },
+            "aliases": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "uri",
+            "module",
+            "organization"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "companies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "company_name": {
+              "type": "string"
+            },
+            "domains": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z\\d\\.-]*$"
+              }
+            },
+            "aliases": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "company_name",
+            "domains"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "project_sources": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "organization": {
+              "type": "string"
+            },
+            "uri": {
+              "type": "string"
+            },
+            "git_base_uri": {
+              "type": "string"
+            },
+            "ssh_key_filename": {
+              "type": "string"
+            },
+            "ssh_username": {
+              "type": "string"
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "organization"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "module_groups": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "module_group_name": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "modules": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "module_group_name",
+            "modules"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "mail_lists": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "member_lists": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "project_types": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "child": {
+              "type": "boolean"
+            },
+            "title": {
+              "type": "string"
+            },
+            "modules": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": "string",
+                "pattern": "^[\\w-]+$"
+              }
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "modules"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "definitions": {
+      "date_format": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^20\\d{2}-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-[0-3]\\d$"
+      }
+    }
+  },
+  "erroneous_json": {
+    "users": null,
+    "releases": [
+      {
+        "release_name": "v1.0",
+        "end_date": "2024-Jul-15"
+      },
+      {
+        "release_name": "v2.0",
+        "end_date": "2025-Jan-01"
+      }
+    ],
+    "companies": [
+      {
+        "company_name": "Acme Corp",
+        "domains": [
+          "acme.com",
+          "acme.org"
+        ]
+      },
+      {
+        "company_name": "OpenStack Foundation",
+        "domains": [
+          "openstack.org",
+          "lists.openstack.org"
+        ],
+        "aliases": [
+          "OSF"
+        ]
+      }
+    ],
+    "repos": [
+      {
+        "uri": "https://github.com/openstack/nova",
+        "organization": "openstack",
+        "module": "nova",
+        "releases": [
+          {
+            "branch": "stable/2024.1",
+            "tag_from": "17.0.0",
+            "tag_to": "18.0.0",
+            "release_name": "v1.0"
+          }
+        ],
+        "aliases": [
+          "nova-api"
+        ]
+      }
+    ],
+    "project_types": [
+      {
+        "id": "library",
+        "title": "Library",
+        "modules": [
+          "nova",
+          "neutron"
+        ]
+      },
+      {
+        "id": "service",
+        "title": "Service",
+        "modules": [
+          "cinder",
+          "glance"
+        ],
+        "child": true
+      }
+    ]
+  },
+  "valid_json": {
+    "users": [
+      {
+        "launchpad_id": "jdoe",
+        "github_id": "jdoeGH",
+        "user_name": "John Doe",
+        "emails": [
+          "john.doe@example.com"
+        ],
+        "companies": [
+          {
+            "company_name": "Acme Corp",
+            "end_date": "2025-Dec-31"
+          }
+        ]
+      },
+      {
+        "user_name": "Alice Smith",
+        "emails": [
+          "alice.smith@openstack.org"
+        ]
+      }
+    ],
+    "releases": [
+      {
+        "release_name": "v1.0",
+        "end_date": "2024-Jul-15"
+      },
+      {
+        "release_name": "v2.0",
+        "end_date": "2025-Jan-01"
+      }
+    ],
+    "companies": [
+      {
+        "company_name": "Acme Corp",
+        "domains": [
+          "acme.com",
+          "acme.org"
+        ]
+      },
+      {
+        "company_name": "OpenStack Foundation",
+        "domains": [
+          "openstack.org",
+          "lists.openstack.org"
+        ],
+        "aliases": [
+          "OSF"
+        ]
+      }
+    ],
+    "repos": [
+      {
+        "uri": "https://github.com/openstack/nova",
+        "organization": "openstack",
+        "module": "nova",
+        "releases": [
+          {
+            "branch": "stable/2024.1",
+            "tag_from": "17.0.0",
+            "tag_to": "18.0.0",
+            "release_name": "v1.0"
+          }
+        ],
+        "aliases": [
+          "nova-api"
+        ]
+      }
+    ],
+    "project_types": [
+      {
+        "id": "library",
+        "title": "Library",
+        "modules": [
+          "nova",
+          "neutron"
+        ]
+      },
+      {
+        "id": "service",
+        "title": "Service",
+        "modules": [
+          "cinder",
+          "glance"
+        ],
+        "child": true
+      }
+    ]
+  },
+  "description": "The current team comprises John\u202fDoe (launchpad\u202fID *jdoe*, GitHub\u202fID *jdoeGH*) whose primary contact is john.doe@example.com and who is employed by Acme\u202fCorp until 2025\u2011Dec\u201131, as well as Alice\u202fSmith who can be reached at alice.smith@openstack.org. Our product roadmap includes two scheduled releases: version\u202fv1.0, slated to conclude on 2024\u2011Jul\u201115, and version\u202fv2.0, slated for 2025\u2011Jan\u201101.\n\nAcme\u202fCorp manages the domains *acme.com* and *acme.org*, while the OpenStack\u202fFoundation controls *openstack.org* and *lists.openstack.org* and is also known by the alias \u201cOSF\u201d. The Nova codebase is hosted at https://github.com/openstack/nova under the OpenStack organization, with the module name \u201cnova\u201d. For the v1.0 release the repository uses branch\u202fstable/2024.1, moving from tag\u202f17.0.0 to tag\u202f18.0.0, and it is also referenced by the alias \u201cnova\u2011api\u201d. Finally, our project taxonomy defines a \u201cLibrary\u201d type (ID\u202f*library*) covering the modules\u202fnova and\u202fneutron, and a \u201cService\u201d type (ID\u202f*service*), marked as a child type, covering the modules\u202fcinder and\u202fglance."
+}

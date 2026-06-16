@@ -1,0 +1,268 @@
+{
+  "name": "codeship-steps",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/codeship-steps.json",
+    "definitions": {
+      "ExternalStep": {
+        "title": "CodeShip Pro Step",
+        "description": "The definition of a step",
+        "properties": {
+          "name": {
+            "description": "The name of the step. Can be omitted.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of the step. If omitted, defaults to 'run'",
+            "type": "string",
+            "enum": [
+              null,
+              "run",
+              "serial",
+              "push",
+              "parallel",
+              "load",
+              "manual"
+            ]
+          },
+          "tag": {
+            "description": "A pattern matching tags or branches this step and any of its children should be run against. Defaults to always running.",
+            "type": "string"
+          },
+          "exclude": {
+            "description": "A pattern matching tags or branches on which this step should NOT be run. Defaults to empty.",
+            "type": "string"
+          },
+          "service": {
+            "description": "The service name defined in codeship-services.yml this step will run on",
+            "type": "string"
+          },
+          "services": {
+            "description": "A list of service names defined in codeship-services.yml that will be used for this step.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "command": {
+            "description": "The command to be run in this step. Required with and can only be used with the 'run' type or no specified type",
+            "type": "string"
+          },
+          "steps": {
+            "description": "A list of steps to run within this step or on_fail group. Cannot be used with 'run', 'push', or 'load' steps",
+            "items": {
+              "$ref": "#/definitions/ExternalStep"
+            },
+            "type": "array"
+          },
+          "image_name": {
+            "description": "The image name this push step should push to. Required with and only used by the push step",
+            "type": "string"
+          },
+          "image_tag": {
+            "description": "The image tag this push step should push to. See https://docs.cloudbees.com/docs/cloudbees-codeship/latest/pro-builds-and-configuration/steps#_push_steps for details. Only used by the push step",
+            "default": "latest",
+            "type": "string"
+          },
+          "registry": {
+            "description": "The image registry this push step should push to. For Docker Hub, use https://registry-1.docker.io. Required with and only used by the push step",
+            "type": "string"
+          },
+          "encrypted_dockercfg_path": {
+            "description": "The location of a Docker configuration file encrypted by Jet to be used with this step. Optional.",
+            "type": "string"
+          },
+          "dockercfg_service": {
+            "description": "The name of a service defined in codeship-services.yml that provides the Docker configuration. Optional.",
+            "type": "string"
+          },
+          "on_fail": {
+            "description": "An optional list of steps to run if this step fails.",
+            "items": {
+              "$ref": "#/definitions/ExternalStep"
+            },
+            "type": "array"
+          }
+        },
+        "if": {
+          "properties": {
+            "type": {
+              "anyOf": [
+                {
+                  "const": "run"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "steps": {
+              "type": "null"
+            },
+            "image_name": {
+              "type": "null"
+            },
+            "image_tag": {
+              "type": "null"
+            },
+            "registry": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "command"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "push"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "command": {
+                "type": "null"
+              },
+              "steps": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "image_name",
+              "registry"
+            ]
+          },
+          "else": {
+            "if": {
+              "properties": {
+                "type": {
+                  "anyOf": [
+                    {
+                      "const": "serial"
+                    },
+                    {
+                      "const": "parallel"
+                    },
+                    {
+                      "const": "manual"
+                    }
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "command": {
+                  "type": "null"
+                },
+                "image_name": {
+                  "type": "null"
+                },
+                "image_tag": {
+                  "type": "null"
+                },
+                "registry": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "steps"
+              ]
+            }
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "description": "codeship-steps.yml is where you configure each step to run in your CI/CD builds with CodeShip.",
+    "items": {
+      "$ref": "#/definitions/ExternalStep"
+    },
+    "title": "CodeShip Pro steps configuration",
+    "type": "array"
+  },
+  "description": "Our CI pipeline begins with an **Install Dependencies** step that runs on the **builder** service, executing `npm ci`. Once the environment is ready, we push the Docker image\u202f`myorg/myapp` to Docker Hub (`https://registry-1.docker.io`) using the **Push Docker Image** step; the image is tagged **v1.2.3**. The next phase, **Test Suite**, is a serial group that first runs **Unit Tests** on the builder service with `npm test --unit`, followed by **Integration Tests** on the same service with `npm test --integration`.\n\nAfter testing, we perform linting and security scanning in parallel. The **Lint and Security Scan** step runs **ESLint** on the builder service (`npm run lint`) while simultaneously running a **Security Scan** on the scanner service (`snyk test`). Finally, deployment to production is a manual step triggered only on branches matching `release/*`. The **Deploy to Production** step runs the **Deploy Script** on the deployer service (`./deploy.sh`). If this deployment fails, the pipeline automatically executes a **Rollback** step\u2014also on the deployer service\u2014by running `./rollback.sh`.",
+  "reference_json": [
+    {
+      "name": "Install Dependencies",
+      "type": "run",
+      "service": "builder",
+      "command": "npm ci"
+    },
+    {
+      "name": "Push Docker Image",
+      "type": "push",
+      "service": "docker",
+      "image_name": "myorg/myapp",
+      "registry": "https://registry-1.docker.io",
+      "image_tag": "v1.2.3"
+    },
+    {
+      "name": "Test Suite",
+      "type": "serial",
+      "steps": [
+        {
+          "name": "Unit Tests",
+          "type": "run",
+          "service": "builder",
+          "command": "npm test --unit"
+        },
+        {
+          "name": "Integration Tests",
+          "type": "run",
+          "service": "builder",
+          "command": "npm test --integration"
+        }
+      ]
+    },
+    {
+      "name": "Lint and Security Scan",
+      "type": "parallel",
+      "steps": [
+        {
+          "name": "ESLint",
+          "type": "run",
+          "service": "builder",
+          "command": "npm run lint"
+        },
+        {
+          "name": "Security Scan",
+          "type": "run",
+          "service": "scanner",
+          "command": "snyk test"
+        }
+      ]
+    },
+    {
+      "name": "Deploy to Production",
+      "type": "manual",
+      "tag": "release/*",
+      "steps": [
+        {
+          "name": "Deploy Script",
+          "type": "run",
+          "service": "deployer",
+          "command": "./deploy.sh"
+        }
+      ],
+      "on_fail": [
+        {
+          "name": "Rollback",
+          "type": "run",
+          "service": "deployer",
+          "command": "./rollback.sh"
+        }
+      ]
+    }
+  ]
+}

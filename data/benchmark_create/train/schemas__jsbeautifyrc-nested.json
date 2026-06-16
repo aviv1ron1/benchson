@@ -1,0 +1,102 @@
+{
+  "name": "jsbeautifyrc-nested",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "allOf": [
+      {
+        "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/CHJProperties"
+      },
+      {
+        "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/HJProperties"
+      },
+      {
+        "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/CProperties"
+      },
+      {
+        "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/HProperties"
+      },
+      {
+        "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/JProperties"
+      },
+      {
+        "properties": {
+          "css": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/CHJProperties"
+              },
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/CProperties"
+              }
+            ]
+          },
+          "js": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/CHJProperties"
+              },
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/HJProperties"
+              },
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/JProperties"
+              }
+            ]
+          },
+          "html": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/CHJProperties"
+              },
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/HJProperties"
+              },
+              {
+                "$ref": "https://json.schemastore.org/jsbeautifyrc#/definitions/HProperties"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "id": "https://json.schemastore.org/jsbeautifyrc-nested",
+    "title": "JSON schema for beautifyrc",
+    "type": "object"
+  },
+  "description": "Our formatting preferences are straightforward: we use an indentation size of\u202f2 spaces, with a plain space character for each indent level. Braces are set to the \u201ccollapse\u201d style, and we retain existing line breaks, allowing up to\u202f10 consecutive blank lines while deliberately avoiding extra indentation for arrays.\n\nFor CSS files we keep the same 2\u2011space indentation and space character, and we enable a newline after each selector separator as well as a blank line between rules. In JavaScript we apply the identical indentation settings, require a space before conditional expressions, and leave both chained\u2011method breaking and JSLint\u2011happy mode disabled; function bodies also retain the standard indentation (no special keep\u2011function\u2011indentation flag). HTML is treated similarly with 2\u2011space indents, but we also turn on inner\u2011HTML indentation, wrap lines at\u202f120\u202fcharacters, and preserve newlines, limiting consecutive blanks to\u202f5.",
+  "reference_json": {
+    "indent_size": 2,
+    "indent_char": " ",
+    "brace_style": "collapse",
+    "preserve_newlines": true,
+    "max_preserve_newlines": 10,
+    "keep_array_indentation": false,
+    "css": {
+      "indent_size": 2,
+      "indent_char": " ",
+      "selector_separator_newline": true,
+      "newline_between_rules": true
+    },
+    "js": {
+      "indent_size": 2,
+      "indent_char": " ",
+      "space_before_conditional": true,
+      "break_chained_methods": false,
+      "jslint_happy": false,
+      "keep_function_indentation": false
+    },
+    "html": {
+      "indent_size": 2,
+      "indent_char": " ",
+      "indent_inner_html": true,
+      "wrap_line_length": 120,
+      "preserve_newlines": true,
+      "max_preserve_newlines": 5
+    }
+  }
+}

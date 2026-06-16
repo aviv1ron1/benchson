@@ -1,0 +1,62 @@
+{
+  "name": "search_news_22cfe64d",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "date_range": {
+        "properties": {
+          "end_date": {
+            "description": "The end date of the news articles",
+            "format": "date",
+            "type": "string"
+          },
+          "start_date": {
+            "description": "The start date of the news articles",
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "start_date",
+          "end_date"
+        ],
+        "type": "object"
+      },
+      "keywords": {
+        "description": "The keywords to search for",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "keywords",
+      "date_range"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "date_range": {
+      "start_date": "2023-01-01"
+    },
+    "keywords": [
+      "climate change",
+      "renewable energy",
+      "solar power"
+    ]
+  },
+  "valid_json": {
+    "date_range": {
+      "start_date": "2023-01-01",
+      "end_date": "2023-01-31"
+    },
+    "keywords": [
+      "climate change",
+      "renewable energy",
+      "solar power"
+    ]
+  },
+  "description": "Dear Team,\n\nPlease set up the news\u2011tracking query for the month of January\u202f2023, covering the period from\u202f2023\u201101\u201101 through\u202f2023\u201101\u201131. The search should focus on articles that mention **climate change**, **renewable energy**, and **solar power**."
+}

@@ -1,0 +1,47 @@
+{
+  "name": "o68324",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A schema which validates params accepted by the Openx adapter",
+    "properties": {
+      "customFloor": {
+        "description": "The minimum CPM price in USD.",
+        "minimum": 0,
+        "type": "number"
+      },
+      "customParams": {
+        "description": "User-defined targeting key-value pairs.",
+        "type": "object"
+      },
+      "delDomain": {
+        "_format": "hostname",
+        "description": "The delivery domain for the customer.",
+        "pattern": "\\.[a-zA-Z]{2,3}$",
+        "type": "string"
+      },
+      "unit": {
+        "description": "The ad unit id.",
+        "pattern": "^[0-9]+$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "unit",
+      "delDomain"
+    ],
+    "title": "Openx Adapter Params",
+    "type": "object"
+  },
+  "description": "Please set up the ad unit with ID\u202f12345 on the delivery domain\u202fads.example.com. The minimum cost\u2011per\u2011mil (CPM) floor for this placement should be set to $0.50.  \n\nIn addition, include the following custom targeting parameters: the audience age is\u202f30, and the primary interest category is\u202fsports.",
+  "reference_json": {
+    "unit": "12345",
+    "delDomain": "ads.example.com",
+    "customFloor": 0.5,
+    "customParams": {
+      "age": "30",
+      "interest": "sports"
+    }
+  }
+}

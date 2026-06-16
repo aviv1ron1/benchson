@@ -1,0 +1,61 @@
+{
+  "name": "o69840",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "button-for": {
+        "type": "string"
+      },
+      "buttons": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "button-for": "loginForm",
+    "buttons": [
+      {
+        "label": "Submit",
+        "value": "submit"
+      },
+      {
+        "label": "Cancel",
+        "value": "cancel"
+      }
+    ]
+  },
+  "instructions": "Please remove the \"button-for\" field.",
+  "ground_truth": {
+    "buttons": [
+      {
+        "label": "Submit",
+        "value": "submit"
+      },
+      {
+        "label": "Cancel",
+        "value": "cancel"
+      }
+    ]
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "button-for"
+    ],
+    "precise_instruction": "Remove the \"button-for\" field."
+  }
+}

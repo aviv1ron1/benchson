@@ -1,0 +1,122 @@
+{
+  "name": "sp_64_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Google Analytics timing hit",
+    "properties": {
+      "contentLoadTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "dnsTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "domInteractiveTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "pageDownloadTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "pageLoadTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "redirectResponseTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "serverResponseTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "tcpConnectTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "userTimingCategory": {
+        "maxLength": 150,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "userTimingLabel": {
+        "maxLength": 500,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "userTimingTime": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "userTimingVariableName": {
+        "maxLength": 500,
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "timing",
+      "vendor": "com.google.analytics.measurement-protocol",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "contentLoadTime": 350,
+    "dnsTime": 45,
+    "domInteractiveTime": 200,
+    "pageDownloadTime": 150,
+    "pageLoadTime": 500,
+    "redirectResponseTime": 30,
+    "serverResponseTime": 80,
+    "tcpConnectTime": 25,
+    "userTimingCategory": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "userTimingLabel": "HomePage",
+    "userTimingTime": 500,
+    "userTimingVariableName": "loadTime"
+  },
+  "valid_json": {
+    "contentLoadTime": 350,
+    "dnsTime": 45,
+    "domInteractiveTime": 200,
+    "pageDownloadTime": 150,
+    "pageLoadTime": 500,
+    "redirectResponseTime": 30,
+    "serverResponseTime": 80,
+    "tcpConnectTime": 25,
+    "userTimingCategory": "Page Load",
+    "userTimingLabel": "HomePage",
+    "userTimingTime": 500,
+    "userTimingVariableName": "loadTime"
+  },
+  "description": "The latest performance snapshot for the HomePage shows a total page load time of **500\u202fms**. Breaking it down, the DNS lookup completed in **45\u202fms**, the TCP handshake took **25\u202fms**, and the server responded in **80\u202fms**. A redirect, when present, added another **30\u202fms**. Once the network steps were finished, the browser downloaded the page assets in **150\u202fms**, and the actual content rendered in **350\u202fms**. The DOM became interactive after **200\u202fms**, marking the point at which users could begin interacting with the page.\n\nThese measurements have been logged under the **\u201cPage\u202fLoad\u201d** user\u2011timing category, with the label **\u201cHomePage\u201d**. The custom timing variable used is **\u201cloadTime\u201d**, and the recorded user timing value matches the overall page load duration at **500\u202fms**."
+}

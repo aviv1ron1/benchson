@@ -1,0 +1,163 @@
+{
+  "name": "luaurc",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/luaurc.json",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "languageMode": {
+        "type": "string",
+        "enum": [
+          "strict",
+          "nonstrict",
+          "nocheck"
+        ]
+      },
+      "lintErrors": {
+        "type": "boolean"
+      },
+      "typeErrors": {
+        "type": "boolean"
+      },
+      "globals": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-zA-Z_]\\w*"
+        }
+      },
+      "aliases": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^(?!\\.{1,2}$)(?!.*\\/)[a-zA-Z0-9\\-\\._]+$": {
+            "type": "string"
+          }
+        }
+      },
+      "lint": {
+        "$comment": "source: https://github.com/luau-lang/luau/blob/master/Config/include/Luau/LinterConfig.h",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "*": {
+            "type": "boolean"
+          },
+          "UnknownGlobal": {
+            "type": "boolean"
+          },
+          "DeprecatedGlobal": {
+            "type": "boolean"
+          },
+          "GlobalUsedAsLocal": {
+            "type": "boolean"
+          },
+          "LocalShadow": {
+            "type": "boolean"
+          },
+          "SameLineStatement": {
+            "type": "boolean"
+          },
+          "MultiLineStatement": {
+            "type": "boolean"
+          },
+          "LocalUnused": {
+            "type": "boolean"
+          },
+          "FunctionUnused": {
+            "type": "boolean"
+          },
+          "ImportUnused": {
+            "type": "boolean"
+          },
+          "BuiltinGlobalWrite": {
+            "type": "boolean"
+          },
+          "PlaceholderRead": {
+            "type": "boolean"
+          },
+          "UnreachableCode": {
+            "type": "boolean"
+          },
+          "UnknownType": {
+            "type": "boolean"
+          },
+          "ForRange": {
+            "type": "boolean"
+          },
+          "UnbalancedAssignment": {
+            "type": "boolean"
+          },
+          "ImplicitReturn": {
+            "type": "boolean"
+          },
+          "DuplicateLocal": {
+            "type": "boolean"
+          },
+          "FormatString": {
+            "type": "boolean"
+          },
+          "TableLiteral": {
+            "type": "boolean"
+          },
+          "UninitializedLocal": {
+            "type": "boolean"
+          },
+          "DuplicateFunction": {
+            "type": "boolean"
+          },
+          "DeprecatedApi": {
+            "type": "boolean"
+          },
+          "TableOperations": {
+            "type": "boolean"
+          },
+          "DuplicateCondition": {
+            "type": "boolean"
+          },
+          "MisleadingAndOr": {
+            "type": "boolean"
+          },
+          "CommentDirective": {
+            "type": "boolean"
+          },
+          "IntegerParsing": {
+            "type": "boolean"
+          },
+          "ComparisonPrecedence": {
+            "type": "boolean"
+          },
+          "RedundantNativeAttribute": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "description": "The project is configured to run in **strict** language mode, with linting errors turned on and type\u2011checking errors turned off. Three global identifiers are declared for the codebase: `myGlobal`, `_internal`, and `Config1`. To keep imports tidy, the alias\u202f`my-lib` maps to the package\u202f`myLibrary`, while `utils` points to the module\u202f`UtilityModule`.\n\nAll lint checks are enabled by default (the wildcard setting \u201c*\u201d is true). Specific overrides have been applied: the **UnknownGlobal** warning is suppressed, **DeprecatedGlobal** warnings are active, **UnreachableCode** warnings are suppressed, **LocalUnused** warnings are active, and **FunctionUnused** warnings are suppressed.",
+  "reference_json": {
+    "languageMode": "strict",
+    "lintErrors": true,
+    "typeErrors": false,
+    "globals": [
+      "myGlobal",
+      "_internal",
+      "Config1"
+    ],
+    "aliases": {
+      "my-lib": "myLibrary",
+      "utils": "UtilityModule"
+    },
+    "lint": {
+      "*": true,
+      "UnknownGlobal": false,
+      "DeprecatedGlobal": true,
+      "UnreachableCode": false,
+      "LocalUnused": true,
+      "FunctionUnused": false
+    }
+  }
+}

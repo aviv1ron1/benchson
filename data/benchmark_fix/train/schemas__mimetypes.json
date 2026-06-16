@@ -1,0 +1,38 @@
+{
+  "name": "mimetypes",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/mimetypes.json",
+    "additionalProperties": false,
+    "patternProperties": {
+      "^\\..+$": {
+        "description": "A file extension",
+        "pattern": "^[a-zA-Z0-9-_.]+/[a-zA-Z0-9-_.]+$",
+        "type": "string",
+        "examples": [
+          "application/json"
+        ]
+      }
+    },
+    "title": "Mime types",
+    "type": "object"
+  },
+  "erroneous_json": {
+    ".json": "application/json",
+    ".html": "text/html",
+    ".png": "image/png",
+    ".tar.gz": "application/gzip",
+    ".js": "application/javascript",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    ".json": "application/json",
+    ".html": "text/html",
+    ".png": "image/png",
+    ".tar.gz": "application/gzip",
+    ".js": "application/javascript"
+  },
+  "description": "Dear team,\n\nPlease note the current list of MIME type associations we are using for our assets: JSON files (the \u201c.json\u201d extension) are served with\u202fapplication/json, HTML pages (\u201c.html\u201d) with\u202ftext/html, and PNG images (\u201c.png\u201d) with\u202fimage/png. Compressed archives that carry the \u201c.tar.gz\u201d extension should be identified as\u202fapplication/gzip, while JavaScript source files (\u201c.js\u201d) are to be labeled as\u202fapplication/javascript. \n\nMake sure these mappings are reflected in the server configuration and any content\u2011type handling logic moving forward. Let me know if you encounter any discrepancies."
+}

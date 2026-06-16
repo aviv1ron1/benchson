@@ -1,0 +1,276 @@
+{
+  "name": "o4249",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Dependency manifest",
+    "description": "This manifest declares dependency, and defines rules for updating its information",
+    "definitions": {
+      "detector": {
+        "description": "Detector is a technique for updating information",
+        "type": "object",
+        "properties": {
+          "xpath": {
+            "description": "XPath based detector",
+            "type": "object",
+            "properties": {
+              "url": {
+                "description": "Website URL",
+                "type": "string"
+              },
+              "xpath": {
+                "description": "XPath expression",
+                "type": "string"
+              },
+              "regex": {
+                "description": "Value parsing regular expression rule (value is specified by the single capture group)",
+                "type": "string"
+              }
+            },
+            "required": [
+              "url",
+              "xpath"
+            ]
+          },
+          "maven": {
+            "description": "Maven based detector",
+            "type": "object",
+            "properties": {
+              "repository": {
+                "description": "Base URL of the Maven repository",
+                "type": "string"
+              },
+              "xpath": {
+                "description": "XPath expression for the Maven repository metadata XML",
+                "type": "string"
+              },
+              "dateFormat": {
+                "description": "Date parsing format (default: %Y%m%d%H%M%S)",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "maxProperties": 1,
+        "minProperties": 1
+      },
+      "variable": {
+        "description": "Variable",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Variable name",
+            "type": "string"
+          },
+          "value": {
+            "description": "Variable value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ]
+      }
+    },
+    "type": "object",
+    "properties": {
+      "extends": {
+        "description": "Template manifest settings",
+        "type": "object",
+        "properties": {
+          "template": {
+            "description": "Template name",
+            "type": "string"
+          },
+          "vars": {
+            "description": "Variables to be passed to the template",
+            "type": "array",
+            "items": {
+              "description": "Variable",
+              "$ref": "#/definitions/variable"
+            }
+          }
+        },
+        "required": [
+          "template"
+        ]
+      },
+      "name": {
+        "description": "Dependency name",
+        "type": "string"
+      },
+      "license": {
+        "description": "Dependency license",
+        "type": "string"
+      },
+      "pages": {
+        "description": "Various Web pages URLs",
+        "type": "object",
+        "properties": {
+          "home": {
+            "description": "Official homepage URL",
+            "type": "string"
+          },
+          "download": {
+            "description": "Download page",
+            "type": "string"
+          },
+          "license": {
+            "description": "License page",
+            "type": "string"
+          },
+          "docs": {
+            "description": "Documentation page",
+            "type": "string"
+          },
+          "changelist": {
+            "description": "Changelog page",
+            "type": "string"
+          },
+          "issues": {
+            "description": "Issue Tracker page",
+            "type": "string"
+          }
+        },
+        "required": [
+          "home"
+        ]
+      },
+      "detectors": {
+        "description": "Techniques for detecting dependency updates",
+        "type": "object",
+        "properties": {
+          "version": {
+            "description": "Latest version detector",
+            "$ref": "#/definitions/detector"
+          },
+          "updatetime": {
+            "description": "Latest update date detector",
+            "$ref": "#/definitions/detector"
+          },
+          "changelist": {
+            "description": "Latest version changelist detector",
+            "$ref": "#/definitions/detector"
+          },
+          "license": {
+            "description": "License name detector",
+            "$ref": "#/definitions/detector"
+          },
+          "url": {
+            "description": "Official homepage URL detector",
+            "$ref": "#/definitions/detector"
+          },
+          "description": {
+            "description": "Dependency description detector",
+            "$ref": "#/definitions/detector"
+          }
+        },
+        "required": [
+          "version"
+        ]
+      },
+      "aliases": {
+        "description": "Dependency aliases",
+        "type": "array",
+        "items": {
+          "description": "Alias name",
+          "type": "string"
+        }
+      }
+    },
+    "anyOf": [
+      {
+        "title": "'name' and 'extends' are required",
+        "required": [
+          "name",
+          "extends"
+        ]
+      },
+      {
+        "title": "'name', 'pages' and 'detectors' are required",
+        "required": [
+          "name",
+          "pages",
+          "detectors"
+        ]
+      }
+    ]
+  },
+  "erroneous_json": {
+    "name": "ExampleLib",
+    "license": null,
+    "pages": {
+      "home": "https://example.org/examplelib",
+      "download": "https://example.org/examplelib/download",
+      "license": "https://example.org/examplelib/license",
+      "docs": "https://example.org/examplelib/docs",
+      "changelist": "https://example.org/examplelib/changelog",
+      "issues": "https://github.com/example/examplelib/issues"
+    },
+    "detectors": {
+      "version": {
+        "xpath": {
+          "url": "https://example.org/examplelib/releases",
+          "xpath": "//div[@class='release']/@data-version",
+          "regex": "v?(\\d+\\.\\d+\\.\\d+)"
+        }
+      },
+      "updatetime": {
+        "xpath": {
+          "url": "https://example.org/examplelib/releases",
+          "xpath": "//div[@class='release']/@data-date"
+        }
+      },
+      "license": {
+        "xpath": {
+          "url": "https://example.org/examplelib",
+          "xpath": "//meta[@name='license']/@content"
+        }
+      }
+    },
+    "aliases": [
+      "exlib",
+      "example-library"
+    ]
+  },
+  "valid_json": {
+    "name": "ExampleLib",
+    "license": "Apache-2.0",
+    "pages": {
+      "home": "https://example.org/examplelib",
+      "download": "https://example.org/examplelib/download",
+      "license": "https://example.org/examplelib/license",
+      "docs": "https://example.org/examplelib/docs",
+      "changelist": "https://example.org/examplelib/changelog",
+      "issues": "https://github.com/example/examplelib/issues"
+    },
+    "detectors": {
+      "version": {
+        "xpath": {
+          "url": "https://example.org/examplelib/releases",
+          "xpath": "//div[@class='release']/@data-version",
+          "regex": "v?(\\d+\\.\\d+\\.\\d+)"
+        }
+      },
+      "updatetime": {
+        "xpath": {
+          "url": "https://example.org/examplelib/releases",
+          "xpath": "//div[@class='release']/@data-date"
+        }
+      },
+      "license": {
+        "xpath": {
+          "url": "https://example.org/examplelib",
+          "xpath": "//meta[@name='license']/@content"
+        }
+      }
+    },
+    "aliases": [
+      "exlib",
+      "example-library"
+    ]
+  },
+  "description": "ExampleLib is an Apache\u20112.0 licensed library whose official homepage can be found at\u202fhttps://example.org/examplelib.  The project\u2019s download page is https://example.org/examplelib/download, the license text is hosted at https://example.org/examplelib/license, and full documentation is available at https://example.org/examplelib/docs.  For a chronological list of changes you can visit https://example.org/examplelib/changelog, and any open issues are tracked on GitHub at https://github.com/example/examplelib/issues.  \n\nTo keep the version information up\u2011to\u2011date we use an XPath\u2011based detector that scans the releases page (https://example.org/examplelib/releases) for the attribute\u202fdata\u2011version on each element matching the expression\u202f//div[@class='release']/@data-version, then extracts the version string with the regular expression\u202fv?(\\d+\\.\\d+\\.\\d+).  A similar XPath detector reads the\u202fdata\u2011date attribute from the same page using the expression\u202f//div[@class='release']/@data-date to obtain the latest update timestamp.  License detection also relies on XPath: it pulls the content of the meta tag named \u201clicense\u201d (//meta[@name='license']/@content) from the main site (https://example.org/examplelib).  The library is also known by the aliases \u201cexlib\u201d and \u201cexample\u2011library\u201d."
+}

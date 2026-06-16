@@ -1,0 +1,51 @@
+{
+  "name": "o69520",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "person": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "first_name",
+          "last_name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "person"
+    ]
+  },
+  "data": {
+    "person": {
+      "first_name": "Emma",
+      "last_name": "Johnson"
+    }
+  },
+  "instructions": "Please change the \u201cfirst_name\u201d inside \u201cperson\u201d to \u201cEmma (updated)\u201d.",
+  "ground_truth": {
+    "person": {
+      "first_name": "Emma (updated)",
+      "last_name": "Johnson"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "person",
+      "first_name"
+    ],
+    "precise_instruction": "Change \"first_name\" inside \"person\" to \"Emma (updated)\"."
+  }
+}

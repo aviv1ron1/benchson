@@ -1,0 +1,53 @@
+{
+  "name": "o73983",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "http://schlothauer.de/schemas/shared/app_module.json",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "application specific module",
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Name of the module",
+        "type": "string",
+        "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+        "__unique": true,
+        "__visKey": true
+      },
+      "description": {
+        "description": "some more words to explain",
+        "type": "string"
+      },
+      "guid": {
+        "description": "global identifier",
+        "type": "string",
+        "format": "uuid"
+      },
+      "app_id": {
+        "description": "Which application owns that module",
+        "type": "string",
+        "format": "uuid",
+        "__ref": "./application.json"
+      },
+      "active": {
+        "description": "is this entry still active",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "name",
+      "gid"
+    ],
+    "version": 1
+  },
+  "description": "The module identified by the UUID\u202f3fa85f64-5717-4562-b3fc-2c963f66afa6 is responsible for handling user authentication and session management. Its purpose is clearly described as \u201cHandles user authentication and session management.\u201d  \n\nIts global identifier (GUID) is d9b2d63d-a233-4123-847a-7e5b5f9c5a5b, and it belongs to the application with the UUID\u202f8f14e45f-ea5c-4bda-9c7e-9c96e0e1b3c8. The module is currently active and is recorded under the group ID a1b2c3d4-e5f6-7890-abcd-ef1234567890.",
+  "reference_json": {
+    "name": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "description": "Handles user authentication and session management.",
+    "guid": "d9b2d63d-a233-4123-847a-7e5b5f9c5a5b",
+    "app_id": "8f14e45f-ea5c-4bda-9c7e-9c96e0e1b3c8",
+    "active": true,
+    "gid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "name": "o63369",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "patternProperties": {
+      "^[a-zA-Z0-9._-]+$": {
+        "$ref": "#/definitions/service"
+      }
+    },
+    "definitions": {
+      "service": {
+        "type": "object",
+        "properties": {
+          "build": {
+            "type": "string"
+          },
+          "cap_add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "cap_drop": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "command": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "container_name": {
+            "type": "string"
+          },
+          "cpu_shares": {
+            "type": "string"
+          },
+          "cpuset": {
+            "type": "string"
+          },
+          "detach": {
+            "type": "boolean"
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "dns": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dns_search": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dockerfile": {
+            "type": "string"
+          },
+          "domainname": {
+            "type": "string"
+          },
+          "entrypoint": {
+            "type": "string"
+          },
+          "env_file": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "environment": {
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "_uniqueItems": true
+              }
+            ]
+          },
+          "expose": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "extends": {
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "service"
+            ],
+            "additionalProperties": false
+          },
+          "extra_hosts": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "external_links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "labels": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "log_driver": {
+            "type": "string"
+          },
+          "log_opt": {
+            "type": "object"
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "mem_limit": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "memswap_limit": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "net": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "string"
+          },
+          "ports": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "ports"
+                },
+                {
+                  "type": "number",
+                  "format": "ports"
+                }
+              ]
+            },
+            "_uniqueItems": true
+          },
+          "privileged": {
+            "type": "string"
+          },
+          "read_only": {
+            "type": "boolean"
+          },
+          "restart": {
+            "type": "string"
+          },
+          "security_opt": {
+            "type": "string"
+          },
+          "stdin_open": {
+            "type": "string"
+          },
+          "tty": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "volumes_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "working_dir": {
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "build"
+            ],
+            "not": {
+              "required": [
+                "image"
+              ]
+            }
+          },
+          {
+            "required": [
+              "image"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "build"
+                  ]
+                },
+                {
+                  "required": [
+                    "dockerfile"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "required": [
+              "extends"
+            ],
+            "not": {
+              "required": [
+                "build",
+                "image"
+              ]
+            }
+          }
+        ],
+        "dependencies": {
+          "memswap_limit": [
+            "mem_limit"
+          ]
+        },
+        "additionalProperties": false
+      },
+      "string_or_list": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/definitions/list_of_strings"
+          }
+        ]
+      },
+      "list_of_strings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true
+      },
+      "list_or_dict": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          {
+            "type": "object"
+          }
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "web": {
+      "build": "./web",
+      "dockerfile": "Dockerfile.dev",
+      "command": [
+        "python",
+        "app.py"
+      ],
+      "container_name": "my_web",
+      "cpu_shares": "1024",
+      "cap_add": [
+        "NET_ADMIN"
+      ],
+      "cap_drop": [
+        "MKNOD"
+      ],
+      "detach": true,
+      "devices": [
+        "/dev/null:/dev/null"
+      ],
+      "dns": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "dns_search": "example.com",
+      "domainname": "example.com",
+      "entrypoint": "/entrypoint.sh",
+      "env_file": ".env",
+      "environment": {
+        "DEBUG": "true",
+        "PORT": "8000"
+      },
+      "expose": [
+        "8000"
+      ],
+      "extra_hosts": {
+        "host1": "10.0.0.1"
+      },
+      "external_links": [],
+      "hostname": "webhost",
+      "labels": [
+        "com.example.description=Web Service"
+      ],
+      "links": [],
+      "log_driver": "json-file",
+      "log_opt": {
+        "max-size": "10m"
+      },
+      "mac_address": "02:42:ac:11:00:02",
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "name": "web",
+      "net": "bridge",
+      "pid": "host",
+      "ports": [
+        "8000:8000"
+      ],
+      "privileged": "false",
+      "read_only": false,
+      "restart": "always",
+      "security_opt": "seccomp=unconfined",
+      "stdin_open": "true",
+      "tty": "true",
+      "user": "www-data",
+      "volumes": [
+        ".:/code",
+        "/var/log/web:/var/log/web"
+      ],
+      "volumes_from": [],
+      "working_dir": "/code"
+    },
+    "db": {
+      "image": "postgres:13",
+      "container_name": "my_db",
+      "environment": [
+        "POSTGRES_PASSWORD=example",
+        "POSTGRES_DB=mydb"
+      ],
+      "ports": [
+        "5432:5432"
+      ],
+      "volumes": [
+        "/var/lib/postgresql/data:/var/lib/postgresql/data"
+      ],
+      "restart": "on-failure",
+      "hostname": "dbhost",
+      "mem_limit": 1024,
+      "labels": {
+        "com.example.role": "database"
+      },
+      "log_driver": "syslog",
+      "log_opt": {}
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "web": {
+      "build": "./web",
+      "dockerfile": "Dockerfile.dev",
+      "command": [
+        "python",
+        "app.py"
+      ],
+      "container_name": "my_web",
+      "cpu_shares": "1024",
+      "cap_add": [
+        "NET_ADMIN"
+      ],
+      "cap_drop": [
+        "MKNOD"
+      ],
+      "detach": true,
+      "devices": [
+        "/dev/null:/dev/null"
+      ],
+      "dns": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "dns_search": "example.com",
+      "domainname": "example.com",
+      "entrypoint": "/entrypoint.sh",
+      "env_file": ".env",
+      "environment": {
+        "DEBUG": "true",
+        "PORT": "8000"
+      },
+      "expose": [
+        "8000"
+      ],
+      "extra_hosts": {
+        "host1": "10.0.0.1"
+      },
+      "external_links": [],
+      "hostname": "webhost",
+      "labels": [
+        "com.example.description=Web Service"
+      ],
+      "links": [],
+      "log_driver": "json-file",
+      "log_opt": {
+        "max-size": "10m"
+      },
+      "mac_address": "02:42:ac:11:00:02",
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "name": "web",
+      "net": "bridge",
+      "pid": "host",
+      "ports": [
+        "8000:8000"
+      ],
+      "privileged": "false",
+      "read_only": false,
+      "restart": "always",
+      "security_opt": "seccomp=unconfined",
+      "stdin_open": "true",
+      "tty": "true",
+      "user": "www-data",
+      "volumes": [
+        ".:/code",
+        "/var/log/web:/var/log/web"
+      ],
+      "volumes_from": [],
+      "working_dir": "/code"
+    },
+    "db": {
+      "image": "postgres:13",
+      "container_name": "my_db",
+      "environment": [
+        "POSTGRES_PASSWORD=example",
+        "POSTGRES_DB=mydb"
+      ],
+      "ports": [
+        "5432:5432"
+      ],
+      "volumes": [
+        "/var/lib/postgresql/data:/var/lib/postgresql/data"
+      ],
+      "restart": "on-failure",
+      "hostname": "dbhost",
+      "mem_limit": 1024,
+      "labels": {
+        "com.example.role": "database"
+      },
+      "log_driver": "syslog",
+      "log_opt": {}
+    }
+  },
+  "description": "Subject: Docker\u2011Compose Service Specification \u2013 Web and Database Containers  \n\nThe **web** service is built from the local directory\u202f`./web` using the Dockerfile\u202f`Dockerfile.dev`. It launches with the command\u202f`python app.py`, runs detached, and is identified by the container name **my_web**. Resource limits include 1\u202f024\u202fCPU shares, a memory cap of **512\u202fMiB**, and a swap limit of **1\u202fGiB**; the process runs in the host PID namespace and is attached to the **bridge** network under the hostname **webhost** with the domain\u202f`example.com`. Capabilities added are **NET_ADMIN** and dropped **MKNOD**; the container is not privileged (`false`), is not read\u2011only, and has STDIN open (`true`) with a TTY allocated (`true`). It starts from the entrypoint\u202f`/entrypoint.sh`, uses the environment file\u202f`.env`, and sets environment variables **DEBUG=true** and **PORT=8000**. Ports\u202f`8000:8000` are exposed, and the internal port\u202f8000 is also listed under expose. DNS servers **8.8.8.8** and **8.8.4.4** with search domain\u202f`example.com` are configured, as are extra hosts mapping **host1** to\u202f`10.0.0.1`. The MAC address is **02:42:ac:11:00:02**. Labels include `com.example.description=Web Service`. Logging uses the **json\u2011file** driver with a maximum size of **10\u202fm**. The container mounts the project directory (`.:/code`) and the log directory (`/var/log/web:/var/log/web`), works from `/code`, and has no external links, no additional container links, and no volumes\u2011from other containers. It is set to always restart and applies the security option `seccomp=unconfined`.  \n\nThe **db** service runs from the pre\u2011built image **postgres:13** and is named **my_db**. It listens on port **5432:5432**, uses a volume mapping `/var/lib/postgresql/data:/var/lib/postgresql/data` for persistent storage, and is limited to **1\u202f024** units of memory. Environment variables are supplied as a list: `POSTGRES_PASSWORD=example` and `POSTGRES_DB=mydb`. The container\u2019s hostname is **dbhost**, it carries the label `com.example.role=database`, and its logs are sent to the **syslog** driver with no additional options. The restart policy is **on\u2011failure**. No other optional fields (such as caps, devices, extra hosts, etc.) are defined for this service."
+}

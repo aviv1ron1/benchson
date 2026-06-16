@@ -1,0 +1,112 @@
+{
+  "name": "o83864",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "extends": {
+        "oneOf": [
+          {
+            "minLength": 1,
+            "type": "string"
+          },
+          {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        ]
+      },
+      "schematics": {
+        "additionalProperties": {
+          "properties": {
+            "aliases": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "description": {
+              "description": "A description for the schematic",
+              "type": "string"
+            },
+            "extends": {
+              "description": "An schematic override. It can be a local schematic or from another collection (in the format 'collection:schematic')",
+              "type": "string"
+            },
+            "factory": {
+              "description": "A folder or file path to the schematic factory",
+              "type": "string"
+            },
+            "hidden": {
+              "default": false,
+              "description": "Whether or not this schematic should be listed by the tooling. This does not prevent the tooling to run this schematic, just removes its name from listSchematicNames().",
+              "type": "boolean"
+            },
+            "private": {
+              "default": false,
+              "description": "Whether or not this schematic can be called from an external schematic, or a tool. This implies hidden: true.",
+              "type": "boolean"
+            },
+            "schema": {
+              "description": "Location of the schema.json file of the schematic",
+              "type": "string"
+            }
+          },
+          "required": [
+            "factory",
+            "description"
+          ],
+          "type": "object"
+        },
+        "description": "A map of schematic names to schematic details",
+        "type": "object"
+      },
+      "version": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schematics"
+    ],
+    "title": "Collection Schema for validating a 'collection.json'.",
+    "type": "object"
+  },
+  "description": "Our collection builds on the shared \u201ccommon-collection\u201d and is currently at version\u202f1.2.0. It provides three primary schematics\u2014**build**, **test**, and **publish**\u2014each tailored for a specific stage of the development workflow.\n\nThe **build** schematic compiles the project and bundles assets. Its factory lives at `./src/build/index`, and it can be invoked via the aliases `b` or `compile`. This schematic is publicly listed (`hidden: false`) and callable by external tools (`private: false`), with its validation schema located at `./src/build/schema.json`. The **test** schematic runs both unit and integration tests; its factory is `./src/test/index` and it is reachable with the alias `t`. Because it is meant for internal use, it is hidden from standard listings (`hidden: true`) and marked as private (`private: true`), with its schema at `./src/test/schema.json`. Finally, the **publish** schematic publishes the package to the registry. Its factory path is `./src/publish`, it overrides the implementation from `npm-collection:publish`, and it remains visible (`hidden: false`).",
+  "reference_json": {
+    "extends": "common-collection",
+    "version": "1.2.0",
+    "schematics": {
+      "build": {
+        "description": "Compiles the project and bundles assets.",
+        "factory": "./src/build/index",
+        "aliases": [
+          "b",
+          "compile"
+        ],
+        "hidden": false,
+        "private": false,
+        "schema": "./src/build/schema.json"
+      },
+      "test": {
+        "description": "Runs unit and integration tests.",
+        "factory": "./src/test/index",
+        "aliases": [
+          "t"
+        ],
+        "hidden": true,
+        "private": true,
+        "schema": "./src/test/schema.json"
+      },
+      "publish": {
+        "description": "Publishes the package to the registry.",
+        "factory": "./src/publish",
+        "extends": "npm-collection:publish",
+        "hidden": false
+      }
+    }
+  }
+}

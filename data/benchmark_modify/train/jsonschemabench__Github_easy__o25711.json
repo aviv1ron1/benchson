@@ -1,0 +1,125 @@
+{
+  "name": "o25711",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "_elements"
+    ],
+    "properties": {
+      "_attributes": {
+        "type": "object"
+      },
+      "_elements": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "name",
+            "password",
+            "gid",
+            "users"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "password": {
+              "type": "string"
+            },
+            "gid": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "users": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "_attributes": {
+      "generatedAt": "2026-06-15T12:34:56Z",
+      "source": "system"
+    },
+    "_elements": [
+      {
+        "name": "admin",
+        "password": "$2b$12$eImiTXuWVxfM37uY4JANjQ==",
+        "gid": 0,
+        "users": [
+          "root"
+        ]
+      },
+      {
+        "name": "developers",
+        "password": "devpass123",
+        "gid": 1001,
+        "users": [
+          "alice",
+          "bob",
+          "carol"
+        ]
+      },
+      {
+        "name": "guests",
+        "password": "",
+        "gid": null,
+        "users": []
+      }
+    ]
+  },
+  "instructions": "Could you set the `generatedAt` field inside `_attributes` to `\"2026-06-15T12:34:56Z (updated)\"`?",
+  "ground_truth": {
+    "_attributes": {
+      "generatedAt": "2026-06-15T12:34:56Z (updated)",
+      "source": "system"
+    },
+    "_elements": [
+      {
+        "name": "admin",
+        "password": "$2b$12$eImiTXuWVxfM37uY4JANjQ==",
+        "gid": 0,
+        "users": [
+          "root"
+        ]
+      },
+      {
+        "name": "developers",
+        "password": "devpass123",
+        "gid": 1001,
+        "users": [
+          "alice",
+          "bob",
+          "carol"
+        ]
+      },
+      {
+        "name": "guests",
+        "password": "",
+        "gid": null,
+        "users": []
+      }
+    ]
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "_attributes",
+      "generatedAt"
+    ],
+    "precise_instruction": "Change \"generatedAt\" inside \"_attributes\" to \"2026-06-15T12:34:56Z (updated)\"."
+  }
+}

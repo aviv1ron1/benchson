@@ -1,0 +1,137 @@
+{
+  "name": "o39256",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "options": {
+        "properties": {
+          "nick": {
+            "type": "string"
+          },
+          "plugins": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "shell": {
+            "type": "string"
+          },
+          "ttl": {
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "strategies": {
+        "patternProperties": {
+          ".*": {
+            "properties": {
+              "jid": {
+                "type": "string"
+              },
+              "password_env": {
+                "type": "string"
+              },
+              "people": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "rooms": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "jid",
+              "password_env"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "required": [
+      "options",
+      "strategies"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "options": {
+      "nick": "BotMaster",
+      "plugins": [
+        "logger",
+        "auth",
+        "monitor"
+      ],
+      "shell": "/bin/bash",
+      "ttl": 3600
+    },
+    "strategies": {
+      "default": {
+        "jid": "user@example.com",
+        "password_env": "BOT_PASSWORD",
+        "people": [
+          "alice@example.com",
+          "bob@example.com"
+        ],
+        "rooms": [
+          "room1@conference.example.com",
+          "room2@conference.example.com"
+        ]
+      },
+      "dev": {
+        "jid": "devuser@example.org",
+        "password_env": "DEV_BOT_PASSWORD",
+        "people": [],
+        "rooms": [
+          "devroom@conference.example.org"
+        ]
+      }
+    }
+  },
+  "instructions": "Please remove the \"plugins\" field inside the \"options\".",
+  "ground_truth": {
+    "options": {
+      "nick": "BotMaster",
+      "shell": "/bin/bash",
+      "ttl": 3600
+    },
+    "strategies": {
+      "default": {
+        "jid": "user@example.com",
+        "password_env": "BOT_PASSWORD",
+        "people": [
+          "alice@example.com",
+          "bob@example.com"
+        ],
+        "rooms": [
+          "room1@conference.example.com",
+          "room2@conference.example.com"
+        ]
+      },
+      "dev": {
+        "jid": "devuser@example.org",
+        "password_env": "DEV_BOT_PASSWORD",
+        "people": [],
+        "rooms": [
+          "devroom@conference.example.org"
+        ]
+      }
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "options",
+      "plugins"
+    ],
+    "precise_instruction": "Remove the \"plugins\" field inside \"options\"."
+  }
+}

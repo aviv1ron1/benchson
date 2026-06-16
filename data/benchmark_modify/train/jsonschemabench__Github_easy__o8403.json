@@ -1,0 +1,66 @@
+{
+  "name": "o8403",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "actions": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "channel": {
+        "type": "string"
+      },
+      "command": {
+        "type": "string"
+      },
+      "tags": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "actions",
+      "channel",
+      "command",
+      "tags"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "actions": [
+      "create",
+      "update",
+      "notify"
+    ],
+    "channel": "slack",
+    "command": "deploy",
+    "tags": [
+      "production",
+      "frontend",
+      "release"
+    ]
+  },
+  "instructions": "Could you clear all entries from the\u202ftags\u202flist?",
+  "ground_truth": {
+    "actions": [
+      "create",
+      "update",
+      "notify"
+    ],
+    "channel": "slack",
+    "command": "deploy",
+    "tags": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "tags"
+    ],
+    "precise_instruction": "Remove all items from the \"tags\" list."
+  }
+}

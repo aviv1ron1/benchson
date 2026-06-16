@@ -1,0 +1,94 @@
+{
+  "name": "o81596",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "order": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "integer"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "drinkType": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "milk": {
+            "type": "string"
+          },
+          "espressoConCard": {
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "orderId",
+          "customerName",
+          "drinkType",
+          "size",
+          "date",
+          "time",
+          "milk",
+          "espressoConCard",
+          "totalPrice"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "order"
+    ]
+  },
+  "data": {
+    "order": {
+      "orderId": 1024,
+      "customerName": "Alice Johnson",
+      "drinkType": "Cappuccino",
+      "size": "Medium",
+      "date": "2026-06-15",
+      "time": "09:30",
+      "milk": "Almond",
+      "espressoConCard": "yes",
+      "totalPrice": 4.75
+    }
+  },
+  "instructions": "Could you change the drinkType inside order to \u201cCappuccino (updated)\u201d?",
+  "ground_truth": {
+    "order": {
+      "orderId": 1024,
+      "customerName": "Alice Johnson",
+      "drinkType": "Cappuccino (updated)",
+      "size": "Medium",
+      "date": "2026-06-15",
+      "time": "09:30",
+      "milk": "Almond",
+      "espressoConCard": "yes",
+      "totalPrice": 4.75
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "order",
+      "drinkType"
+    ],
+    "precise_instruction": "Change \"drinkType\" inside \"order\" to \"Cappuccino (updated)\"."
+  }
+}

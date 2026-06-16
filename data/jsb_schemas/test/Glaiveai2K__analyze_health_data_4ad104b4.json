@@ -1,0 +1,39 @@
+{
+  "name": "analyze_health_data_4ad104b4",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "data": {
+        "items": {
+          "properties": {
+            "measurement": {
+              "description": "The type of measurement",
+              "type": "string"
+            },
+            "timestamp": {
+              "description": "The timestamp of the measurement",
+              "format": "date-time",
+              "type": "string"
+            },
+            "value": {
+              "description": "The value of the measurement",
+              "type": "number"
+            }
+          },
+          "required": [
+            "measurement",
+            "value",
+            "timestamp"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "data"
+    ],
+    "type": "object"
+  }
+}

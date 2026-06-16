@@ -1,0 +1,320 @@
+{
+  "name": "o74446",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Person",
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": [
+          "person"
+        ]
+      },
+      "division_id": {
+        "type": "string",
+        "pattern": "^ocd-division/country:[a-z]{2}$"
+      },
+      "gid": {
+        "type": "integer"
+      },
+      "row": {
+        "type": "integer"
+      },
+      "id": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+      },
+      "name": {
+        "$ref": "#/definitions/complex_string"
+      },
+      "other_names": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sources": {
+            "$ref": "#/definitions/sources"
+          },
+          "confidence": {
+            "$ref": "#/definitions/confidence"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value"
+        ]
+      },
+      "memberships": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "organization_id": {
+              "$ref": "#/definitions/complex_string"
+            },
+            "role": {
+              "$ref": "#/definitions/complex_string"
+            },
+            "title": {
+              "$ref": "#/definitions/complex_string"
+            },
+            "rank": {
+              "$ref": "#/definitions/complex_string"
+            },
+            "date_first_cited": {
+              "$ref": "#/definitions/complex_date_with_actual"
+            },
+            "start_date_description": {
+              "$ref": "#/definitions/complex_string"
+            },
+            "date_last_cited": {
+              "$ref": "#/definitions/complex_date_with_actual"
+            },
+            "end_date_description": {
+              "$ref": "#/definitions/complex_string"
+            },
+            "site_id": {
+              "$ref": "#/definitions/complex_string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "organization_id"
+          ]
+        }
+      },
+      "notes": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "type",
+      "division_id",
+      "gid",
+      "row",
+      "id",
+      "name"
+    ],
+    "definitions": {
+      "complex_date": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+          },
+          "sources": {
+            "$ref": "#/definitions/sources"
+          },
+          "confidence": {
+            "$ref": "#/definitions/confidence"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value"
+        ]
+      },
+      "complex_date_with_actual": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "pattern": "^[0-9]{4}(-[0-9]{2}){0,2}$"
+          },
+          "sources": {
+            "$ref": "#/definitions/sources"
+          },
+          "confidence": {
+            "$ref": "#/definitions/confidence"
+          },
+          "actual": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value"
+        ]
+      },
+      "complex_string": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "sources": {
+            "$ref": "#/definitions/sources"
+          },
+          "confidence": {
+            "$ref": "#/definitions/confidence"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "value"
+        ]
+      },
+      "confidence": {
+        "type": "string",
+        "enum": [
+          "Low",
+          "Medium",
+          "High"
+        ]
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "data": {
+    "type": "person",
+    "division_id": "ocd-division/country:us",
+    "gid": 12345,
+    "row": 1,
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "name": {
+      "value": "Jane Doe",
+      "sources": [
+        "https://example.com/source1"
+      ],
+      "confidence": "High"
+    },
+    "other_names": {
+      "value": [
+        "J. Doe",
+        "Jane D."
+      ],
+      "sources": [
+        "https://example.com/alias"
+      ],
+      "confidence": "Medium"
+    },
+    "memberships": [
+      {
+        "organization_id": {
+          "value": "org-123"
+        },
+        "role": {
+          "value": "Member"
+        },
+        "title": {
+          "value": "Committee Chair"
+        },
+        "rank": {
+          "value": "Senior"
+        },
+        "date_first_cited": {
+          "value": "2020-01",
+          "actual": true
+        },
+        "start_date_description": {
+          "value": "January 2020"
+        },
+        "date_last_cited": {
+          "value": "2022-12",
+          "actual": false
+        },
+        "end_date_description": {
+          "value": "December 2022"
+        },
+        "site_id": {
+          "value": "site-456"
+        }
+      }
+    ],
+    "notes": {
+      "value": "This is a sample note about the person."
+    }
+  },
+  "instructions": "Update the value inside the name field to \"Jane Doe (updated)\".",
+  "ground_truth": {
+    "type": "person",
+    "division_id": "ocd-division/country:us",
+    "gid": 12345,
+    "row": 1,
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "name": {
+      "value": "Jane Doe (updated)",
+      "sources": [
+        "https://example.com/source1"
+      ],
+      "confidence": "High"
+    },
+    "other_names": {
+      "value": [
+        "J. Doe",
+        "Jane D."
+      ],
+      "sources": [
+        "https://example.com/alias"
+      ],
+      "confidence": "Medium"
+    },
+    "memberships": [
+      {
+        "organization_id": {
+          "value": "org-123"
+        },
+        "role": {
+          "value": "Member"
+        },
+        "title": {
+          "value": "Committee Chair"
+        },
+        "rank": {
+          "value": "Senior"
+        },
+        "date_first_cited": {
+          "value": "2020-01",
+          "actual": true
+        },
+        "start_date_description": {
+          "value": "January 2020"
+        },
+        "date_last_cited": {
+          "value": "2022-12",
+          "actual": false
+        },
+        "end_date_description": {
+          "value": "December 2022"
+        },
+        "site_id": {
+          "value": "site-456"
+        }
+      }
+    ],
+    "notes": {
+      "value": "This is a sample note about the person."
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "name",
+      "value"
+    ],
+    "precise_instruction": "Change \"value\" inside \"name\" to \"Jane Doe (updated)\"."
+  }
+}

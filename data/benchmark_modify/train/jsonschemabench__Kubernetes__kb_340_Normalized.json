@@ -1,0 +1,39 @@
+{
+  "name": "kb_340_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "ExternalDocumentation allows referencing an external resource for extended documentation.",
+    "properties": {
+      "description": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "url": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "description": "Comprehensive guide for integrating the API with step-by-step examples.",
+    "url": "https://api.example.com/documentation"
+  },
+  "instructions": "Change the url field to \"https://api.example.com/documentation (updated)\".",
+  "ground_truth": {
+    "description": "Comprehensive guide for integrating the API with step-by-step examples.",
+    "url": "https://api.example.com/documentation (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "url"
+    ],
+    "precise_instruction": "Change \"url\" to \"https://api.example.com/documentation (updated)\"."
+  }
+}

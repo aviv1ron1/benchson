@@ -1,0 +1,241 @@
+{
+  "name": "o25763",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "_elements"
+    ],
+    "properties": {
+      "_attributes": {
+        "type": "object",
+        "required": [
+          "extracted",
+          "has_metadata"
+        ],
+        "properties": {
+          "extracted": {
+            "type": "boolean"
+          },
+          "has_metadata": {
+            "type": "boolean"
+          }
+        }
+      },
+      "_elements": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/file"
+            },
+            {
+              "$ref": "#/definitions/file_remote_dir"
+            }
+          ]
+        }
+      }
+    },
+    "definitions": {
+      "file": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "name",
+              "type",
+              "user",
+              "group"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "file",
+                  "link",
+                  "dir",
+                  "remote_dir"
+                ]
+              },
+              "user": {
+                "type": "string",
+                "minLength": 1
+              },
+              "group": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "oneOf": [
+              {
+                "$ref": "#/definitions/file_file"
+              },
+              {
+                "$ref": "#/definitions/file_dir"
+              },
+              {
+                "$ref": "#/definitions/file_link"
+              }
+            ]
+          },
+          {
+            "$ref": "#/definitions/file_common"
+          }
+        ]
+      },
+      "file_common": {
+        "type": "object",
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "file",
+              "link",
+              "dir",
+              "remote_dir"
+            ]
+          }
+        }
+      },
+      "file_file": {
+        "required": [
+          "type",
+          "size",
+          "mode"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "file"
+            ]
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mode": {
+            "type": "string",
+            "pattern": "^[0-7]{3,4}$"
+          }
+        }
+      },
+      "file_dir": {
+        "required": [
+          "type",
+          "size",
+          "mode"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "dir"
+            ]
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mode": {
+            "type": "string",
+            "pattern": "^[0-4]?[0-7]{3}$"
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "files",
+              "dirs"
+            ],
+            "properties": {
+              "files": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dirs": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          {
+            "required": [
+              "file_objects"
+            ],
+            "properties": {
+              "file_objects": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        ]
+      },
+      "file_link": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "link"
+            ]
+          }
+        }
+      },
+      "file_remote_dir": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/file_common"
+          }
+        ]
+      }
+    }
+  },
+  "description": "The latest extraction run completed successfully, with the data marked as extracted and no additional metadata attached.  \n\nThe archive contains four entries: a regular file called **document.txt** owned by *alice* in the *staff* group (size\u202f=\u202f1\u202f024\u202fbytes, permission mode\u202f0644); a directory named **photos** owned by *bob* in the *users* group (size\u202f=\u202f4\u202f096\u202fbytes, mode\u202f0755) that holds ten files and two sub\u2011directories; a symbolic link titled **shortcut** owned by *carol* in the *users* group; and a remote directory entry named **remote_backup**.",
+  "reference_json": {
+    "_attributes": {
+      "extracted": true,
+      "has_metadata": false
+    },
+    "_elements": [
+      {
+        "name": "document.txt",
+        "type": "file",
+        "user": "alice",
+        "group": "staff",
+        "size": 1024,
+        "mode": "0644"
+      },
+      {
+        "name": "photos",
+        "type": "dir",
+        "user": "bob",
+        "group": "users",
+        "size": 4096,
+        "mode": "0755",
+        "files": 10,
+        "dirs": 2
+      },
+      {
+        "name": "shortcut",
+        "type": "link",
+        "user": "carol",
+        "group": "users"
+      },
+      {
+        "name": "remote_backup",
+        "type": "remote_dir"
+      }
+    ]
+  }
+}

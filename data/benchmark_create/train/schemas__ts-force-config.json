@@ -1,0 +1,171 @@
+{
+  "name": "ts-force-config",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/ts-force-config.json",
+    "definitions": {
+      "AuthConfig": {
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "clientSecret": {
+            "type": "string"
+          },
+          "instanceUrl": {
+            "type": "string"
+          },
+          "oAuthHost": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "username": {
+            "description": "If using `sfdx-cli` auth, this is the only property needed to authenticate.\nOtherwise, supply additional oAuth parameters",
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "FieldMapping": {
+        "properties": {
+          "apiName": {
+            "description": "The Target SObject API name",
+            "type": "string"
+          },
+          "propName": {
+            "description": "The generated class property name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "apiName",
+          "propName"
+        ],
+        "type": "object"
+      },
+      "SObjectConfig": {
+        "description": "Object used to configure advanced settings on SObject generation",
+        "properties": {
+          "apiName": {
+            "description": "The Target SObject API name",
+            "type": "string"
+          },
+          "autoConvertNames": {
+            "description": "Defaulted to true.  If set to false, names will NOT be auto-converted to standard javascript conventions",
+            "type": "boolean"
+          },
+          "className": {
+            "description": "The generated class name.  If not set, it will be automatically\nconverted to standard javascript Class convention",
+            "type": "string"
+          },
+          "enforcePicklistValues": {
+            "description": "*Overrides Global Setting*\nThe path to generate files to.\n   If the destination is a folder, it will generate one file per object.\n   If the destination is a `.ts` file, a single file will be generated.\n   If not set, class output will be logged to `stdout`",
+            "enum": [
+              "ALL",
+              "RESTRICTED",
+              false
+            ]
+          },
+          "fieldMappings": {
+            "description": "List of field mappings to override the auto-conversion",
+            "items": {
+              "$ref": "#/definitions/FieldMapping"
+            },
+            "type": "array"
+          },
+          "generatePicklists": {
+            "description": "*Overrides Global Setting*\nMake picklist fields strongly typed to generated enums. `generatePicklists` must also be `true`\n  `ALL`: for all picklist fields, regardless of salesforce enforcement\n  `RESTRICTED`: only on fields where the values are restricted on Salesforce",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "apiName"
+        ],
+        "type": "object"
+      }
+    },
+    "properties": {
+      "auth": {
+        "$ref": "#/definitions/AuthConfig",
+        "description": "Authentication Method.  Choose one of three:\n- You can either username/password oAuth configuration\n- sfdx configuration (`username` only)\n- `accessToken` & `instanceUrl`\nSee readme for examples."
+      },
+      "enforcePicklistValues": {
+        "description": "Make picklist fields strongly typed to generated enums. `generatePicklists` must also be `true`\n  `ALL`: for all picklist fields, regardless of salesforce enforcement\n  `RESTRICTED`: only on fields where the values are restricted on Salesforce",
+        "enum": [
+          "ALL",
+          "RESTRICTED",
+          false
+        ]
+      },
+      "generatePicklists": {
+        "description": "Flag to generate enums for picklist fields.  Defaulted to false",
+        "type": "boolean"
+      },
+      "outPath": {
+        "description": "The path to generate files to.\n   If the destination is a folder, it will generate one file per object.\n   If the destination is a `.ts` file, a single file will be generated.\n   If not set, class output will be logged to `stdout`",
+        "type": "string"
+      },
+      "sObjects": {
+        "description": "The SObjects to generate classes for.  Can either be a string or an `SObjectConfig` object",
+        "items": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/SObjectConfig"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "type": "array"
+      }
+    },
+    "type": "object"
+  },
+  "description": "Hi Team,\n\nBelow is the configuration we\u2019ll use for the upcoming TypeScript generation run against our Salesforce org. For authentication we\u2019ll rely on the full OAuth credentials: the username\u202fis **example.user@example.com**, the client ID is **3MVG9aBcDeFgHiJkLmNoPqrStUvWxYz1234567890**, and the client secret **s3cr3tK3yF0r0Auth**. The instance URL is **https://na45.salesforce.com**, the OAuth host will be **https://login.salesforce.com**, and we\u2019ll pass the access token **00Dxx0000001gPNEAY!AQ4AIFdHJJKLmnopqrstuVWXYZ** together with the password **MyPassword123!**. We\u2019re targeting API version **57.0**.\n\nWe want picklist fields to be strongly typed, so the global setting **enforcePicklistValues** is set to **ALL**, and we\u2019re enabling enum generation with **generatePicklists** set to **true**. All generated files should be written to the relative folder **./generated**.\n\nThe generation will include the standard **Account** object and a custom object configuration for **Custom_Object__c**. For this object we\u2019ll keep the automatic name conversion enabled, name the generated class **CustomObject**, and override the picklist enforcement to **RESTRICTED**. We also need two explicit field mappings: **Custom_Field__c** should become the property **customField**, and **Another_Field__c** should become **anotherField**. Finally, picklist enum generation remains enabled for this custom object as well.",
+  "reference_json": {
+    "auth": {
+      "username": "example.user@example.com",
+      "clientId": "3MVG9aBcDeFgHiJkLmNoPqrStUvWxYz1234567890",
+      "clientSecret": "s3cr3tK3yF0r0Auth",
+      "instanceUrl": "https://na45.salesforce.com",
+      "oAuthHost": "https://login.salesforce.com",
+      "accessToken": "00Dxx0000001gPNEAY!AQ4AIFdHJJKLmnopqrstuVWXYZ",
+      "password": "MyPassword123!",
+      "version": 57.0
+    },
+    "enforcePicklistValues": "ALL",
+    "generatePicklists": true,
+    "outPath": "./generated",
+    "sObjects": [
+      "Account",
+      {
+        "apiName": "Custom_Object__c",
+        "autoConvertNames": true,
+        "className": "CustomObject",
+        "enforcePicklistValues": "RESTRICTED",
+        "fieldMappings": [
+          {
+            "apiName": "Custom_Field__c",
+            "propName": "customField"
+          },
+          {
+            "apiName": "Another_Field__c",
+            "propName": "anotherField"
+          }
+        ],
+        "generatePicklists": true
+      }
+    ]
+  }
+}

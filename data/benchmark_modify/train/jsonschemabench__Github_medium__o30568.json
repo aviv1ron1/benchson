@@ -1,0 +1,155 @@
+{
+  "name": "o30568",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "cookieipport": {
+        "readonly": true,
+        "type": "string"
+      },
+      "curstate": {
+        "enum": [
+          "UP",
+          "DOWN",
+          "UNKNOWN",
+          "BUSY",
+          "OUT OF SERVICE",
+          "GOING OUT OF SERVICE",
+          "DOWN WHEN GOING OUT OF SERVICE",
+          "NS_EMPTY_STR",
+          "Unknown",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "dynamicweight": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "ipv46": {
+        "readonly": true,
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "port": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "preferredlocation": {
+        "readonly": true,
+        "type": "string"
+      },
+      "servicegroupname": {
+        "type": "string"
+      },
+      "servicename": {
+        "type": "string"
+      },
+      "servicetype": {
+        "enum": [
+          "HTTP",
+          "FTP",
+          "TCP",
+          "UDP",
+          "SSL",
+          "SSL_BRIDGE",
+          "SSL_TCP",
+          "DTLS",
+          "NNTP",
+          "DNS",
+          "DHCPRA",
+          "ANY",
+          "SIP_UDP",
+          "SIP_TCP",
+          "SIP_SSL",
+          "DNS_TCP",
+          "RTSP",
+          "PUSH",
+          "SSL_PUSH",
+          "RADIUS",
+          "RDP",
+          "MYSQL",
+          "MSSQL",
+          "DIAMETER",
+          "SSL_DIAMETER",
+          "TFTP",
+          "ORACLE",
+          "SMPP",
+          "SYSLOGTCP",
+          "SYSLOGUDP",
+          "FIX",
+          "SSL_FIX",
+          "PROXY",
+          "USER_TCP",
+          "USER_SSL_TCP",
+          "QUIC",
+          "IPFIX",
+          "LOGSTREAM"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "vserverid": {
+        "readonly": true,
+        "type": "string"
+      },
+      "vsvrbindsvcip": {
+        "readonly": true,
+        "type": "string"
+      },
+      "vsvrbindsvcport": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "weight": {
+        "type": "integer"
+      }
+    },
+    "title": "lbvserver_service_binding",
+    "type": "object"
+  },
+  "data": {
+    "cookieipport": "192.168.1.10:80",
+    "curstate": "UP",
+    "dynamicweight": 5,
+    "ipv46": "IPv4",
+    "name": "svc_binding_1",
+    "port": 8080,
+    "preferredlocation": "US-EAST",
+    "servicegroupname": "sg1",
+    "servicename": "svc1",
+    "servicetype": "HTTP",
+    "vserverid": "vsrv123",
+    "vsvrbindsvcip": "10.0.0.5",
+    "vsvrbindsvcport": 443,
+    "weight": 10
+  },
+  "instructions": "Please change the value of the field\u202fservicegroupname\u202fto\u202fsg1 (updated).",
+  "ground_truth": {
+    "cookieipport": "192.168.1.10:80",
+    "curstate": "UP",
+    "dynamicweight": 5,
+    "ipv46": "IPv4",
+    "name": "svc_binding_1",
+    "port": 8080,
+    "preferredlocation": "US-EAST",
+    "servicegroupname": "sg1 (updated)",
+    "servicename": "svc1",
+    "servicetype": "HTTP",
+    "vserverid": "vsrv123",
+    "vsvrbindsvcip": "10.0.0.5",
+    "vsvrbindsvcport": 443,
+    "weight": 10
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "servicegroupname"
+    ],
+    "precise_instruction": "Change \"servicegroupname\" to \"sg1 (updated)\"."
+  }
+}

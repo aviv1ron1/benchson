@@ -1,0 +1,37 @@
+{
+  "name": "book_flight_67564629",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "departure_date": {
+        "description": "The departure date of the flight",
+        "type": "string"
+      },
+      "destination": {
+        "description": "The destination airport",
+        "type": "string"
+      },
+      "origin": {
+        "description": "The origin airport",
+        "type": "string"
+      },
+      "passengers": {
+        "description": "The number of passengers",
+        "type": "integer"
+      },
+      "return_date": {
+        "description": "The return date of the flight",
+        "type": "string"
+      }
+    },
+    "required": [
+      "origin",
+      "destination",
+      "departure_date",
+      "return_date",
+      "passengers"
+    ],
+    "type": "object"
+  }
+}

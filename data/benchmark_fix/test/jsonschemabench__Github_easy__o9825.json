@@ -1,0 +1,71 @@
+{
+  "name": "o9825",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "time": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "$date": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "$date"
+            ]
+          }
+        ]
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "payload": {}
+    },
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "time": {
+      "$date": "2026-06-15T12:34:56Z"
+    },
+    "payload": {
+      "id": 12345,
+      "status": "completed",
+      "details": {
+        "itemsProcessed": 250,
+        "durationSeconds": 42.7
+      }
+    }
+  },
+  "valid_json": {
+    "time": {
+      "$date": "2026-06-15T12:34:56Z"
+    },
+    "name": "Example Event",
+    "payload": {
+      "id": 12345,
+      "status": "completed",
+      "details": {
+        "itemsProcessed": 250,
+        "durationSeconds": 42.7
+      }
+    }
+  },
+  "description": "On June\u202f15,\u202f2026 at 12:34:56\u202fUTC, the event titled **Example Event** was recorded. The operation completed successfully with a status of **completed** and was identified by the reference number **12345**.\n\nAccording to the details logged, the process handled **250 items** and took **42.7 seconds** to finish."
+}

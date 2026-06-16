@@ -1,0 +1,33 @@
+{
+  "name": "o25194",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "properties": {
+      "bar": {
+        "type": "integer",
+        "minimum": 10
+      },
+      "baz": {
+        "type": "number",
+        "minimum": 10.5
+      },
+      "qux": {
+        "type": "string",
+        "minimum": 10
+      }
+    }
+  },
+  "erroneous_json": {
+    "bar": 15,
+    "baz": null,
+    "qux": "Lorem ipsum"
+  },
+  "valid_json": {
+    "bar": 15,
+    "baz": 12.7,
+    "qux": "Lorem ipsum"
+  },
+  "description": "Subject: Configuration Update \u2013 Parameter Settings\n\nDear Team,\n\nPlease note that the current configuration has been updated as follows: the Bar parameter is now set to 15, while the Baz measurement has been recorded at 12.7. Additionally, the descriptive field QuX contains the placeholder text \u201cLorem ipsum\u201d for reference purposes.\n\nKind regards,\nOperations Team"
+}

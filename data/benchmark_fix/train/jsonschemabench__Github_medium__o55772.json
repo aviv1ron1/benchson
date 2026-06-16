@@ -1,0 +1,213 @@
+{
+  "name": "o55772",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "title": "sblg JSON output",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+      "version": {
+        "type": "string",
+        "description": "Version of sblg generating the JSON"
+      },
+      "articles": {
+        "type": "array",
+        "description": "Sorted articles in blog",
+        "items": {
+          "$ref": "#/definitions/article"
+        }
+      }
+    },
+    "definitions": {
+      "article": {
+        "type": "object",
+        "description": "A single article in a blog",
+        "properties": {
+          "src": {
+            "description": "Source file for article as passed on command line",
+            "type": "string"
+          },
+          "base": {
+            "description": "Source file without suffix",
+            "type": "string"
+          },
+          "stripbase": {
+            "description": "Source file without suffix or leading path",
+            "type": "string"
+          },
+          "striplangbase": {
+            "description": "Source file without suffix, leading path, or suffixed language extensions",
+            "type": "string"
+          },
+          "time": {
+            "description": "Date of publication",
+            "type": "integer"
+          },
+          "title": {
+            "description": "Title of article",
+            "$ref": "#/definitions/markup"
+          },
+          "aside": {
+            "description": "Aside of article",
+            "$ref": "#/definitions/markup"
+          },
+          "author": {
+            "description": "Author of article",
+            "$ref": "#/definitions/markup"
+          },
+          "article": {
+            "description": "Article contents (text portion is null)",
+            "$ref": "#/definitions/markup"
+          },
+          "tags": {
+            "type": "array",
+            "description": "Set of tags associated with article",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "markup": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text nodes of XML (usually HTML5) content"
+          },
+          "xml": {
+            "type": "string",
+            "description": "XML (usually HTML5) content"
+          }
+        },
+        "required": [
+          "xml"
+        ]
+      }
+    }
+  },
+  "erroneous_json": {
+    "version": null,
+    "articles": [
+      {
+        "src": "content/2023/09/awesome-tech-trends.md",
+        "base": "awesome-tech-trends",
+        "stripbase": "awesome-tech-trends",
+        "striplangbase": "awesome-tech-trends",
+        "time": 1696185600,
+        "title": {
+          "xml": "<h1>Top Tech Trends to Watch in 2024</h1>",
+          "text": "Top Tech Trends to Watch in 2024"
+        },
+        "aside": {
+          "xml": "<p>Stay ahead of the curve with these emerging technologies.</p>",
+          "text": "Stay ahead of the curve with these emerging technologies."
+        },
+        "author": {
+          "xml": "<span>Jane Doe</span>",
+          "text": "Jane Doe"
+        },
+        "article": {
+          "xml": "<article><p>Artificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications.</p></article>",
+          "text": "Artificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications."
+        },
+        "tags": [
+          "technology",
+          "trends",
+          "2024"
+        ]
+      },
+      {
+        "src": "content/2023/07/healthy-eating-habits.md",
+        "base": "healthy-eating-habits",
+        "stripbase": "healthy-eating-habits",
+        "striplangbase": "healthy-eating-habits",
+        "time": 1688160000,
+        "title": {
+          "xml": "<h1>10 Healthy Eating Habits for a Better Life</h1>",
+          "text": "10 Healthy Eating Habits for a Better Life"
+        },
+        "aside": {
+          "xml": "<p>Simple changes that make a big difference.</p>",
+          "text": "Simple changes that make a big difference."
+        },
+        "author": {
+          "xml": "<span>John Smith</span>",
+          "text": "John Smith"
+        },
+        "article": {
+          "xml": "<article><p>From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing.</p></article>",
+          "text": "From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing."
+        },
+        "tags": [
+          "health",
+          "nutrition",
+          "lifestyle"
+        ]
+      }
+    ]
+  },
+  "valid_json": {
+    "version": "1.4.2",
+    "articles": [
+      {
+        "src": "content/2023/09/awesome-tech-trends.md",
+        "base": "awesome-tech-trends",
+        "stripbase": "awesome-tech-trends",
+        "striplangbase": "awesome-tech-trends",
+        "time": 1696185600,
+        "title": {
+          "xml": "<h1>Top Tech Trends to Watch in 2024</h1>",
+          "text": "Top Tech Trends to Watch in 2024"
+        },
+        "aside": {
+          "xml": "<p>Stay ahead of the curve with these emerging technologies.</p>",
+          "text": "Stay ahead of the curve with these emerging technologies."
+        },
+        "author": {
+          "xml": "<span>Jane Doe</span>",
+          "text": "Jane Doe"
+        },
+        "article": {
+          "xml": "<article><p>Artificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications.</p></article>",
+          "text": "Artificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications."
+        },
+        "tags": [
+          "technology",
+          "trends",
+          "2024"
+        ]
+      },
+      {
+        "src": "content/2023/07/healthy-eating-habits.md",
+        "base": "healthy-eating-habits",
+        "stripbase": "healthy-eating-habits",
+        "striplangbase": "healthy-eating-habits",
+        "time": 1688160000,
+        "title": {
+          "xml": "<h1>10 Healthy Eating Habits for a Better Life</h1>",
+          "text": "10 Healthy Eating Habits for a Better Life"
+        },
+        "aside": {
+          "xml": "<p>Simple changes that make a big difference.</p>",
+          "text": "Simple changes that make a big difference."
+        },
+        "author": {
+          "xml": "<span>John Smith</span>",
+          "text": "John Smith"
+        },
+        "article": {
+          "xml": "<article><p>From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing.</p></article>",
+          "text": "From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing."
+        },
+        "tags": [
+          "health",
+          "nutrition",
+          "lifestyle"
+        ]
+      }
+    ]
+  },
+  "description": "The blog data set, version\u202f1.4.2, currently holds two articles. The first entry originates from the file **content/2023/09/awesome-tech-trends.md**; its base name is *awesome-tech-trends*, and both the stripped base and stripped\u2011language base are also *awesome-tech-trends*. It was published on **October\u202f1\u202f2023** (Unix time\u202f1696185600). The title appears as `<h1>Top Tech Trends to Watch in 2024</h1>` (plain text: \u201cTop Tech Trends to Watch in 2024\u201d). An introductory aside reads `<p>Stay ahead of the curve with these emerging technologies.</p>` (text: \u201cStay ahead of the curve with these emerging technologies.\u201d). The author is identified by `<span>Jane Doe</span>` (text: \u201cJane Doe\u201d). The main article content is `<article><p>Artificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications.</p></article>` (text: \u201cArtificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications.\u201d). It is tagged with **technology**, **trends**, and **2024**.\n\nThe second article is stored in **content/2023/07/healthy-eating-habits.md**, with a base name of *healthy-eating-habits* and identical stripped base values (*healthy-eating-habits*). Its publication date is **June\u202f30\u202f2023** (Unix time\u202f1688160000). The title markup is `<h1>10 Healthy Eating Habits for a Better Life</h1>` (text: \u201c10 Healthy Eating Habits for a Better Life\u201d). The aside reads `<p>Simple changes that make a big difference.</p>` (text: \u201cSimple changes that make a big difference.\u201d). Authored by `<span>John Smith</span>` (text: \u201cJohn Smith\u201d), the article body is `<article><p>From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing.</p></article>` (text: \u201cFrom mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing.\u201d). This piece carries the tags **health**, **nutrition**, and **lifestyle**."
+}

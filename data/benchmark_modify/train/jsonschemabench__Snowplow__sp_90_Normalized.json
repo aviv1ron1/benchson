@@ -1,0 +1,50 @@
+{
+  "name": "sp_90_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "A select_content GTM server-side event.",
+    "properties": {
+      "content_type": {
+        "description": "The type of selected content.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "item_id": {
+        "description": "An identifier for the item that was selected.",
+        "maxLength": 500,
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "select_content",
+      "vendor": "com.google.tag-manager.server-side",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "content_type": "article",
+    "item_id": "article-2023-09-15-xyz"
+  },
+  "instructions": "Could you change the content_type field to \"article (updated)\"?",
+  "ground_truth": {
+    "content_type": "article (updated)",
+    "item_id": "article-2023-09-15-xyz"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "content_type"
+    ],
+    "precise_instruction": "Change \"content_type\" to \"article (updated)\"."
+  }
+}

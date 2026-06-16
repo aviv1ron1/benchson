@@ -1,0 +1,292 @@
+{
+  "name": "o9776",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "title": "Application Certificate",
+          "description": "Schema for a single Application Certificate",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "applicationCertificateId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "applicationId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "creationDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastUpdated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 32767
+            },
+            "deviceIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "maxItems": 1000
+            },
+            "deviceTags": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              },
+              "maxItems": 100
+            },
+            "certificateInfo": {
+              "type": "object",
+              "properties": {
+                "serialNumber": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "fingerprint": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "commonName": {
+                  "type": "string",
+                  "maxLength": 1024
+                },
+                "issuerName": {
+                  "type": "string",
+                  "maxLength": 1024
+                },
+                "notValidBefore": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "notValidAfter": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "filterType": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "all",
+                    "whitelist",
+                    "blacklist"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "none"
+                  ]
+                }
+              ]
+            },
+            "pubTopics": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "subTopics": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            }
+          }
+        }
+      },
+      "count": {
+        "type": "integer"
+      },
+      "totalCount": {
+        "type": "integer"
+      },
+      "perPage": {
+        "type": "integer"
+      },
+      "page": {
+        "type": "integer"
+      },
+      "filter": {
+        "type": "string"
+      },
+      "filterField": {
+        "type": "string"
+      },
+      "sortField": {
+        "type": "string"
+      },
+      "sortDirection": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc",
+          "ASC",
+          "DESC",
+          ""
+        ]
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "data": {
+    "items": [
+      {
+        "id": "5f2a1c3e4b7d8e9f01234567",
+        "applicationCertificateId": "6a3b2c4d5e6f7a8b9c0d1e2f",
+        "applicationId": "7b4c5d6e7f8a9b0c1d2e3f4a",
+        "creationDate": "2023-08-01T12:34:56Z",
+        "lastUpdated": "2024-02-15T09:20:30Z",
+        "status": "active",
+        "description": "Certificate for temperature sensor devices.",
+        "deviceIds": [
+          "8c9d0e1f2a3b4c5d6e7f8a9b",
+          "9d0e1f2a3b4c5d6e7f8a9b0c"
+        ],
+        "deviceTags": [
+          {
+            "key": "location",
+            "value": "warehouse-12"
+          },
+          {
+            "key": "type",
+            "value": "sensor"
+          }
+        ],
+        "certificateInfo": {
+          "serialNumber": "01AB23CD45EF6789",
+          "fingerprint": "A1B2C3D4E5F60718293A4B5C6D7E8F90",
+          "commonName": "device.example.com",
+          "issuerName": "Example CA",
+          "notValidBefore": "2023-08-01T00:00:00Z",
+          "notValidAfter": "2025-08-01T00:00:00Z"
+        },
+        "filterType": "whitelist",
+        "pubTopics": [
+          "sensors/temperature",
+          "devices/status"
+        ],
+        "subTopics": [
+          "commands/reboot",
+          "updates/firmware"
+        ]
+      }
+    ],
+    "count": 1,
+    "totalCount": 1,
+    "perPage": 10,
+    "page": 1,
+    "filter": "",
+    "filterField": "status",
+    "sortField": "creationDate",
+    "sortDirection": "desc",
+    "applicationId": "7b4c5d6e7f8a9b0c1d2e3f4a"
+  },
+  "instructions": "Please remove the filter field.",
+  "ground_truth": {
+    "items": [
+      {
+        "id": "5f2a1c3e4b7d8e9f01234567",
+        "applicationCertificateId": "6a3b2c4d5e6f7a8b9c0d1e2f",
+        "applicationId": "7b4c5d6e7f8a9b0c1d2e3f4a",
+        "creationDate": "2023-08-01T12:34:56Z",
+        "lastUpdated": "2024-02-15T09:20:30Z",
+        "status": "active",
+        "description": "Certificate for temperature sensor devices.",
+        "deviceIds": [
+          "8c9d0e1f2a3b4c5d6e7f8a9b",
+          "9d0e1f2a3b4c5d6e7f8a9b0c"
+        ],
+        "deviceTags": [
+          {
+            "key": "location",
+            "value": "warehouse-12"
+          },
+          {
+            "key": "type",
+            "value": "sensor"
+          }
+        ],
+        "certificateInfo": {
+          "serialNumber": "01AB23CD45EF6789",
+          "fingerprint": "A1B2C3D4E5F60718293A4B5C6D7E8F90",
+          "commonName": "device.example.com",
+          "issuerName": "Example CA",
+          "notValidBefore": "2023-08-01T00:00:00Z",
+          "notValidAfter": "2025-08-01T00:00:00Z"
+        },
+        "filterType": "whitelist",
+        "pubTopics": [
+          "sensors/temperature",
+          "devices/status"
+        ],
+        "subTopics": [
+          "commands/reboot",
+          "updates/firmware"
+        ]
+      }
+    ],
+    "count": 1,
+    "totalCount": 1,
+    "perPage": 10,
+    "page": 1,
+    "filterField": "status",
+    "sortField": "creationDate",
+    "sortDirection": "desc",
+    "applicationId": "7b4c5d6e7f8a9b0c1d2e3f4a"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "filter"
+    ],
+    "precise_instruction": "Remove the \"filter\" field."
+  }
+}

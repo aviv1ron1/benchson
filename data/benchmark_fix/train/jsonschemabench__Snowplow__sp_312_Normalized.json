@@ -1,0 +1,72 @@
+{
+  "name": "sp_312_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for referer-parser customization enrichment",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "name": {
+        "type": "string"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "internalDomains": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "internalDomains"
+        ],
+        "type": "object"
+      },
+      "vendor": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "vendor",
+      "enabled",
+      "parameters"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "referer_parser",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": "refererParserEnrichment",
+    "vendor": "com.snowplowanalytics.snowplow",
+    "parameters": {
+      "internalDomains": [
+        "example.com",
+        "internal.mycompany.org",
+        "sandbox.local"
+      ]
+    }
+  },
+  "valid_json": {
+    "enabled": true,
+    "name": "refererParserEnrichment",
+    "vendor": "com.snowplowanalytics.snowplow",
+    "parameters": {
+      "internalDomains": [
+        "example.com",
+        "internal.mycompany.org",
+        "sandbox.local"
+      ]
+    }
+  },
+  "description": "The referer parser enrichment has been activated (enabled = true) under the configuration name **refererParserEnrichment**, provided by the Snowplow analytics vendor **com.snowplowanalytics.snowplow**. As part of its parameters, the enrichment is set to treat the following domains as internal:\u202fexample.com,\u202finternal.mycompany.org, and\u202fsandbox.local. This ensures that any traffic originating from these domains will be recognized as internal referrals during data processing."
+}

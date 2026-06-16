@@ -1,0 +1,120 @@
+{
+  "name": "o41264",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "required": [
+      "config",
+      "inputs"
+    ],
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "required": [
+          "api_key"
+        ],
+        "type": "object",
+        "properties": {
+          "t1w_anatomy": {
+            "type": "object",
+            "properties": {}
+          },
+          "api_key": {
+            "type": "object",
+            "properties": {}
+          },
+          "t2w_anatomy": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "config": {
+        "required": [
+          "save_outputs",
+          "intermediate_files",
+          "license_reference",
+          "intermediate_folders",
+          "freesurfer",
+          "license_email",
+          "save_intermediate_work",
+          "license_number",
+          "license_key"
+        ],
+        "type": "object",
+        "properties": {
+          "save_outputs": {
+            "default": false,
+            "type": "boolean"
+          },
+          "intermediate_files": {
+            "default": "",
+            "type": "string"
+          },
+          "license_reference": {
+            "type": "string"
+          },
+          "intermediate_folders": {
+            "default": "",
+            "type": "string"
+          },
+          "license_email": {
+            "type": "string"
+          },
+          "license_number": {
+            "type": "string"
+          },
+          "save_intermediate_work": {
+            "default": false,
+            "type": "boolean"
+          },
+          "freesurfer": {
+            "default": true,
+            "type": "boolean"
+          },
+          "license_key": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "title": "Invocation manifest for fMRIPREP: A Robust Preprocessing Pipeline for fMRI Data"
+  },
+  "erroneous_json": {
+    "config": {
+      "save_outputs": false,
+      "intermediate_files": "temp/intermediate",
+      "license_reference": "FREESURFER_LICENSE",
+      "intermediate_folders": "temp/folders",
+      "license_email": "user@example.com",
+      "save_intermediate_work": true,
+      "freesurfer": true,
+      "license_key": "ABCDEF1234567890"
+    },
+    "inputs": {
+      "api_key": {},
+      "t1w_anatomy": {},
+      "t2w_anatomy": {}
+    }
+  },
+  "valid_json": {
+    "config": {
+      "save_outputs": false,
+      "intermediate_files": "temp/intermediate",
+      "license_reference": "FREESURFER_LICENSE",
+      "intermediate_folders": "temp/folders",
+      "license_email": "user@example.com",
+      "license_number": "12345678",
+      "save_intermediate_work": true,
+      "freesurfer": true,
+      "license_key": "ABCDEF1234567890"
+    },
+    "inputs": {
+      "api_key": {},
+      "t1w_anatomy": {},
+      "t2w_anatomy": {}
+    }
+  },
+  "description": "Subject: fMRIPrep Run Configuration \u2013 Details and Inputs  \n\nHi Team,  \n\nFor the upcoming preprocessing batch I\u2019ve set up the fMRIPrep parameters as follows: we will **not** retain the final output files in the main directory (save_outputs\u202f=\u202ffalse) but we will keep all intermediate products, storing them under **temp/intermediate** and organizing the related folders in **temp/folders**. The FreeSurfer processing is enabled (freesurfer\u202f=\u202ftrue), and we have opted to preserve the intermediate work (save_intermediate_work\u202f=\u202ftrue). The required license information is provided \u2013 the reference tag is **FREESURFER_LICENSE**, linked to the email **user@example.com**, with license number **12345678** and license key **ABCDEF1234567890**.  \n\nAll input assets are ready: the API key has been supplied (details are encapsulated within the request), and both the T1\u2011weighted and T2\u2011weighted anatomical scans (t1w_anatomy and t2w_anatomy) are present in the input bundle. Let me know if anything needs adjustment before we kick off the pipeline."
+}

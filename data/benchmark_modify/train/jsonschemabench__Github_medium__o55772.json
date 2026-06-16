@@ -1,0 +1,192 @@
+{
+  "name": "o55772",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "title": "sblg JSON output",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+      "version": {
+        "type": "string",
+        "description": "Version of sblg generating the JSON"
+      },
+      "articles": {
+        "type": "array",
+        "description": "Sorted articles in blog",
+        "items": {
+          "$ref": "#/definitions/article"
+        }
+      }
+    },
+    "definitions": {
+      "article": {
+        "type": "object",
+        "description": "A single article in a blog",
+        "properties": {
+          "src": {
+            "description": "Source file for article as passed on command line",
+            "type": "string"
+          },
+          "base": {
+            "description": "Source file without suffix",
+            "type": "string"
+          },
+          "stripbase": {
+            "description": "Source file without suffix or leading path",
+            "type": "string"
+          },
+          "striplangbase": {
+            "description": "Source file without suffix, leading path, or suffixed language extensions",
+            "type": "string"
+          },
+          "time": {
+            "description": "Date of publication",
+            "type": "integer"
+          },
+          "title": {
+            "description": "Title of article",
+            "$ref": "#/definitions/markup"
+          },
+          "aside": {
+            "description": "Aside of article",
+            "$ref": "#/definitions/markup"
+          },
+          "author": {
+            "description": "Author of article",
+            "$ref": "#/definitions/markup"
+          },
+          "article": {
+            "description": "Article contents (text portion is null)",
+            "$ref": "#/definitions/markup"
+          },
+          "tags": {
+            "type": "array",
+            "description": "Set of tags associated with article",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "markup": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text nodes of XML (usually HTML5) content"
+          },
+          "xml": {
+            "type": "string",
+            "description": "XML (usually HTML5) content"
+          }
+        },
+        "required": [
+          "xml"
+        ]
+      }
+    }
+  },
+  "data": {
+    "version": "1.4.2",
+    "articles": [
+      {
+        "src": "content/2023/09/awesome-tech-trends.md",
+        "base": "awesome-tech-trends",
+        "stripbase": "awesome-tech-trends",
+        "striplangbase": "awesome-tech-trends",
+        "time": 1696185600,
+        "title": {
+          "xml": "<h1>Top Tech Trends to Watch in 2024</h1>",
+          "text": "Top Tech Trends to Watch in 2024"
+        },
+        "aside": {
+          "xml": "<p>Stay ahead of the curve with these emerging technologies.</p>",
+          "text": "Stay ahead of the curve with these emerging technologies."
+        },
+        "author": {
+          "xml": "<span>Jane Doe</span>",
+          "text": "Jane Doe"
+        },
+        "article": {
+          "xml": "<article><p>Artificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications.</p></article>",
+          "text": "Artificial intelligence, quantum computing, and edge AI are set to reshape industries. This article explores their potential impact and practical applications."
+        },
+        "tags": [
+          "technology",
+          "trends",
+          "2024"
+        ]
+      },
+      {
+        "src": "content/2023/07/healthy-eating-habits.md",
+        "base": "healthy-eating-habits",
+        "stripbase": "healthy-eating-habits",
+        "striplangbase": "healthy-eating-habits",
+        "time": 1688160000,
+        "title": {
+          "xml": "<h1>10 Healthy Eating Habits for a Better Life</h1>",
+          "text": "10 Healthy Eating Habits for a Better Life"
+        },
+        "aside": {
+          "xml": "<p>Simple changes that make a big difference.</p>",
+          "text": "Simple changes that make a big difference."
+        },
+        "author": {
+          "xml": "<span>John Smith</span>",
+          "text": "John Smith"
+        },
+        "article": {
+          "xml": "<article><p>From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing.</p></article>",
+          "text": "From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing."
+        },
+        "tags": [
+          "health",
+          "nutrition",
+          "lifestyle"
+        ]
+      }
+    ]
+  },
+  "instructions": "Could you remove the first item from the \"articles\" list?",
+  "ground_truth": {
+    "version": "1.4.2",
+    "articles": [
+      {
+        "src": "content/2023/07/healthy-eating-habits.md",
+        "base": "healthy-eating-habits",
+        "stripbase": "healthy-eating-habits",
+        "striplangbase": "healthy-eating-habits",
+        "time": 1688160000,
+        "title": {
+          "xml": "<h1>10 Healthy Eating Habits for a Better Life</h1>",
+          "text": "10 Healthy Eating Habits for a Better Life"
+        },
+        "aside": {
+          "xml": "<p>Simple changes that make a big difference.</p>",
+          "text": "Simple changes that make a big difference."
+        },
+        "author": {
+          "xml": "<span>John Smith</span>",
+          "text": "John Smith"
+        },
+        "article": {
+          "xml": "<article><p>From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing.</p></article>",
+          "text": "From mindful portion sizes to incorporating more plant-based meals, discover practical tips to improve your diet and overall wellbeing."
+        },
+        "tags": [
+          "health",
+          "nutrition",
+          "lifestyle"
+        ]
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "articles"
+    ],
+    "precise_instruction": "Remove the first item from the \"articles\" list."
+  }
+}

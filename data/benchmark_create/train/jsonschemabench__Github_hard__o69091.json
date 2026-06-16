@@ -1,0 +1,390 @@
+{
+  "name": "o69091",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "id": "https://github.com/bergloman/NodeProcessManager:topology",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "general": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "heartbeat": {
+            "type": "integer"
+          },
+          "weight": {
+            "type": "integer"
+          },
+          "worker_affinity": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pass_binary_messages": {
+            "type": "boolean"
+          },
+          "wrapper": {
+            "type": "object",
+            "properties": {
+              "log_level": {
+                "type": "string",
+                "enum": [
+                  "debug",
+                  "log",
+                  "info",
+                  "normal",
+                  "warn",
+                  "error",
+                  "none"
+                ]
+              },
+              "ping_parent_timeout": {
+                "type": "number"
+              },
+              "ping_parent_interval": {
+                "type": "number"
+              },
+              "ping_child_timeout": {
+                "type": "number"
+              },
+              "ping_child_interval": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          "initialization": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "working_dir": {
+                  "type": "string"
+                },
+                "cmd": {
+                  "type": "string"
+                },
+                "init": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "disabled": {
+                  "type": [
+                    "boolean",
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "working_dir",
+                "cmd"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "shutdown": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "working_dir": {
+                  "type": "string"
+                },
+                "cmd": {
+                  "type": "string"
+                },
+                "init": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "disabled": {
+                  "type": [
+                    "boolean",
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "working_dir",
+                "cmd"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "shutdown_hard": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "working_dir": {
+                  "type": "string"
+                },
+                "cmd": {
+                  "type": "string"
+                },
+                "init": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "disabled": {
+                  "type": [
+                    "boolean",
+                    "string"
+                  ]
+                }
+              },
+              "required": [
+                "working_dir",
+                "cmd"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "heartbeat"
+        ],
+        "additionalProperties": false
+      },
+      "spouts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "type": {
+              "enum": [
+                "module_class",
+                "module_method",
+                "inproc",
+                "sys"
+              ]
+            },
+            "disabled": {
+              "type": [
+                "boolean",
+                "string"
+              ]
+            },
+            "working_dir": {
+              "type": "string"
+            },
+            "cmd": {
+              "type": "string"
+            },
+            "subtype": {
+              "type": "string"
+            },
+            "telemetry_timeout": {
+              "type": "number"
+            },
+            "init": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "required": [
+            "name",
+            "working_dir",
+            "cmd",
+            "init"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "bolts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "type": {
+              "enum": [
+                "module_class",
+                "module_method",
+                "inproc",
+                "sys"
+              ]
+            },
+            "disabled": {
+              "type": [
+                "boolean",
+                "string"
+              ]
+            },
+            "working_dir": {
+              "type": "string"
+            },
+            "cmd": {
+              "type": "string"
+            },
+            "subtype": {
+              "type": "string"
+            },
+            "telemetry_timeout": {
+              "type": "number"
+            },
+            "inputs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string"
+                  },
+                  "stream_id": {
+                    "type": "string"
+                  },
+                  "disabled": {
+                    "type": [
+                      "boolean",
+                      "string"
+                    ]
+                  }
+                },
+                "required": [
+                  "source"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "init": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "allow_parallel": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "name",
+            "working_dir",
+            "cmd",
+            "inputs",
+            "init"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "variables": {
+        "type": "object",
+        "patternProperties": {
+          "^.*$": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "required": [
+      "general",
+      "spouts",
+      "bolts",
+      "variables"
+    ],
+    "additionalProperties": false
+  },
+  "description": "Subject: Node Process Manager \u2013 Current Topology Configuration  \n\nThe manager is set up with a top\u2011level description of \u201cTop\u2011level process manager configuration\u201d. Heartbeat checks occur every **30\u202fseconds**, and the instance carries a weight of **10**. It is tied to the workers named **worker1** and **worker2**, and binary messages are allowed to pass through. The wrapper runs at **log level \u201cinfo\u201d**, with parent\u2011ping timeout **5000\u202fms**, parent\u2011ping interval **1000\u202fms**, child\u2011ping timeout **3000\u202fms**, and child\u2011ping interval **500\u202fms**. During startup the system executes **`node init.js`** in **/opt/init**, passing an initialization object `{ \"step\": \"prepare\" }`; this step is enabled. For graceful shutdown it runs **`node stop.js`** in **/opt/shutdown** (no extra init data) and, if a hard stop is required, it invokes **`kill -9 $(cat pidfile)`** from **/opt/shutdown_hard**. Both shutdown commands are enabled.  \n\nThe data pipeline defines a single spout called **sourceSpout**, described as \u201cGenerates data streams\u201d. It is a **module_class** located in **/opt/spouts** and launched with **`node source.js`**. The spout uses the **json** subtype, has a telemetry timeout of **5.0\u202fseconds**, and is currently enabled. Its initialization supplies a buffer size of **\"1024\"**. Downstream, the bolt named **processorBolt** (\u201cProcesses incoming data\u201d) is also a **module_class**, residing in **/opt/bolts** and started with **`node process.js`**. It operates with the **filter** subtype, a telemetry timeout of **10.0\u202fseconds**, and is allowed to run in parallel. The bolt receives its input from **sourceSpout** on the **default** stream and this connection is enabled; its own init object sets a threshold of **\"0.75\"**.  \n\nFinally, the environment variables for this deployment are: **ENV=production**, **MAX_RETRIES=5**, and **LOG_PATH=/var/log/nodepm**.",
+  "reference_json": {
+    "general": {
+      "description": "Top-level process manager configuration",
+      "heartbeat": 30,
+      "weight": 10,
+      "worker_affinity": [
+        "worker1",
+        "worker2"
+      ],
+      "pass_binary_messages": true,
+      "wrapper": {
+        "log_level": "info",
+        "ping_parent_timeout": 5000,
+        "ping_parent_interval": 1000,
+        "ping_child_timeout": 3000,
+        "ping_child_interval": 500
+      },
+      "initialization": [
+        {
+          "working_dir": "/opt/init",
+          "cmd": "node init.js",
+          "init": {
+            "step": "prepare"
+          },
+          "disabled": false
+        }
+      ],
+      "shutdown": [
+        {
+          "working_dir": "/opt/shutdown",
+          "cmd": "node stop.js",
+          "init": {},
+          "disabled": false
+        }
+      ],
+      "shutdown_hard": [
+        {
+          "working_dir": "/opt/shutdown_hard",
+          "cmd": "kill -9 $(cat pidfile)",
+          "init": {},
+          "disabled": false
+        }
+      ]
+    },
+    "spouts": [
+      {
+        "name": "sourceSpout",
+        "description": "Generates data streams",
+        "type": "module_class",
+        "disabled": false,
+        "working_dir": "/opt/spouts",
+        "cmd": "node source.js",
+        "subtype": "json",
+        "telemetry_timeout": 5.0,
+        "init": {
+          "bufferSize": "1024"
+        }
+      }
+    ],
+    "bolts": [
+      {
+        "name": "processorBolt",
+        "description": "Processes incoming data",
+        "type": "module_class",
+        "disabled": false,
+        "working_dir": "/opt/bolts",
+        "cmd": "node process.js",
+        "subtype": "filter",
+        "telemetry_timeout": 10.0,
+        "inputs": [
+          {
+            "source": "sourceSpout",
+            "stream_id": "default",
+            "disabled": false
+          }
+        ],
+        "init": {
+          "threshold": "0.75"
+        },
+        "allow_parallel": true
+      }
+    ],
+    "variables": {
+      "ENV": "production",
+      "MAX_RETRIES": "5",
+      "LOG_PATH": "/var/log/nodepm"
+    }
+  }
+}

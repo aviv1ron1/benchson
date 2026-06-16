@@ -1,0 +1,368 @@
+{
+  "name": "embrace-config-schema-1.0.0",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "JSON Schema definition for the Embrace configuration file.",
+    "id": "https://json.schemastore.org/embrace-config-schema-1.0.0.json",
+    "properties": {
+      "app_id": {
+        "description": "Your 5 character app ID.",
+        "type": "string",
+        "maxLength": 5,
+        "minLength": 5
+      },
+      "api_token": {
+        "description": "Your API 32-hexdigit token.",
+        "type": "string",
+        "maxLength": 32,
+        "minLength": 32
+      },
+      "ndk_enabled": {
+        "description": "Enables NDK crash capture. Defaults to false.",
+        "type": "boolean"
+      },
+      "sdk_config": {
+        "type": "object",
+        "properties": {
+          "automatic_data_capture": {
+            "type": "object",
+            "properties": {
+              "memory_info": {
+                "description": "Enables memory warning capture. Defaults to true.",
+                "type": "boolean"
+              },
+              "power_save_mode_info": {
+                "description": "Enables power save mode capture. Defaults to true.",
+                "type": "boolean"
+              },
+              "network_connectivity_info": {
+                "description": "Enables network connectivity capture. Defaults to true.",
+                "type": "boolean"
+              },
+              "anr_info": {
+                "description": "Enables ANR capture. Defaults to true.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "taps": {
+            "type": "object",
+            "properties": {
+              "capture_coordinates": {
+                "description": "Set to false to disable capturing tap coordinates. Defaults to true.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "view_config": {
+            "type": "object",
+            "properties": {
+              "enable_automatic_activity_capture": {
+                "description": "Enables capturing activity lifecycle changes in breadcrumbs. Defaults to true.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "webview": {
+            "type": "object",
+            "properties": {
+              "capture_query_params": {
+                "description": "Set to false to disable capturing of web view query parameters. Defaults to true. If webview:enable is set to false, this setting has no effect since all capture of web view information is disabled.",
+                "type": "boolean"
+              },
+              "enable": {
+                "description": "Set to false to disable capturing of web views. Defaults to true.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "crash_handler": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "description": "Set to false to prevent the SDK from connecting to the uncaught exception handler. Defaults to true.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "compose": {
+            "type": "object",
+            "properties": {
+              "capture_compose_onclick": {
+                "description": "Enables capture of Jetpack Compose click events. Defaults to false.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "capture_fcm_pii_data": {
+            "type": "boolean",
+            "description": "Enables PII data within FCM capture. Defaults to false."
+          },
+          "networking": {
+            "type": "object",
+            "properties": {
+              "default_capture_limit": {
+                "description": "Default capture limit for specified domains. Defaults to 1000.",
+                "type": "integer"
+              },
+              "domains": {
+                "description": "List of domain names and their respective limits.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "domain_name": {
+                      "description": "Domain URL.",
+                      "type": "string"
+                    },
+                    "domain_limit": {
+                      "description": "Limit for the number of requests to be tracked.",
+                      "type": "integer"
+                    }
+                  },
+                  "minProperties": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "capture_request_content_length": {
+                "description": "Disable capture of network length which can interfere with certain streaming network requests. Defaults to true.",
+                "type": "boolean"
+              },
+              "disabled_url_patterns": {
+                "description": "Specify one or more regular expressions to exclude network request with URLs matching one of the regular expressions from being captured.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "enable_native_monitoring": {
+                "description": "Enable capture of network requests made using the native Java network API. Defaults to true.",
+                "type": "boolean"
+              },
+              "enable_network_span_forwarding": {
+                "description": "Enables network span forwarding. Defaults to false.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "capture_public_key": {
+            "type": "string",
+            "description": "Declares the key that should be used to capture network request bodies, if any."
+          },
+          "sensitive_keys_denylist": {
+            "description": "List of sensitive keys whose values should be redacted on capture.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "anr": {
+            "type": "object",
+            "properties": {
+              "capture_unity_thread": {
+                "description": "Enables Unity ANR capture. Defaults to false.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "app": {
+            "type": "object",
+            "properties": {
+              "report_disk_usage": {
+                "description": "The SDK collects the disk usage for the app. You can disable this if your app has a large number of local files to prevent excessive resource usage, especially on lower-end devices. Defaults to true.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "background_activity": {
+            "type": "object",
+            "properties": {
+              "capture_enabled": {
+                "description": "Enables background activity capture. Defaults to false.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "base_urls": {
+            "type": "object",
+            "properties": {
+              "config": {
+                "description": "Base config URL for the SDK.",
+                "type": "string"
+              },
+              "data": {
+                "description": "Base data URL for the SDK.",
+                "type": "integer"
+              }
+            },
+            "minProperties": 1
+          },
+          "session": {
+            "type": "object",
+            "properties": {
+              "components": {
+                "description": "Allowlist of session components that should be included in the session payload. The presence of this property denotes that the gating feature is enabled.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              },
+              "send_full_for": {
+                "description": "List of events allowed to send a full session payload if the gating feature is enabled.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "minProperties": 1
+          },
+          "sig_handler_detection": {
+            "type": "boolean",
+            "description": "Enables 3rd party signal handler detection. Defaults to true."
+          },
+          "app_exit_info": {
+            "type": "object",
+            "properties": {
+              "app_exit_info_traces_limit": {
+                "description": "Defines the max size of bytes to allow capturing AppExitInfo NDK/ANR traces.",
+                "type": "boolean"
+              },
+              "aei_enabled": {
+                "description": "Enables Application Exit Info capture. Defaults to true.",
+                "type": "boolean"
+              }
+            },
+            "minProperties": 1
+          },
+          "app_framework": {
+            "type": "string",
+            "description": "Project's app framework, one of react_native, unity, flutter or native."
+          }
+        },
+        "minProperties": 1
+      },
+      "unity": {
+        "type": "object",
+        "properties": {
+          "symbols_archive_name": {
+            "description": "Custom file name for unity symbols",
+            "type": "string"
+          }
+        },
+        "minProperties": 1
+      }
+    },
+    "title": "Embrace Config Schema",
+    "type": "object"
+  },
+  "description": "The Embrace SDK for app **ABCDE** (API token **a1b2c3d4e5f60718293a4b5c6d7e8f90**) has NDK crash capture enabled. Automatic data capture is fully on: memory, power\u2011save mode, network connectivity and ANR information are all enabled. Tap coordinate logging is disabled, while activity\u2011lifecycle capture remains on. WebView monitoring stays active but query\u2011parameter capture is turned off. The uncaught\u2011exception crash handler is enabled, and Jetpack Compose click capture is disabled. FCM PII capture is off.  \n\nNetwork monitoring is configured with a default limit of **5\u202f000** requests. For **api.example.com** the limit is **2\u202f000** and for **static.example.org** it is **1\u202f000**. Request content length is captured, native Java monitoring is on, and network span forwarding is off. URLs matching the patterns `.*\\.png$` or `.*\\.css$` are excluded. The public key used for body decryption is **public_key_12345**. Sensitive keys **password**, **api_key** and **secret** will be redacted. Unity ANR capture is off. Disk\u2011usage reporting is enabled, background activity capture is disabled. The SDK will talk to **https://config.embrace.io** for configuration and use port **8080** for data.  \n\nSession payloads will only include the **device_info** and **user_info** components, but full session data will be sent for **crash** and **anr** events. Signal\u2011handler detection stays enabled. Application\u2011exit info collection is active and its trace limit is enabled. The app framework is identified as **react_native**. Finally, the Unity build includes a symbols archive named **unity_symbols.zip**.",
+  "reference_json": {
+    "app_id": "ABCDE",
+    "api_token": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
+    "ndk_enabled": true,
+    "sdk_config": {
+      "automatic_data_capture": {
+        "memory_info": true,
+        "power_save_mode_info": true,
+        "network_connectivity_info": true,
+        "anr_info": true
+      },
+      "taps": {
+        "capture_coordinates": false
+      },
+      "view_config": {
+        "enable_automatic_activity_capture": true
+      },
+      "webview": {
+        "enable": true,
+        "capture_query_params": false
+      },
+      "crash_handler": {
+        "enabled": true
+      },
+      "compose": {
+        "capture_compose_onclick": false
+      },
+      "capture_fcm_pii_data": false,
+      "networking": {
+        "default_capture_limit": 5000,
+        "domains": [
+          {
+            "domain_name": "api.example.com",
+            "domain_limit": 2000
+          },
+          {
+            "domain_name": "static.example.org",
+            "domain_limit": 1000
+          }
+        ],
+        "capture_request_content_length": true,
+        "disabled_url_patterns": [
+          ".*\\.png$",
+          ".*\\.css$"
+        ],
+        "enable_native_monitoring": true,
+        "enable_network_span_forwarding": false
+      },
+      "capture_public_key": "public_key_12345",
+      "sensitive_keys_denylist": [
+        "password",
+        "api_key",
+        "secret"
+      ],
+      "anr": {
+        "capture_unity_thread": false
+      },
+      "app": {
+        "report_disk_usage": true
+      },
+      "background_activity": {
+        "capture_enabled": false
+      },
+      "base_urls": {
+        "config": "https://config.embrace.io",
+        "data": 8080
+      },
+      "session": {
+        "components": [
+          "device_info",
+          "user_info"
+        ],
+        "send_full_for": [
+          "crash",
+          "anr"
+        ]
+      },
+      "sig_handler_detection": true,
+      "app_exit_info": {
+        "app_exit_info_traces_limit": true,
+        "aei_enabled": true
+      },
+      "app_framework": "react_native"
+    },
+    "unity": {
+      "symbols_archive_name": "unity_symbols.zip"
+    }
+  }
+}

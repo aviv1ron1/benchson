@@ -1,0 +1,25 @@
+{
+  "name": "o76909",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "email": {
+        "format": "email",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "name": {
+        "maxLength": 255,
+        "minLength": 2,
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "type": "object"
+  }
+}

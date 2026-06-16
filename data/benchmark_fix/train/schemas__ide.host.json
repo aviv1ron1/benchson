@@ -1,0 +1,499 @@
+{
+  "name": "ide.host",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "text": {
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "package": {
+            "type": "string",
+            "pattern": "^\\{?[0-9A-Fa-f]{8}[-]?([0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}\\}?$"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "persistenceScope": {
+        "type": "string",
+        "description": "Determines if the user entered values should be persisted for the next template invocation.",
+        "enum": [
+          "none",
+          "templateGroup",
+          "shared"
+        ]
+      },
+      "overrideInfo": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of the symbol from the template.json."
+          },
+          "name": {
+            "description": "Overrides the name specified in the template.json",
+            "allOf": [
+              {
+                "$ref": "#/definitions/text"
+              }
+            ]
+          },
+          "description": {
+            "description": "Overrides the name specified in the template.json",
+            "allOf": [
+              {
+                "$ref": "#/definitions/text"
+              }
+            ]
+          }
+        }
+      },
+      "symbolInfo": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/overrideInfo"
+          }
+        ],
+        "properties": {
+          "isVisible": {
+            "type": "boolean",
+            "description": "Should be shown in the IDE. If not specified, defaults value is the value specified by defaultSymbolVisibility."
+          },
+          "invertBoolean": {
+            "type": "boolean",
+            "description": "If the referenced symbol should be shown in the IDE."
+          },
+          "defaultValue": {
+            "type": "string",
+            "description": "Overrides the default value specified for the "
+          },
+          "persistenceScope": {
+            "description": "Determines if the user entered value should be persisted and used the next time a template is selected. Default value is the value specified by defaultSymbolVisibility Used starting in Visual Studio 2022 17.3",
+            "allOf": [
+              {
+                "$ref": "#/definitions/persistenceScope"
+              }
+            ]
+          },
+          "persistenceScopeName": {
+            "description": "Specifies the scope name of the persisted template option. To avoid conflicts with other templates, treat this like a namespace. Used starting in Visual Studio 2022 17.3",
+            "type": "string"
+          },
+          "choices": {
+            "description": "Specifies the name and description overrides for individual choice parameters",
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/overrideInfo"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "tags": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "description": "The tag to modify",
+            "type": "string",
+            "enum": [
+              "platform",
+              "projectType"
+            ]
+          },
+          "add": {
+            "description": "Tags to add",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "remove": {
+            "description": "Tags to remove. * can be specified to remove all tags specified in template.json",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "unsupportedHost": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "description": "The host identifier.",
+            "type": "string",
+            "enum": [
+              "vs"
+            ]
+          },
+          "version": {
+            "description": "A version range specifying the unsupported host versions. This uses the nuget package format."
+          }
+        }
+      },
+      "requiredComponent": {
+        "type": "object",
+        "required": [
+          "hostId"
+        ],
+        "description": "To require a particular host version specify the hostId and optionally version only. To require a particular SetupComponent or Extension, specify the ID and set the componentType appropriately. Version range is optional.",
+        "properties": {
+          "id": {
+            "description": "The id of the component",
+            "type": "string"
+          },
+          "hostId": {
+            "description": "The host id that the component applies to",
+            "type": "string",
+            "enum": [
+              "vs"
+            ]
+          },
+          "componentType": {
+            "type": "string",
+            "enum": [
+              "setupComponent",
+              "extension"
+            ]
+          },
+          "version": {
+            "description": "A version range specifying the required version range. This uses the nuget package format."
+          }
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/ide.host.json",
+    "properties": {
+      "name": {
+        "description": "Name of the template",
+        "allOf": [
+          {
+            "$ref": "#/definitions/text"
+          }
+        ]
+      },
+      "description": {
+        "description": "Description of the template",
+        "allOf": [
+          {
+            "$ref": "#/definitions/text"
+          }
+        ]
+      },
+      "order": {
+        "description": "The order of the template as shown in the New Project dialog",
+        "type": "integer",
+        "default": 0
+      },
+      "icon": {
+        "description": "The relative file name of the icon to show in the New Project dialog",
+        "type": "string"
+      },
+      "supportsDocker": {
+        "description": "Determines if the checkbox for adding Docker support in the New Project dialog should be visible",
+        "type": "boolean"
+      },
+      "disableHttpsSymbol": {
+        "description": "The symbol in the template.json which when set, would cause the template to generate non-https ports and settings",
+        "type": "string"
+      },
+      "defaultSymbolVisibility": {
+        "description": "Sets the default isVisible for a symbolInfo if not explicitly specified. Controls if the parameter is displayed in the IDE. Defaults to false if not specified",
+        "type": "boolean"
+      },
+      "defaultPersistenceScope": {
+        "description": "The default value for a symbolInfo if not explicitly specified. Determines if the user entered value should be persisted and used the next time a template is selected. Used starting in Visual Studio 2022 17.3",
+        "allOf": [
+          {
+            "$ref": "#/definitions/persistenceScope"
+          }
+        ]
+      },
+      "defaultPersistenceScopeName": {
+        "description": "The default value for a symbolInfo if not explicitly specified. Specifies the scope name of the persisted template option. To avoid conflicts with other templates, treat this like a namespace. Used starting in Visual Studio 2022 17.3",
+        "type": "string"
+      },
+      "symbolInfo": {
+        "description": "Controls display characteristics of symbols declared in template.json",
+        "type": "array",
+        "items": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/symbolInfo"
+            }
+          ]
+        }
+      },
+      "tags": {
+        "description": "Modifigy the project and platform tags displayed in the IDE",
+        "type": "array",
+        "items": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/tags"
+            }
+          ]
+        }
+      },
+      "unsupportedHosts": {
+        "description": "Unsupported Hosts. This can be used to suppress the template from being displayed in the new project dialog in Visual Studio.",
+        "type": "array",
+        "items": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/unsupportedHost"
+            }
+          ]
+        }
+      },
+      "requiredComponents": {
+        "description": "Required components in order to display this template.",
+        "type": "array",
+        "items": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/requiredComponent"
+            }
+          ]
+        }
+      }
+    },
+    "title": "JSON schema for IDE template host files",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": {
+      "text": "Web API Template",
+      "package": "{12345678-1234-1234-1234-1234567890ab}",
+      "id": "webapi"
+    },
+    "description": {
+      "text": "A template for creating a modern Web API project.",
+      "id": "descWebApi"
+    },
+    "order": 5,
+    "icon": "icons/webapi.png",
+    "supportsDocker": true,
+    "disableHttpsSymbol": "disableHttps",
+    "defaultSymbolVisibility": false,
+    "defaultPersistenceScope": "templateGroup",
+    "defaultPersistenceScopeName": null,
+    "symbolInfo": [
+      {
+        "id": "framework",
+        "name": {
+          "text": ".NET 6",
+          "id": "frameworkName"
+        },
+        "description": {
+          "text": "Target framework for the project.",
+          "id": "frameworkDesc"
+        },
+        "isVisible": true,
+        "invertBoolean": false,
+        "defaultValue": "net6.0",
+        "persistenceScope": "templateGroup",
+        "persistenceScopeName": "FrameworkScope",
+        "choices": [
+          {
+            "id": "net5",
+            "name": {
+              "text": ".NET 5",
+              "id": "net5Name"
+            },
+            "description": {
+              "text": "Legacy .NET 5 framework.",
+              "id": "net5Desc"
+            }
+          },
+          {
+            "id": "net6",
+            "name": {
+              "text": ".NET 6",
+              "id": "net6Name"
+            },
+            "description": {
+              "text": "Current .NET 6 framework.",
+              "id": "net6Desc"
+            }
+          }
+        ]
+      },
+      {
+        "id": "useDocker",
+        "name": {
+          "text": "Add Docker Support",
+          "id": "dockerName"
+        },
+        "description": {
+          "text": "Include Docker files for container deployment.",
+          "id": "dockerDesc"
+        },
+        "isVisible": true,
+        "defaultValue": "false",
+        "persistenceScope": "shared",
+        "persistenceScopeName": "DockerScope"
+      }
+    ],
+    "tags": [
+      {
+        "type": "platform",
+        "add": [
+          "web"
+        ],
+        "remove": [
+          "mobile"
+        ]
+      },
+      {
+        "type": "projectType",
+        "add": [
+          "api"
+        ]
+      }
+    ],
+    "unsupportedHosts": [
+      {
+        "id": "vs",
+        "version": "[17.0,18.0)"
+      }
+    ],
+    "requiredComponents": [
+      {
+        "hostId": "vs",
+        "id": "Microsoft.VisualStudio.Component.Web",
+        "componentType": "setupComponent",
+        "version": "17.2"
+      }
+    ]
+  },
+  "valid_json": {
+    "name": {
+      "text": "Web API Template",
+      "package": "{12345678-1234-1234-1234-1234567890ab}",
+      "id": "webapi"
+    },
+    "description": {
+      "text": "A template for creating a modern Web API project.",
+      "id": "descWebApi"
+    },
+    "order": 5,
+    "icon": "icons/webapi.png",
+    "supportsDocker": true,
+    "disableHttpsSymbol": "disableHttps",
+    "defaultSymbolVisibility": false,
+    "defaultPersistenceScope": "templateGroup",
+    "defaultPersistenceScopeName": "MyCompany.Templates",
+    "symbolInfo": [
+      {
+        "id": "framework",
+        "name": {
+          "text": ".NET 6",
+          "id": "frameworkName"
+        },
+        "description": {
+          "text": "Target framework for the project.",
+          "id": "frameworkDesc"
+        },
+        "isVisible": true,
+        "invertBoolean": false,
+        "defaultValue": "net6.0",
+        "persistenceScope": "templateGroup",
+        "persistenceScopeName": "FrameworkScope",
+        "choices": [
+          {
+            "id": "net5",
+            "name": {
+              "text": ".NET 5",
+              "id": "net5Name"
+            },
+            "description": {
+              "text": "Legacy .NET 5 framework.",
+              "id": "net5Desc"
+            }
+          },
+          {
+            "id": "net6",
+            "name": {
+              "text": ".NET 6",
+              "id": "net6Name"
+            },
+            "description": {
+              "text": "Current .NET 6 framework.",
+              "id": "net6Desc"
+            }
+          }
+        ]
+      },
+      {
+        "id": "useDocker",
+        "name": {
+          "text": "Add Docker Support",
+          "id": "dockerName"
+        },
+        "description": {
+          "text": "Include Docker files for container deployment.",
+          "id": "dockerDesc"
+        },
+        "isVisible": true,
+        "defaultValue": "false",
+        "persistenceScope": "shared",
+        "persistenceScopeName": "DockerScope"
+      }
+    ],
+    "tags": [
+      {
+        "type": "platform",
+        "add": [
+          "web"
+        ],
+        "remove": [
+          "mobile"
+        ]
+      },
+      {
+        "type": "projectType",
+        "add": [
+          "api"
+        ]
+      }
+    ],
+    "unsupportedHosts": [
+      {
+        "id": "vs",
+        "version": "[17.0,18.0)"
+      }
+    ],
+    "requiredComponents": [
+      {
+        "hostId": "vs",
+        "id": "Microsoft.VisualStudio.Component.Web",
+        "componentType": "setupComponent",
+        "version": "17.2"
+      }
+    ]
+  },
+  "description": "The **Web API Template** (id\u202f=\u202fwebapi) is packaged under the GUID\u202f{12345678-1234-1234-1234-1234567890ab}. It is described as \u201cA template for creating a modern Web API project.\u201d (description id\u202f=\u202fdescWebApi) and appears fifth in the New Project dialog (order\u202f=\u202f5) with the icon located at\u202ficons/webapi.png. Docker support is offered (supportsDocker\u202f=\u202ftrue) and can be toggled via the \u201cAdd Docker Support\u201d option (symbol id\u202f=\u202fuseDocker, name\u202f=\u202fAdd Docker Support, name id\u202f=\u202fdockerName, description\u202f=\u202fInclude Docker files for container deployment., description id\u202f=\u202fdockerDesc). The template also respects a\u202fdisableHttps\u202fsymbol for non\u2011HTTPS ports. By default, symbols are hidden in the IDE (defaultSymbolVisibility\u202f=\u202ffalse) and their values are persisted per template group (defaultPersistenceScope\u202f=\u202ftemplateGroup) under the namespace\u202fMyCompany.Templates (defaultPersistenceScopeName).\n\nTwo configurable symbols are defined. The **framework** symbol (id\u202f=\u202fframework) lets the user choose the target framework; it is visible (isVisible\u202f=\u202ftrue), not inverted (invertBoolean\u202f=\u202ffalse), and defaults to **net6.0** (defaultValue). Its displayed name is \u201c.NET\u202f6\u201d (name id\u202f=\u202fframeworkName) with the description \u201cTarget framework for the project.\u201d (description id\u202f=\u202fframeworkDesc). Persistence for this choice is scoped to the template group (persistenceScope\u202f=\u202ftemplateGroup) under the name\u202fFrameworkScope. The available choices are **net5** (id\u202f=\u202fnet5, name\u202f=\u202f\u201c.NET\u202f5\u201d, name id\u202f=\u202fnet5Name, description\u202f=\u202f\u201cLegacy .NET\u202f5 framework.\u201d, description id\u202f=\u202fnet5Desc) and **net6** (id\u202f=\u202fnet6, name\u202f=\u202f\u201c.NET\u202f6\u201d, name id\u202f=\u202fnet6Name, description\u202f=\u202f\u201cCurrent .NET\u202f6 framework.\u201d, description id\u202f=\u202fnet6Desc). The Docker option (useDocker) persists across shared sessions (persistenceScope\u202f=\u202fshared) under the name\u202fDockerScope and defaults to \u201cfalse\u201d.\n\nThe template adds the platform tag\u202fweb and removes the tag\u202fmobile, while also adding the project\u2011type tag\u202fapi. It is not available for Visual Studio versions\u202f17.0\u202fthrough\u202f18.0 (unsupported host\u202fvs, version\u202f[17.0,18.0)). To appear, the environment must have the setup component\u202fMicrosoft.VisualStudio.Component.Web (component type\u202fsetupComponent, version\u202f17.2) installed for the\u202fvs\u202fhost."
+}

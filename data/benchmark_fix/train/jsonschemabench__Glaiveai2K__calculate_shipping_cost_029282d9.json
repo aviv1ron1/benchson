@@ -1,0 +1,64 @@
+{
+  "name": "calculate_shipping_cost_029282d9",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "destination": {
+        "description": "The destination address of the package",
+        "type": "string"
+      },
+      "dimensions": {
+        "properties": {
+          "height": {
+            "description": "The height of the package in centimeters",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the package in centimeters",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the package in centimeters",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "height"
+        ],
+        "type": "object"
+      },
+      "weight": {
+        "description": "The weight of the package in kilograms",
+        "type": "number"
+      }
+    },
+    "required": [
+      "weight",
+      "dimensions",
+      "destination"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "destination": null,
+    "dimensions": {
+      "length": 42.5,
+      "width": 30.0,
+      "height": 15.2
+    },
+    "weight": 7.8
+  },
+  "valid_json": {
+    "destination": "1234 Elm Street, Springfield, IL 62704, USA",
+    "dimensions": {
+      "length": 42.5,
+      "width": 30.0,
+      "height": 15.2
+    },
+    "weight": 7.8
+  },
+  "description": "Dear Logistics Team,\n\nPlease arrange shipment for the package destined for\u202f1234\u202fElm\u202fStreet, Springfield, IL\u202f62704, USA. The parcel measures 42.5\u202fcm in length, 30.0\u202fcm in width, and 15.2\u202fcm in height, with a total weight of 7.8\u202fkg. Let me know once the pickup has been scheduled."
+}

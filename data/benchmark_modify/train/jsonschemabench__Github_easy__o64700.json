@@ -1,0 +1,70 @@
+{
+  "name": "o64700",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "description": "project description file",
+    "name": "Module",
+    "properties": {
+      "require": {
+        "type": "object",
+        "description": "This is a hash of module name (keys) and version constraints (values) that are required to run this module.",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "path": {
+        "type": "object",
+        "description": "path config",
+        "properties": {
+          "modules": {
+            "type": "string",
+            "description": "modules path"
+          },
+          "applications": {
+            "type": "string",
+            "description": "applications path"
+          }
+        }
+      }
+    },
+    "required": [
+      "require",
+      "path"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "require": {
+      "moduleA": "^1.2.3",
+      "moduleB": ">=2.0.0 <3.0.0",
+      "lodash": "~4.17.15"
+    },
+    "path": {
+      "modules": "src/modules",
+      "applications": "src/apps"
+    }
+  },
+  "instructions": "Please update the \"path\" field by changing \"applications\" to \"src/apps (updated)\".",
+  "ground_truth": {
+    "require": {
+      "moduleA": "^1.2.3",
+      "moduleB": ">=2.0.0 <3.0.0",
+      "lodash": "~4.17.15"
+    },
+    "path": {
+      "modules": "src/modules",
+      "applications": "src/apps (updated)"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "path",
+      "applications"
+    ],
+    "precise_instruction": "Change \"applications\" inside \"path\" to \"src/apps (updated)\"."
+  }
+}

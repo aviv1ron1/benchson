@@ -1,0 +1,158 @@
+{
+  "name": "o90425",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Ansible Inventory",
+    "description": "Ansible Inventory for the script inventory plugin",
+    "type": "object",
+    "patternProperties": {
+      "^\\w$": {
+        "type": "object",
+        "properties": {
+          "hosts": {
+            "description": "list of hosts that are part of this group",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vars": {
+            "type": "object",
+            "description": "Variables to assign to hosts that are part of this group",
+            "patternProperties": {
+              "^\\w$": {
+                "type": "object",
+                "description": "Vars for this hosts in this group"
+              }
+            }
+          },
+          "children": {
+            "description": "list of groups that are children of this group, their hosts will be added to this group",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "_meta": {
+        "type": "object",
+        "description": "Key that avoids calling the script per host",
+        "required": [
+          "hostvars"
+        ],
+        "properties": {
+          "hostvars": {
+            "type": "object",
+            "description": "Each key is a hostname and the value is a dictionary of the variables for that host",
+            "patternProperties": {
+              "^\\w$": {
+                "type": "object",
+                "description": "Hosts with their associated vars",
+                "patternProperties": {
+                  "^\\w$": {
+                    "type": "object",
+                    "description": "Vars for this host"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "a": {
+      "hosts": [
+        "web1",
+        "web2"
+      ],
+      "vars": {
+        "p": {
+          "ansible_user": "ubuntu"
+        }
+      },
+      "children": [
+        "b"
+      ]
+    },
+    "b": {
+      "hosts": [
+        "db1"
+      ],
+      "vars": {
+        "q": {
+          "ansible_port": 22
+        }
+      },
+      "children": []
+    },
+    "_meta": {
+      "hostvars": {
+        "c": {
+          "x": {
+            "ansible_host": "192.168.1.10",
+            "env": "prod"
+          }
+        },
+        "d": {
+          "y": {
+            "ansible_host": "192.168.1.11",
+            "env": "staging"
+          }
+        }
+      }
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "a": {
+      "hosts": [
+        "web1",
+        "web2"
+      ],
+      "vars": {
+        "p": {
+          "ansible_user": "ubuntu"
+        }
+      },
+      "children": [
+        "b"
+      ]
+    },
+    "b": {
+      "hosts": [
+        "db1"
+      ],
+      "vars": {
+        "q": {
+          "ansible_port": 22
+        }
+      },
+      "children": []
+    },
+    "_meta": {
+      "hostvars": {
+        "c": {
+          "x": {
+            "ansible_host": "192.168.1.10",
+            "env": "prod"
+          }
+        },
+        "d": {
+          "y": {
+            "ansible_host": "192.168.1.11",
+            "env": "staging"
+          }
+        }
+      }
+    }
+  },
+  "description": "The inventory is organized into two primary groups. Group **a** contains the web servers **web1** and **web2** and inherits all members of its child group **b**. Within group\u202fa a variable namespace called **p** defines the login user for the group as `ansible_user=ubuntu`. Group **b**, which is listed as a child of a, hosts the database server **db1**; its own variable namespace **q** sets the connection port with `ansible_port=22`. No further child groups are defined under b.\n\nOn a host\u2011specific level, the meta section provides additional variables. Host **c** is associated with a variable block **x**, which specifies `ansible_host=192.168.1.10` and marks the environment as `prod`. Host **d** uses a block **y**, assigning `ansible_host=192.168.1.11` and labeling the environment as `staging`."
+}

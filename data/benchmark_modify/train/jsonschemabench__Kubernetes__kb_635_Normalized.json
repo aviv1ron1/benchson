@@ -1,0 +1,41 @@
+{
+  "name": "kb_635_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface",
+    "properties": {
+      "path": {
+        "description": "Path is the URL path of the request",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "verb": {
+        "description": "Verb is the standard HTTP verb",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "path": "/api/v1/pods",
+    "verb": "GET"
+  },
+  "instructions": "Please change the verb to \u201cGET (updated)\u201d.",
+  "ground_truth": {
+    "path": "/api/v1/pods",
+    "verb": "GET (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "verb"
+    ],
+    "precise_instruction": "Change \"verb\" to \"GET (updated)\"."
+  }
+}

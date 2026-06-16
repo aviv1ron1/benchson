@@ -1,0 +1,57 @@
+{
+  "name": "o15105",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Specifies how to describe an external source.",
+    "properties": {
+      "path": {
+        "_id": "path",
+        "description": "Full path to the source (may include port number)",
+        "title": "Path schema.",
+        "type": "string"
+      },
+      "referenceId": {
+        "_id": "referenceId",
+        "description": "Which property should we use to name the feature.",
+        "title": "ReferenceId schema.",
+        "type": "string"
+      },
+      "refreshIntervalMSec": {
+        "_id": "refreshIntervalMSec",
+        "description": "Interval in milliseconds to refresh the source.",
+        "title": "RefreshIntervalMSec schema.",
+        "type": "integer"
+      },
+      "type": {
+        "_id": "type",
+        "description": "Specify the subscriber to use.",
+        "enum": [
+          "REST"
+        ],
+        "title": "Type schema."
+      }
+    },
+    "required": [
+      "type",
+      "path",
+      "referenceId",
+      "refreshIntervalMSec"
+    ],
+    "title": "Subscriber schema.",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "type": "REST",
+    "referenceId": "itemId",
+    "refreshIntervalMSec": 300000
+  },
+  "valid_json": {
+    "type": "REST",
+    "path": "https://api.example.com/v1/data?port=443",
+    "referenceId": "itemId",
+    "refreshIntervalMSec": 300000
+  },
+  "description": "Our data integration setup will use a REST\u2011based subscriber to pull information from the external service located at\u202fhttps://api.example.com/v1/data?port=443. For each record retrieved, the field **itemId** will serve as the reference identifier, allowing us to map the incoming items to our internal feature set. The poller is configured to run every 300\u202f000\u202fmilliseconds (i.e., every five minutes), ensuring that the source data stays current without imposing undue load on the endpoint."
+}

@@ -1,0 +1,73 @@
+{
+  "name": "sp_232_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for an EMR job step status context",
+    "properties": {
+      "created_at": {
+        "_format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "ended_at": {
+        "_format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "name": {
+        "maxLength": 255,
+        "type": "string"
+      },
+      "started_at": {
+        "_format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "state": {
+        "enum": [
+          "PENDING",
+          "RUNNING",
+          "COMPLETED",
+          "CANCELLED",
+          "FAILED"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "state"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "jobflow_step_status",
+      "vendor": "com.snowplowanalytics.monitoring.batch",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": "DataIngestionStep",
+    "state": "RUNNING",
+    "created_at": "2026-06-10T08:15:30Z",
+    "started_at": "2026-06-10T08:20:45Z",
+    "ended_at": null,
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "name": "DataIngestionStep",
+    "state": "RUNNING",
+    "created_at": "2026-06-10T08:15:30Z",
+    "started_at": "2026-06-10T08:20:45Z",
+    "ended_at": null
+  },
+  "description": "The EMR job flow includes a step named **DataIngestionStep**. This step was created on 2026-06-10T08:15:30Z and began execution at 2026-06-10T08:20:45Z.\n\nAs of now, the step\u2019s state is **RUNNING**; it has not yet reached an end time, so the completion timestamp remains undefined."
+}

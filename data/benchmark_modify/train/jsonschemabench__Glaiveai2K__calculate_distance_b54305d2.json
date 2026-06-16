@@ -1,0 +1,52 @@
+{
+  "name": "calculate_distance_b54305d2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "end_latitude": {
+        "description": "The latitude of the end point",
+        "type": "number"
+      },
+      "end_longitude": {
+        "description": "The longitude of the end point",
+        "type": "number"
+      },
+      "start_latitude": {
+        "description": "The latitude of the starting point",
+        "type": "number"
+      },
+      "start_longitude": {
+        "description": "The longitude of the starting point",
+        "type": "number"
+      }
+    },
+    "required": [
+      "start_latitude",
+      "start_longitude",
+      "end_latitude",
+      "end_longitude"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "start_latitude": 37.7749,
+    "start_longitude": -122.4194,
+    "end_latitude": 34.0522,
+    "end_longitude": -118.2437
+  },
+  "instructions": "Could you increase\u202f\"start_longitude\"\u202fby\u202f1?",
+  "ground_truth": {
+    "start_latitude": 37.7749,
+    "start_longitude": -121.4194,
+    "end_latitude": 34.0522,
+    "end_longitude": -118.2437
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "start_longitude"
+    ],
+    "precise_instruction": "Increase \"start_longitude\" by 1."
+  }
+}

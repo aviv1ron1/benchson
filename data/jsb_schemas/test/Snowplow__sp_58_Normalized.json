@@ -1,0 +1,47 @@
+{
+  "name": "sp_58_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Google Analytics enhanced e-commerce promotion entity",
+    "properties": {
+      "creative": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "index": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "position": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "promotion",
+      "vendor": "com.google.analytics.measurement-protocol",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  }
+}

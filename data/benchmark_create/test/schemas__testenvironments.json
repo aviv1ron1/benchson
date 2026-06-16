@@ -1,0 +1,165 @@
+{
+  "name": "testenvironments",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "config": {
+        "required": [
+          "name",
+          "type"
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/definitions/docker"
+          },
+          {
+            "$ref": "#/definitions/wsl"
+          },
+          {
+            "$ref": "#/definitions/ssh"
+          },
+          {
+            "$ref": "#/definitions/remote"
+          }
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User-friendly environment name that will appear in the TestExplorer list. It must be unique within a testEnvironments.json file.",
+            "minLength": 1
+          },
+          "localRoot": {
+            "type": "string",
+            "description": "Path on the local machine (either absolute or relative to the solution directory) which is projected into the remote environment. If not specified, this will default to the repo root within the context of a git repo (on VS 17.1 and above). Outside a git repo, this would default to the solution directory."
+          }
+        }
+      },
+      "docker": {
+        "properties": {
+          "type": {
+            "enum": [
+              "docker"
+            ]
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "dockerImage"
+            ],
+            "properties": {
+              "dockerImage": {
+                "type": "string",
+                "description": "Name of a docker image to load in a docker env. dockerImage or dockerFile must be specified, but not both."
+              }
+            }
+          },
+          {
+            "required": [
+              "dockerFile"
+            ],
+            "properties": {
+              "dockerFile": {
+                "type": "string",
+                "description": "Path to a Dockerfile, relative to the solution directory, to build an image and load in a docker env. dockerImage or dockerFile must be specified, but not both."
+              }
+            }
+          }
+        ]
+      },
+      "wsl": {
+        "required": [
+          "wslDistribution"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "wsl"
+            ]
+          },
+          "wslDistribution": {
+            "type": "string",
+            "description": "Name of the local WSL distribution in which to run the test environment."
+          }
+        }
+      },
+      "ssh": {
+        "required": [
+          "remoteUri"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "ssh"
+            ]
+          },
+          "remoteUri": {
+            "type": "string",
+            "description": "A uri that specifies the connection to the remote machine. e.g. ssh://user@hostname:22"
+          }
+        }
+      },
+      "remote": {
+        "required": [
+          "remoteUri"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "remote"
+            ]
+          },
+          "remoteUri": {
+            "type": "string",
+            "description": "A uri that specifies the connection to the remote machine. e.g. tcp://hostname:2358"
+          }
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/testenvironments.json",
+    "properties": {
+      "version": {
+        "type": "string"
+      },
+      "environments": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/config"
+        }
+      }
+    },
+    "title": "Schema for Visual Studio's test environment config",
+    "type": "object"
+  },
+  "description": "The test\u2011environment configuration is at version\u202f1.0. It defines four distinct environments that the team can select from in Visual\u202fStudio\u2019s Test Explorer.\n\nThe first environment, **DockerUbuntu**, is a Docker\u2011based setup that uses the image\u202f`ubuntu:20.04`; its local source directory is the *src* folder of the repository. The second, **WSLDebian**, runs under the local WSL distribution named **Debian** and maps the local path */home/user/project* into the container. The third entry, **RemoteSSH**, connects via SSH using the URI `ssh://devuser@remoteserver.example.com:22` and projects the current directory (denoted by \u201c.\u201d) as its root. Finally, **RemoteTcp** is a remote test environment that contacts the machine at `tcp://remoteserver.example.com:2358`; no explicit local root is defined for this configuration.",
+  "reference_json": {
+    "version": "1.0",
+    "environments": [
+      {
+        "name": "DockerUbuntu",
+        "type": "docker",
+        "dockerImage": "ubuntu:20.04",
+        "localRoot": "src"
+      },
+      {
+        "name": "WSLDebian",
+        "type": "wsl",
+        "wslDistribution": "Debian",
+        "localRoot": "/home/user/project"
+      },
+      {
+        "name": "RemoteSSH",
+        "type": "ssh",
+        "remoteUri": "ssh://devuser@remoteserver.example.com:22",
+        "localRoot": "."
+      },
+      {
+        "name": "RemoteTcp",
+        "type": "remote",
+        "remoteUri": "tcp://remoteserver.example.com:2358"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "minecraft-damage-type",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/minecraft-damage-type.json",
+    "$comment": "https://minecraft.wiki/w/Data_Pack",
+    "description": "A damage type's for a Minecraft data pack config schema",
+    "properties": {
+      "message_id": {
+        "type": "string"
+      },
+      "scaling": {
+        "type": "string",
+        "enum": [
+          "never",
+          "always",
+          "when_caused_by_living_non_player"
+        ]
+      },
+      "exhaustion": {
+        "type": "number"
+      },
+      "effects": {
+        "type": "string",
+        "enum": [
+          "hurt",
+          "thorns",
+          "drowning",
+          "burning",
+          "poking",
+          "freezing"
+        ]
+      },
+      "death_message_type": {
+        "type": "string",
+        "enum": [
+          "default",
+          "fall_variants",
+          "intentional_game_design"
+        ]
+      }
+    },
+    "required": [
+      "message_id",
+      "scaling",
+      "exhaustion"
+    ],
+    "title": "Minecraft Data Pack Damage Type",
+    "type": "object"
+  },
+  "description": "The new damage type has been registered under the identifier **minecraft:player.smite**. Its scaling behavior is set to **when_caused_by_living_non_player**, meaning the damage will scale only when it originates from a non\u2011player living entity. The exhaustion cost applied to the affected player is **0.1**, and the damage will also apply the **burning** effect.\n\nAll standard death messages will be used for this damage type, as the **death_message_type** is configured to **default**. This ensures that players killed by the smite damage will see the usual vanilla death text without any custom variation.",
+  "reference_json": {
+    "message_id": "minecraft:player.smite",
+    "scaling": "when_caused_by_living_non_player",
+    "exhaustion": 0.1,
+    "effects": "burning",
+    "death_message_type": "default"
+  }
+}

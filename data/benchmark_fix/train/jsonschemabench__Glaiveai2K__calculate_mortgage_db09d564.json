@@ -1,0 +1,50 @@
+{
+  "name": "calculate_mortgage_db09d564",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "down_payment": {
+        "description": "The down payment amount",
+        "type": "number"
+      },
+      "interest_rate": {
+        "description": "The annual interest rate",
+        "type": "number"
+      },
+      "loan_amount": {
+        "description": "The total loan amount",
+        "type": "number"
+      },
+      "loan_term": {
+        "description": "The loan term in years",
+        "type": "integer"
+      },
+      "property_tax": {
+        "description": "The annual property tax",
+        "type": "number"
+      }
+    },
+    "required": [
+      "loan_amount",
+      "interest_rate",
+      "loan_term",
+      "down_payment"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "interest_rate": 3.75,
+    "loan_amount": 250000,
+    "loan_term": 30,
+    "property_tax": 3500
+  },
+  "valid_json": {
+    "down_payment": 25000,
+    "interest_rate": 3.75,
+    "loan_amount": 250000,
+    "loan_term": 30,
+    "property_tax": 3500
+  },
+  "description": "Dear Mr. Johnson,\n\nThank you for choosing our services for your home financing. I\u2019m pleased to confirm that we have approved a mortgage loan of **$250,000** with a fixed annual interest rate of **3.75\u202f%**. The loan will be amortized over a term of **30\u202fyears**, and you have arranged a down\u2011payment of **$25,000** at closing. \n\nAdditionally, the estimated annual property tax for the residence is **$3,500**, which will be included in your escrow calculations. Please let us know if you have any questions or need further clarification regarding these terms. We look forward to moving ahead with your purchase."
+}

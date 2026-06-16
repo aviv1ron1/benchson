@@ -1,0 +1,135 @@
+{
+  "name": "o84873",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "bridge fdb show",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "dev": {
+          "type": "string"
+        },
+        "dst": {
+          "description": "host name or ip address",
+          "type": "string"
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "self",
+              "master",
+              "router",
+              "offload"
+            ]
+          },
+          "_uniqueItems": true
+        },
+        "linkNetNsId": {
+          "type": "integer"
+        },
+        "mac": {
+          "type": "string"
+        },
+        "master": {
+          "type": "string"
+        },
+        "opCode": {
+          "description": "used to indicate fdb entry del",
+          "enum": [
+            "deleted"
+          ]
+        },
+        "port": {
+          "type": "integer"
+        },
+        "state": {
+          "description": "permanent, static, stale, state=#x",
+          "type": "string"
+        },
+        "updated": {
+          "type": "integer"
+        },
+        "used": {
+          "type": "integer"
+        },
+        "viaIf": {
+          "type": "string"
+        },
+        "viaIfIndex": {
+          "type": "integer"
+        },
+        "vlan": {
+          "type": "integer"
+        },
+        "vni": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "description": "The forwarding database was examined at the present moment and three bridge entries were found. On bridge **br0** the destination MAC address\u202f00:11:22:33:44:55 (also listed as the MAC) is recorded with the flags **self** and **offload**; it belongs to link\u2011network\u2011namespace\u202f0, is mastered by **br0**, and is reachable via interface **eth0** (interface index\u202f3) on port\u202f2. The entry is marked as **permanent**, was last updated at epoch\u202f1718001234, last used at epoch\u202f1718001200, and is associated with VLAN\u202f100 and VNI\u202f5000.  \n\nOn bridge **br1** the destination IP\u202f192.168.1.10 maps to MAC\u202faa:bb:cc:dd:ee:ff and carries the single flag **router**. This entry resides in link\u2011network\u2011namespace\u202f1, is mastered by **br1**, and carries an operation code of **deleted**, indicating a removal. It is reachable via **eth1** (index\u202f4) on port\u202f5, is classified as **static**, was updated at epoch\u202f1717999999, last used at epoch\u202f1717999900, and is tagged with VLAN\u202f200 and VNI\u202f6000.  \n\nThe third record belongs to bridge **br2** and points to the host name **host.example.com** with MAC\u202f11:22:33:44:55:66. Its flags are **master**, **router**, and **offload**; the entry lives in link\u2011network\u2011namespace\u202f2, is mastered by **br2**, and is accessed via **eth2** (index\u202f6) on port\u202f7. It is marked **stale**, was refreshed at epoch\u202f1718000000, last referenced at epoch\u202f1717998000, and is assigned to VLAN\u202f300 and VNI\u202f7000.",
+  "reference_json": [
+    {
+      "dev": "br0",
+      "dst": "00:11:22:33:44:55",
+      "flags": [
+        "self",
+        "offload"
+      ],
+      "linkNetNsId": 0,
+      "mac": "00:11:22:33:44:55",
+      "master": "br0",
+      "port": 2,
+      "state": "permanent",
+      "updated": 1718001234,
+      "used": 1718001200,
+      "viaIf": "eth0",
+      "viaIfIndex": 3,
+      "vlan": 100,
+      "vni": 5000
+    },
+    {
+      "dev": "br1",
+      "dst": "192.168.1.10",
+      "flags": [
+        "router"
+      ],
+      "linkNetNsId": 1,
+      "mac": "aa:bb:cc:dd:ee:ff",
+      "master": "br1",
+      "opCode": "deleted",
+      "port": 5,
+      "state": "static",
+      "updated": 1717999999,
+      "used": 1717999900,
+      "viaIf": "eth1",
+      "viaIfIndex": 4,
+      "vlan": 200,
+      "vni": 6000
+    },
+    {
+      "dev": "br2",
+      "dst": "host.example.com",
+      "flags": [
+        "master",
+        "router",
+        "offload"
+      ],
+      "linkNetNsId": 2,
+      "mac": "11:22:33:44:55:66",
+      "master": "br2",
+      "port": 7,
+      "state": "stale",
+      "updated": 1718000000,
+      "used": 1717998000,
+      "viaIf": "eth2",
+      "viaIfIndex": 6,
+      "vlan": 300,
+      "vni": 7000
+    }
+  ]
+}

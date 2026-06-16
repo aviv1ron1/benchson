@@ -1,0 +1,80 @@
+{
+  "name": "amx-muse",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/amx-muse.json",
+    "description": "A MUSE program descriptor file",
+    "additionalProperties": true,
+    "type": "object",
+    "properties": {
+      "id": {
+        "title": "Program ID",
+        "description": "Globally unique program ID, special characters are not allowed",
+        "type": "string",
+        "pattern": "^[a-zA-z0-9_-]+$"
+      },
+      "description": {
+        "title": "Program Description",
+        "description": "A description of the program that may be used by user interfaces",
+        "type": "string"
+      },
+      "disabled": {
+        "title": "Auto-start Disabled",
+        "description": "Disable the auto-start of the script on system boot",
+        "type": "boolean",
+        "default": false
+      },
+      "envvars": {
+        "title": "Environment Variables",
+        "description": "Name/Value pairs that can be used to set configuration of a program",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "scope": {
+        "title": "Program Scope",
+        "description": "The scope (location) to which the script belongs. Leave blank for global scope",
+        "type": "string",
+        "pattern": "^[a-zA-z0-9_\\.-]*$"
+      },
+      "provider": {
+        "title": "Programming Language",
+        "description": "The language the program is written in",
+        "enum": [
+          "groovy",
+          "javascript",
+          "python"
+        ]
+      },
+      "script": {
+        "title": "Program File Name",
+        "description": "The file name of the main entry point of the program. Defaults to index.<extension>",
+        "type": "string",
+        "default": "index.{groovy,js,py}"
+      }
+    },
+    "required": [
+      "id",
+      "provider"
+    ]
+  },
+  "description": "Subject: Deployment details for **myProgram_01** (v1.2.3)\n\nThe new Python\u2011based data processing script, **process_logs.py**, has been added to the central logging scope (`central.logging`). Its purpose is to aggregate daily logs, and it carries the description \u201cA Python based data processing script that aggregates logs daily.\u201d The program is authored by **Jane Doe** and is enabled for auto\u2011start on system boot (the disabled flag is set to false). The required environment variables have been defined as follows: `LOG_LEVEL` set to **INFO**, `OUTPUT_DIR` set to **/var/data/processed**, and `MAX_THREADS` set to **4**. This configuration aligns with the program ID **myProgram_01** and uses Python as its programming language.",
+  "reference_json": {
+    "id": "myProgram_01",
+    "description": "A Python based data processing script that aggregates logs daily.",
+    "disabled": false,
+    "envvars": {
+      "LOG_LEVEL": "INFO",
+      "OUTPUT_DIR": "/var/data/processed",
+      "MAX_THREADS": "4"
+    },
+    "scope": "central.logging",
+    "provider": "python",
+    "script": "process_logs.py",
+    "version": "1.2.3",
+    "author": "Jane Doe"
+  }
+}

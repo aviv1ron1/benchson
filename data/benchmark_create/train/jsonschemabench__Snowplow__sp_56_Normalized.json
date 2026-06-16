@@ -1,0 +1,46 @@
+{
+  "name": "sp_56_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Google Analytics enhanced e-commerce product impression custom metric entity",
+    "properties": {
+      "customMetricIndex": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "listIndex": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "productIndex": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "value": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "product_impression_custom_metric",
+      "vendor": "com.google.analytics.measurement-protocol",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "description": "During today\u2019s enhanced e\u2011commerce tracking session, we captured a custom metric for product impression #7. Specifically, this metric was logged for the third product list (list index\u202f3) and applies to product position\u202f15 within that list. The recorded value for this custom metric is\u202f84.",
+  "reference_json": {
+    "customMetricIndex": 7,
+    "listIndex": 3,
+    "productIndex": 15,
+    "value": 84
+  }
+}

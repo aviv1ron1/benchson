@@ -1,0 +1,58 @@
+{
+  "name": "o90233",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "locationInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Defines how location information will be retrieved from a [CSV](csvLayer.md) file referenced through the web, ie. referenced by URL.",
+    "properties": {
+      "latitudeFieldName": {
+        "type": "string",
+        "description": "A string defining the field name that holds the latitude (Y) coordinate."
+      },
+      "locationType": {
+        "type": "string",
+        "description": "String value indicating location type.",
+        "enum": [
+          "coordinates"
+        ]
+      },
+      "longitudeFieldName": {
+        "type": "string",
+        "description": "A string defining the field name that holds the longitude (X) coordinate."
+      }
+    },
+    "required": [
+      "locationType"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+      "examples": [
+        {
+          "title": "locationInfo",
+          "code": {
+            "locationInfo": {
+              "locationType": "coordinates",
+              "latitudeFieldName": "latitude",
+              "longitudeFieldName": "longitude"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "erroneous_json": {
+    "locationType": "coordinates",
+    "latitudeFieldName": "latitude",
+    "longitudeFieldName": "longitude",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "locationType": "coordinates",
+    "latitudeFieldName": "latitude",
+    "longitudeFieldName": "longitude"
+  },
+  "description": "The location data for this dataset is defined using geographic coordinates. Specifically, each record\u2019s position is identified by a latitude value and a longitude value.\n\nIn the source CSV, the latitude values are stored under the column named **latitude**, while the corresponding longitude values are found in the column named **longitude**. This field configuration allows the system to interpret each point accurately as a set of coordinates."
+}

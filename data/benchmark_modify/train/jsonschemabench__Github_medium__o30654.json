@@ -1,0 +1,145 @@
+{
+  "name": "o30654",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "bdggrpproxyarp": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "bdgsetting": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "bridgeagetimeout": {
+        "type": "integer"
+      },
+      "garponvridintf": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "garpreply": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "macmodefwdmypkt": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "maxbridgecollision": {
+        "type": "integer"
+      },
+      "mbfinstlearning": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "mbfpeermacupdate": {
+        "type": "integer"
+      },
+      "proxyarp": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "returntoethernetsender": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "rstintfonhafo": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "skipproxyingbsdtraffic": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "stopmacmoveupdate": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "usemymac": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "l2param",
+    "type": "object"
+  },
+  "data": {
+    "bdggrpproxyarp": "ENABLED",
+    "bdgsetting": "DISABLED",
+    "bridgeagetimeout": 30,
+    "garponvridintf": "ENABLED",
+    "garpreply": "DISABLED",
+    "macmodefwdmypkt": "ENABLED",
+    "maxbridgecollision": 12,
+    "mbfinstlearning": "ENABLED",
+    "mbfpeermacupdate": 5,
+    "proxyarp": "ENABLED",
+    "returntoethernetsender": "DISABLED",
+    "rstintfonhafo": "ENABLED",
+    "skipproxyingbsdtraffic": "DISABLED",
+    "stopmacmoveupdate": "ENABLED",
+    "usemymac": "DISABLED"
+  },
+  "instructions": "Please remove the usemymac field.",
+  "ground_truth": {
+    "bdggrpproxyarp": "ENABLED",
+    "bdgsetting": "DISABLED",
+    "bridgeagetimeout": 30,
+    "garponvridintf": "ENABLED",
+    "garpreply": "DISABLED",
+    "macmodefwdmypkt": "ENABLED",
+    "maxbridgecollision": 12,
+    "mbfinstlearning": "ENABLED",
+    "mbfpeermacupdate": 5,
+    "proxyarp": "ENABLED",
+    "returntoethernetsender": "DISABLED",
+    "rstintfonhafo": "ENABLED",
+    "skipproxyingbsdtraffic": "DISABLED",
+    "stopmacmoveupdate": "ENABLED"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "usemymac"
+    ],
+    "precise_instruction": "Remove the \"usemymac\" field."
+  }
+}

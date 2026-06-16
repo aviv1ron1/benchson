@@ -1,0 +1,91 @@
+{
+  "name": "create_invoice_7d16b6f6",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "billing_address": {
+        "description": "The billing address of the customer",
+        "type": "string"
+      },
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "price": {
+              "description": "The price per unit of the product",
+              "type": "number"
+            },
+            "product_name": {
+              "description": "The name of the product",
+              "type": "string"
+            },
+            "quantity": {
+              "description": "The quantity of the product",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "product_name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "billing_address",
+      "items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "customer_name": "Emily Rodriguez",
+    "billing_address": null,
+    "items": [
+      {
+        "product_name": "Wireless Noise\u2011Cancelling Headphones",
+        "quantity": 2,
+        "price": 199.99
+      },
+      {
+        "product_name": "Ergonomic Office Chair",
+        "quantity": 1,
+        "price": 349.5
+      },
+      {
+        "product_name": "Portable SSD 1TB",
+        "quantity": 3,
+        "price": 119.0
+      }
+    ]
+  },
+  "valid_json": {
+    "customer_name": "Emily Rodriguez",
+    "billing_address": "742 Evergreen Terrace, Springfield, IL 62704, USA",
+    "items": [
+      {
+        "product_name": "Wireless Noise\u2011Cancelling Headphones",
+        "quantity": 2,
+        "price": 199.99
+      },
+      {
+        "product_name": "Ergonomic Office Chair",
+        "quantity": 1,
+        "price": 349.5
+      },
+      {
+        "product_name": "Portable SSD 1TB",
+        "quantity": 3,
+        "price": 119.0
+      }
+    ]
+  },
+  "description": "Dear Emily Rodriguez,\n\nThank you for your recent purchase. We have processed your order and will bill the amount to the address you provided: 742 Evergreen Terrace, Springfield, IL\u202f62704, USA. Your order includes the following items:\n\n- 2\u202funits of Wireless Noise\u2011Cancelling Headphones at $199.99 each  \n- 1\u202funit of Ergonomic Office Chair at $349.50 each  \n- 3\u202funits of Portable SSD 1TB at $119.00 each  \n\nWe appreciate your business and will notify you once the shipment is on its way."
+}

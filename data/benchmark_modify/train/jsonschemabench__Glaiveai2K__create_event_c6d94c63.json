@@ -1,0 +1,64 @@
+{
+  "name": "create_event_c6d94c63",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "attendees": {
+        "description": "The email addresses of the attendees",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "end_time": {
+        "description": "The end time of the event in HH:MM format",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the event",
+        "type": "string"
+      },
+      "start_time": {
+        "description": "The start time of the event in HH:MM format",
+        "type": "string"
+      },
+      "title": {
+        "description": "The title of the event",
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "start_time",
+      "end_time"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "title": "Project Kickoff Meeting",
+    "start_time": "09:30",
+    "end_time": "10:45",
+    "location": "Conference Room B, Headquarters",
+    "attendees": [
+      "alice.smith@example.com",
+      "bob.johnson@example.com",
+      "carol.williams@example.com"
+    ]
+  },
+  "instructions": "Can you delete all items from the \"attendees\" list?",
+  "ground_truth": {
+    "title": "Project Kickoff Meeting",
+    "start_time": "09:30",
+    "end_time": "10:45",
+    "location": "Conference Room B, Headquarters",
+    "attendees": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "attendees"
+    ],
+    "precise_instruction": "Remove all items from the \"attendees\" list."
+  }
+}

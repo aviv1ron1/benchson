@@ -1,0 +1,32 @@
+{
+  "name": "kb_580_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "NamespaceSpec describes the attributes on a Namespace.",
+    "properties": {
+      "finalizers": {
+        "description": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/",
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "description": "The namespace is presently guarded by three finalizers. The first is the standard Kubernetes namespace finalizer,\u202f**kubernetes.io/namespaces**, which ensures that core cleanup steps are performed before the namespace can be fully removed. The second is a custom finalizer registered by our team at\u202f**example.com/custom-finalizer**, allowing us to execute additional shutdown logic specific to our applications. The third entry in the list is a null value, indicating an empty placeholder where no further finalizer is defined.\n\nBecause Kubernetes requires this finalizer list to be empty before a namespace can be permanently deleted from storage, all three entries\u2014including the null placeholder\u2014must be cleared in the proper order to complete the namespace removal process.",
+  "reference_json": {
+    "finalizers": [
+      "kubernetes.io/namespaces",
+      "example.com/custom-finalizer",
+      null
+    ]
+  }
+}

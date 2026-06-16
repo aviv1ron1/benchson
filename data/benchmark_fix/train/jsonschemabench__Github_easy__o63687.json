@@ -1,0 +1,131 @@
+{
+  "name": "o63687",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Schema of Net",
+    "type": "object",
+    "required": [
+      "vars",
+      "params",
+      "blocks"
+    ],
+    "properties": {
+      "vars": {
+        "description": "A dictionary that its keys are name of variables and its valus are multi-dimensional arrays",
+        "type": "object"
+      },
+      "params": {
+        "description": "Name of `vars`, which are parameters",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "blocks": {
+        "description": "A dictionary that it's keys are output vars and values are {'inputs': 'string array', 'function': 'string'}",
+        "type": "object"
+      }
+    }
+  },
+  "erroneous_json": {
+    "vars": {
+      "weights1": [
+        [
+          0.12,
+          -0.34
+        ],
+        [
+          0.56,
+          0.78
+        ]
+      ],
+      "bias1": [
+        0.01,
+        -0.02
+      ],
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "output": []
+    },
+    "blocks": {
+      "layer1_output": {
+        "inputs": [
+          "input",
+          "weights1",
+          "bias1"
+        ],
+        "function": "matmul_add"
+      },
+      "output": {
+        "inputs": [
+          "layer1_output"
+        ],
+        "function": "relu"
+      }
+    }
+  },
+  "valid_json": {
+    "vars": {
+      "weights1": [
+        [
+          0.12,
+          -0.34
+        ],
+        [
+          0.56,
+          0.78
+        ]
+      ],
+      "bias1": [
+        0.01,
+        -0.02
+      ],
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "output": []
+    },
+    "params": [
+      "weights1",
+      "bias1"
+    ],
+    "blocks": {
+      "layer1_output": {
+        "inputs": [
+          "input",
+          "weights1",
+          "bias1"
+        ],
+        "function": "matmul_add"
+      },
+      "output": {
+        "inputs": [
+          "layer1_output"
+        ],
+        "function": "relu"
+      }
+    }
+  },
+  "description": "Hi team,\n\nBelow is the current configuration for the simple feed\u2011forward network we are testing. The variable set includes a weight matrix **weights1** (2\u202f\u00d7\u202f2) with values\u202f[[0.12,\u202f\u20110.34],\u202f[0.56,\u202f0.78]], a bias vector **bias1**\u202f=\u202f[0.01,\u202f\u20110.02], and the input data **input** arranged as a 2\u202f\u00d7\u202f3 matrix\u202f[[1,\u202f2,\u202f3],\u202f[4,\u202f5,\u202f6]]. The **output** variable is defined but initially empty, awaiting the forward pass.\n\nThe parameters of the model are the two learnable tensors, **weights1** and **bias1**. The computational graph consists of two blocks: the first block, named **layer1_output**, takes the three inputs *input*, *weights1*, and *bias1* and applies the \u201cmatmul_add\u201d operation (matrix multiplication followed by bias addition). Its result is fed into the second block, **output**, which receives **layer1_output** as its sole input and applies a ReLU activation (\u201crelu\u201d) to produce the final network output."
+}

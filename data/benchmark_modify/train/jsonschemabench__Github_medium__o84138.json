@@ -1,0 +1,105 @@
+{
+  "name": "o84138",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "description": "The schema is made for RenderTheFuck stack diagram.",
+    "properties": {
+      "layers": {
+        "items": {
+          "properties": {
+            "items": {
+              "items": {
+                "properties": {
+                  "name": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "parent": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "items"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "settings": {
+        "properties": {
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
+      "wtf": {
+        "enum": [
+          "stack"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "wtf",
+      "settings",
+      "layers"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "wtf": "stack",
+    "settings": {
+      "title": "RenderTheFuck Stack Diagram"
+    },
+    "layers": [
+      {
+        "items": [
+          {
+            "name": "BaseLayer",
+            "parent": 0
+          },
+          {
+            "name": "OverlayLayer"
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "name": "DetailLayer",
+            "parent": 1
+          }
+        ]
+      }
+    ]
+  },
+  "instructions": "Could you remove the first 2 items from the \"layers\" list?",
+  "ground_truth": {
+    "wtf": "stack",
+    "settings": {
+      "title": "RenderTheFuck Stack Diagram"
+    },
+    "layers": []
+  },
+  "modification": {
+    "op": "array_remove_first_2",
+    "path": [
+      "layers"
+    ],
+    "precise_instruction": "Remove the first 2 items from the \"layers\" list."
+  }
+}

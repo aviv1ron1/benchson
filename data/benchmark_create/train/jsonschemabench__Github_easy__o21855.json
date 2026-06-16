@@ -1,0 +1,35 @@
+{
+  "name": "o21855",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "ParentId",
+      "PathPart",
+      "RestApiId"
+    ],
+    "properties": {
+      "ParentId": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+$"
+      },
+      "PathPart": {
+        "type": "string",
+        "pattern": "^(\\{[a-z]+\\})|([a-z]+)$"
+      },
+      "RestApiId": {
+        "type": "string",
+        "pattern": "^[a-z0-9]{10}$"
+      }
+    },
+    "additionalProperties": false
+  },
+  "description": "Subject: Request to Add \u201cusers\u201d Resource to API\u202fGateway\n\nHi Team,\n\nPlease create a new resource node for the API\u202fGateway instance identified by **RestApiId\u202fa1b2c3d4e5**. The node should be attached under the existing parent resource **ParentId\u202fa1b2c3** and use **PathPart\u202fusers** so that the resulting endpoint will be reachable at `/users` within this API. Let me know once the configuration is applied or if any additional information is required.",
+  "reference_json": {
+    "ParentId": "a1b2c3",
+    "PathPart": "users",
+    "RestApiId": "a1b2c3d4e5"
+  }
+}

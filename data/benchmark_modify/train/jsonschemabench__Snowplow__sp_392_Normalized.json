@@ -1,0 +1,93 @@
+{
+  "name": "sp_392_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": true,
+    "properties": {
+      "body": {
+        "additionalProperties": true,
+        "properties": {
+          "group_id": {
+            "_format": "uuid",
+            "type": "string"
+          },
+          "payload": {
+            "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$",
+            "type": "string"
+          },
+          "push_id": {
+            "_format": "uuid",
+            "type": "string"
+          },
+          "trimmed": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "occurred": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "offset": {
+        "type": "string"
+      },
+      "processed": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "PUSH_BODY",
+      "vendor": "com.urbanairship.connect",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "id": "d3b07384-6c3f-4e5d-8e5e-9b4c2d5f5a7d",
+    "occurred": "2023-09-15T12:34:56Z",
+    "processed": "2023-09-15T12:35:10Z",
+    "offset": "0000012345",
+    "type": "push_body",
+    "body": {
+      "group_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+      "push_id": "f1e2d3c4-b5a6-7890-1234-56789abcdef0",
+      "payload": "UHVzaCBOb3RpZmljYXRpb24=",
+      "trimmed": false,
+      "extra_info": "test"
+    },
+    "extraField": 42
+  },
+  "instructions": "Could you please remove the \"offset\" field?",
+  "ground_truth": {
+    "id": "d3b07384-6c3f-4e5d-8e5e-9b4c2d5f5a7d",
+    "occurred": "2023-09-15T12:34:56Z",
+    "processed": "2023-09-15T12:35:10Z",
+    "type": "push_body",
+    "body": {
+      "group_id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+      "push_id": "f1e2d3c4-b5a6-7890-1234-56789abcdef0",
+      "payload": "UHVzaCBOb3RpZmljYXRpb24=",
+      "trimmed": false,
+      "extra_info": "test"
+    },
+    "extraField": 42
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "offset"
+    ],
+    "precise_instruction": "Remove the \"offset\" field."
+  }
+}

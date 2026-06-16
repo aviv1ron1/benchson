@@ -1,0 +1,179 @@
+{
+  "name": "skypilot-task",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/skypilot-task.json",
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "workdir": {
+        "type": "string"
+      },
+      "event_callback": {
+        "type": "string"
+      },
+      "num_nodes": {
+        "type": "integer"
+      },
+      "resources": {
+        "type": "object"
+      },
+      "file_mounts": {
+        "type": "object",
+        "properties": {
+          "/datasets-storage": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of storage, optional when source is bucket URI"
+              },
+              "source": {
+                "type": "string",
+                "description": "Source path, can be local or s3/gcs URL. Optional, do not specify to create an empty bucket."
+              },
+              "store": {
+                "type": "string",
+                "enum": [
+                  "s3",
+                  "gcs"
+                ],
+                "description": "Could be either 's3' or 'gcs'; default: None. Optional."
+              },
+              "persistent": {
+                "type": "boolean",
+                "default": true,
+                "description": "Defaults to True; can be set to false. Optional."
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "MOUNT",
+                  "COPY"
+                ],
+                "description": "Either MOUNT or COPY. Optional."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "service": {
+        "type": "object"
+      },
+      "setup": {
+        "type": "string"
+      },
+      "run": {
+        "type": "string"
+      },
+      "envs": {
+        "type": "object",
+        "required": [],
+        "patternProperties": {
+          "^[a-zA-Z_][a-zA-Z0-9_]*$": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "inputs": {
+        "type": "object",
+        "required": [],
+        "maxProperties": 1,
+        "additionalProperties": {
+          "type": "number"
+        }
+      },
+      "outputs": {
+        "type": "object",
+        "required": [],
+        "maxProperties": 1,
+        "additionalProperties": {
+          "type": "number"
+        }
+      }
+    },
+    "type": "object",
+    "required": []
+  },
+  "erroneous_json": {
+    "name": "image-classification-task",
+    "workdir": "/home/user/project",
+    "event_callback": "https://example.com/callback",
+    "num_nodes": 2,
+    "resources": {
+      "cpu": "8",
+      "memory": "32Gi",
+      "gpu": "1"
+    },
+    "file_mounts": {
+      "/datasets-storage": {
+        "name": "imagenet-bucket",
+        "source": "s3://my-bucket/imagenet",
+        "store": "s3",
+        "persistent": true,
+        "mode": "MOUNT"
+      }
+    },
+    "service": {
+      "type": "web",
+      "port": 8080,
+      "health_check": "/health"
+    },
+    "setup": "pip install -r requirements.txt",
+    "run": "python train.py --epochs 10",
+    "envs": {
+      "PYTHONUNBUFFERED": "1",
+      "DATA_PATH": "/datasets-storage",
+      "MODEL_DIR": "/home/user/project/models"
+    },
+    "inputs": null,
+    "outputs": {
+      "accuracy": 0.92
+    }
+  },
+  "valid_json": {
+    "name": "image-classification-task",
+    "workdir": "/home/user/project",
+    "event_callback": "https://example.com/callback",
+    "num_nodes": 2,
+    "resources": {
+      "cpu": "8",
+      "memory": "32Gi",
+      "gpu": "1"
+    },
+    "file_mounts": {
+      "/datasets-storage": {
+        "name": "imagenet-bucket",
+        "source": "s3://my-bucket/imagenet",
+        "store": "s3",
+        "persistent": true,
+        "mode": "MOUNT"
+      }
+    },
+    "service": {
+      "type": "web",
+      "port": 8080,
+      "health_check": "/health"
+    },
+    "setup": "pip install -r requirements.txt",
+    "run": "python train.py --epochs 10",
+    "envs": {
+      "PYTHONUNBUFFERED": "1",
+      "DATA_PATH": "/datasets-storage",
+      "MODEL_DIR": "/home/user/project/models"
+    },
+    "inputs": {
+      "learning_rate": 0.001
+    },
+    "outputs": {
+      "accuracy": 0.92
+    }
+  },
+  "description": "The image\u2011classification\u2011task will be executed from the project directory\u202f`/home/user/project` on a two\u2011node cluster. Each node is provisioned with eight CPU cores, 32\u202fGiB of memory, and a single GPU. The task mounts the dataset storage at `/datasets-storage` by mounting the S3 bucket named **imagenet\u2011bucket** (source\u202f` s3://my-bucket/imagenet`), with persistence enabled. The environment is prepared with `pip install -r requirements.txt`, and the training is launched via `python train.py --epochs 10`. Key environment variables are set as follows: `PYTHONUNBUFFERED=1`, `DATA_PATH=/datasets-storage`, and `MODEL_DIR=/home/user/project/models`. An input learning rate of\u202f0.001 is supplied, and after the run the expected output metric is an accuracy of\u202f0.92. Upon completion, a callback will be sent to\u202fhttps://example.com/callback.\n\nIn parallel, a lightweight web service is defined for the task, exposing port\u202f8080 and exposing a health\u2011check endpoint at `/health`. The service type is labeled \u201cweb\u201d, allowing external monitoring of the training job while it runs. All configuration details are captured without extra properties, ensuring a clean and reproducible execution environment."
+}

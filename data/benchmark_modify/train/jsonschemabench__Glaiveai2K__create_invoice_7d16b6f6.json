@@ -1,0 +1,98 @@
+{
+  "name": "create_invoice_7d16b6f6",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "billing_address": {
+        "description": "The billing address of the customer",
+        "type": "string"
+      },
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "price": {
+              "description": "The price per unit of the product",
+              "type": "number"
+            },
+            "product_name": {
+              "description": "The name of the product",
+              "type": "string"
+            },
+            "quantity": {
+              "description": "The quantity of the product",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "product_name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "billing_address",
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "customer_name": "Emily Rodriguez",
+    "billing_address": "742 Evergreen Terrace, Springfield, IL 62704, USA",
+    "items": [
+      {
+        "product_name": "Wireless Noise\u2011Cancelling Headphones",
+        "quantity": 2,
+        "price": 199.99
+      },
+      {
+        "product_name": "Ergonomic Office Chair",
+        "quantity": 1,
+        "price": 349.5
+      },
+      {
+        "product_name": "Portable SSD 1TB",
+        "quantity": 3,
+        "price": 119.0
+      }
+    ]
+  },
+  "instructions": "Could you update the customer_name field to \"Emily Rodriguez (updated)\"?",
+  "ground_truth": {
+    "customer_name": "Emily Rodriguez (updated)",
+    "billing_address": "742 Evergreen Terrace, Springfield, IL 62704, USA",
+    "items": [
+      {
+        "product_name": "Wireless Noise\u2011Cancelling Headphones",
+        "quantity": 2,
+        "price": 199.99
+      },
+      {
+        "product_name": "Ergonomic Office Chair",
+        "quantity": 1,
+        "price": 349.5
+      },
+      {
+        "product_name": "Portable SSD 1TB",
+        "quantity": 3,
+        "price": 119.0
+      }
+    ]
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "customer_name"
+    ],
+    "precise_instruction": "Change \"customer_name\" to \"Emily Rodriguez (updated)\"."
+  }
+}

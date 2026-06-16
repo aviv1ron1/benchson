@@ -1,0 +1,358 @@
+{
+  "name": "o48339",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "version": {
+        "type": "object"
+      },
+      "notes": {
+        "type": "string"
+      },
+      "include": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true
+      },
+      "molecules": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "polymer_type": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "_uniqueItems": true
+            },
+            "comment": {
+              "type": "string"
+            },
+            "atoms": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "charge": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "type"
+                ]
+              },
+              "_uniqueItems": true
+            },
+            "lengths": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "atoms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "_uniqueItems": true
+                  }
+                }
+              },
+              "_uniqueItems": true
+            },
+            "angles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "atoms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "_uniqueItems": true
+                  }
+                }
+              },
+              "_uniqueItems": true
+            },
+            "dihedrals": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "atoms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "_uniqueItems": true
+                  }
+                }
+              },
+              "_uniqueItems": true
+            },
+            "impropers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "atoms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "_uniqueItems": true
+                  }
+                }
+              },
+              "_uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "notes",
+      "molecules"
+    ]
+  },
+  "data": {
+    "version": {
+      "major": 1,
+      "minor": 0
+    },
+    "notes": "Sample configuration for a simple polyethylene-like molecule.",
+    "include": [
+      "common.cfg",
+      "polymer.cfg"
+    ],
+    "molecules": {
+      "polyethylene": {
+        "polymer_type": [
+          "linear"
+        ],
+        "comment": "Simple PE chain with three carbon atoms and attached hydrogens.",
+        "atoms": [
+          {
+            "name": "C1",
+            "type": "C",
+            "charge": -0.12
+          },
+          {
+            "name": "C2",
+            "type": "C",
+            "charge": -0.12
+          },
+          {
+            "name": "C3",
+            "type": "C",
+            "charge": -0.12
+          },
+          {
+            "name": "H1",
+            "type": "H",
+            "charge": 0.06
+          },
+          {
+            "name": "H2",
+            "type": "H",
+            "charge": 0.06
+          },
+          {
+            "name": "H3",
+            "type": "H",
+            "charge": 0.06
+          }
+        ],
+        "lengths": [
+          {
+            "type": "C-C",
+            "atoms": [
+              "C1",
+              "C2"
+            ]
+          },
+          {
+            "type": "C-C",
+            "atoms": [
+              "C2",
+              "C3"
+            ]
+          }
+        ],
+        "angles": [
+          {
+            "type": "C-C-C",
+            "atoms": [
+              "C1",
+              "C2",
+              "C3"
+            ]
+          }
+        ],
+        "dihedrals": [
+          {
+            "type": "C-C-C-H",
+            "atoms": [
+              "C1",
+              "C2",
+              "C3",
+              "H1"
+            ]
+          }
+        ],
+        "impropers": [
+          {
+            "type": "C-C-H-H",
+            "atoms": [
+              "C2",
+              "C1",
+              "H2",
+              "H3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "instructions": "Could you remove the last item from the include list, please?",
+  "ground_truth": {
+    "version": {
+      "major": 1,
+      "minor": 0
+    },
+    "notes": "Sample configuration for a simple polyethylene-like molecule.",
+    "include": [
+      "common.cfg"
+    ],
+    "molecules": {
+      "polyethylene": {
+        "polymer_type": [
+          "linear"
+        ],
+        "comment": "Simple PE chain with three carbon atoms and attached hydrogens.",
+        "atoms": [
+          {
+            "name": "C1",
+            "type": "C",
+            "charge": -0.12
+          },
+          {
+            "name": "C2",
+            "type": "C",
+            "charge": -0.12
+          },
+          {
+            "name": "C3",
+            "type": "C",
+            "charge": -0.12
+          },
+          {
+            "name": "H1",
+            "type": "H",
+            "charge": 0.06
+          },
+          {
+            "name": "H2",
+            "type": "H",
+            "charge": 0.06
+          },
+          {
+            "name": "H3",
+            "type": "H",
+            "charge": 0.06
+          }
+        ],
+        "lengths": [
+          {
+            "type": "C-C",
+            "atoms": [
+              "C1",
+              "C2"
+            ]
+          },
+          {
+            "type": "C-C",
+            "atoms": [
+              "C2",
+              "C3"
+            ]
+          }
+        ],
+        "angles": [
+          {
+            "type": "C-C-C",
+            "atoms": [
+              "C1",
+              "C2",
+              "C3"
+            ]
+          }
+        ],
+        "dihedrals": [
+          {
+            "type": "C-C-C-H",
+            "atoms": [
+              "C1",
+              "C2",
+              "C3",
+              "H1"
+            ]
+          }
+        ],
+        "impropers": [
+          {
+            "type": "C-C-H-H",
+            "atoms": [
+              "C2",
+              "C1",
+              "H2",
+              "H3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "include"
+    ],
+    "precise_instruction": "Remove the last item from the \"include\" list."
+  }
+}

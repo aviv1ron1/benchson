@@ -1,0 +1,121 @@
+{
+  "name": "o9958",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "start": {
+        "type": "number"
+      },
+      "end": {
+        "type": "number"
+      },
+      "duration": {
+        "type": "number"
+      },
+      "resolution": {
+        "type": "number"
+      },
+      "aggregation": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "FIRST",
+              "LAST",
+              "COUNT",
+              "MAX",
+              "MIN",
+              "MEDIAN",
+              "MEAN",
+              "SUM",
+              "STD_DEV"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "NONE"
+            ]
+          }
+        ]
+      },
+      "attributes": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+        }
+      },
+      "deviceTags": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        },
+        "maxItems": 100
+      },
+      "deviceIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "maxItems": 1000
+      },
+      "limit": {
+        "type": "number"
+      },
+      "order": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "default": "asc"
+      }
+    },
+    "additionalProperties": false
+  },
+  "description": "Please note the parameters for the upcoming data extraction: the time window runs from **1622505600** to **1622592000**, giving a total **duration of 86400 seconds**. Data points will be sampled at a **resolution of 60 seconds** and the aggregation method to be applied is **MEAN**. We are interested in the attributes **temperature** and **humidity_level**.\n\nThe query should be limited to devices that carry the tags **location = Warehouse-1** and **type = sensor**, specifically the devices identified by the IDs **a1b2c3d4e5f60718293a4b5c** and **deadbeefcafebabefeedface**. The result set must not exceed **500** records and should be returned in **descending** order.",
+  "reference_json": {
+    "start": 1622505600,
+    "end": 1622592000,
+    "duration": 86400,
+    "resolution": 60,
+    "aggregation": "MEAN",
+    "attributes": [
+      "temperature",
+      "humidity_level"
+    ],
+    "deviceTags": [
+      {
+        "key": "location",
+        "value": "Warehouse-1"
+      },
+      {
+        "key": "type",
+        "value": "sensor"
+      }
+    ],
+    "deviceIds": [
+      "a1b2c3d4e5f60718293a4b5c",
+      "deadbeefcafebabefeedface"
+    ],
+    "limit": 500,
+    "order": "desc"
+  }
+}

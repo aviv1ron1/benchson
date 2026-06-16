@@ -1,0 +1,70 @@
+{
+  "name": "o21456",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "description": {
+        "maxLength": 160,
+        "minLength": 1,
+        "type": "string"
+      },
+      "from": {
+        "maxLength": 254,
+        "minLength": 5,
+        "pattern": "^[^@^\\s]+@[^@^\\.^\\s]+(\\.[^@^\\.^\\s]*)*.gov.uk",
+        "type": "string"
+      },
+      "jobId": {
+        "type": "integer"
+      },
+      "message": {
+        "maxLength": 1900,
+        "minLength": 1,
+        "type": "string"
+      },
+      "subject": {
+        "maxLength": 130,
+        "type": "string"
+      },
+      "to": {
+        "maxLength": 254,
+        "minLength": 5,
+        "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "to",
+      "from",
+      "subject",
+      "message"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "description": "Notification of scheduled maintenance for the API services.",
+    "from": "maintenance@digitalservices.gov.uk",
+    "to": "john.smith@example.com",
+    "subject": "Planned API Maintenance on 20 June 2026",
+    "message": "Dear John,\n\nPlease be advised that a planned maintenance window will take place on 20 June 2026 from 02:00 to 04:00 BST. During this time, the API services will be temporarily unavailable. We apologize for any inconvenience and recommend that you plan accordingly.\n\nIf you have any questions, please contact the support team.\n\nBest regards,\nDigital Services Team",
+    "jobId": 12345
+  },
+  "instructions": "Please update the field **message** to:\n\nDear John,\n\nPlease be advised that a planned maintenance window will take place on 20\u202fJune\u202f2026 from 02:00 to 04:00\u202fBST. During this time, the API services will be temporarily unavailable. We apologize for any inconvenience and recommend that you plan accordingly.\n\nIf you have any questions, please contact the support team.\n\nBest regards,\nDigital Services Team (updated)",
+  "ground_truth": {
+    "description": "Notification of scheduled maintenance for the API services.",
+    "from": "maintenance@digitalservices.gov.uk",
+    "to": "john.smith@example.com",
+    "subject": "Planned API Maintenance on 20 June 2026",
+    "message": "Dear John,\n\nPlease be advised that a planned maintenance window will take place on 20 June 2026 from 02:00 to 04:00 BST. During this time, the API services will be temporarily unavailable. We apologize for any inconvenience and recommend that you plan accordingly.\n\nIf you have any questions, please contact the support team.\n\nBest regards,\nDigital Services Team (updated)",
+    "jobId": 12345
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "message"
+    ],
+    "precise_instruction": "Change \"message\" to \"Dear John,\\n\\nPlease be advised that a planned maintenance window will take place on 20 June 2026 from 02:00 to 04:00 BST. During this time, the API services will be temporarily unavailable. We apologize for any inconvenience and recommend that you plan accordingly.\\n\\nIf you have any questions, please contact the support team.\\n\\nBest regards,\\nDigital Services Team (updated)\"."
+  }
+}

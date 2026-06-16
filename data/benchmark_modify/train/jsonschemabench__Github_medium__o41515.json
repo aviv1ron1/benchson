@@ -1,0 +1,101 @@
+{
+  "name": "o41515",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "title": "Invocation manifest for CNI-DCM-CONVERT - DICOM conversion tool",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "convert_montage": {
+            "default": true,
+            "type": "boolean"
+          },
+          "convert_nifti": {
+            "default": true,
+            "type": "boolean"
+          },
+          "convert_png": {
+            "default": false,
+            "type": "boolean"
+          },
+          "convert_mux": {
+            "default": false,
+            "type": "boolean"
+          },
+          "output_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "convert_montage",
+          "convert_nifti",
+          "convert_png",
+          "convert_mux"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "dicom": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "dicom"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "dicom"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "data": {
+    "config": {
+      "convert_montage": true,
+      "convert_nifti": true,
+      "convert_png": false,
+      "convert_mux": false,
+      "output_name": "study_001_output"
+    },
+    "inputs": {
+      "dicom": {
+        "type": "dicom"
+      }
+    }
+  },
+  "instructions": "Could you set the \"convert_mux\" field inside \"config\" to true?",
+  "ground_truth": {
+    "config": {
+      "convert_montage": true,
+      "convert_nifti": true,
+      "convert_png": false,
+      "convert_mux": true,
+      "output_name": "study_001_output"
+    },
+    "inputs": {
+      "dicom": {
+        "type": "dicom"
+      }
+    }
+  },
+  "modification": {
+    "op": "set_bool",
+    "path": [
+      "config",
+      "convert_mux"
+    ],
+    "precise_instruction": "Set \"convert_mux\" inside \"config\" to true."
+  }
+}

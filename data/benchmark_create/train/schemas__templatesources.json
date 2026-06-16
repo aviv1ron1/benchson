@@ -1,0 +1,67 @@
+{
+  "name": "templatesources",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/templatesources.json",
+    "properties": {
+      "sources": {
+        "description": "Includes information regarding all sources that have been added to SideWaffle.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "description": "The name of the source.",
+              "type": "string"
+            },
+            "Enabled": {
+              "description": "Indicates whether the source template(s) should be added to Visual Studio.",
+              "type": "boolean"
+            },
+            "Location": {
+              "description": "The location of the source to be added. This can be on a git repository or local file share.",
+              "type": "string",
+              "format": "uri"
+            },
+            "Branch": {
+              "description": "The branch of the source repository containing the template.",
+              "type": "string"
+            }
+          }
+        }
+      },
+      "updateInterval": {
+        "description": "Used by SideWaffle to determine how often Visual Studio will download and install the templates from its source.",
+        "type": "string",
+        "enum": [
+          "Always",
+          "OnceADay",
+          "OnceAWeek",
+          "OnceAMonth",
+          "Never"
+        ]
+      }
+    },
+    "title": "JSON schema for SideWaffle template sources"
+  },
+  "description": "Subject: SideWaffle Template Source Configuration \u2013 Current Settings  \n\nDear Team,  \n\nWe have two template sources configured for SideWaffle. The first source, **CommunityTemplates**, is active and will contribute its templates to Visual\u202fStudio. It points to the Git repository at `https://github.com/CommunityTemplates/SideWaffle-Templates.git` and uses the **main** branch. The second source, **LocalShare**, is currently disabled; its location is a local share at `file:///C:/Templates/SideWaffle`, and it references the **master** branch when enabled.  \n\nPlease note that the update interval for fetching and installing templates from these sources is set to **OnceADay**. Let us know if any adjustments are required.",
+  "reference_json": {
+    "sources": [
+      {
+        "Name": "CommunityTemplates",
+        "Enabled": true,
+        "Location": "https://github.com/CommunityTemplates/SideWaffle-Templates.git",
+        "Branch": "main"
+      },
+      {
+        "Name": "LocalShare",
+        "Enabled": false,
+        "Location": "file:///C:/Templates/SideWaffle",
+        "Branch": "master"
+      }
+    ],
+    "updateInterval": "OnceADay"
+  }
+}

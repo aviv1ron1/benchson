@@ -1,0 +1,60 @@
+{
+  "name": "o65448",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A parsed date object. This allows us to represent not just normal dates, but also partial dates too",
+    "type": "object",
+    "properties": {
+      "year": {
+        "type": "number",
+        "description": "year part as YYYY"
+      },
+      "month": {
+        "type": "number",
+        "description": "month part of date in numbers e.g. 11 for November, 4 for April"
+      },
+      "day": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "day part of date in numbers"
+      }
+    },
+    "additionalProperties": false,
+    "anyOf": [
+      {
+        "required": [
+          "year",
+          "month"
+        ]
+      },
+      {
+        "required": [
+          "month",
+          "day"
+        ]
+      }
+    ]
+  },
+  "data": {
+    "year": 2023,
+    "month": 5,
+    "day": 12
+  },
+  "instructions": "Could you increase the month by 1?",
+  "ground_truth": {
+    "year": 2023,
+    "month": 6,
+    "day": 12
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "month"
+    ],
+    "precise_instruction": "Increase \"month\" by 1."
+  }
+}

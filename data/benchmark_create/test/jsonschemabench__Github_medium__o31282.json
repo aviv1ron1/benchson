@@ -1,0 +1,283 @@
+{
+  "name": "o31282",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "globalSettings": {
+        "type": "object",
+        "properties": {
+          "namespaceAliases": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "alias": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "alias",
+                "namespace"
+              ]
+            }
+          },
+          "defaultParameters": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "type",
+                "parameters"
+              ]
+            }
+          }
+        }
+      },
+      "deviceGroups": {
+        "type": "array",
+        "items": {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "devices": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "deviceId": {
+                    "type": "string"
+                  },
+                  "deviceSecret": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "deviceId",
+                  "deviceSecret"
+                ]
+              }
+            },
+            "jobs": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "interval": {
+                    "type": "string"
+                  },
+                  "sourceFilter": {
+                    "$ref": "#/definitions/filter"
+                  },
+                  "intermediaFilters": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/filter"
+                    }
+                  },
+                  "sinkFilter": {
+                    "$ref": "#/definitions/filter"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "name",
+            "devices",
+            "jobs"
+          ]
+        }
+      }
+    },
+    "required": [
+      "deviceGroups"
+    ],
+    "definitions": {
+      "filter": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      }
+    }
+  },
+  "description": "The current deployment uses two namespace aliases \u2013 **sys** maps to the **System** namespace and **net** maps to **Network** \u2013 and applies two sets of default parameters across all components. Every connection defaults to the MQTT protocol on port\u202f1883, while logging is configured at the **info** level and directed to **stdout**.  \n\nTwo device groups are defined. The **FactoryFloor** group contains the sensor\u202f*sensor\u2011001* (secret **s3cr3tA1**) and the actuator\u202f*actuator\u2011007* (secret **s3cr3tB2**). It runs a **TemperatureMonitoring** job every\u202f5\u202fminutes, sourcing data through a *TempSensorFilter* (type **sensor**, unit **Celsius**), then applying an *AnomalyDetection* filter (type **ml**, model **anomaly_v1**) followed by a *NoiseReduction* filter (type **signal**, method **kalman**) before storing results with a *DatabaseSink* (type **database**, connection string \u201cServer=db;Database=metrics;\u201d). The same group also runs an **ActuatorControl** job every\u202f1\u202fminute, pulling commands from a *CommandSource* (type **mqtt**, topic **factory/commands**), validating them via a *ValidationFilter* (type **logic**, schema **commandSchema**), and finally delivering the commands to an *ActuatorSink* (type **actuator**, mode **auto**).  \n\nThe **RemoteSite** group comprises the camera\u202f*camera\u201112* (secret **camSecret12**) and the gateway\u202f*gateway\u20115* (secret **gateSecret5**). It operates a **VideoStream** job on a 30\u2011second interval, capturing footage with a *VideoCapture* filter (type **camera**, resolution **1080p**), compressing it using a *Compression* filter (type **codec**, codec **h264**, bitrate **4Mbps**), and uploading the stream to a *CloudSink* (type **cloud**, bucket **video-archive**, region **eu\u2011west\u20111**).",
+  "reference_json": {
+    "globalSettings": {
+      "namespaceAliases": [
+        {
+          "alias": "sys",
+          "namespace": "System"
+        },
+        {
+          "alias": "net",
+          "namespace": "Network"
+        }
+      ],
+      "defaultParameters": [
+        {
+          "type": "connection",
+          "parameters": {
+            "protocol": "MQTT",
+            "port": 1883
+          }
+        },
+        {
+          "type": "logging",
+          "parameters": {
+            "level": "info",
+            "output": "stdout"
+          }
+        }
+      ]
+    },
+    "deviceGroups": [
+      {
+        "name": "FactoryFloor",
+        "devices": [
+          {
+            "deviceId": "sensor-001",
+            "deviceSecret": "s3cr3tA1"
+          },
+          {
+            "deviceId": "actuator-007",
+            "deviceSecret": "s3cr3tB2"
+          }
+        ],
+        "jobs": [
+          {
+            "name": "TemperatureMonitoring",
+            "interval": "5m",
+            "sourceFilter": {
+              "name": "TempSensorFilter",
+              "type": "sensor",
+              "parameters": {
+                "unit": "Celsius"
+              }
+            },
+            "intermediaFilters": [
+              {
+                "name": "AnomalyDetection",
+                "type": "ml",
+                "parameters": {
+                  "model": "anomaly_v1"
+                }
+              },
+              {
+                "name": "NoiseReduction",
+                "type": "signal",
+                "parameters": {
+                  "method": "kalman"
+                }
+              }
+            ],
+            "sinkFilter": {
+              "name": "DatabaseSink",
+              "type": "database",
+              "parameters": {
+                "connectionString": "Server=db;Database=metrics;"
+              }
+            }
+          },
+          {
+            "name": "ActuatorControl",
+            "interval": "1m",
+            "sourceFilter": {
+              "name": "CommandSource",
+              "type": "mqtt",
+              "parameters": {
+                "topic": "factory/commands"
+              }
+            },
+            "intermediaFilters": [
+              {
+                "name": "ValidationFilter",
+                "type": "logic",
+                "parameters": {
+                  "schema": "commandSchema"
+                }
+              }
+            ],
+            "sinkFilter": {
+              "name": "ActuatorSink",
+              "type": "actuator",
+              "parameters": {
+                "mode": "auto"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "RemoteSite",
+        "devices": [
+          {
+            "deviceId": "camera-12",
+            "deviceSecret": "camSecret12"
+          },
+          {
+            "deviceId": "gateway-5",
+            "deviceSecret": "gateSecret5"
+          }
+        ],
+        "jobs": [
+          {
+            "name": "VideoStream",
+            "interval": "30s",
+            "sourceFilter": {
+              "name": "VideoCapture",
+              "type": "camera",
+              "parameters": {
+                "resolution": "1080p"
+              }
+            },
+            "intermediaFilters": [
+              {
+                "name": "Compression",
+                "type": "codec",
+                "parameters": {
+                  "codec": "h264",
+                  "bitrate": "4Mbps"
+                }
+              }
+            ],
+            "sinkFilter": {
+              "name": "CloudSink",
+              "type": "cloud",
+              "parameters": {
+                "bucket": "video-archive",
+                "region": "eu-west-1"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

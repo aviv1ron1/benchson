@@ -1,0 +1,58 @@
+{
+  "name": "create_calendar_event_49d5cf04",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "description": {
+        "description": "The description of the event",
+        "type": "string"
+      },
+      "end_time": {
+        "description": "The end time of the event",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the event",
+        "type": "string"
+      },
+      "start_time": {
+        "description": "The start time of the event",
+        "type": "string"
+      },
+      "title": {
+        "description": "The title of the event",
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "start_time",
+      "end_time",
+      "location"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "title": "Annual Community Clean\u2011Up Day",
+    "start_time": "2024-09-14T09:00:00-04:00",
+    "end_time": "2024-09-14T13:30:00-04:00",
+    "location": "Riverfront Park, Main Street Entrance, Springfield",
+    "description": "Volunteers gather to clean up litter, plant trees, and improve the riverfront area. Refreshments and safety gear will be provided."
+  },
+  "instructions": "Could you change the location to Riverfront Park, Main Street Entrance, Springfield (updated)?",
+  "ground_truth": {
+    "title": "Annual Community Clean\u2011Up Day",
+    "start_time": "2024-09-14T09:00:00-04:00",
+    "end_time": "2024-09-14T13:30:00-04:00",
+    "location": "Riverfront Park, Main Street Entrance, Springfield (updated)",
+    "description": "Volunteers gather to clean up litter, plant trees, and improve the riverfront area. Refreshments and safety gear will be provided."
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "location"
+    ],
+    "precise_instruction": "Change \"location\" to \"Riverfront Park, Main Street Entrance, Springfield (updated)\"."
+  }
+}

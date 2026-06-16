@@ -1,0 +1,108 @@
+{
+  "name": "calculate_tax_5bb5302b",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "income": {
+        "description": "The annual income",
+        "type": "number"
+      },
+      "tax_brackets": {
+        "items": {
+          "properties": {
+            "range": {
+              "description": "The income range for this tax bracket",
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "rate": {
+              "description": "The tax rate for this tax bracket",
+              "type": "number"
+            }
+          },
+          "required": [
+            "range",
+            "rate"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "income",
+      "tax_brackets"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "income": null,
+    "tax_brackets": [
+      {
+        "range": [
+          0,
+          9875
+        ],
+        "rate": 0.1
+      },
+      {
+        "range": [
+          9875,
+          40125
+        ],
+        "rate": 0.12
+      },
+      {
+        "range": [
+          40125,
+          85525
+        ],
+        "rate": 0.22
+      },
+      {
+        "range": [
+          85525,
+          163300
+        ],
+        "rate": 0.24
+      }
+    ]
+  },
+  "valid_json": {
+    "income": 85000,
+    "tax_brackets": [
+      {
+        "range": [
+          0,
+          9875
+        ],
+        "rate": 0.1
+      },
+      {
+        "range": [
+          9875,
+          40125
+        ],
+        "rate": 0.12
+      },
+      {
+        "range": [
+          40125,
+          85525
+        ],
+        "rate": 0.22
+      },
+      {
+        "range": [
+          85525,
+          163300
+        ],
+        "rate": 0.24
+      }
+    ]
+  },
+  "description": "Dear Client,\n\nBased on the information you provided, your annual income is $85,000. For the purpose of calculating your federal income tax, the applicable tax brackets are as follows: earnings from $0 up to $9,875 are taxed at 10\u202f%; earnings from $9,875 up to $40,125 are taxed at 12\u202f%; earnings from $40,125 up to $85,525 are taxed at 22\u202f%; and earnings from $85,525 up to $163,300 are taxed at 24\u202f%. These rates will be applied to the portions of your income that fall within each respective range."
+}

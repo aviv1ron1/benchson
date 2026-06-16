@@ -1,0 +1,45 @@
+{
+  "name": "o86226",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.3/traits/trait_revision.json",
+    "title": "Revision",
+    "description": "Revision information for this object",
+    "type": "object",
+    "properties": {
+      "revision_id": {
+        "type": "string"
+      },
+      "parent_id": {
+        "type": "string"
+      },
+      "branch": {
+        "type": "string"
+      },
+      "editions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "revision_id": "rev-20230615-001",
+    "parent_id": "rev-20230614-003",
+    "branch": "main",
+    "editions": null
+  },
+  "valid_json": {
+    "revision_id": "rev-20230615-001",
+    "parent_id": "rev-20230614-003",
+    "branch": "main",
+    "editions": [
+      "first-edition",
+      "second-edition"
+    ]
+  },
+  "description": "The current revision, identified as **rev-20230615-001**, follows the previous version **rev-20230614-003** on the main development branch. This update includes two editions, the **first-edition** and the **second-edition**, which together capture the latest changes and improvements."
+}

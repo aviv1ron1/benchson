@@ -1,0 +1,92 @@
+{
+  "name": "o12624",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "namedResource": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "resource_uri": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "resource_uri"
+        ],
+        "type": "object"
+      }
+    },
+    "properties": {
+      "created": {
+        "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}",
+        "type": "string"
+      },
+      "id": {
+        "type": "integer"
+      },
+      "image": {
+        "type": "string"
+      },
+      "modified": {
+        "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}",
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "pokemon": {
+        "$ref": "#/definitions/namedResource"
+      },
+      "resource_uri": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "id",
+      "resource_uri",
+      "created",
+      "modified",
+      "pokemon",
+      "image"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "name": "Charizard",
+    "id": 6,
+    "resource_uri": "/api/v1/item/6/",
+    "created": "2022-01-15T09:27:45.654321",
+    "modified": "2024-03-10T16:42:08.987654",
+    "pokemon": {
+      "name": "Charizard",
+      "resource_uri": "/api/v1/pokemon/6/"
+    },
+    "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png"
+  },
+  "instructions": "Could you increase the id by\u202f1?",
+  "ground_truth": {
+    "name": "Charizard",
+    "id": 7,
+    "resource_uri": "/api/v1/item/6/",
+    "created": "2022-01-15T09:27:45.654321",
+    "modified": "2024-03-10T16:42:08.987654",
+    "pokemon": {
+      "name": "Charizard",
+      "resource_uri": "/api/v1/pokemon/6/"
+    },
+    "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png"
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "id"
+    ],
+    "precise_instruction": "Increase \"id\" by 1."
+  }
+}

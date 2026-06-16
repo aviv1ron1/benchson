@@ -1,0 +1,55 @@
+{
+  "name": "search_jobs_0d02eb50",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "keywords": {
+        "description": "The keywords to search for in job titles",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "location": {
+        "description": "The location of the job",
+        "type": "string"
+      },
+      "salary_range": {
+        "description": "The salary range of the job",
+        "properties": {
+          "max": {
+            "description": "The maximum salary",
+            "type": "number"
+          },
+          "min": {
+            "description": "The minimum salary",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "keywords": null,
+    "location": "San Francisco, CA",
+    "salary_range": {
+      "min": 120000,
+      "max": 150000
+    }
+  },
+  "valid_json": {
+    "keywords": [
+      "software engineer",
+      "backend developer"
+    ],
+    "location": "San Francisco, CA",
+    "salary_range": {
+      "min": 120000,
+      "max": 150000
+    }
+  },
+  "description": "We are currently hiring for positions focused on software engineering, specifically targeting candidates with strong experience as a **software engineer** or **backend developer**. The roles are based in **San Francisco, CA**, where you will join a dynamic team dedicated to building scalable backend services and robust application architectures.\n\nThe compensation package for these positions ranges from **$120,000 to $150,000** annually, reflecting both the market rates for top talent in the area and the level of expertise we are seeking. If you are interested in contributing to cutting\u2011edge projects in a vibrant tech hub, please let us know your availability for an interview."
+}

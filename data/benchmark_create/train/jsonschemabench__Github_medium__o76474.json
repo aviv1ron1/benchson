@@ -1,0 +1,114 @@
+{
+  "name": "o76474",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "description": "get user response",
+    "properties": {
+      "credentials": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "createdOn": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "expiresOn": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "key": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "revokedOn": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "secret": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "key",
+            "secret",
+            "createdOn",
+            "expiresOn"
+          ],
+          "type": "object"
+        },
+        "minItems": 1,
+        "type": "array"
+      },
+      "dockerImageName": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "email": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "properties": {
+              "href": {
+                "_format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "href"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "self"
+        ],
+        "type": "object"
+      },
+      "password": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "userId": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "userId",
+      "email",
+      "password",
+      "dockerImageName",
+      "credentials",
+      "links"
+    ],
+    "title": "get user response",
+    "type": "object"
+  },
+  "description": "Hello,\n\nYour account (User ID: u-847362) has been set up with the following details: Email address jane.doe@example.com, password Str0ngP@ssw0rd!, and the Docker image assigned to your services is example/app:2.4.1.\n\nThe API key generated for your account is AKIA123456EXAMPLEKEY with the secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY. This credential was created on 2023-07-10T14:22:00Z and will expire on 2025-07-10T14:22:00Z. You can view or manage your profile at https://api.example.com/users/u-847362.",
+  "reference_json": {
+    "userId": "u-847362",
+    "email": "jane.doe@example.com",
+    "password": "Str0ngP@ssw0rd!",
+    "dockerImageName": "example/app:2.4.1",
+    "credentials": [
+      {
+        "key": "AKIA123456EXAMPLEKEY",
+        "secret": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+        "createdOn": "2023-07-10T14:22:00Z",
+        "expiresOn": "2025-07-10T14:22:00Z"
+      }
+    ],
+    "links": {
+      "self": {
+        "href": "https://api.example.com/users/u-847362"
+      }
+    }
+  }
+}

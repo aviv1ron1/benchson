@@ -1,0 +1,65 @@
+{
+  "name": "o9931",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "relativeTo": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "$date": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "$date"
+            ]
+          }
+        ]
+      },
+      "templateContext": {
+        "type": "string",
+        "maxLength": 32767
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "email": "john.doe@example.com",
+    "relativeTo": {
+      "$date": "2023-11-27T14:35:00Z"
+    },
+    "templateContext": "Dear {{firstName}} {{lastName}},\n\nThank you for your recent purchase. Your order number is {{orderNumber}}. We hope you enjoy your new items!\n\nBest regards,\nCustomer Support Team"
+  },
+  "instructions": "Can you set the\u202ftemplateContext\u202ffield to\u202f\"Dear {{firstName}} {{lastName}},\\n\\nThank you for your recent purchase. Your order number is {{orderNumber}}. We hope you enjoy your new items!\\n\\nBest regards,\\nCustomer Support Team (updated)\"?",
+  "ground_truth": {
+    "email": "john.doe@example.com",
+    "relativeTo": {
+      "$date": "2023-11-27T14:35:00Z"
+    },
+    "templateContext": "Dear {{firstName}} {{lastName}},\n\nThank you for your recent purchase. Your order number is {{orderNumber}}. We hope you enjoy your new items!\n\nBest regards,\nCustomer Support Team (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "templateContext"
+    ],
+    "precise_instruction": "Change \"templateContext\" to \"Dear {{firstName}} {{lastName}},\\n\\nThank you for your recent purchase. Your order number is {{orderNumber}}. We hope you enjoy your new items!\\n\\nBest regards,\\nCustomer Support Team (updated)\"."
+  }
+}

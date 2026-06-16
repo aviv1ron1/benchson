@@ -1,0 +1,106 @@
+{
+  "name": "foundryvtt-system-manifest",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/foundryvtt-system-manifest.json",
+    "allOf": [
+      {
+        "$ref": "https://json.schemastore.org/foundryvtt-base-package-manifest.json#"
+      }
+    ],
+    "properties": {
+      "manifest": {
+        "$ref": "https://json.schemastore.org/foundryvtt-base-package-manifest.json#/definitions/URL",
+        "description": "A stable URL that describes the latest release version of your manifest file. This URL is used for automatic system installation in the Foundry VTT setup screen. This manifest URL is consulted during the system update check to see whether a new version is available for download. It is important that this address remain stable, otherwise updates will not be detected.",
+        "pattern": ".*system\\.json",
+        "examples": [
+          "https://raw.githubusercontent.com/foundryvtt/worldbuilding/master/system.json"
+        ]
+      },
+      "initiative": {
+        "description": "Specifies the default initiative formula if applicable to the system.",
+        "type": "string",
+        "examples": [
+          "1d20 + @dex"
+        ]
+      },
+      "gridDistance": {
+        "description": "Integer specifying the default size of a grid space.",
+        "type": "number",
+        "examples": [
+          5,
+          1.5
+        ]
+      },
+      "gridUnits": {
+        "description": "A label that specifies the default unit of measure used by the system.",
+        "type": "string",
+        "examples": [
+          "ft",
+          "m"
+        ]
+      },
+      "primaryTokenAttribute": {
+        "description": "An attribute path within the system data model that points to an object that contains both a `value` and a `max` key. The prototype Token will automatically set its primary attribute to this value.",
+        "type": [
+          "null",
+          "string"
+        ],
+        "examples": [
+          "health",
+          "attributes.hp"
+        ]
+      },
+      "secondaryTokenAttribute": {
+        "description": "An attribute path within the system data model that points to an object that contains both a `value` and a `max` key. The prototype Token will automatically set its secondary attribute to this value.",
+        "type": [
+          "null",
+          "string"
+        ],
+        "examples": [
+          "health",
+          "attributes.hp"
+        ]
+      }
+    },
+    "title": "JSON schema for Foundry VTT system files - system.json.",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "id": "mythic-adventure",
+    "name": "mythic-adventure",
+    "title": "Mythic Adventure",
+    "description": "A fantasy role\u2011playing system for Foundry VTT with mythic hero mechanics.",
+    "version": "1.2.3",
+    "minimumCoreVersion": "10.291",
+    "download": "https://github.com/example/mythic-adventure/releases/download/v1.2.3/mythic-adventure.zip",
+    "author": "Arcane Studios",
+    "license": "MIT",
+    "manifest": "https://raw.githubusercontent.com/example/mythic-adventure/master/system.json",
+    "initiative": null,
+    "gridDistance": 5,
+    "gridUnits": "ft",
+    "primaryTokenAttribute": "attributes.hp",
+    "secondaryTokenAttribute": "attributes.mp"
+  },
+  "valid_json": {
+    "id": "mythic-adventure",
+    "name": "mythic-adventure",
+    "title": "Mythic Adventure",
+    "description": "A fantasy role\u2011playing system for Foundry VTT with mythic hero mechanics.",
+    "version": "1.2.3",
+    "minimumCoreVersion": "10.291",
+    "download": "https://github.com/example/mythic-adventure/releases/download/v1.2.3/mythic-adventure.zip",
+    "author": "Arcane Studios",
+    "license": "MIT",
+    "manifest": "https://raw.githubusercontent.com/example/mythic-adventure/master/system.json",
+    "initiative": "1d20 + @dex",
+    "gridDistance": 5,
+    "gridUnits": "ft",
+    "primaryTokenAttribute": "attributes.hp",
+    "secondaryTokenAttribute": "attributes.mp"
+  },
+  "description": "Dear Foundry VTT Community,\n\nWe are pleased to announce the release of **Mythic Adventure** (system ID\u202f=\u202fmythic\u2011adventure, package name\u202f=\u202fmythic\u2011adventure) version\u202f1.2.3, a fantasy role\u2011playing system that brings mythic hero mechanics to your games. Developed by Arcane Studios and distributed under the MIT license, this system requires at least version\u202f10.291 of the Foundry Core. You can download the latest archive from\u202fhttps://github.com/example/mythic-adventure/releases/download/v1.2.3/mythic-adventure.zip, and the stable manifest URL for automatic installation and update checks is\u202fhttps://raw.githubusercontent.com/example/mythic-adventure/master/system.json.\n\nIn this release the default initiative formula is\u202f\u201c1d20 + @dex\u201d, the default grid size is\u202f5\u202fft, and tokens will use **attributes.hp** as the primary attribute and **attributes.mp** as the secondary attribute. We hope you enjoy exploring the new mythic possibilities!"
+}

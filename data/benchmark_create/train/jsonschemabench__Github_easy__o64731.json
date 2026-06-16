@@ -1,0 +1,54 @@
+{
+  "name": "o64731",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$id": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/dictionary.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "dictionary",
+    "description": "A dictionary captures a set of key/value pairs",
+    "type": "object",
+    "minProperties": 1,
+    "patternProperties": {
+      "^[a-zA-Z0-9_-]{0,250}$": {
+        "anyOf": [
+          {
+            "type": "array",
+            "minItems": 1
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      }
+    },
+    "addtionalProperties": false
+  },
+  "description": "The configuration, authored by Alice, is now at version\u202f2 and has been marked as enabled. Its operational threshold is set to\u202f0.85, indicating the sensitivity level for detections.\n\nThis release is categorized under the tags \u201cmalware\u201d and \u201cphishing.\u201d According to the accompanying metadata, the source of this configuration is internal, and it was last updated on\u202f2023\u201111\u201115.",
+  "reference_json": {
+    "author": "Alice",
+    "version": 2,
+    "enabled": true,
+    "threshold": 0.85,
+    "tags": [
+      "malware",
+      "phishing"
+    ],
+    "metadata": {
+      "source": "internal",
+      "last_updated": "2023-11-15"
+    }
+  }
+}

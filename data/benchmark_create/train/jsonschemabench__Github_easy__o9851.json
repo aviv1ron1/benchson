@@ -1,0 +1,30 @@
+{
+  "name": "o9851",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "twoFactorCode": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "password": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 2048
+      }
+    },
+    "required": [
+      "password",
+      "twoFactorCode"
+    ],
+    "additionalProperties": false
+  },
+  "description": "Please use the following credentials to finalize your account activation: the password is **StrongP@ssw0rd2023!**. When prompted for the secondary verification step, enter the two\u2011factor authentication code **839274**.  \n\nThese details are required for the secure setup of your profile. Once entered, you will gain full access to the system.",
+  "reference_json": {
+    "twoFactorCode": "839274",
+    "password": "StrongP@ssw0rd2023!"
+  }
+}

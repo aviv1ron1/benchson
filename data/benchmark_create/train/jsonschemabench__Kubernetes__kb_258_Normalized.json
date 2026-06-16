@@ -1,0 +1,67 @@
+{
+  "name": "kb_258_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_apis_meta_v1_Time": {
+        "_format": "date-time",
+        "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+        "type": "string"
+      }
+    },
+    "description": "DeploymentCondition describes the state of a deployment at a certain point.",
+    "properties": {
+      "lastTransitionTime": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_apis_meta_v1_Time",
+        "description": "Last time the condition transitioned from one status to another."
+      },
+      "lastUpdateTime": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_apis_meta_v1_Time",
+        "description": "The last time this condition was updated."
+      },
+      "message": {
+        "description": "A human readable message indicating details about the transition.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "reason": {
+        "description": "The reason for the condition's last transition.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "status": {
+        "description": "Status of the condition, one of True, False, Unknown.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "description": "Type of deployment condition.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "type",
+      "status"
+    ],
+    "type": "object"
+  },
+  "description": "The deployment condition is of type **Available** and its current status is **True**. The condition transitioned to this status at **2024-05-10T14:23:45Z**, and the most recent update was recorded at **2024-05-10T15:00:00Z**.\n\nThe transition was triggered because a new replica set became available, identified by the reason **NewReplicaSetAvailable**. A human\u2011readable message accompanying the update states: \u201cDeployment is successfully rolled out.\u201d",
+  "reference_json": {
+    "type": "Available",
+    "status": "True",
+    "lastTransitionTime": "2024-05-10T14:23:45Z",
+    "lastUpdateTime": "2024-05-10T15:00:00Z",
+    "message": "Deployment is successfully rolled out.",
+    "reason": "NewReplicaSetAvailable"
+  }
+}

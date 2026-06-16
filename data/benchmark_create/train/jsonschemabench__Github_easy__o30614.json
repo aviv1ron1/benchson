@@ -1,0 +1,114 @@
+{
+  "name": "o30614",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "channelflags": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "channelip": {
+        "type": "string"
+      },
+      "channelnatip": {
+        "readonly": true,
+        "type": "string"
+      },
+      "channelnatport": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "channelport": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "channelprotocol": {
+        "enum": [
+          "HTTP",
+          "FTP",
+          "TCP",
+          "UDP",
+          "SSL",
+          "SSL_BRIDGE",
+          "SSL_TCP",
+          "NNTP",
+          "RPCSVR",
+          "DNS",
+          "ADNS",
+          "SNMP",
+          "RTSP",
+          "DHCPRA",
+          "ANY",
+          "SIP_UDP",
+          "SIP_TCP",
+          "SIP_SSL",
+          "DNS_TCP",
+          "ADNS_TCP",
+          "HTTPSVR",
+          "HTTPCLIENT",
+          "NAT",
+          "HA",
+          "AAA",
+          "SINCTCP",
+          "VPN AFTP",
+          "MONITORS",
+          "SSLVPN UDP",
+          "SINCUDP",
+          "RIP",
+          "UDP CLNT",
+          "SASP",
+          "RPCCLNTS",
+          "ROUTE",
+          "AUDIT",
+          "STA HTTP",
+          "STA SSL",
+          "DNS RESOLVE",
+          "RDP",
+          "MYSQL",
+          "MSSQL",
+          "DIAMETER",
+          "SSL_DIAMETER",
+          "TFTP",
+          "ORACLE",
+          "ICA",
+          "RADIUS",
+          "RADIUSListener",
+          "SMPP",
+          "PPTP",
+          "GRE",
+          "SYSLOGTCP",
+          "SYSLOGUDP",
+          "FIX",
+          "SSL_FIX",
+          "QUIC",
+          "TFTP_DATA",
+          "USER_TCP",
+          "USER_SSL_TCP"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "channeltimeout": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "sessionid": {
+        "type": "string"
+      }
+    },
+    "title": "lsnrtspalgsession_datachannel_binding",
+    "type": "object"
+  },
+  "description": "Please note that the RTSP data channel for the current session has been configured with the following parameters: the channel identifier carries a flag value of **3**, the source IP address is **192.168.1.10**, and the external NAT address assigned is **10.0.0.5** listening on port **8080**. The internal service port remains **554**, matching the standard RTSP port, and the protocol in use is **RTSP**. The channel timeout is set to **120\u202fseconds**, after which the session will be terminated if idle.\n\nThe session is tracked under the unique identifier **sess-7f9c2b1e-4d3a-11ee-8c99-0242ac120002**. Please ensure that any monitoring or logging tools reference this ID when reporting on the channel's activity.",
+  "reference_json": {
+    "channelflags": 3,
+    "channelip": "192.168.1.10",
+    "channelnatip": "10.0.0.5",
+    "channelnatport": 8080,
+    "channelport": 554,
+    "channelprotocol": "RTSP",
+    "channeltimeout": 120,
+    "sessionid": "sess-7f9c2b1e-4d3a-11ee-8c99-0242ac120002"
+  }
+}

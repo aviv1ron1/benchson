@@ -1,0 +1,293 @@
+{
+  "name": "o54559",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Bozr test suite schema definition",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Short name of the test that will be used in reports."
+        },
+        "description": {
+          "type": "string",
+          "description": "Long description of the test."
+        },
+        "ignore": {
+          "type": "string",
+          "description": "Ignore test due to a reason",
+          "minLength": 10
+        },
+        "calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "Description of the test call"
+              },
+              "args": {
+                "type": "object",
+                "minProperties": 1
+              },
+              "on": {
+                "type": "object",
+                "minProperties": 1,
+                "additionalProperties": false,
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "DELETE",
+                      "HEAD",
+                      "OPTIONS",
+                      "PATCH",
+                      "CONNECT",
+                      "TRACE"
+                    ]
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "headers": {
+                    "type": "object",
+                    "minProperties": 1,
+                    "properties": {
+                      "Accept": {
+                        "type": "string"
+                      },
+                      "Content-Type": {
+                        "type": "string"
+                      },
+                      "Authorization": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "params": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "body": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "bodyFile": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "method",
+                  "url"
+                ]
+              },
+              "expect": {
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "statusCode": {
+                    "type": "integer",
+                    "enum": [
+                      200,
+                      201,
+                      202,
+                      203,
+                      204,
+                      205,
+                      206,
+                      207,
+                      208,
+                      209,
+                      226,
+                      300,
+                      301,
+                      302,
+                      303,
+                      304,
+                      305,
+                      306,
+                      307,
+                      308,
+                      400,
+                      401,
+                      402,
+                      403,
+                      404,
+                      405,
+                      406,
+                      407,
+                      408,
+                      409,
+                      410,
+                      411,
+                      412,
+                      413,
+                      414,
+                      415,
+                      416,
+                      417,
+                      418,
+                      421,
+                      422,
+                      423,
+                      424,
+                      426,
+                      428,
+                      429,
+                      431,
+                      451,
+                      500,
+                      501,
+                      502,
+                      503,
+                      504,
+                      505,
+                      506,
+                      507,
+                      508,
+                      510,
+                      511
+                    ]
+                  },
+                  "contentType": {
+                    "type": "string"
+                  },
+                  "headers": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "body": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "exactBody": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "bodyPath": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "bodySchemaFile": {
+                    "type": "string"
+                  },
+                  "bodySchema": {
+                    "type": "string"
+                  },
+                  "bodySchemaURI": {
+                    "type": "string"
+                  },
+                  "absent": {
+                    "type": "array",
+                    "minItems": 1
+                  }
+                },
+                "additionalProperties": false
+              },
+              "remember": {
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "bodyPath": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "headers": {
+                    "type": "object",
+                    "minProperties": 1
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "on",
+              "expect"
+            ]
+          }
+        }
+      },
+      "required": [
+        "calls"
+      ]
+    }
+  },
+  "description": "Subject: API Test Suite \u2013 User Retrieval and Post Creation  \n\nThe first test, **getUser**, is intended to retrieve user information by ID. Its purpose is described as \u201cRetrieve user information by ID.\u201d The sole call in this test is labeled \u201cFetch user by ID\u201d and issues a **GET** request to `https://api.example.com/users/123`. The request includes an `Accept` header set to `application/json`. The expected response is a **200** status code with a `Content-Type` of `application/json`. After the call, the test stores an `Authorization` header with the value `Bearer {{token}}` for later reuse.  \n\nThe second test, **createPost**, aims to \u201cCreate a new blog post.\u201d This test is currently marked to be ignored with the note \u201cSkipping due to pending feature implementation.\u201d The defined call, \u201cCreate a new post,\u201d supplies an argument `title` equal to `Sample Post`. It sends a **POST** request to `https://api.example.com/posts`, providing `Content-Type: application/json` and `Accept: application/json` headers. The request body is a JSON object containing `\"title\": \"Sample Post\"` and `\"content\": \"This is a sample blog post content.\"` The expected outcome is a **201** status code and a `Content-Type` of `application/json`. Upon a successful response, the test records the newly created post\u2019s identifier by extracting the value at JSON path `$.id` and storing it under the key `id`.",
+  "reference_json": [
+    {
+      "name": "getUser",
+      "description": "Retrieve user information by ID.",
+      "calls": [
+        {
+          "description": "Fetch user by ID",
+          "on": {
+            "method": "GET",
+            "url": "https://api.example.com/users/123",
+            "headers": {
+              "Accept": "application/json"
+            }
+          },
+          "expect": {
+            "statusCode": 200,
+            "contentType": "application/json"
+          },
+          "remember": {
+            "headers": {
+              "Authorization": "Bearer {{token}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "createPost",
+      "description": "Create a new blog post.",
+      "ignore": "Skipping due to pending feature implementation",
+      "calls": [
+        {
+          "description": "Create a new post",
+          "args": {
+            "title": "Sample Post"
+          },
+          "on": {
+            "method": "POST",
+            "url": "https://api.example.com/posts",
+            "headers": {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            "body": {
+              "title": "Sample Post",
+              "content": "This is a sample blog post content."
+            }
+          },
+          "expect": {
+            "statusCode": 201,
+            "contentType": "application/json"
+          },
+          "remember": {
+            "bodyPath": {
+              "id": "$.id"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

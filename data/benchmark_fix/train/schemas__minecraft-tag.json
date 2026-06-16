@@ -1,0 +1,84 @@
+{
+  "name": "minecraft-tag",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/minecraft-tag.json",
+    "$comment": "https://minecraft.wiki/w/Data_Pack",
+    "description": "A tag's for a Minecraft data pack config schema",
+    "properties": {
+      "replace": {
+        "type": "boolean",
+        "default": false
+      },
+      "values": {
+        "description": "Values",
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-z0-9_.-]+:[a-z0-9_.-]+"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^#[a-z0-9_.-]+:[a-z0-9_.-]+"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "anyOf": [
+                    {
+                      "description": "An identifier for the current data pack",
+                      "type": "string",
+                      "pattern": "^[a-z0-9_.-]+:[a-z0-9_.-]+"
+                    },
+                    {
+                      "description": "An identifier for the current data pack",
+                      "type": "string",
+                      "pattern": "^#[a-z0-9_.-]+:[a-z0-9_.-]+"
+                    }
+                  ]
+                },
+                "required": {
+                  "description": "Whether it's required for the current data pack",
+                  "type": "boolean"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "required": [
+      "values"
+    ],
+    "title": "Minecraft Data Pack Tag",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "replace": false
+  },
+  "valid_json": {
+    "replace": false,
+    "values": [
+      "minecraft:stone",
+      "#minecraft:logs",
+      {
+        "id": "modid:custom_item",
+        "required": true
+      },
+      {
+        "id": "#modid:optional_block",
+        "required": false
+      }
+    ]
+  },
+  "description": "The new tag configuration should **not** replace any existing entries, so it will be merged with the current tag data. It will include the standard block\u202f`minecraft:stone`, reference the built\u2011in tag `#minecraft:logs`, and also add two custom entries from our own mod. The first custom entry, `modid:custom_item`, is marked as required for the pack, while the second entry, `#modid:optional_block`, is optional and therefore not required."
+}

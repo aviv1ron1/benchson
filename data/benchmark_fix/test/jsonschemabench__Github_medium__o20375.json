@@ -1,0 +1,83 @@
+{
+  "name": "o20375",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "definitions": {
+      "dateUTCISO": {
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$",
+        "type": "string"
+      },
+      "sha1": {
+        "pattern": "^[0-9a-f]{40}$",
+        "type": "string"
+      },
+      "string": {
+        "type": "string"
+      },
+      "uri": {
+        "pattern": "^https?://",
+        "type": "string"
+      }
+    },
+    "description": "Track caching info for a single (hashed) request",
+    "properties": {
+      "cacheCreated": {
+        "$ref": "#/definitions/dateUTCISO"
+      },
+      "cacheUpdated": {
+        "$ref": "#/definitions/dateUTCISO"
+      },
+      "contentChecksum": {
+        "$ref": "#/definitions/sha1"
+      },
+      "contentType": {
+        "$ref": "#/definitions/string"
+      },
+      "httpETag": {
+        "$ref": "#/definitions/string"
+      },
+      "httpModified": {
+        "$ref": "#/definitions/dateUTCISO"
+      },
+      "key": {
+        "$ref": "#/definitions/sha1"
+      },
+      "url": {
+        "$ref": "#/definitions/uri"
+      }
+    },
+    "required": [
+      "url",
+      "key",
+      "contentType",
+      "httpETag",
+      "httpModified",
+      "cacheCreated",
+      "cacheUpdated",
+      "contentChecksum"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "url": "https://api.example.com/v1/resource/42",
+    "contentType": "application/json",
+    "httpETag": "\"W/\\\"9f9e3d5c2b\\\"\"",
+    "httpModified": "2023-07-20T11:22:33.456Z",
+    "cacheCreated": "2023-07-21T14:35:22.123Z",
+    "cacheUpdated": "2023-07-22T09:15:00.789Z",
+    "contentChecksum": "a3b1c2d4e5f60718293a4b5c6d7e8f9a0b1c2d3e"
+  },
+  "valid_json": {
+    "url": "https://api.example.com/v1/resource/42",
+    "key": "d4c3b2a190e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9",
+    "contentType": "application/json",
+    "httpETag": "\"W/\\\"9f9e3d5c2b\\\"\"",
+    "httpModified": "2023-07-20T11:22:33.456Z",
+    "cacheCreated": "2023-07-21T14:35:22.123Z",
+    "cacheUpdated": "2023-07-22T09:15:00.789Z",
+    "contentChecksum": "a3b1c2d4e5f60718293a4b5c6d7e8f9a0b1c2d3e"
+  },
+  "description": "The resource located at\u202fhttps://api.example.com/v1/resource/42 was fetched and stored with the identifier\u202fd4c3b2a190e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9. The response was of type\u202fapplication/json, carried the weak ETag\u202f\"W/\\\"9f9e3d5c2b\\\"\" and reported a last\u2011modified timestamp of\u202f2023-07-20T11:22:33.456Z. Our caching system created the initial cache entry on\u202f2023-07-21T14:35:22.123Z and later updated it on\u202f2023-07-22T09:15:00.789Z, computing a content checksum of\u202fa3b1c2d4e5f60718293a4b5c6d7e8f9a0b1c2d3e."
+}

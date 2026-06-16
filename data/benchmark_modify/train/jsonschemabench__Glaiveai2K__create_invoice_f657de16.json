@@ -1,0 +1,96 @@
+{
+  "name": "create_invoice_f657de16",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "client_name": {
+        "description": "The name of the client",
+        "type": "string"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price per item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "client_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "client_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Widget",
+        "price": 129.99,
+        "quantity": 15
+      },
+      {
+        "name": "Heavy-Duty Gear",
+        "price": 58.5,
+        "quantity": 40
+      },
+      {
+        "name": "Precision Bolt",
+        "price": 0.75,
+        "quantity": 1200
+      }
+    ]
+  },
+  "instructions": "Please add a new entry to the items list that is identical to the first item.",
+  "ground_truth": {
+    "client_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Widget",
+        "price": 129.99,
+        "quantity": 15
+      },
+      {
+        "name": "Heavy-Duty Gear",
+        "price": 58.5,
+        "quantity": 40
+      },
+      {
+        "name": "Precision Bolt",
+        "price": 0.75,
+        "quantity": 1200
+      },
+      {
+        "name": "Industrial Widget",
+        "price": 129.99,
+        "quantity": 15
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "items"
+    ],
+    "precise_instruction": "Add another item to the \"items\" list, identical to its first item."
+  }
+}

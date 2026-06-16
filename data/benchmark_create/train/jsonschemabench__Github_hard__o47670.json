@@ -1,0 +1,299 @@
+{
+  "name": "o47670",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "featureTypes": {
+        "type": "object",
+        "patternProperties": {
+          "^[\\w\\.\\d\\_]+$": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "How the name the feature type, same as the property name."
+              },
+              "style": {
+                "type": "object",
+                "properties": {
+                  "fillColor": {
+                    "type": "string",
+                    "pattern": "^#[a-fA-F0-9]{6}$",
+                    "description": "Color to use to fill the icon."
+                  },
+                  "strokeColor": {
+                    "type": "string",
+                    "pattern": "^#\\d{6}",
+                    "description": "Color to use for the stroke around the icon."
+                  },
+                  "drawingMode": {
+                    "type": "string",
+                    "enum": [
+                      "Point",
+                      "Polyline",
+                      "Polygon",
+                      "MultiPolygon"
+                    ],
+                    "description": "How to render the icon, if any."
+                  },
+                  "strokeWidth": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Stroke width in pixels."
+                  },
+                  "iconWidth": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Icon width in pixels."
+                  },
+                  "iconHeight": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Icon height in pixels."
+                  },
+                  "iconUri": {
+                    "type": "string",
+                    "description": "URL of the image icon. Is not only used for point features, but also for polygons to recognize them in the legend and when showing the feature's properties. May optionally contain a matching pair of braces, which is replaced with the corresponding property value."
+                  },
+                  "nameLabel": {
+                    "type": "string",
+                    "description": "Property to use as the Name or title."
+                  },
+                  "maxTitleResolution": {
+                    "type": "integer",
+                    "minimum": -1,
+                    "maximum": 23,
+                    "description": "At what zoom level should we stop showing the title. When zooming further out beyond this level, the title is no longer shown."
+                  }
+                },
+                "required": [
+                  "fillColor",
+                  "strokeColor",
+                  "drawingMode",
+                  "strokeWidth",
+                  "iconWidth",
+                  "iconHeight",
+                  "iconUri",
+                  "nameLabel",
+                  "maxTitleResolution"
+                ]
+              },
+              "propertyTypeKeys": {
+                "type": "string",
+                "description": "An ordered, semi-colon separated list of all property data keys to display when selecting the feature."
+              },
+              "legendExpr": {
+                "type": "array",
+                "description": "In the legend, show a summary of this feature.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "description": "Display name in the legend."
+                    },
+                    "type": {
+                      "enum": [
+                        "text",
+                        "textarea",
+                        "textarea-right",
+                        "boolean",
+                        "number",
+                        "bbcode",
+                        "options",
+                        "rank",
+                        "hierarchy",
+                        "date",
+                        "duration"
+                      ],
+                      "description": "Default display type is text."
+                    },
+                    "stringFormat": {
+                      "type": "string",
+                      "description": "A string that represents the .NET formatting to use for displaying the property value, e.g. {0:0,000.##} to show a thousand separator as well as up to two decimals."
+                    },
+                    "expression": {
+                      "type": "string",
+                      "description": "A formula that is computed upon loading the layer, and when the map's extent (bounding box) is changed. E.g. \"sum(features, 'NR_PEOPLE')\" sums the number of people within the extent of the map."
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "type",
+                    "stringFormat",
+                    "expression"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name",
+              "style",
+              "propertyTypeKeys",
+              "legendExpr"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "propertyTypeData": {
+        "type": "object",
+        "description": "A list of property types, which specify how each feature's property should be displayed.",
+        "patternProperties": {
+          "^[\\w\\.\\d\\_]+$": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "Display name in the legend."
+              },
+              "type": {
+                "enum": [
+                  "text",
+                  "textarea",
+                  "boolean",
+                  "number",
+                  "bbcode",
+                  "options",
+                  "rank",
+                  "hierarchy",
+                  "date",
+                  "duration"
+                ],
+                "description": "Default display type is text."
+              },
+              "stringFormat": {
+                "type": "string",
+                "description": "A string that represents the .NET formatting to use for displaying the property value, e.g. {0:0,000.##} to show a thousand separator as well as up to two decimals."
+              },
+              "expression": {
+                "type": "string",
+                "title": "Expression or formula",
+                "description": "A formula that is computed upon loading the layer. E.g. \"properties.p_00_14_jr * properties.nr_people / 100\" converts the percentage of children to an absolute number."
+              },
+              "section": {
+                "type": "string",
+                "description": "Separate the properties by placing each of them in their own section."
+              },
+              "visibleInCallOut": {
+                "type": "boolean",
+                "description": "If true (default), show the property when the feature is selected."
+              },
+              "label": {
+                "type": "string",
+                "description": "Property label, which is typically the same as this item's key. It is still useful, however, when you wish to display a property twice, each time using a different display format, e.g. text and link, or year and date separately."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "The map configuration defines two vector layers \u2013\u202f**Roads** and **Parks** \u2013\u202feach with its own visual style and metadata. Roads are rendered as a white\u2011filled polyline (fill\u202f#.ffffff, stroke\u202f#123456) with a stroke width of\u202f2\u202fpx; the associated icon is \u201chttps://example.com/icons/road.png\u201d (icon width\u202f0\u202fpx, icon height\u202f0\u202fpx, meaning the icon is used only in the legend). The road name is taken from the property **road_name**, and titles are shown down to zoom level\u202f12. The road layer\u2019s property list is ordered as \u201croad_name;length;surface_type\u201d. In the legend the total road length appears as a number formatted \u201c{0:0,0.##}\u202fkm\u201d using the expression **sum(features, 'length')**, while the distinct surface types are displayed as plain text via **distinct(values(features, 'surface_type'))**.  \n\nParks are drawn as polygons with a fill colour\u202f#aadd55 and a stroke colour\u202f#654321, a stroke width of\u202f1\u202fpx, and a 24\u202f\u00d7\u202f24\u202fpx icon whose URL \u201chttps://example.com/icons/park_{park_id}.png\u201d inserts the park\u2019s identifier. The park name comes from **park_name**, and titles stop rendering beyond zoom level\u202f10. Its property order is \u201cpark_name;area;established\u201d. The legend shows the total area of all parks as a number formatted \u201c{0:0,0.0}\u202fha\u201d via **sum(features, 'area')**.  \n\nThe property\u2011type catalog specifies how each attribute should be displayed in call\u2011outs. **road_name** (\u201cRoad Name\u201d) is a text field shown as \u201cName\u201d. **length** (\u201cLength (km)\u201d) is a numeric field formatted \u201c{0:0.##}\u201d, calculated with the expression **properties.length / 1000**, grouped under the \u201cMetrics\u201d section and labelled \u201cLength\u201d. **surface_type** (\u201cSurface Type\u201d) is an options field under the \u201cDetails\u201d section, labelled \u201cSurface\u201d. For parks, **park_name** (\u201cPark Name\u201d) appears as text labelled \u201cName\u201d, **area** (\u201cArea (ha)\u201d) is a numeric field formatted \u201c{0:0,0}\u201d labelled \u201cArea\u201d, and **established** (\u201cEstablished\u201d) is a date field formatted \u201c{0:yyyy}\u201d, labelled \u201cYear Established\u201d. All of these properties are visible in call\u2011outs.",
+  "reference_json": {
+    "featureTypes": {
+      "Roads": {
+        "name": "Roads",
+        "style": {
+          "fillColor": "#ffffff",
+          "strokeColor": "#123456",
+          "drawingMode": "Polyline",
+          "strokeWidth": 2,
+          "iconWidth": 0,
+          "iconHeight": 0,
+          "iconUri": "https://example.com/icons/road.png",
+          "nameLabel": "road_name",
+          "maxTitleResolution": 12
+        },
+        "propertyTypeKeys": "road_name;length;surface_type",
+        "legendExpr": [
+          {
+            "title": "Total Length",
+            "type": "number",
+            "stringFormat": "{0:0,0.##} km",
+            "expression": "sum(features, 'length')"
+          },
+          {
+            "title": "Surface Types",
+            "type": "text",
+            "stringFormat": "{0}",
+            "expression": "distinct(values(features, 'surface_type'))"
+          }
+        ]
+      },
+      "Parks": {
+        "name": "Parks",
+        "style": {
+          "fillColor": "#aadd55",
+          "strokeColor": "#654321",
+          "drawingMode": "Polygon",
+          "strokeWidth": 1,
+          "iconWidth": 24,
+          "iconHeight": 24,
+          "iconUri": "https://example.com/icons/park_{park_id}.png",
+          "nameLabel": "park_name",
+          "maxTitleResolution": 10
+        },
+        "propertyTypeKeys": "park_name;area;established",
+        "legendExpr": [
+          {
+            "title": "Total Area",
+            "type": "number",
+            "stringFormat": "{0:0,0.0} ha",
+            "expression": "sum(features, 'area')"
+          }
+        ]
+      }
+    },
+    "propertyTypeData": {
+      "road_name": {
+        "title": "Road Name",
+        "type": "text",
+        "stringFormat": "{0}",
+        "visibleInCallOut": true,
+        "label": "Name"
+      },
+      "length": {
+        "title": "Length (km)",
+        "type": "number",
+        "stringFormat": "{0:0.##}",
+        "expression": "properties.length / 1000",
+        "section": "Metrics",
+        "visibleInCallOut": true,
+        "label": "Length"
+      },
+      "surface_type": {
+        "title": "Surface Type",
+        "type": "options",
+        "stringFormat": "{0}",
+        "section": "Details",
+        "visibleInCallOut": true,
+        "label": "Surface"
+      },
+      "park_name": {
+        "title": "Park Name",
+        "type": "text",
+        "stringFormat": "{0}",
+        "visibleInCallOut": true,
+        "label": "Name"
+      },
+      "area": {
+        "title": "Area (ha)",
+        "type": "number",
+        "stringFormat": "{0:0,0}",
+        "visibleInCallOut": true,
+        "label": "Area"
+      },
+      "established": {
+        "title": "Established",
+        "type": "date",
+        "stringFormat": "{0:yyyy}",
+        "visibleInCallOut": true,
+        "label": "Year Established"
+      }
+    }
+  }
+}

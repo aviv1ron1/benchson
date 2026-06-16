@@ -1,0 +1,54 @@
+{
+  "name": "kb_605_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.",
+    "properties": {
+      "path": {
+        "description": "Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "readOnly": {
+        "description": "ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "server": {
+        "description": "Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "server",
+      "path"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "server": "10.0.12.45",
+    "path": "/export/data",
+    "readOnly": false
+  },
+  "instructions": "Could you change the server to\u202f10.0.12.45\u202f(updated)?",
+  "ground_truth": {
+    "server": "10.0.12.45 (updated)",
+    "path": "/export/data",
+    "readOnly": false
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "server"
+    ],
+    "precise_instruction": "Change \"server\" to \"10.0.12.45 (updated)\"."
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "name": "o43277",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "definitions": {
+      "CompletedSpartanRank": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "PacksAwarded": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "Id",
+          "PacksAwarded"
+        ]
+      }
+    },
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": [
+      "object",
+      "null"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "PreviousTotalXP": {
+        "type": "integer"
+      },
+      "GameplayXP": {
+        "type": "integer"
+      },
+      "ChallengesXP": {
+        "type": "integer"
+      },
+      "UpdatedTotalXP": {
+        "type": "integer"
+      },
+      "CompletedSpartanRanks": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/CompletedSpartanRank"
+        }
+      }
+    },
+    "required": [
+      "PreviousTotalXP",
+      "GameplayXP",
+      "ChallengesXP",
+      "UpdatedTotalXP",
+      "CompletedSpartanRanks"
+    ]
+  },
+  "erroneous_json": {
+    "PreviousTotalXP": 45200,
+    "GameplayXP": "not-a-number",
+    "ChallengesXP": 3500,
+    "UpdatedTotalXP": 61000,
+    "CompletedSpartanRanks": [
+      {
+        "Id": "SpartanRank01",
+        "PacksAwarded": 5
+      },
+      {
+        "Id": "SpartanRank02",
+        "PacksAwarded": 8
+      },
+      {
+        "Id": "SpartanRank03",
+        "PacksAwarded": 12
+      }
+    ]
+  },
+  "valid_json": {
+    "PreviousTotalXP": 45200,
+    "GameplayXP": 12300,
+    "ChallengesXP": 3500,
+    "UpdatedTotalXP": 61000,
+    "CompletedSpartanRanks": [
+      {
+        "Id": "SpartanRank01",
+        "PacksAwarded": 5
+      },
+      {
+        "Id": "SpartanRank02",
+        "PacksAwarded": 8
+      },
+      {
+        "Id": "SpartanRank03",
+        "PacksAwarded": 12
+      }
+    ]
+  },
+  "description": "Subject: XP Update and Spartan Rank Completion Summary  \n\nHello Team,\n\nAs of the latest session, the player's cumulative experience has risen from 45,200\u202fXP to a new total of 61,000\u202fXP. This increase breaks down into 12,300\u202fXP earned through standard gameplay and an additional 3,500\u202fXP gained from completing challenges. The progression also includes the successful completion of three Spartan ranks: Rank\u202f01 (SpartanRank01) unlocked with 5 award packs, Rank\u202f02 (SpartanRank02) unlocked with 8 award packs, and Rank\u202f03 (SpartanRank03) unlocked with 12 award packs."
+}

@@ -1,0 +1,47 @@
+{
+  "name": "kb_869_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "RoleRef contains information that points to the role being used",
+    "properties": {
+      "apiGroup": {
+        "description": "APIGroup is the group for the resource being referenced",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "kind": {
+        "description": "Kind is the type of resource being referenced",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "name": {
+        "description": "Name is the name of resource being referenced",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "apiGroup",
+      "kind",
+      "name"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "apiGroup": "rbac.authorization.k8s.io",
+    "kind": "Role"
+  },
+  "valid_json": {
+    "apiGroup": "rbac.authorization.k8s.io",
+    "kind": "Role",
+    "name": "pod-reader"
+  },
+  "description": "Please note that the role reference is configured to use the **rbac.authorization.k8s.io** API group. It points to a resource of kind **Role**, specifically the role named **pod-reader**. This configuration ensures that the appropriate permissions for reading pod information are granted through the designated role."
+}

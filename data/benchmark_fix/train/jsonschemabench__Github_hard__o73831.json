@@ -1,0 +1,506 @@
+{
+  "name": "o73831",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$id": "https://scandihealth.github.io/lpr3-docs/resources/acl.schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+      "uuid": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      },
+      "uuid-5": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      },
+      "ruleId": {
+        "type": "string"
+      },
+      "ruleVersion": {
+        "type": "string",
+        "pattern": "^([a-zA-Z][a-zA-Z0-9]*:)+[0-9]+\\.[0-9]+\\.[0-9](-[0-9a-zA-Z]+)*$"
+      },
+      "errors": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/error"
+        },
+        "minItems": 1
+      },
+      "error": {
+        "type": "object",
+        "properties": {
+          "ruleId": {
+            "$ref": "#/definitions/ruleId"
+          },
+          "ruleVersion": {
+            "$ref": "#/definitions/ruleVersion"
+          },
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ruleId",
+          "ruleVersion",
+          "code",
+          "message"
+        ]
+      },
+      "warnings": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/warning"
+        },
+        "minItems": 1
+      },
+      "warning": {
+        "type": "object",
+        "properties": {
+          "ruleId": {
+            "$ref": "#/definitions/ruleId"
+          },
+          "ruleVersion": {
+            "$ref": "#/definitions/ruleVersion"
+          },
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errorBy": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{3,}-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-9][0-9]:[0-9][0-9](\\.[0-9]+)?[+-][01][0-9](:[03]0)?$"
+          }
+        },
+        "required": [
+          "ruleId",
+          "ruleVersion",
+          "code",
+          "message"
+        ]
+      },
+      "identifiers": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/identifier"
+        },
+        "minItems": 1
+      },
+      "identifier": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "$ref": "#/definitions/uuid"
+          },
+          "extension": {
+            "$ref": "#/definitions/uuid-5"
+          }
+        },
+        "required": [
+          "root",
+          "extension"
+        ]
+      },
+      "patientIdentifiers": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/patientIdentifier"
+        },
+        "minItems": 1
+      },
+      "patientIdentifier": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string"
+          },
+          "extension": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "root",
+          "extension"
+        ]
+      },
+      "patient": {
+        "type": "object",
+        "properties": {
+          "identifiers": {
+            "$ref": "#/definitions/patientIdentifiers"
+          },
+          "errors": {
+            "$ref": "#/definitions/errors"
+          },
+          "warnings": {
+            "$ref": "#/definitions/warnings"
+          }
+        },
+        "required": [
+          "identifiers"
+        ]
+      },
+      "encounters": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/encounter"
+        },
+        "minItems": 1
+      },
+      "encounter": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "$ref": "#/definitions/identifier"
+          },
+          "errors": {
+            "$ref": "#/definitions/errors"
+          },
+          "warnings": {
+            "$ref": "#/definitions/warnings"
+          },
+          "observationOrganizers": {
+            "$ref": "#/definitions/observationOrganizers"
+          },
+          "procedures": {
+            "$ref": "#/definitions/procedures"
+          },
+          "conditions": {
+            "$ref": "#/definitions/conditions"
+          }
+        },
+        "required": [
+          "identifier"
+        ]
+      },
+      "procedures": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/procedure"
+        },
+        "minItems": 1
+      },
+      "procedure": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "$ref": "#/definitions/identifier"
+          },
+          "errors": {
+            "$ref": "#/definitions/errors"
+          },
+          "warnings": {
+            "$ref": "#/definitions/warnings"
+          },
+          "observationOrganizers": {
+            "$ref": "#/definitions/observationOrganizers"
+          }
+        },
+        "required": [
+          "identifier"
+        ]
+      },
+      "conditions": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/condition"
+        },
+        "minItems": 1
+      },
+      "condition": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "$ref": "#/definitions/identifier"
+          },
+          "errors": {
+            "$ref": "#/definitions/errors"
+          },
+          "warnings": {
+            "$ref": "#/definitions/warnings"
+          },
+          "observationOrganizers": {
+            "$ref": "#/definitions/observationOrganizers"
+          }
+        },
+        "required": [
+          "identifier"
+        ]
+      },
+      "markers": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/marker"
+        },
+        "minItems": 1
+      },
+      "marker": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "$ref": "#/definitions/identifier"
+          },
+          "errors": {
+            "$ref": "#/definitions/errors"
+          },
+          "warnings": {
+            "$ref": "#/definitions/warnings"
+          },
+          "observationOrganizers": {
+            "$ref": "#/definitions/observationOrganizers"
+          }
+        },
+        "required": [
+          "identifier"
+        ]
+      },
+      "observationOrganizers": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/observationOrganizer"
+        },
+        "minItems": 1
+      },
+      "observationOrganizer": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "$ref": "#/definitions/identifier"
+          },
+          "errors": {
+            "$ref": "#/definitions/errors"
+          },
+          "warnings": {
+            "$ref": "#/definitions/warnings"
+          }
+        },
+        "required": [
+          "identifier"
+        ]
+      }
+    },
+    "properties": {
+      "identifier": {
+        "$ref": "#/definitions/identifier"
+      },
+      "errors": {
+        "$ref": "#/definitions/errors"
+      },
+      "warnings": {
+        "$ref": "#/definitions/warnings"
+      },
+      "patient": {
+        "$ref": "#/definitions/patient"
+      },
+      "markers": {
+        "$ref": "#/definitions/markers"
+      },
+      "encounters": {
+        "$ref": "#/definitions/encounters"
+      },
+      "procedures": {
+        "$ref": "#/definitions/procedures"
+      },
+      "observationOrganizers": {
+        "$ref": "#/definitions/observationOrganizers"
+      }
+    },
+    "required": [
+      "identifier"
+    ]
+  },
+  "erroneous_json": {
+    "errors": [
+      {
+        "ruleId": "RULE-001",
+        "ruleVersion": "myRule:1.2.3",
+        "code": "E001",
+        "message": "Top-level error example"
+      }
+    ],
+    "patient": {
+      "identifiers": [
+        {
+          "root": "patientRoot-001",
+          "extension": "patientExt-ABC"
+        }
+      ]
+    },
+    "markers": [
+      {
+        "identifier": {
+          "root": "223e4567-e89b-32d3-a456-426614174111",
+          "extension": "aa5b6c7d-2e2f-5b34-c567-89abcdef1234"
+        },
+        "observationOrganizers": [
+          {
+            "identifier": {
+              "root": "323e4567-e89b-52d3-a456-426614174222",
+              "extension": "bb5b6c7d-3e2f-5c34-d567-89abcdef2345"
+            }
+          }
+        ]
+      }
+    ],
+    "encounters": [
+      {
+        "identifier": {
+          "root": "423e4567-e89b-42d3-a456-426614174333",
+          "extension": "cc5b6c7d-4e2f-5d34-e567-89abcdef3456"
+        },
+        "procedures": [
+          {
+            "identifier": {
+              "root": "523e4567-e89b-52d3-a456-426614174444",
+              "extension": "dd5b6c7d-5e2f-5e34-f567-89abcdef4567"
+            }
+          }
+        ],
+        "conditions": [
+          {
+            "identifier": {
+              "root": "623e4567-e89b-12d3-a456-426614174555",
+              "extension": "ee5b6c7d-6e2f-5f34-a567-89abcdef5678"
+            }
+          }
+        ],
+        "observationOrganizers": [
+          {
+            "identifier": {
+              "root": "723e4567-e89b-32d3-a456-426614174666",
+              "extension": "ff5b6c7d-7e2f-5a34-b567-89abcdef6789"
+            }
+          }
+        ],
+        "warnings": [
+          {
+            "ruleId": "WARN-001",
+            "ruleVersion": "myRule:2.0.0",
+            "code": "W001",
+            "message": "Encounter warning",
+            "errorBy": "2023-08-15T14:30:00+02:00"
+          }
+        ]
+      }
+    ],
+    "procedures": [
+      {
+        "identifier": {
+          "root": "823e4567-e89b-42d3-a456-426614174777",
+          "extension": "aa5b6c7d-8e2f-5b34-c567-89abcdef7890"
+        }
+      }
+    ],
+    "observationOrganizers": [
+      {
+        "identifier": {
+          "root": "923e4567-e89b-52d3-a456-426614174888",
+          "extension": "bb5b6c7d-9e2f-5c34-d567-89abcdef8901"
+        }
+      }
+    ]
+  },
+  "valid_json": {
+    "identifier": {
+      "root": "123e4567-e89b-42d3-a456-426614174000",
+      "extension": "9a5b6c7d-1e2f-5a34-b567-89abcdef0123"
+    },
+    "errors": [
+      {
+        "ruleId": "RULE-001",
+        "ruleVersion": "myRule:1.2.3",
+        "code": "E001",
+        "message": "Top-level error example"
+      }
+    ],
+    "patient": {
+      "identifiers": [
+        {
+          "root": "patientRoot-001",
+          "extension": "patientExt-ABC"
+        }
+      ]
+    },
+    "markers": [
+      {
+        "identifier": {
+          "root": "223e4567-e89b-32d3-a456-426614174111",
+          "extension": "aa5b6c7d-2e2f-5b34-c567-89abcdef1234"
+        },
+        "observationOrganizers": [
+          {
+            "identifier": {
+              "root": "323e4567-e89b-52d3-a456-426614174222",
+              "extension": "bb5b6c7d-3e2f-5c34-d567-89abcdef2345"
+            }
+          }
+        ]
+      }
+    ],
+    "encounters": [
+      {
+        "identifier": {
+          "root": "423e4567-e89b-42d3-a456-426614174333",
+          "extension": "cc5b6c7d-4e2f-5d34-e567-89abcdef3456"
+        },
+        "procedures": [
+          {
+            "identifier": {
+              "root": "523e4567-e89b-52d3-a456-426614174444",
+              "extension": "dd5b6c7d-5e2f-5e34-f567-89abcdef4567"
+            }
+          }
+        ],
+        "conditions": [
+          {
+            "identifier": {
+              "root": "623e4567-e89b-12d3-a456-426614174555",
+              "extension": "ee5b6c7d-6e2f-5f34-a567-89abcdef5678"
+            }
+          }
+        ],
+        "observationOrganizers": [
+          {
+            "identifier": {
+              "root": "723e4567-e89b-32d3-a456-426614174666",
+              "extension": "ff5b6c7d-7e2f-5a34-b567-89abcdef6789"
+            }
+          }
+        ],
+        "warnings": [
+          {
+            "ruleId": "WARN-001",
+            "ruleVersion": "myRule:2.0.0",
+            "code": "W001",
+            "message": "Encounter warning",
+            "errorBy": "2023-08-15T14:30:00+02:00"
+          }
+        ]
+      }
+    ],
+    "procedures": [
+      {
+        "identifier": {
+          "root": "823e4567-e89b-42d3-a456-426614174777",
+          "extension": "aa5b6c7d-8e2f-5b34-c567-89abcdef7890"
+        }
+      }
+    ],
+    "observationOrganizers": [
+      {
+        "identifier": {
+          "root": "923e4567-e89b-52d3-a456-426614174888",
+          "extension": "bb5b6c7d-9e2f-5c34-d567-89abcdef8901"
+        }
+      }
+    ]
+  },
+  "description": "The clinical record is identified by the UUID\u202f123e4567\u2011e89b\u201142d3\u2011a456\u2011426614174000 with extension\u202f9a5b6c7d\u20111e2f\u20115a34\u2011b567\u201189abcdef0123. A validation error was flagged at the top level (RULE\u2011001, version\u202fmyRule:1.2.3) with code\u202fE001 and the message \u201cTop\u2011level error example\u201d.\n\nThe patient linked to this record carries the identifier patientRoot\u2011001\u202f/\u202fpatientExt\u2011ABC. One molecular marker is attached, bearing the identifier 223e4567\u2011e89b\u201132d3\u2011a456\u2011426614174111 (extension\u202faa5b6c7d\u20112e2f\u20115b34\u2011c567\u201189abcdef1234), and it includes an observation organizer identified by 323e4567\u2011e89b\u201152d3\u2011a456\u2011426614174222 (extension\u202fbb5b6c7d\u20113e2f\u20115c34\u2011d567\u201189abcdef2345).\n\nA single encounter is recorded with identifier 423e4567\u2011e89b\u201142d3\u2011a456\u2011426614174333 (extension\u202fcc5b6c7d\u20114e2f\u20115d34\u2011e567\u201189abcdef3456). Within this encounter a procedure is logged (identifier\u202f523e4567\u2011e89b\u201152d3\u2011a456\u2011426614174444, extension\u202fdd5b6c7d\u20115e2f\u20115e34\u2011f567\u201189abcdef4567), a condition is noted (identifier\u202f623e4567\u2011e89b\u201112d3\u2011a456\u2011426614174555, extension\u202fee5b6c7d\u20116e2f\u20115f34\u2011a567\u201189abcdef5678), and an observation organizer is attached (identifier\u202f723e4567\u2011e89b\u201132d3\u2011a456\u2011426614174666, extension\u202fff5b6c7d\u20117e2f\u20115a34\u2011b567\u201189abcdef6789). The encounter also generated a warning (WARN\u2011001, version\u202fmyRule:2.0.0) with code\u202fW001, the message \u201cEncounter warning\u201d, and a timestamp of 2023\u201108\u201115T14:30:00+02:00.\n\nOutside the encounter, the record includes an additional procedure (identifier\u202f823e4567\u2011e89b\u201142d3\u2011a456\u2011426614174777, extension\u202faa5b6c7d\u20118e2f\u20115b34\u2011c567\u201189abcdef7890) and a top\u2011level observation organizer (identifier\u202f923e4567\u2011e89b\u201152d3\u2011a456\u2011426614174888, extension\u202fbb5b6c7d\u20119e2f\u20115c34\u2011d567\u201189abcdef8901)."
+}

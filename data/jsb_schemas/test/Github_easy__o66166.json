@@ -1,0 +1,16 @@
+{
+  "name": "o66166",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "title": "URL"
+      }
+    },
+    "title": "Internal Discussion"
+  }
+}

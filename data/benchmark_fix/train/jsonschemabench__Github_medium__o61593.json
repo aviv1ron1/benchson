@@ -1,0 +1,132 @@
+{
+  "name": "o61593",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "Passwords": {
+        "description": "Sets passwords for known AirPlay destinations",
+        "items": {
+          "description": "An item in the passwords",
+          "properties": {
+            "DeviceName": {
+              "description": "The AirPlay destination's name",
+              "type": "string"
+            },
+            "Password": {
+              "description": "The password for the AirPlay destination",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "PayloadDescription": {
+        "default": "Configures AirPlay settings",
+        "description": "Description of the payload",
+        "type": "string"
+      },
+      "PayloadDisplayName": {
+        "default": "AirPlay settings",
+        "description": "Name of the payload",
+        "type": "string"
+      },
+      "PayloadIdentifier": {
+        "default": "com.apple.airplay",
+        "description": "A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier",
+        "type": "string"
+      },
+      "PayloadOrganization": {
+        "description": "This value describes the issuing organization of the profile, as displayed to the user",
+        "type": "string"
+      },
+      "PayloadType": {
+        "default": "com.apple.airplay",
+        "description": "The type of the payload, a reverse dns string",
+        "type": "string"
+      },
+      "PayloadUUID": {
+        "default": "",
+        "description": "Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)",
+        "pattern": "^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$",
+        "type": "string"
+      },
+      "PayloadVersion": {
+        "default": 1,
+        "description": "The version of the whole configuration profile.",
+        "type": "number"
+      },
+      "Whitelist": {
+        "description": "List of visible AirPlay destinations restricted on this device (applies to supervised devices only) ",
+        "items": {
+          "description": "An item in the whitelist",
+          "properties": {
+            "DeviceID": {
+              "description": "The AirPlay destination's MAC address",
+              "pattern": "^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "title": "com.apple.airplay",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "Passwords": [
+      {
+        "DeviceName": "Living Room Apple TV",
+        "Password": "s3cr3tPass!"
+      },
+      {
+        "DeviceName": "Conference Room TV",
+        "Password": "Conf2023#"
+      }
+    ],
+    "PayloadDescription": "Configures AirPlay settings for corporate devices",
+    "PayloadDisplayName": "AirPlay settings",
+    "PayloadIdentifier": "com.example.airplayconfig",
+    "PayloadOrganization": "Example Corp",
+    "PayloadType": "com.apple.airplay",
+    "PayloadUUID": "A1B2C3D4-1234-5678-9ABC-DEF012345678",
+    "PayloadVersion": 1,
+    "Whitelist": [
+      "not-an-object",
+      {
+        "DeviceID": "AA:BB:CC:DD:EE:FF"
+      }
+    ]
+  },
+  "valid_json": {
+    "Passwords": [
+      {
+        "DeviceName": "Living Room Apple TV",
+        "Password": "s3cr3tPass!"
+      },
+      {
+        "DeviceName": "Conference Room TV",
+        "Password": "Conf2023#"
+      }
+    ],
+    "PayloadDescription": "Configures AirPlay settings for corporate devices",
+    "PayloadDisplayName": "AirPlay settings",
+    "PayloadIdentifier": "com.example.airplayconfig",
+    "PayloadOrganization": "Example Corp",
+    "PayloadType": "com.apple.airplay",
+    "PayloadUUID": "A1B2C3D4-1234-5678-9ABC-DEF012345678",
+    "PayloadVersion": 1,
+    "Whitelist": [
+      {
+        "DeviceID": "00:1A:2B:3C:4D:5E"
+      },
+      {
+        "DeviceID": "AA:BB:CC:DD:EE:FF"
+      }
+    ]
+  },
+  "description": "Subject: AirPlay Configuration Profile for Corporate Devices  \n\nThe AirPlay settings profile, titled \u201cAirPlay settings,\u201d is intended to configure AirPlay on all corporate devices. Its description reads \u201cConfigures AirPlay settings for corporate devices,\u201d and it is identified by the reverse\u2011DNS string **com.example.airplayconfig** under the organization **Example Corp**. The payload type is **com.apple.airplay**, with a unique UUID of **A1B2C3D4-1234-5678-9ABC-DEF012345678** and version **1**.\n\nFor password\u2011protected destinations, the Living Room Apple TV should use the password **s3cr3tPass!**, while the Conference Room TV requires **Conf2023#**. Access is limited to the following whitelisted AirPlay devices (MAC addresses): **00:1A:2B:3C:4D:5E** and **AA:BB:CC:DD:EE:FF**. Please apply this profile to all supervised devices to enforce the specified AirPlay restrictions."
+}

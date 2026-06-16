@@ -1,0 +1,248 @@
+{
+  "name": "o7374",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "The display name of the profile. It will also be the modpack display name",
+        "default": "",
+        "type": "string"
+      },
+      "author": {
+        "description": "The author of this instance",
+        "default": "",
+        "type": "string"
+      },
+      "description": {
+        "description": "The description of this instance",
+        "default": "",
+        "type": "string"
+      },
+      "showLog": {
+        "description": "Should show a logger window after Minecraft launched",
+        "default": false,
+        "type": "boolean"
+      },
+      "hideLauncher": {
+        "description": "Should launcher hide after Minecraft launched",
+        "default": true,
+        "type": "boolean"
+      },
+      "runtime": {
+        "$ref": "#/definitions/RuntimeVersions",
+        "description": "The runtime version requirement of the profile.\n\nContaining the forge & liteloader & etc.",
+        "default": {
+          "minecraft": "",
+          "forge": "",
+          "liteloader": ""
+        }
+      },
+      "java": {
+        "description": "The java path on the disk",
+        "default": "",
+        "type": "string"
+      },
+      "resolution": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "fullscreen": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "fullscreen",
+              "height",
+              "width"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "minMemory": {
+        "default": 0,
+        "type": "number"
+      },
+      "maxMemory": {
+        "default": 0,
+        "type": "number"
+      },
+      "vmOptions": {
+        "default": [],
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "mcOptions": {
+        "default": [],
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "url": {
+        "default": "",
+        "type": "string"
+      },
+      "icon": {
+        "default": "",
+        "type": "string"
+      },
+      "image": {
+        "default": "",
+        "type": "string"
+      },
+      "blur": {
+        "default": 0,
+        "type": "number"
+      },
+      "lastAccessDate": {
+        "default": 0,
+        "type": "number"
+      },
+      "creationDate": {
+        "default": 0,
+        "type": "number"
+      },
+      "server": {
+        "description": "The option for instance to launch server directly",
+        "default": null,
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "port": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "host"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "author",
+      "blur",
+      "creationDate",
+      "description",
+      "hideLauncher",
+      "icon",
+      "image",
+      "java",
+      "lastAccessDate",
+      "maxMemory",
+      "mcOptions",
+      "minMemory",
+      "name",
+      "resolution",
+      "runtime",
+      "server",
+      "showLog",
+      "url",
+      "vmOptions"
+    ],
+    "definitions": {
+      "RuntimeVersions": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "properties": {
+          "minecraft": {
+            "description": "Minecraft version of this version. e.g. 1.7.10",
+            "default": "",
+            "type": "string"
+          },
+          "forge": {
+            "description": "Forge version of this version. e.g. 14.23.5.2838",
+            "default": "",
+            "type": "string"
+          },
+          "liteloader": {
+            "default": "",
+            "type": "string"
+          },
+          "fabricLoader": {
+            "description": "Fabric loader version, e.g. 0.7.2+build.175",
+            "default": "",
+            "type": "string"
+          },
+          "yarn": {
+            "description": "Fabric yarn version, e.g. 1.15.1+build.14",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fabricLoader",
+          "forge",
+          "liteloader",
+          "minecraft",
+          "yarn"
+        ]
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "description": "Epic Adventure Modpack, crafted by PixelCrafter, is a curated collection of adventure mods for Minecraft\u202f1.12.2. The pack\u2019s description reads \u201cA curated collection of adventure mods for Minecraft\u202f1.12.2.\u201d and it can be found online at https://example.com/epic-adventure. Its visual identity uses the icon file\u202ficon.png and the background image\u202fbackground.jpg, with a blur level set to\u202f5. The required runtime consists of Minecraft\u202f1.12.2, Forge\u202f14.23.5.2855, LiteLoader\u202f1.12.2_05, Fabric Loader\u202f0.14.9 and Yarn\u202f1.16.5+build.10, and the Java executable to launch the game is located at C:\\Program Files\\Java\\jdk-8u202\\bin\\javaw.exe. The launch configuration specifies a windowed resolution of\u202f1280\u202f\u00d7\u202f720\u202fpixels (fullscreen\u202ffalse), a minimum memory allocation of\u202f2048\u202fMB and a maximum of\u202f4096\u202fMB. Additional JVM options \u201c-Xmx2G\u201d and \u201c-XX:+UseG1GC\u201d are applied, together with Minecraft options \u201c-Dfml.ignoreInvalidMinecraftCertificates=true\u201d and \u201c-Dfml.ignorePatchDiscrepancies=true\u201d. The launcher is set to hide after Minecraft starts (hideLauncher\u202ftrue) and will not open a logger window (showLog\u202ffalse).  \n\nThe profile was created on Unix timestamp\u202f1685481600 and last accessed on\u202f1688073600. For players who wish to join a server directly, the pack includes a server entry pointing to host\u202fplay.example.com\u202fon port\u202f25565. All of these settings combine to provide a seamless adventure experience for anyone who runs the Epic Adventure Modpack.",
+  "reference_json": {
+    "name": "Epic Adventure Modpack",
+    "author": "PixelCrafter",
+    "description": "A curated collection of adventure mods for Minecraft 1.12.2.",
+    "showLog": false,
+    "hideLauncher": true,
+    "runtime": {
+      "minecraft": "1.12.2",
+      "forge": "14.23.5.2855",
+      "liteloader": "1.12.2_05",
+      "fabricLoader": "0.14.9",
+      "yarn": "1.16.5+build.10"
+    },
+    "java": "C:\\Program Files\\Java\\jdk-8u202\\bin\\javaw.exe",
+    "resolution": {
+      "width": 1280,
+      "height": 720,
+      "fullscreen": false
+    },
+    "minMemory": 2048,
+    "maxMemory": 4096,
+    "vmOptions": [
+      "-Xmx2G",
+      "-XX:+UseG1GC"
+    ],
+    "mcOptions": [
+      "-Dfml.ignoreInvalidMinecraftCertificates=true",
+      "-Dfml.ignorePatchDiscrepancies=true"
+    ],
+    "url": "https://example.com/epic-adventure",
+    "icon": "icon.png",
+    "image": "background.jpg",
+    "blur": 5,
+    "lastAccessDate": 1688073600,
+    "creationDate": 1685481600,
+    "server": {
+      "host": "play.example.com",
+      "port": 25565
+    }
+  }
+}

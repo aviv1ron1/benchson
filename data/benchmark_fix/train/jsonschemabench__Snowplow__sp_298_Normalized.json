@@ -1,0 +1,74 @@
+{
+  "name": "sp_298_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for mobile contexts",
+    "properties": {
+      "androidIdfa": {
+        "type": "string"
+      },
+      "appleIdfa": {
+        "type": "string"
+      },
+      "appleIdfv": {
+        "type": "string"
+      },
+      "carrier": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "deviceManufacturer": {
+        "type": "string"
+      },
+      "deviceModel": {
+        "type": "string"
+      },
+      "openIdfa": {
+        "type": "string"
+      },
+      "osType": {
+        "type": "string"
+      },
+      "osVersion": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "osType",
+      "osVersion",
+      "deviceManufacturer",
+      "deviceModel"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "mobile_context",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "osType": "iOS",
+    "osVersion": "16.4",
+    "deviceManufacturer": "Apple",
+    "appleIdfa": "AEBE1234-5678-90AB-CDEF-1234567890AB",
+    "appleIdfv": "BEEF5678-1234-90AB-CDEF-0987654321CD",
+    "openIdfa": "C0DE1122-3344-55AA-BB33-445566778899",
+    "carrier": "Verizon"
+  },
+  "valid_json": {
+    "osType": "iOS",
+    "osVersion": "16.4",
+    "deviceManufacturer": "Apple",
+    "deviceModel": "iPhone 14 Pro",
+    "appleIdfa": "AEBE1234-5678-90AB-CDEF-1234567890AB",
+    "appleIdfv": "BEEF5678-1234-90AB-CDEF-0987654321CD",
+    "openIdfa": "C0DE1122-3344-55AA-BB33-445566778899",
+    "carrier": "Verizon"
+  },
+  "description": "Subject: Mobile Device Profile \u2013 iPhone 14\u202fPro (iOS\u202f16.4)\n\nThe device in question runs iOS\u202f16.4 and is manufactured by Apple; the model is an iPhone\u202f14\u202fPro. It is currently operating on the Verizon network, which provides carrier service for this handset. For identification purposes, the Apple Identifier for Advertisers (IDFA) is recorded as **AEBE1234-5678-90AB-CDEF-1234567890AB**, the Apple Identifier for Vendors (IDFV) as **BEEF5678-1234-90AB-CDEF-0987654321CD**, and an additional Open IDFA has been logged as **C0DE1122-3344-55AA-BB33-445566778899**."
+}

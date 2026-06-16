@@ -1,0 +1,331 @@
+{
+  "name": "sp_305_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "description": "Schema for a Snowplow payload",
+    "items": {
+      "additionalProperties": false,
+      "properties": {
+        "ad_ad": {
+          "type": "string"
+        },
+        "ad_ba": {
+          "type": "string"
+        },
+        "ad_ca": {
+          "type": "string"
+        },
+        "ad_uid": {
+          "type": "string"
+        },
+        "aid": {
+          "type": "string"
+        },
+        "cd": {
+          "type": "string"
+        },
+        "co": {
+          "type": "string"
+        },
+        "cookie": {
+          "type": "string"
+        },
+        "cs": {
+          "type": "string"
+        },
+        "ctype": {
+          "type": "string"
+        },
+        "cx": {
+          "type": "string"
+        },
+        "ds": {
+          "type": "string"
+        },
+        "dtm": {
+          "type": "string"
+        },
+        "duid": {
+          "type": "string"
+        },
+        "e": {
+          "type": "string"
+        },
+        "eid": {
+          "type": "string"
+        },
+        "f_ag": {
+          "type": "string"
+        },
+        "f_dir": {
+          "type": "string"
+        },
+        "f_fla": {
+          "type": "string"
+        },
+        "f_gears": {
+          "type": "string"
+        },
+        "f_java": {
+          "type": "string"
+        },
+        "f_pdf": {
+          "type": "string"
+        },
+        "f_qt": {
+          "type": "string"
+        },
+        "f_realp": {
+          "type": "string"
+        },
+        "f_wma": {
+          "type": "string"
+        },
+        "fp": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "mac": {
+          "type": "string"
+        },
+        "nuid": {
+          "type": "string"
+        },
+        "p": {
+          "type": "string"
+        },
+        "page": {
+          "type": "string"
+        },
+        "pp_max": {
+          "type": "string"
+        },
+        "pp_may": {
+          "type": "string"
+        },
+        "pp_mix": {
+          "type": "string"
+        },
+        "pp_miy": {
+          "type": "string"
+        },
+        "refr": {
+          "type": "string"
+        },
+        "res": {
+          "type": "string"
+        },
+        "sa": {
+          "type": "string"
+        },
+        "se_ac": {
+          "type": "string"
+        },
+        "se_ca": {
+          "type": "string"
+        },
+        "se_la": {
+          "type": "string"
+        },
+        "se_pr": {
+          "type": "string"
+        },
+        "se_va": {
+          "type": "string"
+        },
+        "sid": {
+          "type": "string"
+        },
+        "sn": {
+          "type": "string"
+        },
+        "sp": {
+          "type": "string"
+        },
+        "st": {
+          "type": "string"
+        },
+        "stm": {
+          "type": "string"
+        },
+        "ti_ca": {
+          "type": "string"
+        },
+        "ti_cu": {
+          "type": "string"
+        },
+        "ti_id": {
+          "type": "string"
+        },
+        "ti_na": {
+          "type": "string"
+        },
+        "ti_nm": {
+          "type": "string"
+        },
+        "ti_pr": {
+          "type": "string"
+        },
+        "ti_qu": {
+          "type": "string"
+        },
+        "ti_sk": {
+          "type": "string"
+        },
+        "tid": {
+          "type": "string"
+        },
+        "tna": {
+          "type": "string"
+        },
+        "tnuid": {
+          "type": "string"
+        },
+        "tr_af": {
+          "type": "string"
+        },
+        "tr_ci": {
+          "type": "string"
+        },
+        "tr_co": {
+          "type": "string"
+        },
+        "tr_cu": {
+          "type": "string"
+        },
+        "tr_id": {
+          "type": "string"
+        },
+        "tr_sh": {
+          "type": "string"
+        },
+        "tr_st": {
+          "type": "string"
+        },
+        "tr_tt": {
+          "type": "string"
+        },
+        "tr_tx": {
+          "type": "string"
+        },
+        "tv": {
+          "type": "string"
+        },
+        "tz": {
+          "type": "string"
+        },
+        "ua": {
+          "type": "string"
+        },
+        "ue_na": {
+          "type": "string"
+        },
+        "ue_pr": {
+          "type": "string"
+        },
+        "ue_px": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "vid": {
+          "type": "string"
+        },
+        "vp": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "tv",
+        "p",
+        "e"
+      ],
+      "type": "object"
+    },
+    "minItems": 1,
+    "self": {
+      "format": "jsonschema",
+      "name": "payload_data",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-3"
+    },
+    "type": "array"
+  },
+  "description": "The Snowplow payload records a page view (event\u202f=\u202fpage_view) on the product_page of our site at\u202fhttps://www.example.com/products/abc123. The user identifier is\u202fuser-12345, coming from IP\u202f203.0.113.42 with a device ID\u202fdevice-98765 and a fingerprint\u202ff2d5c8e9a7b3c1d4e6f8a0b2c4d6e8f0. The request was made with the browser string\u202fMozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 on a Windows\u202fx64 machine (system\u202f=\u202fWindows, architecture\u202f=\u202fx64, locale\u202f=\u202fen-US) using Google Chrome\u202f115.0.0.0. The session cookie is\u202fsessionId=abcde12345; path=/; HttpOnly, and the session ID is\u202fsession-abc123. The page was served from the host\u202fMySite (https://www.example.com) with a referrer\u202fhttps://www.google.com/ and the path\u202f/products/abc123, marked as active (status\u202f=\u202factive) and recorded at\u202f2023-10-12T14:23:45Z (device time\u202f2023-10-12T14:23:45.123Z). The transaction identifier is\u202ftransaction-001, containing item\u202fitem-789 (\u201cSuper\u202fWidget\u201d) priced at\u202f49.99\u202fUSD, quantity\u202f1, with the overall order\u202forder-555 marked as completed and a total of\u202f49.99\u202fUSD (currency\u202f=\u202fUSD). The advertising campaign associated with this view is\u202fcampaign-2023-summer from advertiser\u202fadvertiser-5678.\n\nTechnical details show the client\u2019s screen resolution\u202f1920x1080 (device\u202fue_na) with a pixel density\u202f96\u202fdpi, a JavaScript version\u202f1.0, and a color depth of\u202f0. The page content type is\u202ftext/html, character sets UTF\u20118 (both content\u2011type and charset), and the document encoding is UTF\u20118. The viewport is\u202f1280x720, while the primary display supports a maximum of\u202f1920x1080, a medium size of\u202f1280x720, a minimum of\u202f800x600, and a lowest\u2011height size of\u202f600x400. The user agent reports a desktop platform (ds\u202f=\u202fdesktop) in the America/New_York time zone (tz) with language\u202fen-US. Feature flags indicate Adobe Flash\u202ftrue, PDF\u202ftrue, RealPlayer\u202ftrue, and all other plug\u2011ins (directx, fla, gears, java, qt, wma)\u202ffalse. The MAC address recorded is\u202f00:1A:2B:3C:4D:5E, and a video element with ID\u202fvideo-001 was present, rendered at\u202f1280x720.",
+  "reference_json": [
+    {
+      "tv": "com.snowplowanalytics.snowplow/1.0.0",
+      "p": "product_page",
+      "e": "page_view",
+      "uid": "user-12345",
+      "ip": "203.0.113.42",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+      "url": "https://www.example.com/products/abc123",
+      "res": "1920x1080",
+      "tz": "America/New_York",
+      "lang": "en-US",
+      "cookie": "sessionId=abcde12345; path=/; HttpOnly",
+      "duid": "device-98765",
+      "fp": "f2d5c8e9a7b3c1d4e6f8a0b2c4d6e8f0",
+      "mac": "00:1A:2B:3C:4D:5E",
+      "ad_uid": "advertiser-5678",
+      "ad_ca": "campaign-2023-summer",
+      "tid": "transaction-001",
+      "ti_id": "item-789",
+      "ti_nm": "Super Widget",
+      "ti_pr": "49.99",
+      "ti_qu": "1",
+      "tr_id": "order-555",
+      "tr_st": "completed",
+      "tr_tt": "49.99",
+      "tr_tx": "USD",
+      "se_pr": "Google Chrome",
+      "se_va": "115.0.0.0",
+      "se_ac": "Windows",
+      "se_ca": "x64",
+      "se_la": "en-US",
+      "pp_max": "1920x1080",
+      "pp_may": "1280x720",
+      "pp_mix": "800x600",
+      "pp_miy": "600x400",
+      "refr": "https://www.google.com/",
+      "page": "/products/abc123",
+      "st": "active",
+      "stm": "2023-10-12T14:23:45Z",
+      "dtm": "2023-10-12T14:23:45.123Z",
+      "sid": "session-abc123",
+      "sn": "MySite",
+      "sp": "https://www.example.com",
+      "sa": "search",
+      "cd": "UTF-8",
+      "cs": "UTF-8",
+      "ctype": "text/html",
+      "cx": "0",
+      "ds": "desktop",
+      "f_ag": "true",
+      "f_dir": "false",
+      "f_fla": "false",
+      "f_gears": "false",
+      "f_java": "false",
+      "f_pdf": "true",
+      "f_qt": "false",
+      "f_realp": "true",
+      "f_wma": "false",
+      "ue_na": "1920x1080",
+      "ue_pr": "1.0",
+      "ue_px": "96",
+      "vid": "video-001",
+      "vp": "1280x720"
+    }
+  ]
+}

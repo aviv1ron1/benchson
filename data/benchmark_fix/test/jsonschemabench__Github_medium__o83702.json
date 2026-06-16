@@ -1,0 +1,87 @@
+{
+  "name": "o83702",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Postal address for Canada",
+    "description": "Postal addresses for the country of Canada",
+    "type": "object",
+    "properties": {
+      "address": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "street2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/definitions/CAN_province"
+          },
+          "postalCode": {
+            "$ref": "#/definitions/CAN_postalCode"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "number",
+          "street",
+          "city",
+          "province",
+          "postalCode"
+        ]
+      }
+    },
+    "definitions": {
+      "CAN_province": {
+        "type": "string",
+        "enum": [
+          "AB",
+          "BC",
+          "MB",
+          "NB",
+          "NL",
+          "NS",
+          "NT",
+          "NU",
+          "ON",
+          "PE",
+          "QC",
+          "SK",
+          "YT"
+        ]
+      },
+      "CAN_postalCode": {
+        "type": "string",
+        "pattern": "^[A-Z][0-9][A-Z]( )?[0-9][A-Z][0-9]$"
+      }
+    }
+  },
+  "erroneous_json": {
+    "address": null
+  },
+  "valid_json": {
+    "address": {
+      "name": "John Doe",
+      "number": "123",
+      "street": "Maple Street",
+      "street2": "Apt 4B",
+      "city": "Ottawa",
+      "province": "ON",
+      "postalCode": "K1A 0B1"
+    }
+  },
+  "description": "Dear Sir or Madam,\n\nPlease forward all correspondence and shipments to the following address: John\u202fDoe, 123\u202fMaple\u202fStreet, Apt\u202f4B, Ottawa, ON\u202fK1A\u202f0B1. This is the preferred mailing location for any documents or packages intended for Mr.\u202fDoe."
+}

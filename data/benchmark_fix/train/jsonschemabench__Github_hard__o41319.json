@@ -1,0 +1,162 @@
+{
+  "name": "o41319",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "required": [
+      "config",
+      "inputs"
+    ],
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "required": [
+          "T2",
+          "T1",
+          "FreeSurferLicense"
+        ],
+        "type": "object",
+        "properties": {
+          "GradientCoeff": {
+            "type": "object",
+            "properties": {}
+          },
+          "SpinEchoNegative": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "T2": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "T1": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "SiemensGREPhase": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "FreeSurferLicense": {
+            "type": "object",
+            "properties": {}
+          },
+          "SiemensGREMagnitude": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "SpinEchoPositive": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "config": {
+        "required": [
+          "StructuralUnwarpDirection",
+          "RegName",
+          "TemplateSize",
+          "BrainSize",
+          "Subject"
+        ],
+        "type": "object",
+        "properties": {
+          "StructuralUnwarpDirection": {
+            "default": "z",
+            "type": "string"
+          },
+          "RegName": {
+            "default": "MSMSulc",
+            "type": "string"
+          },
+          "TemplateSize": {
+            "default": "0.8mm",
+            "type": "string"
+          },
+          "BrainSize": {
+            "default": 150,
+            "type": "integer"
+          },
+          "Subject": {
+            "default": "000000",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "title": "Invocation manifest for HCP: Structural Preprocessing Pipeline"
+  },
+  "erroneous_json": {
+    "config": {
+      "RegName": "MSMSulc",
+      "TemplateSize": "0.8mm",
+      "BrainSize": 150,
+      "Subject": "123456"
+    },
+    "inputs": {
+      "T2": {
+        "type": "nifti"
+      },
+      "T1": {
+        "type": "nifti"
+      },
+      "FreeSurferLicense": {}
+    }
+  },
+  "valid_json": {
+    "config": {
+      "StructuralUnwarpDirection": "z",
+      "RegName": "MSMSulc",
+      "TemplateSize": "0.8mm",
+      "BrainSize": 150,
+      "Subject": "123456"
+    },
+    "inputs": {
+      "T2": {
+        "type": "nifti"
+      },
+      "T1": {
+        "type": "nifti"
+      },
+      "FreeSurferLicense": {}
+    }
+  },
+  "description": "Please be advised that the structural preprocessing for subject **123456** is ready to run. Both the T1\u2011weighted and T2\u2011weighted scans have been supplied as NIfTI files, and the necessary FreeSurfer license file is included with the submission. The pipeline will employ the **MSMSulc** registration algorithm, use a template resolution of **0.8\u202fmm**, assume a brain size of **150\u202fmm**, and apply structural unwarping along the **z** direction."
+}

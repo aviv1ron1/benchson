@@ -1,0 +1,78 @@
+{
+  "name": "chart-lock",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/chart-lock.json",
+    "additionalProperties": false,
+    "properties": {
+      "generated": {
+        "description": "Generated is the date the lock file was last generated.",
+        "type": "string",
+        "format": "date-time"
+      },
+      "digest": {
+        "description": "Digest is a hash of the dependencies in Chart.yaml.",
+        "type": "string"
+      },
+      "dependencies": {
+        "type": "array",
+        "description": "In Helm, one chart may depend on any number of other charts. These dependencies can be dynamically linked using the dependencies field in Chart.yaml or brought in to the charts/ directory and managed manually.\nThe charts required by the current chart are defined as a list in the dependencies field.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "version",
+            "repository"
+          ],
+          "properties": {
+            "name": {
+              "description": "The name of the chart",
+              "type": "string"
+            },
+            "version": {
+              "description": "The version of the chart",
+              "type": "string"
+            },
+            "repository": {
+              "description": "The repository URL or alias",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "generated",
+      "digest",
+      "dependencies"
+    ],
+    "title": "Helm Chart.lock",
+    "type": "object"
+  },
+  "description": "The Helm chart lock file was generated on\u202f2026-06-14T12:34:56Z, and its current digest is\u202fa3f5c9e2b7d4f8a1c6e9b0d2f1a4c7e3.\n\nThis chart depends on three external charts, all hosted on the Bitnami repository (https://charts.bitnami.com/bitnami):\n- **nginx**\u202fversion\u202f1.24.0\n- **postgresql**\u202fversion\u202f13.3.0\n- **redis**\u202fversion\u202f7.2.1.",
+  "reference_json": {
+    "generated": "2026-06-14T12:34:56Z",
+    "digest": "a3f5c9e2b7d4f8a1c6e9b0d2f1a4c7e3",
+    "dependencies": [
+      {
+        "name": "nginx",
+        "version": "1.24.0",
+        "repository": "https://charts.bitnami.com/bitnami"
+      },
+      {
+        "name": "postgresql",
+        "version": "13.3.0",
+        "repository": "https://charts.bitnami.com/bitnami"
+      },
+      {
+        "name": "redis",
+        "version": "7.2.1",
+        "repository": "https://charts.bitnami.com/bitnami"
+      }
+    ]
+  }
+}

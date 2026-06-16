@@ -1,0 +1,146 @@
+{
+  "name": "sp_258_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for an application error",
+    "properties": {
+      "className": {
+        "maxLength": 1024,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "exceptionName": {
+        "maxLength": 1024,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "fileName": {
+        "maxLength": 1024,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "isFatal": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "lineColumn": {
+        "maximum": 2147483647,
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "lineNumber": {
+        "maximum": 2147483647,
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "message": {
+        "maxLength": 2048,
+        "type": "string"
+      },
+      "programmingLanguage": {
+        "enum": [
+          "JAVA",
+          "SCALA",
+          "KOTLIN",
+          "GROOVY",
+          "RUBY",
+          "GOLANG",
+          "JAVASCRIPT",
+          "PHP",
+          "PYTHON",
+          "OBJECTIVEC",
+          "SWIFT",
+          "C",
+          "CPLUSPLUS",
+          "CSHARP",
+          "ACTIONSCRIPT",
+          "LUA",
+          "RUST",
+          "HASKELL",
+          "CLOJURE",
+          "ERLANG",
+          "ELIXIR",
+          "CRYSTAL",
+          "PONY",
+          "NIM"
+        ]
+      },
+      "stackTrace": {
+        "maxLength": 8192,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "threadId": {
+        "maximum": 2147483647,
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "threadName": {
+        "maxLength": 1024,
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "programmingLanguage",
+      "message"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "application_error",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-1"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "programmingLanguage": "PYTHON_INVALID",
+    "message": "IndexError: list index out of range",
+    "className": "IndexError",
+    "exceptionName": "IndexError",
+    "fileName": "app/main.py",
+    "isFatal": true,
+    "lineNumber": 42,
+    "lineColumn": 15,
+    "stackTrace": "Traceback (most recent call last):\n  File \"app/main.py\", line 42, in process_items\n    item = items[i]\nIndexError: list index out of range",
+    "threadId": 7,
+    "threadName": "worker-7"
+  },
+  "valid_json": {
+    "programmingLanguage": "PYTHON",
+    "message": "IndexError: list index out of range",
+    "className": "IndexError",
+    "exceptionName": "IndexError",
+    "fileName": "app/main.py",
+    "isFatal": true,
+    "lineNumber": 42,
+    "lineColumn": 15,
+    "stackTrace": "Traceback (most recent call last):\n  File \"app/main.py\", line 42, in process_items\n    item = items[i]\nIndexError: list index out of range",
+    "threadId": 7,
+    "threadName": "worker-7"
+  },
+  "description": "During the execution of our Python service, a fatal error was encountered. The exception raised was **IndexError** (class\u202f`IndexError`), with the message \u201cIndexError: list index out of range\u201d. It originated in the file **app/main.py**, specifically at line\u202f42, column\u202f15, while executing code in the `process_items` function. The failure occurred on thread\u202f7, named **worker-7**.\n\nBelow is the full stack trace captured at the time of the crash:\n\n```\nTraceback (most recent call last):\n  File \"app/main.py\", line 42, in process_items\n    item = items[i]\nIndexError: list index out of range\n```\n\nThe incident has been marked as fatal and requires immediate attention."
+}

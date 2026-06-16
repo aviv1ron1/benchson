@@ -1,0 +1,41 @@
+{
+  "name": "kb_377_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.\n\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.",
+    "properties": {
+      "directory": {
+        "description": "Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "repository": {
+        "description": "Repository URL",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "revision": {
+        "description": "Commit hash for the specified revision.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "repository"
+    ],
+    "type": "object"
+  },
+  "description": "We\u2019ve configured the Git\u2011based volume to pull from\u202fhttps://github.com/example/project.git, checking out the specific commit\u202fa1b2c3d4e5f6g7h8i9j0. The contents of the repository will be placed under the subdirectory **src** within the volume, so any applications that mount this volume should reference \u201csrc\u201d as the root of the checked\u2011out code.",
+  "reference_json": {
+    "directory": "src",
+    "repository": "https://github.com/example/project.git",
+    "revision": "a1b2c3d4e5f6g7h8i9j0"
+  }
+}

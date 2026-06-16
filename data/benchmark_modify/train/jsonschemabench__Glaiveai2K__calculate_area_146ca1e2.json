@@ -1,0 +1,84 @@
+{
+  "name": "calculate_area_146ca1e2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "radius",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which to calculate the area",
+        "enum": [
+          "rectangle",
+          "circle",
+          "triangle"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.3,
+      "radius": 0.0,
+      "base": 0.0,
+      "height": 0.0
+    }
+  },
+  "instructions": "Please increase the radius inside dimensions by 1.",
+  "ground_truth": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.3,
+      "radius": 1.0,
+      "base": 0.0,
+      "height": 0.0
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "dimensions",
+      "radius"
+    ],
+    "precise_instruction": "Increase \"radius\" inside \"dimensions\" by 1."
+  }
+}

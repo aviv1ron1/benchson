@@ -1,0 +1,85 @@
+{
+  "name": "generate_invoice_53cb5d39",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "client_name": {
+        "description": "The name of the client",
+        "type": "string"
+      },
+      "items": {
+        "description": "The items included in the invoice",
+        "items": {
+          "properties": {
+            "description": {
+              "description": "The description of the item",
+              "type": "string"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            },
+            "unit_price": {
+              "description": "The unit price of the item",
+              "type": "number"
+            }
+          },
+          "required": [
+            "description",
+            "unit_price",
+            "quantity"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "client_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "client_name": null,
+    "items": [
+      {
+        "description": "Consulting services - project kickoff",
+        "quantity": 1,
+        "unit_price": 1500.0
+      },
+      {
+        "description": "Software development - custom module",
+        "quantity": 120,
+        "unit_price": 85.5
+      },
+      {
+        "description": "Monthly support subscription",
+        "quantity": 3,
+        "unit_price": 250.75
+      }
+    ]
+  },
+  "valid_json": {
+    "client_name": "Acme Corporation",
+    "items": [
+      {
+        "description": "Consulting services - project kickoff",
+        "quantity": 1,
+        "unit_price": 1500.0
+      },
+      {
+        "description": "Software development - custom module",
+        "quantity": 120,
+        "unit_price": 85.5
+      },
+      {
+        "description": "Monthly support subscription",
+        "quantity": 3,
+        "unit_price": 250.75
+      }
+    ]
+  },
+  "description": "Dear Acme Corporation,\n\nPlease find below the details of the services we have provided for this billing period. We delivered consulting services for the project kickoff (1\u202f\u00d7\u202f$1,500.00), developed a custom software module comprising 120\u202fhours at a rate of $85.50 per hour, and continued our monthly support subscription for three months at $250.75 each. The total amounts for each line item are reflected in the attached invoice. Kindly review and let us know if you have any questions."
+}

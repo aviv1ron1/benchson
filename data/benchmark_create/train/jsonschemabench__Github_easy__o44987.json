@@ -1,0 +1,58 @@
+{
+  "name": "o44987",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "@id",
+      "name",
+      "description",
+      "version",
+      "plugin_type"
+    ],
+    "properties": {
+      "@id": {
+        "type": "string",
+        "description": "Unique identifier for the plugin, usually comprised of the name of the plugin and the version."
+      },
+      "name": {
+        "type": "string",
+        "description": "The name of the plugin, which will be used in the algorithm detection phase."
+      },
+      "description": {
+        "type": "string",
+        "description": "A summary of what the plugin does, and pointers to further information."
+      },
+      "version": {
+        "type": "string",
+        "description": "The version of the plugin."
+      },
+      "plugin_type": {
+        "type": "string",
+        "description": "Sub-type of plugin. e.g. sentimentPlugin"
+      },
+      "extra_params": {
+        "type": "object"
+      }
+    }
+  },
+  "description": "Subject: Release of Sentiment Analyzer\u202fv1.2.0 (ID: sentiment-analyzer-1.2.0)\n\nDear Team,\n\nWe are pleased to announce that the Sentiment Analyzer plugin (version\u202f1.2.0, identifier **sentiment-analyzer-1.2.0**) is now available for integration. Classified as a **sentimentPlugin**, this module analyses text to determine both polarity and intensity of sentiment, and it supports multiple languages out of the box. Its core description reads: \u201cAnalyzes text to determine sentiment polarity and intensity, supporting multiple languages.\u201d\n\nFor your reference, the plugin\u2019s configuration includes the following extra parameters: it can process English (**en**), Spanish (**es**), German (**de**) and French (**fr**) texts, and it operates with a confidence threshold of **0.75**. Please update your systems accordingly and let us know if any issues arise.",
+  "reference_json": {
+    "@id": "sentiment-analyzer-1.2.0",
+    "name": "Sentiment Analyzer",
+    "description": "Analyzes text to determine sentiment polarity and intensity, supporting multiple languages.",
+    "version": "1.2.0",
+    "plugin_type": "sentimentPlugin",
+    "extra_params": {
+      "supported_languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "confidence_threshold": 0.75
+    }
+  }
+}

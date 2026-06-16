@@ -1,0 +1,172 @@
+{
+  "name": "typings",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": true,
+    "id": "https://json.schemastore.org/typings.json",
+    "properties": {
+      "main": {
+        "description": "The entry point to the definition (canonical to `\"main\"` in NPM's `package.json`).",
+        "type": "string"
+      },
+      "browser": {
+        "description": "A string, or map of paths, to override during resolution. See spec: https://github.com/defunctzombie/package-browser-field-spec",
+        "type": [
+          "object",
+          "string"
+        ]
+      },
+      "version": {
+        "description": "The semver range this definition is typed for",
+        "type": "string"
+      },
+      "homepage": {
+        "description": "Homepage url of the source package",
+        "type": "string"
+      },
+      "resolution": {
+        "description": "Map of resolutions to install",
+        "type": [
+          "object",
+          "string"
+        ]
+      },
+      "files": {
+        "description": "Used as an alternative or to complement `main`, specify an array of files that are exported but aren't already part of the resolution from `main`.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "global": {
+        "description": "Denote that this definition _must_ be installed as global.",
+        "type": "boolean"
+      },
+      "postmessage": {
+        "description": "A message to emit to users after typings installation.",
+        "type": "string"
+      },
+      "name": {
+        "description": "The name of the definition",
+        "type": "string"
+      },
+      "dependencies": {
+        "description": "A map of dependencies required by the project.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "devDependencies": {
+        "description": "A map of dependencies required by the project during development.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "peerDependencies": {
+        "description": "A map of dependencies expected in the parent project for this dependency to work.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "globalDependencies": {
+        "description": "A map of global dependencies required by the project.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "globalDevDependencies": {
+        "description": "A map of global dependencies required by the project during development.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    "title": "JSON schema for Typings TypeScript definitions manager",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "main": "dist/index.js",
+    "browser": {
+      "./node_module.js": "./browser_module.js",
+      "./legacy.js": "./modern-browser.js"
+    },
+    "version": "^1.2.3",
+    "homepage": "https://github.com/example/awesome-lib",
+    "resolution": {
+      "typescript": "npm:typescript@5.2.2",
+      "lodash": "npm:lodash@4.17.21"
+    },
+    "files": [
+      "dist/awesome-lib.d.ts",
+      "dist/helpers.d.ts",
+      "dist/types.d.ts"
+    ],
+    "global": false,
+    "postmessage": "Thank you for using the Awesome Lib typings!",
+    "name": "awesome-lib",
+    "dependencies": {
+      "lodash": "^4.17.21",
+      "axios": "^1.4.0"
+    },
+    "devDependencies": null,
+    "peerDependencies": {
+      "react": "^17.0.0",
+      "react-dom": "^17.0.0"
+    },
+    "globalDependencies": {
+      "node": ">=14.0.0"
+    },
+    "globalDevDependencies": {
+      "npm": "^8.0.0"
+    },
+    "description": "Typings definition package for the Awesome Lib JavaScript library."
+  },
+  "valid_json": {
+    "main": "dist/index.js",
+    "browser": {
+      "./node_module.js": "./browser_module.js",
+      "./legacy.js": "./modern-browser.js"
+    },
+    "version": "^1.2.3",
+    "homepage": "https://github.com/example/awesome-lib",
+    "resolution": {
+      "typescript": "npm:typescript@5.2.2",
+      "lodash": "npm:lodash@4.17.21"
+    },
+    "files": [
+      "dist/awesome-lib.d.ts",
+      "dist/helpers.d.ts",
+      "dist/types.d.ts"
+    ],
+    "global": false,
+    "postmessage": "Thank you for using the Awesome Lib typings!",
+    "name": "awesome-lib",
+    "dependencies": {
+      "lodash": "^4.17.21",
+      "axios": "^1.4.0"
+    },
+    "devDependencies": {
+      "typescript": "^5.2.2",
+      "ts-node": "^10.9.1"
+    },
+    "peerDependencies": {
+      "react": "^17.0.0",
+      "react-dom": "^17.0.0"
+    },
+    "globalDependencies": {
+      "node": ">=14.0.0"
+    },
+    "globalDevDependencies": {
+      "npm": "^8.0.0"
+    },
+    "description": "Typings definition package for the Awesome Lib JavaScript library."
+  },
+  "description": "The **awesome\u2011lib** typings package provides type definitions for the Awesome Lib JavaScript library (see its homepage at\u202fhttps://github.com/example/awesome-lib). The entry point for the compiled code is\u202f`dist/index.js`, and the package exports three declaration files\u2014`dist/awesome-lib.d.ts`, `dist/helpers.d.ts`, and `dist/types.d.ts`. It targets the version range\u202f`^1.2.3` of the library and is meant to be installed locally (it is not a global definition). When used in a browser environment, the module\u202f`./node_module.js` resolves to\u202f`./browser_module.js` and the legacy file\u202f`./legacy.js` resolves to\u202f`./modern-browser.js`. After installation, users will see the message: \u201cThank you for using the Awesome Lib typings!\u201d\u202f\u2014 a small note of appreciation from the maintainers.\n\nThe typings rely on a few runtime and development dependencies. At runtime it requires **lodash**\u202f`^4.17.21` and **axios**\u202f`^1.4.0`. Development tools include **typescript**\u202f`^5.2.2` and **ts-node**\u202f`^10.9.1`. Peer dependencies indicate that the library works best alongside **react**\u202f`^17.0.0` and **react-dom**\u202f`^17.0.0`. For resolution, the package pins **typescript** to\u202f`npm:typescript@5.2.2` and **lodash** to\u202f`npm:lodash@4.17.21`. It also specifies that the host environment must provide Node.js version\u202f`>=14.0.0`, while the development environment should use npm\u202f`^8.0.0`. This package is described as a \u201cTypings definition package for the Awesome Lib JavaScript library.\u201d"
+}

@@ -1,0 +1,296 @@
+{
+  "name": "nodemon",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/nodemon.json",
+    "definitions": {
+      "pathPattern": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "re": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "re"
+            ],
+            "description": "Regular expression"
+          }
+        ]
+      },
+      "terminationSignals": {
+        "anyOf": [
+          {
+            "const": "SIGTERM"
+          },
+          {
+            "const": "SIGINT"
+          },
+          {
+            "const": "SIGQUIT"
+          },
+          {
+            "const": "SIGKILL"
+          },
+          {
+            "const": "SIGHUP"
+          }
+        ]
+      },
+      "variables": {
+        "anyOf": [
+          {
+            "const": "{{pwd}}",
+            "description": "The current directory"
+          },
+          {
+            "const": "{{filename}}",
+            "description": "The filename you pass to nodemon"
+          }
+        ]
+      }
+    },
+    "dependencies": {
+      "pollingInterval": {
+        "required": [
+          "legacyWatch"
+        ]
+      },
+      "nodeArgs": {
+        "exec": {
+          "const": "node"
+        },
+        "required": [
+          "exec"
+        ]
+      }
+    },
+    "properties": {
+      "colours": {
+        "default": true,
+        "description": "set to false to disable color output",
+        "type": "boolean"
+      },
+      "cwd": {
+        "description": "change into <dir> before running the script",
+        "type": "string"
+      },
+      "delay": {
+        "default": 0,
+        "description": "debounce restart for a number of milliseconds",
+        "type": "number"
+      },
+      "dump": {
+        "default": false,
+        "description": "print full debug configuration",
+        "type": "boolean"
+      },
+      "exec": {
+        "description": "execute script with \"app\", ie. -x \"python -v\".  May use variables.",
+        "examples": [
+          "{{pwd}}/index.js --some-arg",
+          "{{filename}}"
+        ],
+        "format": "<app> <your args>",
+        "type": "string"
+      },
+      "execMap": {
+        "description": "The global config file is useful for setting up default executables",
+        "type": "object"
+      },
+      "exitcrash": {
+        "description": "Exit nodemon after crash",
+        "type": "boolean"
+      },
+      "ext": {
+        "default": "*",
+        "description": "extensions to look for, ie. \"js,jade,hbs\"",
+        "type": "string"
+      },
+      "ignore": {
+        "description": "Ignore directory or file.  One entry per ignored value.  Wildcards are allowed.",
+        "items": {
+          "$ref": "#/definitions/pathPattern",
+          "description": "Path or pattern of file or directory to ignore.  Can also use regular expressions wrapped in an object with a single property named \"re\".",
+          "examples": [
+            ".gitignore",
+            ".vscode",
+            "__tests__/*",
+            "__*__/*.js",
+            "*.test.js"
+          ]
+        },
+        "type": "array"
+      },
+      "ignoreRoot": {
+        "description": "root paths to ignore",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "legacyWatch": {
+        "default": false,
+        "description": "use polling to watch for changes (typically needed when watching over a network/Docker)",
+        "type": "boolean"
+      },
+      "noUpdateNotifier": {
+        "default": false,
+        "description": "opt-out of update version check",
+        "type": "boolean"
+      },
+      "nodeArgs": {
+        "description": "arguments to pass to node if exec is \"node\"",
+        "type": "array"
+      },
+      "pollingInterval": {
+        "default": 100,
+        "description": "combined with legacyWatch, milliseconds to poll for (default 100)",
+        "type": "number"
+      },
+      "quiet": {
+        "default": false,
+        "description": "minimise nodemon messages to start/stop only",
+        "type": "boolean"
+      },
+      "runOnChangeOnly": {
+        "default": false,
+        "description": "execute script on change only, not startup",
+        "type": "boolean"
+      },
+      "signal": {
+        "$ref": "#/definitions/terminationSignals",
+        "description": "use specified kill signal instead of default (ex. SIGTERM)",
+        "type": "string"
+      },
+      "spawn": {
+        "default": false,
+        "description": "force nodemon to use spawn (over fork) [node only]",
+        "type": "boolean"
+      },
+      "stdin": {
+        "default": true,
+        "description": "set to false to have nodemon pass stdin directly to child process",
+        "type": "boolean"
+      },
+      "verbose": {
+        "default": false,
+        "description": "show detail on what is causing restarts",
+        "type": "boolean"
+      },
+      "watch": {
+        "description": "Watch directory or file.  One entry per watched value.  Wildcards are allowed.",
+        "items": {
+          "$ref": "#/definitions/pathPattern",
+          "description": "Path or pattern of file or directory to watch.  Can also use regular expressions wrapped in an object with a single property named \"re\".",
+          "examples": [
+            "src/index.js",
+            "src",
+            "src/*.js",
+            "*.js"
+          ]
+        },
+        "type": "array"
+      }
+    },
+    "title": "JSON Schema for Nodemon Config",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "colours": true,
+    "cwd": "./src",
+    "delay": 250,
+    "dump": false,
+    "exec": "node",
+    "execMap": {
+      "js": "node",
+      "ts": "ts-node",
+      "py": "python3"
+    },
+    "exitcrash": true,
+    "ext": "js,ts,json",
+    "ignore": [
+      "node_modules",
+      {
+        "re": "^\\.git/"
+      },
+      "*.log"
+    ],
+    "ignoreRoot": [
+      ".git",
+      "dist"
+    ],
+    "legacyWatch": true,
+    "noUpdateNotifier": false,
+    "nodeArgs": [
+      "--inspect=9229"
+    ],
+    "pollingInterval": 200,
+    "quiet": false,
+    "runOnChangeOnly": false,
+    "signal": null,
+    "spawn": false,
+    "stdin": true,
+    "verbose": true,
+    "watch": [
+      "src",
+      "src/**/*.js",
+      {
+        "re": "config/.*\\.json$"
+      }
+    ]
+  },
+  "valid_json": {
+    "colours": true,
+    "cwd": "./src",
+    "delay": 250,
+    "dump": false,
+    "exec": "node",
+    "execMap": {
+      "js": "node",
+      "ts": "ts-node",
+      "py": "python3"
+    },
+    "exitcrash": true,
+    "ext": "js,ts,json",
+    "ignore": [
+      "node_modules",
+      {
+        "re": "^\\.git/"
+      },
+      "*.log"
+    ],
+    "ignoreRoot": [
+      ".git",
+      "dist"
+    ],
+    "legacyWatch": true,
+    "noUpdateNotifier": false,
+    "nodeArgs": [
+      "--inspect=9229"
+    ],
+    "pollingInterval": 200,
+    "quiet": false,
+    "runOnChangeOnly": false,
+    "signal": "SIGTERM",
+    "spawn": false,
+    "stdin": true,
+    "verbose": true,
+    "watch": [
+      "src",
+      "src/**/*.js",
+      {
+        "re": "config/.*\\.json$"
+      }
+    ]
+  },
+  "description": "We\u2019re running the application with nodemon using colored output enabled and changing into the\u202f`./src`\u202fdirectory before launch. Restarts are debounced by\u202f250\u202fmilliseconds and the script is started with the plain\u202f`node`\u202fexecutable. For convenience the exec\u2011map defines that\u202f`.js`\u202ffiles run with\u202f`node`,\u202f`.ts`\u202fwith\u202f`ts-node`, and\u202f`.py`\u202fwith\u202f`python3`. Crashes should terminate nodemon (\u202f`exitcrash`\u202fis true), and we watch for changes to files with the extensions\u202f`js,ts,json`. The watch list includes the\u202f`src`\u202ffolder, any JavaScript file under\u202f`src/**/*.js`, and any JSON file matching the regular expression\u202f`config/.*\\.json$`. Files and directories to ignore are\u202f`node_modules`, any path matching the regex\u202f`^\\.git/`, and any\u202f`*.log`\u202ffile. Additionally the root\u2011level paths\u202f`.git`\u202fand\u202f`dist`\u202fare excluded from monitoring. Because we\u2019re operating in an environment where file events are unreliable, legacy watch mode is turned on and polling is set to\u202f200\u202fms. Node is started with the argument\u202f`--inspect=9229`.  \n\nAll other flags are left at their defaults except where noted: a full debug dump is off, update notifications are allowed, the process is not forced into spawn mode, stdin is forwarded, and verbose output is enabled so we can see detailed restart reasons. We are not running in quiet mode, nor are we limiting execution to changes only, and the termination signal used on restart is\u202f`SIGTERM`."
+}

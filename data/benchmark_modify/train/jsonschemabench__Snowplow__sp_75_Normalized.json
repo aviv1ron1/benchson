@@ -1,0 +1,100 @@
+{
+  "name": "sp_75_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "A video_complete GA4 enhanced-measurement event.",
+    "properties": {
+      "video_current_time": {
+        "description": "The current time of the video in seconds.",
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "video_duration": {
+        "description": "The video duration in seconds.",
+        "minimum": 0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "video_percent": {
+        "description": "The percentage of video watched.",
+        "maximum": 100,
+        "minimum": 0,
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "video_provider": {
+        "description": "The video provider.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "video_title": {
+        "description": "The video title.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "video_url": {
+        "_format": "uri",
+        "description": "The video url.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "visible": {
+        "description": "Whether the video is visible or not.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "video_complete",
+      "vendor": "com.google.ga4.enhanced-measurement",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "video_current_time": 300,
+    "video_duration": 300,
+    "video_percent": 100,
+    "video_provider": "YouTube",
+    "video_title": "Understanding Quantum Computing Basics",
+    "video_url": "https://www.youtube.com/watch?v=abc123def",
+    "visible": true
+  },
+  "instructions": "Can you remove the video_current_time field?",
+  "ground_truth": {
+    "video_duration": 300,
+    "video_percent": 100,
+    "video_provider": "YouTube",
+    "video_title": "Understanding Quantum Computing Basics",
+    "video_url": "https://www.youtube.com/watch?v=abc123def",
+    "visible": true
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "video_current_time"
+    ],
+    "precise_instruction": "Remove the \"video_current_time\" field."
+  }
+}

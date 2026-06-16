@@ -1,0 +1,93 @@
+{
+  "name": "o55355",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Zone Transfer Accept",
+    "properties": {
+      "transfer_accept": {
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "description": "Date and time of Request creation",
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "Zone Transfer Request identifier",
+            "pattern": "^([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}$",
+            "readOnly": true,
+            "type": "string"
+          },
+          "key": {
+            "description": "Password used to complete the transfer",
+            "maxLength": 160,
+            "type": "string"
+          },
+          "links": {
+            "additionalProperties": false,
+            "properties": {
+              "self": {
+                "format": "url",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "status": {
+            "description": "Zone Status",
+            "enum": [
+              "ACTIVE",
+              "PENDING",
+              "DELETED",
+              "ERROR",
+              "COMPLETE"
+            ],
+            "readOnly": true,
+            "type": "string"
+          },
+          "updated_at": {
+            "description": "Date and time of last Request modification",
+            "format": "date-time",
+            "readOnly": true,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "zone_transfer_request_id": {
+            "description": "Request identifier",
+            "pattern": "^([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "zone_transfer_request_id",
+          "key"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "transfer_accept"
+    ],
+    "title": "zone_transfer_accept"
+  },
+  "erroneous_json": {},
+  "valid_json": {
+    "transfer_accept": {
+      "created_at": "2023-09-15T12:34:56Z",
+      "id": "a1b2c3d4-1234-5678-9abc-def012345678",
+      "key": "s3cr3tP@ssw0rd-TransferKey-20230915",
+      "links": {
+        "self": "https://api.example.com/v2/zone_transfers/a1b2c3d4-1234-5678-9abc-def012345678/accept"
+      },
+      "status": "COMPLETE",
+      "updated_at": "2023-09-16T08:22:10Z",
+      "zone_transfer_request_id": "f0e1d2c3-4567-89ab-cdef-0123456789ab"
+    }
+  },
+  "description": "The zone transfer request identified by **f0e1d2c3-4567-89ab-cdef-0123456789ab** has been successfully accepted. The acceptance record (ID **a1b2c3d4-1234-5678-9abc-def012345678**) was created on **2023-09-15T12:34:56Z**, and the password used to complete the transfer is **s3cr3tP@ssw0rd-TransferKey-20230915**.  \n\nThe transfer is now marked as **COMPLETE**, and the record was last updated on **2023-09-16T08:22:10Z**. You can view the full details of this acceptance at the following URL: **https://api.example.com/v2/zone_transfers/a1b2c3d4-1234-5678-9abc-def012345678/accept**."
+}

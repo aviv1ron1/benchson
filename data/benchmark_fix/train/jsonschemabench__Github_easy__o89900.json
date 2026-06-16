@@ -1,0 +1,35 @@
+{
+  "name": "o89900",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "dictionary": {
+        "type": "object",
+        "patternProperties": {
+          "^[a-zA-Z0-9]{1,10}$": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "dictionary": null
+  },
+  "valid_json": {
+    "dictionary": {
+      "user1": "Alice",
+      "item42": "Laptop",
+      "codeA": "XYZ123",
+      "alpha9": "Beta",
+      "12345": "NumberKey",
+      "testKey": "SampleValue"
+    }
+  },
+  "description": "Please find the latest reference mappings for our system below. The identifier\u202f\"user1\" is linked to the user name\u202fAlice, while the asset tag\u202f\"item42\" denotes the item\u202fLaptop. Our security code entry\u202f\"codeA\" holds the value\u202fXYZ123, and the configuration label\u202f\"alpha9\" is set to\u202fBeta. The numeric reference\u202f\"12345\" corresponds to the key\u202fNumberKey, and the test entry\u202f\"testKey\" contains the sample value\u202fSampleValue."
+}

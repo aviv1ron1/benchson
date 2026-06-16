@@ -1,0 +1,129 @@
+{
+  "name": "o41264",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "required": [
+      "config",
+      "inputs"
+    ],
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "required": [
+          "api_key"
+        ],
+        "type": "object",
+        "properties": {
+          "t1w_anatomy": {
+            "type": "object",
+            "properties": {}
+          },
+          "api_key": {
+            "type": "object",
+            "properties": {}
+          },
+          "t2w_anatomy": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "config": {
+        "required": [
+          "save_outputs",
+          "intermediate_files",
+          "license_reference",
+          "intermediate_folders",
+          "freesurfer",
+          "license_email",
+          "save_intermediate_work",
+          "license_number",
+          "license_key"
+        ],
+        "type": "object",
+        "properties": {
+          "save_outputs": {
+            "default": false,
+            "type": "boolean"
+          },
+          "intermediate_files": {
+            "default": "",
+            "type": "string"
+          },
+          "license_reference": {
+            "type": "string"
+          },
+          "intermediate_folders": {
+            "default": "",
+            "type": "string"
+          },
+          "license_email": {
+            "type": "string"
+          },
+          "license_number": {
+            "type": "string"
+          },
+          "save_intermediate_work": {
+            "default": false,
+            "type": "boolean"
+          },
+          "freesurfer": {
+            "default": true,
+            "type": "boolean"
+          },
+          "license_key": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "title": "Invocation manifest for fMRIPREP: A Robust Preprocessing Pipeline for fMRI Data"
+  },
+  "data": {
+    "config": {
+      "save_outputs": false,
+      "intermediate_files": "temp/intermediate",
+      "license_reference": "FREESURFER_LICENSE",
+      "intermediate_folders": "temp/folders",
+      "license_email": "user@example.com",
+      "license_number": "12345678",
+      "save_intermediate_work": true,
+      "freesurfer": true,
+      "license_key": "ABCDEF1234567890"
+    },
+    "inputs": {
+      "api_key": {},
+      "t1w_anatomy": {},
+      "t2w_anatomy": {}
+    }
+  },
+  "instructions": "Could you change the **license_number** inside **config** to **12345678 (updated)**?",
+  "ground_truth": {
+    "config": {
+      "save_outputs": false,
+      "intermediate_files": "temp/intermediate",
+      "license_reference": "FREESURFER_LICENSE",
+      "intermediate_folders": "temp/folders",
+      "license_email": "user@example.com",
+      "license_number": "12345678 (updated)",
+      "save_intermediate_work": true,
+      "freesurfer": true,
+      "license_key": "ABCDEF1234567890"
+    },
+    "inputs": {
+      "api_key": {},
+      "t1w_anatomy": {},
+      "t2w_anatomy": {}
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "config",
+      "license_number"
+    ],
+    "precise_instruction": "Change \"license_number\" inside \"config\" to \"12345678 (updated)\"."
+  }
+}

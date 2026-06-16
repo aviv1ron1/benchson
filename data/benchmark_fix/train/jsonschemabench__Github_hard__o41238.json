@@ -1,0 +1,152 @@
+{
+  "name": "o41238",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "title": "Invocation manifest for CMRR: Extract CMRR Physio",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "Generate_Bids": {
+            "type": "boolean",
+            "default": true
+          },
+          "Generate_json": {
+            "type": "boolean",
+            "default": false
+          },
+          "Generate_Raw": {
+            "type": "boolean",
+            "default": true
+          },
+          "Generate_QA": {
+            "type": "boolean",
+            "default": true
+          },
+          "Process_Data": {
+            "type": "boolean",
+            "default": true
+          },
+          "Missing_Data": {
+            "type": "string",
+            "enum": [
+              "gap_fill",
+              "uniform",
+              "upsample",
+              "none"
+            ],
+            "default": "gap_fill"
+          },
+          "Interpolation_Method": {
+            "type": "string",
+            "enum": [
+              "fill",
+              "linear",
+              "nearest",
+              "zero",
+              "slinear",
+              "quadratic",
+              "cubic",
+              "nan"
+            ],
+            "default": "nan"
+          },
+          "Fill_Value": {
+            "type": "number",
+            "default": 0
+          },
+          "gear-log-level": {
+            "default": "INFO",
+            "type": "string",
+            "enum": [
+              "ERROR",
+              "WARNING",
+              "INFO",
+              "DEBUG"
+            ]
+          },
+          "Dry-Run": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "Generate_Bids",
+          "Generate_json",
+          "Generate_Raw",
+          "Generate_QA",
+          "Process_Data",
+          "Missing_Data",
+          "Interpolation_Method",
+          "Fill_Value",
+          "gear-log-level",
+          "Dry-Run"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "DICOM_ARCHIVE": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "dicom",
+                  "archive"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "DICOM_ARCHIVE"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "erroneous_json": {
+    "config": {
+      "Generate_json": false,
+      "Generate_Raw": true,
+      "Generate_QA": true,
+      "Process_Data": true,
+      "Missing_Data": "gap_fill",
+      "Interpolation_Method": "nan",
+      "Fill_Value": 0,
+      "gear-log-level": "INFO",
+      "Dry-Run": false
+    },
+    "inputs": {
+      "DICOM_ARCHIVE": {
+        "type": "archive"
+      }
+    }
+  },
+  "valid_json": {
+    "config": {
+      "Generate_Bids": true,
+      "Generate_json": false,
+      "Generate_Raw": true,
+      "Generate_QA": true,
+      "Process_Data": true,
+      "Missing_Data": "gap_fill",
+      "Interpolation_Method": "nan",
+      "Fill_Value": 0,
+      "gear-log-level": "INFO",
+      "Dry-Run": false
+    },
+    "inputs": {
+      "DICOM_ARCHIVE": {
+        "type": "archive"
+      }
+    }
+  },
+  "description": "The upcoming CMRR Physio extraction run will be executed in full processing mode (Process_Data\u202f=\u202ftrue) with all standard output products enabled: BIDS\u2011compatible files will be generated (Generate_Bids\u202f=\u202ftrue), raw data preservation is on (Generate_Raw\u202f=\u202ftrue), and quality\u2011assurance reports will be produced (Generate_QA\u202f=\u202ftrue). No auxiliary JSON side\u2011car files will be created (Generate_json\u202f=\u202ffalse), and the pipeline will operate under the normal INFO logging level (gear\u2011log\u2011level\u202f=\u202fINFO). Because we are not performing a trial run, the Dry\u2011Run flag is set to false.\n\nAny missing physiological samples will be handled by gap\u2011filling (Missing_Data\u202f=\u202fgap_fill) using the \u201cnan\u201d interpolation method; if a fill value is required, it will be set to zero (Fill_Value\u202f=\u202f0). The source DICOM data is supplied as an archived package (DICOM_ARCHIVE\u202ftype\u202f=\u202farchive)."
+}

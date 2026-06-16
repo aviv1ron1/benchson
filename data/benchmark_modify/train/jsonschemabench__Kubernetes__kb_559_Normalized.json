@@ -1,0 +1,69 @@
+{
+  "name": "kb_559_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_api_resource_Quantity": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          }
+        ]
+      }
+    },
+    "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
+    "properties": {
+      "averageUtilization": {
+        "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
+        "format": "int32",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "averageValue": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_api_resource_Quantity",
+        "description": "averageValue is the target value of the average of the metric across all relevant pods (as a quantity)"
+      },
+      "type": {
+        "description": "type represents whether the metric type is Utilization, Value, or AverageValue",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "value": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_api_resource_Quantity",
+        "description": "value is the target value of the metric (as a quantity)."
+      }
+    },
+    "required": [
+      "type"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "type": "Utilization",
+    "averageUtilization": 75,
+    "averageValue": "250m",
+    "value": "1"
+  },
+  "instructions": "Please set the value to 1 (updated).",
+  "ground_truth": {
+    "type": "Utilization",
+    "averageUtilization": 75,
+    "averageValue": "250m",
+    "value": "1 (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "value"
+    ],
+    "precise_instruction": "Change \"value\" to \"1 (updated)\"."
+  }
+}

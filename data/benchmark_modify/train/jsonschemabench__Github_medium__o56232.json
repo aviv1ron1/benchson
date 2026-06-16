@@ -1,0 +1,130 @@
+{
+  "name": "o56232",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {
+      "mntent": {
+        "additionalItems": false,
+        "description": "An fstab entry",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "dump": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "fsck": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "fstype": {
+            "type": "string"
+          },
+          "options": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "device",
+          "fstype"
+        ],
+        "title": "mntent",
+        "type": "object"
+      }
+    },
+    "description": "JSON representation of /etc/fstab",
+    "patternProperties": {
+      "^/([^/]+(/[^/]+)*)?$": {
+        "$ref": "#/definitions/mntent"
+      }
+    },
+    "properties": {
+      "swap": {
+        "$ref": "#/definitions/mntent"
+      }
+    },
+    "required": [
+      "/",
+      "swap"
+    ],
+    "title": "/etc/fstab",
+    "type": "object"
+  },
+  "data": {
+    "/": {
+      "device": "/dev/sda1",
+      "fstype": "ext4",
+      "options": [
+        "defaults",
+        "noatime"
+      ],
+      "dump": 1,
+      "fsck": 1
+    },
+    "swap": {
+      "device": "/dev/sda2",
+      "fstype": "swap",
+      "options": [
+        "pri=1"
+      ],
+      "dump": 0,
+      "fsck": 0
+    },
+    "/home": {
+      "device": "/dev/sdb1",
+      "fstype": "ext4",
+      "options": [
+        "defaults"
+      ],
+      "dump": 1,
+      "fsck": 2
+    }
+  },
+  "instructions": "Could you increase the fsck value inside\u202f/home by\u202f1?",
+  "ground_truth": {
+    "/": {
+      "device": "/dev/sda1",
+      "fstype": "ext4",
+      "options": [
+        "defaults",
+        "noatime"
+      ],
+      "dump": 1,
+      "fsck": 1
+    },
+    "swap": {
+      "device": "/dev/sda2",
+      "fstype": "swap",
+      "options": [
+        "pri=1"
+      ],
+      "dump": 0,
+      "fsck": 0
+    },
+    "/home": {
+      "device": "/dev/sdb1",
+      "fstype": "ext4",
+      "options": [
+        "defaults"
+      ],
+      "dump": 1,
+      "fsck": 3
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "/home",
+      "fsck"
+    ],
+    "precise_instruction": "Increase \"fsck\" inside \"/home\" by 1."
+  }
+}

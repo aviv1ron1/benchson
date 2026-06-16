@@ -1,0 +1,93 @@
+{
+  "name": "o12241",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "subject": {
+        "type": "string",
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string",
+        "maxLength": 255
+      },
+      "school_id": {
+        "type": "string",
+        "minLength": 36,
+        "maxLength": 36
+      },
+      "attachments": {
+        "type": "array",
+        "additionalProperties": false,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "size": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "subject",
+      "description",
+      "category",
+      "school_id"
+    ]
+  },
+  "erroneous_json": {
+    "subject": null,
+    "description": "We are excited to invite all students to participate in the upcoming annual science fair, which will showcase innovative projects across various scientific disciplines.",
+    "category": "Events",
+    "school_id": "123e4567-e89b-12d3-a456-426614174000",
+    "attachments": [
+      {
+        "id": "file1",
+        "name": "Fair_Guidelines.pdf",
+        "size": 254678
+      },
+      {
+        "id": "image1",
+        "name": "Poster.png",
+        "size": 98745
+      }
+    ]
+  },
+  "valid_json": {
+    "subject": "Annual Science Fair Announcement",
+    "description": "We are excited to invite all students to participate in the upcoming annual science fair, which will showcase innovative projects across various scientific disciplines.",
+    "category": "Events",
+    "school_id": "123e4567-e89b-12d3-a456-426614174000",
+    "attachments": [
+      {
+        "id": "file1",
+        "name": "Fair_Guidelines.pdf",
+        "size": 254678
+      },
+      {
+        "id": "image1",
+        "name": "Poster.png",
+        "size": 98745
+      }
+    ]
+  },
+  "description": "We are excited to invite all students to participate in the upcoming annual science fair, which will showcase innovative projects across various scientific disciplines. This announcement, titled **Annual Science Fair Announcement**, outlines the details and expectations for the event and serves as the primary communication to ensure everyone is prepared and motivated.\n\nThe fair is categorized under **Events** and is associated with the school identifier **123e4567-e89b-12d3-a456-426614174000**. For your reference, two attachments accompany this notice: the document **Fair_Guidelines.pdf** (ID: file1, size\u202f254678\u202fbytes) and the image **Poster.png** (ID: image1, size\u202f98745\u202fbytes). Please review the guidelines and poster to help you plan your participation."
+}

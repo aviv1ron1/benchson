@@ -1,0 +1,44 @@
+{
+  "name": "o63288",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Location",
+    "properties": {
+      "address": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "url": {
+        "description": "Long url for embedding a google map",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "address": "123 Main St, Suite 400, Springfield, IL 62704, USA",
+    "description": "A modern co-working space located in the heart of downtown Springfield, offering high-speed internet, conference rooms, and a community lounge.",
+    "name": "Springfield Innovation Hub",
+    "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.123456789012!2d-89.650000!3d39.781721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875220100000000%3A0xabcdef1234567890!2s123%20Main%20St%2C%20Springfield%2C%20IL%2062704%2C%20USA"
+  },
+  "instructions": "Can you change the name to \"Springfield Innovation Hub (updated)\"?",
+  "ground_truth": {
+    "address": "123 Main St, Suite 400, Springfield, IL 62704, USA",
+    "description": "A modern co-working space located in the heart of downtown Springfield, offering high-speed internet, conference rooms, and a community lounge.",
+    "name": "Springfield Innovation Hub (updated)",
+    "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.123456789012!2d-89.650000!3d39.781721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875220100000000%3A0xabcdef1234567890!2s123%20Main%20St%2C%20Springfield%2C%20IL%2062704%2C%20USA"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "name"
+    ],
+    "precise_instruction": "Change \"name\" to \"Springfield Innovation Hub (updated)\"."
+  }
+}

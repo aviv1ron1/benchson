@@ -1,0 +1,37 @@
+{
+  "name": "o81574",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "tags": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 4,
+        "items": {
+          "type": "string"
+        },
+        "additionalItems": false
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "tags"
+    ]
+  },
+  "erroneous_json": {
+    "tags": [
+      "api"
+    ]
+  },
+  "valid_json": {
+    "tags": [
+      "api",
+      "documentation",
+      "v1"
+    ]
+  },
+  "description": "Please note that the current release has been labeled with the following tags: api, documentation, v1."
+}

@@ -1,0 +1,379 @@
+{
+  "name": "o61653",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+      "defaultSearchEngine": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "locale": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "os": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "appUpdateChannel": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "profileCreationDate": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "appVersion": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "systemMemoryMb": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "systemCpuCores": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "systemCpuSpeedMhz": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "osVersion": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "systemGfxMonitors1ScreenWidth": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "systemGfxMonitors1ScreenWidthZeroIndexed": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "uptime": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "totalTime": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "profileSubsessionCounter": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "subsessionStartDate": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "timezoneOffest": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "searchCounts": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeWindowOpenEventCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeTotalUriCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeNavigationUrlbar": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeNavigationContextmenu": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeTabOpenEventCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeNavigationSearchbar": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeNavigationAboutNewtab": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeUniqueDomainsCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeMaxConcurrentWindowCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeMaxConcurrentTabCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "spbeUnfilteredUriCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "placesBookmarksCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "placesPagesCount": {
+        "description": "",
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "pioneerAddonMetadata": {
+        "properties": {
+          "packetVersion": {
+            "description": "",
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "studyName": {
+            "description": "",
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "branch": {
+            "description": "",
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "addonId": {
+            "description": "",
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "addonVersion": {
+            "description": "",
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "pioneerUtilsVersion": {
+            "description": "",
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": {
+            "description": "",
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "testing": {
+            "description": "",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "packetVersion",
+          "studyName",
+          "branch",
+          "addonId",
+          "addonVersion",
+          "pioneerUtilsVersion",
+          "type",
+          "testing"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "defaultSearchEngine",
+      "locale",
+      "os",
+      "appUpdateChannel",
+      "profileCreationDate",
+      "appVersion",
+      "systemMemoryMb",
+      "systemCpuCores",
+      "systemCpuSpeedMhz",
+      "osVersion",
+      "systemGfxMonitors1ScreenWidth",
+      "systemGfxMonitors1ScreenWidthZeroIndexed",
+      "uptime",
+      "totalTime",
+      "profileSubsessionCounter",
+      "subsessionStartDate",
+      "timezoneOffest",
+      "searchCounts",
+      "spbeWindowOpenEventCount",
+      "spbeTotalUriCount",
+      "spbeNavigationUrlbar",
+      "spbeNavigationContextmenu",
+      "spbeTabOpenEventCount",
+      "spbeNavigationSearchbar",
+      "spbeNavigationAboutNewtab",
+      "spbeUniqueDomainsCount",
+      "spbeMaxConcurrentWindowCount",
+      "spbeMaxConcurrentTabCount",
+      "spbeUnfilteredUriCount",
+      "placesBookmarksCount",
+      "placesPagesCount",
+      "pioneerAddonMetadata"
+    ],
+    "title": "esper-study-telemetry",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "defaultSearchEngine": "Google",
+    "locale": "en-US",
+    "os": "Windows",
+    "appUpdateChannel": "release",
+    "profileCreationDate": "2023-04-12T08:30:00Z",
+    "appVersion": "115.0.1",
+    "systemMemoryMb": "16384",
+    "systemCpuCores": "8",
+    "systemCpuSpeedMhz": "3200",
+    "osVersion": "10.0.19045",
+    "systemGfxMonitors1ScreenWidth": "1920",
+    "systemGfxMonitors1ScreenWidthZeroIndexed": "1919",
+    "uptime": "3600",
+    "totalTime": "7200",
+    "profileSubsessionCounter": "5",
+    "subsessionStartDate": "2026-06-14T09:15:00Z",
+    "timezoneOffest": "-0400",
+    "searchCounts": "123",
+    "spbeWindowOpenEventCount": "7",
+    "spbeTotalUriCount": "250",
+    "spbeNavigationUrlbar": "150",
+    "spbeNavigationContextmenu": "30",
+    "spbeTabOpenEventCount": "10",
+    "spbeNavigationSearchbar": "20",
+    "spbeNavigationAboutNewtab": "5",
+    "spbeUniqueDomainsCount": "45",
+    "spbeMaxConcurrentWindowCount": "3",
+    "spbeMaxConcurrentTabCount": "12",
+    "spbeUnfilteredUriCount": "260",
+    "placesPagesCount": "350",
+    "pioneerAddonMetadata": {
+      "packetVersion": "1",
+      "studyName": "EsperStudy",
+      "branch": "control",
+      "addonId": "pioneer@example.com",
+      "addonVersion": "2.3.1",
+      "pioneerUtilsVersion": "0.9.5",
+      "type": "telemetry",
+      "testing": false
+    }
+  },
+  "valid_json": {
+    "defaultSearchEngine": "Google",
+    "locale": "en-US",
+    "os": "Windows",
+    "appUpdateChannel": "release",
+    "profileCreationDate": "2023-04-12T08:30:00Z",
+    "appVersion": "115.0.1",
+    "systemMemoryMb": "16384",
+    "systemCpuCores": "8",
+    "systemCpuSpeedMhz": "3200",
+    "osVersion": "10.0.19045",
+    "systemGfxMonitors1ScreenWidth": "1920",
+    "systemGfxMonitors1ScreenWidthZeroIndexed": "1919",
+    "uptime": "3600",
+    "totalTime": "7200",
+    "profileSubsessionCounter": "5",
+    "subsessionStartDate": "2026-06-14T09:15:00Z",
+    "timezoneOffest": "-0400",
+    "searchCounts": "123",
+    "spbeWindowOpenEventCount": "7",
+    "spbeTotalUriCount": "250",
+    "spbeNavigationUrlbar": "150",
+    "spbeNavigationContextmenu": "30",
+    "spbeTabOpenEventCount": "10",
+    "spbeNavigationSearchbar": "20",
+    "spbeNavigationAboutNewtab": "5",
+    "spbeUniqueDomainsCount": "45",
+    "spbeMaxConcurrentWindowCount": "3",
+    "spbeMaxConcurrentTabCount": "12",
+    "spbeUnfilteredUriCount": "260",
+    "placesBookmarksCount": "42",
+    "placesPagesCount": "350",
+    "pioneerAddonMetadata": {
+      "packetVersion": "1",
+      "studyName": "EsperStudy",
+      "branch": "control",
+      "addonId": "pioneer@example.com",
+      "addonVersion": "2.3.1",
+      "pioneerUtilsVersion": "0.9.5",
+      "type": "telemetry",
+      "testing": false
+    }
+  },
+  "description": "The telemetry report for the user profile created on\u202f2023-04-12T08:30:00Z shows that the default search engine is Google, the locale is en\u2011US, and the operating system is Windows (version\u202f10.0.19045) running the release update channel of the application. The current app version is\u202f115.0.1. The system reports 16384\u202fMB of memory, an 8\u2011core CPU running at\u202f3200\u202fMHz, and a primary monitor width of\u202f1920\u202fpixels (zero\u2011indexed width\u202f1919). Uptime stands at\u202f3600\u202fseconds, with a total runtime of\u202f7200\u202fseconds. The profile has accumulated five subsessions, the most recent subsession beginning at\u202f2026-06-14T09:15:00Z, and the timezone offset is\u202f-0400.\n\nDuring this period the user performed\u202f123\u202fsearches. Browser activity counters include\u202f7\u202fwindow\u2011open events,\u202f250\u202ftotal URIs visited,\u202f150\u202fnavigations via the URL bar,\u202f30\u202fvia context menu,\u202f10\u202ftab\u2011open events,\u202f20\u202fsearch\u2011bar navigations,\u202f5\u202fnavigations from the \u201cabout:newtab\u201d page, and\u202f45\u202funique domains visited. The maximum concurrent windows recorded were\u202f3, with up to\u202f12\u202ftabs open simultaneously, and a total of\u202f260\u202funfiltered URIs were logged. The Places database contains\u202f42\u202fbookmarks and\u202f350\u202fpages. The Pioneer add\u2011on metadata reports packetVersion\u202f1, studyName\u202fEsperStudy, branch\u202fcontrol, addonId\u202fpioneer@example.com, addonVersion\u202f2.3.1, pioneerUtilsVersion\u202f0.9.5, type\u202ftelemetry, and testing\u202ffalse."
+}

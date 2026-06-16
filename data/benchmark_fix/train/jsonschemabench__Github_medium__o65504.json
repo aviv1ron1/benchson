@@ -1,0 +1,309 @@
+{
+  "name": "o65504",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "properties": {
+      "agency": {
+        "type": "string"
+      },
+      "conformsTo": {
+        "_format": "uri",
+        "type": "string"
+      },
+      "date_effective": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "date_expires": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "documentation": {
+        "_format": "uri",
+        "type": "string"
+      },
+      "schema_version": {
+        "type": "string"
+      },
+      "seasons": {
+        "properties": {
+          "season": {
+            "properties": {
+              "comment": {
+                "type": "string"
+              },
+              "method": {
+                "type": [
+                  "string",
+                  "array"
+                ]
+              },
+              "method_rules": {
+                "items": {
+                  "type": "string"
+                },
+                "required": [
+                  "items"
+                ],
+                "type": [
+                  "string",
+                  "array"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "range": {
+                "properties": {
+                  "1": {
+                    "properties": {
+                      "places": {
+                        "type": "object"
+                      },
+                      "season": {
+                        "properties": {
+                          "date": {
+                            "properties": {
+                              "ends": {
+                                "type": "string"
+                              },
+                              "starts": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "method"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "season"
+        ],
+        "type": "object"
+      },
+      "species": {
+        "properties": {
+          "aliases": {
+            "type": "array"
+          },
+          "bova_id": {
+            "type": "string"
+          },
+          "members": {
+            "properties": {
+              "aliases": {
+                "type": "array"
+              },
+              "bova_id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "taxonomy": {
+                "type": "string"
+              },
+              "url": {
+                "_format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": "array"
+          },
+          "name": {
+            "type": "string"
+          },
+          "taxonomy": {
+            "type": "string"
+          },
+          "url": {
+            "_format": "uri",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "state": {
+        "maxLength": 2,
+        "minLength": 2,
+        "pattern": "([A-Z]{2})",
+        "type": "string"
+      }
+    },
+    "required": [
+      "agency",
+      "date_effective",
+      "date_expires",
+      "documentation",
+      "schema_version",
+      "conformsTo",
+      "state",
+      "seasons"
+    ],
+    "title": "hunting",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "conformsTo": "https://example.org/schemas/hunting/1.0",
+    "date_effective": "2024-09-01T00:00:00Z",
+    "date_expires": "2025-08-31T23:59:59Z",
+    "documentation": "https://wildlife.ca.gov/hunting/season2024",
+    "schema_version": "2024-09",
+    "state": "CA",
+    "seasons": {
+      "season": {
+        "name": "General Deer Season",
+        "method": [
+          "Archery",
+          "Firearms"
+        ],
+        "method_rules": [
+          "Archery allowed from 5:00 AM to sunset",
+          "Firearms only from 6:30 AM to 12:00 PM and 1:30 PM to sunset"
+        ],
+        "comment": "Season dates may vary by region.",
+        "range": [
+          {
+            "1": {
+              "places": {
+                "zones": [
+                  "North",
+                  "South"
+                ]
+              },
+              "season": {
+                "date": {
+                  "starts": "2024-09-01",
+                  "ends": "2024-12-31"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "species": {
+      "name": "White-tailed Deer",
+      "taxonomy": "Odocoileus virginianus",
+      "url": "https://en.wikipedia.org/wiki/White-tailed_deer",
+      "aliases": [
+        "Whitetail",
+        "Odocoileus virginianus"
+      ],
+      "bova_id": "12345",
+      "members": [
+        {
+          "name": "Mature Male",
+          "taxonomy": "Odocoileus virginianus",
+          "url": "https://example.org/species/whitetaileddeer/maturemale",
+          "aliases": [
+            "Buck"
+          ],
+          "bova_id": "12345-1"
+        },
+        {
+          "name": "Mature Female",
+          "taxonomy": "Odocoileus virginianus",
+          "url": "https://example.org/species/whitetaileddeer/maturefemale",
+          "aliases": [
+            "Doe"
+          ],
+          "bova_id": "12345-2"
+        }
+      ]
+    }
+  },
+  "valid_json": {
+    "agency": "California Department of Fish and Wildlife",
+    "conformsTo": "https://example.org/schemas/hunting/1.0",
+    "date_effective": "2024-09-01T00:00:00Z",
+    "date_expires": "2025-08-31T23:59:59Z",
+    "documentation": "https://wildlife.ca.gov/hunting/season2024",
+    "schema_version": "2024-09",
+    "state": "CA",
+    "seasons": {
+      "season": {
+        "name": "General Deer Season",
+        "method": [
+          "Archery",
+          "Firearms"
+        ],
+        "method_rules": [
+          "Archery allowed from 5:00 AM to sunset",
+          "Firearms only from 6:30 AM to 12:00 PM and 1:30 PM to sunset"
+        ],
+        "comment": "Season dates may vary by region.",
+        "range": [
+          {
+            "1": {
+              "places": {
+                "zones": [
+                  "North",
+                  "South"
+                ]
+              },
+              "season": {
+                "date": {
+                  "starts": "2024-09-01",
+                  "ends": "2024-12-31"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "species": {
+      "name": "White-tailed Deer",
+      "taxonomy": "Odocoileus virginianus",
+      "url": "https://en.wikipedia.org/wiki/White-tailed_deer",
+      "aliases": [
+        "Whitetail",
+        "Odocoileus virginianus"
+      ],
+      "bova_id": "12345",
+      "members": [
+        {
+          "name": "Mature Male",
+          "taxonomy": "Odocoileus virginianus",
+          "url": "https://example.org/species/whitetaileddeer/maturemale",
+          "aliases": [
+            "Buck"
+          ],
+          "bova_id": "12345-1"
+        },
+        {
+          "name": "Mature Female",
+          "taxonomy": "Odocoileus virginianus",
+          "url": "https://example.org/species/whitetaileddeer/maturefemale",
+          "aliases": [
+            "Doe"
+          ],
+          "bova_id": "12345-2"
+        }
+      ]
+    }
+  },
+  "description": "The California Department of Fish and Wildlife (CA) has issued its 2024\u20112025 hunting regulations, effective 2024\u201109\u201101T00:00:00Z and expiring on 2025\u201108\u201131T23:59:59Z. Full documentation can be found at https://wildlife.ca.gov/hunting/season2024, and the data set conforms to the schema located at https://example.org/schemas/hunting/1.0 (schema version\u202f2024\u201109). These rules apply throughout the state of California (CA).  \n\nThe primary hunting period is the General Deer Season, which runs from 2024\u201109\u201101 to 2024\u201112\u201131. During this season hunters may use Archery (allowed from 5:00\u202fAM to sunset) or Firearms (permitted from 6:30\u202fAM to 12:00\u202fPM and again from 1:30\u202fPM to sunset). A note for all participants: \u201cSeason dates may vary by region.\u201d The season is organized into two zones, North and South, each governed by the same date range.  \n\nThe species covered is the White\u2011tailed Deer (Odocoileus virginianus), more commonly known as Whitetail or by its scientific name. Detailed information is available at https://en.wikipedia.org/wiki/White-tailed_deer, and the species carries the BOVA identifier\u202f12345. Within this species the regulations distinguish two member classes: the Mature Male (Buck) \u2013 BOVA\u202f12345\u20111 \u2013 with further details at https://example.org/species/whitetaileddeer/maturemale, and the Mature Female (Doe) \u2013 BOVA\u202f12345\u20112 \u2013 documented at https://example.org/species/whitetaileddeer/maturefemale."
+}

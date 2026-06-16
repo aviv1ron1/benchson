@@ -1,0 +1,44 @@
+{
+  "name": "search_hotels_174e5c12",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "check_in_date": {
+        "description": "The check-in date for the hotel",
+        "type": "string"
+      },
+      "check_out_date": {
+        "description": "The check-out date for the hotel",
+        "type": "string"
+      },
+      "destination": {
+        "description": "The destination to search for hotels",
+        "type": "string"
+      },
+      "price_range": {
+        "description": "The price range for the hotel",
+        "type": "string"
+      }
+    },
+    "required": [
+      "destination",
+      "check_in_date",
+      "check_out_date"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "destination": "Paris, France",
+    "check_in_date": null,
+    "check_out_date": "2023-09-20",
+    "price_range": "$150-250 per night"
+  },
+  "valid_json": {
+    "destination": "Paris, France",
+    "check_in_date": "2023-09-15",
+    "check_out_date": "2023-09-20",
+    "price_range": "$150-250 per night"
+  },
+  "description": "Dear Guest,\n\nWe are pleased to confirm your upcoming stay in Paris, France. Your reservation is set for a check\u2011in on September\u202f15,\u202f2023, with checkout scheduled for September\u202f20,\u202f2023. The booking falls within your desired price range of $150\u2011$250 per night, and we have selected several boutique hotels that match these criteria.\n\nIf you have any special requests or need further assistance in finalizing your accommodations, please let us know. We look forward to helping you enjoy a wonderful visit to the City of Light."
+}

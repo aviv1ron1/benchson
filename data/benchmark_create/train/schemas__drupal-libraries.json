@@ -1,0 +1,223 @@
+{
+  "name": "drupal-libraries",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/drupal-libraries.json",
+    "additionalProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "title": "The library version",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "remote": {
+          "title": "The library repository URL",
+          "type": "string"
+        },
+        "license": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "title": "The human-readable name of the license",
+              "type": "string"
+            },
+            "url": {
+              "title": "The URL of the license file/information for the version of the library used",
+              "type": "string"
+            },
+            "gpl-compatible": {
+              "title": "A boolean for whether this library is GPL compatible",
+              "type": "boolean"
+            }
+          }
+        },
+        "header": {
+          "title": "A boolean for whether the script must be included in the header",
+          "type": "boolean"
+        },
+        "drupalSettings": {
+          "title": "Settings that needs to be attached to drupalSettings object in JavaScript",
+          "type": "object"
+        },
+        "js": {
+          "title": "List of JavaScript files to load",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/file",
+            "type": "object",
+            "properties": {
+              "cache": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "css": {
+          "title": "List of CSS files to load",
+          "type": "object",
+          "properties": {
+            "base": {
+              "$ref": "#/definitions/cssFiles"
+            },
+            "layout": {
+              "$ref": "#/definitions/cssFiles"
+            },
+            "component": {
+              "$ref": "#/definitions/cssFiles"
+            },
+            "theme": {
+              "$ref": "#/definitions/cssFiles"
+            },
+            "state": {
+              "$ref": "#/definitions/cssFiles"
+            }
+          }
+        },
+        "dependencies": {
+          "title": "List libraries that should be loaded along with this library",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^.+/.+$"
+          }
+        }
+      }
+    },
+    "definitions": {
+      "file": {
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "title": "Optional attributes",
+            "type": "object"
+          },
+          "browsers": {
+            "title": "Load asset conditionally based on browser",
+            "type": "object"
+          },
+          "minified": {
+            "title": "Whether the asset is already minified",
+            "type": "boolean"
+          },
+          "external": {
+            "type": "boolean"
+          },
+          "type": {
+            "title": "The source of the asset",
+            "type": "string"
+          },
+          "preprocess": {
+            "title": "Whether the assets should be aggregated",
+            "type": "boolean"
+          },
+          "weight": {
+            "title": "The order relative to other assets",
+            "type": "integer"
+          }
+        }
+      },
+      "cssFiles": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/definitions/file",
+          "type": "object",
+          "properties": {
+            "group": {
+              "title": "The SMACSS group in which the asset is placed",
+              "type": "integer"
+            },
+            "media": {
+              "title": "Media type",
+              "type": "string",
+              "enum": [
+                "all",
+                "screen",
+                "print",
+                "speech"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "title": "JSON schema for Drupal libraries file",
+    "type": "object"
+  },
+  "description": "Subject: Details for the **my_library** Drupal asset package (v\u202f1.4.2)\n\nDear Team,\n\nThe **my_library** package is currently at version\u202f1.4.2 and is hosted in the public repository at\u202fhttps://github.com/example/my_library. It is released under the MIT License (https://opensource.org/licenses/MIT) and is GPL\u2011compatible. The library does not need to be injected into the page header.\n\nWhen the library is attached, the following Drupal settings are made available under `drupalSettings.myLibrary`: an API key of **abcd1234** and a boolean flag `enabled` set to **true**.\n\n**JavaScript assets**  \n- `js/script.js` \u2013 not minified, will be pre\u2011processed, carries a weight of\u202f10, and is cache\u2011able.  \n- `js/extra.min.js` \u2013 already minified, will not be pre\u2011processed, carries a weight of\u202f20, is not cache\u2011able, and is served from the local site (not external).\n\n**CSS assets**  \n- **Base**: `css/style.css` \u2013 placed in SMACSS group\u202f0, applies to all media types, will be pre\u2011processed, and has a weight of\u202f5.  \n- **Layout**: `css/layout.css` \u2013 placed in SMACSS group\u202f1, targeted at the **screen** media, will be pre\u2011processed, and has a weight of\u202f10.  \n- **Component**: `css/buttons.css` \u2013 placed in SMACSS group\u202f2, applies to all media types, will **not** be pre\u2011processed, and has a weight of\u202f15.\n\n**Dependencies**  \nThe library requires the core Drupal assets `core/jquery` and `core/drupal` to be loaded beforehand.\n\nPlease let me know if any further configuration is needed.",
+  "reference_json": {
+    "my_library": {
+      "version": "1.4.2",
+      "remote": "https://github.com/example/my_library",
+      "license": {
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "gpl-compatible": true
+      },
+      "header": false,
+      "drupalSettings": {
+        "myLibrary": {
+          "apiKey": "abcd1234",
+          "enabled": true
+        }
+      },
+      "js": {
+        "js/script.js": {
+          "minified": false,
+          "preprocess": true,
+          "weight": 10,
+          "cache": true
+        },
+        "js/extra.min.js": {
+          "minified": true,
+          "preprocess": false,
+          "weight": 20,
+          "cache": false,
+          "external": false
+        }
+      },
+      "css": {
+        "base": {
+          "css/style.css": {
+            "group": 0,
+            "media": "all",
+            "preprocess": true,
+            "weight": 5
+          }
+        },
+        "layout": {
+          "css/layout.css": {
+            "group": 1,
+            "media": "screen",
+            "preprocess": true,
+            "weight": 10
+          }
+        },
+        "component": {
+          "css/buttons.css": {
+            "group": 2,
+            "media": "all",
+            "preprocess": false,
+            "weight": 15
+          }
+        }
+      },
+      "dependencies": [
+        "core/jquery",
+        "core/drupal"
+      ]
+    }
+  }
+}

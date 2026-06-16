@@ -1,0 +1,41 @@
+{
+  "name": "kb_944_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
+    "properties": {
+      "name": {
+        "description": "Name is unique within a namespace to reference a secret resource.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "namespace": {
+        "description": "Namespace defines the space within which the secret name must be unique.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "name": "my-secret",
+    "namespace": "production"
+  },
+  "instructions": "Please change the namespace to\u202fproduction (updated).",
+  "ground_truth": {
+    "name": "my-secret",
+    "namespace": "production (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "namespace"
+    ],
+    "precise_instruction": "Change \"namespace\" to \"production (updated)\"."
+  }
+}

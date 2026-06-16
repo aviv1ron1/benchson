@@ -1,0 +1,136 @@
+{
+  "name": "sp_350_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for IAB Spiders & Robots enrichment config",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "name": {
+        "type": "string"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "excludeUseragentFile": {
+            "description": "Path to user agent exclude file",
+            "properties": {
+              "database": {
+                "enum": [
+                  "exclude_current.txt"
+                ]
+              },
+              "uri": {
+                "_format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          },
+          "includeUseragentFile": {
+            "description": "Path to user agent include file",
+            "properties": {
+              "database": {
+                "enum": [
+                  "include_current.txt"
+                ]
+              },
+              "uri": {
+                "_format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          },
+          "ipFile": {
+            "description": "Path to IP address exclude file",
+            "properties": {
+              "database": {
+                "enum": [
+                  "ip_exclude_current_cidr.txt"
+                ]
+              },
+              "uri": {
+                "_format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "ipFile",
+          "excludeUseragentFile",
+          "includeUseragentFile"
+        ],
+        "type": "object"
+      },
+      "vendor": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "vendor",
+      "name",
+      "enabled",
+      "parameters"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "iab_spiders_and_robots_enrichment",
+      "vendor": "com.snowplowanalytics.snowplow.enrichments",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "enabled": true,
+    "name": "IAB Spiders & Robots Enrichment",
+    "vendor": "com.snowplowanalytics.snowplow.enrichments",
+    "parameters": {
+      "excludeUseragentFile": {
+        "database": "exclude_current.txt",
+        "uri": "s3://enrichment-configs/exclude_current.txt"
+      },
+      "ipFile": {
+        "database": "ip_exclude_current_cidr.txt",
+        "uri": "s3://enrichment-configs/ip_exclude_current_cidr.txt"
+      }
+    }
+  },
+  "valid_json": {
+    "enabled": true,
+    "name": "IAB Spiders & Robots Enrichment",
+    "vendor": "com.snowplowanalytics.snowplow.enrichments",
+    "parameters": {
+      "excludeUseragentFile": {
+        "database": "exclude_current.txt",
+        "uri": "s3://enrichment-configs/exclude_current.txt"
+      },
+      "includeUseragentFile": {
+        "database": "include_current.txt",
+        "uri": "s3://enrichment-configs/include_current.txt"
+      },
+      "ipFile": {
+        "database": "ip_exclude_current_cidr.txt",
+        "uri": "s3://enrichment-configs/ip_exclude_current_cidr.txt"
+      }
+    }
+  },
+  "description": "The IAB\u202fSpiders\u202f&\u202fRobots enrichment is currently enabled. It is identified as **IAB Spiders & Robots Enrichment** and is supplied by the vendor **com.snowplowanalytics.snowplow.enrichments**.\n\nThe enrichment uses three reference files stored in S3: the user\u2011agent exclusion list resides at `s3://enrichment-configs/exclude_current.txt` (database\u202f=\u202fexclude_current.txt); the user\u2011agent inclusion list is at `s3://enrichment-configs/include_current.txt` (database\u202f=\u202finclude_current.txt); and the IP address exclusion CIDR list is located at `s3://enrichment-configs/ip_exclude_current_cidr.txt` (database\u202f=\u202fip_exclude_current_cidr.txt)."
+}

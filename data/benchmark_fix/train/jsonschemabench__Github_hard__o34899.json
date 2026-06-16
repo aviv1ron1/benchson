@@ -1,0 +1,401 @@
+{
+  "name": "o34899",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://jsonschema.net/",
+    "type": "object",
+    "required": [
+      "addresses",
+      "options",
+      "states",
+      "userActions"
+    ],
+    "properties": {
+      "addresses": {
+        "type": "object",
+        "required": [
+          "srcAddress",
+          "optionalOutputAddress"
+        ],
+        "properties": {
+          "srcAddress": {
+            "type": "string",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "optionalOutputAddress": {
+            "type": "string",
+            "default": "",
+            "pattern": "^(.*)$"
+          }
+        }
+      },
+      "options": {
+        "type": "object",
+        "required": [
+          "rtspTcp"
+        ],
+        "properties": {
+          "rtspTcp": {
+            "type": "boolean",
+            "default": false
+          },
+          "video": {
+            "type": "object",
+            "default": null,
+            "required": [
+              "codec",
+              "preset",
+              "bitrate",
+              "fps",
+              "profile",
+              "tune"
+            ],
+            "properties": {
+              "codec": {
+                "type": "string",
+                "default": "copy",
+                "pattern": "^(.*)$"
+              },
+              "preset": {
+                "type": "string",
+                "default": "ultrafast",
+                "pattern": "^(.*)$"
+              },
+              "bitrate": {
+                "type": "string",
+                "default": "4096",
+                "pattern": "^(.*)$"
+              },
+              "fps": {
+                "type": "string",
+                "default": "25",
+                "pattern": "^(.*)$"
+              },
+              "profile": {
+                "type": "string",
+                "default": "none",
+                "pattern": "^(.*)$"
+              },
+              "tune": {
+                "type": "string",
+                "default": "none",
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "audio": {
+            "type": "object",
+            "required": [
+              "codec",
+              "preset",
+              "bitrate",
+              "channels",
+              "sampling"
+            ],
+            "properties": {
+              "codec": {
+                "type": "string",
+                "default": "auto",
+                "pattern": "^(.*)$"
+              },
+              "preset": {
+                "type": "string",
+                "default": "silence",
+                "pattern": "^(.*)$"
+              },
+              "bitrate": {
+                "type": "string",
+                "default": "64",
+                "pattern": "^(.*)$"
+              },
+              "channels": {
+                "type": "string",
+                "default": "mono",
+                "pattern": "^(.*)$"
+              },
+              "sampling": {
+                "type": "string",
+                "default": "44100",
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "output": {
+            "type": "object",
+            "required": [
+              "type",
+              "rtmp",
+              "hls"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "rtmp",
+                "pattern": "^(rtmp|hls)$"
+              },
+              "rtmp": {
+                "type": "object",
+                "default": {}
+              },
+              "hls": {
+                "type": "object",
+                "required": [
+                  "method",
+                  "time",
+                  "listSize",
+                  "timeout"
+                ],
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "POST",
+                    "pattern": "^(POST|PUT)$"
+                  },
+                  "time": {
+                    "type": "string",
+                    "default": "2",
+                    "pattern": "^(.*)$"
+                  },
+                  "listSize": {
+                    "type": "string",
+                    "default": "10",
+                    "pattern": "^(.*)$"
+                  },
+                  "timeout": {
+                    "type": "string",
+                    "default": "10",
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          },
+          "player": {
+            "type": "object",
+            "required": [
+              "autoplay",
+              "mute",
+              "statistics",
+              "color",
+              "logo"
+            ],
+            "properties": {
+              "autoplay": {
+                "type": "boolean",
+                "default": false
+              },
+              "mute": {
+                "type": "boolean",
+                "default": false
+              },
+              "statistics": {
+                "type": "boolean",
+                "default": false
+              },
+              "color": {
+                "type": "string",
+                "default": "#3daa48",
+                "pattern": "^#[0-9a-f]{6}$"
+              },
+              "logo": {
+                "type": "object",
+                "required": [
+                  "image",
+                  "position",
+                  "link"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "default": "",
+                    "pattern": "^(.*)$"
+                  },
+                  "position": {
+                    "type": "string",
+                    "default": "bottom-right",
+                    "pattern": "^(.*)$"
+                  },
+                  "link": {
+                    "type": "string",
+                    "default": "",
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "states": {
+        "type": "object",
+        "required": [
+          "repeatToLocalNginx",
+          "repeatToOptionalOutput"
+        ],
+        "properties": {
+          "repeatToLocalNginx": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "",
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "repeatToOptionalOutput": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "",
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      },
+      "userActions": {
+        "type": "object",
+        "required": [
+          "repeatToLocalNginx",
+          "repeatToOptionalOutput"
+        ],
+        "properties": {
+          "repeatToLocalNginx": {
+            "type": "string",
+            "default": "",
+            "pattern": "^(.*)$"
+          },
+          "repeatToOptionalOutput": {
+            "type": "string",
+            "default": "",
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "addresses": {
+      "srcAddress": "rtsp://192.168.1.10/stream",
+      "optionalOutputAddress": "rtmp://example.com/live/stream"
+    },
+    "options": {
+      "rtspTcp": true,
+      "video": {
+        "codec": "h264",
+        "preset": "medium",
+        "bitrate": "2000",
+        "fps": "30",
+        "profile": "high",
+        "tune": "film"
+      },
+      "audio": {
+        "codec": "aac",
+        "preset": "medium",
+        "bitrate": "128",
+        "channels": "stereo",
+        "sampling": "48000"
+      },
+      "output": {
+        "type": "rtmp",
+        "rtmp": {},
+        "hls": {
+          "method": "POST",
+          "time": "2",
+          "listSize": "5",
+          "timeout": "15"
+        }
+      },
+      "player": {
+        "autoplay": true,
+        "mute": false,
+        "statistics": true,
+        "color": "#ff6600",
+        "logo": {
+          "image": "https://example.com/logo.png",
+          "position": "top-left",
+          "link": "https://example.com"
+        }
+      }
+    },
+    "states": {
+      "repeatToOptionalOutput": {
+        "type": "disabled"
+      }
+    },
+    "userActions": {
+      "repeatToLocalNginx": "start",
+      "repeatToOptionalOutput": "stop"
+    }
+  },
+  "valid_json": {
+    "addresses": {
+      "srcAddress": "rtsp://192.168.1.10/stream",
+      "optionalOutputAddress": "rtmp://example.com/live/stream"
+    },
+    "options": {
+      "rtspTcp": true,
+      "video": {
+        "codec": "h264",
+        "preset": "medium",
+        "bitrate": "2000",
+        "fps": "30",
+        "profile": "high",
+        "tune": "film"
+      },
+      "audio": {
+        "codec": "aac",
+        "preset": "medium",
+        "bitrate": "128",
+        "channels": "stereo",
+        "sampling": "48000"
+      },
+      "output": {
+        "type": "rtmp",
+        "rtmp": {},
+        "hls": {
+          "method": "POST",
+          "time": "2",
+          "listSize": "5",
+          "timeout": "15"
+        }
+      },
+      "player": {
+        "autoplay": true,
+        "mute": false,
+        "statistics": true,
+        "color": "#ff6600",
+        "logo": {
+          "image": "https://example.com/logo.png",
+          "position": "top-left",
+          "link": "https://example.com"
+        }
+      }
+    },
+    "states": {
+      "repeatToLocalNginx": {
+        "type": "enabled"
+      },
+      "repeatToOptionalOutput": {
+        "type": "disabled"
+      }
+    },
+    "userActions": {
+      "repeatToLocalNginx": "start",
+      "repeatToOptionalOutput": "stop"
+    }
+  },
+  "description": "We have configured the stream to pull video from **rtsp://192.168.1.10/stream** using TCP for the RTSP transport, and we are also ready to push the output to **rtmp://example.com/live/stream** if needed.  \n\nThe video path is set to encode with H.264 at a medium preset, a bitrate of 2000\u202fkbps, 30\u202ffps, high profile and the \u201cfilm\u201d tune. Audio will be encoded as AAC, also with a medium preset, a bitrate of 128\u202fkbps, stereo channels, and a 48\u202fkHz sampling rate. The primary delivery method is RTMP, while the HLS segmenter is configured for POST requests, a segment duration of 2\u202fseconds, a playlist size of 5 entries, and a timeout of 15\u202fseconds.  \n\nOn the player side we have enabled autoplay, left sound unmuted, turned on statistics, and applied the accent colour **#ff6600**. The player will display our logo from **https://example.com/logo.png** in the top\u2011left corner, linking back to **https://example.com**. Currently the repeat\u2011to\u2011local\u2011nginx service is enabled (and the user action \u201cstart\u201d is active), whereas the repeat\u2011to\u2011optional\u2011output service is disabled (user action \u201cstop\u201d)."
+}

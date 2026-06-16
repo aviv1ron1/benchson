@@ -1,0 +1,39 @@
+{
+  "name": "o58863",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "language": {
+        "$default": {
+          "$source": "argv",
+          "index": 0
+        },
+        "description": "The language to be added",
+        "type": "string"
+      },
+      "languages": {
+        "description": "Languages to be added (comma separated list like 'en,de,fr').",
+        "type": "string"
+      }
+    },
+    "title": "addLanguage Schema",
+    "type": "object"
+  },
+  "data": {
+    "language": "en",
+    "languages": "en,de,fr"
+  },
+  "instructions": "Please change the language field to \u201cen (updated)\u201d.",
+  "ground_truth": {
+    "language": "en (updated)",
+    "languages": "en,de,fr"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "language"
+    ],
+    "precise_instruction": "Change \"language\" to \"en (updated)\"."
+  }
+}

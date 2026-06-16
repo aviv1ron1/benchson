@@ -1,0 +1,109 @@
+{
+  "name": "o88958",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "id": "http://schema.management.azure.com/schemas/2015-07-01-preview/Microsoft.ServerManagement.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Microsoft.ServerManagement",
+    "description": "Microsoft.ServerManagement Resource Types",
+    "resourceDefinitions": {
+      "gateway": {
+        "type": "object",
+        "description": "A Server management tools gateway",
+        "properties": {
+          "apiVersion": {
+            "enum": [
+              "2015-07-01-preview"
+            ]
+          },
+          "type": {
+            "enum": [
+              "Microsoft.ServerManagement/gateways"
+            ]
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "location",
+          "name",
+          "properties"
+        ]
+      },
+      "node": {
+        "type": "object",
+        "description": "A Server management tools node",
+        "properties": {
+          "apiVersion": {
+            "enum": [
+              "2015-07-01-preview"
+            ]
+          },
+          "type": {
+            "enum": [
+              "Microsoft.ServerManagement/nodes"
+            ]
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "gatewayId": {
+                "description": "The gateway to to which this node belongs. This is the ARM resource id for the gateway",
+                "type": "string"
+              },
+              "connectionName": {
+                "description": "The node name to connect to. It can be one of NetBios name, IP (v4/v6), FQDN",
+                "type": "string"
+              }
+            },
+            "required": [
+              "gatewayId",
+              "connectionName"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "name",
+          "location",
+          "properties"
+        ]
+      }
+    },
+    "properties": {
+      "resourceDefinitions.gateway": {
+        "$ref": "#/resourceDefinitions/gateway"
+      },
+      "resourceDefinitions.node": {
+        "$ref": "#/resourceDefinitions/node"
+      }
+    },
+    "required": [
+      "resourceDefinitions.gateway",
+      "resourceDefinitions.node"
+    ]
+  },
+  "description": "We have deployed a Server Management gateway called **myGateway** in the **westus2** region. The gateway is registered under the type **Microsoft.ServerManagement/gateways** and uses the **2015-07-01-preview** API version. No additional configuration properties are required for this gateway at the moment.\n\nIn the same region we have also provisioned a Server Management node named **myNode**. The node is defined with the type **Microsoft.ServerManagement/nodes** and likewise uses the **2015-07-01-preview** API version. It is linked to the gateway via the ARM resource identifier **/subscriptions/12345/resourceGroups/rg1/providers/Microsoft.ServerManagement/gateways/myGateway**, and it will connect using the name **node01.example.com**.",
+  "reference_json": {
+    "resourceDefinitions.gateway": {
+      "apiVersion": "2015-07-01-preview",
+      "type": "Microsoft.ServerManagement/gateways",
+      "location": "westus2",
+      "name": "myGateway",
+      "properties": {}
+    },
+    "resourceDefinitions.node": {
+      "apiVersion": "2015-07-01-preview",
+      "type": "Microsoft.ServerManagement/nodes",
+      "location": "westus2",
+      "name": "myNode",
+      "properties": {
+        "gatewayId": "/subscriptions/12345/resourceGroups/rg1/providers/Microsoft.ServerManagement/gateways/myGateway",
+        "connectionName": "node01.example.com"
+      }
+    }
+  }
+}

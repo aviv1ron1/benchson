@@ -1,0 +1,53 @@
+{
+  "name": "o79539",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "id": {
+        "type": "integer"
+      }
+    },
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "#/definitions/id"
+      },
+      "label": {
+        "type": "string"
+      },
+      "phase": {
+        "description": "Buckets have a phase, which represents the approximate part of the recruitment process this bucket is for - for example the phase 'interview' might have several buckets (e.g. 'line manager interview', etc.).",
+        "enum": [
+          "new",
+          "screening",
+          "interview",
+          "selection",
+          "offer",
+          "approval",
+          "hire",
+          "onboard",
+          "decline",
+          "other"
+        ]
+      },
+      "key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "label",
+      "phase"
+    ],
+    "additionalProperties": false
+  },
+  "description": "Subject: Update to Recruitment Buckets \u2013 New Interview Stage\n\nDear Team,\n\nPlease note that we have added a new bucket to our interview phase with the identifier **101**. This bucket is titled **\u201cLine Manager Interview\u201d** and is intended to capture all candidate assessments conducted by the hiring manager. For reference in our configuration files, please use the key **lm_interview** when mapping or querying this stage. Let\u2019s ensure that all relevant candidates are routed to this bucket moving forward.",
+  "reference_json": {
+    "id": 101,
+    "label": "Line Manager Interview",
+    "phase": "interview",
+    "key": "lm_interview"
+  }
+}

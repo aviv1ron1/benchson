@@ -1,0 +1,44 @@
+{
+  "name": "generate_invoice_ec3a8e8b",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "description": "The items included in the invoice",
+        "items": {
+          "properties": {
+            "description": {
+              "description": "The description of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price per unit of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "description",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items"
+    ],
+    "type": "object"
+  }
+}

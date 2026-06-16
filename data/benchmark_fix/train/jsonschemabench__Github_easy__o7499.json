@@ -1,0 +1,69 @@
+{
+  "name": "o7499",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+      "ThemePropertyChange": {
+        "properties": {
+          "name": {
+            "description": "Name of the theme property",
+            "type": "string"
+          },
+          "owner": {
+            "description": "Theming function this parameter belongs to",
+            "type": "string"
+          },
+          "remove": {
+            "description": "Remove directive/component/property",
+            "type": "boolean"
+          },
+          "replaceWith": {
+            "description": "Replace original selector/property with new one",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "owner"
+        ],
+        "type": "object"
+      }
+    },
+    "properties": {
+      "changes": {
+        "description": "An array of changes to theme function properties",
+        "items": {
+          "$ref": "#/definitions/ThemePropertyChange"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "changes"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {},
+  "valid_json": {
+    "changes": [
+      {
+        "name": "primaryColor",
+        "owner": "applyPalette",
+        "replaceWith": "#ff5733"
+      },
+      {
+        "name": "buttonBorderRadius",
+        "owner": "styleButtons",
+        "remove": true
+      },
+      {
+        "name": "headerFont",
+        "owner": "setTypography",
+        "replaceWith": "Roboto, sans-serif"
+      }
+    ]
+  },
+  "description": "Subject: Upcoming Theme Adjustments\n\nHi team,\n\nWe\u2019re rolling out a few targeted updates to the design system. In the palette module, the **primaryColor** handled by the **applyPalette** function will be switched to the new hex value **#ff5733**. Meanwhile, the **buttonBorderRadius** property under **styleButtons** is being eliminated entirely, so any existing radius settings will be removed. Lastly, the typography settings will see **headerFont** updated by the **setTypography** routine, replacing the current specification with **Roboto, sans-serif**.\n\nPlease incorporate these changes into your respective components and let me know if any issues arise. Thanks!"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "o65447",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A company which is the subject of a statement",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "jurisdiction": {
+        "type": "string"
+      },
+      "company_number": {
+        "type": "string"
+      },
+      "identifier": {
+        "type": "string",
+        "description": "An official identifier paired with a code for the issuer of the identifier, e.g sec/12345",
+        "pattern": "^[^/]+/[^/]+$"
+      }
+    },
+    "required": [
+      "name",
+      "jurisdiction"
+    ]
+  },
+  "data": {
+    "name": "Acme Technologies Ltd.",
+    "jurisdiction": "United Kingdom",
+    "company_number": "12345678",
+    "identifier": "ukc/987654"
+  },
+  "instructions": "Please change the jurisdiction to \"United Kingdom (updated)\".",
+  "ground_truth": {
+    "name": "Acme Technologies Ltd.",
+    "jurisdiction": "United Kingdom (updated)",
+    "company_number": "12345678",
+    "identifier": "ukc/987654"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "jurisdiction"
+    ],
+    "precise_instruction": "Change \"jurisdiction\" to \"United Kingdom (updated)\"."
+  }
+}

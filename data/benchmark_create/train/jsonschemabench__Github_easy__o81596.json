@@ -1,0 +1,73 @@
+{
+  "name": "o81596",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "order": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "integer"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "drinkType": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "milk": {
+            "type": "string"
+          },
+          "espressoConCard": {
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "orderId",
+          "customerName",
+          "drinkType",
+          "size",
+          "date",
+          "time",
+          "milk",
+          "espressoConCard",
+          "totalPrice"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "order"
+    ]
+  },
+  "description": "Subject: Your Cappuccino Order Confirmation (Order\u202f#1024)\n\nDear Alice Johnson,\n\nThank you for placing an order with us today, 15\u202fJune\u202f2026 at 09:30. We have prepared a Medium Cappuccino for you, made with almond milk, and you have confirmed that the espresso will be charged to your card (\u201cyes\u201d). The total amount due for this order is $4.75. If you have any questions or need to make changes, please let us know.\n\nWe look forward to serving you soon!",
+  "reference_json": {
+    "order": {
+      "orderId": 1024,
+      "customerName": "Alice Johnson",
+      "drinkType": "Cappuccino",
+      "size": "Medium",
+      "date": "2026-06-15",
+      "time": "09:30",
+      "milk": "Almond",
+      "espressoConCard": "yes",
+      "totalPrice": 4.75
+    }
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "name": "o5353",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelArtifactPublishedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "3.0.0"
+            ],
+            "default": "3.0.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "string",
+                "pattern": "^pkg:"
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "authorIdentity": {
+                "type": "string"
+              },
+              "integrityProtection": {
+                "type": "object",
+                "properties": {
+                  "signature": {
+                    "type": "string"
+                  },
+                  "alg": {
+                    "type": "string",
+                    "enum": [
+                      "HS256",
+                      "HS384",
+                      "HS512",
+                      "RS256",
+                      "RS384",
+                      "RS512",
+                      "ES256",
+                      "ES384",
+                      "ES512",
+                      "PS256",
+                      "PS384",
+                      "PS512"
+                    ]
+                  },
+                  "publicKey": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "signature",
+                  "alg"
+                ],
+                "additionalProperties": false
+              },
+              "sequenceProtection": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sequenceName": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "sequenceName",
+                    "position"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "authorIdentity"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "ARTIFACTORY",
+                    "NEXUS",
+                    "PLAIN",
+                    "OTHER"
+                  ]
+                },
+                "uri": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "uri"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "locations"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "meta": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "type": "EiffelArtifactPublishedEvent",
+      "version": "3.0.0",
+      "time": 1723456789,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example-domain",
+        "host": "ci.example.com",
+        "name": "artifact-publisher",
+        "serializer": "pkg:com.example.artifact",
+        "uri": "https://ci.example.com/publish"
+      },
+      "security": {
+        "authorIdentity": "ci-bot@example.com",
+        "integrityProtection": {
+          "signature": "dGVzdFNpZ25hdHVyZQ==",
+          "alg": "RS256",
+          "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "artifactSequence",
+            "position": 42
+          }
+        ]
+      }
+    },
+    "data": {
+      "locations": [
+        {
+          "type": "ARTIFACTORY",
+          "uri": "https://artifactory.example.com/libs-release-local/com/example/artifact/1.0.0/artifact-1.0.0.jar"
+        },
+        {
+          "type": "NEXUS",
+          "uri": "https://nexus.example.com/repository/maven-releases/com/example/artifact/1.0.0/artifact-1.0.0.jar"
+        }
+      ],
+      "customData": [
+        {
+          "key": "buildNumber",
+          "value": 1234
+        },
+        {
+          "key": "branch",
+          "value": "main"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9b2c1e4a-8d5f-4f3a-b9c7-2a6d5e7f8a9b"
+      }
+    ]
+  },
+  "instructions": "Could you remove the first item from the \"customData\" list inside \"data\"?",
+  "ground_truth": {
+    "meta": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "type": "EiffelArtifactPublishedEvent",
+      "version": "3.0.0",
+      "time": 1723456789,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example-domain",
+        "host": "ci.example.com",
+        "name": "artifact-publisher",
+        "serializer": "pkg:com.example.artifact",
+        "uri": "https://ci.example.com/publish"
+      },
+      "security": {
+        "authorIdentity": "ci-bot@example.com",
+        "integrityProtection": {
+          "signature": "dGVzdFNpZ25hdHVyZQ==",
+          "alg": "RS256",
+          "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "artifactSequence",
+            "position": 42
+          }
+        ]
+      }
+    },
+    "data": {
+      "locations": [
+        {
+          "type": "ARTIFACTORY",
+          "uri": "https://artifactory.example.com/libs-release-local/com/example/artifact/1.0.0/artifact-1.0.0.jar"
+        },
+        {
+          "type": "NEXUS",
+          "uri": "https://nexus.example.com/repository/maven-releases/com/example/artifact/1.0.0/artifact-1.0.0.jar"
+        }
+      ],
+      "customData": [
+        {
+          "key": "branch",
+          "value": "main"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9b2c1e4a-8d5f-4f3a-b9c7-2a6d5e7f8a9b"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "data",
+      "customData"
+    ],
+    "precise_instruction": "Remove the first item from the \"customData\" list inside \"data\"."
+  }
+}

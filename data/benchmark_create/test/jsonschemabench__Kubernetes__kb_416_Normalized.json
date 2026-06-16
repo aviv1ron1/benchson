@@ -1,0 +1,36 @@
+{
+  "name": "kb_416_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.",
+    "properties": {
+      "max": {
+        "description": "max is the end of the range, inclusive.",
+        "format": "int32",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "min": {
+        "description": "min is the start of the range, inclusive.",
+        "format": "int32",
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "min",
+      "max"
+    ],
+    "type": "object"
+  },
+  "description": "The updated network policy defines a permissible host\u2011port range for pods that begins at port\u202f3000 and extends up to, and includes, port\u202f4000. All pods will be able to bind to any host port within this inclusive interval.",
+  "reference_json": {
+    "min": 3000,
+    "max": 4000
+  }
+}

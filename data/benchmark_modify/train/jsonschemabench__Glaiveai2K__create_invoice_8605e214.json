@@ -1,0 +1,95 @@
+{
+  "name": "create_invoice_8605e214",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "items": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "tax_rate": {
+        "description": "The tax rate in percentage",
+        "type": "number"
+      }
+    },
+    "required": [
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "items": [
+      {
+        "name": "Wireless Mouse",
+        "price": 25.99,
+        "quantity": 2
+      },
+      {
+        "name": "Mechanical Keyboard",
+        "price": 89.5,
+        "quantity": 1
+      },
+      {
+        "name": "USB-C Hub",
+        "price": 45.0,
+        "quantity": 3
+      }
+    ],
+    "tax_rate": 8.25
+  },
+  "instructions": "Could you add another entry to the items list that's exactly the same as the first item?",
+  "ground_truth": {
+    "items": [
+      {
+        "name": "Wireless Mouse",
+        "price": 25.99,
+        "quantity": 2
+      },
+      {
+        "name": "Mechanical Keyboard",
+        "price": 89.5,
+        "quantity": 1
+      },
+      {
+        "name": "USB-C Hub",
+        "price": 45.0,
+        "quantity": 3
+      },
+      {
+        "name": "Wireless Mouse",
+        "price": 25.99,
+        "quantity": 2
+      }
+    ],
+    "tax_rate": 8.25
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "items"
+    ],
+    "precise_instruction": "Add another item to the \"items\" list, identical to its first item."
+  }
+}

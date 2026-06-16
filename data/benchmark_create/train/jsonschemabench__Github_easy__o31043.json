@@ -1,0 +1,48 @@
+{
+  "name": "o31043",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "backupfilename": {
+        "readonly": true,
+        "type": "string"
+      },
+      "createdby": {
+        "readonly": true,
+        "type": "string"
+      },
+      "creationtime": {
+        "readonly": true,
+        "type": "string"
+      },
+      "filename": {
+        "type": "string"
+      },
+      "ipaddress": {
+        "readonly": true,
+        "type": "string"
+      },
+      "techsuprtname": {
+        "readonly": true,
+        "type": "string"
+      },
+      "version": {
+        "readonly": true,
+        "type": "string"
+      }
+    },
+    "title": "systemrestorepoint",
+    "type": "object"
+  },
+  "description": "Dear Team,\n\nThe system restore point has been successfully created on 2026-06-15T08:30:00Z by the administrator (admin). The backup file generated is **backup_20230615_001.zip**, which contains the image file **system_image.img**. This restore point is associated with version **v2.3.1** of the operating environment and was taken from the server located at IP address **192.168.1.100**. Technical support for this operation was provided by **John Doe**.\n\nPlease ensure the backup file is stored securely and note the details above should you need to reference or roll back to this specific restore point in the future. Let me know if any further information is required.",
+  "reference_json": {
+    "backupfilename": "backup_20230615_001.zip",
+    "createdby": "admin",
+    "creationtime": "2026-06-15T08:30:00Z",
+    "filename": "system_image.img",
+    "ipaddress": "192.168.1.100",
+    "techsuprtname": "John Doe",
+    "version": "v2.3.1"
+  }
+}

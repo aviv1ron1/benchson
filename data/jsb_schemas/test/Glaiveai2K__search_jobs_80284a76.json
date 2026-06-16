@@ -1,0 +1,39 @@
+{
+  "name": "search_jobs_80284a76",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "keywords": {
+        "description": "The keywords related to the job",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "location": {
+        "description": "The location of the job",
+        "type": "string"
+      },
+      "salary_range": {
+        "properties": {
+          "max_salary": {
+            "description": "The maximum salary of the job",
+            "type": "number"
+          },
+          "min_salary": {
+            "description": "The minimum salary of the job",
+            "type": "number"
+          }
+        },
+        "required": [
+          "min_salary",
+          "max_salary"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [],
+    "type": "object"
+  }
+}

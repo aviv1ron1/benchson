@@ -1,0 +1,61 @@
+{
+  "name": "calculate_area_0ff86767",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle (if applicable)",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle (if applicable)",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle (if applicable)",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle (if applicable)",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle (if applicable)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "length",
+          "width",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g., circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Dear Team,\n\nThe component we are specifying is a rectangle. Its primary dimensions are a length of\u202f8.0\u202funits and a width of\u202f4.0\u202funits. In addition, the design references a base measurement of\u202f5.0\u202funits and a height of\u202f10.0\u202funits, which will be used for the mounting interface. Since there are no circular features required for this part, the radius is set to\u202f0.0.",
+  "reference_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 5.0,
+      "height": 10.0,
+      "length": 8.0,
+      "width": 4.0,
+      "radius": 0.0
+    }
+  }
+}

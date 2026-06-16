@@ -1,0 +1,66 @@
+{
+  "name": "kb_614_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_ConfigMapNodeConfigSource": {
+        "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.",
+        "properties": {
+          "kubeletConfigKey": {
+            "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.",
+            "type": "string"
+          },
+          "namespace": {
+            "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.",
+            "type": "string"
+          },
+          "resourceVersion": {
+            "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+            "type": "string"
+          },
+          "uid": {
+            "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "namespace",
+          "name",
+          "kubeletConfigKey"
+        ],
+        "type": "object"
+      }
+    },
+    "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.",
+    "properties": {
+      "configMap": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_ConfigMapNodeConfigSource",
+        "description": "ConfigMap is a reference to a Node's ConfigMap"
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "configMap": {
+      "namespace": "kube-system",
+      "name": "node-config-12345",
+      "kubeletConfigKey": "kubelet-config.yaml",
+      "uid": "d3f5c6e1-9a2b-4c3d-8e5f-123456789abc",
+      "resourceVersion": "42"
+    }
+  },
+  "instructions": "Please delete the configMap field.",
+  "ground_truth": {},
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "configMap"
+    ],
+    "precise_instruction": "Remove the \"configMap\" field."
+  }
+}

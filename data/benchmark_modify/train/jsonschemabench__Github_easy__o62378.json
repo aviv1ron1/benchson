@@ -1,0 +1,47 @@
+{
+  "name": "o62378",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "id": "https://github.com/myedibleenso/processors-server/tree/master/src/main/resources/json/schema/document.json",
+    "properties": {
+      "text": {
+        "type": "string",
+        "id": "text"
+      },
+      "sentences": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "id": "0"
+        },
+        "id": "sentences"
+      }
+    }
+  },
+  "data": {
+    "text": "The quick brown fox jumps over the lazy dog. It then runs into the forest.",
+    "sentences": [
+      {
+        "content": "The quick brown fox jumps over the lazy dog."
+      },
+      {
+        "content": "It then runs into the forest."
+      }
+    ]
+  },
+  "instructions": "Please delete the first 2 items from the \"sentences\" list.",
+  "ground_truth": {
+    "text": "The quick brown fox jumps over the lazy dog. It then runs into the forest.",
+    "sentences": []
+  },
+  "modification": {
+    "op": "array_remove_first_2",
+    "path": [
+      "sentences"
+    ],
+    "precise_instruction": "Remove the first 2 items from the \"sentences\" list."
+  }
+}

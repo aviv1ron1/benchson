@@ -1,0 +1,50 @@
+{
+  "name": "book_flight_a15ee43f",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "departure_date": {
+        "description": "The departure date of the flight (format: yyyy-mm-dd)",
+        "type": "string"
+      },
+      "destination": {
+        "description": "The destination airport code",
+        "type": "string"
+      },
+      "origin": {
+        "description": "The origin airport code",
+        "type": "string"
+      },
+      "passengers": {
+        "description": "The number of passengers",
+        "type": "integer"
+      },
+      "return_date": {
+        "description": "The return date of the flight (format: yyyy-mm-dd)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "departure_date",
+      "origin",
+      "destination",
+      "passengers"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "departure_date": "2024-09-15",
+    "origin": "JFK",
+    "passengers": 2,
+    "return_date": "2024-09-22"
+  },
+  "valid_json": {
+    "departure_date": "2024-09-15",
+    "origin": "JFK",
+    "destination": "LHR",
+    "passengers": 2,
+    "return_date": "2024-09-22"
+  },
+  "description": "Subject: Flight Booking Request \u2013 September 2024  \n\nDear Travel Team,  \n\nI would like to arrange round\u2011trip airfare for two passengers departing from JFK on 2024\u201109\u201115, with a return flight on 2024\u201109\u201122. Our destination is London Heathrow (LHR). Please let me know the available options and pricing at your earliest convenience.  \n\nThank you,  \n\n[Your Name]"
+}

@@ -1,0 +1,51 @@
+{
+  "name": "create_calendar_event_7a93de0e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "end_date": {
+        "description": "The end date and time of the event in YYYY-MM-DD HH:MM format",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the event",
+        "type": "string"
+      },
+      "start_date": {
+        "description": "The start date and time of the event in YYYY-MM-DD HH:MM format",
+        "type": "string"
+      },
+      "title": {
+        "description": "The title of the event",
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "start_date",
+      "end_date"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "title": "Annual Tech Conference 2026",
+    "start_date": "2026-09-15 09:00",
+    "end_date": "2026-09-15 17:00",
+    "location": "San Francisco Convention Center, Hall B"
+  },
+  "instructions": "Could you change the start_date to 2026-09-15 09:00 (updated)?",
+  "ground_truth": {
+    "title": "Annual Tech Conference 2026",
+    "start_date": "2026-09-15 09:00 (updated)",
+    "end_date": "2026-09-15 17:00",
+    "location": "San Francisco Convention Center, Hall B"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "start_date"
+    ],
+    "precise_instruction": "Change \"start_date\" to \"2026-09-15 09:00 (updated)\"."
+  }
+}

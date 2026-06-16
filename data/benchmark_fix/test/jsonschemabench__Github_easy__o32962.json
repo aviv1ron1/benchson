@@ -1,0 +1,56 @@
+{
+  "name": "o32962",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$comment": "design document https://g0v.hackmd.io/eIeU2g86Tfu5VnLazNfUvQ",
+    "description": "A representation of an UserArticleLink",
+    "properties": {
+      "articleId": {
+        "type": "string"
+      },
+      "createdAt": {
+        "format": "date-time",
+        "instanceOf": "Date"
+      },
+      "lastPositiveFeedbackRepliedAt": {
+        "format": "date-time",
+        "instanceOf": "Date"
+      },
+      "lastRepliedAt": {
+        "format": "date-time",
+        "instanceOf": "Date"
+      },
+      "lastViewedAt": {
+        "format": "date-time",
+        "instanceOf": "Date"
+      },
+      "userId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "userId",
+      "articleId",
+      "createdAt"
+    ],
+    "title": "UserArticleLink",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "userId": "a9f3c6e2-4b7d-11ee-b95a-0242ac120002",
+    "createdAt": "2023-11-18T14:27:35Z",
+    "lastPositiveFeedbackRepliedAt": "2023-12-02T09:45:12Z",
+    "lastRepliedAt": "2023-12-01T16:20:48Z",
+    "lastViewedAt": "2024-01-05T08:13:27Z"
+  },
+  "valid_json": {
+    "userId": "a9f3c6e2-4b7d-11ee-b95a-0242ac120002",
+    "articleId": "5d7b8a9c-2c1f-4e3a-9f6b-7d2c1e5f9b3a",
+    "createdAt": "2023-11-18T14:27:35Z",
+    "lastPositiveFeedbackRepliedAt": "2023-12-02T09:45:12Z",
+    "lastRepliedAt": "2023-12-01T16:20:48Z",
+    "lastViewedAt": "2024-01-05T08:13:27Z"
+  },
+  "description": "Subject: Activity Summary \u2013 User\u202fa9f3c6e2-4b7d-11ee-b95a-0242ac120002 & Article\u202f5d7b8a9c-2c1f-4e3a-9f6b-7d2c1e5f9b3a  \n\nThe link between the user (ID\u202fa9f3c6e2-4b7d-11ee-b95a-0242ac120002) and the article (ID\u202f5d7b8a9c-2c1f-4e3a-9f6b-7d2c1e5f9b3a) was established on 2023\u201111\u201118 at\u202f14:27:35\u202fUTC. Since then the user has engaged with the content multiple times: the most recent view occurred on 2024\u201101\u201105 at\u202f08:13:27\u202fUTC, the last reply was posted on 2023\u201112\u201101 at\u202f16:20:48\u202fUTC, and a positive\u2011feedback reply was recorded on 2023\u201112\u201102 at\u202f09:45:12\u202fUTC."
+}

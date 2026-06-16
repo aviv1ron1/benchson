@@ -1,0 +1,265 @@
+{
+  "name": "o67465",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "title": "Playbook syntax definition",
+    "description": "Playbooks are documents which describe the exact set of steps required to successfully start and finish a given software release. When the Release Engine begins a deployment, the actions it takes come directly from playbooks. For more information: http://release-engine.readthedocs.org/en/latest/playbooks.html",
+    "definitions": {
+      "group": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "hosts": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string"
+        }
+      },
+      "steps": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/definitions/step_types"
+        }
+      },
+      "step_types": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/step_string"
+          },
+          {
+            "$ref": "#/definitions/step_object"
+          }
+        ]
+      },
+      "step_string": {
+        "type": "string",
+        "pattern": "^[\\w]+:{1}[A-Z][\\w]+$"
+      },
+      "step_object": {
+        "type": "object",
+        "patternProperties": {
+          "^[\\w]+:{1}[A-Z][\\w]+$": {
+            "type": "object",
+            "properties": {
+              "notify": {
+                "$ref": "#/definitions/notify"
+              }
+            },
+            "minProperties": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "dynamic": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minItems": 1
+        }
+      },
+      "notify": {
+        "type": "object",
+        "properties": {
+          "started": {
+            "$ref": "#/definitions/notify_endpoints"
+          },
+          "completed": {
+            "$ref": "#/definitions/notify_endpoints"
+          },
+          "failed": {
+            "$ref": "#/definitions/notify_endpoints"
+          }
+        },
+        "additionalProperties": false
+      },
+      "notify_endpoints": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "execution": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hosts",
+            "steps",
+            "description"
+          ],
+          "properties": {
+            "hosts": {
+              "$ref": "#/definitions/hosts"
+            },
+            "steps": {
+              "$ref": "#/definitions/steps"
+            },
+            "preflight": {
+              "$ref": "#/definitions/steps"
+            },
+            "description": {
+              "$ref": "#/definitions/description"
+            }
+          }
+        }
+      }
+    },
+    "properties": {
+      "execution": {
+        "$ref": "#/definitions/execution"
+      },
+      "group": {
+        "$ref": "#/definitions/group"
+      },
+      "name": {
+        "$ref": "#/definitions/name"
+      }
+    },
+    "required": [
+      "execution",
+      "name",
+      "group"
+    ]
+  },
+  "erroneous_json": {
+    "group": "release-team",
+    "name": "v1.2.3-deployment",
+    "execution": [
+      {
+        "hosts": [
+          "app-server-01",
+          "app-server-02"
+        ],
+        "description": "Deploy application containers",
+        "steps": [
+          "docker:PullImage",
+          {
+            "service:RestartService": {
+              "notify": {
+                "started": {
+                  "email": [
+                    "devops@example.com"
+                  ]
+                },
+                "completed": {
+                  "email": [
+                    "ops@example.com"
+                  ],
+                  "slack": [
+                    "#deployments"
+                  ]
+                },
+                "failed": {
+                  "email": [
+                    "alerts@example.com"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "hosts": [
+          "db-server-01"
+        ],
+        "description": "Run database migrations",
+        "preflight": [
+          "db:CheckConnection"
+        ],
+        "steps": [
+          {
+            "migrations:Apply": {
+              "notify": {
+                "completed": {
+                  "slack": [
+                    "#db-migrations"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "group": "release-team",
+    "name": "v1.2.3-deployment",
+    "execution": [
+      {
+        "hosts": [
+          "app-server-01",
+          "app-server-02"
+        ],
+        "description": "Deploy application containers",
+        "steps": [
+          "docker:PullImage",
+          {
+            "service:RestartService": {
+              "notify": {
+                "started": {
+                  "email": [
+                    "devops@example.com"
+                  ]
+                },
+                "completed": {
+                  "email": [
+                    "ops@example.com"
+                  ],
+                  "slack": [
+                    "#deployments"
+                  ]
+                },
+                "failed": {
+                  "email": [
+                    "alerts@example.com"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "hosts": [
+          "db-server-01"
+        ],
+        "description": "Run database migrations",
+        "preflight": [
+          "db:CheckConnection"
+        ],
+        "steps": [
+          {
+            "migrations:Apply": {
+              "notify": {
+                "completed": {
+                  "slack": [
+                    "#db-migrations"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "description": "The release team is preparing the **v1.2.3\u2011deployment**. The rollout consists of two sequential execution blocks that target specific hosts and perform the necessary actions to bring the new version online.\n\nThe first block runs on **app\u2011server\u201101** and **app\u2011server\u201102** and is described as \u201cDeploy application containers\u201d. It begins with the step **docker:PullImage**, followed by **service:RestartService**. When the restart service step starts, an email will be sent to **devops@example.com**. Upon successful completion, a notification will go to **ops@example.com** and a message will be posted to the Slack channel **#deployments**. If the restart fails, an alert email will be sent to **alerts@example.com**.  \n\nThe second block targets **db\u2011server\u201101** under the description \u201cRun database migrations\u201d. Before the main step, it runs a pre\u2011flight check **db:CheckConnection**. The migration step **migrations:Apply** follows, and when it completes a notification will be posted to the Slack channel **#db-migrations**."
+}

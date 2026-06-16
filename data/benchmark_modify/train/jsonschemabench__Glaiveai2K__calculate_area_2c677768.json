@@ -1,0 +1,72 @@
+{
+  "name": "calculate_area_2c677768",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.3,
+      "base": 0,
+      "height": 0,
+      "radius": 0
+    }
+  },
+  "instructions": "Please decrease the \"width\" inside \"dimensions\" by 1.",
+  "ground_truth": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 7.300000000000001,
+      "base": 0,
+      "height": 0,
+      "radius": 0
+    }
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "dimensions",
+      "width"
+    ],
+    "precise_instruction": "Decrease \"width\" inside \"dimensions\" by 1."
+  }
+}

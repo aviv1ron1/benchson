@@ -1,0 +1,67 @@
+{
+  "name": "o39754",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "JSON schema for Azure Functions extensions.json files",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "extensions": {
+        "type": "array",
+        "description": "The list of installed extensions.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The short extension name.",
+              "type": "string",
+              "minLength": 0
+            },
+            "typeName": {
+              "description": "The type assembly qualified name.",
+              "type": "string"
+            },
+            "hintPath": {
+              "description": "An optional file path hint to the assembly containing the type.",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "extensions": [
+      "not-an-object",
+      {
+        "name": "EventGrid",
+        "typeName": "Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridExtension, Microsoft.Azure.WebJobs.Extensions.EventGrid",
+        "hintPath": "bin\\extensions\\Microsoft.Azure.WebJobs.Extensions.EventGrid.dll"
+      },
+      {
+        "name": "CosmosDB",
+        "typeName": "Microsoft.Azure.WebJobs.Extensions.CosmosDB.CosmosDBExtension, Microsoft.Azure.WebJobs.Extensions.CosmosDB"
+      }
+    ]
+  },
+  "valid_json": {
+    "extensions": [
+      {
+        "name": "BlobStorage",
+        "typeName": "Microsoft.Azure.WebJobs.Extensions.Storage.BlobExtension, Microsoft.Azure.WebJobs.Extensions.Storage",
+        "hintPath": "bin\\extensions\\Microsoft.Azure.WebJobs.Extensions.Storage.dll"
+      },
+      {
+        "name": "EventGrid",
+        "typeName": "Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridExtension, Microsoft.Azure.WebJobs.Extensions.EventGrid",
+        "hintPath": "bin\\extensions\\Microsoft.Azure.WebJobs.Extensions.EventGrid.dll"
+      },
+      {
+        "name": "CosmosDB",
+        "typeName": "Microsoft.Azure.WebJobs.Extensions.CosmosDB.CosmosDBExtension, Microsoft.Azure.WebJobs.Extensions.CosmosDB"
+      }
+    ]
+  },
+  "description": "The Azure Functions project currently includes three extensions. The **BlobStorage** extension is registered under the type name `Microsoft.Azure.WebJobs.Extensions.Storage.BlobExtension, Microsoft.Azure.WebJobs.Extensions.Storage` and its assembly can be found at `bin\\extensions\\Microsoft.Azure.WebJobs.Extensions.Storage.dll`. The **EventGrid** extension uses the type name `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridExtension, Microsoft.Azure.WebJobs.Extensions.EventGrid` with its binary located at `bin\\extensions\\Microsoft.Azure.WebJobs.Extensions.EventGrid.dll`. Finally, the **CosmosDB** extension is present with the type name `Microsoft.Azure.WebJobs.Extensions.CosmosDB.CosmosDBExtension, Microsoft.Azure.WebJobs.Extensions.CosmosDB`; this extension does not require an explicit hint path because it is resolved implicitly."
+}

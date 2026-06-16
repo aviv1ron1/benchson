@@ -1,0 +1,46 @@
+{
+  "name": "calculate_rental_income_bce2d46e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "property_details": {
+        "properties": {
+          "bedrooms": {
+            "description": "The number of bedrooms in the property",
+            "type": "integer"
+          },
+          "location": {
+            "description": "The location of the property",
+            "type": "string"
+          },
+          "rent_per_month": {
+            "description": "The rent per month for the property",
+            "type": "number"
+          }
+        },
+        "required": [
+          "location",
+          "bedrooms",
+          "rent_per_month"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "property_details"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "property_details": null
+  },
+  "valid_json": {
+    "property_details": {
+      "location": "Downtown Seattle, WA",
+      "bedrooms": 2,
+      "rent_per_month": 2350.0
+    }
+  },
+  "description": "Dear Prospective Tenant,\n\nI\u2019m pleased to share the details of a newly available rental located in downtown Seattle, WA. The apartment offers two spacious bedrooms, making it ideal for a small family or professionals seeking a comfortable living space. The monthly rent for this unit is $2,350.00, payable at the beginning of each month. \n\nPlease let me know if you would like to schedule a viewing or need any additional information."
+}

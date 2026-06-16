@@ -1,0 +1,310 @@
+{
+  "name": "o36797",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Short name of the test that will be used in reports."
+        },
+        "description": {
+          "type": "string",
+          "description": "Long description of the test."
+        },
+        "ignore": {
+          "type": "string",
+          "description": "Ignore test due to a reason",
+          "minLength": 10
+        },
+        "calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "args": {
+                "type": "object",
+                "minProperties": 1
+              },
+              "on": {
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "DELETE",
+                      "HEAD",
+                      "OPTIONS",
+                      "PATCH",
+                      "CONNECT",
+                      "TRACE"
+                    ]
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "headers": {
+                    "type": "object",
+                    "minProperties": 1,
+                    "properties": {
+                      "Accept": {
+                        "type": "string",
+                        "enum": [
+                          "application/json",
+                          "application/xml",
+                          "text/xml",
+                          "text/csv"
+                        ]
+                      },
+                      "Content-Type": {
+                        "type": "string",
+                        "enum": [
+                          "application/json",
+                          "application/xml",
+                          "text/xml",
+                          "text/csv"
+                        ]
+                      },
+                      "Authorization": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "params": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "body": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "bodyFile": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "method",
+                  "url"
+                ]
+              },
+              "expect": {
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "statusCode": {
+                    "type": "integer",
+                    "enum": [
+                      200,
+                      201,
+                      202,
+                      203,
+                      204,
+                      205,
+                      206,
+                      207,
+                      208,
+                      209,
+                      226,
+                      300,
+                      301,
+                      302,
+                      303,
+                      304,
+                      305,
+                      306,
+                      307,
+                      308,
+                      400,
+                      401,
+                      402,
+                      403,
+                      404,
+                      405,
+                      406,
+                      407,
+                      408,
+                      409,
+                      410,
+                      411,
+                      412,
+                      413,
+                      414,
+                      415,
+                      416,
+                      417,
+                      418,
+                      421,
+                      422,
+                      423,
+                      424,
+                      426,
+                      428,
+                      429,
+                      431,
+                      451,
+                      500,
+                      501,
+                      502,
+                      503,
+                      504,
+                      505,
+                      506,
+                      507,
+                      508,
+                      510,
+                      511
+                    ]
+                  },
+                  "contentType": {
+                    "type": "string"
+                  },
+                  "headers": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "body": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "bodySchemaFile": {
+                    "type": "string"
+                  },
+                  "bodySchemaURI": {
+                    "type": "string"
+                  },
+                  "absent": {
+                    "type": "array",
+                    "minItems": 1
+                  }
+                },
+                "additionalProperties": false
+              },
+              "remember": {
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "body": {
+                    "type": "object",
+                    "minProperties": 1
+                  },
+                  "headers": {
+                    "type": "object",
+                    "minProperties": 1
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "on",
+              "expect"
+            ]
+          }
+        }
+      },
+      "required": [
+        "calls"
+      ]
+    }
+  },
+  "description": "Subject: API Test Suite \u2013 Summary of Current Test Cases  \n\nThe first test, **GetUser**, is intended to retrieve user details by ID. Its description reads \u201cRetrieve user details by ID.\u201d The test is executed with the argument `userId = 123` and performs a **GET** request to `https://api.example.com/users/123`. The request includes the headers **Accept: application/json** and **Authorization: Bearer abcdef12345**, and a query parameter `verbose=true`. The expected response is a **200** status code, with a content type of **application/json**. The response must contain a **Content\u2011Type: application/json** header and a JSON body `{ \"id\": 123, \"name\": \"John\u00a0Doe\" }`. Additionally, the test captures the value of `$.authToken` from the response body for later use.  \n\nThe second test, **CreateOrder**, is described as \u201cCreate a new order with items.\u201d This test is currently marked to be ignored with the reason \u201cTemporary skip until payment service is stable.\u201d When run, it receives the argument `orderId = \"ORD-9876\"` and sends a **POST** request to `https://api.example.com/orders`. The request headers are **Accept: application/json**, **Content\u2011Type: application/json**, and **Authorization: Bearer xyz789**. Its JSON payload includes `customerId: 456` and an `items` array containing `{ \"productId\": \"P001\", \"quantity\": 2 }` and `{ \"productId\": \"P002\", \"quantity\": 1 }`. The expected outcome is a **201** status code, a content type of **application/json**, a **Location** header set to `/orders/ORD-9876`, and a response body `{ \"orderId\": \"ORD-9876\", \"status\": \"created\" }`.",
+  "reference_json": [
+    {
+      "name": "GetUser",
+      "description": "Retrieve user details by ID.",
+      "calls": [
+        {
+          "args": {
+            "userId": 123
+          },
+          "on": {
+            "method": "GET",
+            "url": "https://api.example.com/users/123",
+            "headers": {
+              "Accept": "application/json",
+              "Authorization": "Bearer abcdef12345"
+            },
+            "params": {
+              "verbose": "true"
+            }
+          },
+          "expect": {
+            "statusCode": 200,
+            "contentType": "application/json",
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "id": 123,
+              "name": "John Doe"
+            }
+          },
+          "remember": {
+            "body": {
+              "token": "$.authToken"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateOrder",
+      "description": "Create a new order with items.",
+      "ignore": "Temporary skip until payment service is stable",
+      "calls": [
+        {
+          "args": {
+            "orderId": "ORD-9876"
+          },
+          "on": {
+            "method": "POST",
+            "url": "https://api.example.com/orders",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "Authorization": "Bearer xyz789"
+            },
+            "body": {
+              "customerId": 456,
+              "items": [
+                {
+                  "productId": "P001",
+                  "quantity": 2
+                },
+                {
+                  "productId": "P002",
+                  "quantity": 1
+                }
+              ]
+            }
+          },
+          "expect": {
+            "statusCode": 201,
+            "contentType": "application/json",
+            "headers": {
+              "Location": "/orders/ORD-9876"
+            },
+            "body": {
+              "orderId": "ORD-9876",
+              "status": "created"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "o6235",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "email": {
+        "_format": "email",
+        "maxLength": 1024,
+        "type": "string"
+      },
+      "role": {
+        "enum": [
+          "admin",
+          "edit",
+          "view"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "email",
+      "role"
+    ],
+    "type": "object"
+  },
+  "description": "The account registered under the email address\u202fjane.doe@example.com is assigned the **edit** role. This permission grants the user the ability to modify existing content while restricting access to administrative functions.",
+  "reference_json": {
+    "email": "jane.doe@example.com",
+    "role": "edit"
+  }
+}

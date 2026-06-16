@@ -1,0 +1,426 @@
+{
+  "name": "o17944",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "patternProperties": {
+      "^[a-zA-Z0-9._-]+$": {
+        "$ref": "#/definitions/service"
+      }
+    },
+    "definitions": {
+      "service": {
+        "type": "object",
+        "properties": {
+          "build": {
+            "type": "string"
+          },
+          "cap_add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "cap_drop": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "command": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "container_name": {
+            "type": "string"
+          },
+          "cpu_shares": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "cpuset": {
+            "type": "string"
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "dns": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dns_search": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dockerfile": {
+            "type": "string"
+          },
+          "domainname": {
+            "type": "string"
+          },
+          "entrypoint": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "env_file": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "environment": {
+            "oneOf": [
+              {
+                "type": "object",
+                "patternProperties": {
+                  "^[^-]+$": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ],
+                    "format": "environment"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "_uniqueItems": true
+              }
+            ]
+          },
+          "expose": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "_uniqueItems": true
+          },
+          "extends": {
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "service"
+            ],
+            "additionalProperties": false
+          },
+          "extra_hosts": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "external_links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "labels": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "log_driver": {
+            "type": "string"
+          },
+          "log_opt": {
+            "type": "object"
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "mem_limit": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "memswap_limit": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "net": {
+            "type": "string"
+          },
+          "pid": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ports": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "ports"
+                },
+                {
+                  "type": "number",
+                  "format": "ports"
+                }
+              ]
+            },
+            "_uniqueItems": true
+          },
+          "privileged": {
+            "type": "boolean"
+          },
+          "read_only": {
+            "type": "boolean"
+          },
+          "restart": {
+            "type": "string"
+          },
+          "security_opt": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "stdin_open": {
+            "type": "boolean"
+          },
+          "tty": {
+            "type": "boolean"
+          },
+          "user": {
+            "type": "string"
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "volume_driver": {
+            "type": "string"
+          },
+          "volumes_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "working_dir": {
+            "type": "string"
+          }
+        },
+        "dependencies": {
+          "memswap_limit": [
+            "mem_limit"
+          ]
+        },
+        "additionalProperties": false
+      },
+      "string_or_list": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/definitions/list_of_strings"
+          }
+        ]
+      },
+      "list_of_strings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true
+      },
+      "list_or_dict": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          {
+            "type": "object"
+          }
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "my_web",
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "environment": {
+        "ENV": "production",
+        "DEBUG": false,
+        "MAX_CONNECTIONS": 100
+      },
+      "volumes": [
+        "/var/www:/usr/share/nginx/html:ro"
+      ],
+      "restart": "always",
+      "labels": {
+        "com.example.description": "Web server"
+      },
+      "extra_hosts": [
+        "db:10.0.0.2"
+      ],
+      "net": "frontend",
+      "log_driver": "json-file",
+      "log_opt": {
+        "max-size": "10m",
+        "max-file": "3"
+      },
+      "cpu_shares": 512,
+      "mem_limit": "256m"
+    },
+    "db": {
+      "image": "postgres:13",
+      "container_name": "my_db",
+      "environment": [
+        "POSTGRES_PASSWORD=secret",
+        "POSTGRES_DB=mydb"
+      ],
+      "ports": [
+        5432
+      ],
+      "volumes": [
+        "/var/lib/postgresql/data:/var/lib/postgresql/data"
+      ],
+      "restart": "unless-stopped",
+      "labels": [
+        "tier=backend"
+      ],
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "cap_add": [
+        "NET_ADMIN"
+      ],
+      "cap_drop": [
+        "MKNOD"
+      ],
+      "command": [
+        "postgres",
+        "-c",
+        "max_connections=200"
+      ]
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "my_web",
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "environment": {
+        "ENV": "production",
+        "DEBUG": false,
+        "MAX_CONNECTIONS": 100
+      },
+      "volumes": [
+        "/var/www:/usr/share/nginx/html:ro"
+      ],
+      "restart": "always",
+      "labels": {
+        "com.example.description": "Web server"
+      },
+      "extra_hosts": [
+        "db:10.0.0.2"
+      ],
+      "net": "frontend",
+      "log_driver": "json-file",
+      "log_opt": {
+        "max-size": "10m",
+        "max-file": "3"
+      },
+      "cpu_shares": 512,
+      "mem_limit": "256m"
+    },
+    "db": {
+      "image": "postgres:13",
+      "container_name": "my_db",
+      "environment": [
+        "POSTGRES_PASSWORD=secret",
+        "POSTGRES_DB=mydb"
+      ],
+      "ports": [
+        5432
+      ],
+      "volumes": [
+        "/var/lib/postgresql/data:/var/lib/postgresql/data"
+      ],
+      "restart": "unless-stopped",
+      "labels": [
+        "tier=backend"
+      ],
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "cap_add": [
+        "NET_ADMIN"
+      ],
+      "cap_drop": [
+        "MKNOD"
+      ],
+      "command": [
+        "postgres",
+        "-c",
+        "max_connections=200"
+      ]
+    }
+  },
+  "description": "Dear Team,\n\nBelow is the current Docker Compose configuration for our two core containers. The **web** service runs the latest\u202fNGINX image under the container name **my_web**. It exposes ports\u202f80\u202f\u2192\u202f80 and\u202f443\u202f\u2192\u202f443, and is attached to the **frontend** network. Environment variables set for this service are\u202fENV=production,\u202fDEBUG=false, and\u202fMAX_CONNECTIONS=100. Its document root is mounted read\u2011only from **/var/www** on the host to **/usr/share/nginx/html** inside the container. The container will always restart (restart policy\u202f*always*), carries the label **com.example.description=Web server**, and resolves the hostname **db** to **10.0.0.2** via an extra host entry. Logging is handled by the\u202fjson\u2011file\u202fdriver with a maximum size of\u202f10\u202fMiB per file and up to\u202f3\u202ffiles retained. Resource limits are set to a CPU share of\u202f512 and a memory cap of\u202f256\u202fMiB.\n\nThe **db** service uses the\u202fpostgres:13\u202fimage and is named **my_db**. It receives two environment variables\u2014**POSTGRES_PASSWORD=secret** and **POSTGRES_DB=mydb**\u2014and maps the host port\u202f5432\u202fdirectly to the container. Persistent storage is provided by binding **/var/lib/postgresql/data** on the host to the same path inside the container. This service restarts unless stopped (restart policy\u202f*unless\u2011stopped*) and is labeled **tier=backend**. Memory is limited to\u202f512\u202fMiB with a swap ceiling of\u202f1\u202fGiB. Additional capabilities include adding **NET_ADMIN** and dropping **MKNOD**. Finally, the startup command overrides the default with\u202f`postgres -c max_connections=200`."
+}

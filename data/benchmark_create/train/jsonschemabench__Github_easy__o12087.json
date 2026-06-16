@@ -1,0 +1,51 @@
+{
+  "name": "o12087",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "items": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "score",
+        "userId"
+      ],
+      "type": "object"
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "score/items",
+      "vendor": "com.nordstrom",
+      "version": "1-0-0"
+    },
+    "type": "array"
+  },
+  "description": "Dear Team,\n\nPlease find below the latest performance scores for our user base.\u202fUser\u202f001 (ID:\u202fuser_001) holds an admin role and achieved a score of\u202f85.5.\u202fUser\u202f002 (ID:\u202fuser_002) recorded a score of\u202f92, with no specific role assigned at this time.\u202fUser\u202f003 (ID:\u202fuser_003) serves as a viewer and posted a score of\u202f78.25.\n\nLet me know if you need any additional details or if there are any updates to the role assignments.",
+  "reference_json": [
+    {
+      "userId": "user_001",
+      "score": 85.5,
+      "role": "admin"
+    },
+    {
+      "userId": "user_002",
+      "score": 92
+    },
+    {
+      "userId": "user_003",
+      "score": 78.25,
+      "role": "viewer"
+    }
+  ]
+}

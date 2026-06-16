@@ -1,0 +1,35 @@
+{
+  "name": "o85927",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.10.5/traits/trait_geo.json",
+    "title": "Geo",
+    "description": "Latitidue and Longitude of the content",
+    "type": "object",
+    "properties": {
+      "latitude": {
+        "type": "number"
+      },
+      "longitude": {
+        "type": "number"
+      }
+    }
+  },
+  "data": {
+    "latitude": 37.7749,
+    "longitude": -122.4194
+  },
+  "instructions": "Could you remove the longitude field?",
+  "ground_truth": {
+    "latitude": 37.7749
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "longitude"
+    ],
+    "precise_instruction": "Remove the \"longitude\" field."
+  }
+}

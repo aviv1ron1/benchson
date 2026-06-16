@@ -1,0 +1,94 @@
+{
+  "name": "o41229",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "required": [
+      "config",
+      "inputs"
+    ],
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "required": [
+          "file"
+        ],
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "dicom"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "config": {
+        "required": [
+          "destination",
+          "called_ae",
+          "calling_ae",
+          "port"
+        ],
+        "type": "object",
+        "properties": {
+          "destination": {
+            "type": "string"
+          },
+          "called_ae": {
+            "type": "string"
+          },
+          "calling_ae": {
+            "default": "flywheel",
+            "type": "string"
+          },
+          "port": {
+            "default": "104",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "title": "Invocation manifest for DCMTK: DICOM Send - storescu"
+  },
+  "data": {
+    "config": {
+      "destination": "192.168.1.100",
+      "called_ae": "PACS_SCU",
+      "calling_ae": "FLYWHEEL",
+      "port": 104
+    },
+    "inputs": {
+      "file": {
+        "type": "dicom"
+      }
+    }
+  },
+  "instructions": "Please increase the \"port\" field inside \"config\" by 1.",
+  "ground_truth": {
+    "config": {
+      "destination": "192.168.1.100",
+      "called_ae": "PACS_SCU",
+      "calling_ae": "FLYWHEEL",
+      "port": 105
+    },
+    "inputs": {
+      "file": {
+        "type": "dicom"
+      }
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "config",
+      "port"
+    ],
+    "precise_instruction": "Increase \"port\" inside \"config\" by 1."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "create_calendar_event_ede3b10f",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "end_time": {
+        "description": "The end time of the event in ISO 8601 format",
+        "format": "date-time",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the event",
+        "type": "string"
+      },
+      "start_time": {
+        "description": "The start time of the event in ISO 8601 format",
+        "format": "date-time",
+        "type": "string"
+      },
+      "title": {
+        "description": "The title of the event",
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "start_time",
+      "end_time"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "title": "Annual Marketing Strategy Workshop",
+    "start_time": "2024-11-05T09:00:00-05:00",
+    "location": "Grand Conference Hall, 123 Business Ave, Metropolis"
+  },
+  "valid_json": {
+    "title": "Annual Marketing Strategy Workshop",
+    "start_time": "2024-11-05T09:00:00-05:00",
+    "end_time": "2024-11-05T16:30:00-05:00",
+    "location": "Grand Conference Hall, 123 Business Ave, Metropolis"
+  },
+  "description": "Please be advised that the **Annual Marketing Strategy Workshop** is scheduled for **2024\u201111\u201105**. The session will commence at **09:00\u202fAM** (ISO\u202f8601: `2024-11-05T09:00:00-05:00`) and conclude at **04:30\u202fPM** (ISO\u202f8601: `2024-11-05T16:30:00-05:00`). It will be held in the **Grand Conference Hall, 123 Business Ave, Metropolis**."
+}

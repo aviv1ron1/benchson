@@ -1,0 +1,69 @@
+{
+  "name": "o9401",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "articles",
+      "filteredArticles"
+    ],
+    "properties": {
+      "navigation": {
+        "type": "object",
+        "required": [
+          "parameterName"
+        ],
+        "properties": {
+          "parameterName": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet",
+            "description": "Place parameter to use for the search string."
+          }
+        }
+      },
+      "articles": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet",
+            "description": "ID of the resource for the unfiltered list of articles to subscribe to."
+          }
+        }
+      },
+      "filteredArticles": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "outlet",
+            "description": "ID of the resource under which the filtered list of articles is published."
+          }
+        }
+      }
+    }
+  },
+  "description": "In the current content pipeline, the query string to be used for navigation is defined by the parameter **search.term**. All incoming articles are consumed from the unfiltered feed located at **topic/articles/unfiltered**, where they are processed according to the applied filters. Once the filtering is complete, the refined set of articles is published to the outlet **topic/articles/filtered** for downstream consumption.",
+  "reference_json": {
+    "navigation": {
+      "parameterName": "search.term"
+    },
+    "articles": {
+      "resource": "topic/articles/unfiltered"
+    },
+    "filteredArticles": {
+      "resource": "topic/articles/filtered"
+    }
+  }
+}

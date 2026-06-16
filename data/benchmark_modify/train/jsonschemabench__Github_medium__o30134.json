@@ -1,0 +1,182 @@
+{
+  "name": "o30134",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "accounting": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "authentication": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "authservretry": {
+        "type": "integer"
+      },
+      "authtimeout": {
+        "type": "integer"
+      },
+      "callingstationid": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "defaultauthenticationgroup": {
+        "type": "string"
+      },
+      "failure": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "ipaddress": {
+        "readonly": true,
+        "type": "string"
+      },
+      "ipattributetype": {
+        "type": "integer"
+      },
+      "ipvendorid": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "passencoding": {
+        "enum": [
+          "pap",
+          "chap",
+          "mschapv1",
+          "mschapv2"
+        ],
+        "type": "string"
+      },
+      "pwdattributetype": {
+        "type": "integer"
+      },
+      "pwdvendorid": {
+        "type": "integer"
+      },
+      "radattributetype": {
+        "type": "integer"
+      },
+      "radgroupseparator": {
+        "type": "string"
+      },
+      "radgroupsprefix": {
+        "type": "string"
+      },
+      "radkey": {
+        "type": "string"
+      },
+      "radnasid": {
+        "type": "string"
+      },
+      "radnasip": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "radvendorid": {
+        "type": "integer"
+      },
+      "serverip": {
+        "type": "string"
+      },
+      "servername": {
+        "type": "string"
+      },
+      "serverport": {
+        "type": "integer"
+      },
+      "success": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "tunnelendpointclientip": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "authenticationradiusaction",
+    "type": "object"
+  },
+  "data": {
+    "accounting": "ON",
+    "authentication": "ON",
+    "authservretry": 3,
+    "authtimeout": 30,
+    "callingstationid": "ENABLED",
+    "defaultauthenticationgroup": "DefaultGroup",
+    "failure": 5,
+    "ipaddress": "192.168.1.100",
+    "ipattributetype": 1,
+    "ipvendorid": 1234,
+    "name": "RadiusAction1",
+    "passencoding": "mschapv2",
+    "pwdattributetype": 2,
+    "pwdvendorid": 5678,
+    "radattributetype": 3,
+    "radgroupseparator": ",",
+    "radgroupsprefix": "RG_",
+    "radkey": "secretKey123",
+    "radnasid": "NAS12345",
+    "radnasip": "ENABLED",
+    "radvendorid": 9,
+    "serverip": "10.0.0.5",
+    "servername": "radius.example.com",
+    "serverport": 1812,
+    "success": 120,
+    "tunnelendpointclientip": "DISABLED"
+  },
+  "instructions": "Could you increase the ipvendorid by 1?",
+  "ground_truth": {
+    "accounting": "ON",
+    "authentication": "ON",
+    "authservretry": 3,
+    "authtimeout": 30,
+    "callingstationid": "ENABLED",
+    "defaultauthenticationgroup": "DefaultGroup",
+    "failure": 5,
+    "ipaddress": "192.168.1.100",
+    "ipattributetype": 1,
+    "ipvendorid": 1235,
+    "name": "RadiusAction1",
+    "passencoding": "mschapv2",
+    "pwdattributetype": 2,
+    "pwdvendorid": 5678,
+    "radattributetype": 3,
+    "radgroupseparator": ",",
+    "radgroupsprefix": "RG_",
+    "radkey": "secretKey123",
+    "radnasid": "NAS12345",
+    "radnasip": "ENABLED",
+    "radvendorid": 9,
+    "serverip": "10.0.0.5",
+    "servername": "radius.example.com",
+    "serverport": 1812,
+    "success": 120,
+    "tunnelendpointclientip": "DISABLED"
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "ipvendorid"
+    ],
+    "precise_instruction": "Increase \"ipvendorid\" by 1."
+  }
+}

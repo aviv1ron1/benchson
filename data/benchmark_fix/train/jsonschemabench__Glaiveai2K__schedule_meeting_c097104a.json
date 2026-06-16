@@ -1,0 +1,59 @@
+{
+  "name": "schedule_meeting_c097104a",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "date": {
+        "description": "The date of the meeting",
+        "format": "date",
+        "type": "string"
+      },
+      "end_time": {
+        "description": "The end time of the meeting",
+        "format": "time",
+        "type": "string"
+      },
+      "participants": {
+        "description": "The list of participants' email addresses",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "start_time": {
+        "description": "The start time of the meeting",
+        "format": "time",
+        "type": "string"
+      }
+    },
+    "required": [
+      "participants",
+      "date",
+      "start_time",
+      "end_time"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "date": null,
+    "start_time": "09:30:00",
+    "end_time": "11:00:00",
+    "participants": [
+      "alice.smith@example.com",
+      "bob.johnson@example.org",
+      "carol.wilson@example.net"
+    ]
+  },
+  "valid_json": {
+    "date": "2026-07-14",
+    "start_time": "09:30:00",
+    "end_time": "11:00:00",
+    "participants": [
+      "alice.smith@example.com",
+      "bob.johnson@example.org",
+      "carol.wilson@example.net"
+    ]
+  },
+  "description": "Subject: Team Meeting \u2013 July\u202f14,\u202f2026  \n\nDear colleagues,\n\nYou are invited to a meeting on **July\u202f14,\u202f2026** that will run from **09:30:00** to **11:00:00**. The discussion will involve the following participants: alice.smith@example.com, bob.johnson@example.org, and carol.wilson@example.net. Please mark your calendars and be prepared to join at the scheduled start time.\n\nLooking forward to a productive session."
+}

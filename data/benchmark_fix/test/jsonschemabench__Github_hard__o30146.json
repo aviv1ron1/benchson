@@ -1,0 +1,601 @@
+{
+  "name": "o30146",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "properties": {
+      "assertionconsumerserviceurl": {
+        "type": "string"
+      },
+      "attribute1": {
+        "type": "string"
+      },
+      "attribute10": {
+        "type": "string"
+      },
+      "attribute10expr": {
+        "type": "string"
+      },
+      "attribute10format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute10friendlyname": {
+        "type": "string"
+      },
+      "attribute11": {
+        "type": "string"
+      },
+      "attribute11expr": {
+        "type": "string"
+      },
+      "attribute11format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute11friendlyname": {
+        "type": "string"
+      },
+      "attribute12": {
+        "type": "string"
+      },
+      "attribute12expr": {
+        "type": "string"
+      },
+      "attribute12format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute12friendlyname": {
+        "type": "string"
+      },
+      "attribute13": {
+        "type": "string"
+      },
+      "attribute13expr": {
+        "type": "string"
+      },
+      "attribute13format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute13friendlyname": {
+        "type": "string"
+      },
+      "attribute14": {
+        "type": "string"
+      },
+      "attribute14expr": {
+        "type": "string"
+      },
+      "attribute14format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute14friendlyname": {
+        "type": "string"
+      },
+      "attribute15": {
+        "type": "string"
+      },
+      "attribute15expr": {
+        "type": "string"
+      },
+      "attribute15format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute15friendlyname": {
+        "type": "string"
+      },
+      "attribute16": {
+        "type": "string"
+      },
+      "attribute16expr": {
+        "type": "string"
+      },
+      "attribute16format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute16friendlyname": {
+        "type": "string"
+      },
+      "attribute1expr": {
+        "type": "string"
+      },
+      "attribute1format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute1friendlyname": {
+        "type": "string"
+      },
+      "attribute2": {
+        "type": "string"
+      },
+      "attribute2expr": {
+        "type": "string"
+      },
+      "attribute2format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute2friendlyname": {
+        "type": "string"
+      },
+      "attribute3": {
+        "type": "string"
+      },
+      "attribute3expr": {
+        "type": "string"
+      },
+      "attribute3format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute3friendlyname": {
+        "type": "string"
+      },
+      "attribute4": {
+        "type": "string"
+      },
+      "attribute4expr": {
+        "type": "string"
+      },
+      "attribute4format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute4friendlyname": {
+        "type": "string"
+      },
+      "attribute5": {
+        "type": "string"
+      },
+      "attribute5expr": {
+        "type": "string"
+      },
+      "attribute5format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute5friendlyname": {
+        "type": "string"
+      },
+      "attribute6": {
+        "type": "string"
+      },
+      "attribute6expr": {
+        "type": "string"
+      },
+      "attribute6format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute6friendlyname": {
+        "type": "string"
+      },
+      "attribute7": {
+        "type": "string"
+      },
+      "attribute7expr": {
+        "type": "string"
+      },
+      "attribute7format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute7friendlyname": {
+        "type": "string"
+      },
+      "attribute8": {
+        "type": "string"
+      },
+      "attribute8expr": {
+        "type": "string"
+      },
+      "attribute8format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute8friendlyname": {
+        "type": "string"
+      },
+      "attribute9": {
+        "type": "string"
+      },
+      "attribute9expr": {
+        "type": "string"
+      },
+      "attribute9format": {
+        "enum": [
+          "URI",
+          "Basic"
+        ],
+        "type": "string"
+      },
+      "attribute9friendlyname": {
+        "type": "string"
+      },
+      "audience": {
+        "type": "string"
+      },
+      "defaultauthenticationgroup": {
+        "type": "string"
+      },
+      "digestmethod": {
+        "enum": [
+          "SHA1",
+          "SHA256"
+        ],
+        "type": "string"
+      },
+      "encryptassertion": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "encryptionalgorithm": {
+        "enum": [
+          "DES3",
+          "AES128",
+          "AES192",
+          "AES256"
+        ],
+        "type": "string"
+      },
+      "keytransportalg": {
+        "enum": [
+          "RSA-V1_5",
+          "RSA_OAEP"
+        ],
+        "type": "string"
+      },
+      "logoutbinding": {
+        "enum": [
+          "REDIRECT",
+          "POST"
+        ],
+        "type": "string"
+      },
+      "metadataimportstatus": {
+        "enum": [
+          "INIT",
+          "SUCCESS",
+          "FAIL"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "metadatarefreshinterval": {
+        "type": "integer"
+      },
+      "metadataurl": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "nameidexpr": {
+        "type": "string"
+      },
+      "nameidformat": {
+        "enum": [
+          "Unspecified",
+          "emailAddress",
+          "X509SubjectName",
+          "WindowsDomainQualifiedName",
+          "kerberos",
+          "entity",
+          "persistent",
+          "transient"
+        ],
+        "type": "string"
+      },
+      "rejectunsignedrequests": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "samlbinding": {
+        "enum": [
+          "REDIRECT",
+          "POST",
+          "ARTIFACT"
+        ],
+        "type": "string"
+      },
+      "samlidpcertname": {
+        "type": "string"
+      },
+      "samlissuername": {
+        "type": "string"
+      },
+      "samlsigningcertversion": {
+        "type": "string"
+      },
+      "samlspcertname": {
+        "type": "string"
+      },
+      "samlspcertversion": {
+        "type": "string"
+      },
+      "sendpassword": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "serviceproviderid": {
+        "type": "string"
+      },
+      "signassertion": {
+        "enum": [
+          "NONE",
+          "ASSERTION",
+          "RESPONSE",
+          "BOTH"
+        ],
+        "type": "string"
+      },
+      "signaturealg": {
+        "enum": [
+          "RSA-SHA1",
+          "RSA-SHA256"
+        ],
+        "type": "string"
+      },
+      "signatureservice": {
+        "type": "string"
+      },
+      "skewtime": {
+        "type": "integer"
+      },
+      "splogouturl": {
+        "type": "string"
+      }
+    },
+    "title": "authenticationsamlidpprofile",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "assertionconsumerserviceurl": "https://sp.example.com/SAML2/ACS",
+    "attribute1": "uid",
+    "attribute1expr": "${user.uid}",
+    "attribute1format": "Basic",
+    "attribute1friendlyname": "User ID",
+    "attribute2": "mail",
+    "attribute2expr": "${user.mail}",
+    "attribute2format": "Basic",
+    "attribute2friendlyname": "Email Address",
+    "attribute3": "givenName",
+    "attribute3expr": "${user.firstName}",
+    "attribute3format": "Basic",
+    "attribute3friendlyname": "First Name",
+    "attribute4": "sn",
+    "attribute4expr": "${user.lastName}",
+    "attribute4format": "Basic",
+    "attribute4friendlyname": "Last Name",
+    "attribute5": "department",
+    "attribute5expr": "${user.department}",
+    "attribute5format": "Basic",
+    "attribute5friendlyname": "Department",
+    "attribute6": "title",
+    "attribute6expr": "${user.title}",
+    "attribute6format": "Basic",
+    "attribute6friendlyname": "Job Title",
+    "attribute7": "telephoneNumber",
+    "attribute7expr": "${user.phone}",
+    "attribute7format": "Basic",
+    "attribute7friendlyname": "Phone Number",
+    "attribute8": "memberOf",
+    "attribute8expr": "${user.groups}",
+    "attribute8format": "Basic",
+    "attribute8friendlyname": "Groups",
+    "attribute9": "employeeNumber",
+    "attribute9expr": "${user.employeeNumber}",
+    "attribute9format": "Basic",
+    "attribute9friendlyname": "Employee Number",
+    "attribute10": "preferredLanguage",
+    "attribute10expr": "${user.language}",
+    "attribute10format": "Basic",
+    "attribute10friendlyname": "Preferred Language",
+    "attribute11": "locale",
+    "attribute11expr": "${user.locale}",
+    "attribute11format": "Basic",
+    "attribute11friendlyname": "Locale",
+    "attribute12": "postalCode",
+    "attribute12expr": "${user.postalCode}",
+    "attribute12format": "Basic",
+    "attribute12friendlyname": "Postal Code",
+    "attribute13": "streetAddress",
+    "attribute13expr": "${user.street}",
+    "attribute13format": "Basic",
+    "attribute13friendlyname": "Street Address",
+    "attribute14": "city",
+    "attribute14expr": "${user.city}",
+    "attribute14format": "Basic",
+    "attribute14friendlyname": "City",
+    "attribute15": "state",
+    "attribute15expr": "${user.state}",
+    "attribute15format": "Basic",
+    "attribute15friendlyname": "State/Province",
+    "attribute16": null,
+    "attribute16expr": "${user.country}",
+    "attribute16format": "Basic",
+    "attribute16friendlyname": "Country",
+    "audience": "https://sp.example.com/",
+    "defaultauthenticationgroup": "SAMLUsers",
+    "digestmethod": "SHA256",
+    "encryptassertion": "ON",
+    "encryptionalgorithm": "AES256",
+    "keytransportalg": "RSA_OAEP",
+    "logoutbinding": "POST",
+    "metadataimportstatus": "SUCCESS",
+    "metadatarefreshinterval": 1440,
+    "metadataurl": "https://idp.example.com/metadata.xml",
+    "name": "ExampleCorp SAML IdP Profile",
+    "nameidexpr": "${user.email}",
+    "nameidformat": "emailAddress",
+    "rejectunsignedrequests": "OFF",
+    "samlbinding": "POST",
+    "samlidpcertname": "idp_cert.pem",
+    "samlissuername": "https://idp.example.com/",
+    "samlsigningcertversion": "v3",
+    "samlspcertname": "sp_cert.pem",
+    "samlspcertversion": "v3",
+    "sendpassword": "OFF",
+    "serviceproviderid": "https://sp.example.com/",
+    "signassertion": "BOTH",
+    "signaturealg": "RSA-SHA256",
+    "signatureservice": "https://idp.example.com/sign",
+    "skewtime": 300,
+    "splogouturl": "https://sp.example.com/logout"
+  },
+  "valid_json": {
+    "assertionconsumerserviceurl": "https://sp.example.com/SAML2/ACS",
+    "attribute1": "uid",
+    "attribute1expr": "${user.uid}",
+    "attribute1format": "Basic",
+    "attribute1friendlyname": "User ID",
+    "attribute2": "mail",
+    "attribute2expr": "${user.mail}",
+    "attribute2format": "Basic",
+    "attribute2friendlyname": "Email Address",
+    "attribute3": "givenName",
+    "attribute3expr": "${user.firstName}",
+    "attribute3format": "Basic",
+    "attribute3friendlyname": "First Name",
+    "attribute4": "sn",
+    "attribute4expr": "${user.lastName}",
+    "attribute4format": "Basic",
+    "attribute4friendlyname": "Last Name",
+    "attribute5": "department",
+    "attribute5expr": "${user.department}",
+    "attribute5format": "Basic",
+    "attribute5friendlyname": "Department",
+    "attribute6": "title",
+    "attribute6expr": "${user.title}",
+    "attribute6format": "Basic",
+    "attribute6friendlyname": "Job Title",
+    "attribute7": "telephoneNumber",
+    "attribute7expr": "${user.phone}",
+    "attribute7format": "Basic",
+    "attribute7friendlyname": "Phone Number",
+    "attribute8": "memberOf",
+    "attribute8expr": "${user.groups}",
+    "attribute8format": "Basic",
+    "attribute8friendlyname": "Groups",
+    "attribute9": "employeeNumber",
+    "attribute9expr": "${user.employeeNumber}",
+    "attribute9format": "Basic",
+    "attribute9friendlyname": "Employee Number",
+    "attribute10": "preferredLanguage",
+    "attribute10expr": "${user.language}",
+    "attribute10format": "Basic",
+    "attribute10friendlyname": "Preferred Language",
+    "attribute11": "locale",
+    "attribute11expr": "${user.locale}",
+    "attribute11format": "Basic",
+    "attribute11friendlyname": "Locale",
+    "attribute12": "postalCode",
+    "attribute12expr": "${user.postalCode}",
+    "attribute12format": "Basic",
+    "attribute12friendlyname": "Postal Code",
+    "attribute13": "streetAddress",
+    "attribute13expr": "${user.street}",
+    "attribute13format": "Basic",
+    "attribute13friendlyname": "Street Address",
+    "attribute14": "city",
+    "attribute14expr": "${user.city}",
+    "attribute14format": "Basic",
+    "attribute14friendlyname": "City",
+    "attribute15": "state",
+    "attribute15expr": "${user.state}",
+    "attribute15format": "Basic",
+    "attribute15friendlyname": "State/Province",
+    "attribute16": "country",
+    "attribute16expr": "${user.country}",
+    "attribute16format": "Basic",
+    "attribute16friendlyname": "Country",
+    "audience": "https://sp.example.com/",
+    "defaultauthenticationgroup": "SAMLUsers",
+    "digestmethod": "SHA256",
+    "encryptassertion": "ON",
+    "encryptionalgorithm": "AES256",
+    "keytransportalg": "RSA_OAEP",
+    "logoutbinding": "POST",
+    "metadataimportstatus": "SUCCESS",
+    "metadatarefreshinterval": 1440,
+    "metadataurl": "https://idp.example.com/metadata.xml",
+    "name": "ExampleCorp SAML IdP Profile",
+    "nameidexpr": "${user.email}",
+    "nameidformat": "emailAddress",
+    "rejectunsignedrequests": "OFF",
+    "samlbinding": "POST",
+    "samlidpcertname": "idp_cert.pem",
+    "samlissuername": "https://idp.example.com/",
+    "samlsigningcertversion": "v3",
+    "samlspcertname": "sp_cert.pem",
+    "samlspcertversion": "v3",
+    "sendpassword": "OFF",
+    "serviceproviderid": "https://sp.example.com/",
+    "signassertion": "BOTH",
+    "signaturealg": "RSA-SHA256",
+    "signatureservice": "https://idp.example.com/sign",
+    "skewtime": 300,
+    "splogouturl": "https://sp.example.com/logout"
+  },
+  "description": "The SAML IdP profile titled **\u201cExampleCorp SAML IdP Profile\u201d** is configured to issue assertions to the service provider at **https://sp.example.com/** using the service\u2011provider identifier **https://sp.example.com/** and the assertion consumer service URL **https://sp.example.com/SAML2/ACS**.  The IdP\u2019s issuer name is **https://idp.example.com/**, signed with the certificate file **idp_cert.pem** (signing certificate version **v3**) and the service\u2011provider certificate is **sp_cert.pem** (version **v3**).  Assertions are signed both on the response and on the assertion itself (**signassertion = BOTH**) with the signature algorithm **RSA\u2011SHA256**, and the signature service endpoint is **https://idp.example.com/sign**.  The digest method employed is **SHA256**.  Encryption of assertions is enabled (**encryptassertion = ON**) using the algorithm **AES256** and the key\u2011transport algorithm **RSA_OAEP**.  Communication with the SP uses the POST SAML binding for both authentication requests (**samlbinding = POST**) and logout (**logoutbinding = POST**), with the single logout URL set to **https://sp.example.com/logout**.  The IdP accepts audience **https://sp.example.com/**, and the NameID is generated from the expression **${user.email}** in the **emailAddress** format.  Metadata is retrieved from **https://idp.example.com/metadata.xml**, refreshes every **1440** minutes, and its import status is **SUCCESS**.  The default authentication group for users is **SAMLUsers**, unsigned requests are not rejected (**rejectunsignedrequests = OFF**), and passwords are not sent (**sendpassword = OFF**).  Clock skew tolerance is set to **300** seconds.\n\nUser attributes released to the SP are mapped as follows: **uid** (friendly name \u201cUser ID\u201d, expression **${user.uid}**, format **Basic**); **mail** (\u201cEmail Address\u201d, **${user.mail}**, **Basic**); **givenName** (\u201cFirst Name\u201d, **${user.firstName}**, **Basic**); **sn** (\u201cLast Name\u201d, **${user.lastName}**, **Basic**); **department** (\u201cDepartment\u201d, **${user.department}**, **Basic**); **title** (\u201cJob Title\u201d, **${user.title}**, **Basic**); **telephoneNumber** (\u201cPhone Number\u201d, **${user.phone}**, **Basic**); **memberOf** (\u201cGroups\u201d, **${user.groups}**, **Basic**); **employeeNumber** (\u201cEmployee Number\u201d, **${user.employeeNumber}**, **Basic**); **preferredLanguage** (\u201cPreferred Language\u201d, **${user.language}**, **Basic**); **locale** (\u201cLocale\u201d, **${user.locale}**, **Basic**); **postalCode** (\u201cPostal Code\u201d, **${user.postalCode}**, **Basic**); **streetAddress** (\u201cStreet Address\u201d, **${user.street}**, **Basic**); **city** (\u201cCity\u201d, **${user.city}**, **Basic**); **state** (\u201cState/Province\u201d, **${user.state}**, **Basic**); and **country** (\u201cCountry\u201d, **${user.country}**, **Basic**)."
+}

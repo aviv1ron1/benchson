@@ -1,0 +1,56 @@
+{
+  "name": "o59670",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Generated from kata/spec/fixtures/examples/simple.json with shasum e7f0e9796c7719ec437027ff34c84b353dabd49e",
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "price",
+      "tags"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "default": 1
+      },
+      "name": {
+        "type": "string",
+        "default": "A green door"
+      },
+      "price": {
+        "type": "number",
+        "default": 12.5
+      },
+      "tags": {
+        "type": "array",
+        "minItems": 1,
+        "_uniqueItems": true,
+        "items": {
+          "type": "string",
+          "default": "home"
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "id": 3,
+    "name": "Vintage wooden table",
+    "price": 124.99,
+    "tags": null
+  },
+  "valid_json": {
+    "id": 3,
+    "name": "Vintage wooden table",
+    "price": 124.99,
+    "tags": [
+      "furniture",
+      "vintage",
+      "home"
+    ]
+  },
+  "description": "Subject: New Product Listing \u2013 Vintage Wooden Table (ID\u202f3)\n\nDear Team,\n\nPlease add the following item to our catalogue: the Vintage wooden table, identified by product ID\u202f3. This piece is priced at $124.99 and should be classified under the tags \u201cfurniture,\u201d \u201cvintage,\u201d and \u201chome.\u201d Let me know once the listing is live."
+}

@@ -1,0 +1,203 @@
+{
+  "name": "sp_366_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Snowplow PostgreSQL storage configuration",
+    "properties": {
+      "database": {
+        "type": "string"
+      },
+      "host": {
+        "type": "string"
+      },
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "password": {
+        "properties": {
+          "ec2ParameterStore": {
+            "properties": {
+              "parameterName": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "parameterName"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "ec2ParameterStore"
+        ],
+        "type": [
+          "string",
+          "object"
+        ]
+      },
+      "port": {
+        "maximum": 65535,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "purpose": {
+        "enum": [
+          "ENRICHED_EVENTS"
+        ],
+        "type": "string"
+      },
+      "schema": {
+        "type": "string"
+      },
+      "sshTunnel": {
+        "properties": {
+          "bastion": {
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "key": {
+                "properties": {
+                  "ec2ParameterStore": {
+                    "properties": {
+                      "parameterName": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "parameterName"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "ec2ParameterStore"
+                ],
+                "type": "object"
+              },
+              "passphrase": {
+                "type": "string"
+              },
+              "port": {
+                "maximum": 65535,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "user": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "host",
+              "port",
+              "user"
+            ],
+            "type": "object"
+          },
+          "destination": {
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "port": {
+                "maximum": 65535,
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "host",
+              "port"
+            ],
+            "type": "object"
+          },
+          "localPort": {
+            "maximum": 65535,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "bastion",
+          "destination",
+          "localPort"
+        ],
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "sslMode": {
+        "enum": [
+          "DISABLE",
+          "REQUIRE",
+          "VERIFY_CA",
+          "VERIFY_FULL"
+        ],
+        "type": "string"
+      },
+      "username": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "host",
+      "database",
+      "port",
+      "sslMode",
+      "schema",
+      "username",
+      "password",
+      "purpose"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "postgresql_config",
+      "vendor": "com.snowplowanalytics.snowplow.storage",
+      "version": "1-1-0"
+    },
+    "type": "object"
+  },
+  "description": "The configuration titled **Snowplow PostgreSQL** (ID\u202fe7a1c5d2-9f4b-4c3e-8b6d-1a2f3b4c5d6e) is intended for enriched events storage. It connects to the PostgreSQL server at **db.example.com**, using the **snowplow** database on the standard port\u202f5432. SSL is required (REQUIRE), and the connection will operate against the **public** schema. Authentication is performed with the username **snowplow_user**, while the password is retrieved from the EC2 Parameter Store entry **/prod/snowplow/db/password**.  \n\nFor secure access, an SSH tunnel is defined. The bastion host **bastion.example.com** listens on port\u202f22, with the SSH user **ec2-user**. The private key is stored under the EC2 Parameter Store parameter **/prod/ssh/key**, protected by the passphrase **myPassphrase**. Traffic is forwarded to the destination host **db.internal** on port\u202f5432, and the tunnel exposes the service locally on port\u202f15432.",
+  "reference_json": {
+    "id": "e7a1c5d2-9f4b-4c3e-8b6d-1a2f3b4c5d6e",
+    "name": "Snowplow PostgreSQL",
+    "host": "db.example.com",
+    "database": "snowplow",
+    "port": 5432,
+    "sslMode": "REQUIRE",
+    "schema": "public",
+    "username": "snowplow_user",
+    "password": {
+      "ec2ParameterStore": {
+        "parameterName": "/prod/snowplow/db/password"
+      }
+    },
+    "purpose": "ENRICHED_EVENTS",
+    "sshTunnel": {
+      "bastion": {
+        "host": "bastion.example.com",
+        "port": 22,
+        "user": "ec2-user",
+        "key": {
+          "ec2ParameterStore": {
+            "parameterName": "/prod/ssh/key"
+          }
+        },
+        "passphrase": "myPassphrase"
+      },
+      "destination": {
+        "host": "db.internal",
+        "port": 5432
+      },
+      "localPort": 15432
+    }
+  }
+}

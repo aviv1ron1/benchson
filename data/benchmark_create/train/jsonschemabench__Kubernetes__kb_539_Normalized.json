@@ -1,0 +1,52 @@
+{
+  "name": "kb_539_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_LoadBalancerIngress": {
+        "description": "LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the service should be sent to an ingress point.",
+        "properties": {
+          "hostname": {
+            "description": "Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)",
+            "type": "string"
+          },
+          "ip": {
+            "description": "IP is set for load-balancer ingress points that are IP based (typically GCE or OpenStack load-balancers)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "description": "LoadBalancerStatus represents the status of a load-balancer.",
+    "properties": {
+      "ingress": {
+        "description": "Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.",
+        "items": {
+          "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_LoadBalancerIngress"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "description": "Hello Team,\n\nThe latest status of our load\u2011balancer indicates three ingress endpoints are active. The first endpoint is reachable via the DNS name **my-service-1234567890.us-west-2.elb.amazonaws.com** and resolves to the IP address **203.0.113.45**. The second endpoint does not have a DNS name associated with it; traffic should be directed to its IP address **34.68.194.12**. The third endpoint is identified only by its internal hostname **lb.example.internal**. Please ensure that any routing or monitoring configurations reference these exact values.",
+  "reference_json": {
+    "ingress": [
+      {
+        "hostname": "my-service-1234567890.us-west-2.elb.amazonaws.com",
+        "ip": "203.0.113.45"
+      },
+      {
+        "ip": "34.68.194.12"
+      },
+      {
+        "hostname": "lb.example.internal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "name": "o6189",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "required": [
+            "key",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "attributes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "dataType": {
+              "type": "string",
+              "enum": [
+                "string",
+                "number",
+                "gps",
+                "boolean"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "dataType"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "deviceClass": {
+        "type": "string",
+        "enum": [
+          "standalone",
+          "master",
+          "owned",
+          "floating",
+          "virtual"
+        ]
+      },
+      "connectionInfo": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "connected": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "deviceId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "creationDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "lastUpdated": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 32767
+      },
+      "tags": {
+        "$ref": "#/definitions/tags"
+      },
+      "attributes": {
+        "$ref": "#/definitions/attributes"
+      },
+      "deviceClass": {
+        "$ref": "#/definitions/deviceClass"
+      },
+      "masterId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "connectionInfo": {
+        "$ref": "#/definitions/connectionInfo"
+      }
+    }
+  },
+  "data": {
+    "id": "5f2b1c3a4d6e7f8a9b0c1d2e",
+    "deviceId": "a1b2c3d4e5f6789012345678",
+    "applicationId": "9abcdeff0011223344556677",
+    "creationDate": "2023-08-15T12:34:56Z",
+    "lastUpdated": "2024-03-10T08:20:30Z",
+    "name": "Temperature Sensor A1",
+    "description": "Measures ambient temperature in the main warehouse. Calibrated for -20\u00b0C to 60\u00b0C range.",
+    "tags": [
+      {
+        "key": "location",
+        "value": "warehouse-1"
+      },
+      {
+        "key": "environment",
+        "value": "production"
+      }
+    ],
+    "attributes": [
+      {
+        "name": "temperature",
+        "dataType": "number"
+      },
+      {
+        "name": "status",
+        "dataType": "boolean"
+      }
+    ],
+    "deviceClass": "standalone",
+    "masterId": "00112233445566778899aabb",
+    "connectionInfo": {
+      "time": "2024-06-14T15:45:00Z",
+      "connected": 1
+    }
+  },
+  "instructions": "Please remove the \"lastUpdated\" field.",
+  "ground_truth": {
+    "id": "5f2b1c3a4d6e7f8a9b0c1d2e",
+    "deviceId": "a1b2c3d4e5f6789012345678",
+    "applicationId": "9abcdeff0011223344556677",
+    "creationDate": "2023-08-15T12:34:56Z",
+    "name": "Temperature Sensor A1",
+    "description": "Measures ambient temperature in the main warehouse. Calibrated for -20\u00b0C to 60\u00b0C range.",
+    "tags": [
+      {
+        "key": "location",
+        "value": "warehouse-1"
+      },
+      {
+        "key": "environment",
+        "value": "production"
+      }
+    ],
+    "attributes": [
+      {
+        "name": "temperature",
+        "dataType": "number"
+      },
+      {
+        "name": "status",
+        "dataType": "boolean"
+      }
+    ],
+    "deviceClass": "standalone",
+    "masterId": "00112233445566778899aabb",
+    "connectionInfo": {
+      "time": "2024-06-14T15:45:00Z",
+      "connected": 1
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "lastUpdated"
+    ],
+    "precise_instruction": "Remove the \"lastUpdated\" field."
+  }
+}

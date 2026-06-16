@@ -1,0 +1,230 @@
+{
+  "name": "o7381",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "patternProperties": {
+      "^[0-9]+$": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "default": "",
+            "type": "string"
+          },
+          "versions": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ForgeVersion"
+            }
+          },
+          "mcversion": {
+            "default": "",
+            "type": "string"
+          }
+        },
+        "required": [
+          "mcversion",
+          "timestamp",
+          "versions"
+        ]
+      }
+    },
+    "definitions": {
+      "ForgeVersion": {
+        "type": "object",
+        "properties": {
+          "mcversion": {
+            "description": "The minecraft version",
+            "type": "string"
+          },
+          "version": {
+            "description": "The forge version (without minecraft version)",
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "installer": {
+            "$ref": "#/definitions/ForgeDownload"
+          },
+          "universal": {
+            "$ref": "#/definitions/ForgeDownload"
+          },
+          "changelog": {
+            "description": "The changelog info",
+            "$ref": "#/definitions/ForgeDownload"
+          },
+          "mdk": {
+            "$ref": "#/definitions/ForgeDownload"
+          },
+          "source": {
+            "$ref": "#/definitions/ForgeDownload"
+          },
+          "launcher": {
+            "$ref": "#/definitions/ForgeDownload"
+          },
+          "type": {
+            "description": "The type of the forge release. The `common` means the normal release.",
+            "enum": [
+              "buggy",
+              "common",
+              "latest",
+              "recommended"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "installer",
+          "mcversion",
+          "type",
+          "universal",
+          "version"
+        ]
+      },
+      "ForgeDownload": {
+        "type": "object",
+        "properties": {
+          "md5": {
+            "type": "string"
+          },
+          "sha1": {
+            "type": "string"
+          },
+          "path": {
+            "description": "The url path to concat with forge maven",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "sha1"
+        ]
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "data": {
+    "1": {
+      "timestamp": "2022-01-20T12:34:56Z",
+      "mcversion": "1.16.5",
+      "versions": [
+        {
+          "mcversion": "1.16.5",
+          "version": "36.2.0",
+          "date": "2022-01-15",
+          "type": "common",
+          "installer": {
+            "path": "net/minecraftforge/forge/1.16.5-36.2.0/forge-1.16.5-36.2.0-installer.jar",
+            "sha1": "a1b2c3d4e5f67890123456789abcdef12345678"
+          },
+          "universal": {
+            "path": "net/minecraftforge/forge/1.16.5-36.2.0/forge-1.16.5-36.2.0-universal.jar",
+            "sha1": "b2c3d4e5f67890123456789abcdef1234567890a"
+          }
+        },
+        {
+          "mcversion": "1.16.5",
+          "version": "36.2.1",
+          "date": "2022-02-10",
+          "type": "recommended",
+          "installer": {
+            "path": "net/minecraftforge/forge/1.16.5-36.2.1/forge-1.16.5-36.2.1-installer.jar",
+            "sha1": "c3d4e5f67890123456789abcdef1234567890ab1"
+          },
+          "universal": {
+            "path": "net/minecraftforge/forge/1.16.5-36.2.1/forge-1.16.5-36.2.1-universal.jar",
+            "sha1": "d4e5f67890123456789abcdef1234567890ab1c2"
+          },
+          "changelog": {
+            "path": "net/minecraftforge/forge/1.16.5-36.2.1/changelog.txt",
+            "sha1": "e5f67890123456789abcdef1234567890ab1c2d3"
+          }
+        }
+      ]
+    },
+    "2": {
+      "timestamp": "2023-05-05T08:00:00Z",
+      "mcversion": "1.18.2",
+      "versions": [
+        {
+          "mcversion": "1.18.2",
+          "version": "40.1.0",
+          "date": "2023-04-20",
+          "type": "latest",
+          "installer": {
+            "path": "net/minecraftforge/forge/1.18.2-40.1.0/forge-1.18.2-40.1.0-installer.jar",
+            "sha1": "f67890123456789abcdef1234567890ab1c2d3e4"
+          },
+          "universal": {
+            "path": "net/minecraftforge/forge/1.18.2-40.1.0/forge-1.18.2-40.1.0-universal.jar",
+            "sha1": "67890123456789abcdef1234567890ab1c2d3e4f5"
+          },
+          "mdk": {
+            "path": "net/minecraftforge/forge/1.18.2-40.1.0/forge-1.18.2-40.1.0-mdk.zip",
+            "sha1": "7890123456789abcdef1234567890ab1c2d3e4f5g"
+          }
+        }
+      ]
+    }
+  },
+  "instructions": "Could you remove the last item from the \"versions\" list inside \"1\"?",
+  "ground_truth": {
+    "1": {
+      "timestamp": "2022-01-20T12:34:56Z",
+      "mcversion": "1.16.5",
+      "versions": [
+        {
+          "mcversion": "1.16.5",
+          "version": "36.2.0",
+          "date": "2022-01-15",
+          "type": "common",
+          "installer": {
+            "path": "net/minecraftforge/forge/1.16.5-36.2.0/forge-1.16.5-36.2.0-installer.jar",
+            "sha1": "a1b2c3d4e5f67890123456789abcdef12345678"
+          },
+          "universal": {
+            "path": "net/minecraftforge/forge/1.16.5-36.2.0/forge-1.16.5-36.2.0-universal.jar",
+            "sha1": "b2c3d4e5f67890123456789abcdef1234567890a"
+          }
+        }
+      ]
+    },
+    "2": {
+      "timestamp": "2023-05-05T08:00:00Z",
+      "mcversion": "1.18.2",
+      "versions": [
+        {
+          "mcversion": "1.18.2",
+          "version": "40.1.0",
+          "date": "2023-04-20",
+          "type": "latest",
+          "installer": {
+            "path": "net/minecraftforge/forge/1.18.2-40.1.0/forge-1.18.2-40.1.0-installer.jar",
+            "sha1": "f67890123456789abcdef1234567890ab1c2d3e4"
+          },
+          "universal": {
+            "path": "net/minecraftforge/forge/1.18.2-40.1.0/forge-1.18.2-40.1.0-universal.jar",
+            "sha1": "67890123456789abcdef1234567890ab1c2d3e4f5"
+          },
+          "mdk": {
+            "path": "net/minecraftforge/forge/1.18.2-40.1.0/forge-1.18.2-40.1.0-mdk.zip",
+            "sha1": "7890123456789abcdef1234567890ab1c2d3e4f5g"
+          }
+        }
+      ]
+    }
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "1",
+      "versions"
+    ],
+    "precise_instruction": "Remove the last item from the \"versions\" list inside \"1\"."
+  }
+}

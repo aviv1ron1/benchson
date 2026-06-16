@@ -1,0 +1,47 @@
+{
+  "name": "o9938",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "accept": {
+        "type": "boolean"
+      },
+      "email": {
+        "_format": "email",
+        "maxLength": 1024,
+        "type": "string"
+      },
+      "token": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "email",
+      "token",
+      "accept"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "accept": true,
+    "email": "jane.doe@example.com",
+    "token": "abc123def456ghi789"
+  },
+  "instructions": "Could you set the \u201caccept\u201d field to false, please?",
+  "ground_truth": {
+    "accept": false,
+    "email": "jane.doe@example.com",
+    "token": "abc123def456ghi789"
+  },
+  "modification": {
+    "op": "set_bool",
+    "path": [
+      "accept"
+    ],
+    "precise_instruction": "Set \"accept\" to false."
+  }
+}

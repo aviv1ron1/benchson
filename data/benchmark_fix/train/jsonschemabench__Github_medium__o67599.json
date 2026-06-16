@@ -1,0 +1,101 @@
+{
+  "name": "o67599",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Cookie",
+    "id": "#/definitions/cookie",
+    "description": "A Cookie, that follows the [Google Chrome format](https://developer.chrome.com/extensions/cookies)",
+    "properties": {
+      "domain": {
+        "type": "string",
+        "description": "The domain for which this cookie is valid."
+      },
+      "expires": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          }
+        ],
+        "description": "When the cookie expires."
+      },
+      "maxAge": {
+        "type": "string"
+      },
+      "hostOnly": {
+        "type": "boolean",
+        "description": "True if the cookie is a host-only cookie. (i.e. a request's URL domain must exactly match the domain of the cookie)."
+      },
+      "httpOnly": {
+        "type": "boolean",
+        "description": "Indicates if this cookie is HTTP Only. (if True, the cookie is inaccessible to client-side scripts)"
+      },
+      "name": {
+        "type": "string",
+        "description": "This is the name of the Cookie."
+      },
+      "path": {
+        "type": "string",
+        "description": "The path associated with the Cookie."
+      },
+      "secure": {
+        "type": "boolean",
+        "description": "Indicates if the 'secure' flag is set on the Cookie, meaning that it is transmitted over secure connections only. (typically HTTPS)"
+      },
+      "session": {
+        "type": "boolean",
+        "description": "True if the cookie is a session cookie."
+      },
+      "value": {
+        "type": "string",
+        "description": "The value of the Cookie."
+      },
+      "extensions": {
+        "type": "array",
+        "description": "Custom attributes for a cookie go here, such as the [Priority Field](https://code.google.com/p/chromium/issues/detail?id=232693)"
+      }
+    },
+    "required": [
+      "domain",
+      "path"
+    ]
+  },
+  "erroneous_json": {
+    "domain": ".example.com",
+    "expires": 1924992000,
+    "maxAge": "86400",
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "session_id",
+    "path": "/",
+    "secure": null,
+    "session": false,
+    "value": "e3f2c1a9b4d6f7a8c9e0d1b2c3a4f5e6",
+    "extensions": [
+      "Priority=high",
+      "SameSite=Strict"
+    ]
+  },
+  "valid_json": {
+    "domain": ".example.com",
+    "expires": 1924992000,
+    "maxAge": "86400",
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "session_id",
+    "path": "/",
+    "secure": true,
+    "session": false,
+    "value": "e3f2c1a9b4d6f7a8c9e0d1b2c3a4f5e6",
+    "extensions": [
+      "Priority=high",
+      "SameSite=Strict"
+    ]
+  },
+  "description": "The authentication cookie **session_id** is set for the domain **.example.com** and applies to the root path **/**. Its value is **e3f2c1a9b4d6f7a8c9e0d1b2c3a4f5e6** and it is marked as both **HttpOnly** and **Secure**, so it will only be sent over HTTPS connections and cannot be accessed via client\u2011side scripts. The cookie is not a host\u2011only cookie (the domain does not have to match exactly) and it is not a session\u2011only cookie; instead it carries an explicit expiration at Unix timestamp **1924992000** and a Max\u2011Age of **86400** seconds.  \n\nAdditional attributes have been attached to the cookie: it carries a **Priority=high** flag and enforces a **SameSite=Strict** policy. These custom extensions ensure the cookie is treated with higher priority by the browser and is sent only in first\u2011party contexts."
+}

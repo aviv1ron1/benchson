@@ -1,0 +1,54 @@
+{
+  "name": "search_hotels_2cfc92a2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "check_in_date": {
+        "description": "The check-in date",
+        "format": "date",
+        "type": "string"
+      },
+      "check_out_date": {
+        "description": "The check-out date",
+        "format": "date",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location to search for hotels",
+        "type": "string"
+      },
+      "num_guests": {
+        "description": "The number of guests",
+        "type": "integer"
+      },
+      "num_rooms": {
+        "description": "The number of rooms required",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "location",
+      "check_in_date",
+      "check_out_date",
+      "num_rooms",
+      "num_guests"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "check_in_date": null,
+    "check_out_date": "2024-07-20",
+    "location": "Paris, France",
+    "num_guests": 3,
+    "num_rooms": 2
+  },
+  "valid_json": {
+    "check_in_date": "2024-07-15",
+    "check_out_date": "2024-07-20",
+    "location": "Paris, France",
+    "num_guests": 3,
+    "num_rooms": 2
+  },
+  "description": "Hello,\n\nI\u2019d like to arrange accommodation in Paris, France for a stay from July\u202f15,\u202f2024 through July\u202f20,\u202f2024. Our party consists of three guests, and we\u2019ll need two rooms for the duration of the visit.\n\nThank you for confirming availability and rates at your earliest convenience."
+}

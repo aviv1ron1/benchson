@@ -1,0 +1,272 @@
+{
+  "name": "o75601",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "args": {
+        "items": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "type": "array"
+      },
+      "description": {
+        "type": "string"
+      },
+      "dialogue": {
+        "items": {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "strictness": {
+              "type": "boolean"
+            },
+            "type": {
+              "enum": [
+                "output",
+                "input"
+              ],
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "value"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "exit_code": {
+        "oneOf": [
+          {
+            "maximum": 255,
+            "minimum": 0,
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "feedback": {
+        "properties": {
+          "text": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "flow": {
+        "type": "boolean"
+      },
+      "id": {
+        "type": "string"
+      },
+      "log": {
+        "properties": {
+          "quotes": {
+            "items": {
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "properties": {
+                    "en": {
+                      "enum": [
+                        "output",
+                        "input",
+                        "printing"
+                      ],
+                      "type": "string"
+                    },
+                    "he": {
+                      "enum": [
+                        "\u05e4\u05dc\u05d8",
+                        "\u05e7\u05dc\u05d8",
+                        "\u05d4\u05d3\u05e4\u05e1\u05d4"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "en",
+                    "he"
+                  ],
+                  "type": "object"
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "quotes",
+          "text"
+        ],
+        "type": "object"
+      },
+      "name": {
+        "type": "string"
+      },
+      "result": {
+        "properties": {
+          "bool": {
+            "type": "boolean"
+          },
+          "text": {
+            "enum": [
+              "\u05d4\u05e6\u05dc\u05d7\u05d4",
+              "\u05d0\u05d9-\u05d4\u05e6\u05dc\u05d7\u05d4"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "bool",
+          "text"
+        ],
+        "type": "object"
+      },
+      "signal_code": {
+        "oneOf": [
+          {
+            "maximum": 30,
+            "minimum": 1,
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "strictness": {
+        "type": "boolean"
+      },
+      "timeout": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "verbosity": {
+        "maximum": 5,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "description",
+      "timeout",
+      "verbosity",
+      "flow",
+      "strictness",
+      "args",
+      "dialogue",
+      "log",
+      "result",
+      "feedback",
+      "exit_code",
+      "signal_code"
+    ],
+    "type": "object"
+  },
+  "description": "Task ID **task-001** \u2013\u202f**DataProcessingTask** \u2013 is scheduled to run with a timeout of\u202f120.5 seconds, a verbosity level of\u202f3, and flow control enabled. The task operates in non\u2011strict mode and will receive three arguments: the input file **input.csv**, the numeric parameter\u202f42, and the mode flag\u202f\u201cverbose\u201d.  \n\nThe session began when the user issued the command \u201cStart processing\u201d. The system replied, \u201cProcessing started\u201d, and this output was marked as strict. During execution the log recorded two key quotes: the loader component (label\u202f\u201cloader\u201d) reported an **output** (\u201c\u05e4\u05dc\u05d8\u201d) with the message \u201cLoading data\u201d, and a subsequent **printing** action (\u201c\u05d4\u05d3\u05e4\u05e1\u05d4\u201d) produced the numeric value\u202f100. The overall log text reads: \u201cLog of execution steps.\u201d The final result is a successful boolean\u202ftrue together with the Hebrew status \u201c\u05d4\u05e6\u05dc\u05d4\u201d. Feedback was provided as an informational note: \u201cAll good.\u201d The process terminated with exit code\u202f0 and was interrupted by signal\u202f15.",
+  "reference_json": {
+    "id": "task-001",
+    "name": "DataProcessingTask",
+    "description": "Processes input data and generates summary.",
+    "timeout": 120.5,
+    "verbosity": 3,
+    "flow": true,
+    "strictness": false,
+    "args": [
+      "input.csv",
+      42,
+      "verbose"
+    ],
+    "dialogue": [
+      {
+        "type": "input",
+        "name": "user",
+        "value": "Start processing"
+      },
+      {
+        "type": "output",
+        "name": "system",
+        "value": "Processing started",
+        "strictness": true
+      }
+    ],
+    "log": {
+      "quotes": [
+        {
+          "type": {
+            "en": "output",
+            "he": "\u05e4\u05dc\u05d8"
+          },
+          "value": "Loading data",
+          "name": "loader"
+        },
+        {
+          "type": {
+            "en": "printing",
+            "he": "\u05d4\u05d3\u05e4\u05e1\u05d4"
+          },
+          "value": 100
+        }
+      ],
+      "text": "Log of execution steps."
+    },
+    "result": {
+      "bool": true,
+      "text": "\u05d4\u05e6\u05dc\u05d7\u05d4"
+    },
+    "feedback": {
+      "text": "All good.",
+      "type": "info"
+    },
+    "exit_code": 0,
+    "signal_code": 15
+  }
+}

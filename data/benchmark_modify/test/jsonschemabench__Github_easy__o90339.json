@@ -1,0 +1,58 @@
+{
+  "name": "o90339",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "Visual Variable Legend Options",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Options available for the legend for visual variables.",
+    "properties": {
+      "customValues": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "showLegend": {
+        "type": "boolean",
+        "description": "Indicates whether to show the color/size/opacity ramp in the legend."
+      },
+      "title": {
+        "type": "string",
+        "description": "The title of the legend."
+      }
+    }
+  },
+  "data": {
+    "customValues": [
+      0,
+      5.5,
+      10,
+      20,
+      30
+    ],
+    "showLegend": true,
+    "title": "Population Density Legend"
+  },
+  "instructions": "Can you add another entry to the \"customValues\" list that\u2019s exactly the same as the first item?",
+  "ground_truth": {
+    "customValues": [
+      0,
+      5.5,
+      10,
+      20,
+      30,
+      0
+    ],
+    "showLegend": true,
+    "title": "Population Density Legend"
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "customValues"
+    ],
+    "precise_instruction": "Add another item to the \"customValues\" list, identical to its first item."
+  }
+}

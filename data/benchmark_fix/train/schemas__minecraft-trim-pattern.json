@@ -1,0 +1,55 @@
+{
+  "name": "minecraft-trim-pattern",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/minecraft-trim-pattern.json",
+    "description": "A trim pattern for a Minecraft data pack config schema",
+    "properties": {
+      "asset_id": {
+        "type": "string"
+      },
+      "description": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string"
+          },
+          "translate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "translate"
+        ]
+      },
+      "template_item": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "asset_id",
+      "description",
+      "template_item"
+    ],
+    "title": "Minecraft Data Pack Trim Pattern",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "description": {
+      "translate": "trim_pattern.minecraft.diamond",
+      "color": "#00FFFF"
+    },
+    "template_item": "minecraft:diamond"
+  },
+  "valid_json": {
+    "asset_id": "minecraft:trim_pattern/diamond",
+    "description": {
+      "translate": "trim_pattern.minecraft.diamond",
+      "color": "#00FFFF"
+    },
+    "template_item": "minecraft:diamond"
+  },
+  "description": "The latest trim pattern added to the pack is the Diamond trim. Its asset identifier is **minecraft:trim_pattern/diamond**, and it references the translation key **trim_pattern.minecraft.diamond** for its name. The pattern is rendered in a bright cyan color (**#00FFFF**) and uses the standard **minecraft:diamond** item as its template."
+}

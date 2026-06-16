@@ -1,0 +1,43 @@
+{
+  "name": "search_hotels_d2c27c8f",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "check_in_date": {
+        "description": "The check-in date in YYYY-MM-DD format",
+        "type": "string"
+      },
+      "check_out_date": {
+        "description": "The check-out date in YYYY-MM-DD format",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the hotel",
+        "type": "string"
+      },
+      "number_of_guests": {
+        "description": "The number of guests",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "location",
+      "check_in_date",
+      "check_out_date"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "check_in_date": "2024-07-15",
+    "location": "Paris, France",
+    "number_of_guests": 2
+  },
+  "valid_json": {
+    "check_in_date": "2024-07-15",
+    "check_out_date": "2024-07-20",
+    "location": "Paris, France",
+    "number_of_guests": 2
+  },
+  "description": "Dear Guest,\n\nThank you for choosing to stay with us in Paris, France. We have confirmed a reservation for two guests, with check\u2011in scheduled for July\u202f15,\u202f2024 and check\u2011out on July\u202f20,\u202f2024. Should you need any assistance before your arrival, please feel free to contact us.\n\nWe look forward to welcoming you and hope you enjoy your time in the City of Light."
+}

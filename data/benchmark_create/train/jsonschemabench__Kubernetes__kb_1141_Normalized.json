@@ -1,0 +1,49 @@
+{
+  "name": "kb_1141_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents a vSphere volume resource.",
+    "properties": {
+      "fsType": {
+        "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "storagePolicyID": {
+        "description": "Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "storagePolicyName": {
+        "description": "Storage Policy Based Management (SPBM) profile name.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "volumePath": {
+        "description": "Path that identifies vSphere volume vmdk",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "volumePath"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: vSphere Volume Configuration Details for Kubernetes PV\n\nDear Team,\n\nPlease note that the persistent volume we are provisioning for the Kubernetes workload uses the ext4 filesystem. The underlying vSphere VMDK is located at\u202f`/vmfs/volumes/datastore1/kubernetes-pv-abc123.vmdk`. For storage policy compliance, it is associated with the SPBM profile named **GoldPerformance**, which corresponds to the policy ID\u202f`spbm-12345678-90ab-cdef-1234-567890abcdef`. Let me know if any adjustments are required.",
+  "reference_json": {
+    "fsType": "ext4",
+    "storagePolicyID": "spbm-12345678-90ab-cdef-1234-567890abcdef",
+    "storagePolicyName": "GoldPerformance",
+    "volumePath": "/vmfs/volumes/datastore1/kubernetes-pv-abc123.vmdk"
+  }
+}

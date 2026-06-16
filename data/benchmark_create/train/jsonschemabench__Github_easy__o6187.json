@@ -1,0 +1,83 @@
+{
+  "name": "o6187",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "resultPath": {
+        "type": "string",
+        "title": "Result Path",
+        "minLength": 1
+      },
+      "deviceTags": {
+        "title": "Device Tags",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "title": "Device Tag Pair",
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "minLength": 1
+        }
+      },
+      "deviceIds": {
+        "title": "Device IDs",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "title": "Device ID"
+        }
+      }
+    },
+    "allOf": [
+      {
+        "required": [
+          "resultPath"
+        ]
+      },
+      {
+        "anyOf": [
+          {
+            "required": [
+              "deviceTags"
+            ]
+          },
+          {
+            "required": [
+              "deviceIds"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Please direct all output files to the path **/data/output**. The devices we are monitoring carry the following tags: a\u202f**location** tag set to\u202f*warehouse1* and a\u202f**type** tag set to\u202f*sensor*.\n\nThe associated device identifiers are **device-12345** and **device-67890**. These IDs should be used for any further look\u2011ups or configuration updates.",
+  "reference_json": {
+    "resultPath": "/data/output",
+    "deviceTags": [
+      {
+        "key": "location",
+        "value": "warehouse1"
+      },
+      {
+        "key": "type",
+        "value": "sensor"
+      }
+    ],
+    "deviceIds": [
+      "device-12345",
+      "device-67890"
+    ]
+  }
+}

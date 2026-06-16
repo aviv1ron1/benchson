@@ -1,0 +1,100 @@
+{
+  "name": "o53002",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Return object from the inventory controller",
+    "properties": {
+      "direction": {
+        "description": "Sort direction. ASCENDING or DESCENDING",
+        "type": "string"
+      },
+      "items": {
+        "description": "Inventory objects",
+        "items": {
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "limit": {
+        "description": "The maximum number of return results",
+        "type": "integer"
+      },
+      "total": {
+        "description": "The number of items present in the database",
+        "type": "integer"
+      }
+    },
+    "title": "Inventory Computers",
+    "type": "object"
+  },
+  "data": {
+    "direction": "ASCENDING",
+    "items": [
+      {
+        "id": "comp-001",
+        "name": "Dell OptiPlex 7080",
+        "category": "Desktop",
+        "status": "In Stock",
+        "price": 799.99,
+        "serialNumber": "SN1234567890"
+      },
+      {
+        "id": "comp-002",
+        "name": "Apple MacBook Pro 14\"",
+        "category": "Laptop",
+        "status": "In Stock",
+        "price": 2399.0,
+        "serialNumber": "SN0987654321"
+      },
+      {
+        "id": "comp-003",
+        "name": "Lenovo ThinkPad X1 Carbon",
+        "category": "Laptop",
+        "status": "Reserved",
+        "price": 1499.5,
+        "serialNumber": "SN1122334455"
+      }
+    ],
+    "limit": 10,
+    "total": 57
+  },
+  "instructions": "Please remove the \"total\" field.",
+  "ground_truth": {
+    "direction": "ASCENDING",
+    "items": [
+      {
+        "id": "comp-001",
+        "name": "Dell OptiPlex 7080",
+        "category": "Desktop",
+        "status": "In Stock",
+        "price": 799.99,
+        "serialNumber": "SN1234567890"
+      },
+      {
+        "id": "comp-002",
+        "name": "Apple MacBook Pro 14\"",
+        "category": "Laptop",
+        "status": "In Stock",
+        "price": 2399.0,
+        "serialNumber": "SN0987654321"
+      },
+      {
+        "id": "comp-003",
+        "name": "Lenovo ThinkPad X1 Carbon",
+        "category": "Laptop",
+        "status": "Reserved",
+        "price": 1499.5,
+        "serialNumber": "SN1122334455"
+      }
+    ],
+    "limit": 10
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "total"
+    ],
+    "precise_instruction": "Remove the \"total\" field."
+  }
+}

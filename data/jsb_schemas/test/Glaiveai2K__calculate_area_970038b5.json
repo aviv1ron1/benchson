@@ -1,0 +1,39 @@
+{
+  "name": "calculate_area_970038b5",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "side_length": {
+            "description": "The side length of the square",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (e.g. circle, square, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  }
+}

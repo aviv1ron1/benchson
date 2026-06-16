@@ -1,0 +1,73 @@
+{
+  "name": "o37728",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "PackingList",
+    "description": "A list of products due on a delivery round",
+    "type": "object",
+    "properties": {
+      "doc_type": {
+        "type": "string",
+        "pattern": "^packingList$"
+      },
+      "version": {
+        "type": "string",
+        "format": "semver"
+      },
+      "productID": {
+        "type": "string",
+        "chance": {
+          "hash": {
+            "length": 32
+          }
+        }
+      },
+      "expectedQty": {
+        "type": "integer"
+      },
+      "packedQty": {
+        "type": "integer"
+      },
+      "deliveredQty": {
+        "type": "integer"
+      },
+      "adjustmentReason": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "doc_type",
+      "version",
+      "productID",
+      "expectedQty"
+    ]
+  },
+  "data": {
+    "doc_type": "packingList",
+    "version": "1.2.3",
+    "productID": "a3f5c9d2e4b6a1c7d8e9f0b2c3d4e5f6",
+    "expectedQty": 150,
+    "packedQty": 145,
+    "deliveredQty": 140,
+    "adjustmentReason": "Damaged items removed during transit"
+  },
+  "instructions": "Please change the productID to a3f5c9d2e4b6a1c7d8e9f0b2c3d4e5f6 (updated).",
+  "ground_truth": {
+    "doc_type": "packingList",
+    "version": "1.2.3",
+    "productID": "a3f5c9d2e4b6a1c7d8e9f0b2c3d4e5f6 (updated)",
+    "expectedQty": 150,
+    "packedQty": 145,
+    "deliveredQty": 140,
+    "adjustmentReason": "Damaged items removed during transit"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "productID"
+    ],
+    "precise_instruction": "Change \"productID\" to \"a3f5c9d2e4b6a1c7d8e9f0b2c3d4e5f6 (updated)\"."
+  }
+}

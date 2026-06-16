@@ -1,0 +1,281 @@
+{
+  "name": "crowdin",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$comment": "https://support.crowdin.com/configuration-file/",
+    "description": "Configuration for Crowdin, a crowd-translation platform.",
+    "id": "https://json.schemastore.org/crowdin.json",
+    "properties": {
+      "project_id": {
+        "title": "Project ID",
+        "type": "string"
+      },
+      "project_id_env": {
+        "title": "Project ID Environment Variable",
+        "type": "string"
+      },
+      "api_token": {
+        "title": "API Token",
+        "type": "string"
+      },
+      "api_token_env": {
+        "title": "API Token Environment Variable",
+        "type": "string"
+      },
+      "base_path": {
+        "title": "Base Path",
+        "type": "string"
+      },
+      "base_path_env": {
+        "title": "Base Path Environment Variable",
+        "type": "string"
+      },
+      "base_url": {
+        "title": "Base URL",
+        "type": "string",
+        "format": "uri"
+      },
+      "base_url_env": {
+        "title": "Base URL Environment Variable",
+        "type": "string"
+      },
+      "preserve_hierarchy": {
+        "title": "Preserve Hierarchy",
+        "type": "boolean"
+      },
+      "commit_message": {
+        "title": "Commit Message",
+        "type": "string"
+      },
+      "append_commit_message": {
+        "title": "Append Commit Message",
+        "description": "Replace the default commit message with the one specified in commit_message.",
+        "type": "boolean"
+      },
+      "export_languages": {
+        "title": "Export Languages",
+        "description": "Specify a list of specific languages to export.",
+        "type": "array",
+        "items": {
+          "title": "Language",
+          "type": "string"
+        }
+      },
+      "files": {
+        "title": "Files",
+        "type": "array",
+        "items": {
+          "title": "File",
+          "type": "object",
+          "properties": {
+            "source": {
+              "title": "Source",
+              "type": "string"
+            },
+            "translation": {
+              "title": "Translation",
+              "type": "string"
+            },
+            "ignore": {
+              "title": "Ignore",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "translation_replace": {
+              "title": "Translation Replace",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "excluded_target_languages": {
+              "title": "Excluded Target Languages",
+              "type": "array",
+              "items": {
+                "title": "Excluded Target Language",
+                "type": "string"
+              }
+            },
+            "scheme": {
+              "title": "Scheme",
+              "type": "string"
+            },
+            "dest": {
+              "title": "Destination",
+              "type": "string"
+            },
+            "type": {
+              "title": "Type",
+              "type": "string"
+            },
+            "update_option": {
+              "title": "Update Option",
+              "enum": [
+                "update_as_unapproved",
+                "update_without_changes"
+              ]
+            },
+            "translate_content": {
+              "title": "Translate Content",
+              "description": "Defines whether to translate texts placed inside the tags.",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 1
+            },
+            "translate_attributes": {
+              "title": "Translate Attributes",
+              "description": "Defines whether to translate tags' attributes.",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 1
+            },
+            "content_segmentation": {
+              "title": "Content Segmentation",
+              "description": "Defines whether to split long texts into smaller text segments.",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 1
+            },
+            "translatable_elements": {
+              "title": "Translatable Elements",
+              "description": "An array of strings, where each item is the XPaths to DOM element that should be imported. ",
+              "type": "array",
+              "items": {
+                "title": "Translatable Element",
+                "type": "string"
+              }
+            },
+            "skip_untranslated_strings": {
+              "title": "Skip Untranslated Strings",
+              "type": "boolean"
+            },
+            "skip_untranslated_files": {
+              "title": "Skip Untranslated Files",
+              "type": "boolean"
+            },
+            "export_only_approved": {
+              "title": "Export Only Approved",
+              "type": "boolean"
+            },
+            "escape_quotes": {
+              "title": "Escape Quotes",
+              "description": "Defines whether a single quote should be escaped by another single quote or backslash in exported translations.",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 3,
+              "default": 3
+            },
+            "escape_special_characters": {
+              "title": "Escape Special Characters",
+              "description": "Defines whether any special characters (=, :, ! and #) should be escaped by backslash in exported translations.",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 1
+            },
+            "first_line_contains_header": {
+              "title": "First Line Contains Header",
+              "type": "boolean"
+            },
+            "languages_mapping": {
+              "title": "Language Mapping",
+              "properties": {
+                "two_letters_code": {
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "android_code": {
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "labels": {
+              "title": "Labels",
+              "type": "array",
+              "items": {
+                "title": "Label",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "type": "object"
+  },
+  "description": "The Crowdin project is identified by the numeric ID\u202f123456, which can also be supplied via the environment variable **CROWDIN_PROJECT_ID**. Authentication uses the token\u202fabcd1234efgh5678ijkl, or alternatively the variable **CROWDIN_API_TOKEN**. All source files are rooted in the **./src** directory (or the path provided in **CROWDIN_BASE_PATH**) and the API endpoint is\u202fhttps://crowdin.com/api/v2 (overridable with **CROWDIN_BASE_URL**). The configuration preserves the original hierarchy, and each synchronization will use the commit message \u201cUpdate translations from source files\u201d without appending any additional text. Export is limited to French (fr), German (de) and Spanish (es).  \n\nFor the file set, every JSON file matching the glob\u202fsrc/**/*.json\u202fis processed, while any files under\u202fsrc/**/test/**\u202fare ignored. The translation output template\u202f/locales/%locale%/translation.json\u202fincludes a placeholder replacement that maps\u202f%locale%\u202fto\u202ffr. The French and German locales are excluded from target translations for Japanese (ja) and Chinese (zh). The files are treated as JSON (scheme\u202fjson, type\u202fjson) and written to\u202flocales/%two_letters_code%/translation.json\u202fusing the update option\u202fupdate_as_unapproved. Content, attributes and segmentation are all enabled (values\u202f1). Only the elements selected by the XPaths\u202f//title\u202fand\u202f//description\u202fare imported. Untranslated strings and files are not skipped, but only approved translations are exported. Quotes are escaped using the \u201cdouble\u2011quote\u201d method (value\u202f3) and special characters are escaped (value\u202f1). The exported files do not include a header line. Language mappings translate\u202fzh\u2011CN\u202fto the two\u2011letter code\u202fzh\u202f(and Android code\u202fzh\u2011rCN) and\u202fpt\u2011BR\u202fto\u202fpt\u202f(and Android code\u202fpt\u2011rBR). Finally, the file is tagged with the labels \u201cfrontend\u201d and \u201ci18n\u201d.",
+  "reference_json": {
+    "project_id": "123456",
+    "project_id_env": "CROWDIN_PROJECT_ID",
+    "api_token": "abcd1234efgh5678ijkl",
+    "api_token_env": "CROWDIN_API_TOKEN",
+    "base_path": "./src",
+    "base_path_env": "CROWDIN_BASE_PATH",
+    "base_url": "https://crowdin.com/api/v2",
+    "base_url_env": "CROWDIN_BASE_URL",
+    "preserve_hierarchy": true,
+    "commit_message": "Update translations from source files",
+    "append_commit_message": false,
+    "export_languages": [
+      "fr",
+      "de",
+      "es"
+    ],
+    "files": [
+      {
+        "source": "src/**/*.json",
+        "translation": "/locales/%locale%/translation.json",
+        "ignore": [
+          "src/**/test/**"
+        ],
+        "translation_replace": {
+          "%locale%": "fr"
+        },
+        "excluded_target_languages": [
+          "ja",
+          "zh"
+        ],
+        "scheme": "json",
+        "dest": "locales/%two_letters_code%/translation.json",
+        "type": "json",
+        "update_option": "update_as_unapproved",
+        "translate_content": 1,
+        "translate_attributes": 1,
+        "content_segmentation": 1,
+        "translatable_elements": [
+          "//title",
+          "//description"
+        ],
+        "skip_untranslated_strings": false,
+        "skip_untranslated_files": false,
+        "export_only_approved": true,
+        "escape_quotes": 3,
+        "escape_special_characters": 1,
+        "first_line_contains_header": false,
+        "languages_mapping": {
+          "two_letters_code": {
+            "zh-CN": "zh",
+            "pt-BR": "pt"
+          },
+          "android_code": {
+            "zh-CN": "zh-rCN",
+            "pt-BR": "pt-rBR"
+          }
+        },
+        "labels": [
+          "frontend",
+          "i18n"
+        ]
+      }
+    ]
+  }
+}

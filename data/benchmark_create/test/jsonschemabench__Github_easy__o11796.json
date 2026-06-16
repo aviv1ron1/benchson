@@ -1,0 +1,42 @@
+{
+  "name": "o11796",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "auth": {
+        "type": "null"
+      },
+      "data": {
+        "type": "object",
+        "properties": {}
+      },
+      "lease_duration": {
+        "type": "integer"
+      },
+      "lease_id": {
+        "type": "string"
+      },
+      "renewable": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "auth",
+      "data",
+      "lease_duration",
+      "lease_id",
+      "renewable"
+    ]
+  },
+  "description": "The lease for the requested secret has been created with the identifier **abc123def** and is set to expire after\u202f3,600\u202fseconds (one hour). This lease is marked as renewable, so it can be extended before expiration if needed. No authentication payload is associated with this response, and the data payload is empty, indicating that no secret values were returned at this time.",
+  "reference_json": {
+    "auth": null,
+    "data": {},
+    "lease_duration": 3600,
+    "lease_id": "abc123def",
+    "renewable": true
+  }
+}

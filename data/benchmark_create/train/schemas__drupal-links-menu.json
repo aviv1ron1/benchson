@@ -1,0 +1,157 @@
+{
+  "name": "drupal-links-menu",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/drupal-links-menu.json",
+    "additionalProperties": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "The static title for the menu link",
+          "type": "string"
+        },
+        "title_context": {
+          "title": "The translation context for the title value.",
+          "type": "string"
+        },
+        "description": {
+          "title": "The description",
+          "type": "string"
+        },
+        "description_context": {
+          "title": "The translation context for the description value.",
+          "type": "string"
+        },
+        "route_name": {
+          "title": "The name of the route this links to, unless it's external",
+          "type": "string"
+        },
+        "route_parameters": {
+          "title": "Parameters for route variables when generating a link",
+          "type": "object"
+        },
+        "parent": {
+          "title": "The plugin ID of the parent tab",
+          "type": "string"
+        },
+        "menu_name": {
+          "title": "The name of the menu for this link",
+          "default": "tools",
+          "type": "string"
+        },
+        "url": {
+          "title": "The external URL if this link has one",
+          "type": "string"
+        },
+        "weight": {
+          "title": "The weight of the link",
+          "type": "integer"
+        },
+        "options": {
+          "title": "Array of link options",
+          "type": "object"
+        },
+        "class": {
+          "title": "Class for task implementations",
+          "type": "string"
+        },
+        "form_class": {
+          "title": "Class for task implementations",
+          "type": "string"
+        },
+        "provider": {
+          "title": "The name of the module providing this link",
+          "type": "string"
+        },
+        "metadata": {
+          "$comment": "@todo Add a title",
+          "type": "array"
+        },
+        "expanded": {
+          "title": "Show the link as expanded",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "enabled": {
+          "title": "The status of the link",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "deriver": {
+          "title": "Deriver class",
+          "type": "string"
+        },
+        "position": {
+          "$comment": "@todo Add a title and enum if needed",
+          "type": "string"
+        },
+        "cache_tags": {
+          "title": "Cache tags",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "title": "JSON schema for Drupal menu links file",
+    "type": "object"
+  },
+  "description": "The **admin** menu now contains a top\u2011level link titled **Content**. Its description reads \u201cManage site content\u201d, and it points to the internal route\u202f`system.admin_content` without any additional parameters. Because the parent field is empty, this entry sits directly under the admin menu root. The link is assigned a weight of\u202f0, is enabled, and is not expanded by default. It is provided by the **system** module, and its metadata tags are \u201cadmin\u201d and \u201ccontent\u201d. For caching purposes the system records a single cache tag: `config:system.menu.admin`.\n\nIn the **account** menu, a link labelled **My profile** (translation context \u201cUser menu\u201d) appears under the parent \u201cuser.account\u201d. The description, also scoped to the \u201cUser menu\u201d context, states \u201cView your user profile\u201d. This link routes to `entity.user.canonical` with the parameter `{user:\u202f1}`. It carries a weight of\u202f5, is enabled (value\u202f1), and is set to expand automatically. The link is supplied by the **user** module and uses the class `Drupal\\user\\Plugin\\Menu\\UserProfileLink`; no form class is defined. Both the metadata and cache\u2011tag arrays are empty for this entry.",
+  "reference_json": {
+    "admin_content": {
+      "title": "Content",
+      "description": "Manage site content",
+      "route_name": "system.admin_content",
+      "route_parameters": {},
+      "parent": "",
+      "menu_name": "admin",
+      "weight": 0,
+      "enabled": true,
+      "expanded": false,
+      "provider": "system",
+      "metadata": [
+        "admin",
+        "content"
+      ],
+      "cache_tags": [
+        "config:system.menu.admin"
+      ]
+    },
+    "user_profile": {
+      "title": "My profile",
+      "title_context": "User menu",
+      "description": "View your user profile",
+      "description_context": "User menu",
+      "route_name": "entity.user.canonical",
+      "route_parameters": {
+        "user": 1
+      },
+      "parent": "user.account",
+      "menu_name": "account",
+      "weight": 5,
+      "enabled": 1,
+      "expanded": true,
+      "provider": "user",
+      "class": "Drupal\\user\\Plugin\\Menu\\UserProfileLink",
+      "form_class": "",
+      "metadata": [],
+      "cache_tags": []
+    }
+  }
+}

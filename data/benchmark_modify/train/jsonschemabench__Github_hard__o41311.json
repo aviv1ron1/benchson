@@ -1,0 +1,263 @@
+{
+  "name": "o41311",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "required": [
+      "config",
+      "inputs"
+    ],
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "required": [
+          "StructZip",
+          "FuncZip"
+        ],
+        "type": "object",
+        "properties": {
+          "CustomClassifier": {
+            "type": "object",
+            "properties": {}
+          },
+          "FuncZip10": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "StructZip": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip9": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip8": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip5": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip4": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip7": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip6": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip3": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip2": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "config": {
+        "required": [
+          "PreserveOnError",
+          "HighPassFilter",
+          "RegName",
+          "FIXClassifier"
+        ],
+        "type": "object",
+        "properties": {
+          "PreserveOnError": {
+            "default": false,
+            "type": "boolean"
+          },
+          "HighPassFilter": {
+            "default": 2000,
+            "type": "integer"
+          },
+          "RegName": {
+            "default": "Empty",
+            "type": "string"
+          },
+          "FIXClassifier": {
+            "default": "HCP_hp2000",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "title": "Invocation manifest for HCP: ICAFIX Functional Pipeline"
+  },
+  "data": {
+    "config": {
+      "PreserveOnError": false,
+      "HighPassFilter": 2000,
+      "RegName": "Subject001",
+      "FIXClassifier": "HCP_hp2000"
+    },
+    "inputs": {
+      "StructZip": {
+        "type": "zip"
+      },
+      "FuncZip": {
+        "type": "zip"
+      },
+      "FuncZip2": {
+        "type": "zip"
+      },
+      "FuncZip3": {
+        "type": "zip"
+      },
+      "FuncZip4": {
+        "type": "zip"
+      },
+      "FuncZip5": {
+        "type": "zip"
+      },
+      "FuncZip6": {
+        "type": "zip"
+      },
+      "FuncZip7": {
+        "type": "zip"
+      },
+      "FuncZip8": {
+        "type": "zip"
+      },
+      "FuncZip9": {
+        "type": "zip"
+      },
+      "FuncZip10": {
+        "type": "zip"
+      },
+      "CustomClassifier": {}
+    }
+  },
+  "instructions": "Can you set the \u201cPreserveOnError\u201d field inside \u201cconfig\u201d to true?",
+  "ground_truth": {
+    "config": {
+      "PreserveOnError": true,
+      "HighPassFilter": 2000,
+      "RegName": "Subject001",
+      "FIXClassifier": "HCP_hp2000"
+    },
+    "inputs": {
+      "StructZip": {
+        "type": "zip"
+      },
+      "FuncZip": {
+        "type": "zip"
+      },
+      "FuncZip2": {
+        "type": "zip"
+      },
+      "FuncZip3": {
+        "type": "zip"
+      },
+      "FuncZip4": {
+        "type": "zip"
+      },
+      "FuncZip5": {
+        "type": "zip"
+      },
+      "FuncZip6": {
+        "type": "zip"
+      },
+      "FuncZip7": {
+        "type": "zip"
+      },
+      "FuncZip8": {
+        "type": "zip"
+      },
+      "FuncZip9": {
+        "type": "zip"
+      },
+      "FuncZip10": {
+        "type": "zip"
+      },
+      "CustomClassifier": {}
+    }
+  },
+  "modification": {
+    "op": "set_bool",
+    "path": [
+      "config",
+      "PreserveOnError"
+    ],
+    "precise_instruction": "Set \"PreserveOnError\" inside \"config\" to true."
+  }
+}

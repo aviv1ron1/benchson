@@ -1,0 +1,116 @@
+{
+  "name": "o84139",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "description": "The schema is made for RenderTheFuck timeline diagram.",
+    "properties": {
+      "lines": {
+        "items": {
+          "properties": {
+            "from": {
+              "type": "number"
+            },
+            "title": {
+              "type": "string"
+            },
+            "to": {
+              "type": "number"
+            },
+            "wiki": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "from",
+            "to"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "settings": {
+        "properties": {
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "year"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "unit"
+        ],
+        "type": "object"
+      },
+      "wtf": {
+        "enum": [
+          "timeline"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "wtf",
+      "settings",
+      "lines"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "wtf": "timeline",
+    "settings": {
+      "title": "History of Computing",
+      "unit": "year"
+    },
+    "lines": [
+      {
+        "title": "ENIAC Completion",
+        "from": 1945,
+        "to": 1945,
+        "wiki": "https://en.wikipedia.org/wiki/ENIAC"
+      },
+      {
+        "title": "Invention of the Transistor",
+        "from": 1947,
+        "to": 1947,
+        "wiki": "https://en.wikipedia.org/wiki/Transistor"
+      },
+      {
+        "title": "Launch of the World Wide Web",
+        "from": 1991,
+        "to": 1991,
+        "wiki": "https://en.wikipedia.org/wiki/World_Wide_Web"
+      }
+    ]
+  },
+  "instructions": "Please delete the first 2 items from the \"lines\" list.",
+  "ground_truth": {
+    "wtf": "timeline",
+    "settings": {
+      "title": "History of Computing",
+      "unit": "year"
+    },
+    "lines": [
+      {
+        "title": "Launch of the World Wide Web",
+        "from": 1991,
+        "to": 1991,
+        "wiki": "https://en.wikipedia.org/wiki/World_Wide_Web"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first_2",
+    "path": [
+      "lines"
+    ],
+    "precise_instruction": "Remove the first 2 items from the \"lines\" list."
+  }
+}

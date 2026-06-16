@@ -1,0 +1,32 @@
+{
+  "name": "o79491",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "If your app is a storeFrontapp, you use this API to declare where you would prefer newly logged in users to be sent to. Sometime TAS will need to direct users to this page, e.g. when someone inside some other storeFront app clicks and unInstalls that same storeFront. That storeFront then becomes dead, and the user needs to be directed to one of the remaining storeFront apps, e.g. this one.",
+    "required": [
+      "kind",
+      "uri"
+    ],
+    "properties": {
+      "kind": {
+        "enum": [
+          "storeFrontMainPage"
+        ],
+        "description": "always set to: storeFrontMainPage"
+      },
+      "uri": {
+        "type": "string",
+        "description": "your app's main uri - i.e. the default place to send users on login"
+      }
+    }
+  },
+  "description": "The default landing page for our store\u2011front application is designated as the **storeFrontMainPage**. When users log in, they will be directed straight to the main URI:\n\nhttps://www.examplestorefront.com/home\n\nThis URL serves as the primary entry point, ensuring a consistent and seamless experience for every newly authenticated user.",
+  "reference_json": {
+    "kind": "storeFrontMainPage",
+    "uri": "https://www.examplestorefront.com/home"
+  }
+}

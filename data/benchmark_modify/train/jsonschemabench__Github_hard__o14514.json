@@ -1,0 +1,411 @@
+{
+  "name": "o14514",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "Main": {
+        "properties": {
+          "ABI3": {
+            "$ref": "#/definitions/ABI3"
+          },
+          "Object": {
+            "$ref": "#/definitions/Object"
+          },
+          "Connections": {
+            "$ref": "#/definitions/Connections"
+          }
+        },
+        "type": "object"
+      },
+      "ABI3": {
+        "properties": {
+          "Template": {
+            "$ref": "#/definitions/Template"
+          },
+          "Metadata": {
+            "$ref": "#/definitions/Metadata"
+          },
+          "Project": {
+            "$ref": "#/definitions/Project"
+          }
+        },
+        "type": "object"
+      },
+      "Template": {
+        "properties": {
+          "Phase": {
+            "enum": [
+              "extract"
+            ]
+          },
+          "Pattern": {
+            "enum": [
+              "full",
+              "diff"
+            ]
+          },
+          "Source": {
+            "enum": [
+              "viw",
+              "xsl",
+              "qry",
+              "csv"
+            ]
+          },
+          "Implementation": {
+            "enum": [
+              "single",
+              "loop",
+              "parallel"
+            ]
+          },
+          "Version": {
+            "enum": [
+              1
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "Metadata": {
+        "properties": {
+          "Version": {
+            "enum": [
+              1
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "Project": {
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "TargetSQLPlatformVersion": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Object": {
+        "properties": {
+          "SourceObject": {
+            "$ref": "#/definitions/SourceObject"
+          },
+          "DestinationTable": {
+            "$ref": "#/definitions/DestinationTable"
+          },
+          "PrimaryKeyColumns": {
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SourceObject": {
+        "properties": {
+          "Schema": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "FullName": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "DestinationTable": {
+        "type": "object",
+        "properties": {
+          "Connection": {
+            "$ref": "#/definitions/Connection"
+          },
+          "Schema": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "FullName": {
+            "type": "string"
+          },
+          "CreatePrimaryKey": {
+            "type": "number"
+          },
+          "Columns": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/Column"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "Column": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "DataType": {
+            "type": "string"
+          }
+        }
+      },
+      "Connections": {
+        "properties": {
+          "Metadata": {
+            "$ref": "#/definitions/Connection"
+          },
+          "Log": {
+            "$ref": "#/definitions/Connection"
+          },
+          "Staging": {
+            "$ref": "#/definitions/Connection"
+          },
+          "Configuration": {
+            "$ref": "#/definitions/Connection"
+          },
+          "DataWarehouse": {
+            "$ref": "#/definitions/Connection"
+          },
+          "Helpers": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/Connection"
+                }
+              ]
+            }
+          }
+        },
+        "type": "object"
+      },
+      "Connection": {
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Database": {
+            "type": "string"
+          },
+          "ConnectionString": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "allOf": [
+      {
+        "$ref": "#/definitions/Main"
+      }
+    ],
+    "type": "object"
+  },
+  "data": {
+    "ABI3": {
+      "Template": {
+        "Phase": "extract",
+        "Pattern": "full",
+        "Source": "viw",
+        "Implementation": "single",
+        "Version": 1
+      },
+      "Metadata": {
+        "Version": 1
+      },
+      "Project": {
+        "Name": "CustomerDataMigration",
+        "TargetSQLPlatformVersion": "SQL Server 2019"
+      }
+    },
+    "Object": {
+      "SourceObject": {
+        "Schema": "dbo",
+        "Name": "Customer",
+        "FullName": "dbo.Customer"
+      },
+      "DestinationTable": {
+        "Connection": {
+          "Name": "DW_Connection",
+          "Database": "DataWarehouseDB",
+          "ConnectionString": "Server=dw.example.com;Database=DataWarehouseDB;Trusted_Connection=True;"
+        },
+        "Schema": "dw",
+        "Name": "Customer",
+        "FullName": "dw.Customer",
+        "CreatePrimaryKey": 1,
+        "Columns": [
+          {
+            "Name": "CustomerID",
+            "DataType": "INT"
+          },
+          {
+            "Name": "FirstName",
+            "DataType": "NVARCHAR(50)"
+          },
+          {
+            "Name": "LastName",
+            "DataType": "NVARCHAR(50)"
+          },
+          {
+            "Name": "Email",
+            "DataType": "NVARCHAR(100)"
+          },
+          {
+            "Name": "CreatedDate",
+            "DataType": "DATETIME2"
+          }
+        ]
+      },
+      "PrimaryKeyColumns": [
+        "CustomerID"
+      ]
+    },
+    "Connections": {
+      "Metadata": {
+        "Name": "MetaDB",
+        "Database": "MetadataDB",
+        "ConnectionString": "Server=meta.example.com;Database=MetadataDB;Trusted_Connection=True;"
+      },
+      "Log": {
+        "Name": "LogDB",
+        "Database": "LoggingDB",
+        "ConnectionString": "Server=log.example.com;Database=LoggingDB;Trusted_Connection=True;"
+      },
+      "Staging": {
+        "Name": "StagingDB",
+        "Database": "StagingDB",
+        "ConnectionString": "Server=staging.example.com;Database=StagingDB;Trusted_Connection=True;"
+      },
+      "Configuration": {
+        "Name": "ConfigDB",
+        "Database": "ConfigDB",
+        "ConnectionString": "Server=config.example.com;Database=ConfigDB;Trusted_Connection=True;"
+      },
+      "DataWarehouse": {
+        "Name": "DataWarehouseDB",
+        "Database": "DataWarehouseDB",
+        "ConnectionString": "Server=dw.example.com;Database=DataWarehouseDB;Trusted_Connection=True;"
+      },
+      "Helpers": [
+        {
+          "Name": "Helper1",
+          "Database": "HelperDB1",
+          "ConnectionString": "Server=helper1.example.com;Database=HelperDB1;Trusted_Connection=True;"
+        },
+        {
+          "Name": "Helper2",
+          "Database": "HelperDB2",
+          "ConnectionString": "Server=helper2.example.com;Database=HelperDB2;Trusted_Connection=True;"
+        }
+      ]
+    }
+  },
+  "instructions": "Please delete the \u201cHelpers\u201d field inside \u201cConnections\u201d.",
+  "ground_truth": {
+    "ABI3": {
+      "Template": {
+        "Phase": "extract",
+        "Pattern": "full",
+        "Source": "viw",
+        "Implementation": "single",
+        "Version": 1
+      },
+      "Metadata": {
+        "Version": 1
+      },
+      "Project": {
+        "Name": "CustomerDataMigration",
+        "TargetSQLPlatformVersion": "SQL Server 2019"
+      }
+    },
+    "Object": {
+      "SourceObject": {
+        "Schema": "dbo",
+        "Name": "Customer",
+        "FullName": "dbo.Customer"
+      },
+      "DestinationTable": {
+        "Connection": {
+          "Name": "DW_Connection",
+          "Database": "DataWarehouseDB",
+          "ConnectionString": "Server=dw.example.com;Database=DataWarehouseDB;Trusted_Connection=True;"
+        },
+        "Schema": "dw",
+        "Name": "Customer",
+        "FullName": "dw.Customer",
+        "CreatePrimaryKey": 1,
+        "Columns": [
+          {
+            "Name": "CustomerID",
+            "DataType": "INT"
+          },
+          {
+            "Name": "FirstName",
+            "DataType": "NVARCHAR(50)"
+          },
+          {
+            "Name": "LastName",
+            "DataType": "NVARCHAR(50)"
+          },
+          {
+            "Name": "Email",
+            "DataType": "NVARCHAR(100)"
+          },
+          {
+            "Name": "CreatedDate",
+            "DataType": "DATETIME2"
+          }
+        ]
+      },
+      "PrimaryKeyColumns": [
+        "CustomerID"
+      ]
+    },
+    "Connections": {
+      "Metadata": {
+        "Name": "MetaDB",
+        "Database": "MetadataDB",
+        "ConnectionString": "Server=meta.example.com;Database=MetadataDB;Trusted_Connection=True;"
+      },
+      "Log": {
+        "Name": "LogDB",
+        "Database": "LoggingDB",
+        "ConnectionString": "Server=log.example.com;Database=LoggingDB;Trusted_Connection=True;"
+      },
+      "Staging": {
+        "Name": "StagingDB",
+        "Database": "StagingDB",
+        "ConnectionString": "Server=staging.example.com;Database=StagingDB;Trusted_Connection=True;"
+      },
+      "Configuration": {
+        "Name": "ConfigDB",
+        "Database": "ConfigDB",
+        "ConnectionString": "Server=config.example.com;Database=ConfigDB;Trusted_Connection=True;"
+      },
+      "DataWarehouse": {
+        "Name": "DataWarehouseDB",
+        "Database": "DataWarehouseDB",
+        "ConnectionString": "Server=dw.example.com;Database=DataWarehouseDB;Trusted_Connection=True;"
+      }
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "Connections",
+      "Helpers"
+    ],
+    "precise_instruction": "Remove the \"Helpers\" field inside \"Connections\"."
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "name": "o4844",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "description": "An object that is applied to a sample to update one or more attributes and/or one or more external references",
+    "properties": {
+      "attributesPost": {
+        "description": "The updated version of the attribute",
+        "items": {
+          "additionalProperties": false,
+          "description": "Define the way attributes are described in a curation object",
+          "properties": {
+            "iri": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "attributesPre": {
+        "description": "The attribute to update, with it's type, value and iri. This need to match the sample in order for the curation to be applied",
+        "items": {
+          "additionalProperties": false,
+          "description": "Define the way attributes are described in a curation object",
+          "properties": {
+            "iri": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "externalReferencesPost": {
+        "description": "The updated value for the external reference",
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "externalReferencesPre": {
+        "description": "The external reference to update",
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "attributesPre",
+      "attributesPost",
+      "externalReferencesPre",
+      "externalReferencesPost"
+    ],
+    "title": "BioSamples curation object",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "attributesPre": null,
+    "attributesPost": [
+      {
+        "type": "organism",
+        "value": "Mus musculus",
+        "iri": [
+          "http://purl.obolibrary.org/obo/NCBITaxon_10090"
+        ]
+      }
+    ],
+    "externalReferencesPre": [
+      {
+        "url": "https://example.com/old-reference"
+      }
+    ],
+    "externalReferencesPost": [
+      {
+        "url": "https://example.com/new-reference"
+      }
+    ]
+  },
+  "valid_json": {
+    "attributesPre": [
+      {
+        "type": "organism",
+        "value": "Homo sapiens",
+        "iri": [
+          "http://purl.obolibrary.org/obo/NCBITaxon_9606"
+        ]
+      }
+    ],
+    "attributesPost": [
+      {
+        "type": "organism",
+        "value": "Mus musculus",
+        "iri": [
+          "http://purl.obolibrary.org/obo/NCBITaxon_10090"
+        ]
+      }
+    ],
+    "externalReferencesPre": [
+      {
+        "url": "https://example.com/old-reference"
+      }
+    ],
+    "externalReferencesPost": [
+      {
+        "url": "https://example.com/new-reference"
+      }
+    ]
+  },
+  "description": "The curators have revised the sample\u2019s organism annotation. Previously the organism was recorded as **Homo sapiens**, identified by the IRI\u202fhttp://purl.obolibrary.org/obo/NCBITaxon_9606. The updated entry now specifies **Mus musculus**, with the corresponding IRI\u202fhttp://purl.obolibrary.org/obo/NCBITaxon_10090.\n\nIn addition, the sample\u2019s external reference has been replaced. The original URL\u202fhttps://example.com/old-reference has been removed and the new reference\u202fhttps://example.com/new-reference has been added."
+}

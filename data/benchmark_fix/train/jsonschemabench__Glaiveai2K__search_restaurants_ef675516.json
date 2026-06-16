@@ -1,0 +1,54 @@
+{
+  "name": "search_restaurants_ef675516",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "cuisine": {
+        "description": "The cuisine type of the restaurants to filter by",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the restaurants to filter by",
+        "type": "string"
+      },
+      "price_range": {
+        "properties": {
+          "max": {
+            "description": "The maximum price range",
+            "type": "number"
+          },
+          "min": {
+            "description": "The minimum price range",
+            "type": "number"
+          }
+        },
+        "required": [
+          "min",
+          "max"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "cuisine"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "cuisine": "Italian",
+    "location": "San Francisco, CA",
+    "price_range": {
+      "min": 15
+    }
+  },
+  "valid_json": {
+    "cuisine": "Italian",
+    "location": "San Francisco, CA",
+    "price_range": {
+      "min": 15,
+      "max": 45
+    }
+  },
+  "description": "We are looking to compile a list of Italian restaurants in the San\u202fFrancisco,\u202fCA area. The selection criteria should focus on establishments whose menu prices fall within a moderate range\u2014specifically, entrees priced between $15 and $45."
+}

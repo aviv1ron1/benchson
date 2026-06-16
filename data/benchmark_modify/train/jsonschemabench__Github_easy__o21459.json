@@ -1,0 +1,39 @@
+{
+  "name": "o21459",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "maxLength": 160,
+        "minLength": 5,
+        "type": "string"
+      },
+      "userId": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "name",
+      "userId"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "name": "Alice Johnson",
+    "userId": 12345
+  },
+  "instructions": "Could you update the \"name\" field to \"Alice Johnson (updated)\"?",
+  "ground_truth": {
+    "name": "Alice Johnson (updated)",
+    "userId": 12345
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "name"
+    ],
+    "precise_instruction": "Change \"name\" to \"Alice Johnson (updated)\"."
+  }
+}

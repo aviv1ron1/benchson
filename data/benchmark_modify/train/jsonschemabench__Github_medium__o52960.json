@@ -1,0 +1,246 @@
+{
+  "name": "o52960",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "headline"
+    ],
+    "properties": {
+      "headline": {
+        "type": "object",
+        "description": "The HTML text to be shown as a headline.",
+        "properties": {
+          "i18nHtmlFormat": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "The (internationalized) HTML headline content using placeholders for the selections."
+          },
+          "level": {
+            "type": "integer",
+            "description": "The hierarchical level of the headline (1 to 6).",
+            "minimum": 1,
+            "maximum": 6,
+            "default": 1
+          }
+        }
+      },
+      "selections": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "object",
+          "required": [
+            "options"
+          ],
+          "properties": {
+            "parameter": {
+              "type": "string",
+              "description": "The name of the URL parameter to use",
+              "default": "s"
+            },
+            "resource": {
+              "type": "string",
+              "description": "The name of the resource under which to publish the selection",
+              "format": "topic"
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "i18nHtmlFormat": {
+                  "type": [
+                    "object",
+                    "string"
+                  ],
+                  "description": "How to display the option",
+                  "default": "[0]"
+                },
+                "parameterFormat": {
+                  "type": "string",
+                  "description": "How to render the parameter.",
+                  "default": "[0]"
+                },
+                "fields": {
+                  "type": [
+                    "string",
+                    "array",
+                    "object"
+                  ],
+                  "description": "Items available in the format above",
+                  "default": "/"
+                },
+                "resource": {
+                  "type": "string",
+                  "description": "The name of the resource supplying the options in the format described in 'options.init'",
+                  "format": "topic"
+                },
+                "init": {
+                  "type": "array",
+                  "default": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "i18n": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "default": "default"
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "headline": {
+      "i18nHtmlFormat": {
+        "en": "Explore <em>{category}</em> articles",
+        "es": "Explorar art\u00edculos de <em>{category}</em>"
+      },
+      "level": 2
+    },
+    "selections": [
+      {
+        "parameter": "category",
+        "resource": "news/categories",
+        "options": {
+          "i18nHtmlFormat": "[0]",
+          "parameterFormat": "[0]",
+          "fields": [
+            "id",
+            "name"
+          ],
+          "resource": "news/categoryList",
+          "init": [
+            {
+              "id": "tech",
+              "name": {
+                "en": "Technology",
+                "es": "Tecnolog\u00eda"
+              }
+            },
+            {
+              "id": "health",
+              "name": {
+                "en": "Health",
+                "es": "Salud"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "parameter": "region",
+        "resource": "news/regions",
+        "options": {
+          "i18nHtmlFormat": "<span>{0}</span>",
+          "parameterFormat": "{0}",
+          "fields": "/",
+          "resource": "news/regionList",
+          "init": []
+        }
+      }
+    ],
+    "i18n": {
+      "locale": "en"
+    }
+  },
+  "instructions": "Please add a new item to the selections list that is exactly the same as the first item.",
+  "ground_truth": {
+    "headline": {
+      "i18nHtmlFormat": {
+        "en": "Explore <em>{category}</em> articles",
+        "es": "Explorar art\u00edculos de <em>{category}</em>"
+      },
+      "level": 2
+    },
+    "selections": [
+      {
+        "parameter": "category",
+        "resource": "news/categories",
+        "options": {
+          "i18nHtmlFormat": "[0]",
+          "parameterFormat": "[0]",
+          "fields": [
+            "id",
+            "name"
+          ],
+          "resource": "news/categoryList",
+          "init": [
+            {
+              "id": "tech",
+              "name": {
+                "en": "Technology",
+                "es": "Tecnolog\u00eda"
+              }
+            },
+            {
+              "id": "health",
+              "name": {
+                "en": "Health",
+                "es": "Salud"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "parameter": "region",
+        "resource": "news/regions",
+        "options": {
+          "i18nHtmlFormat": "<span>{0}</span>",
+          "parameterFormat": "{0}",
+          "fields": "/",
+          "resource": "news/regionList",
+          "init": []
+        }
+      },
+      {
+        "parameter": "category",
+        "resource": "news/categories",
+        "options": {
+          "i18nHtmlFormat": "[0]",
+          "parameterFormat": "[0]",
+          "fields": [
+            "id",
+            "name"
+          ],
+          "resource": "news/categoryList",
+          "init": [
+            {
+              "id": "tech",
+              "name": {
+                "en": "Technology",
+                "es": "Tecnolog\u00eda"
+              }
+            },
+            {
+              "id": "health",
+              "name": {
+                "en": "Health",
+                "es": "Salud"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "i18n": {
+      "locale": "en"
+    }
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "selections"
+    ],
+    "precise_instruction": "Add another item to the \"selections\" list, identical to its first item."
+  }
+}

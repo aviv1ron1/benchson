@@ -1,0 +1,26 @@
+{
+  "name": "o45133",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "value"
+      ]
+    },
+    "properties": {},
+    "additionalProperties": false
+  }
+}

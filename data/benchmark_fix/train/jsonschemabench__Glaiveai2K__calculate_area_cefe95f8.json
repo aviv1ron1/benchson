@@ -1,0 +1,56 @@
+{
+  "name": "calculate_area_cefe95f8",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape's side or radius",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape (applicable for rectangle)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. square, triangle, circle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "width": 7
+    }
+  },
+  "valid_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 15,
+      "width": 7
+    }
+  },
+  "description": "Subject: Dimensions for the New Rectangular Component\n\nPlease note that the component we are ordering is a rectangle with a length of 15 units and a width of 7 units. These measurements should be used for all related design and fabrication work."
+}

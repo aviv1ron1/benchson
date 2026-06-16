@@ -1,0 +1,168 @@
+{
+  "name": "o41323",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "title": "Invocation manifest for ME-ICA: Multi-Echo Independent Components Analysis",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "basetime": {
+            "default": "0",
+            "type": "string"
+          },
+          "mni": {
+            "default": false,
+            "type": "boolean"
+          },
+          "tr": {
+            "type": "number"
+          },
+          "cpus": {
+            "default": 2,
+            "type": "integer"
+          },
+          "no_axialize": {
+            "default": false,
+            "type": "boolean"
+          },
+          "keep_int": {
+            "default": false,
+            "type": "boolean"
+          },
+          "tpattern_gen": {
+            "default": false,
+            "type": "boolean"
+          },
+          "native": {
+            "default": false,
+            "type": "boolean"
+          },
+          "daw": {
+            "default": 10,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "basetime",
+          "mni",
+          "cpus",
+          "no_axialize",
+          "keep_int",
+          "tpattern_gen",
+          "native",
+          "daw"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "type": "object"
+          },
+          "functional": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "dicom"
+                ]
+              }
+            }
+          },
+          "anatomical": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "slice_timing": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "text"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "api_key",
+          "functional"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "erroneous_json": {
+    "config": {
+      "basetime": "0",
+      "mni": false,
+      "tr": 2.0,
+      "cpus": 4,
+      "keep_int": true,
+      "tpattern_gen": false,
+      "native": false,
+      "daw": 12
+    },
+    "inputs": {
+      "api_key": {
+        "token": "my-secret-api-key-123"
+      },
+      "functional": {
+        "type": "dicom",
+        "directory": "/data/subject01/func"
+      },
+      "anatomical": {
+        "type": "nifti",
+        "file": "/data/subject01/anat/T1w.nii.gz"
+      },
+      "slice_timing": {
+        "type": "text",
+        "file": "/data/subject01/func/slice_timing.txt"
+      }
+    }
+  },
+  "valid_json": {
+    "config": {
+      "basetime": "0",
+      "mni": false,
+      "tr": 2.0,
+      "cpus": 4,
+      "no_axialize": false,
+      "keep_int": true,
+      "tpattern_gen": false,
+      "native": false,
+      "daw": 12
+    },
+    "inputs": {
+      "api_key": {
+        "token": "my-secret-api-key-123"
+      },
+      "functional": {
+        "type": "dicom",
+        "directory": "/data/subject01/func"
+      },
+      "anatomical": {
+        "type": "nifti",
+        "file": "/data/subject01/anat/T1w.nii.gz"
+      },
+      "slice_timing": {
+        "type": "text",
+        "file": "/data/subject01/func/slice_timing.txt"
+      }
+    }
+  },
+  "description": "Below is the configuration for the upcoming ME\u2011ICA run on subject\u202f01. The baseline time is set to\u202f0, and we are not applying any MNI\u2011space transformation (mni\u202f=\u202ffalse). The repetition time (TR) is 2.0\u202fseconds, and the process will use four CPU cores (cpus\u202f=\u202f4). Axial reorientation is disabled (no_axialize\u202f=\u202ffalse), while we have asked the pipeline to keep the intermediate files (keep_int\u202f=\u202ftrue). No timing pattern will be generated (tpattern_gen\u202f=\u202ffalse), and the data will be processed in native space (native\u202f=\u202ffalse). The dwell time for the multi\u2011echo acquisition is set to 12 (daw\u202f=\u202f12).\n\nAccess to the data will be authorized with the API token **my-secret-api-key-123**. The functional data are provided as DICOM files located in the directory **/data/subject01/func**. The anatomical image is a NIfTI file at **/data/subject01/anat/T1w.nii.gz**, and the slice\u2011timing information is supplied as a plain\u2011text file at **/data/subject01/func/slice_timing.txt**."
+}

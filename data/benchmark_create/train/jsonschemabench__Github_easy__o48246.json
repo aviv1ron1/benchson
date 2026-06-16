@@ -1,0 +1,51 @@
+{
+  "name": "o48246",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "error": {
+        "id": "error",
+        "type": "string"
+      },
+      "id": {
+        "id": "id",
+        "type": "string"
+      },
+      "progress": {
+        "id": "progress",
+        "type": "string"
+      },
+      "progressDetail": {
+        "id": "progressDetail",
+        "properties": {
+          "current": {
+            "id": "current",
+            "type": "integer"
+          },
+          "total": {
+            "id": "total",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "status": {
+        "id": "status",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "description": "The current operation, identified by the UUID\u202f123e4567-e89b-12d3-a456-426614174000, is in progress with a status of **Downloading**. At this stage the system reports \u201cDownloading 45% (450MB/1GB)\u201d, indicating that 450 megabytes have been transferred out of a total of 1\u202f000 megabytes. The detailed counters confirm a current count of\u202f450 and a total size of\u202f1000.\n\nNo errors have been detected so far; the error field is empty, meaning the download is proceeding without issues.",
+  "reference_json": {
+    "error": "",
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "progress": "Downloading 45% (450MB/1GB)",
+    "progressDetail": {
+      "current": 450,
+      "total": 1000
+    },
+    "status": "Downloading"
+  }
+}

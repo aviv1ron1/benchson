@@ -1,0 +1,46 @@
+{
+  "name": "o71329",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "doc/spec/system.json",
+    "title": "System",
+    "type": [
+      "object",
+      "null"
+    ],
+    "properties": {
+      "architecture": {
+        "description": "Architecture of the system the agent is running on.",
+        "type": [
+          "string",
+          "null"
+        ],
+        "maxLength": 1024
+      },
+      "hostname": {
+        "description": "Hostname of the system the agent is running on.",
+        "type": [
+          "string",
+          "null"
+        ],
+        "maxLength": 1024
+      },
+      "platform": {
+        "description": "Name of the system platform the agent is running on.",
+        "type": [
+          "string",
+          "null"
+        ],
+        "maxLength": 1024
+      }
+    }
+  },
+  "description": "The workstation identified as **workstation-01** is currently operating on a Linux platform. It is built on an **x86_64** architecture, ensuring compatibility with a wide range of modern software and hardware resources.",
+  "reference_json": {
+    "architecture": "x86_64",
+    "hostname": "workstation-01",
+    "platform": "Linux"
+  }
+}

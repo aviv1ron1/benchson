@@ -1,0 +1,51 @@
+{
+  "name": "o42285",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "org.eclipse.persistence.testing.jaxb.annotations.xmlpath.self.PaymentInf",
+    "type": "object",
+    "properties": {
+      "PaymentInf": {
+        "type": "object",
+        "properties": {
+          "CreditorFrstName": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "paymentId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "data": {
+    "PaymentInf": {
+      "CreditorFrstName": {
+        "id": "C12345"
+      },
+      "paymentId": "P987654321"
+    }
+  },
+  "instructions": "Could you remove the CreditorFrstName field from inside the PaymentInf object?",
+  "ground_truth": {
+    "PaymentInf": {
+      "paymentId": "P987654321"
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "PaymentInf",
+      "CreditorFrstName"
+    ],
+    "precise_instruction": "Remove the \"CreditorFrstName\" field inside \"PaymentInf\"."
+  }
+}

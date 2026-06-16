@@ -1,0 +1,60 @@
+{
+  "name": "calculate_area_ab215361",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle (if shape is triangle)",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle (if shape is triangle)",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle (if shape is rectangle)",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle (if shape is circle)",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle (if shape is rectangle)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "length",
+          "width",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which to calculate area (e.g. circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Geometry Parameters for Upcoming Design\n\nPlease find below the measurements that will be used in the next project phase. The primary shape we are working with is a circle with a radius of 4.5 units. For reference, the ancillary dimensions recorded for the same component are a base length of 5.2 units, a height of 3.8 units, a rectangular length of 7.0 units, and a rectangular width of 6.3 units. All values are expressed in the standard unit system agreed upon for the project. Let me know if any adjustments are required before we proceed to the detailed modeling stage.",
+  "reference_json": {
+    "shape": "circle",
+    "dimensions": {
+      "base": 5.2,
+      "height": 3.8,
+      "length": 7.0,
+      "radius": 4.5,
+      "width": 6.3
+    }
+  }
+}

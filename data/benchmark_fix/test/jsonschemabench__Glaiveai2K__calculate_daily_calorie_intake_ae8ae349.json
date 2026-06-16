@@ -1,0 +1,52 @@
+{
+  "name": "calculate_daily_calorie_intake_ae8ae349",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "activity_level": {
+        "description": "The activity level (e.g., sedentary, moderately active, active)",
+        "type": "string"
+      },
+      "age": {
+        "description": "The age in years",
+        "type": "integer"
+      },
+      "gender": {
+        "description": "The gender (e.g., male, female)",
+        "type": "string"
+      },
+      "height": {
+        "description": "The height in centimeters",
+        "type": "number"
+      },
+      "weight": {
+        "description": "The weight in kilograms",
+        "type": "number"
+      }
+    },
+    "required": [
+      "gender",
+      "age",
+      "weight",
+      "height",
+      "activity_level"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "gender": "female",
+    "age": 29,
+    "weight": "not-a-number",
+    "height": 165.2,
+    "activity_level": "moderately active"
+  },
+  "valid_json": {
+    "gender": "female",
+    "age": 29,
+    "weight": 68.5,
+    "height": 165.2,
+    "activity_level": "moderately active"
+  },
+  "description": "Dear Team,\n\nPlease find the client\u2019s current metrics below: the individual is a 29\u2011year\u2011old female, standing 165.2\u202fcm tall and weighing 68.5\u202fkg. She describes her routine as moderately active, engaging in regular physical activity several times each week. Let me know if any further details are needed."
+}

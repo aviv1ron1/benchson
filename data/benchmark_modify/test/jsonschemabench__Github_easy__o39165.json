@@ -1,0 +1,63 @@
+{
+  "name": "o39165",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "privacyStatements"
+    ],
+    "properties": {
+      "privacyStatements": {
+        "type": "array",
+        "minItems": 0,
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "issuedDate"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "issuedDate": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "privacyStatements": [
+      {
+        "id": "ps-2023-001",
+        "issuedDate": "2023-04-15"
+      },
+      {
+        "id": "ps-2024-002",
+        "issuedDate": "2024-01-20"
+      }
+    ]
+  },
+  "instructions": "Could you remove the first item from the privacyStatements list?",
+  "ground_truth": {
+    "privacyStatements": [
+      {
+        "id": "ps-2024-002",
+        "issuedDate": "2024-01-20"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "privacyStatements"
+    ],
+    "precise_instruction": "Remove the first item from the \"privacyStatements\" list."
+  }
+}

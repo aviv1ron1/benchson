@@ -1,0 +1,121 @@
+{
+  "name": "o74561",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Wangscape terrain hypergraph schema",
+    "description": "Specifies the clique memberships of each terrain in a Wangscape configuration.",
+    "patternProperties": {
+      "^[0-9a-zA-Z_-]+$": {
+        "title": "Clique list schema",
+        "description": "Lists all the cliques which contain a certain terrain.",
+        "type": "array",
+        "items": {
+          "title": "Clique schema",
+          "description": "Specifies a terrain clique as a list of terrain IDs.",
+          "type": "array",
+          "items": {
+            "title": "Terrain ID schema",
+            "description": "Specifies a terrain type.",
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]+$"
+          },
+          "minItems": 1
+        }
+      }
+    }
+  },
+  "data": {
+    "grassland": [
+      [
+        "grassland",
+        "forest"
+      ],
+      [
+        "grassland",
+        "hill",
+        "river"
+      ]
+    ],
+    "desert": [
+      [
+        "desert",
+        "mountain"
+      ],
+      [
+        "desert",
+        "oasis"
+      ]
+    ],
+    "water": [
+      [
+        "water",
+        "river"
+      ],
+      [
+        "water",
+        "lake",
+        "swamp"
+      ]
+    ],
+    "mountain_peak": [
+      [
+        "mountain_peak",
+        "snow"
+      ],
+      [
+        "mountain_peak",
+        "rocky"
+      ]
+    ]
+  },
+  "instructions": "Please remove the last item from the \"water\" list.",
+  "ground_truth": {
+    "grassland": [
+      [
+        "grassland",
+        "forest"
+      ],
+      [
+        "grassland",
+        "hill",
+        "river"
+      ]
+    ],
+    "desert": [
+      [
+        "desert",
+        "mountain"
+      ],
+      [
+        "desert",
+        "oasis"
+      ]
+    ],
+    "water": [
+      [
+        "water",
+        "river"
+      ]
+    ],
+    "mountain_peak": [
+      [
+        "mountain_peak",
+        "snow"
+      ],
+      [
+        "mountain_peak",
+        "rocky"
+      ]
+    ]
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "water"
+    ],
+    "precise_instruction": "Remove the last item from the \"water\" list."
+  }
+}

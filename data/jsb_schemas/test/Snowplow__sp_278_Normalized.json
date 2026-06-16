@@ -1,0 +1,25 @@
+{
+  "name": "sp_278_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Context containing first duplicated event id",
+    "properties": {
+      "originalEventId": {
+        "_format": "uuid",
+        "type": "string"
+      }
+    },
+    "required": [
+      "originalEventId"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "duplicate",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  }
+}

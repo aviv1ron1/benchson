@@ -1,0 +1,132 @@
+{
+  "name": "markdown-link-check",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "id": "https://json.schemastore.org/markdown-link-check.json",
+    "properties": {
+      "ignorePatterns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pattern"
+          ],
+          "properties": {
+            "pattern": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "replacementPatterns": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pattern",
+            "replacement"
+          ],
+          "properties": {
+            "pattern": {
+              "type": "string"
+            },
+            "replacement": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "httpHeaders": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "urls": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "headers": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "timeout": {
+        "type": "string"
+      },
+      "retryOn429": {
+        "type": "boolean"
+      },
+      "retryCount": {
+        "type": "number"
+      },
+      "projectBaseUrl": {
+        "type": "string"
+      },
+      "fallbackRetryDelay": {
+        "type": "string"
+      },
+      "aliveStatusCodes": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "type": "object"
+  },
+  "description": "Dear team,\n\nFor the upcoming run of the Markdown link checker we\u2019ll be ignoring any URLs that match the regular expression\u202f`^https?://example\\.com/ignore` as well as any mailto links that start with `^mailto:`. When processing links we\u2019ll first apply the replacement pattern\u202f`(http://)(.*)` \u2192 `$1$2` and then replace any occurrence of the string\u202f`foo` with\u202f`bar`. All requests to endpoints under the pattern\u202f`https://api.example.com/*` will carry the header **Authorization:\u202fBearer token123** and will identify themselves with **User\u2011Agent:\u202fMarkdownLinkChecker/1.0**. The overall request timeout is set to\u202f`5000ms`; if a 429 (Too Many Requests) response is received we\u2019ll automatically retry, allowing up to\u202f3 attempts, and if the retry still fails we\u2019ll fall back to a retry delay of\u202f`2s`.\n\nThe base URL for the project is\u202f`https://github.com/user/repo`. Links that return any of the HTTP status codes\u202f200,\u202f201,\u202f203, or\u202f204 will be considered alive. Please review these settings and let me know if any adjustments are needed before we proceed.",
+  "reference_json": {
+    "ignorePatterns": [
+      {
+        "pattern": "^https?://example\\.com/ignore"
+      },
+      {
+        "pattern": "^mailto:"
+      }
+    ],
+    "replacementPatterns": [
+      {
+        "pattern": "(http://)(.*)",
+        "replacement": "$1$2"
+      },
+      {
+        "pattern": "foo",
+        "replacement": "bar"
+      }
+    ],
+    "httpHeaders": [
+      {
+        "urls": [
+          "https://api.example.com/*"
+        ],
+        "headers": {
+          "Authorization": "Bearer token123",
+          "User-Agent": "MarkdownLinkChecker/1.0"
+        }
+      }
+    ],
+    "timeout": "5000ms",
+    "retryOn429": true,
+    "retryCount": 3,
+    "projectBaseUrl": "https://github.com/user/repo",
+    "fallbackRetryDelay": "2s",
+    "aliveStatusCodes": [
+      200,
+      201,
+      203,
+      204
+    ]
+  }
+}

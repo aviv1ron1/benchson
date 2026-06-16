@@ -1,0 +1,178 @@
+{
+  "name": "sp_127_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Mandrill message marked as spam event",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "msg": {
+        "additionalProperties": false,
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "_version": {
+            "type": "string"
+          },
+          "clicks": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "ts": {
+                  "_format": "date-time",
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "email": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "properties": {
+              "user_id": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "opens": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "ts": {
+                  "_format": "date-time",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "sender": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "ts": {
+            "_format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ts": {
+        "_format": "date-time",
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "message_marked_as_spam",
+      "vendor": "com.mandrill",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "_id": "evt_9f6c4b2a5d3e7",
+    "msg": {
+      "_id": "msg_1234567890",
+      "_version": "1.0",
+      "clicks": [
+        {
+          "ts": "2023-08-15T14:23:45Z",
+          "url": "https://example.com/track?click=1"
+        }
+      ],
+      "email": "user@example.com",
+      "metadata": {
+        "user_id": 98765,
+        "campaign": "summer_sale"
+      },
+      "opens": [
+        {
+          "ts": "2023-08-15T14:20:00Z",
+          "client": "Gmail"
+        }
+      ],
+      "sender": "marketing@example.com",
+      "state": "sent",
+      "subject": "Exclusive Offer Just for You!",
+      "tags": [
+        "promo",
+        "summer",
+        "sale"
+      ],
+      "ts": "2023-08-15T14:15:30Z"
+    },
+    "ts": "2023-08-15T14:30:00Z"
+  },
+  "instructions": "Could you add another entry to the `opens` list inside `msg` that\u2019s exactly the same as the first one?",
+  "ground_truth": {
+    "_id": "evt_9f6c4b2a5d3e7",
+    "msg": {
+      "_id": "msg_1234567890",
+      "_version": "1.0",
+      "clicks": [
+        {
+          "ts": "2023-08-15T14:23:45Z",
+          "url": "https://example.com/track?click=1"
+        }
+      ],
+      "email": "user@example.com",
+      "metadata": {
+        "user_id": 98765,
+        "campaign": "summer_sale"
+      },
+      "opens": [
+        {
+          "ts": "2023-08-15T14:20:00Z",
+          "client": "Gmail"
+        },
+        {
+          "ts": "2023-08-15T14:20:00Z",
+          "client": "Gmail"
+        }
+      ],
+      "sender": "marketing@example.com",
+      "state": "sent",
+      "subject": "Exclusive Offer Just for You!",
+      "tags": [
+        "promo",
+        "summer",
+        "sale"
+      ],
+      "ts": "2023-08-15T14:15:30Z"
+    },
+    "ts": "2023-08-15T14:30:00Z"
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "msg",
+      "opens"
+    ],
+    "precise_instruction": "Add another item to the \"opens\" list inside \"msg\", identical to its first item."
+  }
+}

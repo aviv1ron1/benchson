@@ -1,0 +1,467 @@
+{
+  "name": "xs-app",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/xs-app.json",
+    "$comment": "Based on https://github.wdf.sap.corp/xs2/approuter.js/blob/master/lib/configuration/schemas/xs-app-schema.json",
+    "definitions": {
+      "sourceSchema": {
+        "type": [
+          "string",
+          "object"
+        ],
+        "minLength": 1,
+        "format": "regex",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "format": "regex"
+          },
+          "matchCase": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "scopesSchema": {
+        "type": [
+          "string",
+          "array",
+          "object"
+        ],
+        "minProperties": 1,
+        "additionalProperties": false,
+        "properties": {
+          "GET": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "POST": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "HEAD": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "PUT": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "DELETE": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "TRACE": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "PATCH": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "OPTIONS": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "CONNECT": {
+            "$ref": "#/definitions/scopeTemplate"
+          },
+          "default": {
+            "$ref": "#/definitions/scopeTemplate"
+          }
+        },
+        "minLength": 1,
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "scopeTemplate": {
+        "type": [
+          "string",
+          "array"
+        ],
+        "minLength": 1,
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "description": "Application Router Configuration Schema",
+    "properties": {
+      "welcomeFile": {
+        "type": "string",
+        "minLength": 1
+      },
+      "authenticationMethod": {
+        "type": "string",
+        "enum": [
+          "none",
+          "route"
+        ]
+      },
+      "sessionTimeout": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "pluginMetadataEndpoint": {
+        "type": "string",
+        "minLength": 1,
+        "format": "relative-uri"
+      },
+      "routes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "format": "route-rules",
+          "properties": {
+            "source": {
+              "$ref": "#/definitions/sourceSchema"
+            },
+            "httpMethods": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "DELETE",
+                  "GET",
+                  "HEAD",
+                  "OPTIONS",
+                  "POST",
+                  "PUT",
+                  "TRACE",
+                  "PATCH"
+                ]
+              }
+            },
+            "target": {
+              "type": "string",
+              "minLength": 1,
+              "format": "relative-uri"
+            },
+            "destination": {
+              "type": "string",
+              "minLength": 1
+            },
+            "localDir": {
+              "type": "string",
+              "minLength": 1
+            },
+            "csrfProtection": {
+              "type": "boolean"
+            },
+            "service": {
+              "type": "string"
+            },
+            "endpoint": {
+              "type": "string"
+            },
+            "authenticationType": {
+              "type": "string",
+              "enum": [
+                "xsuaa",
+                "basic",
+                "ias",
+                "none"
+              ]
+            },
+            "identityProvider": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scope": {
+              "$ref": "#/definitions/scopesSchema"
+            },
+            "replace": {
+              "type": "object",
+              "required": [
+                "pathSuffixes"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "pathSuffixes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "relative-uri"
+                  }
+                },
+                "vars": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "services": {
+                  "type": "object"
+                }
+              }
+            },
+            "cacheControl": {
+              "type": "string",
+              "minLength": 1,
+              "format": "valid-header-value"
+            }
+          },
+          "required": [
+            "source"
+          ]
+        }
+      },
+      "destinations": {
+        "type": "object",
+        "format": "destinations-rules",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "logoutPath": {
+              "type": "string",
+              "minLength": 1,
+              "format": "relative-uri"
+            },
+            "logoutMethod": {
+              "type": "string",
+              "enum": [
+                "PUT",
+                "POST",
+                "GET"
+              ]
+            }
+          }
+        }
+      },
+      "services": {
+        "type": "object",
+        "format": "services-rules",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "endpoint": {
+              "type": "string",
+              "minLength": 1
+            },
+            "logoutPath": {
+              "type": "string",
+              "minLength": 1,
+              "format": "relative-uri"
+            },
+            "logoutMethod": {
+              "type": "string",
+              "enum": [
+                "PUT",
+                "POST",
+                "GET"
+              ]
+            }
+          }
+        }
+      },
+      "logout": {
+        "type": "object",
+        "additionalProperties": false,
+        "format": "logout-rules",
+        "properties": {
+          "logoutEndpoint": {
+            "type": "string",
+            "minLength": 1,
+            "format": "relative-uri"
+          },
+          "logoutPage": {
+            "type": "string",
+            "minLength": 1,
+            "format": "uri"
+          }
+        }
+      },
+      "login": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callbackEndpoint": {
+            "type": "string",
+            "minLength": 1,
+            "format": "relative-uri"
+          }
+        },
+        "required": [
+          "callbackEndpoint"
+        ]
+      },
+      "whitelistService": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "endpoint": {
+            "type": "string",
+            "minLength": 1,
+            "format": "relative-uri"
+          }
+        },
+        "required": [
+          "endpoint"
+        ]
+      },
+      "compression": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "minSize": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      },
+      "websockets": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
+        ]
+      },
+      "errorPage": {
+        "type": "array",
+        "additionalProperties": false,
+        "items": {
+          "type": "object",
+          "required": [
+            "status",
+            "file"
+          ],
+          "properties": {
+            "status": {
+              "type": [
+                "integer",
+                "array"
+              ],
+              "minimum": 1,
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "file": {
+              "type": "string",
+              "minLength": 1,
+              "format": "local-file"
+            }
+          }
+        }
+      }
+    },
+    "title": "com.sap.xsapp.schema_8.2",
+    "type": "object"
+  },
+  "description": "The application router will serve **index.html** as the welcome file and uses a **route\u2011based authentication** method with a session timeout of **1800\u202fseconds**. All plugin metadata can be accessed at **/meta**. Compression is turned on for responses larger than **1024\u202fbytes**, while WebSocket support is disabled. A whitelist service is exposed at the relative path **/whitelist**.  \n\nTwo routing rules are defined. The first matches any request whose path starts with **/api/** (regex \u201c^/api/.*\u201d) for the HTTP methods **GET** and **POST**; such requests are forwarded to **/backend**, CSRF protection is enabled, and the route requires **xsuaa** authentication through the identity provider **my-idp**. Authorization scopes are configured as follows: **GET** requests need the **ReadScope**, **POST** requests require both **WriteScope** and **AdminScope**, and any other method falls back to **DefaultScope**. Before forwarding, the router will replace the path suffixes \u201c.html\u201d and \u201c.js\u201d, substituting the variables **var1** and **var2** (no additional services are injected), and the response header will include **Cache\u2011Control: no\u2011cache**.  \n\nThe second rule serves static content: any path matching \u201c^/static/.*\u201d via **GET** is served from the local directory **public**, with a **Cache\u2011Control** header of **max-age=3600**. Destination **MyDest** logs out via **POST** to **/logout**, while **AnotherDest** uses a **GET** to **/signout**. The defined service **MyService** points to **https://service.example.com**, logging out with a **GET** to **/slogout**. For overall logout handling, the router redirects to **/logout** and shows the page **https://example.com/logout.html**; login callbacks are expected at **/callback**. Finally, custom error pages are provided: a 404 error displays **error/404.html**, and the error codes **500** and **502** share the page **error/5xx.html**.",
+  "reference_json": {
+    "welcomeFile": "index.html",
+    "authenticationMethod": "route",
+    "sessionTimeout": 1800,
+    "pluginMetadataEndpoint": "/meta",
+    "routes": [
+      {
+        "source": "^/api/.*",
+        "httpMethods": [
+          "GET",
+          "POST"
+        ],
+        "target": "/backend",
+        "csrfProtection": true,
+        "authenticationType": "xsuaa",
+        "identityProvider": "my-idp",
+        "scope": {
+          "GET": "ReadScope",
+          "POST": [
+            "WriteScope",
+            "AdminScope"
+          ],
+          "default": "DefaultScope"
+        },
+        "replace": {
+          "pathSuffixes": [
+            ".html",
+            ".js"
+          ],
+          "vars": [
+            "var1",
+            "var2"
+          ],
+          "services": {}
+        },
+        "cacheControl": "no-cache"
+      },
+      {
+        "source": "^/static/.*",
+        "httpMethods": [
+          "GET"
+        ],
+        "localDir": "public",
+        "cacheControl": "max-age=3600"
+      }
+    ],
+    "destinations": {
+      "MyDest": {
+        "logoutPath": "/logout",
+        "logoutMethod": "POST"
+      },
+      "AnotherDest": {
+        "logoutPath": "/signout",
+        "logoutMethod": "GET"
+      }
+    },
+    "services": {
+      "MyService": {
+        "endpoint": "https://service.example.com",
+        "logoutPath": "/slogout",
+        "logoutMethod": "GET"
+      }
+    },
+    "logout": {
+      "logoutEndpoint": "/logout",
+      "logoutPage": "https://example.com/logout.html"
+    },
+    "login": {
+      "callbackEndpoint": "/callback"
+    },
+    "whitelistService": {
+      "endpoint": "/whitelist"
+    },
+    "compression": {
+      "enabled": true,
+      "minSize": 1024
+    },
+    "websockets": {
+      "enabled": false
+    },
+    "errorPage": [
+      {
+        "status": 404,
+        "file": "error/404.html"
+      },
+      {
+        "status": [
+          500,
+          502
+        ],
+        "file": "error/5xx.html"
+      }
+    ]
+  }
+}

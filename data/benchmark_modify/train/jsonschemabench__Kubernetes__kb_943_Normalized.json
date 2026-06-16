@@ -1,0 +1,40 @@
+{
+  "name": "kb_943_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
+    "properties": {
+      "name": {
+        "description": "Name is unique within a namespace to reference a secret resource.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "namespace": {
+        "description": "Namespace defines the space within which the secret name must be unique.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "name": "db-credentials",
+    "namespace": "production"
+  },
+  "instructions": "Could you remove the \"namespace\" field?",
+  "ground_truth": {
+    "name": "db-credentials"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "namespace"
+    ],
+    "precise_instruction": "Remove the \"namespace\" field."
+  }
+}

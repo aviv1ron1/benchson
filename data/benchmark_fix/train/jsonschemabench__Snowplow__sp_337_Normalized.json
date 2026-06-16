@@ -1,0 +1,134 @@
+{
+  "name": "sp_337_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for storage recovery jobs, such as Snowplow BigQuery Repeater",
+    "properties": {
+      "failure": {
+        "description": "A reason why payload could not be inserted",
+        "properties": {
+          "error": {
+            "oneOf": [
+              {
+                "description": "Payload couldn't be parsed as an event (ParsingError)",
+                "properties": {
+                  "location": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "message": {
+                    "description": "Human-readable error",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "message",
+                  "location"
+                ],
+                "type": "object"
+              },
+              {
+                "description": "Payload couldn't be inserted because of a service failure (RuntimeError)",
+                "properties": {
+                  "location": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "message": {
+                    "description": "Human-readable error",
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "message",
+                  "location",
+                  "reason"
+                ],
+                "type": "object"
+              }
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "payload": {
+        "description": "Data blob which was not inserted into a warehouse",
+        "type": "string"
+      },
+      "processor": {
+        "additionalProperties": false,
+        "description": "Information about the piece of software responsible for the creation of enrichment failures",
+        "properties": {
+          "artifact": {
+            "description": "Artifact responsible for the creation of enrichment failures",
+            "maxLength": 512,
+            "type": "string"
+          },
+          "version": {
+            "description": "Version of the artifact responsible for the creation of enrichment failures",
+            "maxLength": 32,
+            "pattern": "^(\\d+\\.\\d+\\.\\d+.*)$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifact",
+          "version"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "payload",
+      "failure",
+      "processor"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "loader_recovery_error",
+      "vendor": "com.snowplowanalytics.snowplow.badrows",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "payload": "{\"event\":\"click\",\"user\":\"12345\"}",
+    "failure": {
+      "error": {
+        "message": "Failed to insert payload due to service outage.",
+        "location": "bigquery://myproject.mydataset.events",
+        "reason": "Transient network issue"
+      }
+    },
+    "processor": null
+  },
+  "valid_json": {
+    "payload": "{\"event\":\"click\",\"user\":\"12345\"}",
+    "failure": {
+      "error": {
+        "message": "Failed to insert payload due to service outage.",
+        "location": "bigquery://myproject.mydataset.events",
+        "reason": "Transient network issue"
+      }
+    },
+    "processor": {
+      "artifact": "snowplow-bigquery-repeater",
+      "version": "1.0.0"
+    }
+  },
+  "description": "The Snowplow BigQuery Repeater attempted to process the following payload but was unable to insert it into the warehouse: `{\"event\":\"click\",\"user\":\"12345\"}`. The insertion failed with the error message \u201cFailed to insert payload due to service outage.\u201d The target location was\u202f`bigquery://myproject.mydataset.events`, and the underlying reason was identified as a transient network issue.\n\nThis failure originated from the Snowplow component identified by the artifact\u202f`snowplow-bigquery-repeater`, version\u202f`1.0.0`."
+}

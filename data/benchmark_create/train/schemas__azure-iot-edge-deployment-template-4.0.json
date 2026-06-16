@@ -1,0 +1,235 @@
+{
+  "name": "azure-iot-edge-deployment-template-4.0",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "moduleSettings": {
+        "type": "object",
+        "required": [
+          "image"
+        ],
+        "properties": {
+          "image": {
+            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/moduleSettings/properties/image"
+          }
+        },
+        "patternProperties": {
+          "^(createoptions|createOptions)[0-9]*$": {
+            "$ref": "#/definitions/createOptions"
+          }
+        }
+      },
+      "createOptions": {
+        "type": [
+          "object",
+          "string"
+        ],
+        "contentMediaType": "application/json"
+      }
+    },
+    "id": "https://json.schemastore.org/azure-iot-edge-deployment-template-4.0.json",
+    "properties": {
+      "modulesContent": {
+        "type": "object",
+        "title": "The configuration for all the modules.",
+        "required": [
+          "$edgeAgent"
+        ],
+        "properties": {
+          "$edgeAgent": {
+            "type": "object",
+            "title": "Configuration for the edgeAgent module",
+            "required": [
+              "properties.desired"
+            ],
+            "properties": {
+              "properties.desired": {
+                "type": "object",
+                "required": [
+                  "schemaVersion",
+                  "runtime",
+                  "systemModules",
+                  "modules"
+                ],
+                "properties": {
+                  "schemaVersion": {
+                    "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/properties/$edgeAgent/properties/properties.desired/properties/schemaVersion"
+                  },
+                  "runtime": {
+                    "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/properties/$edgeAgent/properties/properties.desired/properties/runtime"
+                  },
+                  "systemModules": {
+                    "type": "object",
+                    "required": [
+                      "edgeAgent",
+                      "edgeHub"
+                    ],
+                    "properties": {
+                      "edgeAgent": {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "settings"
+                        ],
+                        "properties": {
+                          "type": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/moduleType"
+                          },
+                          "settings": {
+                            "$ref": "#/definitions/moduleSettings"
+                          },
+                          "env": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/env"
+                          },
+                          "imagePullPolicy": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/imagePullPolicy"
+                          }
+                        }
+                      },
+                      "edgeHub": {
+                        "type": "object",
+                        "title": "The Edgehub Schema",
+                        "required": [
+                          "type",
+                          "settings",
+                          "status",
+                          "restartPolicy"
+                        ],
+                        "properties": {
+                          "type": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/moduleType"
+                          },
+                          "settings": {
+                            "$ref": "#/definitions/moduleSettings"
+                          },
+                          "env": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/env"
+                          },
+                          "status": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/status"
+                          },
+                          "restartPolicy": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/restartPolicy"
+                          },
+                          "imagePullPolicy": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/imagePullPolicy"
+                          },
+                          "startupOrder": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/startupOrder"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "modules": {
+                    "type": "object",
+                    "patternProperties": {
+                      "^[a-zA-Z0-9_-]+$": {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "status",
+                          "restartPolicy",
+                          "settings"
+                        ],
+                        "properties": {
+                          "version": {
+                            "type": "string",
+                            "examples": [
+                              "1.0"
+                            ]
+                          },
+                          "type": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/moduleType"
+                          },
+                          "status": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/status"
+                          },
+                          "restartPolicy": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/restartPolicy"
+                          },
+                          "env": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/env"
+                          },
+                          "settings": {
+                            "$ref": "#/definitions/moduleSettings"
+                          },
+                          "imagePullPolicy": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/imagePullPolicy"
+                          },
+                          "startupOrder": {
+                            "$ref": "https://json.schemastore.org/azure-iot-edgeagent-deployment-1.1.json#/definitions/startupOrder"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "$edgeHub": {
+            "$ref": "https://json.schemastore.org/azure-iot-edgehub-deployment-1.2.json#/properties/$edgeHub"
+          }
+        }
+      }
+    },
+    "required": [
+      "modulesContent"
+    ],
+    "title": "JSON schema for Azure IoT Edge Deployment Template version 4.0 (Edge Agent schema v1.1 + Edge Hub schema v1.2 )",
+    "type": "object"
+  },
+  "description": "Dear Team,\n\nThe current Azure\u202fIoT Edge deployment is set to schema version\u202f1.1 and uses Docker as the runtime. No specific logging options have been configured for the runtime. For the system modules, the Edge\u202fAgent container is pulled from **myregistry.azurecr.io/edgeagent:1.0**, and the Edge\u202fHub container comes from **myregistry.azurecr.io/edgehub:1.0**; the hub is marked as running and is configured to always restart if it stops.\n\nIn addition to the system modules, we have two custom modules deployed. The **tempSensor** module runs a Docker image located at **myregistry.azurecr.io/tempsensor:2.1**, is currently running, and is set to always restart on failure. The **dataProcessor** module uses the Docker image **myregistry.azurecr.io/dataprocessor:3.0**, is also running, and will restart only on failure. Both modules inherit the same Docker runtime as defined for the edge device.",
+  "reference_json": {
+    "modulesContent": {
+      "$edgeAgent": {
+        "properties.desired": {
+          "schemaVersion": "1.1",
+          "runtime": {
+            "type": "docker",
+            "settings": {
+              "loggingOptions": ""
+            }
+          },
+          "systemModules": {
+            "edgeAgent": {
+              "type": "docker",
+              "settings": {
+                "image": "myregistry.azurecr.io/edgeagent:1.0"
+              }
+            },
+            "edgeHub": {
+              "type": "docker",
+              "settings": {
+                "image": "myregistry.azurecr.io/edgehub:1.0"
+              },
+              "status": "running",
+              "restartPolicy": "always"
+            }
+          },
+          "modules": {
+            "tempSensor": {
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "myregistry.azurecr.io/tempsensor:2.1"
+              }
+            },
+            "dataProcessor": {
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "on-failure",
+              "settings": {
+                "image": "myregistry.azurecr.io/dataprocessor:3.0"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

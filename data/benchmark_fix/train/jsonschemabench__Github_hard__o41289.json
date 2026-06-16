@@ -1,0 +1,142 @@
+{
+  "name": "o41289",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "title": "Invocation manifest for FSL: SIENAX - Brain tissue volume, normalised for subject head size",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "BET": {
+            "default": "",
+            "id": "-B",
+            "type": "string"
+          },
+          "BOTTOM": {
+            "default": "",
+            "id": "-b",
+            "type": "string"
+          },
+          "DEBUG": {
+            "default": false,
+            "id": "-d",
+            "type": "boolean"
+          },
+          "SEG": {
+            "default": false,
+            "id": "-2",
+            "type": "boolean"
+          },
+          "S_FAST": {
+            "default": "",
+            "id": "-S",
+            "type": "string"
+          },
+          "T2": {
+            "default": false,
+            "id": "-t2",
+            "type": "boolean"
+          },
+          "TOP": {
+            "default": "",
+            "id": "-t",
+            "type": "string"
+          },
+          "REGIONAL": {
+            "default": false,
+            "id": "-r",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "BET",
+          "BOTTOM",
+          "DEBUG",
+          "SEG",
+          "S_FAST",
+          "T2",
+          "TOP",
+          "REGIONAL"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "object"
+          },
+          "NIFTI": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "lesion_mask": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "key",
+          "NIFTI"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "erroneous_json": {
+    "config": {
+      "BET": "-B",
+      "BOTTOM": "0",
+      "DEBUG": false,
+      "SEG": false,
+      "S_FAST": "0.5",
+      "T2": false,
+      "TOP": "100",
+      "REGIONAL": false
+    }
+  },
+  "valid_json": {
+    "config": {
+      "BET": "-B",
+      "BOTTOM": "0",
+      "DEBUG": false,
+      "SEG": false,
+      "S_FAST": "0.5",
+      "T2": false,
+      "TOP": "100",
+      "REGIONAL": false
+    },
+    "inputs": {
+      "key": {
+        "subject_id": "sub-001",
+        "session": "ses-01"
+      },
+      "NIFTI": {
+        "type": "nifti",
+        "filepath": "/data/sub-001/ses-01/anat/T1w.nii.gz"
+      },
+      "lesion_mask": {
+        "type": "nifti",
+        "filepath": "/data/sub-001/ses-01/lesion/lesion_mask.nii.gz"
+      }
+    }
+  },
+  "description": "The SIENAX processing for subject **sub\u2011001**, session **ses\u201101**, will be run using the following options: brain\u2011extraction is requested with the flag **\u2011B**, the lower and upper intensity thresholds are set to **0** (\u2011b) and **100** (\u2011t) respectively, and the fast\u2011track smoothing parameter is set to **0.5** (\u2011S). Debug mode is turned off, tissue segmentation (\u20112) and T2\u2011weighted processing (\u2011t2) are not enabled, and no regional analysis (\u2011r) will be performed.\n\nThe input anatomical image is the NIfTI file located at  \n`/data/sub-001/ses-01/anat/T1w.nii.gz`, and the accompanying lesion mask (also a NIfTI) can be found at  \n`/data/sub-001/ses-01/lesion/lesion_mask.nii.gz`. All settings are prepared for a standard head\u2011size normalisation run without additional debugging or segmentation outputs."
+}

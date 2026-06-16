@@ -1,0 +1,46 @@
+{
+  "name": "o79445",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "httpUri": {
+        "type": "string",
+        "allOf": [
+          {
+            "format": "uri"
+          },
+          {
+            "pattern": "^https?://"
+          }
+        ]
+      }
+    },
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "uri": {
+        "$ref": "#/definitions/httpUri"
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "name": "Example Service",
+    "uri": "https://api.example.com/v1"
+  },
+  "instructions": "Could you please remove the \"name\" field?",
+  "ground_truth": {
+    "uri": "https://api.example.com/v1"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "name"
+    ],
+    "precise_instruction": "Remove the \"name\" field."
+  }
+}

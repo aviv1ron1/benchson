@@ -1,0 +1,93 @@
+{
+  "name": "o31059",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "defaultauthorizationaction": {
+        "enum": [
+          "ALLOW",
+          "DENY"
+        ],
+        "type": "string"
+      },
+      "homepage": {
+        "type": "string"
+      },
+      "httponlycookie": {
+        "enum": [
+          "YES",
+          "NO"
+        ],
+        "type": "string"
+      },
+      "kcdaccount": {
+        "type": "string"
+      },
+      "name": {
+        "readonly": true,
+        "type": "string"
+      },
+      "persistentcookie": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "persistentcookievalidity": {
+        "type": "integer"
+      },
+      "sesstimeout": {
+        "type": "integer"
+      },
+      "sso": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "ssocredential": {
+        "enum": [
+          "PRIMARY",
+          "SECONDARY"
+        ],
+        "type": "string"
+      },
+      "ssodomain": {
+        "type": "string"
+      },
+      "tmsessionpolicybindtype": {
+        "enum": [
+          "Classic Policy",
+          "Advanced Policy"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "tmsessionpolicycount": {
+        "readonly": true,
+        "type": "integer"
+      }
+    },
+    "title": "tmsessionparameter",
+    "type": "object"
+  },
+  "description": "Subject: Session Parameter Configuration \u2013 \u201cSessionParam1\u201d\n\nThe session profile named **SessionParam1** has been configured with a default authorization action of **ALLOW** and points users to the home page at **https://www.example.com/home**. HTTP\u2011Only cookies are enabled (**YES**) and persistent cookies are turned **ON**, with a validity period of **30** days. The session timeout is set to **900** seconds. Single Sign\u2011On (SSO) is active (**ON**), using the **PRIMARY** credential stored under the domain **example.com**. The key\u2011chain directory (KCD) account associated with this profile is **kcd_user**.  \n\nThis profile is bound using the **Classic Policy** type and currently has **5** session policies attached. All settings reflect the intended security and usability standards for the environment.",
+  "reference_json": {
+    "defaultauthorizationaction": "ALLOW",
+    "homepage": "https://www.example.com/home",
+    "httponlycookie": "YES",
+    "kcdaccount": "kcd_user",
+    "name": "SessionParam1",
+    "persistentcookie": "ON",
+    "persistentcookievalidity": 30,
+    "sesstimeout": 900,
+    "sso": "ON",
+    "ssocredential": "PRIMARY",
+    "ssodomain": "example.com",
+    "tmsessionpolicybindtype": "Classic Policy",
+    "tmsessionpolicycount": 5
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "o28269",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "description": "",
+    "properties": {
+      "fragment": {
+        "type": "string"
+      },
+      "host": {
+        "format": "hostname",
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "port": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "query": {
+        "type": "string"
+      },
+      "scheme": {
+        "type": "string"
+      },
+      "userinfo": {
+        "type": "string"
+      }
+    },
+    "title": "uri",
+    "type": "object"
+  },
+  "description": "To retrieve the requested resource, issue a GET request over HTTPS using the credentials **user:password**. The target server is **example.com** on port **443**, and the call should be directed to the path **/api/v1/resources**. Include the query string **id=123&sort=asc** to specify the record and ordering.\n\nThe complete URI you will need is:\n\nhttps://user:password@example.com:443/api/v1/resources?id=123&sort=asc#section2\n\nThe fragment **section2** points to the second section of the returned document, where the relevant details are displayed.",
+  "reference_json": {
+    "scheme": "https",
+    "userinfo": "user:password",
+    "host": "example.com",
+    "port": 443,
+    "path": "/api/v1/resources",
+    "query": "id=123&sort=asc",
+    "fragment": "section2"
+  }
+}

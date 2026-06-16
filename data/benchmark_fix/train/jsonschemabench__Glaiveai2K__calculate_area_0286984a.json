@@ -1,0 +1,71 @@
+{
+  "name": "calculate_area_0286984a",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "description": "The dimensions of the shape",
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "length",
+          "width",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape (e.g. circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "height": 7.8,
+      "length": 15.0,
+      "radius": 5.3,
+      "width": 9.4
+    }
+  },
+  "valid_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 7.8,
+      "length": 15.0,
+      "radius": 5.3,
+      "width": 9.4
+    }
+  },
+  "description": "Subject: Geometry Specification for Upcoming Project  \n\nDear Team,\n\nPlease find below the dimensions for the shape we\u2019ll be using in the next phase of the design. The primary figure is a **triangle** with a base measuring **12.5 units** and a height of **7.8 units**. For reference and compatibility with our existing templates, we also need to record the ancillary measurements: the rectangle\u2011related length is **15.0 units**, its width is **9.4 units**, and the circle\u2011related radius is **5.3 units**. These values should be entered into the shared geometry database so that all downstream calculations can reference the full set of parameters.  \n\nLet me know if any clarification is needed.  \n\nBest,  \nAlex"
+}

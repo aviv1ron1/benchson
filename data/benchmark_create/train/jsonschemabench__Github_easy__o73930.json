@@ -1,0 +1,120 @@
+{
+  "name": "o73930",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "JSON schema for JSONPatch files",
+    "definitions": {
+      "operation": {
+        "type": "object",
+        "required": [
+          "op",
+          "path"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/definitions/path"
+          }
+        ],
+        "oneOf": [
+          {
+            "properties": {
+              "op": {
+                "description": "The operation to perform.",
+                "type": "string",
+                "enum": [
+                  "add",
+                  "replace",
+                  "test"
+                ]
+              },
+              "value": {
+                "description": "The value to add, replace or test."
+              }
+            },
+            "required": [
+              "value"
+            ]
+          },
+          {
+            "properties": {
+              "op": {
+                "description": "The operation to perform.",
+                "type": "string",
+                "enum": [
+                  "remove"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "op": {
+                "description": "The operation to perform.",
+                "type": "string",
+                "enum": [
+                  "move",
+                  "copy"
+                ]
+              },
+              "from": {
+                "description": "A JSON Pointer path pointing to the locatoin to move/copy from.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "from"
+            ]
+          }
+        ]
+      },
+      "path": {
+        "properties": {
+          "path": {
+            "description": "A JSON Pointer path.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "type": "array",
+    "items": {
+      "$ref": "#/definitions/operation"
+    }
+  },
+  "description": "Please apply the following updates to the JSON configuration: add a new field at **/newField** whose value is an object with a single property\u202f`sub` set to\u202f123; replace the element at **/existing/0** with the string\u202f`\"newValue\"`; test that the value at **/status** equals\u202f`\"active\"`; remove the entry located at **/obsolete**; move the data from **/source** to the destination **/dest**; and copy the content found at **/original** into a new location **/copyDest**.  \n\nThese changes will introduce the new sub\u2011field, update the existing array, verify the current status, clean up obsolete data, reorganize the source value, and duplicate the original entry as required.",
+  "reference_json": [
+    {
+      "op": "add",
+      "path": "/newField",
+      "value": {
+        "sub": 123
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/existing/0",
+      "value": "newValue"
+    },
+    {
+      "op": "test",
+      "path": "/status",
+      "value": "active"
+    },
+    {
+      "op": "remove",
+      "path": "/obsolete"
+    },
+    {
+      "op": "move",
+      "path": "/dest",
+      "from": "/source"
+    },
+    {
+      "op": "copy",
+      "path": "/copyDest",
+      "from": "/original"
+    }
+  ]
+}

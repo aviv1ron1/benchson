@@ -1,0 +1,57 @@
+{
+  "name": "calculate_area_cbf811fb",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of a triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of a triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of a rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of a circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of a rectangle",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The geometric shape (e.g. circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "triangle"
+  },
+  "valid_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 5.2,
+      "height": 3.8,
+      "length": 0,
+      "radius": 0,
+      "width": 0
+    }
+  },
+  "description": "The design specifies a triangle as the geometric shape. Its base measures 5.2 units and its height is 3.8 units. Since a triangle does not require length, width, or radius measurements, those values are recorded as zero."
+}

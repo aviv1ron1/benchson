@@ -1,0 +1,57 @@
+{
+  "name": "calculate_area_76c8fc4e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which to calculate the area (e.g., square, circle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "cylinder"
+  },
+  "valid_json": {
+    "shape": "cylinder",
+    "dimensions": {
+      "radius": 5.2,
+      "height": 12.7,
+      "base": 0,
+      "length": 0,
+      "width": 0
+    }
+  },
+  "description": "The component to be manufactured is a cylindrical unit. Its radius measures 5.2\u202funits and its height is 12.7\u202funits.  \n\nSince a cylinder does not require a base length, width, or overall length, those parameters are recorded as zero for this shape."
+}

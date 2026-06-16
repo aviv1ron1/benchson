@@ -1,0 +1,150 @@
+{
+  "name": "csslintrc",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "rule": {
+        "description": "CSS Lint rule\n\n'false' means rule is off\n'true' means it is a warning\n'2' means the rule is an error",
+        "enum": [
+          2,
+          true,
+          false
+        ]
+      }
+    },
+    "id": "https://json.schemastore.org/csslintrc.json",
+    "properties": {
+      "adjoining-classes": {
+        "$ref": "#/definitions/rule"
+      },
+      "box-model": {
+        "$ref": "#/definitions/rule"
+      },
+      "box-sizing": {
+        "$ref": "#/definitions/rule"
+      },
+      "bulletproof-font-face": {
+        "$ref": "#/definitions/rule"
+      },
+      "compatible-vendor-prefixes": {
+        "$ref": "#/definitions/rule"
+      },
+      "display-property-grouping": {
+        "$ref": "#/definitions/rule"
+      },
+      "duplicate-background-images": {
+        "$ref": "#/definitions/rule"
+      },
+      "duplicate-properties": {
+        "$ref": "#/definitions/rule"
+      },
+      "empty-rules": {
+        "$ref": "#/definitions/rule"
+      },
+      "fallback-colors": {
+        "$ref": "#/definitions/rule"
+      },
+      "floats": {
+        "$ref": "#/definitions/rule"
+      },
+      "font-faces": {
+        "$ref": "#/definitions/rule"
+      },
+      "font-sizes": {
+        "$ref": "#/definitions/rule"
+      },
+      "gradients": {
+        "$ref": "#/definitions/rule"
+      },
+      "ids": {
+        "$ref": "#/definitions/rule"
+      },
+      "import": {
+        "$ref": "#/definitions/rule"
+      },
+      "important": {
+        "$ref": "#/definitions/rule"
+      },
+      "known-properties": {
+        "$ref": "#/definitions/rule"
+      },
+      "outline-none": {
+        "$ref": "#/definitions/rule"
+      },
+      "overqualified-elements": {
+        "$ref": "#/definitions/rule"
+      },
+      "qualified-headings": {
+        "$ref": "#/definitions/rule"
+      },
+      "regex-selectors": {
+        "$ref": "#/definitions/rule"
+      },
+      "shorthand": {
+        "$ref": "#/definitions/rule"
+      },
+      "star-property-hack": {
+        "$ref": "#/definitions/rule"
+      },
+      "text-indent": {
+        "$ref": "#/definitions/rule"
+      },
+      "underscore-property-hack": {
+        "$ref": "#/definitions/rule"
+      },
+      "unique-headings": {
+        "$ref": "#/definitions/rule"
+      },
+      "universal-selector": {
+        "$ref": "#/definitions/rule"
+      },
+      "unqualified-attributes": {
+        "$ref": "#/definitions/rule"
+      },
+      "vendor-prefix": {
+        "$ref": "#/definitions/rule"
+      },
+      "zero-units": {
+        "$ref": "#/definitions/rule"
+      }
+    },
+    "title": "JSON schema for CSS Lint configuration files",
+    "type": "object"
+  },
+  "description": "Hi team,\n\nPlease find below the CSS\u202fLint configuration we\u2019ll be using for the upcoming release. The adjoining\u2011classes rule is turned off, while the box\u2011model rule is set to error. Box\u2011sizing will generate a warning, and bulletproof\u2011font\u2011face is disabled. Compatible\u2011vendor\u2011prefixes will raise a warning, display\u2011property\u2011grouping is off, and duplicate\u2011background\u2011images will warn. Duplicate\u2011properties is treated as an error; empty\u2011rules is disabled; fallback\u2011colors will warn; floats is an error; font\u2011faces is off; font\u2011sizes will warn; gradients is disabled; ids is an error; import is off; important will warn; known\u2011properties is an error; outline\u2011none is off; overqualified\u2011elements will warn; qualified\u2011headings is disabled; regex\u2011selectors will warn; shorthand is an error; star\u2011property\u2011hack is off; text\u2011indent will warn; underscore\u2011property\u2011hack is disabled; unique\u2011headings will warn; universal\u2011selector is off; unqualified\u2011attributes will warn; vendor\u2011prefix is an error; and zero\u2011units is disabled.",
+  "reference_json": {
+    "adjoining-classes": false,
+    "box-model": 2,
+    "box-sizing": true,
+    "bulletproof-font-face": false,
+    "compatible-vendor-prefixes": true,
+    "display-property-grouping": false,
+    "duplicate-background-images": true,
+    "duplicate-properties": 2,
+    "empty-rules": false,
+    "fallback-colors": true,
+    "floats": 2,
+    "font-faces": false,
+    "font-sizes": true,
+    "gradients": false,
+    "ids": 2,
+    "import": false,
+    "important": true,
+    "known-properties": 2,
+    "outline-none": false,
+    "overqualified-elements": true,
+    "qualified-headings": false,
+    "regex-selectors": true,
+    "shorthand": 2,
+    "star-property-hack": false,
+    "text-indent": true,
+    "underscore-property-hack": false,
+    "unique-headings": true,
+    "universal-selector": false,
+    "unqualified-attributes": true,
+    "vendor-prefix": 2,
+    "zero-units": false
+  }
+}

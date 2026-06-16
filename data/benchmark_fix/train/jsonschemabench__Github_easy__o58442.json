@@ -1,0 +1,62 @@
+{
+  "name": "o58442",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "App Shell Target",
+    "description": "App Shell target options for Build Facade.",
+    "type": "object",
+    "properties": {
+      "browserTarget": {
+        "type": "string",
+        "description": "Target to build.",
+        "pattern": "^[^:\\s]+:[^:\\s]+(:[^\\s]+)?$"
+      },
+      "serverTarget": {
+        "type": "string",
+        "description": "Server target to use for rendering the app shell.",
+        "pattern": "^[^:\\s]+:[^:\\s]+(:[^\\s]+)?$"
+      },
+      "appModuleBundle": {
+        "type": "string",
+        "description": "Script that exports the Server AppModule to render. This should be the main JavaScript outputted by the server target. By default we will resolve the outputPath of the serverTarget and find a bundle named 'main' in it (whether or not there's a hash tag)."
+      },
+      "route": {
+        "type": "string",
+        "description": "The route to render.",
+        "default": "/"
+      },
+      "inputIndexPath": {
+        "type": "string",
+        "description": "The input path for the index.html file. By default uses the output index.html of the browser target."
+      },
+      "outputIndexPath": {
+        "type": "string",
+        "description": "The output path of the index.html file. By default will overwrite the input file."
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "browserTarget",
+      "serverTarget"
+    ]
+  },
+  "erroneous_json": {
+    "browserTarget": null,
+    "serverTarget": "my-app:server:production",
+    "appModuleBundle": "dist/my-app/server/main.js",
+    "route": "/home",
+    "inputIndexPath": "dist/my-app/browser/index.html",
+    "outputIndexPath": "dist/my-app/browser/app-shell.html"
+  },
+  "valid_json": {
+    "browserTarget": "my-app:build:production",
+    "serverTarget": "my-app:server:production",
+    "appModuleBundle": "dist/my-app/server/main.js",
+    "route": "/home",
+    "inputIndexPath": "dist/my-app/browser/index.html",
+    "outputIndexPath": "dist/my-app/browser/app-shell.html"
+  },
+  "description": "Hi team,\n\nFor the upcoming production build of the app shell we\u2019ll target the browser configuration **my-app:build:production** and the server configuration **my-app:server:production**. The bundle that exports the Server\u202fAppModule is located at `dist/my-app/server/main.js`, and we\u2019ll render the route **/home**. Our source index file is `dist/my-app/browser/index.html`, and the generated app\u2011shell will be written to `dist/my-app/browser/app-shell.html`."
+}

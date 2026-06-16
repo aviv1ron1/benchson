@@ -1,0 +1,46 @@
+{
+  "name": "o9884",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "version": {
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "slug": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 63,
+        "pattern": "^[0-9a-z-]*$"
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "version": "1.0.3",
+    "slug": "example-project-123"
+  },
+  "instructions": "Can you change the version to\u202f1.0.3\u202f(updated)?",
+  "ground_truth": {
+    "version": "1.0.3 (updated)",
+    "slug": "example-project-123"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "version"
+    ],
+    "precise_instruction": "Change \"version\" to \"1.0.3 (updated)\"."
+  }
+}

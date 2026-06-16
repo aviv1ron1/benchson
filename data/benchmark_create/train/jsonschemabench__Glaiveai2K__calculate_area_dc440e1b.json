@@ -1,0 +1,55 @@
+{
+  "name": "calculate_area_dc440e1b",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "side_length": {
+            "description": "The side length of the square",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "side_length",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The name of the shape (e.g. circle, square, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Specification Summary for the Complex Shape Design  \n\nDear Team,\n\nPlease find below the finalized dimensions for the upcoming \u201ccomplex\u201d shape component. The design calls for a triangular section with a base measuring **5.2 units** and a height of **3.8 units**. In addition, a circular element will be incorporated, requiring a radius of **2.5 units**. The surrounding square framework should have a consistent side length of **4.0 units**. These measurements have been verified against the latest CAD models and are ready for production planning.  \n\nKindly update the manufacturing drawings to reflect these values and confirm that all downstream processes can accommodate the specified geometry. Let me know if any clarification is needed.  \n\nBest regards,  \n[Your Name]  \nDesign Engineering Lead",
+  "reference_json": {
+    "shape": "complex",
+    "dimensions": {
+      "base": 5.2,
+      "height": 3.8,
+      "radius": 2.5,
+      "side_length": 4.0
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "name": "o78014",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://opendev.org/openstack/openstacksdk/raw/branch/master/openstack/config/schema.json",
+    "type": "object",
+    "properties": {
+      "auth_type": {
+        "name": "Auth Type",
+        "description": "Name of authentication plugin to be used",
+        "default": "password",
+        "type": "string"
+      },
+      "disable_vendor_agent": {
+        "name": "Disable Vendor Agent Properties",
+        "description": "Image properties required to disable vendor agent",
+        "type": "object",
+        "properties": {}
+      },
+      "floating_ip_source": {
+        "name": "Floating IP Source",
+        "description": "Which service provides Floating IPs",
+        "enum": [
+          "neutron",
+          "nova",
+          "None"
+        ],
+        "default": "neutron"
+      },
+      "image_api_use_tasks": {
+        "name": "Image Task API",
+        "description": "Does the cloud require the Image Task API",
+        "default": false,
+        "type": "boolean"
+      },
+      "image_format": {
+        "name": "Image Format",
+        "description": "Format for uploaded Images",
+        "default": "qcow2",
+        "type": "string"
+      },
+      "interface": {
+        "name": "API Interface",
+        "description": "Which API Interface should connections hit",
+        "default": "public",
+        "enum": [
+          "public",
+          "internal",
+          "admin"
+        ]
+      },
+      "secgroup_source": {
+        "name": "Security Group Source",
+        "description": "Which service provides security groups",
+        "default": "neutron",
+        "enum": [
+          "neutron",
+          "nova",
+          "None"
+        ]
+      },
+      "baremetal_api_version": {
+        "name": "Baremetal API Service Type",
+        "description": "Baremetal API Service Type",
+        "default": "1",
+        "type": "string"
+      },
+      "block_storage_api_version": {
+        "name": "Block Storage API Version",
+        "description": "Block Storage API Version",
+        "default": "2",
+        "type": "string"
+      },
+      "compute_api_version": {
+        "name": "Compute API Version",
+        "description": "Compute API Version",
+        "default": "2",
+        "type": "string"
+      },
+      "database_api_version": {
+        "name": "Database API Version",
+        "description": "Database API Version",
+        "default": "1.0",
+        "type": "string"
+      },
+      "dns_api_version": {
+        "name": "DNS API Version",
+        "description": "DNS API Version",
+        "default": "2",
+        "type": "string"
+      },
+      "identity_api_version": {
+        "name": "Identity API Version",
+        "description": "Identity API Version",
+        "default": "2",
+        "type": "string"
+      },
+      "image_api_version": {
+        "name": "Image API Version",
+        "description": "Image API Version",
+        "default": "1",
+        "type": "string"
+      },
+      "network_api_version": {
+        "name": "Network API Version",
+        "description": "Network API Version",
+        "default": "2",
+        "type": "string"
+      },
+      "object_store_api_version": {
+        "name": "Object Storage API Version",
+        "description": "Object Storage API Version",
+        "default": "1",
+        "type": "string"
+      },
+      "volume_api_version": {
+        "name": "Volume API Version",
+        "description": "Volume API Version",
+        "default": "2",
+        "type": "string"
+      },
+      "vendor_hook": {
+        "name": "Hook for vendor customization",
+        "description": "A possibility for a vendor to alter connection object",
+        "type": "string"
+      }
+    },
+    "required": [
+      "auth_type",
+      "disable_vendor_agent",
+      "floating_ip_source",
+      "image_api_use_tasks",
+      "image_format",
+      "interface",
+      "secgroup_source"
+    ]
+  },
+  "description": "The OpenStack connection will use the standard **password** authentication plugin, with the API interface set to **public**. No special vendor\u2011agent image properties are needed, and the vendor hook \u201c**customize_connection**\u201d will be applied to allow any required tailoring of the connection object. Floating IPs and security groups will both be sourced from **Neutron**, and the Image service does not require the task API (set to **false**) while uploaded images should be in **qcow2** format.\n\nAll service versions are explicitly defined: the Baremetal API is **1**, Block Storage is **2**, Compute is **2**, Database is **1.0**, DNS is **2**, Identity is **2**, Image is **1**, Network is **2**, Object Storage is **1**, and the Volume service is **2**.",
+  "reference_json": {
+    "auth_type": "password",
+    "disable_vendor_agent": {},
+    "floating_ip_source": "neutron",
+    "image_api_use_tasks": false,
+    "image_format": "qcow2",
+    "interface": "public",
+    "secgroup_source": "neutron",
+    "baremetal_api_version": "1",
+    "block_storage_api_version": "2",
+    "compute_api_version": "2",
+    "database_api_version": "1.0",
+    "dns_api_version": "2",
+    "identity_api_version": "2",
+    "image_api_version": "1",
+    "network_api_version": "2",
+    "object_store_api_version": "1",
+    "volume_api_version": "2",
+    "vendor_hook": "customize_connection"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "o63949",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "foo": {
+        "type": "object",
+        "properties": {
+          "bar": {
+            "type": "string",
+            "default": "bar"
+          },
+          "baz": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bar",
+          "baz"
+        ]
+      }
+    }
+  },
+  "erroneous_json": {
+    "foo": {
+      "bar": "bar"
+    }
+  },
+  "valid_json": {
+    "foo": {
+      "bar": "bar",
+      "baz": "exampleBazValue"
+    }
+  },
+  "description": "Subject: Update on Foo Configuration  \n\nPlease note that the current settings for the Foo component are as follows: the **bar** parameter is set to \u201cbar\u201d, and the **baz** parameter holds the value \u201cexampleBazValue\u201d. Let me know if any adjustments are required."
+}

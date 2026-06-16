@@ -1,0 +1,40 @@
+{
+  "name": "o9884",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "version": {
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "slug": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 63,
+        "pattern": "^[0-9a-z-]*$"
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "version": "1.0.3",
+    "slug": "example-project-123",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "version": "1.0.3",
+    "slug": "example-project-123"
+  },
+  "description": "Dear team,\n\nI\u2019m happy to let you know that the project identified by the slug **example-project-123** has just been released as version **1.0.3**. Please make sure to update your environments to this latest version at your earliest convenience."
+}

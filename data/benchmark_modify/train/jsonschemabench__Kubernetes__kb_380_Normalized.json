@@ -1,0 +1,62 @@
+{
+  "name": "kb_380_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.",
+    "properties": {
+      "endpoints": {
+        "description": "EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "endpointsNamespace": {
+        "description": "EndpointsNamespace is the namespace that contains Glusterfs endpoint. If this field is empty, the EndpointNamespace defaults to the same namespace as the bound PVC. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "path": {
+        "description": "Path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "readOnly": {
+        "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "endpoints",
+      "path"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "endpoints": "glusterfs-cluster",
+    "endpointsNamespace": "default",
+    "path": "/var/lib/glusterfs/data",
+    "readOnly": false
+  },
+  "instructions": "Could you please delete the endpointsNamespace field?",
+  "ground_truth": {
+    "endpoints": "glusterfs-cluster",
+    "path": "/var/lib/glusterfs/data",
+    "readOnly": false
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "endpointsNamespace"
+    ],
+    "precise_instruction": "Remove the \"endpointsNamespace\" field."
+  }
+}

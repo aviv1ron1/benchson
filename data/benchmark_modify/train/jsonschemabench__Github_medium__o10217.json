@@ -1,0 +1,127 @@
+{
+  "name": "o10217",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "MUN CS Society Blog Posts",
+    "description": "Represents a collection of blog posts",
+    "type": "object",
+    "properties": {
+      "months": {
+        "type": "array",
+        "description": "Contains a collection of months that blog posts were posted in",
+        "items": {
+          "type": "object",
+          "description": "A month containing blog posts",
+          "properties": {
+            "month": {
+              "type": "string",
+              "description": "The string representation of this month"
+            },
+            "posts": {
+              "type": "array",
+              "description": "A collection of the posts written in this month",
+              "items": {
+                "type": "object",
+                "description": "An individual blog post",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "The title of this blog post"
+                  },
+                  "author": {
+                    "type": "string",
+                    "description": "The author of this blog post"
+                  },
+                  "folder": {
+                    "type": "string",
+                    "description": "The name of the folder under the blog folder that contains this post"
+                  }
+                },
+                "required": [
+                  "title",
+                  "author",
+                  "folder"
+                ]
+              }
+            }
+          },
+          "required": [
+            "month",
+            "posts"
+          ]
+        }
+      }
+    },
+    "required": [
+      "months"
+    ]
+  },
+  "data": {
+    "months": [
+      {
+        "month": "January 2024",
+        "posts": [
+          {
+            "title": "Introduction to Quantum Computing",
+            "author": "Dr. Elena Martinez",
+            "folder": "quantum-intro"
+          },
+          {
+            "title": "Building a Simple Neural Network in Python",
+            "author": "Alex Chen",
+            "folder": "nn-python"
+          }
+        ]
+      },
+      {
+        "month": "February 2024",
+        "posts": [
+          {
+            "title": "Exploring the Ethics of AI",
+            "author": "Prof. Samuel Ortiz",
+            "folder": "ai-ethics"
+          },
+          {
+            "title": "A Guide to Version Control with Git",
+            "author": "Priya Singh",
+            "folder": "git-guide"
+          },
+          {
+            "title": "Deploying Containers with Docker Compose",
+            "author": "Michael Liu",
+            "folder": "docker-compose"
+          }
+        ]
+      }
+    ]
+  },
+  "instructions": "Could you keep only the first item in the \"months\" list and remove the rest?",
+  "ground_truth": {
+    "months": [
+      {
+        "month": "January 2024",
+        "posts": [
+          {
+            "title": "Introduction to Quantum Computing",
+            "author": "Dr. Elena Martinez",
+            "folder": "quantum-intro"
+          },
+          {
+            "title": "Building a Simple Neural Network in Python",
+            "author": "Alex Chen",
+            "folder": "nn-python"
+          }
+        ]
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_keep_first",
+    "path": [
+      "months"
+    ],
+    "precise_instruction": "Keep only the first item in the \"months\" list and remove the rest."
+  }
+}

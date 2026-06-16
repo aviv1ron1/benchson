@@ -1,0 +1,115 @@
+{
+  "name": "o1050",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "id": "https://almanak.github.io/schemas/base.json",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Base-skema",
+    "description": "Basis-schema for all entity-resources. Do not use on its own. Extended by domain-schemas.",
+    "type": "object",
+    "_meta": {
+      "indexedProperties": [
+        "id",
+        "domain",
+        "schema"
+      ],
+      "systemProperties": [
+        "uuid",
+        "id",
+        "domain",
+        "schema",
+        "created",
+        "created_by",
+        "updated",
+        "updated_by"
+      ],
+      "fulltextProperties": [
+        "description"
+      ],
+      "autocompleteProperties": [
+        "label"
+      ]
+    },
+    "properties": {
+      "uuid": {
+        "type": "string",
+        "title": "Universal unique identifier",
+        "description": "UUID1. Assigned by system",
+        "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+      },
+      "id": {
+        "type": "string",
+        "title": "Resourcespecifik ID",
+        "description": "9-cifret l\u00f8benummer semi-specifik for resourcetypen. Assigned by system",
+        "maxLength": 9,
+        "pattern": "^[0-9]{9}$"
+      },
+      "domain": {
+        "type": "string",
+        "enum": [
+          "records",
+          "people",
+          "organisations",
+          "families",
+          "events",
+          "places",
+          "concepts",
+          "things"
+        ],
+        "title": "Resourcetype"
+      },
+      "schema": {
+        "type": "string",
+        "title": "Skema",
+        "description": "Hvilket jsonskema bruges til oprettelse, visning, opdatering og validering af denne ressource"
+      },
+      "created": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Skabt",
+        "description": "Datetime for skabelse af metadata-ressourcen"
+      },
+      "created_by": {
+        "type": "string",
+        "maxLength": 255,
+        "title": "Skabt af",
+        "description": "Brugernavn/ID p\u00e5 skaber/oploader af metadata-ressourcen"
+      },
+      "updated": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Senest opdateret",
+        "description": "Datetime for seneste opdatering af ressourcen"
+      },
+      "updated_by": {
+        "type": "string",
+        "maxLength": 255,
+        "title": "Senest opdateret af",
+        "description": "Brugernavn p\u00e5 seneste opdaterer af metadata-ressourcen"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "validated",
+          "machine-generated",
+          "user-generated"
+        ],
+        "title": "Status",
+        "default": "user-generated"
+      }
+    }
+  },
+  "description": "The record for the person entity is identified by the universal UID **d4f7c9a2-3b6e-4f8a-9c2d-1e5b7f3a8b9c** and carries the internal nine\u2011digit ID **123456789**. It belongs to the\u202f*people*\u202fdomain and conforms to the person schema located at **https://almanak.github.io/schemas/person.json**. The entry\u2019s status is marked as **validated**, confirming that the data has passed all quality checks.\n\nThis metadata entry was first created on **2024-03-15T09:27:34Z** by the user\u202f*jensen.admin*. The most recent update occurred on **2024-05-02T14:12:07Z**, performed by\u202f*larsen.editor*.",
+  "reference_json": {
+    "uuid": "d4f7c9a2-3b6e-4f8a-9c2d-1e5b7f3a8b9c",
+    "id": "123456789",
+    "domain": "people",
+    "schema": "https://almanak.github.io/schemas/person.json",
+    "created": "2024-03-15T09:27:34Z",
+    "created_by": "jensen.admin",
+    "updated": "2024-05-02T14:12:07Z",
+    "updated_by": "larsen.editor",
+    "status": "validated"
+  }
+}

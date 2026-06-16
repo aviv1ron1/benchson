@@ -1,0 +1,54 @@
+{
+  "name": "o9357",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "content": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet",
+            "description": "The resource topic by which the HTML content is identified."
+          },
+          "attribute": {
+            "type": "string",
+            "default": "",
+            "description": "The attribute path within the resource that leads to the (i18n) HTML content."
+          }
+        },
+        "additionalProperties": false
+      },
+      "i18n": {
+        "description": "Which locale to use for displaying this widget.",
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet",
+            "description": "The topic under which to expect the locale for this widget.",
+            "default": "default"
+          }
+        }
+      }
+    }
+  },
+  "description": "Please configure the widget to load its HTML content from the **topics/html/home** resource, using the **body.main** attribute as the entry point for the markup. The display language should be set to the **en-US** locale. This will ensure the home page renders correctly for English\u2011US users.",
+  "reference_json": {
+    "content": {
+      "resource": "topics/html/home",
+      "attribute": "body.main"
+    },
+    "i18n": {
+      "locale": "en-US"
+    }
+  }
+}

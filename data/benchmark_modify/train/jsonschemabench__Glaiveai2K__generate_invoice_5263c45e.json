@@ -1,0 +1,87 @@
+{
+  "name": "generate_invoice_5263c45e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "discount": {
+        "description": "The discount percentage",
+        "type": "number"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "customer_name": "Alice Johnson",
+    "discount": 12.5,
+    "items": [
+      {
+        "name": "Wireless Mouse",
+        "price": 29.99,
+        "quantity": 2
+      },
+      {
+        "name": "Laptop Stand",
+        "price": 45.5,
+        "quantity": 1
+      }
+    ]
+  },
+  "instructions": "Could you decrease the \"discount\" by 1?",
+  "ground_truth": {
+    "customer_name": "Alice Johnson",
+    "discount": 11.5,
+    "items": [
+      {
+        "name": "Wireless Mouse",
+        "price": 29.99,
+        "quantity": 2
+      },
+      {
+        "name": "Laptop Stand",
+        "price": 45.5,
+        "quantity": 1
+      }
+    ]
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "discount"
+    ],
+    "precise_instruction": "Decrease \"discount\" by 1."
+  }
+}

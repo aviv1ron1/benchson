@@ -1,0 +1,66 @@
+{
+  "name": "o32485",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "translationKey": {
+        "type": "string",
+        "description": "The role translationKey"
+      },
+      "name": {
+        "type": "string",
+        "description": "The role name"
+      },
+      "permission": {
+        "type": "object",
+        "properties": {
+          "open": {
+            "type": "boolean",
+            "description": "The open property"
+          },
+          "copy": {
+            "type": "boolean",
+            "description": "The copy property"
+          },
+          "delete": {
+            "type": "boolean",
+            "description": "The delete property"
+          },
+          "export": {
+            "type": "boolean",
+            "description": "The export property"
+          },
+          "edit": {
+            "type": "boolean",
+            "description": "The edit property"
+          },
+          "administrate": {
+            "type": "boolean",
+            "description": "The administrate property"
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "translationKey": "role.admin",
+    "name": "Administrator",
+    "permission": null
+  },
+  "valid_json": {
+    "translationKey": "role.admin",
+    "name": "Administrator",
+    "permission": {
+      "open": true,
+      "copy": true,
+      "delete": true,
+      "export": true,
+      "edit": true,
+      "administrate": true
+    }
+  },
+  "description": "Subject: Role Configuration \u2013 Administrator (role.admin)\n\nDear Team,\n\nPlease note that the role identified by the translation key **role.admin** is named **Administrator**. This role is fully empowered: users assigned to it are allowed to open, copy, delete, and export items, as well as edit content and perform all administrative functions within the system.\n\nKindly ensure that the appropriate personnel are granted this role where comprehensive access is required. Let me know if any adjustments are needed."
+}

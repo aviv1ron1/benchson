@@ -1,0 +1,69 @@
+{
+  "name": "sp_58_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Google Analytics enhanced e-commerce promotion entity",
+    "properties": {
+      "creative": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "index": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "position": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "promotion",
+      "vendor": "com.google.analytics.measurement-protocol",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "creative": "banner_300x250",
+    "id": "PROMO123",
+    "index": 5,
+    "name": "Spring Sale",
+    "position": "sidebar"
+  },
+  "instructions": "Could you decrease the \"index\" field by 1?",
+  "ground_truth": {
+    "creative": "banner_300x250",
+    "id": "PROMO123",
+    "index": 4,
+    "name": "Spring Sale",
+    "position": "sidebar"
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "index"
+    ],
+    "precise_instruction": "Decrease \"index\" by 1."
+  }
+}

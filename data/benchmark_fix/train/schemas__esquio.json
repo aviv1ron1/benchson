@@ -1,0 +1,182 @@
+{
+  "name": "esquio",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "Esquio": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "Products": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        },
+        "required": [
+          "Products"
+        ]
+      },
+      "Feature": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "Name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Enabled": {
+            "type": "boolean"
+          },
+          "Toggles": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/definitions/Toggle"
+            }
+          }
+        },
+        "required": [
+          "Name",
+          "Enabled",
+          "Toggles"
+        ]
+      },
+      "Product": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "Name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Features": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/definitions/Feature"
+            }
+          }
+        },
+        "required": [
+          "Name",
+          "Features"
+        ]
+      },
+      "Toggle": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "Type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Parameters": {}
+        },
+        "required": [
+          "Type",
+          "Parameters"
+        ]
+      }
+    },
+    "id": "https://json.schemastore.org/esquio.json",
+    "properties": {
+      "Esquio": {
+        "$ref": "#/definitions/Esquio"
+      }
+    },
+    "required": [
+      "Esquio"
+    ],
+    "title": "JSON schema for Esquio configuration files",
+    "type": "object"
+  },
+  "erroneous_json": {},
+  "valid_json": {
+    "Esquio": {
+      "Products": [
+        {
+          "Name": "WebApp",
+          "Features": [
+            {
+              "Name": "NewHomepage",
+              "Enabled": true,
+              "Toggles": [
+                {
+                  "Type": "Percentage",
+                  "Parameters": {
+                    "percentage": 50
+                  }
+                },
+                {
+                  "Type": "UserId",
+                  "Parameters": {
+                    "allowedIds": [
+                      "user123",
+                      "user456"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "BetaFeature",
+              "Enabled": false,
+              "Toggles": [
+                {
+                  "Type": "DateRange",
+                  "Parameters": {
+                    "start": "2024-01-01",
+                    "end": "2024-02-01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "MobileApp",
+          "Features": [
+            {
+              "Name": "PushNotifications",
+              "Enabled": true,
+              "Toggles": [
+                {
+                  "Type": "Environment",
+                  "Parameters": {
+                    "env": "staging"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "description": "Subject: Current Esquio Feature\u2011Toggle Configuration  \n\nThe Esquio configuration defines two products\u2014**WebApp** and **MobileApp**.\u202fFor **WebApp**, the feature **NewHomepage** is enabled, while the feature **BetaFeature** is disabled.\u202fThe **MobileApp** product includes a single enabled feature called **PushNotifications**.\n\nFeature **NewHomepage** is controlled by two toggles: a **Percentage** toggle set to\u202f50\u202fpercent, and a **UserId** toggle that permits the identifiers\u202fuser123\u202fand\u202fuser456.\u202fFeature **BetaFeature** uses a **DateRange** toggle that is active from\u202f2024\u201101\u201101\u202fthrough\u202f2024\u201102\u201101.\u202fFeature **PushNotifications** is limited to the **staging** environment via an **Environment** toggle."
+}

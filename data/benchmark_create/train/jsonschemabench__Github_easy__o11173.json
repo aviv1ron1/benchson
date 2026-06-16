@@ -1,0 +1,82 @@
+{
+  "name": "o11173",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Home page schema",
+    "properties": {
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "image": {
+        "type": "string"
+      },
+      "order": {
+        "type": "integer"
+      },
+      "content": {
+        "type": "object",
+        "properties": {
+          "helpTopics": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "url"
+                  ]
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "required": [
+      "title",
+      "description",
+      "order"
+    ]
+  },
+  "description": "Welcome to Acme Corp \u2013\u202fYour one-stop solution for all your business needs. This opening page (display order\u202f1) features a banner image located at https://example.com/assets/home-banner.jpg, setting the tone for what we offer.\n\nTo help you get started, explore our help topics: \u201cGetting Started\u201d (\u202f/help/getting-started\u202f), \u201cAccount Management\u201d (\u202f/help/account-management\u202f), and \u201cBilling FAQs\u201d (\u202f/help/billing-faqs\u202f). Each link provides step\u2011by\u2011step guidance to make the most of our services.",
+  "reference_json": {
+    "title": "Welcome to Acme Corp",
+    "description": "Your one-stop solution for all your business needs.",
+    "image": "https://example.com/assets/home-banner.jpg",
+    "order": 1,
+    "content": {
+      "helpTopics": [
+        {
+          "title": "Getting Started",
+          "url": "/help/getting-started"
+        },
+        {
+          "title": "Account Management",
+          "url": "/help/account-management"
+        },
+        {
+          "title": "Billing FAQs",
+          "url": "/help/billing-faqs"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "o60869",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "avalon-core:representation-1.0",
+    "description": "The inverse of an instance",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "schema",
+      "format",
+      "path"
+    ],
+    "properties": {
+      "schema": {
+        "type": "string"
+      },
+      "format": {
+        "description": "File extension, including '.'",
+        "type": "string"
+      },
+      "path": {
+        "description": "Unformatted path to version.",
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "schema": "avalon-core:representation-1.0",
+    "format": ".ma",
+    "path": null,
+    "created_by": "jdoe",
+    "created_at": "2026-06-14T12:34:56Z",
+    "version": 1
+  },
+  "valid_json": {
+    "schema": "avalon-core:representation-1.0",
+    "format": ".ma",
+    "path": "/projects/projectX/seq01/sh010/rig/v001/rig.ma",
+    "created_by": "jdoe",
+    "created_at": "2026-06-14T12:34:56Z",
+    "version": 1
+  },
+  "description": "Hi Team,\n\nThe rig file for shot\u202f010 in sequence\u202f01 of Project\u202fX has been saved as **rig.ma** (Maya ASCII) at the following location:\n\n`/projects/projectX/seq01/sh010/rig/v001/rig.ma`\n\nThis is version\u202f1 of the asset, created by **jdoe** on **2026\u201106\u201114 at 12:34:56\u202fUTC**. Let me know if anyone needs access or further details."
+}

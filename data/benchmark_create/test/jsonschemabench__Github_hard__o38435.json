@@ -1,0 +1,211 @@
+{
+  "name": "o38435",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "dependencies": {
+      "func_preproc_desc": {
+        "properties": {},
+        "required": [
+          "read_from_derivatives"
+        ]
+      },
+      "func_preproc_dirname": {
+        "properties": {},
+        "required": [
+          "read_from_derivatives"
+        ]
+      },
+      "older_fmriprep": {
+        "anyOf": [
+          {
+            "properties": {},
+            "required": [
+              "read_from_derivatives"
+            ]
+          },
+          {
+            "properties": {
+              "older_fmriprep": {
+                "enum": [
+                  false
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "read_from_derivatives": {
+        "properties": {
+          "fmriprep_args": {
+            "not": {}
+          },
+          "fmriprep_workdir": {
+            "not": {}
+          },
+          "ignore_fieldmaps": {
+            "oneOf": [
+              {
+                "not": {}
+              },
+              {
+                "enum": [
+                  false
+                ]
+              }
+            ]
+          },
+          "no_SDC": {
+            "oneOf": [
+              {
+                "not": {}
+              },
+              {
+                "enum": [
+                  false
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "description": "Invocation schema for bids app - fmriprep_ciftify.",
+    "properties": {
+      "analysis_level": {
+        "enum": [
+          "participant",
+          "group"
+        ]
+      },
+      "anat_only": {
+        "type": "boolean"
+      },
+      "bids_dir": {
+        "type": "string"
+      },
+      "ciftify_conf": {
+        "type": "string"
+      },
+      "debug": {
+        "type": "boolean"
+      },
+      "fmriprep_args": {
+        "type": "string"
+      },
+      "fmriprep_workdir": {
+        "type": "string"
+      },
+      "freesurfer_license": {
+        "type": "string"
+      },
+      "func_preproc_desc": {
+        "type": "string"
+      },
+      "func_preproc_dirname": {
+        "type": "string"
+      },
+      "ignore_fieldmaps": {
+        "type": "boolean"
+      },
+      "msm_config": {
+        "type": "string"
+      },
+      "n_cpus": {
+        "type": "integer"
+      },
+      "no_SDC": {
+        "type": "boolean"
+      },
+      "no_symlinks": {
+        "type": "string"
+      },
+      "older_fmriprep": {
+        "type": "boolean"
+      },
+      "output_dir": {
+        "type": "string"
+      },
+      "participant_label": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "read_from_derivatives": {
+        "type": "string"
+      },
+      "rerun_if_complete": {
+        "type": "boolean"
+      },
+      "resameple_to_T1w32k": {
+        "type": "boolean"
+      },
+      "session_label": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "smooth_fwhm": {
+        "type": "number"
+      },
+      "surf_reg": {
+        "type": "string"
+      },
+      "task_label": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "verbose": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "bids_dir",
+      "output_dir",
+      "analysis_level"
+    ],
+    "title": "BIDS App - fmriprep_ciftify.invocationSchema",
+    "type": "object"
+  },
+  "description": "Dear team,\n\nWe will run the fmriprep\u2011ciftify pipeline on the BIDS dataset located at **/data/bids**, writing all results to the derivatives folder **/data/derivatives**. The execution is set for the **participant** analysis level, with anatomical\u2011only processing turned off. Our CIFTIFY configuration can be found at **/configs/ciftify.yaml**, and we will operate in **debug** mode. The FreeSurfer license required for surface reconstruction is stored at **/opt/license.txt**. Functional preprocessing will be labeled with the descriptor **desc-preproc_bold** and placed in the directory **func_preproc**. We are not ignoring fieldmaps (**ignore_fieldmaps = false**) and we will not skip susceptibility\u2011distortion correction (**no_SDC = false**). Symbolic links are disabled (the **no_symlinks** option is set to \u201coff\u201d), and the flag indicating an older fmriprep version is explicitly set to **false**. Processing will be limited to participants **01** and **02**, within session **ses-01**, and we will read the necessary derivatives from the **fmriprep** output. The pipeline is allowed to rerun completed steps (**rerun_if_complete = true**) but will not resample to the T1w\u201132k space (**resample_to_T1w32k = false**). We will use **8 CPUs**, apply a **6\u202fmm** smoothing kernel (FWHM), and perform surface registration to **fsaverage5**. The MSM configuration is **MSMAll**, and we will include the tasks **rest** and **task** in the processing. Verbose logging is enabled.\n\nPlease let me know if any adjustments are needed before we launch the run.",
+  "reference_json": {
+    "bids_dir": "/data/bids",
+    "output_dir": "/data/derivatives",
+    "analysis_level": "participant",
+    "anat_only": false,
+    "ciftify_conf": "/configs/ciftify.yaml",
+    "debug": true,
+    "freesurfer_license": "/opt/license.txt",
+    "func_preproc_desc": "desc-preproc_bold",
+    "func_preproc_dirname": "func_preproc",
+    "ignore_fieldmaps": false,
+    "msm_config": "MSMAll",
+    "n_cpus": 8,
+    "no_SDC": false,
+    "no_symlinks": "off",
+    "older_fmriprep": false,
+    "participant_label": [
+      "01",
+      "02"
+    ],
+    "read_from_derivatives": "fmriprep",
+    "rerun_if_complete": true,
+    "resameple_to_T1w32k": false,
+    "session_label": [
+      "ses-01"
+    ],
+    "smooth_fwhm": 6.0,
+    "surf_reg": "fsaverage5",
+    "task_label": [
+      "rest",
+      "task"
+    ],
+    "verbose": true
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "name": "generate_invoice_7d26bb35",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "Name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "description": "List of items in the invoice",
+        "items": {
+          "properties": {
+            "name": {
+              "description": "Name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "Price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "Quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "customer_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Robot Arm",
+        "price": 12499.99,
+        "quantity": 2
+      },
+      {
+        "name": "Safety Sensors Package",
+        "price": 3499.5,
+        "quantity": 5
+      },
+      {
+        "name": "Installation Service",
+        "price": 1500,
+        "quantity": 1
+      }
+    ]
+  },
+  "instructions": "Could you remove all entries from the \"items\" list?",
+  "ground_truth": {
+    "customer_name": "Acme Corporation",
+    "items": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "items"
+    ],
+    "precise_instruction": "Remove all items from the \"items\" list."
+  }
+}

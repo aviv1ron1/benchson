@@ -1,0 +1,39 @@
+{
+  "name": "kb_987_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "ServiceReference holds a reference to Service.legacy.k8s.io",
+    "properties": {
+      "name": {
+        "description": "Name is the name of the service",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "namespace": {
+        "description": "Namespace is the namespace of the service",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "port": {
+        "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+        "format": "int32",
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "description": "The service reference points to the legacy\u2011Kubernetes service named **my-service**, which resides in the **default** namespace. This service is expected to be accessible on its standard webhook port; the configuration explicitly sets the port to **443**, aligning with the default HTTPS port for backward compatibility.",
+  "reference_json": {
+    "name": "my-service",
+    "namespace": "default",
+    "port": 443
+  }
+}

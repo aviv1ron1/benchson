@@ -1,0 +1,60 @@
+{
+  "name": "calculate_area_fe414505",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle or rectangle (if applicable)",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle or rectangle (if applicable)",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle (if applicable)",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of geometric shape (e.g. circle, triangle, rectangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3,
+      "radius": 0
+    }
+  },
+  "instructions": "Could you decrease the \"radius\" inside \"dimensions\" by 1?",
+  "ground_truth": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3,
+      "radius": -1
+    }
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "dimensions",
+      "radius"
+    ],
+    "precise_instruction": "Decrease \"radius\" inside \"dimensions\" by 1."
+  }
+}

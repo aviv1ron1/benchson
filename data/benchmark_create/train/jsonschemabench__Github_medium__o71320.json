@@ -1,0 +1,42 @@
+{
+  "name": "o71320",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "type": "object",
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "properties": {
+      "fabric_uuid": {
+        "$id": "/properties/input/properties/fabric_uuid",
+        "format": "uuid",
+        "type": "string",
+        "title": "The Fabric_uuid Schema",
+        "description": "UUID of the fabric object created",
+        "default": "",
+        "examples": [
+          "123456789"
+        ]
+      },
+      "device_count": {
+        "$id": "/properties/input/properties/device_count",
+        "type": "integer",
+        "title": "The Device Count Schema",
+        "description": "Number of devices to discover",
+        "default": 0,
+        "examples": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    }
+  },
+  "description": "Dear Team,\n\nPlease note that the new fabric has been provisioned with the identifier **a3f1c9e2-4b7d-41f5-9c2e-8d6b5f7a9c12**. As part of the initial rollout, we will be discovering three devices on this fabric to verify connectivity and configuration. Let me know if you need any additional details before we begin the discovery process.",
+  "reference_json": {
+    "fabric_uuid": "a3f1c9e2-4b7d-41f5-9c2e-8d6b5f7a9c12",
+    "device_count": 3
+  }
+}

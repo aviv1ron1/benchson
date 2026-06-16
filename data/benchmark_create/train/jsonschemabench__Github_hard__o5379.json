@@ -1,0 +1,265 @@
+{
+  "name": "o5379",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelIssueVerifiedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "1.1.0"
+            ],
+            "default": "1.1.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "artifactId": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "artifactId",
+                  "version"
+                ],
+                "additionalProperties": false
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "sdm": {
+                "type": "object",
+                "properties": {
+                  "authorIdentity": {
+                    "type": "string"
+                  },
+                  "encryptedDigest": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "authorIdentity",
+                  "encryptedDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "BUG",
+                    "IMPROVEMENT",
+                    "FEATURE",
+                    "WORK_ITEM",
+                    "REQUIREMENT",
+                    "OTHER"
+                  ]
+                },
+                "tracker": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "uri": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILURE",
+                    "INCONCLUSIVE"
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "tracker",
+                "id",
+                "uri",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "issues"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "description": "The Eiffel Issue Verified event\u202f#123e4567\u2011e89b\u201112d3\u2011a456\u2011426614174000 (type\u202fEiffelIssueVerifiedEvent, version\u202f1.1.0) was recorded at Unix time\u202f1718425600 and is tagged \u201cverification\u201d and \u201cissue\u201d. It originated from the CI system at\u202fci.example.com, domain\u202fcom.example.project, under the name\u202fEiffelVerifier. The serializer that produced the payload is\u202fcom.example:eiffel-serializer:2.0.1 and the source URI is\u202fhttps://ci.example.com/builds/1234. For security, the SDM author is\u202fjohn.doe@example.com and the encrypted digest attached to the event is\u202fa1b2c3d4e5f67890abcdeffedcba9876.\n\nDuring this run two issues were verified. The first is a BUG tracked in Jira with ID\u202fPROJ\u2011123 (https://jira.example.com/browse/PROJ-123) and its verification result is\u202fSUCCESS. The second is a FEATURE recorded in Github with ID\u202f42 (https://github.com/org/repo/issues/42) and its verification result is\u202fFAILURE. The custom data field records the environment as \u201cstaging\u201d. This event is linked to the preceding cause event\u202f987f6543\u2011e21c\u201134b5\u2011b678\u2011123456789abc via a CAUSE link.",
+  "reference_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelIssueVerifiedEvent",
+      "version": "1.1.0",
+      "time": 1718425600,
+      "tags": [
+        "verification",
+        "issue"
+      ],
+      "source": {
+        "domainId": "com.example.project",
+        "host": "ci.example.com",
+        "name": "EiffelVerifier",
+        "serializer": {
+          "groupId": "com.example",
+          "artifactId": "eiffel-serializer",
+          "version": "2.0.1"
+        },
+        "uri": "https://ci.example.com/builds/1234"
+      },
+      "security": {
+        "sdm": {
+          "authorIdentity": "john.doe@example.com",
+          "encryptedDigest": "a1b2c3d4e5f67890abcdeffedcba9876"
+        }
+      }
+    },
+    "data": {
+      "issues": [
+        {
+          "type": "BUG",
+          "tracker": "Jira",
+          "id": "PROJ-123",
+          "uri": "https://jira.example.com/browse/PROJ-123",
+          "value": "SUCCESS"
+        },
+        {
+          "type": "FEATURE",
+          "tracker": "Github",
+          "id": "42",
+          "uri": "https://github.com/org/repo/issues/42",
+          "value": "FAILURE"
+        }
+      ],
+      "customData": [
+        {
+          "key": "environment",
+          "value": "staging"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "987f6543-e21c-34b5-b678-123456789abc"
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "o44463",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Reward",
+    "description": "a reward transaction",
+    "type": "object",
+    "properties": {
+      "tx": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "to": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "integer",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "address",
+              "amount"
+            ]
+          },
+          "msg": {
+            "type": "string",
+            "maxLength": 254
+          }
+        },
+        "required": [
+          "id",
+          "to",
+          "msg"
+        ]
+      },
+      "sign": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "tx",
+      "sign"
+    ]
+  },
+  "erroneous_json": {
+    "sign": "MEUCIQD3v9Xk1bWJYZn8c2JkP6sVb7K8Vt9aY6qjXm9L3z4YsgIgXf2rT9lYc7a4wZmV5sGpVq2h"
+  },
+  "valid_json": {
+    "tx": {
+      "id": "a3f5c2e7b9d1e8f0a6b4c3d2e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8",
+      "to": {
+        "address": "0x4B8eB7cA1234567890abcdef1234567890ABCDEF",
+        "amount": 1500
+      },
+      "msg": "Reward for completing the Q3 milestone."
+    },
+    "sign": "MEUCIQD3v9Xk1bWJYZn8c2JkP6sVb7K8Vt9aY6qjXm9L3z4YsgIgXf2rT9lYc7a4wZmV5sGpVq2h"
+  },
+  "description": "Subject: Confirmation of Reward Transaction  \n\nDear Team,\n\nWe have successfully processed the reward transaction\u202fID\u202fa3f5c2e7b9d1e8f0a6b4c3d2e7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8, sending 1\u202f500 units to the wallet address\u202f0x4B8eB7cA1234567890abcdef1234567890ABCDEF. The attached note reads: \u201cReward for completing the Q3 milestone.\u201d This transaction has been cryptographically signed with the following signature:\u202fMEUCIQD3v9Xk1bWJYZn8c2JkP6sVb7K8Vt9aY6qjXm9L3z4YsgIgXf2rT9lYc7a4wZmV5sGpVq2h.  \n\nPlease let us know if any further details are required."
+}

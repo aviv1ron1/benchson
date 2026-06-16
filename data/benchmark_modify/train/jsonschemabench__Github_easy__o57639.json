@@ -1,0 +1,54 @@
+{
+  "name": "o57639",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "O3D3xx spatial bilateral filter configuration",
+    "type": "object",
+    "properties": {
+      "MaskSize": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1,
+        "default": 0
+      },
+      "SigmaPixel": {
+        "type": "number",
+        "minimum": 0,
+        "default": 2,
+        "attributes": [
+          "private"
+        ]
+      },
+      "SigmaDistance": {
+        "type": "number",
+        "minimum": 0,
+        "default": 0.1,
+        "attributes": [
+          "private"
+        ]
+      }
+    },
+    "required": [
+      "MaskSize"
+    ]
+  },
+  "data": {
+    "MaskSize": 1,
+    "SigmaPixel": 2.5,
+    "SigmaDistance": 0.15
+  },
+  "instructions": "Please remove the SigmaDistance field.",
+  "ground_truth": {
+    "MaskSize": 1,
+    "SigmaPixel": 2.5
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "SigmaDistance"
+    ],
+    "precise_instruction": "Remove the \"SigmaDistance\" field."
+  }
+}

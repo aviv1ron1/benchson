@@ -1,0 +1,60 @@
+{
+  "name": "o39439",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "GetWatchesResponse",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "watches": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/WatchDetails"
+        }
+      }
+    },
+    "definitions": {
+      "WatchDetails": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "projectName": {
+            "type": "string"
+          },
+          "repoName": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "javaName": "GetWatchesResponse"
+  },
+  "erroneous_json": {
+    "watches": [
+      {
+        "projectName": "AlphaProject",
+        "repoName": "frontend-repo"
+      },
+      {
+        "projectName": "BetaProject",
+        "repoName": "backend-service"
+      }
+    ],
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "watches": [
+      {
+        "projectName": "AlphaProject",
+        "repoName": "frontend-repo"
+      },
+      {
+        "projectName": "BetaProject",
+        "repoName": "backend-service"
+      }
+    ]
+  },
+  "description": "The current watch list includes two entries: a watch on the **frontend-repo** belonging to **AlphaProject**, and a watch on the **backend-service** repository under **BetaProject**."
+}

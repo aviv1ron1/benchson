@@ -1,0 +1,258 @@
+{
+  "name": "schema-org-contact-point",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "anyOf": [
+      {
+        "$ref": "https://json.schemastore.org/schema-org-thing.json"
+      }
+    ],
+    "description": "This is a JSON schema representation of the schema.org Action schema: https://schema.org/ContactPoint",
+    "id": "https://json.schemastore.org/schema-org-contact-point.json",
+    "properties": {
+      "@context": {
+        "type": "string",
+        "format": "regex",
+        "pattern": "http://schema.org",
+        "description": "override the @context property to ensure the schema.org URI is used"
+      },
+      "@type": {
+        "description": "override the @type property to ensure ContactPoint is used",
+        "type": "string",
+        "format": "regex",
+        "pattern": "ContactPoint"
+      },
+      "areaServed": {
+        "description": "The geographic area where a service or offered item is provided. Supersedes serviceArea.",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                  "description": "AdministrativeArea"
+                },
+                {
+                  "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                  "description": "GeoShape"
+                },
+                {
+                  "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                  "description": "Place"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "anyOf": [
+              {
+                "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                "description": "AdministrativeArea"
+              },
+              {
+                "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                "description": "GeoShape"
+              },
+              {
+                "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                "description": "Place"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        ]
+      },
+      "availableLanguage": {
+        "description": "A language someone may use with the item. Please use one of the language codes from the IETF BCP 47 standard. See also inLanguage",
+        "anyOf": [
+          {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                "description": "Language"
+              }
+            ]
+          },
+          {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                  "description": "Language"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "contactOption": {
+        "description": "An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers).",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "enum": [
+                    "HearingImpairedSupported",
+                    "TollFree"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "enum": [
+              "HearingImpairedSupported",
+              "TollFree"
+            ]
+          }
+        ]
+      },
+      "contactType": {
+        "description": "A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.",
+        "type": "string"
+      },
+      "email": {
+        "description": "Email address.",
+        "type": "string",
+        "format": "email"
+      },
+      "faxNumber": {
+        "description": "The fax number.",
+        "type": "string"
+      },
+      "hoursAvailable": {
+        "$ref": "https://json.schemastore.org/schema-org-thing.json",
+        "description": "The hours during which this service or contact is available. (OpeningHoursSpecification)"
+      },
+      "productSupported": {
+        "description": "The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. \"iPhone\") or a general category of products or services (e.g. \"smartphones\").",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                  "description": "Product"
+                }
+              ]
+            }
+          },
+          {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "https://json.schemastore.org/schema-org-thing.json",
+                "description": "Product"
+              }
+            ]
+          }
+        ]
+      },
+      "telephone": {
+        "description": "The telephone number.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "@type"
+    ],
+    "title": "JSON schema for schema.org / ContactPoint",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "@context": "http://schema.org",
+    "@type": "ContactPoint",
+    "contactType": null,
+    "telephone": "+1-800-555-1234",
+    "email": "support@example.com",
+    "faxNumber": "+1-800-555-5678",
+    "availableLanguage": [
+      "en-US",
+      "es-ES"
+    ],
+    "contactOption": [
+      "TollFree",
+      "HearingImpairedSupported"
+    ],
+    "areaServed": [
+      "US",
+      "CA"
+    ],
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    "productSupported": [
+      "Smartphone",
+      "Tablet"
+    ]
+  },
+  "valid_json": {
+    "@context": "http://schema.org",
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+1-800-555-1234",
+    "email": "support@example.com",
+    "faxNumber": "+1-800-555-5678",
+    "availableLanguage": [
+      "en-US",
+      "es-ES"
+    ],
+    "contactOption": [
+      "TollFree",
+      "HearingImpairedSupported"
+    ],
+    "areaServed": [
+      "US",
+      "CA"
+    ],
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    "productSupported": [
+      "Smartphone",
+      "Tablet"
+    ]
+  },
+  "description": "Our Customer Service team can be reached at\u202f+1\u2011800\u2011555\u20111234 (toll\u2011free) or via fax at\u202f+1\u2011800\u2011555\u20115678. For email inquiries, please write to\u202fsupport@example.com. We provide support in both English (en\u2011US) and Spanish (es\u2011ES) and our lines are fully accessible for hearing\u2011impaired callers. The service area covers the United States and Canada, and the team is available Monday through Friday, from\u202f09:00\u202fto\u202f17:00\u202flocal time.  \n\nWe handle product\u2011related questions for Smartphones and Tablets, offering assistance for any issues you may encounter with these devices."
+}

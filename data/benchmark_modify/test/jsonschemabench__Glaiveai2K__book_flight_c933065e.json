@@ -1,0 +1,58 @@
+{
+  "name": "book_flight_c933065e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "departure_date": {
+        "description": "The departure date in the format yyyy-mm-dd",
+        "type": "string"
+      },
+      "destination": {
+        "description": "The destination airport",
+        "type": "string"
+      },
+      "origin": {
+        "description": "The origin airport",
+        "type": "string"
+      },
+      "passengers": {
+        "description": "The number of passengers",
+        "type": "integer"
+      },
+      "return_date": {
+        "description": "The return date in the format yyyy-mm-dd",
+        "type": "string"
+      }
+    },
+    "required": [
+      "origin",
+      "destination",
+      "departure_date",
+      "passengers"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "origin": "JFK",
+    "destination": "LHR",
+    "departure_date": "2024-09-15",
+    "return_date": "2024-09-22",
+    "passengers": 2
+  },
+  "instructions": "Please change the destination to LHR (updated).",
+  "ground_truth": {
+    "origin": "JFK",
+    "destination": "LHR (updated)",
+    "departure_date": "2024-09-15",
+    "return_date": "2024-09-22",
+    "passengers": 2
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "destination"
+    ],
+    "precise_instruction": "Change \"destination\" to \"LHR (updated)\"."
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "name": "o41311",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "required": [
+      "config",
+      "inputs"
+    ],
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "required": [
+          "StructZip",
+          "FuncZip"
+        ],
+        "type": "object",
+        "properties": {
+          "CustomClassifier": {
+            "type": "object",
+            "properties": {}
+          },
+          "FuncZip10": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "StructZip": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip9": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip8": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip5": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip4": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip7": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip6": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip3": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          },
+          "FuncZip2": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "zip"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "config": {
+        "required": [
+          "PreserveOnError",
+          "HighPassFilter",
+          "RegName",
+          "FIXClassifier"
+        ],
+        "type": "object",
+        "properties": {
+          "PreserveOnError": {
+            "default": false,
+            "type": "boolean"
+          },
+          "HighPassFilter": {
+            "default": 2000,
+            "type": "integer"
+          },
+          "RegName": {
+            "default": "Empty",
+            "type": "string"
+          },
+          "FIXClassifier": {
+            "default": "HCP_hp2000",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "title": "Invocation manifest for HCP: ICAFIX Functional Pipeline"
+  },
+  "erroneous_json": {
+    "config": {
+      "PreserveOnError": false,
+      "HighPassFilter": 2000,
+      "FIXClassifier": "HCP_hp2000"
+    },
+    "inputs": {
+      "StructZip": {
+        "type": "zip"
+      },
+      "FuncZip": {
+        "type": "zip"
+      },
+      "FuncZip2": {
+        "type": "zip"
+      },
+      "FuncZip3": {
+        "type": "zip"
+      },
+      "FuncZip4": {
+        "type": "zip"
+      },
+      "FuncZip5": {
+        "type": "zip"
+      },
+      "FuncZip6": {
+        "type": "zip"
+      },
+      "FuncZip7": {
+        "type": "zip"
+      },
+      "FuncZip8": {
+        "type": "zip"
+      },
+      "FuncZip9": {
+        "type": "zip"
+      },
+      "FuncZip10": {
+        "type": "zip"
+      },
+      "CustomClassifier": {}
+    }
+  },
+  "valid_json": {
+    "config": {
+      "PreserveOnError": false,
+      "HighPassFilter": 2000,
+      "RegName": "Subject001",
+      "FIXClassifier": "HCP_hp2000"
+    },
+    "inputs": {
+      "StructZip": {
+        "type": "zip"
+      },
+      "FuncZip": {
+        "type": "zip"
+      },
+      "FuncZip2": {
+        "type": "zip"
+      },
+      "FuncZip3": {
+        "type": "zip"
+      },
+      "FuncZip4": {
+        "type": "zip"
+      },
+      "FuncZip5": {
+        "type": "zip"
+      },
+      "FuncZip6": {
+        "type": "zip"
+      },
+      "FuncZip7": {
+        "type": "zip"
+      },
+      "FuncZip8": {
+        "type": "zip"
+      },
+      "FuncZip9": {
+        "type": "zip"
+      },
+      "FuncZip10": {
+        "type": "zip"
+      },
+      "CustomClassifier": {}
+    }
+  },
+  "description": "Subject\u202f001 (RegName\u202f=\u202fSubject001) was processed through the HCP ICAFIX functional pipeline using the standard FIX classifier **HCP_hp2000**. The pipeline was configured with a high\u2011pass filter of **2000\u202fHz** and was set **not to preserve any intermediate results on error** (PreserveOnError\u202f=\u202ffalse).\n\nAll required inputs were supplied as zip archives: the structural image (StructZip) and the ten functional runs (FuncZip, FuncZip2, FuncZip3, FuncZip4, FuncZip5, FuncZip6, FuncZip7, FuncZip8, FuncZip9, and FuncZip10) each have the type \u201czip\u201d. No custom classifier was provided (CustomClassifier is empty)."
+}

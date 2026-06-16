@@ -1,0 +1,45 @@
+{
+  "name": "kb_1125_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "volumeDevice describes a mapping of a raw block device within a container.",
+    "properties": {
+      "devicePath": {
+        "description": "devicePath is the path inside of the container that the device will be mapped to.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "name": {
+        "description": "name must match the name of a persistentVolumeClaim in the pod",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "name",
+      "devicePath"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "devicePath": "/dev/xvda",
+    "name": "data-pvc"
+  },
+  "instructions": "Please update the **name** field to \u201cdata-pvc (updated)\u201d.",
+  "ground_truth": {
+    "devicePath": "/dev/xvda",
+    "name": "data-pvc (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "name"
+    ],
+    "precise_instruction": "Change \"name\" to \"data-pvc (updated)\"."
+  }
+}

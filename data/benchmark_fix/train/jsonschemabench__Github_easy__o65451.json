@@ -1,0 +1,83 @@
+{
+  "name": "o65451",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "anyOf": [
+      {
+        "required": [
+          "title"
+        ]
+      },
+      {
+        "required": [
+          "description"
+        ]
+      },
+      {
+        "required": [
+          "filing_type_name"
+        ]
+      }
+    ],
+    "description": "A statutory filing",
+    "properties": {
+      "date": {
+        "_format": "date",
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "filing_type_code": {
+        "type": "string"
+      },
+      "filing_type_name": {
+        "type": "string"
+      },
+      "other_attributes": {
+        "type": "object"
+      },
+      "title": {
+        "type": "string"
+      },
+      "uid": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "date"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "title": "Annual Report Filing",
+    "description": "Company's annual financial statements filed with the SEC.",
+    "filing_type_name": "Annual Report",
+    "filing_type_code": "10-K",
+    "uid": "urn:filing:123456789",
+    "url": "https://example.com/filings/123456789",
+    "other_attributes": {
+      "submitted_by": "Jane Doe",
+      "department": "Finance"
+    }
+  },
+  "valid_json": {
+    "date": "2023-08-15",
+    "title": "Annual Report Filing",
+    "description": "Company's annual financial statements filed with the SEC.",
+    "filing_type_name": "Annual Report",
+    "filing_type_code": "10-K",
+    "uid": "urn:filing:123456789",
+    "url": "https://example.com/filings/123456789",
+    "other_attributes": {
+      "submitted_by": "Jane Doe",
+      "department": "Finance"
+    }
+  },
+  "description": "On\u202f15\u202fAugust\u202f2023 the company submitted its Annual Report Filing, a comprehensive set of the year\u2019s financial statements filed with the SEC. The filing, identified as an Annual Report (form\u202f10\u2011K), is recorded under the unique identifier\u202furn:filing:123456789 and can be accessed online at https://example.com/filings/123456789.  \n\nThe submission was prepared by Jane\u202fDoe from the Finance department, ensuring that all required disclosures are included and compliant with regulatory standards."
+}

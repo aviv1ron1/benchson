@@ -1,0 +1,125 @@
+{
+  "name": "o48116",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "device_iot": {
+        "type": "object",
+        "properties": {
+          "cat": {
+            "type": "integer"
+          },
+          "cby": {
+            "type": "string"
+          },
+          "tid": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "tid",
+          "cby",
+          "cat"
+        ]
+      },
+      "device_org_id": {
+        "type": "object",
+        "properties": {
+          "ref": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ref"
+        ]
+      },
+      "deviceTest": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/device"
+          },
+          {
+            "properties": {
+              "test": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "type": "object"
+      },
+      "device_location": {
+        "id": "/properties/location",
+        "type": "object",
+        "properties": {
+          "coordinates": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ]
+      },
+      "device": {
+        "location": {
+          "$ref": "#/definitions/device_location"
+        },
+        "type": "object",
+        "properties": {
+          "lbl": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "allOf": [
+      {
+        "$ref": "#/definitions/deviceTest"
+      }
+    ]
+  },
+  "data": {
+    "test": "integration",
+    "lbl": "Temperature Sensor",
+    "id": "dev-001",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        40.7128,
+        -74.006
+      ]
+    }
+  },
+  "instructions": "Please keep only the first item in the\u202flocation\u202f\u2192\u202fcoordinates\u202flist and remove all the other entries.",
+  "ground_truth": {
+    "test": "integration",
+    "lbl": "Temperature Sensor",
+    "id": "dev-001",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        40.7128
+      ]
+    }
+  },
+  "modification": {
+    "op": "array_keep_first",
+    "path": [
+      "location",
+      "coordinates"
+    ],
+    "precise_instruction": "Keep only the first item in the \"coordinates\" list inside \"location\" and remove the rest."
+  }
+}

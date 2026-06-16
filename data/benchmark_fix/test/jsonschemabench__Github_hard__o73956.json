@@ -1,0 +1,450 @@
+{
+  "name": "o73956",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "timings": {
+        "$ref": "#/definitions/TimingsType"
+      },
+      "version": {
+        "type": "string"
+      }
+    },
+    "definitions": {
+      "TimingsType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "timing": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/TimingType"
+            }
+          },
+          "numsys": {
+            "type": "integer"
+          }
+        }
+      },
+      "TimingType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "curPlan": {
+            "$ref": "#/definitions/TimingPlanType"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "adaptive": {
+            "type": "string",
+            "enum": [
+              "PLAN",
+              "PATTERN",
+              "STANDBY"
+            ]
+          },
+          "adaPlan": {
+            "type": "integer"
+          },
+          "adaMode": {
+            "type": "string",
+            "enum": [
+              "FREE",
+              "FLASH"
+            ]
+          },
+          "adaPattern": {
+            "type": "integer"
+          },
+          "tod": {
+            "type": "string",
+            "enum": [
+              "PLAN",
+              "PATTERN",
+              "STANDBY"
+            ]
+          },
+          "todPlan": {
+            "type": "integer"
+          },
+          "todMode": {
+            "type": "string",
+            "enum": [
+              "FREE",
+              "FLASH"
+            ]
+          },
+          "todPattern": {
+            "type": "integer"
+          },
+          "todnum": {
+            "type": "integer"
+          },
+          "override": {
+            "type": "string",
+            "enum": [
+              "PLAN",
+              "PATTERN",
+              "STANDBY"
+            ]
+          },
+          "ovrPlan": {
+            "type": "integer"
+          },
+          "ovrMode": {
+            "type": "string",
+            "enum": [
+              "FREE",
+              "FLASH"
+            ]
+          },
+          "ovrPattern": {
+            "type": "integer"
+          },
+          "now": {
+            "type": "string",
+            "enum": [
+              "PATTERN",
+              "FLASH",
+              "TBC",
+              "STANDBY",
+              "FAIL",
+              "PLAN",
+              "UNKNOWN"
+            ]
+          },
+          "op": {
+            "type": "string",
+            "enum": [
+              "PICKUP",
+              "OFFSET",
+              "NCS",
+              "TRANSITION"
+            ]
+          },
+          "to": {
+            "type": "integer"
+          },
+          "fail": {
+            "type": "string",
+            "enum": [
+              "CONFLICT",
+              "CDI",
+              "PRE_EMPT",
+              "UNKNOWN",
+              "RESET"
+            ]
+          }
+        }
+      },
+      "TimingPlanType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "phases": {
+            "$ref": "#/definitions/Phases"
+          },
+          "id": {
+            "type": "string"
+          },
+          "cycle": {
+            "type": "integer"
+          },
+          "min": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "sigplan": {
+            "type": "integer"
+          }
+        }
+      },
+      "Phases": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "phase": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/PhaseType"
+            }
+          }
+        }
+      },
+      "PhaseType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "serves": {
+            "type": "integer"
+          },
+          "rof": {
+            "type": "integer"
+          },
+          "split": {
+            "type": "integer"
+          },
+          "disp": {
+            "type": "string",
+            "enum": [
+              "EW_L",
+              "SB_L",
+              "NB_W",
+              "SB_W",
+              "WB_G",
+              "NB_L",
+              "EW_W",
+              "NS_W",
+              "EB_W",
+              "NS_E",
+              "NS_L",
+              "WB_L",
+              "SB_G",
+              "EB_L",
+              "WB_B",
+              "EW_G"
+            ]
+          },
+          "minvar": {
+            "type": "integer"
+          },
+          "variable": {
+            "type": "integer"
+          },
+          "clear": {
+            "type": "integer"
+          },
+          "fixed": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "timings": {
+      "numsys": 2,
+      "timing": [
+        {
+          "id": 1,
+          "adaptive": "PLAN",
+          "adaPlan": 101,
+          "adaMode": "FREE",
+          "adaPattern": 5,
+          "tod": "STANDBY",
+          "todPlan": 102,
+          "todMode": "FLASH",
+          "todPattern": 3,
+          "todnum": 0,
+          "override": "PATTERN",
+          "ovrPlan": 103,
+          "ovrMode": "FREE",
+          "ovrPattern": 2,
+          "now": "PLAN",
+          "op": "TRANSITION",
+          "to": 30,
+          "fail": "UNKNOWN",
+          "curPlan": {
+            "id": "CP-01",
+            "cycle": 120,
+            "min": 30,
+            "offset": 5,
+            "sigplan": 1,
+            "phases": {
+              "phase": [
+                {
+                  "id": "A",
+                  "value": "Green",
+                  "serves": 1,
+                  "rof": 1,
+                  "split": 0,
+                  "disp": "EW_G",
+                  "minvar": 5,
+                  "variable": 10,
+                  "clear": 0,
+                  "fixed": 1
+                },
+                {
+                  "id": "B",
+                  "value": "Yellow",
+                  "serves": 2,
+                  "rof": 0,
+                  "split": 0,
+                  "disp": "EW_W",
+                  "minvar": 2,
+                  "variable": 0,
+                  "clear": 1,
+                  "fixed": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": 2,
+          "adaptive": "PATTERN",
+          "adaPlan": 201,
+          "adaMode": "FLASH",
+          "adaPattern": 7,
+          "tod": "PLAN",
+          "todPlan": 202,
+          "todMode": "FREE",
+          "todPattern": 4,
+          "todnum": 1,
+          "override": "STANDBY",
+          "ovrPlan": 203,
+          "ovrMode": "FLASH",
+          "ovrPattern": 1,
+          "now": "FLASH",
+          "op": "PICKUP",
+          "to": 45,
+          "fail": "RESET",
+          "curPlan": {
+            "id": "CP-02",
+            "cycle": 90,
+            "min": 25,
+            "offset": 3,
+            "sigplan": 2,
+            "phases": {
+              "phase": [
+                {
+                  "id": "C",
+                  "value": "Red",
+                  "serves": 3,
+                  "rof": 0,
+                  "split": 0,
+                  "disp": "NS_L",
+                  "minvar": 0,
+                  "variable": 0,
+                  "clear": 1,
+                  "fixed": 1
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "version": null
+  },
+  "valid_json": {
+    "timings": {
+      "numsys": 2,
+      "timing": [
+        {
+          "id": 1,
+          "adaptive": "PLAN",
+          "adaPlan": 101,
+          "adaMode": "FREE",
+          "adaPattern": 5,
+          "tod": "STANDBY",
+          "todPlan": 102,
+          "todMode": "FLASH",
+          "todPattern": 3,
+          "todnum": 0,
+          "override": "PATTERN",
+          "ovrPlan": 103,
+          "ovrMode": "FREE",
+          "ovrPattern": 2,
+          "now": "PLAN",
+          "op": "TRANSITION",
+          "to": 30,
+          "fail": "UNKNOWN",
+          "curPlan": {
+            "id": "CP-01",
+            "cycle": 120,
+            "min": 30,
+            "offset": 5,
+            "sigplan": 1,
+            "phases": {
+              "phase": [
+                {
+                  "id": "A",
+                  "value": "Green",
+                  "serves": 1,
+                  "rof": 1,
+                  "split": 0,
+                  "disp": "EW_G",
+                  "minvar": 5,
+                  "variable": 10,
+                  "clear": 0,
+                  "fixed": 1
+                },
+                {
+                  "id": "B",
+                  "value": "Yellow",
+                  "serves": 2,
+                  "rof": 0,
+                  "split": 0,
+                  "disp": "EW_W",
+                  "minvar": 2,
+                  "variable": 0,
+                  "clear": 1,
+                  "fixed": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": 2,
+          "adaptive": "PATTERN",
+          "adaPlan": 201,
+          "adaMode": "FLASH",
+          "adaPattern": 7,
+          "tod": "PLAN",
+          "todPlan": 202,
+          "todMode": "FREE",
+          "todPattern": 4,
+          "todnum": 1,
+          "override": "STANDBY",
+          "ovrPlan": 203,
+          "ovrMode": "FLASH",
+          "ovrPattern": 1,
+          "now": "FLASH",
+          "op": "PICKUP",
+          "to": 45,
+          "fail": "RESET",
+          "curPlan": {
+            "id": "CP-02",
+            "cycle": 90,
+            "min": 25,
+            "offset": 3,
+            "sigplan": 2,
+            "phases": {
+              "phase": [
+                {
+                  "id": "C",
+                  "value": "Red",
+                  "serves": 3,
+                  "rof": 0,
+                  "split": 0,
+                  "disp": "NS_L",
+                  "minvar": 0,
+                  "variable": 0,
+                  "clear": 1,
+                  "fixed": 1
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "version": "1.0.3"
+  },
+  "description": "The traffic\u2011control configuration is recorded under version\u202f1.0.3 and applies to two signal systems. System\u202f1 operates with an adaptive plan set to **PLAN** (plan\u202f101, mode\u202fFREE, pattern\u202f5) while its time\u2011of\u2011day (TOD) mode is **STANDBY** (plan\u202f102, mode\u202fFLASH, pattern\u202f3) and the override is forced to a **PATTERN** (plan\u202f103, mode\u202fFREE, pattern\u202f2). At the moment the controller reports the active state as **PLAN**, executing a **TRANSITION** operation with a target interval of 30\u202fseconds; the failure status is **UNKNOWN**. The current plan for system\u202f1 is identified as **CP\u201101** with a cycle length of 120\u202fseconds, a minimum green of 30\u202fseconds, an offset of\u202f5\u202fseconds and signal\u2011plan identifier\u202f1. This plan defines two phases: Phase\u202fA shows a **Green** indication serving movement\u202f1, has a \u201crof\u201d flag\u202f1, no split, displays **EW_G**, with a minimum variable time of\u202f5\u202fseconds, a variable extension of\u202f10\u202fseconds, clear\u202f0 and fixed\u202f1; Phase\u202fB shows a **Yellow** indication serving movement\u202f2, \u201crof\u201d\u202f0, no split, displays **EW_W**, with a minimum variable of\u202f2\u202fseconds, no variable extension, clear\u202f1 and fixed\u202f0.\n\nSystem\u202f2 uses an adaptive mode of **PATTERN** (plan\u202f201, mode\u202fFLASH, pattern\u202f7) and its TOD setting is **PLAN** (plan\u202f202, mode\u202fFREE, pattern\u202f4). The override for this system is set to **STANDBY** (plan\u202f203, mode\u202fFLASH, pattern\u202f1). Currently the controller reports a **FLASH** state, performing a **PICKUP** operation with a target interval of 45\u202fseconds, and the failure condition is logged as **RESET**. The active plan, labeled **CP\u201102**, runs a 90\u2011second cycle, a minimum of\u202f25\u202fseconds, an offset of\u202f3\u202fseconds and signal\u2011plan identifier\u202f2. This plan contains a single phase, Phase\u202fC, which displays **Red**, serves movement\u202f3, has \u201crof\u201d\u202f0, no split, displays **NS_L**, and carries zero minimum\u2011variable and variable times, with clear\u202f1 and fixed\u202f1."
+}

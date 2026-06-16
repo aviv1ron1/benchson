@@ -1,0 +1,72 @@
+{
+  "name": "tsd",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/tsd.json",
+    "properties": {
+      "bundle": {
+        "description": "Path to a '.d.ts' bundle file (see below). Change this if you want the bundle to be closer to the actual source files. TSD will create the appropriate relative paths.",
+        "type": "string",
+        "default": "typings/tsd.d.ts"
+      },
+      "installed": {
+        "description": "A list of installed typings.",
+        "type": "object"
+      },
+      "path": {
+        "description": "Path to the typings directory, the definitions will be installed in the appropriate sub-folders. Change this to have typings in your main code directory, but this is not recommended as the mixed styles used in the definitions it will confuse your inspections and lint-tools.",
+        "type": "string",
+        "default": "typings"
+      },
+      "ref": {
+        "description": "Branch name or other git reference of the repository. Change this to use legacy branches.",
+        "type": "string",
+        "default": "master"
+      },
+      "repo": {
+        "description": "GitHub user and repo name of the typings repository. Change this if you want to use TSD from a DefinitelyTyped fork.",
+        "type": "string",
+        "default": "borisyankov/DefinitelyTyped"
+      },
+      "stats": {
+        "description": "Set to 'false' to disable the stats tracking. Keep in mind the stats are anonymous, help us improve TSD & DT and motivate us to spend our time on development.",
+        "type": "boolean",
+        "default": true
+      },
+      "version": {
+        "description": "Tracks config version for future changes (don't change this).",
+        "type": "string",
+        "default": "v4"
+      }
+    },
+    "required": [
+      "path",
+      "ref",
+      "repo",
+      "version"
+    ],
+    "title": "JSON schema for DefinitelyTyped TypeScript definitions manager (TSD)",
+    "type": "object"
+  },
+  "description": "The project\u2019s TypeScript definition bundle is located at **typings/custom.d.ts**, and all definition files are stored under the **typings** directory. We are pulling definitions from the **master** branch of the **borisyankov/DefinitelyTyped** repository, with statistics tracking turned on, and the configuration follows version **v4** of the TSD format.\n\nAt the moment the installed typings include **lodash** (version\u202f4.17.21) whose definition file resides at **lodash/lodash.d.ts**, and **express** (version\u202f4.17.1) with its definition located at **express/express.d.ts**.",
+  "reference_json": {
+    "bundle": "typings/custom.d.ts",
+    "installed": {
+      "lodash": {
+        "version": "4.17.21",
+        "path": "lodash/lodash.d.ts"
+      },
+      "express": {
+        "version": "4.17.1",
+        "path": "express/express.d.ts"
+      }
+    },
+    "path": "typings",
+    "ref": "master",
+    "repo": "borisyankov/DefinitelyTyped",
+    "stats": true,
+    "version": "v4"
+  }
+}

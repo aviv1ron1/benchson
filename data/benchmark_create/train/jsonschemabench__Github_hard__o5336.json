@@ -1,0 +1,269 @@
+{
+  "name": "o5336",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelActivityStartedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "4.0.0"
+            ],
+            "default": "4.0.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "string",
+                "pattern": "^pkg:"
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "authorIdentity": {
+                "type": "string"
+              },
+              "integrityProtection": {
+                "type": "object",
+                "properties": {
+                  "signature": {
+                    "type": "string"
+                  },
+                  "alg": {
+                    "type": "string",
+                    "enum": [
+                      "HS256",
+                      "HS384",
+                      "HS512",
+                      "RS256",
+                      "RS384",
+                      "RS512",
+                      "ES256",
+                      "ES384",
+                      "ES512",
+                      "PS256",
+                      "PS384",
+                      "PS512"
+                    ]
+                  },
+                  "publicKey": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "signature",
+                  "alg"
+                ],
+                "additionalProperties": false
+              },
+              "sequenceProtection": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sequenceName": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "sequenceName",
+                    "position"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "authorIdentity"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "executionUri": {
+            "type": "string"
+          },
+          "liveLogs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "uri": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "uri"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "description": "The Eiffel Activity Started event with ID\u202f9f1c2d3e-4a5b-4c6d-8e9f-0a1b2c3d4e5f (type\u202fEiffelActivityStartedEvent, version\u202f4.0.0) was recorded at Unix time\u202f1729701234 and is tagged with \u201cci\u201d and \u201cbuild\u201d. It originated from the source\u202fexample.com on host\u202fbuildserver01, named\u202fbuild-agent, using the serializer\u202fpkg:github.com/example/serializer, and can be referenced at\u202fhttps://example.com/build/12345. The event was authored by\u202fjohn.doe@example.com; its integrity is protected by a RS256 signature\u202fMEUCIQDfZ4eJbK9vT1s3Gz8a1KQYV9wB6Zx5c2aO9c8wZpJRYwIgZHJ2TzBzYXJ6eW1lQ2VydA== and the accompanying public key\u202fMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtV.... Within the activity sequence \u201cactivitySequence\u201d, this event occupies position\u202f1.  \n\nThe execution URI for this activity is\u202furn:example:execution:12345. Live logs are available as \u201cbuildLog\u201d at\u202fhttps://example.com/logs/build/12345 and \u201ctestLog\u201d at\u202fhttps://example.com/logs/test/12345. Custom data include the key\u202fenvironment\u202fwith value\u202fproduction and the key\u202fretryCount\u202fwith value\u202f2. This event is linked as a CAUSE to the target event\u202fabcd1234-5678-4def-9abc-def012345678.",
+  "reference_json": {
+    "meta": {
+      "id": "9f1c2d3e-4a5b-4c6d-8e9f-0a1b2c3d4e5f",
+      "type": "EiffelActivityStartedEvent",
+      "version": "4.0.0",
+      "time": 1729701234,
+      "tags": [
+        "ci",
+        "build"
+      ],
+      "source": {
+        "domainId": "example.com",
+        "host": "buildserver01",
+        "name": "build-agent",
+        "serializer": "pkg:github.com/example/serializer",
+        "uri": "https://example.com/build/12345"
+      },
+      "security": {
+        "authorIdentity": "john.doe@example.com",
+        "integrityProtection": {
+          "signature": "MEUCIQDfZ4eJbK9vT1s3Gz8a1KQYV9wB6Zx5c2aO9c8wZpJRYwIgZHJ2TzBzYXJ6eW1lQ2VydA==",
+          "alg": "RS256",
+          "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtV..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "activitySequence",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "data": {
+      "executionUri": "urn:example:execution:12345",
+      "liveLogs": [
+        {
+          "name": "buildLog",
+          "uri": "https://example.com/logs/build/12345"
+        },
+        {
+          "name": "testLog",
+          "uri": "https://example.com/logs/test/12345"
+        }
+      ],
+      "customData": [
+        {
+          "key": "environment",
+          "value": "production"
+        },
+        {
+          "key": "retryCount",
+          "value": 2
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "abcd1234-5678-4def-9abc-def012345678"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "sp_166_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Pingdom incident assigned event",
+    "properties": {
+      "check": {
+        "type": "string"
+      },
+      "checkname": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "host": {
+        "type": "string"
+      },
+      "incidentid": {
+        "type": "integer"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "incident_assign",
+      "vendor": "com.pingdom",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  }
+}

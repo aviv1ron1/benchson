@@ -1,0 +1,78 @@
+{
+  "name": "o78460",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "URIs",
+    "intl_uri": {
+      "title": "Internationalized URI",
+      "type": "object",
+      "properties": {
+        "_def": {
+          "title": "Default language override",
+          "description": "Optional key of the default language for this link",
+          "type": "string"
+        },
+        "": {
+          "title": "Language independent URI",
+          "description": "",
+          "type": "string",
+          "format": "uri"
+        },
+        "de": {
+          "title": "URI for German",
+          "description": "",
+          "type": "string",
+          "format": "uri"
+        },
+        "en": {
+          "title": "URI for English",
+          "description": "",
+          "type": "string",
+          "format": "uri"
+        },
+        "es": {
+          "title": "URI for Spanish",
+          "description": "",
+          "type": "string",
+          "format": "uri"
+        },
+        "fi": {
+          "title": "URI for Finnish",
+          "description": "",
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": {
+        "title": "URI for language <key>",
+        "description": "The key is ISO 639-1 Language Code",
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "properties": {
+      "intl_uri": {
+        "$ref": "#/intl_uri"
+      }
+    },
+    "required": [
+      "intl_uri"
+    ]
+  },
+  "erroneous_json": {},
+  "valid_json": {
+    "intl_uri": {
+      "_def": "en",
+      "": "https://example.com/resource",
+      "de": "https://example.com/de/resource",
+      "en": "https://example.com/en/resource",
+      "es": "https://example.com/es/resource",
+      "fi": "https://example.com/fi/resource",
+      "fr": "https://example.com/fr/resource",
+      "it": "https://example.com/it/resource"
+    }
+  },
+  "description": "Dear Team,\n\nPlease note that the main entry point for the new resource is\u202fhttps://example.com/resource. For users who prefer English the default language, we will direct them to\u202fhttps://example.com/en/resource, and the system is configured to treat English (code \u201cen\u201d) as the fallback language whenever a locale\u2011specific version is unavailable.\n\nWe have also prepared dedicated pages for other supported languages: the German version is available at\u202fhttps://example.com/de/resource, the Spanish at\u202fhttps://example.com/es/resource, the Finnish at\u202fhttps://example.com/fi/resource, the French at\u202fhttps://example.com/fr/resource, and the Italian at\u202fhttps://example.com/it/resource. These links should be used in the localized interfaces accordingly."
+}

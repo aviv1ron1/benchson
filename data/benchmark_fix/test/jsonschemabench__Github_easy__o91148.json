@@ -1,0 +1,75 @@
+{
+  "name": "o91148",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "allChunks": {
+        "description": "",
+        "type": "boolean"
+      },
+      "disable": {
+        "description": "",
+        "type": "boolean"
+      },
+      "fallback": {
+        "description": "A loader that webpack can fall back to if the original one fails.",
+        "modes": {
+          "type": "array"
+        }
+      },
+      "filename": {
+        "description": "The filename and path that ExtractTextPlugin will extract to",
+        "modes": {
+          "type": "function"
+        }
+      },
+      "ignoreOrder": {
+        "description": "Ignore dependency order (useful for CSS Modules)",
+        "type": "boolean"
+      },
+      "loader": {
+        "description": "The loader that ExtractTextPlugin will attempt to load through.",
+        "modes": {
+          "type": "array"
+        }
+      },
+      "publicPath": {
+        "description": "",
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "allChunks": true,
+    "disable": "not-a-bool",
+    "fallback": [
+      "style-loader"
+    ],
+    "filename": "css/[name].css",
+    "ignoreOrder": false,
+    "loader": [
+      "css-loader",
+      "postcss-loader"
+    ],
+    "publicPath": "/static/"
+  },
+  "valid_json": {
+    "allChunks": true,
+    "disable": false,
+    "fallback": [
+      "style-loader"
+    ],
+    "filename": "css/[name].css",
+    "ignoreOrder": false,
+    "loader": [
+      "css-loader",
+      "postcss-loader"
+    ],
+    "publicPath": "/static/"
+  },
+  "description": "The ExtractTextPlugin is configured to extract every chunk from the bundle (\u202fallChunks\u202f=\u202ftrue\u202f) and the plugin remains active (\u202fdisable\u202f=\u202ffalse\u202f). If the primary loader chain fails, it will fall back to the **style-loader**. Extracted styles are written to the path\u202f`css/[name].css`, and the public URL prefix for these assets is set to\u202f`/static/`. The loader sequence applied to the CSS files consists of **css-loader** followed by **postcss-loader**, and the plugin is set to respect the original dependency order (\u202fignoreOrder\u202f=\u202ffalse\u202f)."
+}

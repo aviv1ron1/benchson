@@ -1,0 +1,268 @@
+{
+  "name": "o6214",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 32767
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "triggers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "config": {
+              "type": "object"
+            },
+            "meta": {
+              "type": "object"
+            },
+            "outputIds": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        }
+      },
+      "nodes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "config": {
+              "type": "object"
+            },
+            "meta": {
+              "type": "object"
+            },
+            "outputIds": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "type"
+          ]
+        }
+      },
+      "globals": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "json": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "key",
+            "json"
+          ]
+        }
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "name"
+    ]
+  },
+  "data": {
+    "name": "Customer Support Workflow",
+    "description": "Automated workflow to handle incoming support tickets and route them to appropriate agents.",
+    "enabled": true,
+    "triggers": [
+      {
+        "key": "newTicket",
+        "type": "webhook",
+        "config": {
+          "url": "https://example.com/webhook/ticket"
+        },
+        "meta": {
+          "createdBy": "admin"
+        },
+        "outputIds": [
+          [
+            "node1"
+          ],
+          [
+            "node2"
+          ]
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "node1",
+        "type": "filter",
+        "config": {
+          "condition": "priority == 'high'"
+        },
+        "meta": {
+          "description": "High priority filter"
+        },
+        "outputIds": [
+          [
+            "node3"
+          ]
+        ]
+      },
+      {
+        "id": "node2",
+        "type": "assign",
+        "config": {
+          "assignee": "support_team"
+        },
+        "meta": {},
+        "outputIds": [
+          [
+            "node3"
+          ]
+        ]
+      },
+      {
+        "id": "node3",
+        "type": "notification",
+        "config": {
+          "channel": "email",
+          "templateId": "ticketAlert"
+        },
+        "meta": {
+          "sentAt": "2026-06-15T12:00:00Z"
+        },
+        "outputIds": []
+      }
+    ],
+    "globals": [
+      {
+        "key": "default_priority",
+        "json": "\"medium\""
+      },
+      {
+        "key": "max_retry_count",
+        "json": "3"
+      }
+    ]
+  },
+  "instructions": "Please remove all items from the \u201cglobals\u201d list.",
+  "ground_truth": {
+    "name": "Customer Support Workflow",
+    "description": "Automated workflow to handle incoming support tickets and route them to appropriate agents.",
+    "enabled": true,
+    "triggers": [
+      {
+        "key": "newTicket",
+        "type": "webhook",
+        "config": {
+          "url": "https://example.com/webhook/ticket"
+        },
+        "meta": {
+          "createdBy": "admin"
+        },
+        "outputIds": [
+          [
+            "node1"
+          ],
+          [
+            "node2"
+          ]
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "node1",
+        "type": "filter",
+        "config": {
+          "condition": "priority == 'high'"
+        },
+        "meta": {
+          "description": "High priority filter"
+        },
+        "outputIds": [
+          [
+            "node3"
+          ]
+        ]
+      },
+      {
+        "id": "node2",
+        "type": "assign",
+        "config": {
+          "assignee": "support_team"
+        },
+        "meta": {},
+        "outputIds": [
+          [
+            "node3"
+          ]
+        ]
+      },
+      {
+        "id": "node3",
+        "type": "notification",
+        "config": {
+          "channel": "email",
+          "templateId": "ticketAlert"
+        },
+        "meta": {
+          "sentAt": "2026-06-15T12:00:00Z"
+        },
+        "outputIds": []
+      }
+    ],
+    "globals": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "globals"
+    ],
+    "precise_instruction": "Remove all items from the \"globals\" list."
+  }
+}

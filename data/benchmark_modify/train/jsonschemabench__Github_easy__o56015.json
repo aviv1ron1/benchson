@@ -1,0 +1,64 @@
+{
+  "name": "o56015",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Fibaro Home Center Section JSON Schema",
+    "name": "section",
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "Identifier for the section",
+        "type": "integer",
+        "minimum": 0
+      },
+      "name": {
+        "description": "Name for the section",
+        "type": "string",
+        "maxLength": 20
+      },
+      "created": {
+        "description": "Section creation timestamp",
+        "type": "integer",
+        "minimum": 0
+      },
+      "modified": {
+        "description": "Section modification timestamp",
+        "type": "integer",
+        "minimum": 0
+      },
+      "sortOrder": {
+        "description": "Sort order when displayed in GUI",
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "id": 42,
+    "name": "LivingRoomLights",
+    "created": 1680307200,
+    "modified": 1701513600,
+    "sortOrder": 3
+  },
+  "instructions": "Please increase the \"id\" field by 1.",
+  "ground_truth": {
+    "id": 43,
+    "name": "LivingRoomLights",
+    "created": 1680307200,
+    "modified": 1701513600,
+    "sortOrder": 3
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "id"
+    ],
+    "precise_instruction": "Increase \"id\" by 1."
+  }
+}

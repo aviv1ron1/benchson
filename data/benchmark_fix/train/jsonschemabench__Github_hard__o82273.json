@@ -1,0 +1,433 @@
+{
+  "name": "o82273",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "tree-sitter grammar specification",
+    "type": "object",
+    "required": [
+      "name",
+      "rules"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "description": "the name of the grammar",
+        "type": "string",
+        "pattern": "^[a-zA-Z_]\\w*"
+      },
+      "rules": {
+        "type": "object",
+        "patternProperties": {
+          "^[a-zA-Z_]\\w*$": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "additionalProperties": false
+      },
+      "extras": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/rule"
+        }
+      },
+      "externals": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/rule"
+        }
+      },
+      "inline": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-zA-Z_]\\w*$"
+        }
+      },
+      "conflicts": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z_]\\w*$"
+          }
+        }
+      },
+      "word": {
+        "type": "string",
+        "pattern": "^[a-zA-Z_]\\w*"
+      },
+      "supertypes": {
+        "description": "A list of hidden rule names that should be considered supertypes in the generated node types file. See http://tree-sitter.github.io/tree-sitter/using-parsers#static-node-types.",
+        "type": "array",
+        "items": {
+          "description": "the name of a rule in `rules` or `extras`",
+          "type": "string"
+        }
+      }
+    },
+    "definitions": {
+      "blank-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^BLANK$"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "string-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^STRING$"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "pattern-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^PATTERN$"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "symbol-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^SYMBOL$"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "name"
+        ]
+      },
+      "seq-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^SEQ$"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/rule"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "members"
+        ]
+      },
+      "choice-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^CHOICE$"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/rule"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "members"
+        ]
+      },
+      "alias-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^ALIAS$"
+          },
+          "value": {
+            "type": "string"
+          },
+          "named": {
+            "type": "boolean"
+          },
+          "content": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "required": [
+          "type",
+          "named",
+          "content",
+          "value"
+        ]
+      },
+      "repeat-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^REPEAT$"
+          },
+          "content": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "required": [
+          "type",
+          "content"
+        ]
+      },
+      "repeat1-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^REPEAT1$"
+          },
+          "content": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "required": [
+          "type",
+          "content"
+        ]
+      },
+      "token-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^(TOKEN|IMMEDIATE_TOKEN)$"
+          },
+          "content": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "required": [
+          "type",
+          "content"
+        ]
+      },
+      "field-rule": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "pattern": "^FIELD$"
+          },
+          "content": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "content"
+        ]
+      },
+      "prec-rule": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "pattern": "^(PREC|PREC_LEFT|PREC_RIGHT|PREC_DYNAMIC)$"
+          },
+          "value": {
+            "type": "integer"
+          },
+          "content": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "required": [
+          "type",
+          "content",
+          "value"
+        ]
+      },
+      "rule": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/alias-rule"
+          },
+          {
+            "$ref": "#/definitions/blank-rule"
+          },
+          {
+            "$ref": "#/definitions/string-rule"
+          },
+          {
+            "$ref": "#/definitions/pattern-rule"
+          },
+          {
+            "$ref": "#/definitions/symbol-rule"
+          },
+          {
+            "$ref": "#/definitions/seq-rule"
+          },
+          {
+            "$ref": "#/definitions/choice-rule"
+          },
+          {
+            "$ref": "#/definitions/repeat1-rule"
+          },
+          {
+            "$ref": "#/definitions/repeat-rule"
+          },
+          {
+            "$ref": "#/definitions/token-rule"
+          },
+          {
+            "$ref": "#/definitions/field-rule"
+          },
+          {
+            "$ref": "#/definitions/prec-rule"
+          }
+        ]
+      }
+    }
+  },
+  "erroneous_json": {
+    "name": "Arithmetic",
+    "rules": {
+      "expression": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              },
+              {
+                "type": "STRING",
+                "value": "+"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "term"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "term"
+          }
+        ]
+      },
+      "term": {
+        "type": "SYMBOL",
+        "name": "number"
+      },
+      "number": {
+        "type": "PATTERN",
+        "value": "[0-9]+"
+      }
+    },
+    "extras": [
+      {
+        "type": "BLANK"
+      }
+    ],
+    "inline": [
+      "expression"
+    ],
+    "conflicts": [
+      "not-an-array"
+    ],
+    "supertypes": [
+      "expression"
+    ]
+  },
+  "valid_json": {
+    "name": "Arithmetic",
+    "rules": {
+      "expression": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              },
+              {
+                "type": "STRING",
+                "value": "+"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "term"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "term"
+          }
+        ]
+      },
+      "term": {
+        "type": "SYMBOL",
+        "name": "number"
+      },
+      "number": {
+        "type": "PATTERN",
+        "value": "[0-9]+"
+      }
+    },
+    "extras": [
+      {
+        "type": "BLANK"
+      }
+    ],
+    "inline": [
+      "expression"
+    ],
+    "conflicts": [
+      [
+        "expression",
+        "term"
+      ]
+    ],
+    "supertypes": [
+      "expression"
+    ]
+  },
+  "description": "The grammar is named **Arithmetic** and defines a simple expression language for integer addition. The top\u2011level rule **expression** is a choice: it can be a left\u2011recursive sequence consisting of an **expression**, the literal \u201c+\u201d token, and a **term**, or it can be just a **term**. A **term** is defined as the **number** rule, which matches any sequence of digits as described by the regular expression\u202f`[0-9]+`. Whitespace and other irrelevant characters are treated as blank spaces, indicated by the **BLANK** extra rule. The **expression** rule is marked as an inline rule to encourage its direct expansion during parsing, and it is also listed as a supertype for generated node types. Finally, the grammar declares a conflict between the **expression** and **term** rules, ensuring the parser resolves any ambiguity that might arise between these two constructs."
+}

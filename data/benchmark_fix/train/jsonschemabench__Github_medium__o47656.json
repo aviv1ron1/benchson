@@ -1,0 +1,152 @@
+{
+  "name": "o47656",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+      "encoding": {
+        "enum": [
+          "UTF-8"
+        ]
+      },
+      "timeZone": {
+        "pattern": "UTC|(Africa/[A-Za-z]+)|(America/[A-Za-z]+)|(Antarctica/[A-Za-z]+)|(Arctic/[A-Za-z]+)|(Asia/[A-Za-z]+)|(Atlantic/[A-Za-z]+)|(Australia/[A-Za-z]+)|(Europe/[A-Za-z]+)|(Indian/[A-Za-z]+)|(Pacific/[A-Za-z]+)"
+      },
+      "database": {
+        "properties": {
+          "dbms": {
+            "enum": [
+              "MySQL"
+            ]
+          },
+          "prefix": {
+            "enum": [
+              ""
+            ]
+          },
+          "x-dropFirst": {
+            "type": "boolean"
+          }
+        }
+      },
+      "resources": {
+        "items": {
+          "properties": {
+            "base": {
+              "not": {}
+            },
+            "abstract": {
+              "enum": [
+                false
+              ]
+            },
+            "inheritanceStrategy": {
+              "not": {}
+            },
+            "idInjection": {
+              "enum": [
+                true
+              ]
+            },
+            "relations": {
+              "items": {
+                "properties": {
+                  "onDelete": {
+                    "enum": [
+                      "restrict",
+                      "noAction",
+                      "cascade",
+                      "setNull",
+                      "setDefault"
+                    ]
+                  },
+                  "onUpdate": {
+                    "enum": [
+                      "restrict",
+                      "noAction",
+                      "cascade",
+                      "setNull",
+                      "setDefault"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "encoding": "UTF-8_INVALID",
+    "timeZone": "America/New_York",
+    "database": {
+      "dbms": "MySQL",
+      "prefix": "",
+      "x-dropFirst": true
+    },
+    "resources": [
+      {
+        "abstract": false,
+        "idInjection": true,
+        "relations": [
+          {
+            "onDelete": "cascade",
+            "onUpdate": "restrict"
+          },
+          {
+            "onDelete": "setNull",
+            "onUpdate": "setDefault"
+          }
+        ]
+      },
+      {
+        "abstract": false,
+        "idInjection": true,
+        "relations": [
+          {
+            "onDelete": "noAction",
+            "onUpdate": "noAction"
+          }
+        ]
+      }
+    ]
+  },
+  "valid_json": {
+    "encoding": "UTF-8",
+    "timeZone": "America/New_York",
+    "database": {
+      "dbms": "MySQL",
+      "prefix": "",
+      "x-dropFirst": true
+    },
+    "resources": [
+      {
+        "abstract": false,
+        "idInjection": true,
+        "relations": [
+          {
+            "onDelete": "cascade",
+            "onUpdate": "restrict"
+          },
+          {
+            "onDelete": "setNull",
+            "onUpdate": "setDefault"
+          }
+        ]
+      },
+      {
+        "abstract": false,
+        "idInjection": true,
+        "relations": [
+          {
+            "onDelete": "noAction",
+            "onUpdate": "noAction"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Our system will operate using UTF\u20118 encoding and will run on the America/New_York time zone. The underlying database is MySQL; we are not applying any table prefix and the \u201cdrop\u2011first\u201d option is turned on, so the first migration will be removed before applying new changes.\n\nWe have defined two resources. Both are concrete (abstract\u202f=\u202ffalse) and have identifier injection enabled. The first resource includes two relationships: the first is configured to cascade on delete and to restrict on update, while the second will set the foreign key to null on delete and use a default value on update. The second resource contains a single relationship that specifies no action for both delete and update operations."
+}

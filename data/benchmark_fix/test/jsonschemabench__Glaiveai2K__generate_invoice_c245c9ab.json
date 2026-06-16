@@ -1,0 +1,51 @@
+{
+  "name": "generate_invoice_c245c9ab",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "item": {
+        "description": "The item purchased",
+        "type": "string"
+      },
+      "price": {
+        "description": "The price per unit of the item",
+        "type": "number"
+      },
+      "quantity": {
+        "description": "The quantity of the item purchased",
+        "type": "integer"
+      },
+      "tax": {
+        "description": "The tax rate applied to the purchase",
+        "type": "number"
+      }
+    },
+    "required": [
+      "customer_name",
+      "item",
+      "quantity",
+      "price",
+      "tax"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "item": "Bluetooth Headphones",
+    "price": 79.99,
+    "quantity": 2,
+    "tax": 0.07
+  },
+  "valid_json": {
+    "customer_name": "Jane Doe",
+    "item": "Bluetooth Headphones",
+    "price": 79.99,
+    "quantity": 2,
+    "tax": 0.07
+  },
+  "description": "Dear Jane Doe,\n\nWe\u2019re pleased to confirm your order for Bluetooth Headphones. The unit price is $79.99, and you have ordered a quantity of 2. The transaction will be subject to a tax rate of 0.07."
+}

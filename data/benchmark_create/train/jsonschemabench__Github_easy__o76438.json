@@ -1,0 +1,48 @@
+{
+  "name": "o76438",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Vulnerability",
+    "description": "Vulnerability",
+    "type": "object",
+    "properties": {
+      "Name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512
+      },
+      "Severity": {
+        "type": "string",
+        "enum": [
+          "negligible",
+          "Negligible",
+          "low",
+          "Low",
+          "medium",
+          "Medium",
+          "high",
+          "High"
+        ]
+      }
+    },
+    "required": [
+      "Name",
+      "Severity"
+    ],
+    "additionalProperties": true
+  },
+  "description": "The security team has issued an advisory for **CVE-2025-12345: Remote Code Execution in ExampleApp**. This vulnerability is classified as **High** severity and carries a CVSS v3.1 base score of **9.8**. It was publicly disclosed on **2025-09-01**.\n\nA critical remote code execution vulnerability in ExampleApp allows attackers to execute arbitrary commands via crafted HTTP requests. For further details and mitigation guidance, refer to the official entries at https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-12345 and https://security.example.com/advisories/2025-09.",
+  "reference_json": {
+    "Name": "CVE-2025-12345: Remote Code Execution in ExampleApp",
+    "Severity": "High",
+    "Description": "A critical remote code execution vulnerability in ExampleApp allows attackers to execute arbitrary commands via crafted HTTP requests.",
+    "CVSSScore": 9.8,
+    "PublishedDate": "2025-09-01",
+    "References": [
+      "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-12345",
+      "https://security.example.com/advisories/2025-09"
+    ]
+  }
+}

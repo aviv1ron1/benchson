@@ -1,0 +1,239 @@
+{
+  "name": "o89890",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelAlertRaisedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "1.0.0"
+            ],
+            "default": "1.0.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "artifactId": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "artifactId",
+                  "version"
+                ],
+                "additionalProperties": false
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "sdm": {
+                "type": "object",
+                "properties": {
+                  "authorIdentity": {
+                    "type": "string"
+                  },
+                  "encryptedDigest": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "authorIdentity",
+                  "encryptedDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time",
+          "source"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          },
+          "entity": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "MINOR",
+              "MAJOR",
+              "CRITICAL",
+              "BLOCKER",
+              "CANCELED"
+            ]
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "severity",
+          "heading",
+          "body"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additonalProperties": false
+  },
+  "description": "Subject: Critical Alert \u2013 CPU Usage Exceeded Threshold (ID\u202f123e4567-e89b-12d3-a456-426614174000)\n\nDear Team,\n\nAt Unix time\u202f1690000000 (Fri\u202fJul\u202f22\u202f2023\u202f02:13:20\u202fUTC) the Alert Service (name\u202f\u201cAlertService\u201d, host\u202falerts.example.com, domain\u202fcom.example.project, URI\u202furn:example:alerts:service) generated a **EiffelAlertRaisedEvent** (version\u202f1.0.0) with tags **alert** and **eiffel**. The alert was authored by\u202fjohn.doe@example.com, whose identity is secured with the encrypted digest\u202fABCD1234EF567890.\n\n**Heading:** CPU Usage Exceeded Threshold  \n**Body:** The CPU usage on server\u202fxyz has exceeded 90% for 5 minutes.  \n**Severity:** CRITICAL  \n**Entity:** server-xyz  \n**Details URL:** https://monitoring.example.com/alerts/123  \n\nAdditional data attached to the event:  \n- **cpuUsage:** 95  \n- **durationMinutes:** 5  \n\nThe alert is linked to a preceding event as its cause: target\u202f987f6543-a21c-43b9-bcde-123456789abc (link type\u202fCAUSE).  \n\nThe serializer used for this message is the \u201calert-serializer\u201d (group\u202fcom.example, artifact\u202falert-serializer, version\u202f2.5.1). Please investigate the issue promptly.",
+  "reference_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelAlertRaisedEvent",
+      "version": "1.0.0",
+      "time": 1690000000,
+      "tags": [
+        "alert",
+        "eiffel"
+      ],
+      "source": {
+        "domainId": "com.example.project",
+        "host": "alerts.example.com",
+        "name": "AlertService",
+        "serializer": {
+          "groupId": "com.example",
+          "artifactId": "alert-serializer",
+          "version": "2.5.1"
+        },
+        "uri": "urn:example:alerts:service"
+      },
+      "security": {
+        "sdm": {
+          "authorIdentity": "john.doe@example.com",
+          "encryptedDigest": "ABCD1234EF567890"
+        }
+      }
+    },
+    "data": {
+      "heading": "CPU Usage Exceeded Threshold",
+      "body": "The CPU usage on server xyz has exceeded 90% for 5 minutes.",
+      "severity": "CRITICAL",
+      "uri": "https://monitoring.example.com/alerts/123",
+      "entity": "server-xyz",
+      "customData": [
+        {
+          "key": "cpuUsage",
+          "value": 95
+        },
+        {
+          "key": "durationMinutes",
+          "value": 5
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "987f6543-a21c-43b9-bcde-123456789abc"
+      }
+    ]
+  }
+}

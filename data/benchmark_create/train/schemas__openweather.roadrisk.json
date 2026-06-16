@@ -1,0 +1,106 @@
+{
+  "name": "openweather.roadrisk",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://json.schemastore.org/openweather.roadrisk",
+    "description": "API responses from the OpenWeather Road Risk API from https://openweathermap.org/api/road-risk",
+    "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dt",
+        "coord",
+        "weather",
+        "alerts"
+      ],
+      "properties": {
+        "dt": {
+          "type": "integer"
+        },
+        "coord": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "weather": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "temp": {
+              "type": "number"
+            },
+            "wind_speed": {
+              "type": "number"
+            },
+            "wind_deg": {
+              "type": "number"
+            },
+            "precipitation_intensity": {
+              "type": "number"
+            },
+            "dew_point": {
+              "type": "number"
+            }
+          }
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sender_name",
+              "event",
+              "event_level"
+            ],
+            "properties": {
+              "sender_name": {
+                "type": "string"
+              },
+              "event": {
+                "type": "string"
+              },
+              "event_level": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "title": "OpenWeather Road Risk API",
+    "type": "array"
+  },
+  "description": "At 10:00\u202fUTC on 15\u202fJune\u202f2024 (Unix time\u202f1718445600), the OpenWeather Road\u2011Risk service reported conditions for the location at latitude\u202f48.8566\u202fN and longitude\u202f2.3522\u202fE. The ambient temperature was 22.5\u202f\u00b0C with a dew point of 12.3\u202f\u00b0C. Wind was blowing from the south (180\u00b0) at a speed of 5.3\u202fm\u202fs\u207b\u00b9, and there was no measurable precipitation (intensity\u202f0.0\u202fmm\u202fh\u207b\u00b9).\n\nTwo active alerts were issued for the area. The National Weather Service has issued a Heavy Rain Warning at level\u202f2, and the Transport Authority has posted a Road Surface Slippery alert at level\u202f3.",
+  "reference_json": [
+    {
+      "dt": 1718445600,
+      "coord": [
+        48.8566,
+        2.3522
+      ],
+      "weather": {
+        "temp": 22.5,
+        "wind_speed": 5.3,
+        "wind_deg": 180,
+        "precipitation_intensity": 0.0,
+        "dew_point": 12.3
+      },
+      "alerts": [
+        {
+          "sender_name": "National Weather Service",
+          "event": "Heavy Rain Warning",
+          "event_level": 2
+        },
+        {
+          "sender_name": "Transport Authority",
+          "event": "Road Surface Slippery",
+          "event_level": 3
+        }
+      ]
+    }
+  ]
+}

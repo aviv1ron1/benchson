@@ -1,0 +1,38 @@
+{
+  "name": "o28254",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Example Schema",
+    "type": "object",
+    "properties": {
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "age": {
+        "description": "Age in years",
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "firstName",
+      "lastName"
+    ]
+  },
+  "erroneous_json": {
+    "firstName": "Emily",
+    "lastName": "Johnson",
+    "age": "not-a-number"
+  },
+  "valid_json": {
+    "firstName": "Emily",
+    "lastName": "Johnson",
+    "age": 34
+  },
+  "description": "Dear Hiring Team,\n\nMy name is Emily Johnson, and I am writing to express my interest in the open position at your company. I am currently 34 years old and bring a solid background in project coordination and client relations that I believe would be valuable to your team. I would welcome the opportunity to discuss how my experience aligns with your needs."
+}

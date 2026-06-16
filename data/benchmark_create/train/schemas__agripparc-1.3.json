@@ -1,0 +1,136 @@
+{
+  "name": "agripparc-1.3",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "id": "https://json.schemastore.org/agripparc-1.3.json",
+    "properties": {
+      "$schema": {
+        "description": "Link to https://json.schemastore.org/agripparc-1.3.json",
+        "type": "string",
+        "enum": [
+          "https://json.schemastore.org/agripparc-1.3.json"
+        ]
+      },
+      "props": {
+        "description": "Which prop declaration method to use",
+        "type": "string",
+        "enum": [
+          "ts",
+          "jsdoc",
+          "prop-types",
+          "none"
+        ]
+      },
+      "children": {
+        "description": "Whether the component is meant to have children (FC) or not (VFC)",
+        "type": "boolean"
+      },
+      "typescript": {
+        "description": "Whether to use Typescript",
+        "type": "boolean"
+      },
+      "flat": {
+        "description": "Whether to create a new, dedicated dir for the component (false) or not (true)",
+        "type": "boolean"
+      },
+      "styling": {
+        "description": "Which styling solution to use",
+        "type": "string",
+        "enum": [
+          "css",
+          "scss",
+          "jss",
+          "mui",
+          "react-native",
+          "none"
+        ]
+      },
+      "stylingModule": {
+        "description": "Relevant for `css` or `scss` styling. If true, generates a scoped `module` stylesheet",
+        "type": "boolean"
+      },
+      "importReact": {
+        "description": "Whether to import React",
+        "type": "boolean"
+      },
+      "overwrite": {
+        "description": "Whether to overwrite existing files, if any are found",
+        "type": "boolean"
+      },
+      "postCommand": {
+        "description": "A command to run after a component was successfully generated",
+        "type": "string"
+      },
+      "baseDir": {
+        "description": "Path to a base directory which components should be genenrated in or relative to",
+        "type": "string"
+      },
+      "destination": {
+        "description": "The path in which the component folder/files should be generated, relative to baseDir",
+        "type": "string"
+      },
+      "allowOutsideBase": {
+        "description": "If true, allows components to be generated outside the resolved baseDir",
+        "type": "boolean"
+      },
+      "exportType": {
+        "description": "Whether to use a named export or a default export for the component",
+        "type": "string",
+        "enum": [
+          "named",
+          "default"
+        ]
+      },
+      "declaration": {
+        "description": "Whether to declare the component as a const with an arrow function or a function declaration",
+        "type": "string",
+        "enum": [
+          "const",
+          "function"
+        ]
+      },
+      "memo": {
+        "description": "Whether to generate a memo() component. Overrides the declaration option",
+        "type": "boolean"
+      },
+      "separateIndex": {
+        "description": "Whether to use a dedicated index file (recommended)",
+        "type": "boolean"
+      },
+      "reactNative": {
+        "description": "Whether to generate React Native components"
+      },
+      "debug": {
+        "description": "Whether to log additional debug information",
+        "type": "boolean"
+      }
+    },
+    "title": "JSON schema for the Agrippa config file",
+    "type": "object"
+  },
+  "description": "The component generation follows the specification defined at\u202fhttps://json.schemastore.org/agripparc-1.3.json.\u202fIt will create a new, dedicated folder for the UI\u202fButton component inside the base directory\u202f./src/components, specifically under\u202fui/Button.\u202fThe component is a TypeScript\u2011based functional component that accepts children, and the props are declared using TypeScript interfaces.\u202fReact will be imported, the styling solution is SCSS with a scoped module stylesheet, and the component will be exported as the default export.\u202fIt will be declared as a\u202fconst\u202fand wrapped with\u202fReact.memo\u202f(ignoring the regular declaration option).\u202fA separate\u202findex.ts\u202ffile will be generated for the component, and existing files will not be overwritten.\u202fAfter the files are created, the command\u202fnpm run format\u202fwill be executed.\u202fGeneration is restricted to stay within the base directory (outside generation is disallowed), and the debug flag is turned off.",
+  "reference_json": {
+    "$schema": "https://json.schemastore.org/agripparc-1.3.json",
+    "props": "ts",
+    "children": true,
+    "typescript": true,
+    "flat": false,
+    "styling": "scss",
+    "stylingModule": true,
+    "importReact": true,
+    "overwrite": false,
+    "postCommand": "npm run format",
+    "baseDir": "./src/components",
+    "destination": "ui/Button",
+    "allowOutsideBase": false,
+    "exportType": "default",
+    "declaration": "const",
+    "memo": true,
+    "separateIndex": true,
+    "reactNative": false,
+    "debug": false
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "calculate_age_difference_deb6496e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "person1": {
+        "properties": {
+          "birthdate": {
+            "description": "The birthdate of the first person in the format YYYY-MM-DD",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the first person",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "person2": {
+        "properties": {
+          "birthdate": {
+            "description": "The birthdate of the second person in the format YYYY-MM-DD",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the second person",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "person1",
+      "person2"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "person1": {
+      "name": "Emily Carter",
+      "birthdate": "1992-04-17"
+    },
+    "person2": {
+      "name": "Liam Nguyen",
+      "birthdate": "1988-11-03"
+    }
+  },
+  "instructions": "Could you update the \"name\" field inside \"person1\" to \"Emily Carter (updated)\"?",
+  "ground_truth": {
+    "person1": {
+      "name": "Emily Carter (updated)",
+      "birthdate": "1992-04-17"
+    },
+    "person2": {
+      "name": "Liam Nguyen",
+      "birthdate": "1988-11-03"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "person1",
+      "name"
+    ],
+    "precise_instruction": "Change \"name\" inside \"person1\" to \"Emily Carter (updated)\"."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "calculate_area_468b8ff1",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle or rectangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle or rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. circle, triangle, rectangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Geometry Specification \u2013 Triangle Dimensions  \n\nThe design notes indicate that the figure in question is a triangle. Its base measures 12.5 units and the corresponding height is 8.3 units. Since a triangle does not have a circular component, the radius value is recorded as 0.  \n\nPlease use these dimensions for any further calculations or material estimations.",
+  "reference_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3,
+      "radius": 0
+    }
+  }
+}

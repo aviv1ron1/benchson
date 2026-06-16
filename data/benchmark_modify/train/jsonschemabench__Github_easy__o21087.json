@@ -1,0 +1,73 @@
+{
+  "name": "o21087",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "address1": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string"
+      },
+      "contact_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer"
+      },
+      "personal_data_removed": {
+        "type": "boolean"
+      },
+      "phone_number": {
+        "type": "string"
+      },
+      "postcode": {
+        "type": "string"
+      },
+      "supplier_id": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "id",
+      "contact_name",
+      "email"
+    ],
+    "title": "ContactInformation",
+    "type": "object"
+  },
+  "data": {
+    "id": 4729,
+    "contact_name": "Emily Carter",
+    "email": "emily.carter@example.com",
+    "address1": "742 Willow Lane",
+    "city": "Springfield",
+    "phone_number": "+1-555-2198",
+    "postcode": "62704",
+    "personal_data_removed": false,
+    "supplier_id": 158
+  },
+  "instructions": "Can you change the postcode to 62704 (updated)?",
+  "ground_truth": {
+    "id": 4729,
+    "contact_name": "Emily Carter",
+    "email": "emily.carter@example.com",
+    "address1": "742 Willow Lane",
+    "city": "Springfield",
+    "phone_number": "+1-555-2198",
+    "postcode": "62704 (updated)",
+    "personal_data_removed": false,
+    "supplier_id": 158
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "postcode"
+    ],
+    "precise_instruction": "Change \"postcode\" to \"62704 (updated)\"."
+  }
+}

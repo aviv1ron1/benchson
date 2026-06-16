@@ -1,0 +1,387 @@
+{
+  "name": "tmuxinator",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "id": "https://json.schemastore.org/tmuxinator.json",
+    "properties": {
+      "defaults": {
+        "type": "object"
+      },
+      "name": {
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string",
+            "minLength": 1
+          }
+        ]
+      },
+      "project_name": {
+        "description": "Name of project root (deprecated, use `name`)",
+        "type": "string"
+      },
+      "root": {
+        "type": "string"
+      },
+      "project_root": {
+        "description": "Name of project root (deprecated, use `root`)",
+        "type": "string"
+      },
+      "socket_name": {
+        "description": "Optional tmux socket.",
+        "type": "string"
+      },
+      "on_project_start": {
+        "description": "Runs on project start, always.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "on_project_first_start": {
+        "description": "Run on project start, the first time.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "on_project_restart": {
+        "description": "Run on project start, after the first time.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "on_project_exit": {
+        "description": "Run on project exit (detaching from tmux session).",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "on_project_stop": {
+        "description": "Run on project stop.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "pre": {
+        "description": "Runs before everything (deprecated).",
+        "type": "string"
+      },
+      "post": {
+        "description": "Runs after everything (deprecated).",
+        "type": "string"
+      },
+      "rbenv": {
+        "description": "Specify version for rbenv (deprecated)",
+        "type": "string"
+      },
+      "cli_args": {
+        "description": "Pass arguments to tmux (deprecated)",
+        "type": "string"
+      },
+      "tabs": {
+        "description": "Specify tabs (deprecated)",
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "pre_window": {
+        "description": "Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.",
+        "type": "string"
+      },
+      "tmux_options": {
+        "description": "Pass command line options to tmux. Useful for specifying a different tmux.conf.",
+        "type": "string"
+      },
+      "tmux_command": {
+        "description": "Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.",
+        "type": "string"
+      },
+      "startup_window": {
+        "description": "Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
+      "startup_pane": {
+        "description": "Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.",
+        "type": "integer"
+      },
+      "attach": {
+        "description": "Controls whether the tmux session should be attached to automatically. Defaults to true.",
+        "type": "boolean",
+        "default": true
+      },
+      "tmux_detached": {
+        "description": "Deprecated. Use `attach`",
+        "type": "boolean"
+      },
+      "enable_pane_titles": {
+        "description": "Enables the display of pane titles.",
+        "type": "boolean",
+        "default": false
+      },
+      "pane_title_position": {
+        "description": "Configures pane title position.",
+        "type": "string",
+        "default": "top"
+      },
+      "pane_title_format": {
+        "description": "Configures pane title format.",
+        "type": "string",
+        "default": "#{pane_index}: #{pane_title}"
+      },
+      "windows": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "pre": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "layout": {
+                  "description": "The layout setting gets handed down to tmux directly, so you can choose from one of the five tmux standard layouts or specify your own.",
+                  "type": "string"
+                },
+                "panes": {
+                  "description": "Panes are optional and are children of window entries.",
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "object",
+                              "patternProperties": {
+                                ".": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "defaults": {
+      "shell": "/bin/bash",
+      "environment": {
+        "RAILS_ENV": "development"
+      }
+    },
+    "name": "my_project",
+    "root": "/home/user/projects/my_project",
+    "socket_name": "my_project_socket",
+    "on_project_start": [
+      "echo Starting project...",
+      "bundle install"
+    ],
+    "on_project_first_start": "echo First time start",
+    "on_project_restart": [
+      "echo Restarting project...",
+      "rails server"
+    ],
+    "on_project_exit": "echo Project exited",
+    "on_project_stop": [
+      "echo Stopping project",
+      "killall -9 rails"
+    ],
+    "pre": "echo Pre-deprecated hook",
+    "post": "echo Post-deprecated hook",
+    "rbenv": "2.7.5",
+    "cli_args": "-2",
+    "tabs": [
+      "editor",
+      {
+        "name": "logs",
+        "path": "/var/log/my_project"
+      }
+    ],
+    "pre_window": "export LANG=en_US.UTF-8",
+    "tmux_options": "-f ~/.tmux.conf",
+    "tmux_command": "byobu",
+    "startup_window": "editor",
+    "startup_pane": 0,
+    "attach": true,
+    "tmux_detached": false,
+    "enable_pane_titles": true,
+    "pane_title_position": "bottom",
+    "pane_title_format": "#{pane_index} - #{pane_title}",
+    "windows": null
+  },
+  "valid_json": {
+    "defaults": {
+      "shell": "/bin/bash",
+      "environment": {
+        "RAILS_ENV": "development"
+      }
+    },
+    "name": "my_project",
+    "root": "/home/user/projects/my_project",
+    "socket_name": "my_project_socket",
+    "on_project_start": [
+      "echo Starting project...",
+      "bundle install"
+    ],
+    "on_project_first_start": "echo First time start",
+    "on_project_restart": [
+      "echo Restarting project...",
+      "rails server"
+    ],
+    "on_project_exit": "echo Project exited",
+    "on_project_stop": [
+      "echo Stopping project",
+      "killall -9 rails"
+    ],
+    "pre": "echo Pre-deprecated hook",
+    "post": "echo Post-deprecated hook",
+    "rbenv": "2.7.5",
+    "cli_args": "-2",
+    "tabs": [
+      "editor",
+      {
+        "name": "logs",
+        "path": "/var/log/my_project"
+      }
+    ],
+    "pre_window": "export LANG=en_US.UTF-8",
+    "tmux_options": "-f ~/.tmux.conf",
+    "tmux_command": "byobu",
+    "startup_window": "editor",
+    "startup_pane": 0,
+    "attach": true,
+    "tmux_detached": false,
+    "enable_pane_titles": true,
+    "pane_title_position": "bottom",
+    "pane_title_format": "#{pane_index} - #{pane_title}",
+    "windows": [
+      "main",
+      {
+        "layout": "tiled",
+        "pre": [
+          "cd #{root}",
+          "source .env"
+        ],
+        "panes": [
+          "vim .",
+          1,
+          [
+            "git status",
+            {
+              "monitor": [
+                "top",
+                "htop"
+              ],
+              "notes": "monitoring tools"
+            }
+          ],
+          [
+            {
+              "shell": "irb",
+              "commands": [
+                "puts 'Hello from pane'"
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "description": "The project **my_project** lives in\u202f`/home/user/projects/my_project` and is launched through a Byobu\u2011wrapped tmux session named\u202f`my_project_socket`.  All panes start with `/bin/bash` and inherit the environment variable\u202f`RAILS_ENV=development`.  Before any windows are created the session runs the deprecated pre hook `echo Pre-deprecated hook`, and after everything finishes it runs `echo Post-deprecated hook`.  At startup the configuration executes the commands `echo Starting project\u2026` and `bundle install`; on the very first launch it also runs `echo First time start`.  When the session is restarted later it prints `echo Restarting project\u2026` and then starts the Rails server.  Detaching from the session triggers `echo Project exited`, while stopping the project runs `echo Stopping project` followed by `killall -9 rails`.  The rbenv version is locked to\u202f2.7.5, the legacy cli argument `-2` is still passed, and the deprecated `tabs` entry creates an **editor** tab and a **logs** tab that points at `/var/log/my_project`.  Every pane begins with the command `export LANG=en_US.UTF-8`, tmux is invoked with the options `-f ~/.tmux.conf`, and the session is set to attach automatically (`attach: true`, `tmux_detached: false`).  Pane titles are enabled, displayed at the bottom, and formatted as `#{pane_index} - #{pane_title}`.  On launch the window named\u202f`editor` is selected, and within that window the first pane (index\u202f0) is focused.\n\nTwo windows are defined.  The first is a simple window called **main** with no special layout.  The second window uses the **tiled** layout and runs a pre\u2011window sequence of `cd #{root}` and `source .env`.  Its panes are arranged as follows: the first pane opens `vim .`; the second pane is a numeric placeholder (`1`), which tmux interprets as a split; the third pane runs `git status` and also contains a monitor pane that launches `top` and `htop` with the note \u201cmonitoring tools\u201d; the fourth pane is an explicit shell pane that starts `irb` and immediately executes `puts 'Hello from pane'`.  The startup window is set to **editor** and the startup pane index is\u202f0."
+}

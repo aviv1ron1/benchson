@@ -1,0 +1,41 @@
+{
+  "name": "o9851",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "twoFactorCode": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "password": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 2048
+      }
+    },
+    "required": [
+      "password",
+      "twoFactorCode"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "twoFactorCode": "839274",
+    "password": "StrongP@ssw0rd2023!"
+  },
+  "instructions": "Could you change the password to StrongP@ssw0rd2023! (updated)?",
+  "ground_truth": {
+    "twoFactorCode": "839274",
+    "password": "StrongP@ssw0rd2023! (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "password"
+    ],
+    "precise_instruction": "Change \"password\" to \"StrongP@ssw0rd2023! (updated)\"."
+  }
+}

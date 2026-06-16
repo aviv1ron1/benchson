@@ -1,0 +1,42 @@
+{
+  "name": "o48516",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "Cores": {
+        "type": "string"
+      },
+      "DVID datastore": {
+        "type": "string"
+      },
+      "Maximum Cores": {
+        "type": "string"
+      },
+      "Server uptime": {
+        "type": "string"
+      },
+      "Storage backend": {
+        "type": "string"
+      },
+      "Storage driver": {
+        "type": "string"
+      },
+      "version": {
+        "type": "string"
+      }
+    },
+    "type": "object",
+    "version": "0.01"
+  },
+  "description": "Dear Team,\n\nThe current deployment is operating with 16 cores active, while the system is capable of scaling up to a maximum of 64 cores as needed. Our DVID datastore is configured to use BoltDB, and the overall software version running on the cluster is 1.4.2. According to the monitoring tools, the server has been up for 12 days, 8 hours, 34 minutes without interruption.\n\nFor storage, we rely on a Ceph backend paired with the RBD driver, providing the necessary performance and reliability for our workloads. Please let me know if any adjustments are required.",
+  "reference_json": {
+    "Cores": "16",
+    "DVID datastore": "BoltDB",
+    "Maximum Cores": "64",
+    "Server uptime": "12 days, 8 hours, 34 minutes",
+    "Storage backend": "Ceph",
+    "Storage driver": "RBD",
+    "version": "1.4.2"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "o45117",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "permanent": {
+          "type": "boolean"
+        }
+      }
+    },
+    "properties": {},
+    "additionalProperties": false
+  },
+  "description": "The latest inventory check shows three entries, each identified by a unique numeric ID and marked for permanence. Entry\u202f1 is designated as permanent, entry\u202f2 is marked as non\u2011permanent, and entry\u202f3 is also permanent.",
+  "reference_json": [
+    {
+      "id": 1,
+      "permanent": true
+    },
+    {
+      "id": 2,
+      "permanent": false
+    },
+    {
+      "id": 3,
+      "permanent": true
+    }
+  ]
+}

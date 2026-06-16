@@ -1,0 +1,54 @@
+{
+  "name": "o71846",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "shared_secret": {
+          "type": "string"
+        },
+        "header": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9]([a-zA-Z0-9-]+[a-zA-Z0-9])?$"
+        },
+        "algorithm": {
+          "enum": [
+            "hmac-md5",
+            "hmac-sha1",
+            "hmac-sha256",
+            "hmac-sha384",
+            "hmac-sha512"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "shared_secret",
+        "header",
+        "algorithm"
+      ]
+    }
+  },
+  "description": "Please update the authentication configuration as follows: use the header **Auth-Token** with the shared secret **s3cr3tK3y!@#2024** employing the **hmac-sha256** algorithm; for the header **X-ApiKey**, apply the shared secret **mySuperSecret12345** and the **hmac-sha512** algorithm; and for the header **SessionID**, set the shared secret **p@ssw0rd-9876** with the **hmac-sha1** algorithm.",
+  "reference_json": [
+    {
+      "shared_secret": "s3cr3tK3y!@#2024",
+      "header": "Auth-Token",
+      "algorithm": "hmac-sha256"
+    },
+    {
+      "shared_secret": "mySuperSecret12345",
+      "header": "X-ApiKey",
+      "algorithm": "hmac-sha512"
+    },
+    {
+      "shared_secret": "p@ssw0rd-9876",
+      "header": "SessionID",
+      "algorithm": "hmac-sha1"
+    }
+  ]
+}

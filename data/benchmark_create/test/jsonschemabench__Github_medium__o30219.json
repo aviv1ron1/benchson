@@ -1,0 +1,234 @@
+{
+  "name": "o30219",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "appflowlog": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "boundtd": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "cip": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "cipheader": {
+        "readonly": true,
+        "type": "string"
+      },
+      "clttimeout": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "customserverid": {
+        "readonly": true,
+        "type": "string"
+      },
+      "downstateflush": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "dup_port": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "dup_svctype": {
+        "enum": [
+          "HTTP",
+          "FTP",
+          "TCP",
+          "UDP",
+          "SSL",
+          "SSL_BRIDGE",
+          "SSL_TCP",
+          "DTLS",
+          "NNTP",
+          "RPCSVR",
+          "DNS",
+          "ADNS",
+          "SNMP",
+          "RTSP",
+          "DHCPRA",
+          "ANY",
+          "SIP_UDP",
+          "SIP_TCP",
+          "SIP_SSL",
+          "DNS_TCP",
+          "ADNS_TCP",
+          "MYSQL",
+          "MSSQL",
+          "ORACLE",
+          "RADIUS",
+          "RADIUSListener",
+          "RDP",
+          "DIAMETER",
+          "SSL_DIAMETER",
+          "TFTP",
+          "SMPP",
+          "PPTP",
+          "GRE",
+          "SYSLOGTCP",
+          "SYSLOGUDP",
+          "FIX",
+          "SSL_FIX",
+          "USER_TCP",
+          "USER_SSL_TCP",
+          "QUIC",
+          "IPFIX",
+          "LOGSTREAM"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "maxbandwidth": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "maxclient": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "maxreq": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "monthreshold": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "port": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "servicegroupname": {
+        "type": "string"
+      },
+      "serviceipaddress": {
+        "readonly": true,
+        "type": "string"
+      },
+      "serviceipstr": {
+        "readonly": true,
+        "type": "string"
+      },
+      "svctype": {
+        "enum": [
+          "HTTP",
+          "FTP",
+          "TCP",
+          "UDP",
+          "SSL",
+          "SSL_BRIDGE",
+          "SSL_TCP",
+          "DTLS",
+          "NNTP",
+          "RPCSVR",
+          "DNS",
+          "ADNS",
+          "SNMP",
+          "RTSP",
+          "DHCPRA",
+          "ANY",
+          "SIP_UDP",
+          "SIP_TCP",
+          "SIP_SSL",
+          "DNS_TCP",
+          "ADNS_TCP",
+          "MYSQL",
+          "MSSQL",
+          "ORACLE",
+          "RADIUS",
+          "RADIUSListener",
+          "RDP",
+          "DIAMETER",
+          "SSL_DIAMETER",
+          "TFTP",
+          "SMPP",
+          "PPTP",
+          "GRE",
+          "SYSLOGTCP",
+          "SYSLOGUDP",
+          "FIX",
+          "SSL_FIX",
+          "USER_TCP",
+          "USER_SSL_TCP",
+          "QUIC",
+          "IPFIX",
+          "LOGSTREAM"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "svrcfgflags": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "svrstate": {
+        "enum": [
+          "UP",
+          "DOWN",
+          "UNKNOWN",
+          "BUSY",
+          "OUT OF SERVICE",
+          "GOING OUT OF SERVICE",
+          "DOWN WHEN GOING OUT OF SERVICE",
+          "NS_EMPTY_STR",
+          "Unknown",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "svrtimeout": {
+        "readonly": true,
+        "type": "integer"
+      }
+    },
+    "title": "server_gslbservicegroup_binding",
+    "type": "object"
+  },
+  "description": "Subject: Configuration Summary for GSLB Service Group Binding \u2013 gslb_service_group1  \n\nThe server identified as **srv-001** is bound to the GSLB service group **groupA** under the name **gslb_service_group1**. Its primary IP address is **192.168.1.10** (service IP string also 192.168.1.10) and it listens on **TCP port\u202f443**. A duplicate service is configured as **HTTP** on **port\u202f8080**. AppFlow logging is **enabled**, while client IP insertion is **disabled**; the header that would be used for client IP forwarding is **X-Forwarded-For**. The client timeout is set to **180\u202fseconds**, the server timeout to **60\u202fseconds**, and the down\u2011state flush behavior is **enabled**. The server\u2019s current state is **UP**, with no configuration flags set (**svrcfgflags\u202f=\u202f0**).  \n\nResource limits for this binding include a maximum bandwidth of **1000** (units), a maximum of **200** concurrent clients, and a request ceiling of **5000**. The monitor threshold is configured at **100**, and the binding count stands at **5**. All values reflect the current configuration and no further changes are required.",
+  "reference_json": {
+    "appflowlog": "ENABLED",
+    "boundtd": 5,
+    "cip": "DISABLED",
+    "cipheader": "X-Forwarded-For",
+    "clttimeout": 180,
+    "customserverid": "srv-001",
+    "downstateflush": "ENABLED",
+    "dup_port": 8080,
+    "dup_svctype": "HTTP",
+    "maxbandwidth": 1000,
+    "maxclient": 200,
+    "maxreq": 5000,
+    "monthreshold": 100,
+    "name": "gslb_service_group1",
+    "port": 443,
+    "servicegroupname": "groupA",
+    "serviceipaddress": "192.168.1.10",
+    "serviceipstr": "192.168.1.10",
+    "svctype": "TCP",
+    "svrcfgflags": 0,
+    "svrstate": "UP",
+    "svrtimeout": 60
+  }
+}

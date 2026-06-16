@@ -1,0 +1,181 @@
+{
+  "name": "o73951",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "sums": {
+        "$ref": "#/definitions/Sums"
+      },
+      "version": {
+        "type": "string"
+      }
+    },
+    "definitions": {
+      "Sums": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "detection": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DetectionType"
+            }
+          },
+          "period": {
+            "type": "integer"
+          },
+          "numsys": {
+            "type": "integer"
+          }
+        }
+      },
+      "DetectionType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dets": {
+            "$ref": "#/definitions/Dets"
+          },
+          "id": {
+            "type": "string"
+          },
+          "now": {
+            "type": "integer"
+          },
+          "comm": {
+            "type": "string",
+            "enum": [
+              "OK",
+              "FAIL"
+            ]
+          },
+          "num": {
+            "type": "integer"
+          }
+        }
+      },
+      "Dets": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "det": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/DetType"
+            }
+          }
+        }
+      },
+      "DetType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "pos": {
+            "type": "integer"
+          },
+          "vol": {
+            "type": "integer"
+          },
+          "occ": {
+            "type": "integer"
+          },
+          "grn": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "sums": {
+      "detection": [
+        {
+          "dets": {
+            "det": [
+              {
+                "id": "sensorA",
+                "pos": 10,
+                "vol": 120,
+                "occ": 5,
+                "grn": 1
+              },
+              {
+                "id": "sensorB",
+                "pos": 15,
+                "vol": 85,
+                "occ": 3,
+                "grn": 0
+              }
+            ]
+          },
+          "id": "det001",
+          "now": 1700000000,
+          "comm": "OK",
+          "num": 1
+        },
+        {
+          "dets": {
+            "det": [
+              {
+                "id": "sensorC",
+                "pos": 20,
+                "vol": 200,
+                "occ": 8,
+                "grn": 2
+              }
+            ]
+          },
+          "id": "det002",
+          "now": 1700000600,
+          "comm": "FAIL",
+          "num": 2
+        }
+      ],
+      "period": 60,
+      "numsys": 3
+    },
+    "version": "1.0.0"
+  },
+  "instructions": "Could you remove the first item in the \"detection\" list inside \"sums\"?",
+  "ground_truth": {
+    "sums": {
+      "detection": [
+        {
+          "dets": {
+            "det": [
+              {
+                "id": "sensorC",
+                "pos": 20,
+                "vol": 200,
+                "occ": 8,
+                "grn": 2
+              }
+            ]
+          },
+          "id": "det002",
+          "now": 1700000600,
+          "comm": "FAIL",
+          "num": 2
+        }
+      ],
+      "period": 60,
+      "numsys": 3
+    },
+    "version": "1.0.0"
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "sums",
+      "detection"
+    ],
+    "precise_instruction": "Remove the first item from the \"detection\" list inside \"sums\"."
+  }
+}

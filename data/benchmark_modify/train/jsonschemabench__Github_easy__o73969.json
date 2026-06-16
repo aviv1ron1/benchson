@@ -1,0 +1,56 @@
+{
+  "name": "o73969",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "http://schlothauer.de/schemas/simple_gis_object.json",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "GIS_object",
+    "description": "A GIS object is an application defined type that owns GIS coordinates",
+    "type": "object",
+    "properties": {
+      "gis": {
+        "description": "Definition of an object that owns GIS coordinates. At minimum an object of this type owns one of the props",
+        "type": "object",
+        "properties": {
+          "center": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "required": [
+      "gis"
+    ],
+    "version": 1
+  },
+  "data": {
+    "gis": {
+      "center": "POINT (13.4050 52.5200)",
+      "area": "POLYGON ((13.4000 52.5000, 13.5000 52.5000, 13.5000 52.6000, 13.4000 52.6000, 13.4000 52.5000))",
+      "route": "LINESTRING (13.4000 52.5000, 13.4500 52.5500, 13.5000 52.6000)"
+    }
+  },
+  "instructions": "Please change the \u201ccenter\u201d field inside \u201cgis\u201d to \u201cPOINT (13.4050 52.5200) (updated)\u201d.",
+  "ground_truth": {
+    "gis": {
+      "center": "POINT (13.4050 52.5200) (updated)",
+      "area": "POLYGON ((13.4000 52.5000, 13.5000 52.5000, 13.5000 52.6000, 13.4000 52.6000, 13.4000 52.5000))",
+      "route": "LINESTRING (13.4000 52.5000, 13.4500 52.5500, 13.5000 52.6000)"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "gis",
+      "center"
+    ],
+    "precise_instruction": "Change \"center\" inside \"gis\" to \"POINT (13.4050 52.5200) (updated)\"."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "o71319",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Generic Job Output",
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "Success",
+          "Failure",
+          "Timeout"
+        ],
+        "description": "Result status of the job"
+      },
+      "message": {
+        "type": "string",
+        "description": "Should capture a summarized error message in case of Failures."
+      },
+      "results": {
+        "type": "object",
+        "description": "JSON object holding the job specific output details"
+      }
+    },
+    "required": [
+      "status"
+    ]
+  },
+  "data": {
+    "status": "Success",
+    "message": "Job completed without errors.",
+    "results": {
+      "processedRecords": 1245,
+      "durationSeconds": 32.7,
+      "outputPath": "/data/output/2023-06-15/result.json"
+    }
+  },
+  "instructions": "Can you delete the \"processedRecords\" field inside \"results\"?",
+  "ground_truth": {
+    "status": "Success",
+    "message": "Job completed without errors.",
+    "results": {
+      "durationSeconds": 32.7,
+      "outputPath": "/data/output/2023-06-15/result.json"
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "results",
+      "processedRecords"
+    ],
+    "precise_instruction": "Remove the \"processedRecords\" field inside \"results\"."
+  }
+}

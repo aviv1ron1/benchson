@@ -1,0 +1,84 @@
+{
+  "name": "calculate_area_eccd2fd5",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "length",
+          "width",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape to calculate the area of",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangle",
+    "dimensions": {
+      "radius": 5.2,
+      "length": 10.0,
+      "width": 4.5,
+      "base": 6.0,
+      "height": 3.5
+    }
+  },
+  "instructions": "Could you increase the \"height\" inside \"dimensions\" by 1?",
+  "ground_truth": {
+    "shape": "rectangle",
+    "dimensions": {
+      "radius": 5.2,
+      "length": 10.0,
+      "width": 4.5,
+      "base": 6.0,
+      "height": 4.5
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "dimensions",
+      "height"
+    ],
+    "precise_instruction": "Increase \"height\" inside \"dimensions\" by 1."
+  }
+}

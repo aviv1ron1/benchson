@@ -1,0 +1,57 @@
+{
+  "name": "search_jobs_563b709c",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "keywords": {
+        "description": "The keywords to search for in job titles or descriptions",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the job openings",
+        "type": "string"
+      },
+      "salary_range": {
+        "properties": {
+          "max": {
+            "description": "The maximum salary of job openings to include in search results",
+            "type": "number"
+          },
+          "min": {
+            "description": "The minimum salary of job openings to include in search results",
+            "type": "number"
+          }
+        },
+        "required": [
+          "min",
+          "max"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "keywords",
+      "location",
+      "salary_range"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "keywords": null,
+    "location": "San Francisco, CA",
+    "salary_range": {
+      "min": 100000,
+      "max": 150000
+    }
+  },
+  "valid_json": {
+    "keywords": "software engineer",
+    "location": "San Francisco, CA",
+    "salary_range": {
+      "min": 100000,
+      "max": 150000
+    }
+  },
+  "description": "Subject: Search Request \u2013 Software Engineer Positions in San\u202fFrancisco, CA  \n\nHi Team,  \n\nPlease initiate a search for open software engineer roles based in San\u202fFrancisco, CA. We\u2019re targeting opportunities that offer a compensation band between $100,000 and $150,000 annually. Let me know once you have a shortlist of positions that meet these criteria.  \n\nThanks,  \n[Your Name]"
+}

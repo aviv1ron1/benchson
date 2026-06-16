@@ -1,0 +1,154 @@
+{
+  "name": "sp_291_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for MaxMind IP-based lookups enrichment",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "name": {
+        "type": "string"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "domain": {
+            "properties": {
+              "database": {
+                "enum": [
+                  "GeoIPDomain.dat"
+                ]
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          },
+          "geo": {
+            "properties": {
+              "database": {
+                "enum": [
+                  "GeoLiteCity.dat",
+                  "GeoIPCity.dat"
+                ]
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          },
+          "isp": {
+            "properties": {
+              "database": {
+                "enum": [
+                  "GeoIPISP.dat"
+                ]
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          },
+          "netspeed": {
+            "properties": {
+              "database": {
+                "enum": [
+                  "GeoIPNetSpeed.dat",
+                  "GeoIPNetSpeedCell.dat"
+                ]
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          },
+          "organization": {
+            "properties": {
+              "database": {
+                "enum": [
+                  "GeoIPOrg.dat"
+                ]
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "database",
+              "uri"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "vendor": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "vendor",
+      "enabled",
+      "parameters"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "ip_lookups",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "description": "The MaxMind IP lookup integration, titled **MaxMindIPLookup**, is currently enabled and provided by the vendor **com.maxmind**. It is configured to use a set of MaxMind database files, each retrieved from the CDN at the URLs listed below.\n\n- **Domain** data:\u202f*GeoIPDomain.dat* \u2013\u202fhttps://cdn.maxmind.com/GeoIPDomain.dat  \n- **Geolocation** data:\u202f*GeoLiteCity.dat* \u2013\u202fhttps://cdn.maxmind.com/GeoLiteCity.dat  \n- **ISP** data:\u202f*GeoIPISP.dat* \u2013\u202fhttps://cdn.maxmind.com/GeoIPISP.dat  \n- **Netspeed** data:\u202f*GeoIPNetSpeed.dat* \u2013\u202fhttps://cdn.maxmind.com/GeoIPNetSpeed.dat  \n- **Organization** data:\u202f*GeoIPOrg.dat* \u2013\u202fhttps://cdn.maxmind.com/GeoIPOrg.dat",
+  "reference_json": {
+    "enabled": true,
+    "name": "MaxMindIPLookup",
+    "vendor": "com.maxmind",
+    "parameters": {
+      "domain": {
+        "database": "GeoIPDomain.dat",
+        "uri": "https://cdn.maxmind.com/GeoIPDomain.dat"
+      },
+      "geo": {
+        "database": "GeoLiteCity.dat",
+        "uri": "https://cdn.maxmind.com/GeoLiteCity.dat"
+      },
+      "isp": {
+        "database": "GeoIPISP.dat",
+        "uri": "https://cdn.maxmind.com/GeoIPISP.dat"
+      },
+      "netspeed": {
+        "database": "GeoIPNetSpeed.dat",
+        "uri": "https://cdn.maxmind.com/GeoIPNetSpeed.dat"
+      },
+      "organization": {
+        "database": "GeoIPOrg.dat",
+        "uri": "https://cdn.maxmind.com/GeoIPOrg.dat"
+      }
+    }
+  }
+}

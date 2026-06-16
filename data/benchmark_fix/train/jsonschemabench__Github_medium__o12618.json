@@ -1,0 +1,105 @@
+{
+  "name": "o12618",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "namedResource": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "resource_uri": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "resource_uri"
+        ],
+        "type": "object"
+      }
+    },
+    "properties": {
+      "created": {
+        "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}",
+        "type": "string"
+      },
+      "games": {
+        "items": {
+          "$ref": "#/definitions/namedResource"
+        },
+        "type": "array"
+      },
+      "id": {
+        "type": "integer"
+      },
+      "modified": {
+        "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}",
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "pokemon": {
+        "$ref": "#/definitions/namedResource"
+      },
+      "resource_uri": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "resource_uri",
+      "created",
+      "modified",
+      "name",
+      "pokemon",
+      "id",
+      "games"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "created": "2024-03-15T09:12:34.567890",
+    "modified": "2024-06-10T16:45:01.123456",
+    "name": "Bulbasaur",
+    "id": 1,
+    "pokemon": {
+      "name": "Bulbasaur",
+      "resource_uri": "https://pokeapi.co/api/v2/pokemon/1/"
+    },
+    "games": [
+      {
+        "name": "Red",
+        "resource_uri": "https://pokeapi.co/api/v2/version/1/"
+      },
+      {
+        "name": "Blue",
+        "resource_uri": "https://pokeapi.co/api/v2/version/2/"
+      }
+    ]
+  },
+  "valid_json": {
+    "resource_uri": "https://pokeapi.co/api/v2/pokemon/1/",
+    "created": "2024-03-15T09:12:34.567890",
+    "modified": "2024-06-10T16:45:01.123456",
+    "name": "Bulbasaur",
+    "id": 1,
+    "pokemon": {
+      "name": "Bulbasaur",
+      "resource_uri": "https://pokeapi.co/api/v2/pokemon/1/"
+    },
+    "games": [
+      {
+        "name": "Red",
+        "resource_uri": "https://pokeapi.co/api/v2/version/1/"
+      },
+      {
+        "name": "Blue",
+        "resource_uri": "https://pokeapi.co/api/v2/version/2/"
+      }
+    ]
+  },
+  "description": "Subject: Pok\u00e9mon Data Record \u2013 Bulbasaur (ID\u202f1)\n\nThis entry was created on 2024-03-15T09:12:34.567890 and last modified on 2024-06-10T16:45:01.123456.  The primary resource for this Pok\u00e9mon is\u202fhttps://pokeapi.co/api/v2/pokemon/1/, where the species is listed under the name \u201cBulbasaur\u201d.  Its internal identifier is\u202f1, and the Pok\u00e9mon record itself mirrors the same name and URI.\n\nBulbasaur appears in two classic game versions: \u201cRed\u201d (resource\u202fhttps://pokeapi.co/api/v2/version/1/) and \u201cBlue\u201d (resource\u202fhttps://pokeapi.co/api/v2/version/2/)."
+}

@@ -1,0 +1,49 @@
+{
+  "name": "calculate_area_8657f401",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base length of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "base",
+          "height",
+          "radius"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Geometry Specification \u2013 Triangle Dimensions  \n\nDear Team,\n\nPlease find below the finalized measurements for the triangle component we will be fabricating. The shape is a triangle with a base length of 12.5 units and a vertical height of 8.3 units. Since this is a planar triangle, the radius parameter is not applicable and is recorded as 0.0.\n\nKindly update the CAD model and the material cut list to reflect these dimensions. Let me know if any clarification is needed.",
+  "reference_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3,
+      "radius": 0.0
+    }
+  }
+}

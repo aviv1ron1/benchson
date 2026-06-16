@@ -1,0 +1,60 @@
+{
+  "name": "sp_317_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for an internal site search event",
+    "properties": {
+      "filters": {
+        "additionalProperties": {
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "type": "object"
+      },
+      "pageResults": {
+        "maximum": 2147483647,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "terms": {
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "type": "array"
+      },
+      "totalResults": {
+        "maximum": 2147483647,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "terms"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "site_search",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "description": "The recent internal search was conducted using the terms \u201csummer sale\u201d and \u201cdiscount,\u201d with a filter applied to the\u202fbooks\u202fcategory while the free\u2011shipping option remained unchecked. On the results page, the system displayed 20 items, and the overall query returned a total of 150 matching entries.",
+  "reference_json": {
+    "filters": {
+      "category": "books",
+      "freeShipping": false
+    },
+    "pageResults": 20,
+    "totalResults": 150,
+    "terms": [
+      "summer sale",
+      "discount"
+    ]
+  }
+}

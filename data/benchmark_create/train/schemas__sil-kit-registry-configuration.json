@@ -1,0 +1,150 @@
+{
+  "name": "sil-kit-registry-configuration",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/sil-kit-registry-configuration.json",
+    "additionalProperties": false,
+    "definitions": {
+      "Logging": {
+        "type": "object",
+        "description": "Configures the properties of the SIL Kit Logging Service",
+        "properties": {
+          "FlushLevel": {
+            "type": "string",
+            "enum": [
+              "Critical",
+              "Error",
+              "Warn",
+              "Info",
+              "Debug",
+              "Trace",
+              "Off"
+            ]
+          },
+          "Sinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Type": {
+                  "type": "string",
+                  "enum": [
+                    "File",
+                    "Stdout"
+                  ]
+                },
+                "Level": {
+                  "type": "string",
+                  "enum": [
+                    "Critical",
+                    "Error",
+                    "Warn",
+                    "Info",
+                    "Debug",
+                    "Trace",
+                    "Off"
+                  ],
+                  "default": "Info",
+                  "examples": [
+                    "Critical",
+                    "Error",
+                    "Warn",
+                    "Info",
+                    "Debug",
+                    "Trace",
+                    "Off"
+                  ]
+                },
+                "LogName": {
+                  "type": "string",
+                  "description": "Log name; Results in the following filename: <LogName>_%y-%m-%dT%h-%m-%s.txt"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "Type"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "Sinks"
+        ]
+      }
+    },
+    "description": "JSON schema for SIL KIT Registry configuration files.",
+    "properties": {
+      "$schema": {
+        "type": "string",
+        "description": "The schema file",
+        "default": "",
+        "examples": [
+          "./RegistryConfiguration.schema.json"
+        ]
+      },
+      "SchemaVersion": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "default": 0,
+        "description": "Version of the schema used to validate this document"
+      },
+      "Description": {
+        "type": "string",
+        "description": "Free text field allowing a user to describe the configuration file in their own words. The contents of this field are not parsed or used internally.",
+        "default": ""
+      },
+      "ListenUri": {
+        "type": "string",
+        "description": "The configured registry instance will listen on this address for incoming connections. Optional; This field overrides the -u, and --listen-uri command line parameters.",
+        "examples": [
+          "silkit://0.0.0.0:8501",
+          "silkit://localhost:8500"
+        ],
+        "default": "silkit://localhost:8500"
+      },
+      "DashboardUri": {
+        "type": "string",
+        "description": "The configured registry instance will send data to this address to show it on the dashboard. Optional; This field overrides the -d, and --dashboard-uri command line parameters.",
+        "examples": [
+          "http://localhost:8082"
+        ],
+        "default": "http://localhost:8082"
+      },
+      "Logging": {
+        "$ref": "#/definitions/Logging"
+      }
+    },
+    "type": "object"
+  },
+  "description": "The current SIL Kit Registry configuration for our development environment references the schema file\u202f./RegistryConfiguration.schema.json and uses schema version\u202f1. It is described as \u201cConfiguration for SIL Kit Registry in development environment.\u201d The registry will listen for incoming SIL Kit connections on\u202fsilkit://0.0.0.0:8501, and it will forward dashboard data to\u202fhttp://localhost:8082.  \n\nLogging is set to flush at the **Info** level. Two logging sinks are defined: a file sink that records messages at the **Debug** level to files named\u202fregistry_log_%y-%m-%dT%h-%m-%s.txt, and a standard\u2011output sink that outputs messages at the **Info** level.",
+  "reference_json": {
+    "$schema": "./RegistryConfiguration.schema.json",
+    "SchemaVersion": 1,
+    "Description": "Configuration for SIL Kit Registry in development environment.",
+    "ListenUri": "silkit://0.0.0.0:8501",
+    "DashboardUri": "http://localhost:8082",
+    "Logging": {
+      "FlushLevel": "Info",
+      "Sinks": [
+        {
+          "Type": "File",
+          "Level": "Debug",
+          "LogName": "registry_log"
+        },
+        {
+          "Type": "Stdout",
+          "Level": "Info"
+        }
+      ]
+    }
+  }
+}

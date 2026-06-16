@@ -1,0 +1,40 @@
+{
+  "name": "o76909",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "email": {
+        "format": "email",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "name": {
+        "maxLength": 255,
+        "minLength": 2,
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "email": "jane.doe@example.com",
+    "name": "Jane Doe"
+  },
+  "instructions": "Please remove the email field.",
+  "ground_truth": {
+    "name": "Jane Doe"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "email"
+    ],
+    "precise_instruction": "Remove the \"email\" field."
+  }
+}

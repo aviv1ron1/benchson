@@ -1,0 +1,79 @@
+{
+  "name": "o32485",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "translationKey": {
+        "type": "string",
+        "description": "The role translationKey"
+      },
+      "name": {
+        "type": "string",
+        "description": "The role name"
+      },
+      "permission": {
+        "type": "object",
+        "properties": {
+          "open": {
+            "type": "boolean",
+            "description": "The open property"
+          },
+          "copy": {
+            "type": "boolean",
+            "description": "The copy property"
+          },
+          "delete": {
+            "type": "boolean",
+            "description": "The delete property"
+          },
+          "export": {
+            "type": "boolean",
+            "description": "The export property"
+          },
+          "edit": {
+            "type": "boolean",
+            "description": "The edit property"
+          },
+          "administrate": {
+            "type": "boolean",
+            "description": "The administrate property"
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "translationKey": "role.admin",
+    "name": "Administrator",
+    "permission": {
+      "open": true,
+      "copy": true,
+      "delete": true,
+      "export": true,
+      "edit": true,
+      "administrate": true
+    }
+  },
+  "instructions": "Can you remove the \"translationKey\" field?",
+  "ground_truth": {
+    "name": "Administrator",
+    "permission": {
+      "open": true,
+      "copy": true,
+      "delete": true,
+      "export": true,
+      "edit": true,
+      "administrate": true
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "translationKey"
+    ],
+    "precise_instruction": "Remove the \"translationKey\" field."
+  }
+}

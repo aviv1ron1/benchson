@@ -1,0 +1,133 @@
+{
+  "name": "o28612",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "material_position": {
+        "type": "number"
+      },
+      "type": {
+        "title": "Chunk type",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "display_name"
+        ]
+      },
+      "translatable": {
+        "type": "boolean"
+      },
+      "body": {
+        "type": "string"
+      },
+      "translations": {
+        "title": "Translations list",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "comments": {
+        "title": "Comments list",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "material_position",
+      "type",
+      "translatable",
+      "body",
+      "comments",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "erroneous_json": {
+    "id": 123,
+    "material_position": 4,
+    "type": {
+      "id": 1,
+      "name": "paragraph",
+      "display_name": "Paragraph"
+    },
+    "body": "This is a sample content body for the chunk.",
+    "translations": {
+      "data": []
+    },
+    "comments": {
+      "data": [
+        {
+          "author": "Alice",
+          "text": "Great chunk!",
+          "timestamp": "2023-11-01T10:15:00Z"
+        }
+      ]
+    },
+    "created_at": "2023-10-25T08:30:00Z",
+    "updated_at": "2023-11-02T12:45:00Z"
+  },
+  "valid_json": {
+    "id": 123,
+    "material_position": 4,
+    "type": {
+      "id": 1,
+      "name": "paragraph",
+      "display_name": "Paragraph"
+    },
+    "translatable": true,
+    "body": "This is a sample content body for the chunk.",
+    "translations": {
+      "data": []
+    },
+    "comments": {
+      "data": [
+        {
+          "author": "Alice",
+          "text": "Great chunk!",
+          "timestamp": "2023-11-01T10:15:00Z"
+        }
+      ]
+    },
+    "created_at": "2023-10-25T08:30:00Z",
+    "updated_at": "2023-11-02T12:45:00Z"
+  },
+  "description": "The content chunk with ID\u202f123 is positioned at slot\u202f4 in the material sequence and is classified as a Paragraph (type\u202fID\u202f1, \u201cparagraph\u201d, display name \u201cParagraph\u201d). It is marked as translatable, and its body reads: \u201cThis is a sample content body for the chunk.\u201d At present there are no translations associated with this chunk.\n\nA comment has been logged on the chunk: Alice wrote \u201cGreat chunk!\u201d on 2023\u201111\u201101 at 10:15\u202fUTC. The entry was originally created on 2023\u201110\u201125 at 08:30\u202fUTC and most recently updated on 2023\u201111\u201102 at 12:45\u202fUTC."
+}

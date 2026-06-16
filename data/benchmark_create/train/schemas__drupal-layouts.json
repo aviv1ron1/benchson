@@ -1,0 +1,137 @@
+{
+  "name": "drupal-layouts",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/drupal-layouts.json",
+    "additionalProperties": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "title": "The human-readable name",
+          "type": "string"
+        },
+        "description": {
+          "title": "A description for advanced layouts",
+          "type": "string"
+        },
+        "category": {
+          "title": "The human-readable category name",
+          "type": "string"
+        },
+        "template": {
+          "title": "The template file to render this layout",
+          "type": "string"
+        },
+        "theme_hook": {
+          "title": "The theme hook used to render this layout",
+          "default": "layout",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path to resources like icon or template",
+          "type": "string"
+        },
+        "library": {
+          "title": "The asset library",
+          "type": "string"
+        },
+        "icon": {
+          "title": "The path to the preview image",
+          "type": "string"
+        },
+        "icon_map": {
+          "title": "The icon map",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "regions": {
+          "title": "List of regions in this layout",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "title": "The human-readable name",
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "default_region": {
+          "title": "The default region",
+          "type": "string"
+        },
+        "class": {
+          "title": "Plugin class",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "title": "JSON schema for Drupal layouts file",
+    "type": "object"
+  },
+  "description": "The theme supplies two layout plugins.  \n\nThe first, **One column layout**, is a simple, full\u2011width arrangement categorized as *Basic*. Its description notes that it offers a single region that spans the entire width. The layout is rendered with the Twig template\u202f`templates/layouts/one-column.html.twig` and uses the default theme hook\u202f`layout`. All related assets are located under the path\u202f`layouts/one_column`; the associated library is `mytheme/one-column` and the preview icon is `icons/one-column.png`. The icon map contains a single entry mapping the \u201cdefault\u201d key to the same icon file. This layout defines one region named **content**, labelled \u201cContent\u201d, which is also the default region. The implementing class for this plugin is `Drupal\\mytheme\\Plugin\\Layout\\OneColumn`.  \n\nThe second, **Two column layout**, falls under the *Column* category and is described as a layout with left and right columns. It is rendered by the Twig file\u202f`templates/layouts/two-column.html.twig` and, like the first layout, relies on the default theme hook\u202f`layout`. Its resources live in `layouts/two_column`; the library is `mytheme/two-column` and the preview icon is `icons/two-column.png`. The icon map provides two mappings: \u201cleft\u201d \u2192 `icons/left.png` and \u201cright\u201d \u2192 `icons/right.png`. This layout declares two regions\u2014**left** and **right**\u2014labelled \u201cLeft column\u201d and \u201cRight column\u201d, respectively, with the left region set as the default. The plugin class responsible for this layout is `Drupal\\mytheme\\Plugin\\Layout\\TwoColumn`.",
+  "reference_json": {
+    "one_column": {
+      "label": "One column layout",
+      "description": "A simple layout with a single full-width region.",
+      "category": "Basic",
+      "template": "templates/layouts/one-column.html.twig",
+      "theme_hook": "layout",
+      "path": "layouts/one_column",
+      "library": "mytheme/one-column",
+      "icon": "icons/one-column.png",
+      "icon_map": [
+        [
+          "default",
+          "icons/one-column.png"
+        ]
+      ],
+      "regions": {
+        "content": {
+          "label": "Content"
+        }
+      },
+      "default_region": "content",
+      "class": "Drupal\\mytheme\\Plugin\\Layout\\OneColumn"
+    },
+    "two_column": {
+      "label": "Two column layout",
+      "description": "Layout with left and right columns.",
+      "category": "Column",
+      "template": "templates/layouts/two-column.html.twig",
+      "path": "layouts/two_column",
+      "library": "mytheme/two-column",
+      "icon": "icons/two-column.png",
+      "icon_map": [
+        [
+          "left",
+          "icons/left.png"
+        ],
+        [
+          "right",
+          "icons/right.png"
+        ]
+      ],
+      "regions": {
+        "left": {
+          "label": "Left column"
+        },
+        "right": {
+          "label": "Right column"
+        }
+      },
+      "default_region": "left",
+      "class": "Drupal\\mytheme\\Plugin\\Layout\\TwoColumn"
+    }
+  }
+}

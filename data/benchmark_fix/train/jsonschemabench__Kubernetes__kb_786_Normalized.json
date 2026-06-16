@@ -1,0 +1,73 @@
+{
+  "name": "kb_786_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.",
+    "properties": {
+      "group": {
+        "description": "Group to map volume access to Default is no group",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "readOnly": {
+        "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "registry": {
+        "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "tenant": {
+        "description": "Tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "user": {
+        "description": "User to map volume access to Defaults to serivceaccount user",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "volume": {
+        "description": "Volume is a string that references an already created Quobyte volume by name.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "registry",
+      "volume"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "registry": "quobyte-registry.example.com:7860,quobyte-registry2.example.com:7860",
+    "group": "dev-team",
+    "readOnly": false,
+    "tenant": "acme-corp",
+    "user": "app-service"
+  },
+  "valid_json": {
+    "registry": "quobyte-registry.example.com:7860,quobyte-registry2.example.com:7860",
+    "volume": "project-data",
+    "group": "dev-team",
+    "readOnly": false,
+    "tenant": "acme-corp",
+    "user": "app-service"
+  },
+  "description": "Subject: Quobyte Volume Mount Configuration \u2013 Project\u2011Data  \n\nThe application will mount the Quobyte volume named **project-data** using the central registry services at **quobyte-registry.example.com:7860** and **quobyte-registry2.example.com:7860**. The mount is required to be read\u2011write (ReadOnly = false) and will be accessed under the user **app-service** and the group **dev\u2011team**. This volume belongs to the tenant **acme\u2011corp**, which owns the backend resources for the deployment."
+}

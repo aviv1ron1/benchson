@@ -1,0 +1,32 @@
+{
+  "name": "kb_1156_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "WebhookThrottleConfig holds the configuration for throttling events",
+    "properties": {
+      "burst": {
+        "description": "ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "qps": {
+        "description": "ThrottleQPS maximum number of batches per second default 10 QPS",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "description": "The webhook throttling parameters have been updated to better accommodate our current traffic load. The burst limit \u2013 the maximum number of events that can be dispatched simultaneously \u2013 is now set to 20. Meanwhile, the QPS (queries per second) cap, which governs the maximum number of event batches processed each second, has been increased to 12. These adjustments should provide a smoother flow of webhook deliveries while preventing overload.",
+  "reference_json": {
+    "burst": 20,
+    "qps": 12
+  }
+}

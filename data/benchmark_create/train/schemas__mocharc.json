@@ -1,0 +1,213 @@
+{
+  "name": "mocharc",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/mocharc",
+    "additionalProperties": true,
+    "definitions": {
+      "bool": {
+        "type": "boolean"
+      },
+      "int": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "string": {
+        "type": "string"
+      },
+      "string-array": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "description": "A JSON schema describing a .mocharc.[json|yml|yaml] file",
+    "properties": {
+      "allow-uncaught": {
+        "$ref": "#/definitions/bool"
+      },
+      "async-only": {
+        "$ref": "#/definitions/bool"
+      },
+      "bail": {
+        "$ref": "#/definitions/bool"
+      },
+      "check-leaks": {
+        "$ref": "#/definitions/bool"
+      },
+      "delay": {
+        "$ref": "#/definitions/bool"
+      },
+      "exit": {
+        "$ref": "#/definitions/bool"
+      },
+      "forbid-only": {
+        "$ref": "#/definitions/bool"
+      },
+      "forbid-pending": {
+        "$ref": "#/definitions/bool"
+      },
+      "global": {
+        "$ref": "#/definitions/string-array"
+      },
+      "jobs": {
+        "$ref": "#/definitions/int"
+      },
+      "parallel": {
+        "$ref": "#/definitions/bool"
+      },
+      "retries": {
+        "$ref": "#/definitions/int"
+      },
+      "slow": {
+        "$ref": "#/definitions/int"
+      },
+      "timeout": {
+        "$ref": "#/definitions/int"
+      },
+      "ui": {
+        "$ref": "#/definitions/string"
+      },
+      "color": {
+        "$ref": "#/definitions/bool"
+      },
+      "diff": {
+        "$ref": "#/definitions/bool"
+      },
+      "full-trace": {
+        "$ref": "#/definitions/bool"
+      },
+      "growl": {
+        "$ref": "#/definitions/bool"
+      },
+      "inline-diffs": {
+        "$ref": "#/definitions/bool"
+      },
+      "reporter": {
+        "$ref": "#/definitions/string"
+      },
+      "reporter-option": {
+        "$ref": "#/definitions/string-array"
+      },
+      "config": {
+        "$ref": "#/definitions/string"
+      },
+      "package": {
+        "$ref": "#/definitions/string"
+      },
+      "extension": {
+        "$ref": "#/definitions/string-array"
+      },
+      "file": {
+        "$ref": "#/definitions/string-array"
+      },
+      "ignore": {
+        "$ref": "#/definitions/string-array"
+      },
+      "recursive": {
+        "$ref": "#/definitions/bool"
+      },
+      "require": {
+        "$ref": "#/definitions/string-array"
+      },
+      "sort": {
+        "$ref": "#/definitions/bool"
+      },
+      "watch": {
+        "$ref": "#/definitions/bool"
+      },
+      "watch-files": {
+        "$ref": "#/definitions/string-array"
+      },
+      "watch-ignore": {
+        "$ref": "#/definitions/string-array"
+      },
+      "fgrep": {
+        "$ref": "#/definitions/string"
+      },
+      "grep": {
+        "$ref": "#/definitions/string"
+      },
+      "invert": {
+        "$ref": "#/definitions/bool"
+      },
+      "spec": {
+        "$ref": "#/definitions/string-array"
+      },
+      "enable-source-maps": {
+        "$ref": "#/definitions/bool"
+      }
+    },
+    "title": "Mocha JS Configuration File Schema",
+    "type": "object"
+  },
+  "description": "Our test runner is set to not allow uncaught exceptions (allow\u2011uncaught: false) and to operate in async\u2011only mode (async\u2011only: true). It will not bail after the first failure (bail: false) but it will check for memory leaks (check\u2011leaks: true) and will not introduce an artificial delay before starting (delay: false). The process is configured to exit automatically when the suite finishes (exit: true). Tests that are marked as .only are permitted (forbid\u2011only: false) while pending tests are forbidden (forbid\u2011pending: true). The global variable list contains just \u201cmyGlobalVar\u201d. Parallel execution is enabled with four worker jobs (jobs: 4, parallel: true). Each test may be retried up to two times (retries: 2). Tests taking longer than 75\u202fms are considered slow (slow: 75) and the overall timeout per test is 2000\u202fms (timeout: 2000). The UI style is BDD (ui: \u201cbdd\u201d), colour output is on (color: true), diffs are shown (diff: true) and inline diffs are enabled (inline\u2011diffs: true). Full stack traces are disabled (full\u2011trace: false) and Growl notifications are turned off (growl: false). The reporter is set to \u201cspec\u201d with the option \u201coutput=report.txt\u201d (reporter\u2011option: output=report.txt). The configuration file used is ./mocha.opts (config) and the package manifest is ./package.json (package).  \n\nThe test files are recognized with the extensions \u201c.js\u201d and \u201c.ts\u201d (extension), and a setup script located at test/setup.js (file) is required before execution. The runner will ignore the node_modules directory (ignore) but will recurse into subdirectories (recursive: true). It loads the modules @babel/register and ts-node/register (require). Test order is not sorted (sort: false) and watch mode is disabled (watch: false); however, the watch file pattern is test/**/*.js (watch\u2011files) and the watch ignore pattern remains node_modules (watch\u2011ignore). Test selection can be narrowed with fgrep \u201cTODO\u201d (fgrep) and grep \u201cfeature\u201d (grep), without inverting the match (invert: false). The spec pattern is test/**/*.spec.js (spec). Source\u2011map support is enabled (enable\u2011source\u2011maps: true).",
+  "reference_json": {
+    "allow-uncaught": false,
+    "async-only": true,
+    "bail": false,
+    "check-leaks": true,
+    "delay": false,
+    "exit": true,
+    "forbid-only": false,
+    "forbid-pending": true,
+    "global": [
+      "myGlobalVar"
+    ],
+    "jobs": 4,
+    "parallel": true,
+    "retries": 2,
+    "slow": 75,
+    "timeout": 2000,
+    "ui": "bdd",
+    "color": true,
+    "diff": true,
+    "full-trace": false,
+    "growl": false,
+    "inline-diffs": true,
+    "reporter": "spec",
+    "reporter-option": "output=report.txt",
+    "config": "./mocha.opts",
+    "package": "./package.json",
+    "extension": [
+      ".js",
+      ".ts"
+    ],
+    "file": [
+      "test/setup.js"
+    ],
+    "ignore": [
+      "node_modules"
+    ],
+    "recursive": true,
+    "require": [
+      "@babel/register",
+      "ts-node/register"
+    ],
+    "sort": false,
+    "watch": false,
+    "watch-files": [
+      "test/**/*.js"
+    ],
+    "watch-ignore": [
+      "node_modules"
+    ],
+    "fgrep": "TODO",
+    "grep": "feature",
+    "invert": false,
+    "spec": [
+      "test/**/*.spec.js"
+    ],
+    "enable-source-maps": true
+  }
+}

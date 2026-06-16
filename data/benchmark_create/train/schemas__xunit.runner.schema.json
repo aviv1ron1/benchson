@@ -1,0 +1,19 @@
+{
+  "name": "xunit.runner.schema",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$ref": "https://xunit.net/schema/current/xunit.runner.schema.json"
+  },
+  "description": "Our test runner will execute assemblies in parallel, and we\u2019ll also parallelize individual test collections. The configuration caps the concurrency at four threads, which should give us a good balance between speed and resource usage.  \n\nWe\u2019ll display each test case by its method name and include all available method\u2011display options. Diagnostic messages are turned off, skipped tests will not be counted as failures, and any test that runs longer than fifteen seconds will be flagged as a long\u2011running test.",
+  "reference_json": {
+    "parallelizeAssembly": true,
+    "parallelizeTestCollections": true,
+    "maxParallelThreads": 4,
+    "diagnosticMessages": false,
+    "methodDisplay": "method",
+    "methodDisplayOptions": "all",
+    "failSkips": false,
+    "longRunningTestSeconds": 15
+  }
+}

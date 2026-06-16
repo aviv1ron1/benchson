@@ -1,0 +1,274 @@
+{
+  "name": "o43084",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "type": "object",
+    "properties": {
+      "batches": {
+        "type": "number"
+      },
+      "shells": {
+        "type": "array",
+        "_uniqueItems": true,
+        "minItems": 1,
+        "items": {
+          "required": [
+            "href",
+            "id",
+            "size"
+          ],
+          "properties": {
+            "href": {
+              "type": "string",
+              "minLength": 1
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "bbox": {
+              "type": "array",
+              "items": {
+                "required": [],
+                "properties": {}
+              }
+            },
+            "size": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "useTyson": {
+        "type": "boolean"
+      },
+      "shapes": {
+        "type": "array",
+        "_uniqueItems": true,
+        "minItems": 1,
+        "items": {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "annotations": {
+              "type": "array",
+              "items": {
+                "required": [],
+                "properties": {}
+              }
+            },
+            "shells": {
+              "type": "array",
+              "items": {
+                "required": [],
+                "properties": {}
+              }
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "children": {
+              "type": "array",
+              "_uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "ref",
+                  "xform"
+                ],
+                "properties": {
+                  "ref": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "xform": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "products": {
+        "type": "array",
+        "_uniqueItems": true,
+        "minItems": 1,
+        "items": {
+          "required": [
+            "step",
+            "id",
+            "name"
+          ],
+          "properties": {
+            "shapes": {
+              "type": "array",
+              "items": {
+                "required": [],
+                "properties": {}
+              }
+            },
+            "step": {
+              "type": "string",
+              "minLength": 1
+            },
+            "children": {
+              "type": "array",
+              "items": {
+                "required": [],
+                "properties": {}
+              }
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "root": {
+        "type": "string",
+        "minLength": 1
+      },
+      "annotations": {
+        "type": "array",
+        "_uniqueItems": true,
+        "minItems": 1,
+        "items": {
+          "required": [
+            "href",
+            "id"
+          ],
+          "properties": {
+            "href": {
+              "type": "string",
+              "minLength": 1
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "batches",
+      "shells",
+      "useTyson",
+      "shapes",
+      "products",
+      "root",
+      "annotations"
+    ]
+  },
+  "erroneous_json": {
+    "batches": 12,
+    "shells": [
+      {
+        "href": "http://example.com/shell1",
+        "id": "shell1",
+        "size": 1500
+      },
+      {
+        "href": "http://example.com/shell2",
+        "id": "shell2",
+        "size": 2300,
+        "bbox": [
+          0,
+          0,
+          10,
+          10
+        ]
+      }
+    ],
+    "useTyson": false,
+    "products": [
+      {
+        "step": "assembly",
+        "id": "prod001",
+        "name": "Widget",
+        "shapes": [],
+        "children": []
+      }
+    ],
+    "root": "rootNode",
+    "annotations": [
+      {
+        "href": "http://example.com/annotation1",
+        "id": "anno1"
+      }
+    ]
+  },
+  "valid_json": {
+    "batches": 12,
+    "shells": [
+      {
+        "href": "http://example.com/shell1",
+        "id": "shell1",
+        "size": 1500
+      },
+      {
+        "href": "http://example.com/shell2",
+        "id": "shell2",
+        "size": 2300,
+        "bbox": [
+          0,
+          0,
+          10,
+          10
+        ]
+      }
+    ],
+    "useTyson": false,
+    "shapes": [
+      {
+        "id": "shapeA",
+        "annotations": [],
+        "shells": [],
+        "children": [
+          {
+            "ref": "shell1",
+            "xform": "translate(0,0,0)"
+          }
+        ]
+      },
+      {
+        "id": "shapeB",
+        "children": [
+          {
+            "ref": "shell2",
+            "xform": "rotate(90,0,0,1)"
+          }
+        ]
+      }
+    ],
+    "products": [
+      {
+        "step": "assembly",
+        "id": "prod001",
+        "name": "Widget",
+        "shapes": [],
+        "children": []
+      }
+    ],
+    "root": "rootNode",
+    "annotations": [
+      {
+        "href": "http://example.com/annotation1",
+        "id": "anno1"
+      }
+    ]
+  },
+  "description": "The current production run is configured for twelve batches. Two shell resources are defined: the first, identified as **shell1**, is available at http://example.com/shell1 and has a size of\u202f1500 units; the second, **shell2**, resides at http://example.com/shell2, measures\u202f2300 units, and occupies a bounding box from (0,\u202f0) to (10,\u202f10). Tyson integration is not enabled for this configuration.\n\nThe assembly model includes two shapes. **Shape\u202fA** (id\u202f=\u202fshapeA) contains a single child that references **shell1** with a translation transform of\u202ftranslate(0,0,0); it has no direct annotations or additional shells. **Shape\u202fB** (id\u202f=\u202fshapeB) likewise has one child, this time referencing **shell2** with a rotation transform of\u202frotate(90,0,0,1), and also carries no annotations or shells.\n\nThe product catalog lists a single item: the **Widget** (product\u202fid\u202f=\u202fprod001) is slated for the \u201cassembly\u201d step. It presently has no associated shapes or child components. The overall model is rooted at **rootNode**, and a single annotation is attached to the project\u2014annotation **anno1** located at http://example.com/annotation1."
+}

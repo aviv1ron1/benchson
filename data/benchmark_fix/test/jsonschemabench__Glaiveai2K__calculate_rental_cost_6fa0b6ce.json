@@ -1,0 +1,70 @@
+{
+  "name": "calculate_rental_cost_6fa0b6ce",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "additional_costs": {
+        "items": {
+          "properties": {
+            "amount": {
+              "description": "The amount of the additional cost",
+              "type": "number"
+            },
+            "name": {
+              "description": "The name of the additional cost",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "amount"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "duration": {
+        "description": "The duration of the rental in months",
+        "type": "integer"
+      },
+      "rent": {
+        "description": "The monthly rent amount",
+        "type": "number"
+      }
+    },
+    "required": [
+      "rent",
+      "duration"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "rent": 1200.5,
+    "additional_costs": [
+      {
+        "name": "Cleaning fee",
+        "amount": 150.0
+      },
+      {
+        "name": "Pet fee",
+        "amount": 50
+      }
+    ]
+  },
+  "valid_json": {
+    "rent": 1200.5,
+    "duration": 12,
+    "additional_costs": [
+      {
+        "name": "Cleaning fee",
+        "amount": 150.0
+      },
+      {
+        "name": "Pet fee",
+        "amount": 50
+      }
+    ]
+  },
+  "description": "Dear Tenant,\n\nWe are pleased to confirm the terms of your lease: the monthly rent is $1,200.50 and the lease will run for a period of 12 months. In addition to the base rent, the agreement includes a one\u2011time cleaning fee of $150.00 and a pet fee of $50.00, which will be added to your first month's payment.\n\nPlease let us know if you have any questions or need further clarification. We look forward to welcoming you to your new home."
+}

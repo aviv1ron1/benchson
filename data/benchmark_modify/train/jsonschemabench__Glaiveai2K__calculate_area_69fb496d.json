@@ -1,0 +1,72 @@
+{
+  "name": "calculate_area_69fb496d",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape (e.g. square, circle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "cylinder",
+    "dimensions": {
+      "radius": 4.5,
+      "height": 12.0,
+      "base": 0,
+      "length": 0,
+      "width": 0
+    }
+  },
+  "instructions": "Please decrease the \"length\" inside \"dimensions\" by 1.",
+  "ground_truth": {
+    "shape": "cylinder",
+    "dimensions": {
+      "radius": 4.5,
+      "height": 12.0,
+      "base": 0,
+      "length": -1,
+      "width": 0
+    }
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "dimensions",
+      "length"
+    ],
+    "precise_instruction": "Decrease \"length\" inside \"dimensions\" by 1."
+  }
+}

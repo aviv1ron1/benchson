@@ -1,0 +1,67 @@
+{
+  "name": "schedule_meeting_c097104a",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "date": {
+        "description": "The date of the meeting",
+        "format": "date",
+        "type": "string"
+      },
+      "end_time": {
+        "description": "The end time of the meeting",
+        "format": "time",
+        "type": "string"
+      },
+      "participants": {
+        "description": "The list of participants' email addresses",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "start_time": {
+        "description": "The start time of the meeting",
+        "format": "time",
+        "type": "string"
+      }
+    },
+    "required": [
+      "participants",
+      "date",
+      "start_time",
+      "end_time"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "date": "2026-07-14",
+    "start_time": "09:30:00",
+    "end_time": "11:00:00",
+    "participants": [
+      "alice.smith@example.com",
+      "bob.johnson@example.org",
+      "carol.wilson@example.net"
+    ]
+  },
+  "instructions": "Please add another item to the participants list that\u2019s identical to the first item.",
+  "ground_truth": {
+    "date": "2026-07-14",
+    "start_time": "09:30:00",
+    "end_time": "11:00:00",
+    "participants": [
+      "alice.smith@example.com",
+      "bob.johnson@example.org",
+      "carol.wilson@example.net",
+      "alice.smith@example.com"
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "participants"
+    ],
+    "precise_instruction": "Add another item to the \"participants\" list, identical to its first item."
+  }
+}

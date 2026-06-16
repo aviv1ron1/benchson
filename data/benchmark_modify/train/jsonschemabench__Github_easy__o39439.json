@@ -1,0 +1,57 @@
+{
+  "name": "o39439",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "GetWatchesResponse",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "watches": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/WatchDetails"
+        }
+      }
+    },
+    "definitions": {
+      "WatchDetails": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "projectName": {
+            "type": "string"
+          },
+          "repoName": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "javaName": "GetWatchesResponse"
+  },
+  "data": {
+    "watches": [
+      {
+        "projectName": "AlphaProject",
+        "repoName": "frontend-repo"
+      },
+      {
+        "projectName": "BetaProject",
+        "repoName": "backend-service"
+      }
+    ]
+  },
+  "instructions": "Could you clear all items from the watches list?",
+  "ground_truth": {
+    "watches": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "watches"
+    ],
+    "precise_instruction": "Remove all items from the \"watches\" list."
+  }
+}

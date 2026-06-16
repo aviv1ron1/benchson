@@ -1,0 +1,114 @@
+{
+  "name": "epr-manifest",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": true,
+    "definitions": {
+      "behavior": {
+        "type": "string",
+        "enum": [
+          "block",
+          "allow",
+          "noAuth"
+        ]
+      },
+      "rule": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "Relative path to resource.",
+            "type": "string"
+          },
+          "regex": {
+            "description": "A regular expression for identifying paths to resources.",
+            "type": "string"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "navigation",
+                "image",
+                "stylesheet",
+                "script",
+                "xhr",
+                "other"
+              ]
+            }
+          },
+          "allowData": {
+            "description": "Determines if data is allowed at this path.",
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/epr-manifest.json",
+    "properties": {
+      "site": {
+        "description": "A fully qualified URL of your website.",
+        "type": "string",
+        "format": "uri"
+      },
+      "maxAge": {
+        "description": "Set the max age HTTP cache expiration.",
+        "type": "integer"
+      },
+      "reportUrl": {
+        "type": "string",
+        "format": "uri"
+      },
+      "defaultNavBehavior": {
+        "$ref": "#/definitions/behavior"
+      },
+      "defaultResBehavior": {
+        "$ref": "#/definitions/behavior"
+      },
+      "rules": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/rule"
+        }
+      }
+    },
+    "required": [
+      "rules"
+    ],
+    "title": "JSON schema for Entry Point Regulation manifest files",
+    "type": "object"
+  },
+  "description": "Hello team,\n\nThe entry\u2011point policy for **https://www.example.com** has been finalized. All cached resources will be considered fresh for up to **86\u202f400 seconds** (24\u202fhours), and any violations will be reported to **https://www.example.com/report**. By default, navigation requests are permitted, while all other resource types are blocked unless a specific rule overrides this behavior.\n\nTwo explicit rules have been defined. The first targets the administrative section: any request whose path matches the pattern **^/admin/.*$** (e.g., \u201c/admin/dashboard\u201d) and that is either a navigation or a script request will be denied, with no data allowed at that endpoint. The second rule applies to the public area: any path matching **^/public/.*$** (such as \u201c/public/images/logo.png\u201d) will allow images, stylesheets, scripts, and XHR requests, and data transmission is permitted there. \n\nFor reference, this configuration corresponds to metadata version **1.0**. Please review and let me know if any adjustments are needed.",
+  "reference_json": {
+    "site": "https://www.example.com",
+    "maxAge": 86400,
+    "reportUrl": "https://www.example.com/report",
+    "defaultNavBehavior": "allow",
+    "defaultResBehavior": "block",
+    "rules": [
+      {
+        "path": "/admin",
+        "regex": "^/admin/.*$",
+        "types": [
+          "navigation",
+          "script"
+        ],
+        "allowData": false
+      },
+      {
+        "path": "/public",
+        "regex": "^/public/.*$",
+        "types": [
+          "image",
+          "stylesheet",
+          "script",
+          "xhr"
+        ],
+        "allowData": true
+      }
+    ],
+    "metadataVersion": "1.0"
+  }
+}

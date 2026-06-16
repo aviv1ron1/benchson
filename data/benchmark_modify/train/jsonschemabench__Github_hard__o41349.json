@@ -1,0 +1,127 @@
+{
+  "name": "o41349",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "title": "Invocation manifest for Pydeface Gear",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "cost": {
+            "type": "string",
+            "default": "mutualinfo",
+            "enum": [
+              "mutualinfo",
+              "corratio",
+              "normcorr",
+              "normmi",
+              "leastsq",
+              "labeldiff",
+              "bbr"
+            ]
+          },
+          "nocleanup": {
+            "type": "boolean",
+            "default": true
+          },
+          "verbose": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": [
+          "cost",
+          "nocleanup",
+          "verbose"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "infile": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "template": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "facemask": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "infile"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "data": {
+    "config": {
+      "cost": "normmi",
+      "nocleanup": false,
+      "verbose": true
+    },
+    "inputs": {
+      "infile": {
+        "type": "nifti"
+      },
+      "template": {
+        "type": "nifti"
+      },
+      "facemask": {
+        "type": "nifti"
+      }
+    }
+  },
+  "instructions": "Please remove the \u201cfacemask\u201d field inside \u201cinputs\u201d.",
+  "ground_truth": {
+    "config": {
+      "cost": "normmi",
+      "nocleanup": false,
+      "verbose": true
+    },
+    "inputs": {
+      "infile": {
+        "type": "nifti"
+      },
+      "template": {
+        "type": "nifti"
+      }
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "inputs",
+      "facemask"
+    ],
+    "precise_instruction": "Remove the \"facemask\" field inside \"inputs\"."
+  }
+}

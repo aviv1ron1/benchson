@@ -1,0 +1,108 @@
+{
+  "name": "o14025",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "type": "object",
+    "title": "Artist schema",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "properties": {
+      "id": {
+        "type": "string",
+        "args": {
+          "primary_key": true
+        }
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "tracks": {
+        "type": "object",
+        "args": {
+          "document": "Track",
+          "ondelete": "NULLIFY",
+          "backref_name": "artist",
+          "backref_ondelete": "NULLIFY"
+        }
+      },
+      "events": {
+        "type": "object",
+        "args": {
+          "document": "Event",
+          "ondelete": "NULLIFY",
+          "backref_name": "artist",
+          "backref_ondelete": "NULLIFY"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "name"
+    ]
+  },
+  "data": {
+    "id": "artist_001",
+    "name": "The Velvet Echoes",
+    "description": "An indie rock band known for atmospheric soundscapes and lyrical depth.",
+    "tracks": {
+      "track_01": {
+        "title": "Silent Horizon",
+        "duration_seconds": 215
+      },
+      "track_02": {
+        "title": "Midnight Pulse",
+        "duration_seconds": 189
+      }
+    },
+    "events": {
+      "event_2023_09": {
+        "name": "Autumn Festival",
+        "date": "2023-09-15",
+        "venue": "Riverfront Amphitheatre"
+      },
+      "event_2024_03": {
+        "name": "Spring Tour Kickoff",
+        "date": "2024-03-02",
+        "venue": "City Hall Plaza"
+      }
+    }
+  },
+  "instructions": "Please change the description to \"An indie rock band known for atmospheric soundscapes and lyrical depth. (updated)\".",
+  "ground_truth": {
+    "id": "artist_001",
+    "name": "The Velvet Echoes",
+    "description": "An indie rock band known for atmospheric soundscapes and lyrical depth. (updated)",
+    "tracks": {
+      "track_01": {
+        "title": "Silent Horizon",
+        "duration_seconds": 215
+      },
+      "track_02": {
+        "title": "Midnight Pulse",
+        "duration_seconds": 189
+      }
+    },
+    "events": {
+      "event_2023_09": {
+        "name": "Autumn Festival",
+        "date": "2023-09-15",
+        "venue": "Riverfront Amphitheatre"
+      },
+      "event_2024_03": {
+        "name": "Spring Tour Kickoff",
+        "date": "2024-03-02",
+        "venue": "City Hall Plaza"
+      }
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "description"
+    ],
+    "precise_instruction": "Change \"description\" to \"An indie rock band known for atmospheric soundscapes and lyrical depth. (updated)\"."
+  }
+}

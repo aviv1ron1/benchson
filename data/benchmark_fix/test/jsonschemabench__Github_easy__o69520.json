@@ -1,0 +1,42 @@
+{
+  "name": "o69520",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "person": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "first_name",
+          "last_name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "person"
+    ]
+  },
+  "erroneous_json": {
+    "person": {
+      "first_name": "Emma"
+    }
+  },
+  "valid_json": {
+    "person": {
+      "first_name": "Emma",
+      "last_name": "Johnson"
+    }
+  },
+  "description": "Dear Team,\n\nI would like to introduce you to our new colleague, Emma Johnson, who will be joining us starting next Monday. Please feel free to welcome her and offer any assistance she might need as she settles into her role.\n\nKind regards,\n\nHR Department"
+}

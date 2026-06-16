@@ -1,0 +1,67 @@
+{
+  "name": "kb_892_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_policy_v1beta1_IDRange": {
+        "description": "IDRange provides a min/max of an allowed range of IDs.",
+        "properties": {
+          "max": {
+            "_format": "int64",
+            "description": "max is the end of the range, inclusive.",
+            "type": "integer"
+          },
+          "min": {
+            "_format": "int64",
+            "description": "min is the start of the range, inclusive.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "min",
+          "max"
+        ],
+        "type": "object"
+      }
+    },
+    "description": "RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.",
+    "properties": {
+      "ranges": {
+        "description": "ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.",
+        "items": {
+          "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_policy_v1beta1_IDRange"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "rule": {
+        "description": "rule is the strategy that will dictate the allowable RunAsGroup values that may be set.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "rule"
+    ],
+    "type": "object"
+  },
+  "description": "The group\u2011assignment policy for our containers is configured to use the **MustRunAs** strategy. Under this rule, any pod must run with a group identifier that falls within the approved ranges defined by the security team.\n\nThe permitted GID ranges are from **1000** through **2000**, inclusive, and a specific fixed GID of **3000** is also allowed (effectively forcing that exact group ID when required). No other group IDs are acceptable under the current configuration.",
+  "reference_json": {
+    "rule": "MustRunAs",
+    "ranges": [
+      {
+        "min": 1000,
+        "max": 2000
+      },
+      {
+        "min": 3000,
+        "max": 3000
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "kb_1081_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.",
+    "properties": {
+      "key": {
+        "description": "The label key that the selector applies to.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "values": {
+        "description": "An array of string values. One value must match the label to be selected. Each entry in Values is ORed.",
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "key",
+      "values"
+    ],
+    "type": "object"
+  },
+  "description": "Dear Team,\n\nPlease note that the upcoming deployment will target only those nodes whose **region** label matches one of the approved locations. Specifically, any node labelled with either **us-east-1** or **us-west-2** will satisfy our topology selector requirement and be eligible for the rollout. Ensure that your inventory reflects these region values before proceeding.",
+  "reference_json": {
+    "key": "region",
+    "values": [
+      "us-east-1",
+      "us-west-2"
+    ]
+  }
+}

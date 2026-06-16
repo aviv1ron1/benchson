@@ -1,0 +1,65 @@
+{
+  "name": "o57642",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "O3D3xx temporal exponential filter configuration",
+    "type": "object",
+    "properties": {
+      "MinSmoothDiff": {
+        "type": "number",
+        "minimum": 0,
+        "default": 0.3,
+        "attributes": [
+          "private"
+        ]
+      },
+      "MinSDAlpha": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "default": 0.2,
+        "attributes": [
+          "private"
+        ]
+      },
+      "MaxSmoothDiff": {
+        "type": "number",
+        "minimum": 0,
+        "default": 1,
+        "attributes": [
+          "private"
+        ]
+      },
+      "MaxSDAlpha": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "default": 0.95,
+        "attributes": [
+          "private"
+        ]
+      }
+    }
+  },
+  "data": {
+    "MinSmoothDiff": 0.45,
+    "MinSDAlpha": 0.27,
+    "MaxSmoothDiff": 0.92,
+    "MaxSDAlpha": 0.88
+  },
+  "instructions": "Could you remove the \"MaxSDAlpha\" field?",
+  "ground_truth": {
+    "MinSmoothDiff": 0.45,
+    "MinSDAlpha": 0.27,
+    "MaxSmoothDiff": 0.92
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "MaxSDAlpha"
+    ],
+    "precise_instruction": "Remove the \"MaxSDAlpha\" field."
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "name": "solidaritySchema",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "cli": {
+        "description": "CLI Rule",
+        "type": "object",
+        "properties": {
+          "rule": {
+            "enum": [
+              "cli"
+            ]
+          },
+          "binary": {
+            "type": "string"
+          },
+          "semver": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "line": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "matchIndex": {
+            "type": "integer"
+          },
+          "platform": {
+            "enum": [
+              "darwin",
+              "macos",
+              "freebsd",
+              "linux",
+              "sunos",
+              "win32",
+              "windows"
+            ]
+          },
+          "error": {
+            "type": "string"
+          },
+          "ci": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "rule",
+          "binary"
+        ]
+      },
+      "dir": {
+        "description": "Dir Rule",
+        "type": "object",
+        "properties": {
+          "rule": {
+            "enum": [
+              "dir",
+              "directory"
+            ]
+          },
+          "platform": {
+            "enum": [
+              "darwin",
+              "macos",
+              "freebsd",
+              "linux",
+              "sunos",
+              "win32",
+              "windows"
+            ]
+          },
+          "error": {
+            "type": "string"
+          },
+          "ci": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "rule",
+          "location"
+        ]
+      },
+      "file": {
+        "description": "File Rule",
+        "type": "object",
+        "properties": {
+          "rule": {
+            "enum": [
+              "file"
+            ]
+          },
+          "platform": {
+            "enum": [
+              "darwin",
+              "macos",
+              "freebsd",
+              "linux",
+              "sunos",
+              "win32",
+              "windows"
+            ]
+          },
+          "error": {
+            "type": "string"
+          },
+          "ci": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "rule",
+          "location"
+        ]
+      },
+      "env": {
+        "description": "ENV Rule",
+        "type": "object",
+        "properties": {
+          "rule": {
+            "enum": [
+              "env"
+            ]
+          },
+          "platform": {
+            "enum": [
+              "darwin",
+              "macos",
+              "freebsd",
+              "linux",
+              "sunos",
+              "win32",
+              "windows"
+            ]
+          },
+          "error": {
+            "type": "string"
+          },
+          "ci": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "rule",
+          "variable"
+        ]
+      },
+      "shell": {
+        "description": "Shell Rule",
+        "type": "object",
+        "properties": {
+          "rule": {
+            "enum": [
+              "shell"
+            ]
+          },
+          "platform": {
+            "enum": [
+              "darwin",
+              "macos",
+              "freebsd",
+              "linux",
+              "sunos",
+              "win32",
+              "windows"
+            ]
+          },
+          "error": {
+            "type": "string"
+          },
+          "ci": {
+            "type": "boolean"
+          },
+          "match": {
+            "type": "string",
+            "description": "A regexp to search the output."
+          }
+        },
+        "required": [
+          "rule",
+          "match"
+        ]
+      },
+      "custom": {
+        "description": "Custom Rule",
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "rule": {
+            "enum": [
+              "custom"
+            ]
+          },
+          "plugin": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "platform": {
+            "enum": [
+              "darwin",
+              "macos",
+              "freebsd",
+              "linux",
+              "sunos",
+              "win32",
+              "windows"
+            ]
+          },
+          "error": {
+            "type": "string"
+          },
+          "ci": {
+            "type": "boolean"
+          },
+          "match": {
+            "type": "string",
+            "description": "A regexp to search the output."
+          }
+        },
+        "required": [
+          "rule",
+          "plugin",
+          "name"
+        ]
+      }
+    },
+    "description": "A rule-set and config for the Solidarity JSON checker",
+    "id": "https://json.schemastore.org/solidaritySchema.json",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "output": {
+            "description": "Identify what kind output should happen when a check is called",
+            "type": "string",
+            "enum": [
+              "moderate",
+              "verbose",
+              "silent"
+            ]
+          }
+        }
+      },
+      "requirements": {
+        "description": "List of requirement rules for your particular environment",
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/cli"
+              },
+              {
+                "$ref": "#/definitions/dir"
+              },
+              {
+                "$ref": "#/definitions/file"
+              },
+              {
+                "$ref": "#/definitions/env"
+              },
+              {
+                "$ref": "#/definitions/shell"
+              },
+              {
+                "$ref": "#/definitions/custom"
+              }
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "required": [
+      "requirements"
+    ],
+    "title": "Solidarity",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "config": {
+      "output": "verbose"
+    },
+    "requirements": null
+  },
+  "valid_json": {
+    "config": {
+      "output": "verbose"
+    },
+    "requirements": {
+      "node": [
+        {
+          "rule": "cli",
+          "binary": "node",
+          "semver": "^14.0.0",
+          "platform": "linux",
+          "ci": false
+        },
+        {
+          "rule": "env",
+          "variable": "NODE_ENV",
+          "platform": "linux",
+          "error": "NODE_ENV not set",
+          "ci": true
+        }
+      ],
+      "projectFiles": [
+        {
+          "rule": "dir",
+          "location": "./src",
+          "platform": "darwin",
+          "ci": false
+        },
+        {
+          "rule": "file",
+          "location": "./package.json",
+          "platform": "darwin",
+          "ci": false
+        }
+      ],
+      "customCheck": [
+        {
+          "rule": "custom",
+          "plugin": "my-plugin",
+          "name": "checkVersion",
+          "match": "\\d+\\.\\d+\\.\\d+",
+          "ci": true
+        }
+      ],
+      "docker": [
+        {
+          "rule": "shell",
+          "match": "Docker version",
+          "platform": "linux",
+          "ci": false
+        }
+      ]
+    }
+  },
+  "description": "The configuration is set to produce verbose output for all checks.  \n\nFor the **node** requirements, the system must locate the `node` binary and verify that its version satisfies the semver range **^14.0.0**; this check runs on the **linux** platform and is not required in continuous\u2011integration environments. Additionally, the environment variable **NODE_ENV** must be present on **linux**; if it is missing the error \u201cNODE_ENV not set\u201d will be reported, and this variable is mandatory for CI runs.  \n\nThe **projectFiles** rules ensure that the directory `./src` exists on the **darwin** platform and that the file `./package.json` is present on the same platform; neither of these checks is needed for CI. A custom rule named **checkVersion** provided by the plugin **my\u2011plugin** looks for a version string matching the regular expression `\\d+\\.\\d+\\.\\d+`; this custom check is executed in CI. Finally, a shell rule verifies that the command output contains the text \u201cDocker version\u201d on **linux**, and this check is not required for CI."
+}

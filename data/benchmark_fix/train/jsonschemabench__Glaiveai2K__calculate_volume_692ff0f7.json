@@ -1,0 +1,56 @@
+{
+  "name": "calculate_volume_692ff0f7",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which volume is to be calculated",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "length": 12.5,
+      "height": 4.7
+    }
+  },
+  "valid_json": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.3,
+      "height": 4.7
+    }
+  },
+  "description": "Subject: Specification Details for New Component\n\nThe part we are currently designing is a rectangular prism. Its physical dimensions are as follows: a length of 12.5\u202funits, a width of 8.3\u202funits, and a height of 4.7\u202funits. These measurements have been verified against the latest prototype and should be used for any further calculations, including volume and material estimates."
+}

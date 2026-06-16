@@ -1,0 +1,235 @@
+{
+  "name": "o39780",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "github_extracted_details": {
+        "type": "object",
+        "description": "Details of Github inspection",
+        "properties": {
+          "forks_count": {
+            "type": "integer"
+          },
+          "last_year_commits": {
+            "$ref": "#/definitions/github_last_year_commits_details"
+          },
+          "open_issues_count": {
+            "type": "integer"
+          },
+          "stargazers_count": {
+            "type": "integer"
+          },
+          "subscribers_count": {
+            "type": "integer"
+          },
+          "contributors_count": {
+            "type": "integer"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "license": {
+            "type": "object"
+          },
+          "updated_on": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "updated_on"
+        ],
+        "additionalProperties": false
+      },
+      "github_last_year_commits_details": {
+        "type": "object",
+        "description": "Details of last year Github commits",
+        "properties": {
+          "sum": {
+            "type": "integer"
+          },
+          "weekly": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "required": [
+          "sum",
+          "weekly"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "type": "object",
+    "description": "Result of Github worker",
+    "properties": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the schema",
+            "pattern": "^[a-zA-Z0-9_]+$"
+          },
+          "version": {
+            "type": "string",
+            "description": "Version of the schema",
+            "pattern": "^[0-9]+-[0-9]+-[0-9]+$"
+          },
+          "url": {
+            "type": "string",
+            "description": "Full URL of the schema",
+            "format": "uri"
+          }
+        },
+        "required": [
+          "name",
+          "version"
+        ],
+        "additionalProperties": false
+      },
+      "_release": {
+        "type": "string",
+        "description": "Unique release id in form of \"ecosystem:package:version\""
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "success",
+          "error",
+          "unknown"
+        ]
+      },
+      "details": {
+        "$ref": "#/definitions/github_extracted_details"
+      },
+      "summary": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "status",
+      "details",
+      "summary"
+    ],
+    "additionalProperties": false,
+    "title": "github_details-v2-0-2"
+  },
+  "erroneous_json": {
+    "schema": {
+      "name": "github_details_v2",
+      "version": "2-0-2",
+      "url": "https://example.com/schemas/github_details-v2-0-2.json"
+    },
+    "_release": "github:my-repo:1.4.3",
+    "status": "success",
+    "summary": [
+      "Repository has 1,458 stars and 124 forks.",
+      "Average of 6.9 commits per week over the last year.",
+      "23 open issues and 34 contributors.",
+      "Primary topics: api, client, library, python."
+    ]
+  },
+  "valid_json": {
+    "schema": {
+      "name": "github_details_v2",
+      "version": "2-0-2",
+      "url": "https://example.com/schemas/github_details-v2-0-2.json"
+    },
+    "_release": "github:my-repo:1.4.3",
+    "status": "success",
+    "details": {
+      "forks_count": 124,
+      "last_year_commits": {
+        "sum": 358,
+        "weekly": [
+          7,
+          5,
+          9,
+          12,
+          8,
+          6,
+          10,
+          11,
+          4,
+          13,
+          9,
+          7,
+          5,
+          8,
+          12,
+          6,
+          10,
+          9,
+          4,
+          8,
+          11,
+          7,
+          5,
+          9,
+          6,
+          8,
+          10,
+          12,
+          5,
+          7,
+          9,
+          4,
+          11,
+          6,
+          8,
+          10,
+          7,
+          5,
+          9,
+          12,
+          6,
+          8,
+          4,
+          11,
+          7,
+          9,
+          5,
+          8,
+          10,
+          6,
+          9,
+          7
+        ]
+      },
+      "open_issues_count": 23,
+      "stargazers_count": 1458,
+      "subscribers_count": 87,
+      "contributors_count": 34,
+      "topics": [
+        "api",
+        "client",
+        "library",
+        "python"
+      ],
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "updated_on": "2026-06-10T14:23:45Z"
+    },
+    "summary": [
+      "Repository has 1,458 stars and 124 forks.",
+      "Average of 6.9 commits per week over the last year.",
+      "23 open issues and 34 contributors.",
+      "Primary topics: api, client, library, python."
+    ]
+  },
+  "description": "The repository report follows the github_details_v2 schema (version\u202f2-0-2) available at\u202fhttps://example.com/schemas/github_details-v2-0-2.json and pertains to release\u202fgithub:my-repo:1.4.3. The extraction completed successfully, with the data last refreshed on\u202f2026\u201106\u201110T14:23:45Z. The project is licensed under the MIT License (key\u202f\u201cmit\u201d, SPDX\u202fID\u202fMIT,\u202fhttps://opensource.org/licenses/MIT).  \n\nRepository has 1,458 stars and 124 forks. Average of 6.9 commits per week over the last year. 23 open issues and 34 contributors. Primary topics: api, client, library, python. In total, 358 commits were recorded in the past year, with weekly counts as follows: 7,\u202f5,\u202f9,\u202f12,\u202f8,\u202f6,\u202f10,\u202f11,\u202f4,\u202f13,\u202f9,\u202f7,\u202f5,\u202f8,\u202f12,\u202f6,\u202f10,\u202f9,\u202f4,\u202f8,\u202f11,\u202f7,\u202f5,\u202f9,\u202f6,\u202f8,\u202f10,\u202f12,\u202f5,\u202f7,\u202f9,\u202f4,\u202f11,\u202f6,\u202f8,\u202f10,\u202f7,\u202f5,\u202f9,\u202f12,\u202f6,\u202f8,\u202f4,\u202f11,\u202f7,\u202f9,\u202f5,\u202f8,\u202f10,\u202f6,\u202f9,\u202f7. The repository currently has 87 subscribers and is tagged with the topics\u202fapi,\u202fclient,\u202flibrary,\u202fpython."
+}

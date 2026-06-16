@@ -1,0 +1,116 @@
+{
+  "name": "o90425",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Ansible Inventory",
+    "description": "Ansible Inventory for the script inventory plugin",
+    "type": "object",
+    "patternProperties": {
+      "^\\w$": {
+        "type": "object",
+        "properties": {
+          "hosts": {
+            "description": "list of hosts that are part of this group",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vars": {
+            "type": "object",
+            "description": "Variables to assign to hosts that are part of this group",
+            "patternProperties": {
+              "^\\w$": {
+                "type": "object",
+                "description": "Vars for this hosts in this group"
+              }
+            }
+          },
+          "children": {
+            "description": "list of groups that are children of this group, their hosts will be added to this group",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "_meta": {
+        "type": "object",
+        "description": "Key that avoids calling the script per host",
+        "required": [
+          "hostvars"
+        ],
+        "properties": {
+          "hostvars": {
+            "type": "object",
+            "description": "Each key is a hostname and the value is a dictionary of the variables for that host",
+            "patternProperties": {
+              "^\\w$": {
+                "type": "object",
+                "description": "Hosts with their associated vars",
+                "patternProperties": {
+                  "^\\w$": {
+                    "type": "object",
+                    "description": "Vars for this host"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  },
+  "description": "The current Ansible inventory defines two primary groups. Group **a** comprises the hosts **x** and **y** and carries a group\u2011level variable under the key\u202f`p` where `example` is set to `\"value\"`. Additionally, group\u202fa lists **b** as a child group, meaning that the hosts of **b** are implicitly part of **a** as well. Group **b** itself contains a single host, **z**, and does not declare any variables or further children.\n\nHost\u2011specific details are recorded under the meta section. Host **x** is associated with two sets of variables: within group\u202fa it uses `ansible_user` set to `admin`, while under group\u202fb it specifies `ansible_port` as `22`. Host **y** inherits only the group\u202fa variable `ansible_user`, which is set to `root`. Finally, host **z** is linked to a group\u2011specific entry for group\u202fc, where its `ansible_user` is defined as `ubuntu`.",
+  "reference_json": {
+    "a": {
+      "hosts": [
+        "x",
+        "y"
+      ],
+      "vars": {
+        "p": {
+          "example": "value"
+        }
+      },
+      "children": [
+        "b"
+      ]
+    },
+    "b": {
+      "hosts": [
+        "z"
+      ],
+      "vars": {},
+      "children": []
+    },
+    "_meta": {
+      "hostvars": {
+        "x": {
+          "a": {
+            "ansible_user": "admin"
+          },
+          "b": {
+            "ansible_port": "22"
+          }
+        },
+        "y": {
+          "a": {
+            "ansible_user": "root"
+          }
+        },
+        "z": {
+          "c": {
+            "ansible_user": "ubuntu"
+          }
+        }
+      }
+    }
+  }
+}

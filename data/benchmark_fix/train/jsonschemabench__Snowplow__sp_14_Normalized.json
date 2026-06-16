@@ -1,0 +1,301 @@
+{
+  "name": "sp_14_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a CallRail call completion event",
+    "properties": {
+      "answered": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "callercity": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "callercountry": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "callername": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "callernum": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "callerstate": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "callerzip": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "callsource": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "datetime": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "destinationnum": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "duration": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "first_call": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "ga": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "gclid": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "id": {
+        "type": "string"
+      },
+      "ip": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "keywords": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "kissmetrics_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "landingpage": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "recording": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "referrer": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "referrermedium": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "trackingnum": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "transcription": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utm_campaign": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utm_content": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utm_medium": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utm_source": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utm_term": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utma": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utmb": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utmc": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utmv": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utmx": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utmz": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "datetime",
+      "id"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "call_complete",
+      "vendor": "com.callrail",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "answered": true,
+    "callercity": "San Francisco",
+    "callercountry": "US",
+    "callername": "John Doe",
+    "callernum": "+14155551234",
+    "callerstate": "CA",
+    "callerzip": "94107",
+    "callsource": "website",
+    "datetime": "2026-06-15T12:34:56Z",
+    "destinationnum": "+14155554321",
+    "duration": 125,
+    "first_call": true,
+    "ga": "GA-123456",
+    "gclid": "Cj0KCQiA9c2M",
+    "ip": "203.0.113.42",
+    "keywords": "plumbing services",
+    "kissmetrics_id": "km_987654321",
+    "landingpage": "https://example.com/contact",
+    "recording": "https://recordings.callrail.com/abc123.mp3",
+    "referrer": "https://google.com",
+    "referrermedium": "cpc",
+    "trackingnum": "+14155559876",
+    "transcription": "Hello, I need a plumber for a leak.",
+    "utm_campaign": "summer_sale",
+    "utm_content": "ad_variation_a",
+    "utm_medium": "cpc",
+    "utm_source": "google",
+    "utm_term": "plumber near me",
+    "utma": "123456789.1234567890.1650000000.1650000000.1650000000.1",
+    "utmb": "123456789.1.10.1650000000",
+    "utmc": "123456789",
+    "utmv": "",
+    "utmx": "",
+    "utmz": "123456789.1650000000.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic"
+  },
+  "valid_json": {
+    "answered": true,
+    "callercity": "San Francisco",
+    "callercountry": "US",
+    "callername": "John Doe",
+    "callernum": "+14155551234",
+    "callerstate": "CA",
+    "callerzip": "94107",
+    "callsource": "website",
+    "datetime": "2026-06-15T12:34:56Z",
+    "destinationnum": "+14155554321",
+    "duration": 125,
+    "first_call": true,
+    "ga": "GA-123456",
+    "gclid": "Cj0KCQiA9c2M",
+    "id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "ip": "203.0.113.42",
+    "keywords": "plumbing services",
+    "kissmetrics_id": "km_987654321",
+    "landingpage": "https://example.com/contact",
+    "recording": "https://recordings.callrail.com/abc123.mp3",
+    "referrer": "https://google.com",
+    "referrermedium": "cpc",
+    "trackingnum": "+14155559876",
+    "transcription": "Hello, I need a plumber for a leak.",
+    "utm_campaign": "summer_sale",
+    "utm_content": "ad_variation_a",
+    "utm_medium": "cpc",
+    "utm_source": "google",
+    "utm_term": "plumber near me",
+    "utma": "123456789.1234567890.1650000000.1650000000.1650000000.1",
+    "utmb": "123456789.1.10.1650000000",
+    "utmc": "123456789",
+    "utmv": "",
+    "utmx": "",
+    "utmz": "123456789.1650000000.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic"
+  },
+  "description": "On\u202f2026\u201106\u201115\u202fT12:34:56\u202fZ a call was logged with the identifier **a1b2c3d4-5678-90ab-cdef-1234567890ab**. The call originated from **John\u202fDoe** at **+14155551234**, located in **San\u202fFrancisco**, **CA**\u202f94107, **US**. It was initiated through the **website** (call source) and was successfully **answered**. The conversation lasted **125\u202fseconds**, and the system marked it as the **first\u202fcall** from this number. The call was routed to **+14155554321**, while the tracking number displayed to the caller was **+14155559876**. The caller\u2019s IP address was **203.0.113.42**.  \n\nThe associated landing page was **https://example.com/contact**, with the referrer **https://google.com** via the **cpc** medium. Marketing metadata included **GA\u2011123456**, **GCLID\u202fCj0KCQiA9c2M**, the keyword phrase **\u201cplumbing services\u201d**, and the Kissmetrics ID **km_987654321**. The UTM parameters were: **utm_source=google**, **utm_medium=cpc**, **utm_campaign=summer_sale**, **utm_content=ad_variation_a**, **utm_term=plumber\u202fnear\u202fme**, and the full UTMZ string **123456789.1650000000.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic**. Additional analytics cookies read **utma=123456789.1234567890.1650000000.1650000000.1650000000.1**, **utmb=123456789.1.10.1650000000**, **utmc=123456789**, with **utmv** and **utmx** empty. A recording of the call is available at **https://recordings.callrail.com/abc123.mp3**, and the transcription captures the caller\u2019s request: \u201cHello, I need a plumber for a leak.\u201d"
+}

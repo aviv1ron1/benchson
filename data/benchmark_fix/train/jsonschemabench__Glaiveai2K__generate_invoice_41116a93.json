@@ -1,0 +1,76 @@
+{
+  "name": "generate_invoice_41116a93",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_details": {
+        "properties": {
+          "address": {
+            "description": "The address of the customer",
+            "type": "string"
+          },
+          "email": {
+            "description": "The email address of the customer",
+            "format": "email",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the customer",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "address"
+        ],
+        "type": "object"
+      },
+      "items": {
+        "description": "The items purchased",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "total_amount": {
+        "description": "The total amount of the purchase",
+        "type": "number"
+      }
+    },
+    "required": [
+      "items",
+      "total_amount",
+      "customer_details"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "customer_details": {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "address": "123 Maple Street, Springfield, IL 62704, USA"
+    },
+    "items": [
+      "Wireless Mouse",
+      "Ergonomic Keyboard",
+      "Laptop Stand"
+    ],
+    "total_amount": "not-a-number"
+  },
+  "valid_json": {
+    "customer_details": {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "address": "123 Maple Street, Springfield, IL 62704, USA"
+    },
+    "items": [
+      "Wireless Mouse",
+      "Ergonomic Keyboard",
+      "Laptop Stand"
+    ],
+    "total_amount": 149.97
+  },
+  "description": "Dear Jane\u202fDoe (jane.doe@example.com),\n\nThank you for your purchase. We\u2019re preparing to ship the three items you ordered\u2014Wireless\u202fMouse, Ergonomic\u202fKeyboard, and Laptop\u202fStand\u2014to the address you provided: 123\u202fMaple\u202fStreet, Springfield, IL\u202f62704, USA. The total amount due for this order is $149.97. If you have any questions, please feel free to reply to this email."
+}

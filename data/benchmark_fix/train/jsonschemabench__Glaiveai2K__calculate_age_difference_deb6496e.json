@@ -1,0 +1,58 @@
+{
+  "name": "calculate_age_difference_deb6496e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "person1": {
+        "properties": {
+          "birthdate": {
+            "description": "The birthdate of the first person in the format YYYY-MM-DD",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the first person",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "person2": {
+        "properties": {
+          "birthdate": {
+            "description": "The birthdate of the second person in the format YYYY-MM-DD",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the second person",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "person1",
+      "person2"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "person1": {
+      "name": "Emily Carter",
+      "birthdate": "1992-04-17"
+    },
+    "person2": null
+  },
+  "valid_json": {
+    "person1": {
+      "name": "Emily Carter",
+      "birthdate": "1992-04-17"
+    },
+    "person2": {
+      "name": "Liam Nguyen",
+      "birthdate": "1988-11-03"
+    }
+  },
+  "description": "Dear Team,\n\nPlease welcome our new project collaborators, Emily Carter and Liam Nguyen. Emily Carter (born\u202f1992-04-17) brings a fresh perspective to our design discussions, while Liam Nguyen (born\u202f1988-11-03) offers extensive experience in development. Their combined expertise will be invaluable as we move forward with the upcoming milestones.\n\nFeel free to reach out to them directly to introduce yourself and discuss how their skill sets can best support our current initiatives."
+}

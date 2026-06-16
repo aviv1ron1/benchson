@@ -1,0 +1,37 @@
+{
+  "name": "o65447",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A company which is the subject of a statement",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "jurisdiction": {
+        "type": "string"
+      },
+      "company_number": {
+        "type": "string"
+      },
+      "identifier": {
+        "type": "string",
+        "description": "An official identifier paired with a code for the issuer of the identifier, e.g sec/12345",
+        "pattern": "^[^/]+/[^/]+$"
+      }
+    },
+    "required": [
+      "name",
+      "jurisdiction"
+    ]
+  },
+  "description": "Dear Sir or Madam,\n\nPlease be advised that Acme Technologies Ltd., a company incorporated in the United Kingdom, is registered under company number\u202f12345678. For official purposes, the entity is referenced by the identifier\u202fukc/987654.",
+  "reference_json": {
+    "name": "Acme Technologies Ltd.",
+    "jurisdiction": "United Kingdom",
+    "company_number": "12345678",
+    "identifier": "ukc/987654"
+  }
+}

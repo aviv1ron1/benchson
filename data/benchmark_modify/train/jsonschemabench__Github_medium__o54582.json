@@ -1,0 +1,180 @@
+{
+  "name": "o54582",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "GET Weights.",
+    "description": "To get the weight details about the given users.",
+    "properties": {
+      "aggregation": {
+        "type": "object",
+        "title": "Aggregation of weight.",
+        "description": "List of aggregation data about the weights",
+        "properties": {
+          "maxWeight": {
+            "type": "integer",
+            "title": "Max weight.",
+            "description": "Maximum weight of the user during the period."
+          },
+          "minWeight": {
+            "type": "integer",
+            "title": "Min.",
+            "description": "Minimum weight of the user during the period."
+          },
+          "avgWeight": {
+            "type": "integer",
+            "title": "Avg.",
+            "description": "Avg weight of the user during the period."
+          },
+          "weightChange": {
+            "type": "integer",
+            "title": "WeightChange.",
+            "description": "weight Change of the user during the period."
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count.",
+            "description": "Total number of weight data found."
+          },
+          "startDate": {
+            "type": "string",
+            "title": "startDate.",
+            "description": "Starting Date of the weights returned in the query. If not given in the query."
+          },
+          "endDate": {
+            "type": "string",
+            "title": "endDate.",
+            "description": "Ending Date of the weights returned in the query. If the date is not given in query."
+          },
+          "dateOfMaxWeight": {
+            "type": "string",
+            "title": "date of max weight occured",
+            "description": "date of when the max weight occured for the given period of time"
+          },
+          "dateOfMinWeight": {
+            "type": "string",
+            "title": "date of min weight occured",
+            "description": "date of when the min weight occured for the given period of time"
+          }
+        },
+        "required": [
+          "maxWeight",
+          "minWeight",
+          "avgWeight",
+          "weightChange"
+        ]
+      },
+      "weights": {
+        "type": "array",
+        "title": "Weights schema.",
+        "description": "An explanation about the purpose of this instance.",
+        "items": {
+          "type": "object",
+          "title": "2 schema.",
+          "description": "An explanation about the purpose of this instance.",
+          "properties": {
+            "datetime": {
+              "type": "string",
+              "title": "Datetime schema.",
+              "description": "An explanation about the purpose of this instance."
+            },
+            "weight": {
+              "type": "number",
+              "title": "Weight schema.",
+              "description": "An explanation about the purpose of this instance."
+            }
+          },
+          "required": [
+            "datetime",
+            "weight"
+          ]
+        }
+      }
+    },
+    "required": [
+      "aggregation",
+      "weights"
+    ]
+  },
+  "data": {
+    "aggregation": {
+      "maxWeight": 85,
+      "minWeight": 78,
+      "avgWeight": 81,
+      "weightChange": -2,
+      "count": 5,
+      "startDate": "2023-01-01",
+      "endDate": "2023-01-31",
+      "dateOfMaxWeight": "2023-01-14",
+      "dateOfMinWeight": "2023-01-28"
+    },
+    "weights": [
+      {
+        "datetime": "2023-01-01T08:00:00Z",
+        "weight": 80.5
+      },
+      {
+        "datetime": "2023-01-07T08:00:00Z",
+        "weight": 82.0
+      },
+      {
+        "datetime": "2023-01-14T08:00:00Z",
+        "weight": 85.0
+      },
+      {
+        "datetime": "2023-01-21T08:00:00Z",
+        "weight": 81.0
+      },
+      {
+        "datetime": "2023-01-28T08:00:00Z",
+        "weight": 78.0
+      }
+    ]
+  },
+  "instructions": "Please increase the \"minWeight\" inside \"aggregation\" by 1.",
+  "ground_truth": {
+    "aggregation": {
+      "maxWeight": 85,
+      "minWeight": 79,
+      "avgWeight": 81,
+      "weightChange": -2,
+      "count": 5,
+      "startDate": "2023-01-01",
+      "endDate": "2023-01-31",
+      "dateOfMaxWeight": "2023-01-14",
+      "dateOfMinWeight": "2023-01-28"
+    },
+    "weights": [
+      {
+        "datetime": "2023-01-01T08:00:00Z",
+        "weight": 80.5
+      },
+      {
+        "datetime": "2023-01-07T08:00:00Z",
+        "weight": 82.0
+      },
+      {
+        "datetime": "2023-01-14T08:00:00Z",
+        "weight": 85.0
+      },
+      {
+        "datetime": "2023-01-21T08:00:00Z",
+        "weight": 81.0
+      },
+      {
+        "datetime": "2023-01-28T08:00:00Z",
+        "weight": 78.0
+      }
+    ]
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "aggregation",
+      "minWeight"
+    ],
+    "precise_instruction": "Increase \"minWeight\" inside \"aggregation\" by 1."
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "name": "calculate_area_4c0d9a83",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "Base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "Height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "Length of the rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "Radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "Width of the rectangle",
+            "type": "number"
+          }
+        },
+        "required": [],
+        "type": "object"
+      },
+      "shape": {
+        "description": "Type of shape",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.3,
+      "base": 0,
+      "height": 0,
+      "radius": 0
+    }
+  },
+  "instructions": "Could you increase the \"height\" inside \"dimensions\" by 1?",
+  "ground_truth": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.3,
+      "base": 0,
+      "height": 1,
+      "radius": 0
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "dimensions",
+      "height"
+    ],
+    "precise_instruction": "Increase \"height\" inside \"dimensions\" by 1."
+  }
+}

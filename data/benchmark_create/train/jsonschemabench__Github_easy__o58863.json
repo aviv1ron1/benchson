@@ -1,0 +1,28 @@
+{
+  "name": "o58863",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "language": {
+        "$default": {
+          "$source": "argv",
+          "index": 0
+        },
+        "description": "The language to be added",
+        "type": "string"
+      },
+      "languages": {
+        "description": "Languages to be added (comma separated list like 'en,de,fr').",
+        "type": "string"
+      }
+    },
+    "title": "addLanguage Schema",
+    "type": "object"
+  },
+  "description": "Subject: Request to Add New Languages to the Platform\n\nHi Team,\n\nPlease add the English language (code\u202f`en`) as the primary language for our upcoming release. In addition, the following language codes should be included in the batch update: `en,de,fr`. Let me know once these have been integrated so we can proceed with the localization testing.",
+  "reference_json": {
+    "language": "en",
+    "languages": "en,de,fr"
+  }
+}

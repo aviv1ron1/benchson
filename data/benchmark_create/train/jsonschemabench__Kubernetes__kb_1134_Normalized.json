@@ -1,0 +1,120 @@
+{
+  "name": "kb_1134_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_NodeSelector": {
+        "description": "A node selector represents the union of the results of one or more label queries over a set of nodes; that is, it represents the OR of the selectors represented by the node selector terms.",
+        "properties": {
+          "nodeSelectorTerms": {
+            "description": "Required. A list of node selector terms. The terms are ORed.",
+            "items": {
+              "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_NodeSelectorTerm"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "nodeSelectorTerms"
+        ],
+        "type": "object"
+      },
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_NodeSelectorRequirement": {
+        "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+        "properties": {
+          "key": {
+            "description": "The label key that the selector applies to.",
+            "type": "string"
+          },
+          "operator": {
+            "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.",
+            "type": "string"
+          },
+          "values": {
+            "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "key",
+          "operator"
+        ],
+        "type": "object"
+      },
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_NodeSelectorTerm": {
+        "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.",
+        "properties": {
+          "matchExpressions": {
+            "description": "A list of node selector requirements by node's labels.",
+            "items": {
+              "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_NodeSelectorRequirement"
+            },
+            "type": "array"
+          },
+          "matchFields": {
+            "description": "A list of node selector requirements by node's fields.",
+            "items": {
+              "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_NodeSelectorRequirement"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "description": "VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.",
+    "properties": {
+      "required": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_core_v1_NodeSelector",
+        "description": "Required specifies hard node constraints that must be met."
+      }
+    },
+    "type": "object"
+  },
+  "description": "The volume\u2019s node affinity is defined by two required selector terms. The first term demands that a node belong to the availability zone **us\u2011west\u20112a** (the label\u202f`kubernetes.io/e2e-az-name` must be **In** the set\u202f{us\u2011west\u20112a}) and that its hostname must **not** be either\u202f`node-01` or\u202f`node-02` (the label\u202f`kubernetes.io/hostname` is **NotIn**\u202f{node\u201101, node\u201102}). In addition, the node must have a metadata name field present (the field\u202f`metadata.name` is **Exists**).\n\nThe second selector term is simpler: it requires that the node carry the worker role label (the key\u202f`node-role.kubernetes.io/worker` is **Exists**). No additional field constraints apply for this term. Together, these rules constitute the hard node constraints that must be satisfied for the volume to be accessed.",
+  "reference_json": {
+    "required": {
+      "nodeSelectorTerms": [
+        {
+          "matchExpressions": [
+            {
+              "key": "kubernetes.io/e2e-az-name",
+              "operator": "In",
+              "values": [
+                "us-west-2a"
+              ]
+            },
+            {
+              "key": "kubernetes.io/hostname",
+              "operator": "NotIn",
+              "values": [
+                "node-01",
+                "node-02"
+              ]
+            }
+          ],
+          "matchFields": [
+            {
+              "key": "metadata.name",
+              "operator": "Exists",
+              "values": []
+            }
+          ]
+        },
+        {
+          "matchExpressions": [
+            {
+              "key": "node-role.kubernetes.io/worker",
+              "operator": "Exists",
+              "values": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

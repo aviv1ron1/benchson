@@ -1,0 +1,115 @@
+{
+  "name": "sp_113_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Mailchimp unsubscribe event",
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "campaign_id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "email_type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "ip_opt": {
+            "type": "string"
+          },
+          "list_id": {
+            "type": "string"
+          },
+          "merges": {
+            "additionalProperties": true,
+            "properties": {
+              "EMAIL": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "FNAME": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "INTERESTS": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "LNAME": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": "object"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "web_id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "fired_at": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "unsubscribe",
+      "vendor": "com.mailchimp",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "data": null,
+    "fired_at": "2026-06-15T12:34:56Z",
+    "type": "unsubscribe"
+  },
+  "valid_json": {
+    "data": {
+      "action": "unsubscribed",
+      "campaign_id": "e12345abcde",
+      "email": "jane.doe@example.com",
+      "email_type": "html",
+      "id": "abcd1234efgh5678",
+      "ip_opt": "203.0.113.42",
+      "list_id": "a1b2c3d4e5",
+      "merges": {
+        "EMAIL": "jane.doe@example.com",
+        "FNAME": "Jane",
+        "LNAME": "Doe",
+        "INTERESTS": "sports,travel"
+      },
+      "reason": "User requested removal via email link",
+      "web_id": "987654321"
+    },
+    "fired_at": "2026-06-15T12:34:56Z",
+    "type": "unsubscribe"
+  },
+  "description": "On 2026-06-15T12:34:56Z a Mailchimp\u202funsubscribe event was logged (type\u202f=\u202funsubscribe). The subscriber\u2019s action is recorded as\u202funsubscribed, originating from the campaign\u202fe12345abcde. The contact\u202fjane.doe@example.com\u202f(Subscriber\u202fID\u202fabcd1234efgh5678) received the original message as an\u202fhtml\u202femail, and the request came from IP address\u202f203.0.113.42. This change applies to list\u202fa1b2c3d4e5, and the event is referenced by web\u202fID\u202f987654321.  \n\nThe subscriber\u2019s profile merges contain the following values: EMAIL\u202fjane.doe@example.com, FNAME\u202fJane, LNAME\u202fDoe, and INTERESTS\u202fsports,travel. The reason provided for the removal is \u201cUser requested removal via email link.\u201d"
+}

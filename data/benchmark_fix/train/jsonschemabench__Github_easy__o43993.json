@@ -1,0 +1,91 @@
+{
+  "name": "o43993",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "StatusNotificationRequest",
+    "type": "object",
+    "properties": {
+      "connectorId": {
+        "type": "integer"
+      },
+      "errorCode": {
+        "type": "string",
+        "enum": [
+          "ConnectorLockFailure",
+          "EVCommunicationError",
+          "GroundFailure",
+          "HighTemperature",
+          "InternalError",
+          "LocalListConflict",
+          "NoError",
+          "OtherError",
+          "OverCurrentFailure",
+          "PowerMeterFailure",
+          "PowerSwitchFailure",
+          "ReaderFailure",
+          "ResetFailure",
+          "UnderVoltage",
+          "OverVoltage",
+          "WeakSignal"
+        ]
+      },
+      "info": {
+        "type": "string",
+        "maxLength": 50
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "Available",
+          "Preparing",
+          "Charging",
+          "SuspendedEVSE",
+          "SuspendedEV",
+          "Finishing",
+          "Reserved",
+          "Unavailable",
+          "Faulted"
+        ]
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "vendorId": {
+        "type": "string",
+        "maxLength": 255
+      },
+      "vendorErrorCode": {
+        "type": "string",
+        "maxLength": 50
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "connectorId",
+      "errorCode",
+      "status"
+    ]
+  },
+  "erroneous_json": {
+    "connectorId": 3,
+    "errorCode": "NoError",
+    "status": "Available_INVALID",
+    "info": "Station operating normally",
+    "timestamp": "2026-06-15T12:34:56Z",
+    "vendorId": "AcmeChargingCo",
+    "vendorErrorCode": "ERR12345"
+  },
+  "valid_json": {
+    "connectorId": 3,
+    "errorCode": "NoError",
+    "status": "Available",
+    "info": "Station operating normally",
+    "timestamp": "2026-06-15T12:34:56Z",
+    "vendorId": "AcmeChargingCo",
+    "vendorErrorCode": "ERR12345"
+  },
+  "description": "Subject: Status Update \u2013 Connector\u202f3 (AcmeChargingCo)\n\nAt 2026-06-15T12:34:56Z the charging station reported that connector\u202f3 is **Available** with an **error code of NoError**. The system notes \u201cStation operating normally\u201d in the informational field, indicating no issues at this time. The vendor identifier for this equipment is **AcmeChargingCo**, and the associated vendor error code logged is **ERR12345**."
+}

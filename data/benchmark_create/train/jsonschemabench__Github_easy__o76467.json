@@ -1,0 +1,57 @@
+{
+  "name": "o76467",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": true,
+    "description": "get spider metadata response",
+    "properties": {
+      "base64_encoded_spider_metadata": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "properties": {
+              "href": {
+                "_format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "href"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "self"
+        ],
+        "type": "object"
+      },
+      "spider_metadata_id": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "spider_metadata_id",
+      "base64_encoded_spider_metadata",
+      "links"
+    ],
+    "title": "get spider metadata response",
+    "type": "object"
+  },
+  "description": "The requested spider metadata has been retrieved successfully. Its identifier is **meta-9876**, and the full metadata payload is supplied in Base64\u2011encoded form as  \n\n`eyJzcGlyaW5nX2lkIjogIjEyMzQiLCAicHJvamVjdCI6ICJ0ZXN0X3Byb2plY3QiLCAicmVwb3J0X3VuaXZlcnNpdHkiOiAiZGV2ZWxvcG1lbnQifQ==`.  \n\nFor reference, the resource can be accessed directly via the self\u2011link: https://api.example.com/spiders/metadata/meta-9876.",
+  "reference_json": {
+    "spider_metadata_id": "meta-9876",
+    "base64_encoded_spider_metadata": "eyJzcGlyaW5nX2lkIjogIjEyMzQiLCAicHJvamVjdCI6ICJ0ZXN0X3Byb2plY3QiLCAicmVwb3J0X3VuaXZlcnNpdHkiOiAiZGV2ZWxvcG1lbnQifQ==",
+    "links": {
+      "self": {
+        "href": "https://api.example.com/spiders/metadata/meta-9876"
+      }
+    }
+  }
+}

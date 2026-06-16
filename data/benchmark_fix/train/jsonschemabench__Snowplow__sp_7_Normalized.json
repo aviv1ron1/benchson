@@ -1,0 +1,245 @@
+{
+  "name": "sp_7_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a AWS CloudFront web distribution access log event. Version released 24 January 2018",
+    "properties": {
+      "cIp": {
+        "maxLength": 45,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csBytes": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "csCookie": {
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csHost": {
+        "maxLength": 2000,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csMethod": {
+        "maxLength": 3,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csProtocol": {
+        "enum": [
+          "http",
+          "https",
+          null
+        ]
+      },
+      "csProtocolVersion": {
+        "maxLength": 8,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csReferer": {
+        "maxLength": 8192,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csUriQuery": {
+        "maxLength": 8192,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csUriStem": {
+        "maxLength": 8192,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "csUserAgent": {
+        "maxLength": 2000,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "dateTime": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "fleEncryptedFields": {
+        "maxLength": 10,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "fleStatus": {
+        "maxLength": 64,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "scBytes": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "scStatus": {
+        "maxLength": 3,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "sslCipher": {
+        "maxLength": 64,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "sslProtocol": {
+        "maxLength": 32,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "timeTaken": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "xEdgeLocation": {
+        "maxLength": 32,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "xEdgeRequestId": {
+        "maxLength": 2000,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "xEdgeResponseResultType": {
+        "maxLength": 32,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "xEdgeResultType": {
+        "maxLength": 32,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "xForwardedFor": {
+        "maxLength": 45,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "xHostHeader": {
+        "maxLength": 2000,
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "dateTime"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "wd_access_log",
+      "vendor": "com.amazon.aws.cloudfront",
+      "version": "1-0-6"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "cIp": "203.0.113.42",
+    "csBytes": 4523,
+    "csCookie": "sessionid=abc123; theme=light",
+    "csHost": "d111111abcdef8.cloudfront.net",
+    "csMethod": "GET",
+    "csProtocol": "https",
+    "csProtocolVersion": "HTTP/2",
+    "csReferer": "https://example.com/home",
+    "csUriQuery": "id=10&sort=asc",
+    "csUriStem": "/images/logo.png",
+    "csUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "dateTime": "2026-06-15T12:34:56Z",
+    "fleEncryptedFields": "YES",
+    "fleStatus": "OK",
+    "scBytes": 9876,
+    "scStatus": "200",
+    "sslCipher": "ECDHE-RSA-AES128-GCM-SHA256",
+    "sslProtocol": "TLSv1.2",
+    "timeTaken": 0.124,
+    "xEdgeLocation": "LAX53",
+    "xEdgeRequestId": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "xEdgeResponseResultType": "Miss",
+    "xEdgeResultType": "Miss",
+    "xForwardedFor": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "xHostHeader": "d111111abcdef8.cloudfront.net"
+  },
+  "valid_json": {
+    "cIp": "203.0.113.42",
+    "csBytes": 4523,
+    "csCookie": "sessionid=abc123; theme=light",
+    "csHost": "d111111abcdef8.cloudfront.net",
+    "csMethod": "GET",
+    "csProtocol": "https",
+    "csProtocolVersion": "HTTP/2",
+    "csReferer": "https://example.com/home",
+    "csUriQuery": "id=10&sort=asc",
+    "csUriStem": "/images/logo.png",
+    "csUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "dateTime": "2026-06-15T12:34:56Z",
+    "fleEncryptedFields": "YES",
+    "fleStatus": "OK",
+    "scBytes": 9876,
+    "scStatus": "200",
+    "sslCipher": "ECDHE-RSA-AES128-GCM-SHA256",
+    "sslProtocol": "TLSv1.2",
+    "timeTaken": 0.124,
+    "xEdgeLocation": "LAX53",
+    "xEdgeRequestId": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+    "xEdgeResponseResultType": "Miss",
+    "xEdgeResultType": "Miss",
+    "xForwardedFor": "203.0.113.42",
+    "xHostHeader": "d111111abcdef8.cloudfront.net"
+  },
+  "description": "On 2026\u201106\u201115 at 12:34:56\u202fUTC the CloudFront distribution **d111111abcdef8.cloudfront.net** received a **GET** request over **https** (using **HTTP/2**) from client IP **203.0.113.42** (also seen in the X\u2011Forwarded\u2011For header). The request targeted the object **/images/logo.png** with the query string **id=10&sort=asc**, and carried a cookie of **sessionid=abc123; theme=light**. The referer was **https://example.com/home**, and the client identified itself with the user\u2011agent string **Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36**. The host header sent was **d111111abcdef8.cloudfront.net**.\n\nThe edge server handling the request was **LAX53**, and the request was logged with the identifier **a1b2c3d4-5678-90ab-cdef-1234567890ab**. Both the edge result type and the edge response result type were recorded as **Miss**. The client transferred **4523** bytes (csBytes) and received **9876** bytes (scBytes) in response, with an HTTP status code of **200**. The TLS handshake used the cipher **ECDHE-RSA-AES128-GCM-SHA256** over **TLSv1.2**, and the entire transaction took **0.124** seconds. Field\u2011level encryption was applied (fleEncryptedFields\u202f=\u202fYES) and its status was reported as **OK**."
+}

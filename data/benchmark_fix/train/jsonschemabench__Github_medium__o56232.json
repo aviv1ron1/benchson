@@ -1,0 +1,113 @@
+{
+  "name": "o56232",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {
+      "mntent": {
+        "additionalItems": false,
+        "description": "An fstab entry",
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "dump": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "fsck": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "fstype": {
+            "type": "string"
+          },
+          "options": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "device",
+          "fstype"
+        ],
+        "title": "mntent",
+        "type": "object"
+      }
+    },
+    "description": "JSON representation of /etc/fstab",
+    "patternProperties": {
+      "^/([^/]+(/[^/]+)*)?$": {
+        "$ref": "#/definitions/mntent"
+      }
+    },
+    "properties": {
+      "swap": {
+        "$ref": "#/definitions/mntent"
+      }
+    },
+    "required": [
+      "/",
+      "swap"
+    ],
+    "title": "/etc/fstab",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "/": {
+      "device": "/dev/sda1",
+      "fstype": "ext4",
+      "options": [
+        "defaults",
+        "noatime"
+      ],
+      "dump": 1,
+      "fsck": 1
+    },
+    "/home": {
+      "device": "/dev/sdb1",
+      "fstype": "ext4",
+      "options": [
+        "defaults"
+      ],
+      "dump": 1,
+      "fsck": 2
+    }
+  },
+  "valid_json": {
+    "/": {
+      "device": "/dev/sda1",
+      "fstype": "ext4",
+      "options": [
+        "defaults",
+        "noatime"
+      ],
+      "dump": 1,
+      "fsck": 1
+    },
+    "swap": {
+      "device": "/dev/sda2",
+      "fstype": "swap",
+      "options": [
+        "pri=1"
+      ],
+      "dump": 0,
+      "fsck": 0
+    },
+    "/home": {
+      "device": "/dev/sdb1",
+      "fstype": "ext4",
+      "options": [
+        "defaults"
+      ],
+      "dump": 1,
+      "fsck": 2
+    }
+  },
+  "description": "The system\u2019s root filesystem is mounted from **/dev/sda1** as an **ext4** volume. It uses the standard \u201cdefaults\u201d mount options supplemented with \u201cnoatime\u201d, and it is configured to be included in dump operations (dump\u202f=\u202f1) and to be checked by\u202ffsck on the first pass (fsck\u202f=\u202f1).  \n\nThe swap space resides on **/dev/sda2**, identified with the **swap** filesystem type. Its only option is \u201cpri=1\u201d, and it is excluded from dumps (dump\u202f=\u202f0) and not subject to fsck checks (fsck\u202f=\u202f0).  \n\nUser home directories are served from **/dev/sdb1**, also formatted as **ext4**. The mount uses the default options, is included in dump (dump\u202f=\u202f1), and will be examined by\u202ffsck on the second pass (fsck\u202f=\u202f2)."
+}

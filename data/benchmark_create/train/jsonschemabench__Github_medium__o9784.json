@@ -1,0 +1,105 @@
+{
+  "name": "o9784",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "deviceIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "maxItems": 1000
+      },
+      "deviceTags": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        },
+        "maxItems": 100
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 32767
+      },
+      "filterType": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "whitelist",
+              "blacklist"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "none"
+            ]
+          }
+        ]
+      },
+      "pubTopics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "subTopics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      }
+    },
+    "additionalProperties": false
+  },
+  "description": "Please apply the following configuration for the temperature\u2011sensor whitelist filter. The devices to be included are identified by the three 24\u2011character IDs \u201c0123456789abcdef01234567\u201d, \u201cabcdefabcdefabcdefabcdef\u201d and \u201cdeadbeefdeadbeefdeadbeef\u201d. Each device is tagged with the key\u2011value pairs\u202f\u2014\u202flocation\u202f=\u202fwarehouse\u20111 and sensor_type\u202f=\u202ftemperature. The intended purpose is described as: \u201cA whitelist filter for temperature sensors deployed across multiple warehouses.\u201d The filter type for this rule is **whitelist**.\n\nData from the devices will be published on the topics \u201cdevices/+/data\u201d and \u201csensors/temperature\u201d. The system should listen for commands and firmware updates on the subscription topics \u201ccommands/+/execute\u201d and \u201cupdates/firmware\u201d.",
+  "reference_json": {
+    "deviceIds": [
+      "0123456789abcdef01234567",
+      "abcdefabcdefabcdefabcdef",
+      "deadbeefdeadbeefdeadbeef"
+    ],
+    "deviceTags": [
+      {
+        "key": "location",
+        "value": "warehouse-1"
+      },
+      {
+        "key": "sensor_type",
+        "value": "temperature"
+      }
+    ],
+    "description": "A whitelist filter for temperature sensors deployed across multiple warehouses.",
+    "filterType": "whitelist",
+    "pubTopics": [
+      "devices/+/data",
+      "sensors/temperature"
+    ],
+    "subTopics": [
+      "commands/+/execute",
+      "updates/firmware"
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "name": "o65451",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "anyOf": [
+      {
+        "required": [
+          "title"
+        ]
+      },
+      {
+        "required": [
+          "description"
+        ]
+      },
+      {
+        "required": [
+          "filing_type_name"
+        ]
+      }
+    ],
+    "description": "A statutory filing",
+    "properties": {
+      "date": {
+        "_format": "date",
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "filing_type_code": {
+        "type": "string"
+      },
+      "filing_type_name": {
+        "type": "string"
+      },
+      "other_attributes": {
+        "type": "object"
+      },
+      "title": {
+        "type": "string"
+      },
+      "uid": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "date"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "date": "2023-08-15",
+    "title": "Annual Report Filing",
+    "description": "Company's annual financial statements filed with the SEC.",
+    "filing_type_name": "Annual Report",
+    "filing_type_code": "10-K",
+    "uid": "urn:filing:123456789",
+    "url": "https://example.com/filings/123456789",
+    "other_attributes": {
+      "submitted_by": "Jane Doe",
+      "department": "Finance"
+    }
+  },
+  "instructions": "Could you please update the filing_type_code field to \"10-K (updated)\"?",
+  "ground_truth": {
+    "date": "2023-08-15",
+    "title": "Annual Report Filing",
+    "description": "Company's annual financial statements filed with the SEC.",
+    "filing_type_name": "Annual Report",
+    "filing_type_code": "10-K (updated)",
+    "uid": "urn:filing:123456789",
+    "url": "https://example.com/filings/123456789",
+    "other_attributes": {
+      "submitted_by": "Jane Doe",
+      "department": "Finance"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "filing_type_code"
+    ],
+    "precise_instruction": "Change \"filing_type_code\" to \"10-K (updated)\"."
+  }
+}

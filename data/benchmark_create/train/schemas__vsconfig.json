@@ -1,0 +1,50 @@
+{
+  "name": "vsconfig",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/vsconfig.json",
+    "properties": {
+      "version": {
+        "description": "The version of the component configuration file format.",
+        "type": "string",
+        "pattern": "^(\\d+\\.)?(\\d+\\.)?(\\d+\\.)?(\\d+)$"
+      },
+      "components": {
+        "type": "array",
+        "description": "An array of Visual Studio component names.",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "extensions": {
+        "type": "array",
+        "description": "An array of Visual Studio extensions. These can be URLs to marketplace extensions or paths to private VSIX files.",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "required": [
+      "components"
+    ],
+    "title": "JSON schema for Visual Studio component configuration files",
+    "type": "object"
+  },
+  "description": "The Visual Studio configuration is based on version\u202f1.0.0.0. It includes the following components: the .NET\u202fFramework\u202f4.6 targeting pack (Microsoft.Net.Component.4.6.TargetingPack), the Managed Desktop workload (Microsoft.VisualStudio.Workload.ManagedDesktop), and the F# language component (Microsoft.VisualStudio.Component.FSharp).  \n\nIn addition to these core components, we will install two extensions: the C++ tools extension from the Marketplace at https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools, and a custom private extension located at C:\\extensions\\MyCustomExtension.vsix.",
+  "reference_json": {
+    "version": "1.0.0.0",
+    "components": [
+      "Microsoft.Net.Component.4.6.TargetingPack",
+      "Microsoft.VisualStudio.Workload.ManagedDesktop",
+      "Microsoft.VisualStudio.Component.FSharp"
+    ],
+    "extensions": [
+      "https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools",
+      "C:\\extensions\\MyCustomExtension.vsix"
+    ]
+  }
+}

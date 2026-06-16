@@ -1,0 +1,75 @@
+{
+  "name": "o27846",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Custom jar Specification",
+    "description": "Common specification for jars that can be uploaded by user. Also for stream-juggler engines and frameworks",
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "The unique name for a custom jar",
+        "type": "string"
+      },
+      "description": {
+        "description": "The description for a custom jar",
+        "type": "string"
+      },
+      "version": {
+        "description": "The custom jar version",
+        "type": "string"
+      },
+      "author": {
+        "description": "The custom jar author",
+        "type": "string"
+      },
+      "license": {
+        "description": "The software license type for a custom jar",
+        "type": "string"
+      },
+      "options": {
+        "description": "The json-schema for some optional parameters",
+        "type": "object"
+      }
+    },
+    "required": [
+      "name",
+      "version"
+    ]
+  },
+  "erroneous_json": {
+    "description": "A jar providing advanced analytics operators for the Stream Juggler engine, including real-time aggregation and windowing functions.",
+    "version": "2.4.1",
+    "author": "DataFlux Labs",
+    "license": "Apache-2.0",
+    "options": {
+      "enableLogging": true,
+      "maxParallelism": 8,
+      "defaultWindowSize": "5m",
+      "supportedFormats": [
+        "json",
+        "avro",
+        "parquet"
+      ]
+    }
+  },
+  "valid_json": {
+    "name": "stream-juggler-analytics",
+    "description": "A jar providing advanced analytics operators for the Stream Juggler engine, including real-time aggregation and windowing functions.",
+    "version": "2.4.1",
+    "author": "DataFlux Labs",
+    "license": "Apache-2.0",
+    "options": {
+      "enableLogging": true,
+      "maxParallelism": 8,
+      "defaultWindowSize": "5m",
+      "supportedFormats": [
+        "json",
+        "avro",
+        "parquet"
+      ]
+    }
+  },
+  "description": "We are pleased to announce the release of **stream\u2011juggler\u2011analytics** version **2.4.1**, a new jar from DataFlux Labs that adds a suite of advanced analytics operators to the Stream Juggler engine. This package brings real\u2011time aggregation, sophisticated windowing functions, and a range of data\u2011format handlers, making it easier than ever to build high\u2011throughput streaming pipelines. The jar is distributed under the Apache\u20112.0 license.\n\nKey configuration options for this release include enabling logging (set to\u202ftrue), a maximum parallelism of\u202f8, and a default window size of\u202f5\u202fminutes (\u201c5m\u201d). The library natively supports the **json**, **avro**, and **parquet** data formats, allowing seamless integration with existing data sources and sinks."
+}

@@ -1,0 +1,175 @@
+{
+  "name": "o47111",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://dcc.icgc.org/drug-text",
+    "type": "object",
+    "properties": {
+      "atc_codes_code": {
+        "id": "https://dcc.icgc.org/drug-text/atc_codes_code",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/atc_codes_code/0",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "atc_codes_description": {
+        "id": "https://dcc.icgc.org/drug-text/atc_codes_description",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/atc_codes_description/0",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "atc_level5_codes": {
+        "id": "https://dcc.icgc.org/drug-text/atc_level5_codes",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/atc_level5_codes/0",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "drug_class": {
+        "id": "https://dcc.icgc.org/drug-text/drug_class",
+        "type": "string"
+      },
+      "external_references_chembl": {
+        "id": "https://dcc.icgc.org/drug-text/external_references_chembl",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/external_references_chembl/0",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "external_references_drugbank": {
+        "id": "https://dcc.icgc.org/drug-text/external_references_drugbank",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/external_references_drugbank/0",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "id": {
+        "id": "https://dcc.icgc.org/drug-text/id",
+        "type": "string"
+      },
+      "inchikey": {
+        "id": "https://dcc.icgc.org/drug-text/inchikey",
+        "type": "string"
+      },
+      "name": {
+        "id": "https://dcc.icgc.org/drug-text/name",
+        "type": "string"
+      },
+      "synonyms": {
+        "id": "https://dcc.icgc.org/drug-text/synonyms",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/synonyms/1",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "trials_conditions_name": {
+        "id": "https://dcc.icgc.org/drug-text/trials_conditions_name",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/trials_conditions_name/185",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "trials_description": {
+        "id": "https://dcc.icgc.org/drug-text/trials_description",
+        "type": "array",
+        "items": {
+          "id": "https://dcc.icgc.org/drug-text/trials_description/155",
+          "type": "string"
+        },
+        "additionalItems": false
+      },
+      "type": {
+        "id": "https://dcc.icgc.org/drug-text/type",
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "atc_codes_code": [
+      "L01XX01"
+    ],
+    "atc_codes_description": [
+      "Antineoplastic agents"
+    ],
+    "atc_level5_codes": [
+      "L01XX01"
+    ],
+    "drug_class": "Antineoplastic",
+    "external_references_chembl": [
+      "CHEMBL12345"
+    ],
+    "external_references_drugbank": [
+      "DB01234"
+    ],
+    "id": "DRUG0001",
+    "inchikey": "XKJHSHGUPQPXPA-UHFFFAOYSA-N",
+    "name": "Imatinib",
+    "synonyms": [
+      "Gleevec",
+      "STI-571"
+    ],
+    "trials_conditions_name": [
+      "Chronic Myeloid Leukemia",
+      "Gastrointestinal Stromal Tumor"
+    ],
+    "trials_description": [
+      "Phase II trial evaluating efficacy in CML",
+      "Phase III trial for GIST"
+    ],
+    "type": "Small molecule",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "atc_codes_code": [
+      "L01XX01"
+    ],
+    "atc_codes_description": [
+      "Antineoplastic agents"
+    ],
+    "atc_level5_codes": [
+      "L01XX01"
+    ],
+    "drug_class": "Antineoplastic",
+    "external_references_chembl": [
+      "CHEMBL12345"
+    ],
+    "external_references_drugbank": [
+      "DB01234"
+    ],
+    "id": "DRUG0001",
+    "inchikey": "XKJHSHGUPQPXPA-UHFFFAOYSA-N",
+    "name": "Imatinib",
+    "synonyms": [
+      "Gleevec",
+      "STI-571"
+    ],
+    "trials_conditions_name": [
+      "Chronic Myeloid Leukemia",
+      "Gastrointestinal Stromal Tumor"
+    ],
+    "trials_description": [
+      "Phase II trial evaluating efficacy in CML",
+      "Phase III trial for GIST"
+    ],
+    "type": "Small molecule"
+  },
+  "description": "Imatinib (ID\u202fDRUG0001) is a small\u2011molecule antineoplastic agent classified under the ATC code L01XX01, which falls within the broader ATC description \u201cAntineoplastic agents.\u201d The drug\u2019s InChIKey is\u202fXKJHSHGUPQPXPA\u2011UHFFFAOYSA\u2011N, and it belongs to the Antineoplastic drug class. In addition to its primary name, Imatinib is also known by the synonyms Gleevec and STI\u2011571. For further reference, the compound is listed in ChEMBL as\u202fCHEMBL12345 and in DrugBank as\u202fDB01234.  \n\nClinical development of Imatinib includes a Phase\u202fII trial evaluating its efficacy in patients with Chronic Myeloid Leukemia (CML) and a Phase\u202fIII trial investigating its use in Gastrointestinal Stromal Tumor (GIST). These studies highlight the drug\u2019s therapeutic potential across distinct oncologic indications."
+}

@@ -1,0 +1,72 @@
+{
+  "name": "o2460",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "https://cdn.brytecore.com/packages/schemas/address.json",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A mailing address",
+    "type": "object",
+    "properties": {
+      "streetAddress": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "streetAddress2": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "city": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "county": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "stateProvince": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "postalCode": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  },
+  "data": {
+    "streetAddress": "742 Evergreen Terrace",
+    "streetAddress2": "Apt. 2B",
+    "city": "Springfield",
+    "county": "Clark County",
+    "stateProvince": "Illinois",
+    "postalCode": "62704"
+  },
+  "instructions": "Could you remove the \"streetAddress2\" field?",
+  "ground_truth": {
+    "streetAddress": "742 Evergreen Terrace",
+    "city": "Springfield",
+    "county": "Clark County",
+    "stateProvince": "Illinois",
+    "postalCode": "62704"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "streetAddress2"
+    ],
+    "precise_instruction": "Remove the \"streetAddress2\" field."
+  }
+}

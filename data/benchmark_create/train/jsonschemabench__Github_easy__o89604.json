@@ -1,0 +1,47 @@
+{
+  "name": "o89604",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": [
+      "grid"
+    ],
+    "properties": {
+      "grid": {
+        "type": "object",
+        "required": [
+          "resource"
+        ],
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "topic",
+            "axRole": "inlet"
+          }
+        }
+      },
+      "tabs": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "format": "topic",
+            "default": "events"
+          }
+        }
+      }
+    }
+  },
+  "description": "The dashboard has been set up so that the main grid pulls its data from the temperature sensor feed identified as **sensor/temperature**. In the tab section, the default view is configured to show the **events** parameter, ensuring that any relevant occurrences are displayed promptly.",
+  "reference_json": {
+    "grid": {
+      "resource": "sensor/temperature"
+    },
+    "tabs": {
+      "parameter": "events"
+    }
+  }
+}

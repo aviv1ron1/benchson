@@ -1,0 +1,86 @@
+{
+  "name": "o41639",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "pets": {
+        "type": "object",
+        "properties": {
+          "dog": {
+            "type": "string"
+          },
+          "cat": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dog",
+          "cat"
+        ]
+      },
+      "morePets": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/pets"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "horse": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "horse"
+            ]
+          }
+        ]
+      }
+    },
+    "properties": {
+      "pets": {
+        "$ref": "#/definitions/pets"
+      },
+      "morePets": {
+        "$ref": "#/definitions/morePets"
+      }
+    },
+    "required": [
+      "pets",
+      "morePets"
+    ]
+  },
+  "data": {
+    "pets": {
+      "dog": "Buddy",
+      "cat": "Whiskers"
+    },
+    "morePets": {
+      "dog": "Rex",
+      "cat": "Mittens",
+      "horse": "Shadow"
+    }
+  },
+  "instructions": "Could you change the value \"dog\" in the \"morePets\" field to \"Rex (updated)\"?",
+  "ground_truth": {
+    "pets": {
+      "dog": "Buddy",
+      "cat": "Whiskers"
+    },
+    "morePets": {
+      "dog": "Rex (updated)",
+      "cat": "Mittens",
+      "horse": "Shadow"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "morePets",
+      "dog"
+    ],
+    "precise_instruction": "Change \"dog\" inside \"morePets\" to \"Rex (updated)\"."
+  }
+}

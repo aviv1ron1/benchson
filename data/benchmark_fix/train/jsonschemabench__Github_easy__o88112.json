@@ -1,0 +1,35 @@
+{
+  "name": "o88112",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "http://schemas.wbeme.com/json-schema/eme/accounts/mixin/account-ref/1-0-0.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "account_id": {
+        "type": "string",
+        "pattern": "^[\\w\\/\\.:-]+$",
+        "description": "The EME account that this message is associated with.",
+        "pbj": {
+          "type": "identifier",
+          "rule": "single"
+        }
+      }
+    },
+    "additionalProperties": true
+  },
+  "erroneous_json": {
+    "account_id": null,
+    "owner": "Acme Corp",
+    "status": "active",
+    "created_at": "2023-11-15T08:30:00Z"
+  },
+  "valid_json": {
+    "account_id": "EME-Account_001/region1.subsection",
+    "owner": "Acme Corp",
+    "status": "active",
+    "created_at": "2023-11-15T08:30:00Z"
+  },
+  "description": "Subject: Account Details \u2013 EME-Account_001/region1.subsection  \n\nThe account with identifier **EME-Account_001/region1.subsection** is owned by **Acme Corp**. It is presently marked as **active** and its creation timestamp is **2023-11-15T08:30:00Z**."
+}

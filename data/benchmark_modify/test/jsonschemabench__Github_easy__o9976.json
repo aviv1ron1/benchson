@@ -1,0 +1,54 @@
+{
+  "name": "o9976",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "name": {
+        "$default": {
+          "$source": "argv",
+          "index": 0
+        },
+        "type": "string"
+      },
+      "path": {
+        "description": "The path to create the component.",
+        "format": "path",
+        "type": "string",
+        "visible": false
+      },
+      "project": {
+        "$default": {
+          "$source": "projectName"
+        },
+        "description": "The name of the project.",
+        "type": "string"
+      },
+      "proxy": {
+        "description": "if the component needs to proxy its calls to api",
+        "type": "boolean"
+      }
+    },
+    "title": "Menu Schema",
+    "type": "object"
+  },
+  "data": {
+    "name": "UserMenu",
+    "path": "./src/components/menu",
+    "project": "AwesomeProject",
+    "proxy": true
+  },
+  "instructions": "Please remove the \u201cpath\u201d field.",
+  "ground_truth": {
+    "name": "UserMenu",
+    "project": "AwesomeProject",
+    "proxy": true
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "path"
+    ],
+    "precise_instruction": "Remove the \"path\" field."
+  }
+}

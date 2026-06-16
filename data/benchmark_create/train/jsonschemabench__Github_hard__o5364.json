@@ -1,0 +1,251 @@
+{
+  "name": "o5364",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelConfidenceLevelModifiedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "1.1.0"
+            ],
+            "default": "1.1.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "artifactId": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "artifactId",
+                  "version"
+                ],
+                "additionalProperties": false
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "sdm": {
+                "type": "object",
+                "properties": {
+                  "authorIdentity": {
+                    "type": "string"
+                  },
+                  "encryptedDigest": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "authorIdentity",
+                  "encryptedDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string",
+            "enum": [
+              "SUCCESS",
+              "FAILURE",
+              "INCONCLUSIVE"
+            ]
+          },
+          "issuer": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "group": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "description": "The EiffelConfidenceLevelModifiedEvent (ID\u202f123e4567-e89b-12d3-a456-426614174000) version\u202f1.1.0 was recorded at epoch timestamp\u202f1718421234567. It carries the tags\u202fconfidence\u202fand\u202fmodification. The source of the event is the Eiffel CI system (domainId\u202fexample-domain) running on host\u202fci.example.com; the serializer used is\u202fcom.example:eiffel-serializer:2.0.1 and the event originated from\u202fhttps://ci.example.com/build/1234. Security metadata indicates the author identity\u202fjohn.doe@example.com and the encrypted digest\u202fc2VjcmV0RGlnZXN0.  \n\nThe data payload reports a confidence metric named\u202fBuildConfidence with a value of\u202fSUCCESS. The issuer is\u202fJohn Doe (email\u202fjohn.doe@example.com, id\u202fjdoe-001, group\u202fdev-team). Additional custom data include\u202fbuildNumber\u202f=\u202f1234 and\u202fbranch\u202f=\u202fmain. This event links back to the cause event\u202f987f6543-e21b-34d5-b678-123456789abc\u202f(type\u202fCAUSE) and references the previous confidence record\u202f0a1b2c3d-4e5f-3a7b-8c9d-0e1f2a3b4c5d\u202f(type\u202fPREVIOUS_CONFIDENCE).",
+  "reference_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelConfidenceLevelModifiedEvent",
+      "version": "1.1.0",
+      "time": 1718421234567,
+      "tags": [
+        "confidence",
+        "modification"
+      ],
+      "source": {
+        "domainId": "example-domain",
+        "host": "ci.example.com",
+        "name": "Eiffel CI",
+        "serializer": {
+          "groupId": "com.example",
+          "artifactId": "eiffel-serializer",
+          "version": "2.0.1"
+        },
+        "uri": "https://ci.example.com/build/1234"
+      },
+      "security": {
+        "sdm": {
+          "authorIdentity": "john.doe@example.com",
+          "encryptedDigest": "c2VjcmV0RGlnZXN0"
+        }
+      }
+    },
+    "data": {
+      "name": "BuildConfidence",
+      "value": "SUCCESS",
+      "issuer": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "id": "jdoe-001",
+        "group": "dev-team"
+      },
+      "customData": [
+        {
+          "key": "buildNumber",
+          "value": "1234"
+        },
+        {
+          "key": "branch",
+          "value": "main"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "987f6543-e21b-34d5-b678-123456789abc"
+      },
+      {
+        "type": "PREVIOUS_CONFIDENCE",
+        "target": "0a1b2c3d-4e5f-3a7b-8c9d-0e1f2a3b4c5d"
+      }
+    ]
+  }
+}

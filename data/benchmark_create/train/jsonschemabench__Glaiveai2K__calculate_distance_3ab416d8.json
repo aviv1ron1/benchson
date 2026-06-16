@@ -1,0 +1,39 @@
+{
+  "name": "calculate_distance_3ab416d8",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "end_latitude": {
+        "description": "The latitude of the destination",
+        "type": "number"
+      },
+      "end_longitude": {
+        "description": "The longitude of the destination",
+        "type": "number"
+      },
+      "start_latitude": {
+        "description": "The latitude of the starting point",
+        "type": "number"
+      },
+      "start_longitude": {
+        "description": "The longitude of the starting point",
+        "type": "number"
+      }
+    },
+    "required": [
+      "start_latitude",
+      "start_longitude",
+      "end_latitude",
+      "end_longitude"
+    ],
+    "type": "object"
+  },
+  "description": "Hello Team,\n\nFor the upcoming cross\u2011country logistics run, the starting coordinates are set at a latitude of\u202f40.7128\u00b0\u202fN and a longitude of\u202f\u201174.006\u00b0\u202fW (New\u202fYork City). The destination point is recorded at a latitude of\u202f34.0522\u00b0\u202fN and a longitude of\u202f\u2011118.2437\u00b0\u202fW (Los\u202fAngeles). Please use these geographic references when configuring the routing software and verifying the map overlays.",
+  "reference_json": {
+    "start_latitude": 40.7128,
+    "start_longitude": -74.006,
+    "end_latitude": 34.0522,
+    "end_longitude": -118.2437
+  }
+}

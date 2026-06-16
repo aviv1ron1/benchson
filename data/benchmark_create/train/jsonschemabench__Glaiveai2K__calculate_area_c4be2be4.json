@@ -1,0 +1,62 @@
+{
+  "name": "calculate_area_c4be2be4",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "description": "The dimensions of the shape",
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "radius",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (e.g. rectangle, circle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Specification Sheet \u2013 New Cylinder Component  \n\nThe component identified as a **cylinder** has the following key dimensions: a base measurement of **5.2\u202funits** and a corresponding radius of **5.2\u202funits**. Its overall height is **12.7\u202funits**, while the length of the cylindrical body is **8.0\u202funits**. Additionally, the maximum width across the shape measures **4.3\u202funits**.  \n\nPlease update the design database with these figures and confirm that the manufacturing tooling is set to accommodate the listed dimensions.",
+  "reference_json": {
+    "shape": "cylinder",
+    "dimensions": {
+      "base": 5.2,
+      "height": 12.7,
+      "length": 8.0,
+      "radius": 5.2,
+      "width": 4.3
+    }
+  }
+}

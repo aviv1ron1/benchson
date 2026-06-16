@@ -1,0 +1,91 @@
+{
+  "name": "o65450",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A document of some sort (PDF, TIFF, HTML) associated with a filing",
+    "type": "object",
+    "properties": {
+      "uid": {
+        "description": "Unique id/reference for the filing if it has one",
+        "type": "string"
+      },
+      "file_format": {
+        "description": "Format of the document, if known",
+        "enum": [
+          "xml",
+          "pdf",
+          "html",
+          "doc",
+          null
+        ]
+      },
+      "original_source_url": {
+        "description": "Persistent URL for the document, if there is one",
+        "type": "string"
+      },
+      "source_url": {
+        "description": "Source url of the web page for the filing or if there is not persistent URL the page from which it can be found (e.g. search page)",
+        "type": "string",
+        "minLength": 11
+      },
+      "source_location": {
+        "type": "string",
+        "description": "If the accounts filing has been put on sources.opencorporates.com the path to the filing"
+      },
+      "language": {
+        "description": "Should be represented as two-letter ISO-639 code",
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 2
+      },
+      "classification": {
+        "description": "type of document (at the moment only XBRL is the only option here)",
+        "type": "string",
+        "enum": [
+          "xbrl",
+          null
+        ]
+      },
+      "pages": {
+        "description": "Number of pages, if known",
+        "type": "integer"
+      }
+    },
+    "additionalProperties": false,
+    "anyOf": [
+      {
+        "required": [
+          "source_location"
+        ]
+      },
+      {
+        "required": [
+          "source_url"
+        ]
+      }
+    ]
+  },
+  "erroneous_json": {
+    "uid": "FILING-2023-00123",
+    "file_format": "pdf",
+    "original_source_url": "https://documents.example.com/filings/2023/00123.pdf",
+    "source_url": "https://search.example.com/query?doc=00123",
+    "source_location": "/companies/123456/filings/2023-01-01",
+    "language": null,
+    "classification": "xbrl",
+    "pages": 58
+  },
+  "valid_json": {
+    "uid": "FILING-2023-00123",
+    "file_format": "pdf",
+    "original_source_url": "https://documents.example.com/filings/2023/00123.pdf",
+    "source_url": "https://search.example.com/query?doc=00123",
+    "source_location": "/companies/123456/filings/2023-01-01",
+    "language": "en",
+    "classification": "xbrl",
+    "pages": 58
+  },
+  "description": "Please note that the filing identified by UID **FILING-2023-00123** is provided as a **pdf** document. The original source can be accessed at https://documents.example.com/filings/2023/00123.pdf, while the search page that leads to it is https://search.example.com/query?doc=00123. On our OpenCorporates archive the filing resides at the path **/companies/123456/filings/2023-01-01**. The file is in English (**en**), classified as **xbrl**, and comprises **58** pages."
+}

@@ -1,0 +1,51 @@
+{
+  "name": "calculate_area_cb73c384",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "base": {
+        "description": "The base of the triangle",
+        "type": "number"
+      },
+      "height": {
+        "description": "The height of the triangle",
+        "type": "number"
+      },
+      "length": {
+        "description": "The length of the rectangle",
+        "type": "number"
+      },
+      "radius": {
+        "description": "The radius of the circle",
+        "type": "number"
+      },
+      "shape": {
+        "description": "The shape to calculate the area of",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      },
+      "width": {
+        "description": "The width of the rectangle",
+        "type": "number"
+      }
+    },
+    "required": [
+      "shape"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Area calculation request \u2013 triangle  \n\nPlease compute the area for the triangle specified in the attached data. The triangle has a base of\u202f5.2\u202funits and a height of\u202f3.8\u202funits. For completeness, the dataset also includes dimensions for a rectangle (length\u202f7.0\u202funits, width\u202f4.5\u202funits) and a circle (radius\u202f2.1\u202funits), which may be needed for subsequent calculations. The shape to be processed for this request is explicitly indicated as \u201ctriangle.\u201d",
+  "reference_json": {
+    "shape": "triangle",
+    "base": 5.2,
+    "height": 3.8,
+    "length": 7.0,
+    "width": 4.5,
+    "radius": 2.1
+  }
+}

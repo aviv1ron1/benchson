@@ -1,0 +1,93 @@
+{
+  "name": "o45405",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "commonModule": {
+        "default": true,
+        "description": "Flag to control whether the CommonModule is imported.",
+        "type": "boolean",
+        "visible": false
+      },
+      "flat": {
+        "default": false,
+        "description": "Flag to indicate if a dir is created.",
+        "type": "boolean"
+      },
+      "module": {
+        "alias": "m",
+        "description": "Allows specification of the declaring module.",
+        "type": "string"
+      },
+      "name": {
+        "$default": {
+          "$source": "argv",
+          "index": 0
+        },
+        "description": "The name of the module.",
+        "type": "string"
+      },
+      "path": {
+        "description": "The path to create the module.",
+        "format": "path",
+        "type": "string",
+        "visible": false
+      },
+      "project": {
+        "$default": {
+          "$source": "projectName"
+        },
+        "description": "The name of the project.",
+        "type": "string"
+      },
+      "routing": {
+        "default": false,
+        "description": "Generates a routing module.",
+        "type": "boolean"
+      },
+      "routingScope": {
+        "default": "Child",
+        "description": "The scope for the generated routing.",
+        "enum": [
+          "Child",
+          "Root"
+        ],
+        "type": "string"
+      },
+      "spec": {
+        "default": true,
+        "description": "Specifies if a spec file is generated.",
+        "type": "boolean"
+      }
+    },
+    "required": [],
+    "title": "Angular Module Options Schema",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "commonModule": false,
+    "flat": true,
+    "module": "AppModule",
+    "name": "user-management",
+    "path": "src/app/features/user-management",
+    "project": "my-angular-app",
+    "routing": true,
+    "routingScope": "Child",
+    "spec": false,
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "commonModule": false,
+    "flat": true,
+    "module": "AppModule",
+    "name": "user-management",
+    "path": "src/app/features/user-management",
+    "project": "my-angular-app",
+    "routing": true,
+    "routingScope": "Child",
+    "spec": false
+  },
+  "description": "Subject: New Angular Feature Module \u2013\u202fUser Management  \n\nHi Team,  \n\nWe need to add a **user\u2011management** module to the **my-angular-app** project. Please generate the module under the folder **src/app/features/user-management**, attaching it to the existing **AppModule**. The files should be created as a flat structure (no additional sub\u2011directory), and we don\u2019t need to import the **CommonModule**. Since this feature requires its own routing, enable a routing module with a **Child** scope, but omit the accompanying spec file for now.  \n\nThanks for handling this setup. Let me know if any clarification is needed."
+}

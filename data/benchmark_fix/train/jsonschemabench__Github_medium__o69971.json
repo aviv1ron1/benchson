@@ -1,0 +1,199 @@
+{
+  "name": "o69971",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Schema for loan",
+    "type": "object",
+    "required": [
+      "pid",
+      "$schema",
+      "state"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "$schema": {
+        "type": "string",
+        "title": "Schema"
+      },
+      "item": {
+        "title": "Item",
+        "type": "object",
+        "properties": {
+          "$ref": {
+            "title": "Item URI",
+            "type": "string",
+            "pattern": "^https://ils.rero.ch/api/items/.+?$",
+            "default": "https://ils.rero.ch/api/items/"
+          }
+        }
+      },
+      "extension_count": {
+        "type": "integer",
+        "title": "Loan extension count"
+      },
+      "pid": {
+        "type": "string",
+        "title": "Loan PID"
+      },
+      "transaction_date": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Loan date"
+      },
+      "patron_pid": {
+        "type": "string",
+        "title": "Patron PID"
+      },
+      "document_pid": {
+        "type": "string",
+        "title": "Document PID"
+      },
+      "item_pid": {
+        "type": "string",
+        "title": "Item PID"
+      },
+      "transaction_user_pid": {
+        "type": "string",
+        "title": "Transaction user PID"
+      },
+      "transaction_location_pid": {
+        "type": "string",
+        "title": "Transaction location PID"
+      },
+      "pickup_location_pid": {
+        "type": "string",
+        "title": "Request pickup location PID"
+      },
+      "request_expiry_date": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Request expiry date"
+      },
+      "start_date": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Transaction start date"
+      },
+      "end_date": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Transaction end date"
+      },
+      "organisation": {
+        "title": "Organisation",
+        "type": "object",
+        "properties": {
+          "$ref": {
+            "title": "Organisation URI",
+            "type": "string",
+            "pattern": "^https://ils.rero.ch/api/organisations/.*?$"
+          }
+        }
+      },
+      "state": {
+        "type": "string",
+        "title": "State name",
+        "enum": [
+          "CREATED",
+          "PENDING",
+          "ITEM_ON_LOAN",
+          "ITEM_RETURNED",
+          "ITEM_IN_TRANSIT_FOR_PICKUP",
+          "ITEM_IN_TRANSIT_TO_HOUSE",
+          "ITEM_AT_DESK",
+          "CANCELLED"
+        ],
+        "form": {
+          "options": [
+            {
+              "label": "CREATED",
+              "value": "CREATED"
+            },
+            {
+              "label": "PENDING",
+              "value": "PENDING"
+            },
+            {
+              "label": "ITEM_ON_LOAN",
+              "value": "ITEM_ON_LOAN"
+            },
+            {
+              "label": "ITEM_RETURNED",
+              "value": "ITEM_RETURNED"
+            },
+            {
+              "label": "ITEM_IN_TRANSIT_FOR_PICKUP",
+              "value": "ITEM_IN_TRANSIT_FOR_PICKUP"
+            },
+            {
+              "label": "ITEM_IN_TRANSIT_TO_HOUSE",
+              "value": "ITEM_IN_TRANSIT_TO_HOUSE"
+            },
+            {
+              "label": "ITEM_AT_DESK",
+              "value": "ITEM_AT_DESK"
+            },
+            {
+              "label": "CANCELLED",
+              "value": "CANCELLED"
+            }
+          ]
+        }
+      },
+      "trigger": {
+        "type": "string",
+        "title": "The name of the explicit action that triggered the transition to current state"
+      }
+    }
+  },
+  "erroneous_json": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "pid": "loan-12345",
+    "state": "ITEM_ON_LOAN",
+    "item": {
+      "$ref": "https://ils.rero.ch/api/items/9876"
+    },
+    "extension_count": 2,
+    "transaction_date": "2024-03-01T10:00:00Z",
+    "patron_pid": "patron-001",
+    "document_pid": "doc-789",
+    "item_pid": "item-987",
+    "transaction_user_pid": "user-456",
+    "transaction_location_pid": "loc-01",
+    "pickup_location_pid": "loc-02",
+    "request_expiry_date": "2024-03-10T23:59:59Z",
+    "start_date": "2024-03-02T09:00:00Z",
+    "end_date": "2024-04-02T09:00:00Z",
+    "organisation": {
+      "$ref": "https://ils.rero.ch/api/organisations/123"
+    },
+    "trigger": "checkout",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "pid": "loan-12345",
+    "state": "ITEM_ON_LOAN",
+    "item": {
+      "$ref": "https://ils.rero.ch/api/items/9876"
+    },
+    "extension_count": 2,
+    "transaction_date": "2024-03-01T10:00:00Z",
+    "patron_pid": "patron-001",
+    "document_pid": "doc-789",
+    "item_pid": "item-987",
+    "transaction_user_pid": "user-456",
+    "transaction_location_pid": "loc-01",
+    "pickup_location_pid": "loc-02",
+    "request_expiry_date": "2024-03-10T23:59:59Z",
+    "start_date": "2024-03-02T09:00:00Z",
+    "end_date": "2024-04-02T09:00:00Z",
+    "organisation": {
+      "$ref": "https://ils.rero.ch/api/organisations/123"
+    },
+    "trigger": "checkout"
+  },
+  "description": "Dear Team,\n\nPlease note that the loan with PID **loan-12345** is currently in the **ITEM_ON_LOAN** state. The item borrowed is referenced at https://ils.rero.ch/api/items/9876 (Item PID: item-987) and belongs to document **doc-789**. The transaction was initiated on **2024-03-01T10:00:00Z** by user **user-456** at location **loc-01**, and the patron involved is **patron-001**. The pickup location for this request is **loc-02**, with a request expiry date of **2024-03-10T23:59:59Z**. The loan period started on **2024-03-02T09:00:00Z** and is scheduled to end on **2024-04-02T09:00:00Z**. The loan is associated with the organisation at https://ils.rero.ch/api/organisations/123.\n\nThis loan has been extended **2** times, and the most recent state transition was triggered by a **checkout** action. If any further actions are required, please refer to the details above."
+}

@@ -1,0 +1,29 @@
+{
+  "name": "o53019",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Schema definition of a pokemon Type",
+    "properties": {
+      "slot": {
+        "type": "integer"
+      },
+      "type": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "format": "url",
+            "type": "string"
+          }
+        },
+        "required": [],
+        "type": "object"
+      }
+    },
+    "required": [],
+    "title": "type",
+    "type": "object"
+  }
+}

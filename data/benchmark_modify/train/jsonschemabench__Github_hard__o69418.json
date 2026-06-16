@@ -1,0 +1,277 @@
+{
+  "name": "o69418",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "customerNumber": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "middleName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "contactEmail": {
+        "type": "string"
+      },
+      "contactPhone": {
+        "type": "string"
+      },
+      "preferredLanguage": {
+        "type": "string",
+        "default": "en_US"
+      },
+      "preferredCurrency": {
+        "type": "string",
+        "default": "USD"
+      },
+      "accounts": {
+        "type": "array",
+        "description": "A list of OAuth accounts, associated with a customer's profile.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "addresses": {
+        "type": "array",
+        "items": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "contactName": {
+              "type": "string"
+            },
+            "companyName": {
+              "type": "string"
+            },
+            "street": {
+              "type": "string"
+            },
+            "streetNumber": {
+              "type": "string"
+            },
+            "streetAppendix": {
+              "type": "string"
+            },
+            "zipCode": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "contactPhone": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "description": "Values like: Billing / Shipping or any other custom tag",
+              "items": {
+                "type": "string"
+              }
+            },
+            "isDefault": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "contactName",
+            "isDefault"
+          ]
+        }
+      },
+      "defaultAddress": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "contactName": {
+            "type": "string"
+          },
+          "companyName": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "streetNumber": {
+            "type": "string"
+          },
+          "streetAppendix": {
+            "type": "string"
+          },
+          "zipCode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "contactPhone": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "description": "Values like: Billing / Shipping or any other custom tag",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isDefault": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "contactName",
+          "isDefault"
+        ],
+        "description": "Default address of the customer"
+      }
+    },
+    "required": [
+      "contactEmail"
+    ]
+  },
+  "data": {
+    "id": "c12345",
+    "customerNumber": "CN-20230615-001",
+    "title": "Ms.",
+    "firstName": "Emily",
+    "middleName": "Rose",
+    "lastName": "Johnson",
+    "contactEmail": "emily.johnson@example.com",
+    "contactPhone": "+1-202-555-0173",
+    "preferredLanguage": "en_US",
+    "preferredCurrency": "USD",
+    "accounts": [
+      "google-oauth2-9876543210",
+      "facebook-oauth2-1234567890"
+    ],
+    "addresses": [
+      {
+        "id": "addr-001",
+        "contactName": "Emily R. Johnson",
+        "companyName": "Johnson Consulting LLC",
+        "street": "Maple Avenue",
+        "streetNumber": "742",
+        "streetAppendix": "Apt 5B",
+        "zipCode": "94107",
+        "city": "San Francisco",
+        "country": "USA",
+        "state": "CA",
+        "contactPhone": "+1-415-555-0123",
+        "tags": [
+          "Billing",
+          "Shipping"
+        ],
+        "isDefault": true
+      },
+      {
+        "id": "addr-002",
+        "contactName": "Emily R. Johnson",
+        "companyName": "Johnson Consulting LLC",
+        "street": "Oak Street",
+        "streetNumber": "1200",
+        "streetAppendix": "",
+        "zipCode": "10001",
+        "city": "New York",
+        "country": "USA",
+        "state": "NY",
+        "contactPhone": "+1-212-555-0456",
+        "tags": [
+          "Office"
+        ],
+        "isDefault": false
+      }
+    ],
+    "defaultAddress": {
+      "id": "addr-001",
+      "contactName": "Emily R. Johnson",
+      "companyName": "Johnson Consulting LLC",
+      "street": "Maple Avenue",
+      "streetNumber": "742",
+      "streetAppendix": "Apt 5B",
+      "zipCode": "94107",
+      "city": "San Francisco",
+      "country": "USA",
+      "state": "CA",
+      "contactPhone": "+1-415-555-0123",
+      "tags": [
+        "Billing",
+        "Shipping"
+      ],
+      "isDefault": true
+    }
+  },
+  "instructions": "Could you remove all items from the addresses list?",
+  "ground_truth": {
+    "id": "c12345",
+    "customerNumber": "CN-20230615-001",
+    "title": "Ms.",
+    "firstName": "Emily",
+    "middleName": "Rose",
+    "lastName": "Johnson",
+    "contactEmail": "emily.johnson@example.com",
+    "contactPhone": "+1-202-555-0173",
+    "preferredLanguage": "en_US",
+    "preferredCurrency": "USD",
+    "accounts": [
+      "google-oauth2-9876543210",
+      "facebook-oauth2-1234567890"
+    ],
+    "addresses": [],
+    "defaultAddress": {
+      "id": "addr-001",
+      "contactName": "Emily R. Johnson",
+      "companyName": "Johnson Consulting LLC",
+      "street": "Maple Avenue",
+      "streetNumber": "742",
+      "streetAppendix": "Apt 5B",
+      "zipCode": "94107",
+      "city": "San Francisco",
+      "country": "USA",
+      "state": "CA",
+      "contactPhone": "+1-415-555-0123",
+      "tags": [
+        "Billing",
+        "Shipping"
+      ],
+      "isDefault": true
+    }
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "addresses"
+    ],
+    "precise_instruction": "Remove all items from the \"addresses\" list."
+  }
+}

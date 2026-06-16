@@ -1,0 +1,156 @@
+{
+  "name": "o61614",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "Dock": {
+        "description": "Optional. An array of dictionaries, each of which must conform to the icon dictionary format.",
+        "items": {
+          "description": "An item in the dock",
+          "properties": {
+            "BundleID": {
+              "description": "Required if App type. The bundle identifier of the app.",
+              "type": "string"
+            },
+            "DisplayName": {
+              "description": "Human-readable string to be shown to the user.",
+              "type": "string"
+            },
+            "Pages": {
+              "description": "Optional. An array of dictionaries, each of which must conform to the icon dictionary format.",
+              "type": "array"
+            },
+            "Type": {
+              "description": "Type of the item to add",
+              "enum": [
+                "Application",
+                "Folder"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "Pages": {
+        "description": "Optional. An array of dictionaries, each of which must conform to the icon dictionary format.",
+        "items": {
+          "description": "An item in the dock",
+          "properties": {
+            "BundleID": {
+              "description": "Required if App type. The bundle identifier of the app.",
+              "type": "string"
+            },
+            "DisplayName": {
+              "description": "Human-readable string to be shown to the user.",
+              "type": "string"
+            },
+            "Pages": {
+              "description": "Optional. An array of dictionaries, each of which must conform to the icon dictionary format.",
+              "type": "array"
+            },
+            "Type": {
+              "description": "Type of the item to add",
+              "enum": [
+                "Application",
+                "Folder"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "PayloadDescription": {
+        "default": "Home Screen Layout",
+        "description": "Description of the payload",
+        "type": "string"
+      },
+      "PayloadDisplayName": {
+        "default": "Home Screen Layout",
+        "description": "Name of the payload",
+        "type": "string"
+      },
+      "PayloadIdentifier": {
+        "default": "com.apple.homescreenlayout",
+        "description": "A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier",
+        "type": "string"
+      },
+      "PayloadOrganization": {
+        "description": "This value describes the issuing organization of the profile, as displayed to the user",
+        "type": "string"
+      },
+      "PayloadType": {
+        "default": "com.apple.homescreenlayout",
+        "description": "The type of the payload, a reverse dns string",
+        "type": "string"
+      },
+      "PayloadUUID": {
+        "default": "",
+        "description": "Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)",
+        "pattern": "^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$",
+        "type": "string"
+      },
+      "PayloadVersion": {
+        "default": 1,
+        "description": "The version of the whole configuration profile.",
+        "type": "number"
+      }
+    },
+    "title": "com.apple.homescreenlayout",
+    "type": "object"
+  },
+  "description": "The configuration profile titled \u201cHome Screen Layout\u201d (PayloadIdentifier\u202fcom.example.profile.homescreen) has been prepared for Example Corp. It is identified by the UUID\u202f123E4567\u2011E89B\u201112D3\u2011A456\u2011426614174000, uses the payload type\u202fcom.apple.homescreenlayout, and is version\u202f1 of the profile. This payload will apply a standardized arrangement to all managed iOS devices, ensuring a consistent user experience across the organization.\n\nThe dock will contain the Mail application (Bundle ID\u202fcom.apple.mobilemail) and a folder named \u201cUtilities\u201d. Inside Utilities you will find the Calculator app (Bundle ID\u202fcom.apple.calculator) and another folder called \u201cNotes\u202fFolder\u201d. On the home screen pages, the first page will feature the Maps app (Bundle ID\u202fcom.apple.maps) and a folder labeled \u201cGames\u201d. The Games folder holds the Sudoku application (Bundle ID\u202fcom.apple.sudoku). This layout matches the requested design while preserving the original naming and bundle identifiers.",
+  "reference_json": {
+    "Dock": [
+      {
+        "BundleID": "com.apple.mobilemail",
+        "DisplayName": "Mail",
+        "Type": "Application"
+      },
+      {
+        "DisplayName": "Utilities",
+        "Type": "Folder",
+        "Pages": [
+          {
+            "BundleID": "com.apple.calculator",
+            "DisplayName": "Calculator",
+            "Type": "Application"
+          },
+          {
+            "DisplayName": "Notes Folder",
+            "Type": "Folder"
+          }
+        ]
+      }
+    ],
+    "Pages": [
+      {
+        "BundleID": "com.apple.maps",
+        "DisplayName": "Maps",
+        "Type": "Application"
+      },
+      {
+        "DisplayName": "Games",
+        "Type": "Folder",
+        "Pages": [
+          {
+            "BundleID": "com.apple.sudoku",
+            "DisplayName": "Sudoku",
+            "Type": "Application"
+          }
+        ]
+      }
+    ],
+    "PayloadDescription": "Home Screen Layout",
+    "PayloadDisplayName": "Home Screen Layout",
+    "PayloadIdentifier": "com.example.profile.homescreen",
+    "PayloadOrganization": "Example Corp",
+    "PayloadType": "com.apple.homescreenlayout",
+    "PayloadUUID": "123E4567-E89B-12D3-A456-426614174000",
+    "PayloadVersion": 1
+  }
+}

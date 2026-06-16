@@ -1,0 +1,80 @@
+{
+  "name": "o90314",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "StyleSymbolReference",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The StyleSymbolReference is used to reference a symbol from a portal styleItem",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Identifies a symbol in the style by name."
+      },
+      "styleName": {
+        "type": "string",
+        "description": "A registered web style name, such as `EsriThematicTreesStyle`"
+      },
+      "styleUrl": {
+        "type": "string",
+        "description": "URL to a style definition."
+      },
+      "type": {
+        "type": "string",
+        "description": "The type of the symbol",
+        "enum": [
+          "styleSymbolReference"
+        ]
+      }
+    },
+    "oneOf": [
+      {
+        "required": [
+          "type",
+          "name",
+          "styleUrl"
+        ]
+      },
+      {
+        "required": [
+          "type",
+          "name",
+          "styleName"
+        ]
+      }
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+      "examples": [
+        {
+          "code": {
+            "symbol": {
+              "type": "styleSymbolReference",
+              "styleName": "EsriThematicTreesStyle",
+              "name": "Frangula"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "data": {
+    "type": "styleSymbolReference",
+    "name": "Frangula",
+    "styleName": "EsriThematicTreesStyle"
+  },
+  "instructions": "Please change the name field to \"Frangula (updated)\".",
+  "ground_truth": {
+    "type": "styleSymbolReference",
+    "name": "Frangula (updated)",
+    "styleName": "EsriThematicTreesStyle"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "name"
+    ],
+    "precise_instruction": "Change \"name\" to \"Frangula (updated)\"."
+  }
+}

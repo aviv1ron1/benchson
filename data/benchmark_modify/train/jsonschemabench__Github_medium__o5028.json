@@ -1,0 +1,165 @@
+{
+  "name": "o5028",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://elasticbox.net/schemas/user",
+    "type": "object",
+    "required": [
+      "_id",
+      "email",
+      "firstname",
+      "lastname",
+      "metadata",
+      "role",
+      "schema",
+      "username"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 36
+      },
+      "email": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "email_validated_at": {
+        "type": "string"
+      },
+      "firstname": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "google_id": {
+        "type": "string"
+      },
+      "saml_id": {
+        "type": "string"
+      },
+      "icon": {
+        "type": "string",
+        "maxLength": 256
+      },
+      "invite_token": {
+        "type": "string"
+      },
+      "last_login": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "lastname": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "creationTimestamp": {
+            "type": "number"
+          },
+          "deletionTimestamp": {
+            "type": "number"
+          },
+          "resourceVersion": {
+            "type": "number"
+          }
+        }
+      },
+      "password": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "maxLength": 256
+          },
+          "rounds": {
+            "enum": [
+              20
+            ]
+          },
+          "salt": {
+            "type": "string",
+            "maxLength": 64
+          }
+        }
+      },
+      "role": {
+        "type": "string",
+        "default": "user",
+        "enum": [
+          "administrator",
+          "user"
+        ]
+      },
+      "schema": {
+        "type": "string",
+        "enum": [
+          "http://elasticbox.net/schemas/user"
+        ]
+      },
+      "username": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    },
+    "type:": "object"
+  },
+  "data": {
+    "_id": "c3f5a2b1-4d9e-4f2a-9c3b-1a2b3c4d5e6f",
+    "email": "janedoe@example.com",
+    "email_validated_at": "2023-09-15T12:34:56Z",
+    "firstname": "Jane",
+    "lastname": "Doe",
+    "username": "jdoe",
+    "role": "user",
+    "schema": "http://elasticbox.net/schemas/user",
+    "metadata": {
+      "creationTimestamp": 1694779200,
+      "resourceVersion": 3
+    },
+    "password": {
+      "hash": "b109f3bbbc244eb82441917ed06d618b9008dd09b1a8f7c63f76f6b9e2e79b8b",
+      "rounds": 20,
+      "salt": "a1b2c3d4e5f6"
+    },
+    "last_login": "2024-01-10T08:22:33Z",
+    "icon": "https://example.com/avatar.png"
+  },
+  "instructions": "Please update the \"last_login\" field to \"2024-01-10T08:22:33Z (updated)\".",
+  "ground_truth": {
+    "_id": "c3f5a2b1-4d9e-4f2a-9c3b-1a2b3c4d5e6f",
+    "email": "janedoe@example.com",
+    "email_validated_at": "2023-09-15T12:34:56Z",
+    "firstname": "Jane",
+    "lastname": "Doe",
+    "username": "jdoe",
+    "role": "user",
+    "schema": "http://elasticbox.net/schemas/user",
+    "metadata": {
+      "creationTimestamp": 1694779200,
+      "resourceVersion": 3
+    },
+    "password": {
+      "hash": "b109f3bbbc244eb82441917ed06d618b9008dd09b1a8f7c63f76f6b9e2e79b8b",
+      "rounds": 20,
+      "salt": "a1b2c3d4e5f6"
+    },
+    "last_login": "2024-01-10T08:22:33Z (updated)",
+    "icon": "https://example.com/avatar.png"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "last_login"
+    ],
+    "precise_instruction": "Change \"last_login\" to \"2024-01-10T08:22:33Z (updated)\"."
+  }
+}

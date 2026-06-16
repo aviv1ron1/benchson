@@ -1,0 +1,59 @@
+{
+  "name": "o17599",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "definitions": {
+      "MySubObject": {
+        "_id": "filled#",
+        "properties": {
+          "a": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "a"
+        ],
+        "type": "object"
+      }
+    },
+    "properties": {
+      "empty": {
+        "_id": "empty#"
+      },
+      "filled": {
+        "$ref": "#/definitions/MySubObject"
+      }
+    },
+    "required": [
+      "empty",
+      "filled"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "empty": {
+      "_id": "empty#"
+    },
+    "filled": {
+      "_id": "filled#",
+      "a": true
+    }
+  },
+  "instructions": "Could you remove the\u202f_id\u202ffield inside the\u202fempty\u202fobject?",
+  "ground_truth": {
+    "empty": {},
+    "filled": {
+      "_id": "filled#",
+      "a": true
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "empty",
+      "_id"
+    ],
+    "precise_instruction": "Remove the \"_id\" field inside \"empty\"."
+  }
+}

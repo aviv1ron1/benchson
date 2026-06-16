@@ -1,0 +1,64 @@
+{
+  "name": "o42527",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "id": "http://schemas.gdbots.io/json-schema/gdbots/contexts/cloud/1-0-0.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "_schema": {
+        "type": "string",
+        "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+        "default": "pbj:gdbots:contexts::cloud:1-0-0"
+      },
+      "provider": {
+        "type": "string",
+        "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+        "minLength": 0,
+        "maxLength": 20
+      },
+      "region": {
+        "type": "string",
+        "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+        "minLength": 0,
+        "maxLength": 20
+      },
+      "zone": {
+        "type": "string",
+        "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+        "minLength": 0,
+        "maxLength": 20
+      },
+      "instance_id": {
+        "type": "string",
+        "pattern": "^[\\w\\.-]+$"
+      },
+      "instance_type": {
+        "type": "string",
+        "pattern": "^[\\w\\.-]+$"
+      }
+    },
+    "required": [
+      "_schema"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "_schema": "pbj:gdbots:contexts::cloud:1-0-0",
+    "provider": "aws",
+    "region": "us-east-1",
+    "zone": "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    "instance_id": "i-0abcd1234efgh5678",
+    "instance_type": "t2.micro"
+  },
+  "valid_json": {
+    "_schema": "pbj:gdbots:contexts::cloud:1-0-0",
+    "provider": "aws",
+    "region": "us-east-1",
+    "zone": "us-east-1a",
+    "instance_id": "i-0abcd1234efgh5678",
+    "instance_type": "t2.micro"
+  },
+  "description": "The project\u2019s compute resources are hosted on Amazon Web Services (AWS) within the\u202fus\u2011east\u20111\u202fregion, specifically in availability zone\u202fus\u2011east\u20111a. The active virtual machine is identified by the instance ID\u202fi\u20110abcd1234efgh5678 and is provisioned as a\u202ft2.micro\u202finstance type."
+}

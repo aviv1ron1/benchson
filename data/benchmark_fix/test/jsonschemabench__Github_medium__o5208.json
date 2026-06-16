@@ -1,0 +1,160 @@
+{
+  "name": "o5208",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/Enfernuz/quik-lua-rpc/json/schema/getBuySellInfo.result.scheme.json",
+    "title": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getBuySellInfo",
+    "description": "\u0421\u0445\u0435\u043c\u0430 \u043e\u0431\u044a\u0435\u043a\u0442\u0430 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u0430 \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u044b getBuySellInfo",
+    "type": "object",
+    "properties": {
+      "buy_sell_info": {
+        "description": "\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442",
+        "type": "object",
+        "properties": {
+          "is_margin_sec": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 is_margin_sec",
+            "type": "string"
+          },
+          "is_asset_sec": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 is_asset_sec",
+            "type": "string"
+          },
+          "balance": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 balance",
+            "type": "string"
+          },
+          "can_buy": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 can_buy",
+            "type": "string"
+          },
+          "can_sell": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 can_sell",
+            "type": "string"
+          },
+          "position_valuation": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 position_valuation",
+            "type": "string"
+          },
+          "value": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 value",
+            "type": "string"
+          },
+          "open_value": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 open_value",
+            "type": "string"
+          },
+          "lim_long": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 lim_long",
+            "type": "string"
+          },
+          "long_coef": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 long_coef",
+            "type": "string"
+          },
+          "lim_short": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 lim_short",
+            "type": "string"
+          },
+          "short_coef": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 short_coef",
+            "type": "string"
+          },
+          "value_coef": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 value_coef",
+            "type": "string"
+          },
+          "open_value_coef": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 open_value_coef",
+            "type": "string"
+          },
+          "share": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 share",
+            "type": "string"
+          },
+          "short_wa_price": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 short_wa_price",
+            "type": "string"
+          },
+          "long_wa_price": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 long_wa_price",
+            "type": "string"
+          },
+          "profit_loss": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 profit_loss",
+            "type": "string"
+          },
+          "spread_hc": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 spread_hc",
+            "type": "string"
+          },
+          "can_buy_own": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 can_buy_own",
+            "type": "string"
+          },
+          "can_sell_own": {
+            "description": "\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 can_sell_own",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "buy_sell_info"
+    ]
+  },
+  "erroneous_json": {
+    "buy_sell_info": {
+      "is_margin_sec": "true",
+      "is_asset_sec": "false",
+      "balance": "15000.50",
+      "can_buy": "yes",
+      "can_sell": "yes",
+      "position_valuation": "20000",
+      "value": "25000",
+      "open_value": "24000",
+      "lim_long": "50000",
+      "long_coef": "1.2",
+      "lim_short": "30000",
+      "short_coef": "0.8",
+      "value_coef": "1.04",
+      "open_value_coef": "1.01",
+      "share": "0.6",
+      "short_wa_price": "102.35",
+      "long_wa_price": "98.75",
+      "profit_loss": "5000",
+      "spread_hc": "0.02",
+      "can_buy_own": "no",
+      "can_sell_own": "yes"
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "buy_sell_info": {
+      "is_margin_sec": "true",
+      "is_asset_sec": "false",
+      "balance": "15000.50",
+      "can_buy": "yes",
+      "can_sell": "yes",
+      "position_valuation": "20000",
+      "value": "25000",
+      "open_value": "24000",
+      "lim_long": "50000",
+      "long_coef": "1.2",
+      "lim_short": "30000",
+      "short_coef": "0.8",
+      "value_coef": "1.04",
+      "open_value_coef": "1.01",
+      "share": "0.6",
+      "short_wa_price": "102.35",
+      "long_wa_price": "98.75",
+      "profit_loss": "5000",
+      "spread_hc": "0.02",
+      "can_buy_own": "no",
+      "can_sell_own": "yes"
+    }
+  },
+  "description": "The current security is flagged as a margin instrument (is_margin_sec = true) but it is not classified as an asset security (is_asset_sec = false). Our account balance for this position stands at 15000.50, and the system indicates that we are permitted to both buy and sell (can_buy = yes, can_sell = yes). However, buying on our own account is not allowed (can_buy_own = no) while selling on our own account is permitted (can_sell_own = yes). The position represents a 60\u202f% share of the total allocation (share = 0.6).  \n\nFinancially, the position valuation is 20\u202f000, with a current market value of 25\u202f000 and an open value of 24\u202f000. The long limit is set at 50\u202f000 with a long coefficient of 1.2, whereas the short limit is 30\u202f000 with a short coefficient of 0.8. The value coefficient is 1.04 and the open\u2011value coefficient is 1.01. Weighted\u2011average prices are 102.35 for short positions (short_wa_price) and 98.75 for long positions (long_wa_price). The realized profit/loss stands at 5\u202f000, and the spread on the hedging curve is 0.02 (spread_hc)."
+}

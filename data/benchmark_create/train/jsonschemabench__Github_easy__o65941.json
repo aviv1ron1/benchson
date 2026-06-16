@@ -1,0 +1,57 @@
+{
+  "name": "o65941",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "init_system",
+      "services"
+    ],
+    "properties": {
+      "init_system": {
+        "type": "string",
+        "minLength": 1
+      },
+      "services": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "name",
+            "state"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "state": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "The server is currently configured to use **systemd** as its init system. According to the latest status check, the **ssh** service is running smoothly, while **nginx** is presently stopped. The **cron** daemon remains active and running as expected.",
+  "reference_json": {
+    "init_system": "systemd",
+    "services": [
+      {
+        "name": "ssh",
+        "state": "running"
+      },
+      {
+        "name": "nginx",
+        "state": "stopped"
+      },
+      {
+        "name": "cron",
+        "state": "running"
+      }
+    ]
+  }
+}

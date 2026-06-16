@@ -1,0 +1,62 @@
+{
+  "name": "o81566",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "line1": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string"
+      },
+      "state": {
+        "type": "string"
+      },
+      "zip": {
+        "$ref": "#/definitions/US_zipCode"
+      },
+      "country": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "line1",
+      "city",
+      "state",
+      "zip",
+      "country"
+    ],
+    "definitions": {
+      "US_zipCode": {
+        "type": "string",
+        "pattern": "^[0-9]{5}(-[0-9]{4})?$"
+      }
+    }
+  },
+  "data": {
+    "line1": "742 Evergreen Terrace",
+    "city": "Springfield",
+    "state": "IL",
+    "zip": "62704-1234",
+    "country": "USA"
+  },
+  "instructions": "Please update the state field to \"IL (updated)\".",
+  "ground_truth": {
+    "line1": "742 Evergreen Terrace",
+    "city": "Springfield",
+    "state": "IL (updated)",
+    "zip": "62704-1234",
+    "country": "USA"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "state"
+    ],
+    "precise_instruction": "Change \"state\" to \"IL (updated)\"."
+  }
+}

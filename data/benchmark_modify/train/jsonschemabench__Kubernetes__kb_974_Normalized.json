@@ -1,0 +1,45 @@
+{
+  "name": "kb_974_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "ServiceAccountSubject holds detailed information for service-account-kind subject.",
+    "properties": {
+      "name": {
+        "description": "`name` is the name of matching ServiceAccount objects, or \"*\" to match regardless of name. Required.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "namespace": {
+        "description": "`namespace` is the namespace of matching ServiceAccount objects. Required.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "namespace",
+      "name"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "name": "my-service-account",
+    "namespace": "default"
+  },
+  "instructions": "Please change the \"namespace\" to \"default (updated)\".",
+  "ground_truth": {
+    "name": "my-service-account",
+    "namespace": "default (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "namespace"
+    ],
+    "precise_instruction": "Change \"namespace\" to \"default (updated)\"."
+  }
+}

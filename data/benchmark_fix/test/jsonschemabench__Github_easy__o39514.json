@@ -1,0 +1,35 @@
+{
+  "name": "o39514",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "description": "schema for a vendor",
+    "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/vendor.json#",
+    "properties": {
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "name": {
+        "description": "The vendor name, e.g. Eviratec",
+        "maxLength": 64,
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "name"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": "Eviratec Solutions"
+  },
+  "valid_json": {
+    "id": "3f9a1c2e-5d4b-4a6e-9f22-8b7c6d5e4f1a",
+    "name": "Eviratec Solutions"
+  },
+  "description": "Dear Team,\n\nPlease add the new vendor to our system under the name **Eviratec Solutions**. For reference, the vendor\u2019s unique identifier is **3f9a1c2e-5d4b-4a6e-9f22-8b7c6d5e4f1a**. Ensure all future transactions and communications are linked to this ID."
+}

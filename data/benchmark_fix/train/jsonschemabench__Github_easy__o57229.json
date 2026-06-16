@@ -1,0 +1,71 @@
+{
+  "name": "o57229",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Info on user created collections",
+    "properties": {
+      "_$id": {
+        "description": "Name of a user created collection's schema",
+        "type": "string"
+      },
+      "fields": {
+        "additionalProperties": {
+          "properties": {
+            "app_title": {
+              "type": "string"
+            },
+            "app_type": {
+              "type": "string"
+            },
+            "app_values": {
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              },
+              "type": "object"
+            }
+          },
+          "required": [
+            "app_title",
+            "app_type"
+          ],
+          "type": "object"
+        },
+        "type": "object"
+      }
+    },
+    "title": "App Collections",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "_$id": "com.example.userCollections",
+    "fields": null
+  },
+  "valid_json": {
+    "_$id": "com.example.userCollections",
+    "fields": {
+      "userProfile": {
+        "app_title": "User Profile",
+        "app_type": "document",
+        "app_values": {
+          "maxLength": 255,
+          "required": "true",
+          "defaultStatus": "active"
+        }
+      },
+      "settings": {
+        "app_title": "User Settings",
+        "app_type": "configuration",
+        "app_values": {
+          "theme": "dark",
+          "notificationsEnabled": 1,
+          "itemsPerPage": 20
+        }
+      }
+    }
+  },
+  "description": "The system defines a custom collection identified by the name **com.example.userCollections**. Within this collection there are two principal fields. The first, called **User Profile**, is classified as a document type; it carries a title of \u201cUser\u202fProfile\u201d, enforces a maximum length of\u202f255 characters, is flagged as required (\u201ctrue\u201d), and defaults to an active status. The second field, **User Settings**, is a configuration type with the title \u201cUser\u202fSettings\u201d; its values set the theme to dark, enable notifications (value\u202f1), and limit the view to 20 items per page."
+}

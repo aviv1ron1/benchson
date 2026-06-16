@@ -1,0 +1,117 @@
+{
+  "name": "o72198",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Unit Pretty Value Format Context",
+    "description": "The context for rendering custom unit prettyValue",
+    "type": "object",
+    "properties": {
+      "unit": {
+        "type": "string",
+        "title": "Unit",
+        "description": "The unit of the reward",
+        "minLength": 1
+      },
+      "value": {
+        "type": "integer",
+        "title": "Value",
+        "description": "The value of the reward. If the reward is currency based, then this is the value in the currency's fractional unit."
+      },
+      "name": {
+        "type": "string",
+        "title": "Name",
+        "description": "The name of the reward"
+      },
+      "currencySymbol": {
+        "type": "string",
+        "title": "Currency Symbol",
+        "description": "The currency symbol in the rendering locale",
+        "minLength": 1
+      },
+      "currencyLocalizedSymbol": {
+        "type": "string",
+        "title": "Currency Localized Symbol",
+        "description": "The currency symbol in the currency's native locale",
+        "minLength": 1
+      },
+      "currencyCode": {
+        "type": "string",
+        "title": "Currency Code",
+        "description": "The ISO 4217 currency code",
+        "pattern": "^[A-Z]{3}$"
+      },
+      "currencyNumericCode": {
+        "type": "integer",
+        "title": "Currency Numeric Code",
+        "description": "The ISO 4217 numeric currency code",
+        "minimum": 0,
+        "maximum": 999
+      },
+      "currencyDisplayName": {
+        "type": "string",
+        "title": "Currency Display Name",
+        "description": "The display name of the currency in the rendering locale",
+        "minLength": 1
+      },
+      "currencyLocalizedDisplayName": {
+        "type": "string",
+        "title": "Currency Localized Display Name",
+        "description": "The display name of the currency in the currency's native locale",
+        "minLength": 1
+      },
+      "currencyFractionalUnit": {
+        "type": "string",
+        "title": "Currency Fractional Unit",
+        "description": "The fractional unit of the currency, e.g. \"Cent\".",
+        "minLength": 1
+      },
+      "currencyNumberToBasic": {
+        "type": "integer",
+        "title": "Currency Number To Basic",
+        "description": "How many the currency subdivision go into the currency, e.g. 100 pence to the pound.",
+        "minimum": 1
+      },
+      "valueInCurrencyBaseUnit": {
+        "type": "number",
+        "title": "Value in Currency Base Unit",
+        "description": "The value of the reward in the currency's base unit"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "unit",
+      "value"
+    ]
+  },
+  "erroneous_json": {
+    "unit": "dollar",
+    "value": 2500,
+    "name": "Reward Bonus",
+    "currencySymbol": "$",
+    "currencyLocalizedSymbol": "$",
+    "currencyCode": "USD",
+    "currencyNumericCode": 1000,
+    "currencyDisplayName": "US Dollar",
+    "currencyLocalizedDisplayName": "US Dollar",
+    "currencyFractionalUnit": "Cent",
+    "currencyNumberToBasic": 100,
+    "valueInCurrencyBaseUnit": 25.0
+  },
+  "valid_json": {
+    "unit": "dollar",
+    "value": 2500,
+    "name": "Reward Bonus",
+    "currencySymbol": "$",
+    "currencyLocalizedSymbol": "$",
+    "currencyCode": "USD",
+    "currencyNumericCode": 840,
+    "currencyDisplayName": "US Dollar",
+    "currencyLocalizedDisplayName": "US Dollar",
+    "currencyFractionalUnit": "Cent",
+    "currencyNumberToBasic": 100,
+    "valueInCurrencyBaseUnit": 25.0
+  },
+  "description": "The Reward Bonus is issued in the dollar unit, with a raw value of\u202f2,500\u202ffractional units. This amount corresponds to a base\u2011unit value of\u202f$25.00, since there are 100\u202fcents in a dollar. The currency symbol displayed both in the rendering locale and in the native locale is \u201c$\u201d, and the ISO\u202f4217 code for the currency is\u202fUSD (numeric code\u202f840). In English it is called the US Dollar, and the localized display name is likewise \u201cUS Dollar\u201d. The fractional unit of the currency is the Cent, and the conversion rate is 100\u202fcents to one dollar."
+}

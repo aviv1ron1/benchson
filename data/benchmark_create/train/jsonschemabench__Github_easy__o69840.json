@@ -1,0 +1,42 @@
+{
+  "name": "o69840",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "button-for": {
+        "type": "string"
+      },
+      "buttons": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "The following button configuration applies to the **loginForm** component. It defines two interactive options: a **Submit** button whose action value is \u201csubmit\u201d, and a **Cancel** button with the action value \u201ccancel\u201d. These are the only controls to be rendered for the login form interface.",
+  "reference_json": {
+    "button-for": "loginForm",
+    "buttons": [
+      {
+        "label": "Submit",
+        "value": "submit"
+      },
+      {
+        "label": "Cancel",
+        "value": "cancel"
+      }
+    ]
+  }
+}

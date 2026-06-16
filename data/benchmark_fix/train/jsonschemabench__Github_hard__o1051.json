@@ -1,0 +1,261 @@
+{
+  "name": "o1051",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "id": "https://almanak.github.io/schemas/events.aarhusteater.json",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "events.aarhusteater",
+    "description": "Schema for all plays at Aarhus Teater. Must extend the generic people-schema.",
+    "type": "object",
+    "_meta": {
+      "indexProperties": [
+        "id",
+        "domain",
+        "schema",
+        "from_date",
+        "to_date"
+      ],
+      "systemProperties": [
+        "uuid",
+        "id",
+        "domain",
+        "schema",
+        "scheme",
+        "created",
+        "created_by",
+        "updated",
+        "updated_by",
+        "ext_data.scope",
+        "status"
+      ],
+      "fulltextProperties": [
+        "description"
+      ],
+      "autocompleteProperties": [
+        "display_label"
+      ]
+    },
+    "properties": {
+      "uuid": {
+        "type": "string",
+        "title": "Universal unique identifier",
+        "description": "UUID1. Assigned by system",
+        "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+      },
+      "id": {
+        "type": "string",
+        "title": "Resourcespecifik ID",
+        "description": "9-cifret l\u00f8benummer semi-specifik for resourcetypen. Assigned by system",
+        "pattern": "^[0-9]+$"
+      },
+      "domain": {
+        "type": "string",
+        "enum": [
+          "records",
+          "people",
+          "organisations",
+          "families",
+          "events",
+          "places",
+          "concepts",
+          "things"
+        ],
+        "title": "Resourcetype",
+        "description": "S\u00e6ttes kun n\u00e5r der v\u00e6lges skema til oprettelse. Ellers fastsat."
+      },
+      "schema": {
+        "type": "string",
+        "title": "Skema",
+        "description": "S\u00e6ttes kun n\u00e5r der v\u00e6lges skema til oprettelse. Ellers fastsat."
+      },
+      "created": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Skabt",
+        "description": "Datetime for skabelse af metadata-ressourcen"
+      },
+      "created_by": {
+        "type": "string",
+        "maxLength": 255,
+        "title": "Skabt af",
+        "description": "Brugernavn/ID p\u00e5 skaber/oploader af metadata-ressourcen"
+      },
+      "updated": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Senest opdateret",
+        "description": "Datetime for seneste opdatering af ressourcen"
+      },
+      "updated_by": {
+        "type": "string",
+        "maxLength": 255,
+        "title": "Senest opdateret af",
+        "description": "Brugernavn p\u00e5 seneste opdaterer af metadata-ressourcen"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "validated",
+          "machine-generated",
+          "user-generated"
+        ],
+        "title": "Status",
+        "default": "user-generated"
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 255,
+        "title": "Forestillingsnavn",
+        "description": "Navnet p\u00e5 forestillingen (uden \u00e5rstal)"
+      },
+      "display_label": {
+        "type": "string",
+        "maxLength": 255,
+        "title": "Displaynavn",
+        "description": "Den label, som entiteten repr\u00e6senteres med"
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 5000,
+        "title": "Beskrivelse"
+      },
+      "sources": {
+        "type": "string",
+        "title": "Kilder",
+        "description": "URL-links eller enkeltlinje referencer"
+      },
+      "portrait": {
+        "type": "string",
+        "maxLength": 255,
+        "format": "uri",
+        "title": "Portr\u00e6t"
+      },
+      "date_from": {
+        "type": "string",
+        "format": "date",
+        "title": "F\u00f8dselsdato (\u00e5\u00e5\u00e5\u00e5-mm-dd)",
+        "pattern": "^([0-9]{4})(-([0-9]{2}))?(-([0-9]{2}))?$"
+      },
+      "date_to": {
+        "type": "string",
+        "format": "date",
+        "title": "D\u00f8dsdato (\u00e5\u00e5\u00e5\u00e5-mm-dd)",
+        "pattern": "^([0-9]{4})(-([0-9]{2}))?(-([0-9]{2}))?$"
+      },
+      "ext_data": {
+        "type": "object",
+        "title": "Udvided metadata",
+        "properties": {
+          "original_id": {
+            "type": "string",
+            "title": "Originalt ID"
+          },
+          "poster": {
+            "type": "boolean",
+            "title": "Plakat"
+          },
+          "stagename": {
+            "type": "string",
+            "title": "Scene"
+          },
+          "composer": {
+            "type": "string",
+            "title": "Komponist"
+          },
+          "translater": {
+            "type": "string",
+            "title": "Overs\u00e6tter"
+          },
+          "publisher": {
+            "type": "string",
+            "title": "Udgiver"
+          },
+          "programme": {
+            "type": "boolean",
+            "title": "Program"
+          },
+          "season": {
+            "type": "string",
+            "title": "S\u00e6son"
+          },
+          "playwright": {
+            "type": "string",
+            "title": "Forfatter"
+          },
+          "director": {
+            "type": "string",
+            "title": "Instrukt\u00f8r"
+          },
+          "scenographer": {
+            "type": "string",
+            "title": "Scenograf"
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "uuid": "e4b7c9a2-3f6d-4a1b-8c2e-9f7d5a6b8c1d",
+    "id": "20250601",
+    "domain": "events",
+    "schema": "events.aarhusteater",
+    "created": "2024-11-15T09:23:45Z",
+    "created_by": "admin_user",
+    "updated": "2024-11-20T14:11:02Z",
+    "updated_by": "metadata_editor",
+    "status": "validated",
+    "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "display_label": "Hamlet (2025/2026)",
+    "description": "A modern production of Shakespeare's tragedy Hamlet performed at Aarhus Teater. The play explores themes of revenge, madness, and political intrigue with contemporary staging and innovative set design.",
+    "sources": "https://www.aarhusteater.dk/productions/hamlet-2025",
+    "portrait": "https://www.aarhusteater.dk/images/hamlet-poster.jpg",
+    "date_from": "2025-09-15",
+    "date_to": "2025-11-30",
+    "ext_data": {
+      "original_id": "HAM-2025-09",
+      "poster": true,
+      "stagename": "Main Stage",
+      "composer": "Johann Sebastian Bach",
+      "translater": "John Smith",
+      "publisher": "Aarhus Teater Publishing",
+      "programme": false,
+      "season": "2025/2026",
+      "playwright": "William Shakespeare",
+      "director": "Maria Jensen",
+      "scenographer": "Lars Nielsen"
+    }
+  },
+  "valid_json": {
+    "uuid": "e4b7c9a2-3f6d-4a1b-8c2e-9f7d5a6b8c1d",
+    "id": "20250601",
+    "domain": "events",
+    "schema": "events.aarhusteater",
+    "created": "2024-11-15T09:23:45Z",
+    "created_by": "admin_user",
+    "updated": "2024-11-20T14:11:02Z",
+    "updated_by": "metadata_editor",
+    "status": "validated",
+    "name": "Hamlet",
+    "display_label": "Hamlet (2025/2026)",
+    "description": "A modern production of Shakespeare's tragedy Hamlet performed at Aarhus Teater. The play explores themes of revenge, madness, and political intrigue with contemporary staging and innovative set design.",
+    "sources": "https://www.aarhusteater.dk/productions/hamlet-2025",
+    "portrait": "https://www.aarhusteater.dk/images/hamlet-poster.jpg",
+    "date_from": "2025-09-15",
+    "date_to": "2025-11-30",
+    "ext_data": {
+      "original_id": "HAM-2025-09",
+      "poster": true,
+      "stagename": "Main Stage",
+      "composer": "Johann Sebastian Bach",
+      "translater": "John Smith",
+      "publisher": "Aarhus Teater Publishing",
+      "programme": false,
+      "season": "2025/2026",
+      "playwright": "William Shakespeare",
+      "director": "Maria Jensen",
+      "scenographer": "Lars Nielsen"
+    }
+  },
+  "description": "The production record for the Aarhus Teater event \u201cHamlet\u201d (displayed as \u201cHamlet (2025/2026)\u201d) carries the system\u2011generated UUID\u202fe4b7c9a2\u20113f6d\u20114a1b\u20118c2e\u20119f7d5a6b8c1d and the resource\u2011specific identifier\u202f20250601. It was created on 2024\u201111\u201115 at 09:23:45\u202fZ by the user\u202fadmin_user and most recently updated on 2024\u201111\u201120 at 14:11:02\u202fZ by\u202fmetadata_editor. The entry is stored under the domain\u202fevents with the schema\u202fevents.aarhusteater and its status is marked as\u202fvalidated. The play runs from 15\u202fSeptember\u202f2025 to 30\u202fNovember\u202f2025, and a full description reads: \u201cA modern production of Shakespeare's tragedy Hamlet performed at Aarhus Teater. The play explores themes of revenge, madness, and political intrigue with contemporary staging and innovative set design.\u201d Further details can be found at https://www.aarhusteater.dk/productions/hamlet-2025, and the poster image is available at https://www.aarhusteater.dk/images/hamlet-poster.jpg.\n\nAdditional metadata notes that the original catalogue ID is\u202fHAM\u20112025\u201109 and that a poster is indeed available (poster\u202f=\u202ftrue) but no printed programme (programme\u202f=\u202ffalse). The performance takes place on the Main Stage, part of the 2025/2026 season. Musical elements are supplied by Johann Sebastian Bach, while the translation was done by John\u202fSmith and the publishing house is Aarhus Teater Publishing. The playwright is William Shakespeare, the director Maria Jensen, and the scenographer Lars Nielsen."
+}

@@ -1,0 +1,130 @@
+{
+  "name": "o81597",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "order": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "integer"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "drinkType": {
+            "type": "string",
+            "enum": [
+              "Latte",
+              "Espresso",
+              "Cappuccino",
+              "Chai",
+              "Tea",
+              "Steamer",
+              "Hot Chocolate"
+            ]
+          },
+          "flavor": {
+            "type": "string",
+            "enum": [
+              "Carmel",
+              "Chocolate",
+              "Hazelnut",
+              "Vanilla",
+              "Peppermint",
+              "White Chocolate"
+            ]
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "Small",
+              "Medium",
+              "Large",
+              "Extra-Large",
+              "Bucket"
+            ]
+          },
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "milk": {
+            "type": "string",
+            "enum": [
+              "Non-Fat",
+              "Whole",
+              "Breve",
+              "Soy",
+              "Almond"
+            ]
+          },
+          "espressoConCard": {
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "orderId",
+          "customerName",
+          "drinkType",
+          "size",
+          "date",
+          "time",
+          "milk",
+          "espressoConCard",
+          "totalPrice"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "order"
+    ]
+  },
+  "data": {
+    "order": {
+      "orderId": 10234,
+      "customerName": "Alice Johnson",
+      "drinkType": "Cappuccino",
+      "flavor": "Vanilla",
+      "size": "Medium",
+      "date": "2026-06-15",
+      "time": "14:30",
+      "milk": "Soy",
+      "espressoConCard": "Yes",
+      "totalPrice": 4.75
+    }
+  },
+  "instructions": "Could you increase the \"totalPrice\" inside the \"order\" by 1?",
+  "ground_truth": {
+    "order": {
+      "orderId": 10234,
+      "customerName": "Alice Johnson",
+      "drinkType": "Cappuccino",
+      "flavor": "Vanilla",
+      "size": "Medium",
+      "date": "2026-06-15",
+      "time": "14:30",
+      "milk": "Soy",
+      "espressoConCard": "Yes",
+      "totalPrice": 5.75
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "order",
+      "totalPrice"
+    ],
+    "precise_instruction": "Increase \"totalPrice\" inside \"order\" by 1."
+  }
+}

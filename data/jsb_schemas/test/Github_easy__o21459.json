@@ -1,0 +1,23 @@
+{
+  "name": "o21459",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "maxLength": 160,
+        "minLength": 5,
+        "type": "string"
+      },
+      "userId": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "name",
+      "userId"
+    ],
+    "type": "object"
+  }
+}

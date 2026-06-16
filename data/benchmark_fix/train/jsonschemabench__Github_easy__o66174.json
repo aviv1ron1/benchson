@@ -1,0 +1,38 @@
+{
+  "name": "o66174",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "Manual Instructions Environment",
+    "required": [
+      "environment_type",
+      "instructions"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "environment_type": {
+        "default": "manual-instructions-env",
+        "enum": [
+          "manual-instructions-env"
+        ],
+        "type": "string",
+        "title": "Process Type"
+      },
+      "instructions": {
+        "type": "string",
+        "title": "Instructions"
+      }
+    }
+  },
+  "erroneous_json": {
+    "environment_type": "manual-instructions-env",
+    "instructions": null
+  },
+  "valid_json": {
+    "environment_type": "manual-instructions-env",
+    "instructions": "Please follow each step carefully:\n1. Gather all necessary tools and materials.\n2. Read the safety guidelines before beginning.\n3. Set up your workspace in a well-ventilated area.\n4. Perform the tasks in the order listed, verifying each result before moving on.\n5. Document any observations or issues encountered.\n6. Once completed, clean the area and store tools properly.\n7. Review the final outcome against the expected results and report any discrepancies."
+  },
+  "description": "Subject: Procedure Overview \u2013 Manual Instructions Environment  \n\nThe process is designated under the type **manual-instructions-env**. To ensure a safe and successful completion, please follow each step carefully:  \n1. Gather all necessary tools and materials.  \n2. Read the safety guidelines before beginning.  \n3. Set up your workspace in a well\u2011ventilated area.  \n4. Perform the tasks in the order listed, verifying each result before moving on.  \n5. Document any observations or issues encountered.  \n6. Once completed, clean the area and store tools properly.  \n7. Review the final outcome against the expected results and report any discrepancies."
+}

@@ -1,0 +1,95 @@
+{
+  "name": "partial-fusion-pack-metadata",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/partial-fusion-pack-metadata.json",
+    "additionalProperties": false,
+    "definitions": {
+      "fusion-properties": {
+        "additionalProperties": false,
+        "description": "Fusion options for the current pack\nhttps://github.com/SuperMartijn642/Fusion/wiki",
+        "properties": {
+          "overrides_folder": {
+            "default": "fusion",
+            "description": "Folder which contains files which should override regular files when Fusion is loaded\nhttps://github.com/SuperMartijn642/Fusion/wiki/Optional-Fusion-Overwrites",
+            "minLength": 1,
+            "title": "Fusion Overrides Folder",
+            "type": "string"
+          }
+        },
+        "title": "Fusion Options",
+        "type": "object"
+      }
+    },
+    "description": "Fusion extension for Minecraft resource pack metadata",
+    "properties": {
+      "filter": {
+        "additionalProperties": {
+          "additionalProperties": false,
+          "description": "A pattern for the current pack\nhttps://minecraft.wiki/w/Data_pack",
+          "properties": {
+            "namespace": {
+              "description": "A namespace regular expression for the current pack\nhttps://minecraft.wiki/w/Data_pack",
+              "type": "string"
+            },
+            "path": {
+              "description": "A path regular expression for the current pack\nhttps://minecraft.wiki/w/Data_pack",
+              "type": "string"
+            }
+          },
+          "title": "pattern",
+          "type": "object"
+        },
+        "description": "Filter options for the current pack\nhttps://minecraft.wiki/w/Data_pack",
+        "title": "filter options",
+        "type": "object"
+      },
+      "fusion": {
+        "$ref": "#/definitions/fusion-properties"
+      },
+      "pack": {
+        "additionalProperties": false,
+        "description": "Options for the current pack\nhttps://minecraft.wiki/w/Data_pack#Contents",
+        "properties": {
+          "description": {
+            "description": "A description for the current pack\nhttps://minecraft.wiki/w/Data_pack#Contents",
+            "title": "description"
+          },
+          "pack_format": {
+            "default": 4,
+            "description": "A version for the current pack\nhttps://minecraft.wiki/w/Data_pack#Contents",
+            "maximum": 18,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "title": "pack options",
+        "type": "object"
+      }
+    },
+    "title": "Fusion Resource Pack Metadata",
+    "type": "object"
+  },
+  "description": "The resource pack is titled \u201cCustom resource pack with Fusion overrides\u201d and is built for pack format\u202f12, matching the current Minecraft version requirements.\n\nFusion support is enabled by placing override files in the **custom_fusion** folder. The pack uses two filter patterns: for standard Minecraft resources it limits the namespace to the regex `^minecraft$` and includes any JSON file under the assets directory with the path pattern `^assets/.*\\.json$`; for texture files the namespace is unrestricted (`^.*$`) and it selects all PNG files in any textures sub\u2011directory using the path pattern `^textures/.*\\.png$`.",
+  "reference_json": {
+    "filter": {
+      "resource": {
+        "namespace": "^minecraft$",
+        "path": "^assets/.*\\.json$"
+      },
+      "textures": {
+        "namespace": "^.*$",
+        "path": "^textures/.*\\.png$"
+      }
+    },
+    "fusion": {
+      "overrides_folder": "custom_fusion"
+    },
+    "pack": {
+      "description": "Custom resource pack with Fusion overrides",
+      "pack_format": 12
+    }
+  }
+}

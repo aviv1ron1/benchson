@@ -1,0 +1,36 @@
+{
+  "name": "kb_674_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another type of volume that is owned by someone else (the system).",
+    "properties": {
+      "claimName": {
+        "description": "ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "readOnly": {
+        "description": "Will force the ReadOnly setting in VolumeMounts. Default false.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "claimName"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "readOnly": false
+  },
+  "valid_json": {
+    "claimName": "data-volume-claim",
+    "readOnly": false
+  },
+  "description": "Hi team,\n\nThe pod will use the PersistentVolumeClaim named **data-volume-claim** from the same namespace. The volume is attached with full read\u2011write permissions, as the ReadOnly flag is set to false. Let me know if any adjustments are needed."
+}

@@ -1,0 +1,60 @@
+{
+  "name": "analyze_health_data_4ad104b4",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "data": {
+        "items": {
+          "properties": {
+            "measurement": {
+              "description": "The type of measurement",
+              "type": "string"
+            },
+            "timestamp": {
+              "description": "The timestamp of the measurement",
+              "format": "date-time",
+              "type": "string"
+            },
+            "value": {
+              "description": "The value of the measurement",
+              "type": "number"
+            }
+          },
+          "required": [
+            "measurement",
+            "value",
+            "timestamp"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "data"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {},
+  "valid_json": {
+    "data": [
+      {
+        "measurement": "temperature",
+        "timestamp": "2026-06-14T12:34:56Z",
+        "value": 23.5
+      },
+      {
+        "measurement": "humidity",
+        "timestamp": "2026-06-14T12:35:10Z",
+        "value": 58.2
+      },
+      {
+        "measurement": "pressure",
+        "timestamp": "2026-06-14T12:35:30Z",
+        "value": 1013.25
+      }
+    ]
+  },
+  "description": "On 2026-06-14 the monitoring system logged three consecutive readings. At 2026-06-14T12:34:56Z the temperature was measured at 23.5\u202f\u00b0C. Fifteen seconds later, at 2026-06-14T12:35:10Z, the humidity sensor recorded a value of 58.2\u202f%. Finally, at 2026-06-14T12:35:30Z the pressure reading was 1013.25\u202fhPa."
+}

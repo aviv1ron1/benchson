@@ -1,0 +1,52 @@
+{
+  "name": "generate_invoice_80aa1035",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "price": {
+        "description": "The price per unit of the product or service",
+        "type": "number"
+      },
+      "product_name": {
+        "description": "The name of the product or service",
+        "type": "string"
+      },
+      "quantity": {
+        "description": "The quantity of the product or service",
+        "type": "integer"
+      },
+      "tax_rate": {
+        "description": "The tax rate in percentage",
+        "type": "number"
+      }
+    },
+    "required": [
+      "product_name",
+      "quantity",
+      "price",
+      "tax_rate"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "product_name": "Wireless Bluetooth Headphones",
+    "price": 79.99,
+    "quantity": 3,
+    "tax_rate": 8.25
+  },
+  "instructions": "Can you lower the tax_rate by 1?",
+  "ground_truth": {
+    "product_name": "Wireless Bluetooth Headphones",
+    "price": 79.99,
+    "quantity": 3,
+    "tax_rate": 7.25
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "tax_rate"
+    ],
+    "precise_instruction": "Decrease \"tax_rate\" by 1."
+  }
+}

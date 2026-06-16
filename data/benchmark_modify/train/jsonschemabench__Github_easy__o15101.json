@@ -1,0 +1,44 @@
+{
+  "name": "o15101",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Specifies how to import GeoJSON files as namespaces.",
+    "properties": {
+      "path": {
+        "_id": "path",
+        "description": "Relative or absolute path to the GeoJSON file.",
+        "title": "Path schema.",
+        "type": "string"
+      },
+      "referenceId": {
+        "_id": "referenceId",
+        "description": "Specifies which of the feature properties in the GeoJSON file should be used as ID.",
+        "title": "ReferenceId schema.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "path",
+      "referenceId"
+    ],
+    "title": "Schema for importing GeoJSON.",
+    "type": "object"
+  },
+  "data": {
+    "path": "./data/regions.geojson",
+    "referenceId": "region_id"
+  },
+  "instructions": "Could you change the path to \"./data/regions.geojson (updated)\"?",
+  "ground_truth": {
+    "path": "./data/regions.geojson (updated)",
+    "referenceId": "region_id"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "path"
+    ],
+    "precise_instruction": "Change \"path\" to \"./data/regions.geojson (updated)\"."
+  }
+}

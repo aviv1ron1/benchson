@@ -1,0 +1,167 @@
+{
+  "name": "foundryvtt-template",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/foundryvtt-template.json",
+    "additionalProperties": false,
+    "definitions": {
+      "entity": {
+        "type": "object",
+        "properties": {
+          "types": {
+            "type": "array",
+            "description": "Array of strings defining the entity subtypes defined by the schema.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "templates": {
+            "type": "object",
+            "description": "Template schemas that can be reused by entity subtypes.",
+            "additionalProperties": {
+              "type": "object",
+              "description": "Definition of a template schema.",
+              "additionalProperties": {
+                "description": "Custom property defined for this schema."
+              }
+            }
+          }
+        },
+        "additionalProperties": {
+          "type": "object",
+          "description": "Definition of an entity subtype.",
+          "properties": {
+            "templates": {
+              "type": "array",
+              "description": "Array of strings specifying which template schemas to apply to this type.",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": {
+            "description": "Custom property defined for this schema."
+          }
+        }
+      }
+    },
+    "properties": {
+      "Actor": {
+        "$ref": "#/definitions/entity",
+        "description": "The top level data schema for Actor types."
+      },
+      "Item": {
+        "$ref": "#/definitions/entity",
+        "description": "The top level data schema for Item types."
+      }
+    },
+    "title": "JSON schema for Foundry VTT template.json files.",
+    "type": "object"
+  },
+  "description": "Our game\u2019s data model supports three main Actor categories \u2013 **character**, **npc**, and **vehicle** \u2013 each built upon reusable templates. The foundational **base** template describes a generic actor with a short description (\u201cBase actor template\u201d), a default of\u202f10 hit points, and core attributes set at 10 for Strength, Dexterity and Intelligence. An additional **magical** template adds spellcasting ability, grants a mana pool of\u202f30, and provides spell slots of two\u202fLevel\u202f1 slots and one\u202fLevel\u202f2 slot. A **character** combines both the base and magical templates, raising its default hit points to\u202f12, granting proficiency in Athletics and Perception, and assigning a \u201csoldier\u201d background. An **npc** pulls only the base template, is aligned neutral, is not hostile, and carries a challenge rating of\u202f2. The **vehicle** type also inherits the base template, moves at a speed of\u202f60, seats up to\u202f4 occupants, and requires a crew to operate.  \n\nSimilarly, the Item schema defines three sub\u2011types \u2013 **weapon**, **armor**, and **consumable** \u2013 that share the **equipment** template, which specifies a weight of\u202f2, a value of\u202f50, and a rarity of \u201ccommon\u201d. A separate **magicalItem** template (rarity \u201crare\u201d, requires attunement, and is described as \u201cGlows faintly when held.\u201d) is also available for any item that needs magical properties. A **weapon** uses the equipment template and deals 1d8 slashing damage, is marked as versatile, and lists its damage type explicitly. An **armor** entry also references the equipment template, provides an armor class of\u202f15, is of the \u201cmedium\u201d type, and does not impose a stealth disadvantage. Finally, a **consumable** adopts the equipment template, is single\u2011use, produces a healing effect instantly, and notes its consumption method as \u201csingle\u2011use\u201d.",
+  "reference_json": {
+    "Actor": {
+      "types": [
+        "character",
+        "npc",
+        "vehicle"
+      ],
+      "templates": {
+        "base": {
+          "description": "Base actor template",
+          "defaultHitPoints": 10,
+          "attributes": {
+            "strength": 10,
+            "dexterity": 10,
+            "intelligence": 10
+          }
+        },
+        "magical": {
+          "spellcasting": true,
+          "mana": 30,
+          "spellSlots": {
+            "level1": 2,
+            "level2": 1
+          }
+        }
+      },
+      "character": {
+        "templates": [
+          "base",
+          "magical"
+        ],
+        "defaultHitPoints": 12,
+        "skillProficiency": [
+          "athletics",
+          "perception"
+        ],
+        "background": "soldier"
+      },
+      "npc": {
+        "templates": [
+          "base"
+        ],
+        "alignment": "neutral",
+        "isHostile": false,
+        "challengeRating": 2
+      },
+      "vehicle": {
+        "templates": [
+          "base"
+        ],
+        "speed": 60,
+        "capacity": 4,
+        "requiresCrew": true
+      }
+    },
+    "Item": {
+      "types": [
+        "weapon",
+        "armor",
+        "consumable"
+      ],
+      "templates": {
+        "equipment": {
+          "weight": 2,
+          "value": 50,
+          "rarity": "common"
+        },
+        "magicalItem": {
+          "rarity": "rare",
+          "requiresAttunement": true,
+          "description": "Glows faintly when held."
+        }
+      },
+      "weapon": {
+        "templates": [
+          "equipment"
+        ],
+        "damage": "1d8",
+        "damageType": "slashing",
+        "properties": [
+          "versatile"
+        ]
+      },
+      "armor": {
+        "templates": [
+          "equipment"
+        ],
+        "armorClass": 15,
+        "stealthDisadvantage": false,
+        "type": "medium"
+      },
+      "consumable": {
+        "templates": [
+          "equipment"
+        ],
+        "consumption": "single-use",
+        "effects": [
+          "heal"
+        ],
+        "duration": "instant"
+      }
+    }
+  }
+}

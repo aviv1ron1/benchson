@@ -1,0 +1,65 @@
+{
+  "name": "o76438",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Vulnerability",
+    "description": "Vulnerability",
+    "type": "object",
+    "properties": {
+      "Name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512
+      },
+      "Severity": {
+        "type": "string",
+        "enum": [
+          "negligible",
+          "Negligible",
+          "low",
+          "Low",
+          "medium",
+          "Medium",
+          "high",
+          "High"
+        ]
+      }
+    },
+    "required": [
+      "Name",
+      "Severity"
+    ],
+    "additionalProperties": true
+  },
+  "data": {
+    "Name": "CVE-2025-12345: Remote Code Execution in ExampleApp",
+    "Severity": "High",
+    "Description": "A critical remote code execution vulnerability in ExampleApp allows attackers to execute arbitrary commands via crafted HTTP requests.",
+    "CVSSScore": 9.8,
+    "PublishedDate": "2025-09-01",
+    "References": [
+      "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-12345",
+      "https://security.example.com/advisories/2025-09"
+    ]
+  },
+  "instructions": "Could you remove the CVSSScore field?",
+  "ground_truth": {
+    "Name": "CVE-2025-12345: Remote Code Execution in ExampleApp",
+    "Severity": "High",
+    "Description": "A critical remote code execution vulnerability in ExampleApp allows attackers to execute arbitrary commands via crafted HTTP requests.",
+    "PublishedDate": "2025-09-01",
+    "References": [
+      "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-12345",
+      "https://security.example.com/advisories/2025-09"
+    ]
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "CVSSScore"
+    ],
+    "precise_instruction": "Remove the \"CVSSScore\" field."
+  }
+}

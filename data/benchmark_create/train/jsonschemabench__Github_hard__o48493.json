@@ -1,0 +1,214 @@
+{
+  "name": "o48493",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$id": "http://pddl-schema.org/ptest.json",
+    "type": "object",
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+      "defaultDomain": {
+        "$id": "/properties/defaultDomain",
+        "type": "string",
+        "title": "The domain file, if common to many of the test cases. The 'domain' property in each individual test case can override this value.",
+        "default": "",
+        "examples": [
+          "domain.pddl"
+        ]
+      },
+      "defaultProblem": {
+        "$id": "/properties/defaultProblem",
+        "type": "string",
+        "title": "The problem file, if common to many of the test cases. The 'problem' property in each individual test case can override this value.",
+        "default": "",
+        "examples": [
+          "problem.pddl"
+        ]
+      },
+      "defaultOptions": {
+        "$id": "/properties/defaultOptions",
+        "type": "string",
+        "title": "The command line options. Set this to empty string to avoid getting asked every time.",
+        "default": "",
+        "examples": [
+          ""
+        ]
+      },
+      "cases": {
+        "$id": "/properties/cases",
+        "type": "array",
+        "items": {
+          "$id": "/properties/cases/items",
+          "type": "object",
+          "properties": {
+            "label": {
+              "$id": "/properties/cases/items/properties/label",
+              "type": "string",
+              "description": "The Label for the test case",
+              "default": "Test XYZ",
+              "examples": [
+                "Test case number 1"
+              ]
+            },
+            "description": {
+              "$id": "/properties/cases/items/properties/description",
+              "type": "string",
+              "description": "The Description for the test case",
+              "default": "Test XYZ...",
+              "examples": [
+                "Given ... when ... then ..."
+              ]
+            },
+            "domain": {
+              "$id": "/properties/cases/items/properties/domain",
+              "type": "string",
+              "description": "The Domain file. Use absolute path, or relative to this ptest manifest file.",
+              "default": "domain.pddl",
+              "examples": [
+                "domain.pddl"
+              ]
+            },
+            "problem": {
+              "$id": "/properties/cases/items/properties/problem",
+              "type": "string",
+              "description": "The Problem file or template.",
+              "default": "problem.pddl",
+              "examples": [
+                "problem.pddl"
+              ]
+            },
+            "options": {
+              "$id": "/properties/cases/items/properties/options",
+              "type": "string",
+              "description": "The command-line options",
+              "default": "",
+              "examples": [
+                "-t 0.001"
+              ]
+            },
+            "preProcess": {
+              "$id": "/properties/cases/items/properties/preProcess",
+              "description": "Pre-processor to execute before launching the planner.",
+              "type": "object",
+              "required": [
+                "kind"
+              ],
+              "properties": {
+                "kind": {
+                  "$id": "/properties/cases/items/properties/preProcess/properties/kind",
+                  "type": "string",
+                  "description": "The kind of pre-processor.",
+                  "pattern": "^(nunjucks|jinja2|python|command)$",
+                  "default": "nunjucks",
+                  "examples": [
+                    "command",
+                    "python",
+                    "nunjucks",
+                    "jinja2"
+                  ]
+                },
+                "command": {
+                  "$id": "/properties/cases/items/properties/preProcess/properties/command",
+                  "type": "string",
+                  "description": "The command to execute. Mandatory when 'kind' is set to 'command'.",
+                  "default": "",
+                  "examples": [
+                    "shell",
+                    "script.bat",
+                    "program.exe"
+                  ]
+                },
+                "script": {
+                  "$id": "/properties/cases/items/properties/preProcess/properties/script",
+                  "type": "string",
+                  "description": "The python script to execute. Mandatory when 'kind' is set to 'python'.",
+                  "default": "myscript.py",
+                  "examples": [
+                    "script.py"
+                  ]
+                },
+                "args": {
+                  "$id": "/properties/cases/items/properties/preProcess/properties/args",
+                  "type": "array",
+                  "description": "Command-line arguments",
+                  "items": {
+                    "$id": "/properties/cases/items/properties/preProcess/properties/args/items",
+                    "type": "string",
+                    "title": "The command-line argument",
+                    "default": "",
+                    "examples": [
+                      "script.py",
+                      "data.json"
+                    ]
+                  }
+                },
+                "data": {
+                  "$id": "/properties/cases/items/properties/preProcess/properties/data",
+                  "type": "string",
+                  "description": "The JSON data file. This property is mandatory if 'kind' is set to 'jinja2' or 'nunjucks'",
+                  "default": "case1.json",
+                  "examples": [
+                    "data.json"
+                  ]
+                }
+              }
+            },
+            "expectedPlans": {
+              "$id": "/properties/cases/items/properties/expectedPlans",
+              "description": "Expected plans - put one or more plan file names here",
+              "type": "array",
+              "items": {
+                "$id": "/properties/cases/items/properties/expectedPlans/items",
+                "type": "string",
+                "title": "Plan file name",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "Our test suite uses a shared domain file **common_domain.pddl** and a shared problem file **common_problem.pddl** as defaults, with the planner invoked by default with the option `-t 0.01`.  \n\nThe first test, titled **Block World Simple Test**, checks the basic ability to move a block from location A to location B in the classic block\u2011world domain. It runs against the domain file **domains/blockworld.pddl** and the problem file **problems/blk1.pddl**, adding the extra flag `-v` when calling the planner. Before execution a pre\u2011processing step of kind **command** runs the script **generate_problem.sh** with the arguments `--size` and `small`. The only expected output for this case is the plan file **plan1.txt**.  \n\nThe second test, labeled **Logistics with Jinja2**, evaluates logistics planning where the problem description is generated from a Jinja2 template. It uses the domain **domains/logistics.pddl** together with the template **templates/logistics_template.pddl**, and invokes the planner with the option `-t 0.005`. The pre\u2011processor is of kind **jinja2**, drawing its data from **cases/logistics_case1.json**. For this scenario we anticipate two possible plan files: **logistics_plan.sol** and **logistics_plan_alt.sol**.",
+  "reference_json": {
+    "defaultDomain": "common_domain.pddl",
+    "defaultProblem": "common_problem.pddl",
+    "defaultOptions": "-t 0.01",
+    "cases": [
+      {
+        "label": "Block World Simple Test",
+        "description": "Test moving a block from A to B using the block world domain.",
+        "domain": "domains/blockworld.pddl",
+        "problem": "problems/blk1.pddl",
+        "options": "-v",
+        "preProcess": {
+          "kind": "command",
+          "command": "generate_problem.sh",
+          "args": [
+            "--size",
+            "small"
+          ]
+        },
+        "expectedPlans": [
+          "plan1.txt"
+        ]
+      },
+      {
+        "label": "Logistics with Jinja2",
+        "description": "Logistics planning using a Jinja2 template for problem generation.",
+        "domain": "domains/logistics.pddl",
+        "problem": "templates/logistics_template.pddl",
+        "options": "-t 0.005",
+        "preProcess": {
+          "kind": "jinja2",
+          "data": "cases/logistics_case1.json"
+        },
+        "expectedPlans": [
+          "logistics_plan.sol",
+          "logistics_plan_alt.sol"
+        ]
+      }
+    ]
+  }
+}

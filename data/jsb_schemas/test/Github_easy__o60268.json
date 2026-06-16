@@ -1,0 +1,16 @@
+{
+  "name": "o60268",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "port": {
+        "default": 8080,
+        "type": "integer"
+      }
+    },
+    "type": "object"
+  }
+}

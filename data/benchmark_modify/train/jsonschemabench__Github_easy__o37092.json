@@ -1,0 +1,63 @@
+{
+  "name": "o37092",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://mcda.drugis.org/rangeDistribution.json#",
+    "title": "MCDA range distribution for the performance table entry of absolute data",
+    "type": "object",
+    "required": [
+      "type",
+      "parameters"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": [
+          "range"
+        ]
+      },
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "lowerBound",
+          "upperBound"
+        ],
+        "properties": {
+          "lowerBound": {
+            "type": "number"
+          },
+          "upperBound": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "type": "range",
+    "parameters": {
+      "lowerBound": 12.3,
+      "upperBound": 18.7
+    }
+  },
+  "instructions": "Please increase the \"lowerBound\" value inside \"parameters\" by 1.",
+  "ground_truth": {
+    "type": "range",
+    "parameters": {
+      "lowerBound": 13.3,
+      "upperBound": 18.7
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "parameters",
+      "lowerBound"
+    ],
+    "precise_instruction": "Increase \"lowerBound\" inside \"parameters\" by 1."
+  }
+}

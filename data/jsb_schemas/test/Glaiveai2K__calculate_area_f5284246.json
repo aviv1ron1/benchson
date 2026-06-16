@@ -1,0 +1,43 @@
+{
+  "name": "calculate_area_f5284246",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of a triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of a triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of a rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of a circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of a rectangle",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which the area should be calculated",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  }
+}

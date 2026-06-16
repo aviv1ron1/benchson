@@ -1,0 +1,80 @@
+{
+  "name": "sp_72_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "A click GA4 enhanced-measurement event.",
+    "properties": {
+      "link_classes": {
+        "description": "The classes of the link element.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "link_domain": {
+        "description": "The link domain.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "link_id": {
+        "description": "The link ID.",
+        "maxLength": 500,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "link_url": {
+        "_format": "uri",
+        "description": "The link url.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "outbound": {
+        "description": "Whether the link is outbound.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "click",
+      "vendor": "com.google.ga4.enhanced-measurement",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "link_classes": "external-link btn-primary",
+    "link_domain": "example.com",
+    "link_id": "nav-link-123",
+    "link_url": "https://example.com/product?id=456",
+    "outbound": true
+  },
+  "instructions": "Please change the link_url to https://example.com/product?id=456 (updated).",
+  "ground_truth": {
+    "link_classes": "external-link btn-primary",
+    "link_domain": "example.com",
+    "link_id": "nav-link-123",
+    "link_url": "https://example.com/product?id=456 (updated)",
+    "outbound": true
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "link_url"
+    ],
+    "precise_instruction": "Change \"link_url\" to \"https://example.com/product?id=456 (updated)\"."
+  }
+}

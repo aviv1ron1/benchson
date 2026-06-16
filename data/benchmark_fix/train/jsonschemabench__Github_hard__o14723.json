@@ -1,0 +1,467 @@
+{
+  "name": "o14723",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "debug": {
+        "type": "boolean"
+      },
+      "delay": {
+        "type": "number"
+      },
+      "gutter_theme": {
+        "type": "string"
+      },
+      "highlights.time_to_idle": {
+        "type": "number"
+      },
+      "highlights.demote_while_editing": {
+        "type": "string",
+        "enum": [
+          "none",
+          "ws_only",
+          "some_ws",
+          "multilines",
+          "warnings",
+          "all"
+        ]
+      },
+      "kill_old_processes": {
+        "type": "boolean"
+      },
+      "highlights.demote_scope": {
+        "type": "string"
+      },
+      "highlights.start_hidden": {
+        "type": "boolean"
+      },
+      "lint_mode": {
+        "type": "string",
+        "enum": [
+          "background",
+          "load_save",
+          "manual",
+          "save"
+        ]
+      },
+      "linters": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "args": {
+              "type": [
+                "array",
+                "string"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "disable": {
+              "type": "boolean"
+            },
+            "env": {
+              "type": "object"
+            },
+            "executable": {
+              "type": [
+                "array",
+                "string"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "excludes": {
+              "type": [
+                "array",
+                "string"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "lint_mode": {
+              "type": "string",
+              "enum": [
+                "background",
+                "load_save",
+                "manual",
+                "save"
+              ]
+            },
+            "selector": {
+              "type": "string"
+            },
+            "working_dir": {
+              "type": "string"
+            },
+            "styles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "mark_style": {
+                    "type": "string",
+                    "enum": [
+                      "fill",
+                      "outline",
+                      "solid_underline",
+                      "squiggly_underline",
+                      "stippled_underline",
+                      "none"
+                    ]
+                  },
+                  "priority": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "scope": {
+                    "type": "string"
+                  },
+                  "icon": {
+                    "type": "string"
+                  },
+                  "types": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "error",
+                        "warning"
+                      ]
+                    },
+                    "minItems": 1,
+                    "_uniqueItems": true
+                  },
+                  "codes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "_uniqueItems": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "no_column_highlights_line": {
+        "type": "boolean"
+      },
+      "paths": {
+        "type": "object"
+      },
+      "show_hover_line_report": {
+        "type": "boolean"
+      },
+      "show_hover_region_report": {
+        "type": "boolean"
+      },
+      "show_marks_in_minimap": {
+        "type": "boolean"
+      },
+      "show_panel_on_save": {
+        "type": "string",
+        "enum": [
+          "never",
+          "view",
+          "window"
+        ]
+      },
+      "syntax_map": {
+        "type": "object"
+      },
+      "statusbar.counters_template": {
+        "type": "string"
+      },
+      "statusbar.messages_template": {
+        "type": "string"
+      },
+      "statusbar.show_active_linters": {
+        "type": "boolean"
+      },
+      "styles": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "mark_style": {
+              "type": "string",
+              "enum": [
+                "fill",
+                "outline",
+                "solid_underline",
+                "squiggly_underline",
+                "stippled_underline",
+                "none"
+              ]
+            },
+            "priority": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "scope": {
+              "type": "string",
+              "examples": [
+                "region.redish",
+                "region.orangish",
+                "region.yellowish",
+                "region.greenish",
+                "region.bluish",
+                "region.purplish",
+                "region.pinkish",
+                "markup.warning",
+                "markup.error"
+              ]
+            },
+            "icon": {
+              "type": "string"
+            },
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "error",
+                  "warning"
+                ]
+              },
+              "minItems": 1,
+              "_uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "xperiments": {
+        "additionalProperties": true
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "debug": true,
+    "delay": 0.5,
+    "gutter_theme": "dark",
+    "highlights.time_to_idle": 300,
+    "highlights.demote_while_editing": "warnings",
+    "kill_old_processes": false,
+    "highlights.demote_scope": "comment",
+    "highlights.start_hidden": true,
+    "lint_mode": null,
+    "linters": {
+      "flake8": {
+        "args": [
+          "--max-line-length=88"
+        ],
+        "disable": false,
+        "env": {
+          "PYTHONPATH": "/my/project"
+        },
+        "executable": "flake8",
+        "excludes": [
+          "tests/*"
+        ],
+        "lint_mode": "background",
+        "selector": "source.python",
+        "working_dir": "/my/project",
+        "styles": [
+          {
+            "mark_style": "squiggly_underline",
+            "priority": 5,
+            "scope": "region.yellowish",
+            "icon": "\ud83d\udc0d",
+            "types": [
+              "error",
+              "warning"
+            ],
+            "codes": [
+              "E501",
+              "W291"
+            ]
+          }
+        ]
+      },
+      "eslint": {
+        "args": "--config .eslintrc.json",
+        "disable": false,
+        "env": {},
+        "executable": [
+          "node",
+          "./node_modules/.bin/eslint"
+        ],
+        "excludes": [],
+        "lint_mode": "save",
+        "selector": "source.js",
+        "working_dir": "/my/js/project",
+        "styles": [
+          {
+            "mark_style": "outline",
+            "priority": 3,
+            "scope": "region.orangish",
+            "icon": "\ud83d\udfe0",
+            "types": [
+              "warning"
+            ]
+          }
+        ]
+      }
+    },
+    "no_column_highlights_line": false,
+    "paths": {
+      "python": "/usr/bin/python3"
+    },
+    "show_hover_line_report": true,
+    "show_hover_region_report": false,
+    "show_marks_in_minimap": true,
+    "show_panel_on_save": "view",
+    "syntax_map": {
+      "source.python": "python",
+      "source.js": "javascript"
+    },
+    "statusbar.counters_template": "{error}/{warning}",
+    "statusbar.messages_template": "{message}",
+    "statusbar.show_active_linters": true,
+    "styles": [
+      {
+        "mark_style": "squiggly_underline",
+        "priority": 10,
+        "scope": "region.redish",
+        "icon": "\ud83d\udea9",
+        "types": [
+          "error"
+        ]
+      },
+      {
+        "mark_style": "fill",
+        "priority": 2,
+        "scope": "markup.warning",
+        "icon": "\u26a0\ufe0f",
+        "types": [
+          "warning"
+        ]
+      }
+    ],
+    "xperiments": {
+      "new_ui": true,
+      "beta_feature": false
+    }
+  },
+  "valid_json": {
+    "debug": true,
+    "delay": 0.5,
+    "gutter_theme": "dark",
+    "highlights.time_to_idle": 300,
+    "highlights.demote_while_editing": "warnings",
+    "kill_old_processes": false,
+    "highlights.demote_scope": "comment",
+    "highlights.start_hidden": true,
+    "lint_mode": "background",
+    "linters": {
+      "flake8": {
+        "args": [
+          "--max-line-length=88"
+        ],
+        "disable": false,
+        "env": {
+          "PYTHONPATH": "/my/project"
+        },
+        "executable": "flake8",
+        "excludes": [
+          "tests/*"
+        ],
+        "lint_mode": "background",
+        "selector": "source.python",
+        "working_dir": "/my/project",
+        "styles": [
+          {
+            "mark_style": "squiggly_underline",
+            "priority": 5,
+            "scope": "region.yellowish",
+            "icon": "\ud83d\udc0d",
+            "types": [
+              "error",
+              "warning"
+            ],
+            "codes": [
+              "E501",
+              "W291"
+            ]
+          }
+        ]
+      },
+      "eslint": {
+        "args": "--config .eslintrc.json",
+        "disable": false,
+        "env": {},
+        "executable": [
+          "node",
+          "./node_modules/.bin/eslint"
+        ],
+        "excludes": [],
+        "lint_mode": "save",
+        "selector": "source.js",
+        "working_dir": "/my/js/project",
+        "styles": [
+          {
+            "mark_style": "outline",
+            "priority": 3,
+            "scope": "region.orangish",
+            "icon": "\ud83d\udfe0",
+            "types": [
+              "warning"
+            ]
+          }
+        ]
+      }
+    },
+    "no_column_highlights_line": false,
+    "paths": {
+      "python": "/usr/bin/python3"
+    },
+    "show_hover_line_report": true,
+    "show_hover_region_report": false,
+    "show_marks_in_minimap": true,
+    "show_panel_on_save": "view",
+    "syntax_map": {
+      "source.python": "python",
+      "source.js": "javascript"
+    },
+    "statusbar.counters_template": "{error}/{warning}",
+    "statusbar.messages_template": "{message}",
+    "statusbar.show_active_linters": true,
+    "styles": [
+      {
+        "mark_style": "squiggly_underline",
+        "priority": 10,
+        "scope": "region.redish",
+        "icon": "\ud83d\udea9",
+        "types": [
+          "error"
+        ]
+      },
+      {
+        "mark_style": "fill",
+        "priority": 2,
+        "scope": "markup.warning",
+        "icon": "\u26a0\ufe0f",
+        "types": [
+          "warning"
+        ]
+      }
+    ],
+    "xperiments": {
+      "new_ui": true,
+      "beta_feature": false
+    }
+  },
+  "description": "The current linting setup runs in debug mode with a half\u2011second delay between checks, using a dark gutter theme. Highlights stay visible for 300\u202fseconds of inactivity, are demoted to the \u201ccomment\u201d scope when warnings appear while editing, and start hidden; old processes are retained. Linting operates in the background, and column highlights are enabled. The Python interpreter is set to **/usr/bin/python3**, while hover reports are shown for lines (but not regions). Marks appear in the minimap, and the panel will open on save in the current view. Syntax mapping translates\u202f*source.python*\u202fto\u202f*python*\u202fand\u202f*source.js*\u202fto\u202f*javascript*. The status bar displays counters as \u201c{error}/{warning}\u201d and messages as \u201c{message}\u201d, and it shows which linters are active.\n\nTwo linters are configured. **flake8** runs with the argument\u202f`--max-line-length=88`, is enabled, and inherits the environment variable\u202fPYTHONPATH\u202fset to\u202f`/my/project`. It is invoked directly as\u202f`flake8`, excludes files matching\u202f`tests/*`, works in background on files matching\u202f*source.python*, and uses\u202f`/my/project`\u202fas its working directory. Its style highlights errors and warnings with a squiggly underline (priority\u202f5) in the\u202fregion.yellowish\u202fscope, marked by the \ud83d\udc0d icon, and it specifically flags codes\u202fE501\u202fand\u202fW291. **eslint** runs with the argument\u202f`--config .eslintrc.json`, is also enabled, and is launched via\u202f`node ./node_modules/.bin/eslint`. It has no exclusions, runs on save for\u202f*source.js*\u202ffiles in\u202f`/my/js/project`, and highlights warnings with an outline (priority\u202f3) in the\u202fregion.orangish\u202fscope, marked by the \ud83c\udfe0 icon. Global style rules add a high\u2011priority (10) squiggly underline for errors in\u202fregion.redish\u202fwith a \ud83d\udea9 icon, and a low\u2011priority (2) fill for warnings in\u202fmarkup.warning\u202fwith a \u26a0\ufe0f icon. Experimental flags indicate the new UI is enabled while the beta feature is disabled."
+}

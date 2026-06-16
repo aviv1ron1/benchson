@@ -1,0 +1,84 @@
+{
+  "name": "create_invoice_bfbea62f",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "order_items": {
+        "items": {
+          "properties": {
+            "item_name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            },
+            "unit_price": {
+              "description": "The unit price of the item",
+              "type": "number"
+            }
+          },
+          "required": [
+            "item_name",
+            "quantity",
+            "unit_price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "order_items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "customer_name": null,
+    "order_items": [
+      {
+        "item_name": "Wireless Mouse",
+        "quantity": 2,
+        "unit_price": 24.99
+      },
+      {
+        "item_name": "Mechanical Keyboard",
+        "quantity": 1,
+        "unit_price": 89.5
+      },
+      {
+        "item_name": "USB-C Hub",
+        "quantity": 3,
+        "unit_price": 15.75
+      }
+    ]
+  },
+  "valid_json": {
+    "customer_name": "Emily Johnson",
+    "order_items": [
+      {
+        "item_name": "Wireless Mouse",
+        "quantity": 2,
+        "unit_price": 24.99
+      },
+      {
+        "item_name": "Mechanical Keyboard",
+        "quantity": 1,
+        "unit_price": 89.5
+      },
+      {
+        "item_name": "USB-C Hub",
+        "quantity": 3,
+        "unit_price": 15.75
+      }
+    ]
+  },
+  "description": "Dear Emily Johnson,\n\nThank you for your recent purchase. Here is a summary of the items you ordered: two Wireless Mice at $24.99 each, one Mechanical Keyboard at $89.50, and three USB\u2011C Hubs priced at $15.75 each. We appreciate your business and will process your order promptly."
+}

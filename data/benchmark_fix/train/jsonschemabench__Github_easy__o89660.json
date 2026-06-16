@@ -1,0 +1,42 @@
+{
+  "name": "o89660",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Documentation",
+    "description": "Add documentation",
+    "type": "object",
+    "properties": {
+      "CADI_ID": {
+        "title": "CADI ID",
+        "type": "string"
+      },
+      "url": {
+        "title": "URL",
+        "type": "string"
+      },
+      "keyword": {
+        "title": "Keyword",
+        "type": "string"
+      },
+      "comment": {
+        "title": "Comment",
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "CADI_ID": "CADI-2023-0456",
+    "url": "https://example.com/documentation/feature-guide",
+    "keyword": null,
+    "comment": "Comprehensive guide covering setup, authentication, and error handling for the new API integration."
+  },
+  "valid_json": {
+    "CADI_ID": "CADI-2023-0456",
+    "url": "https://example.com/documentation/feature-guide",
+    "keyword": "APIIntegration",
+    "comment": "Comprehensive guide covering setup, authentication, and error handling for the new API integration."
+  },
+  "description": "Subject: Documentation Reference \u2013 CADI\u20112023\u20110456 (APIIntegration)\n\nDear Team,\n\nPlease find the detailed guide for the new API integration at the following link: https://example.com/documentation/feature-guide. This resource, identified by CADI\u20112023\u20110456, provides a comprehensive walkthrough covering setup procedures, authentication mechanisms, and error\u2011handling strategies. It is tagged with the keyword **APIIntegration** for easy reference in our knowledge base.\n\nFeel free to reach out if you have any questions or need further clarification."
+}

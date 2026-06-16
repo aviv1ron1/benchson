@@ -1,0 +1,43 @@
+{
+  "name": "kb_122_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Describe a container image",
+    "properties": {
+      "names": {
+        "description": "Names by which this image is known. e.g. [\"k8s.gcr.io/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]",
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "sizeBytes": {
+        "description": "The size of the image in bytes.",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "names"
+    ],
+    "type": "object"
+  },
+  "description": "The image is distributed under two identifiers:\u202fdocker.io/library/nginx:1.25.2 and\u202fgcr.io/my-project/nginx:latest. Its total size on disk is 58,734,592 bytes.",
+  "reference_json": {
+    "names": [
+      "docker.io/library/nginx:1.25.2",
+      "gcr.io/my-project/nginx:latest"
+    ],
+    "sizeBytes": 58734592
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "o30076",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "adfstruststatus": {
+        "enum": [
+          "INIT",
+          "FAILED",
+          "ESTABLISHED",
+          "ESTABLISHED/CONFIGURED",
+          "ESTABLISHED_RENEW_SUCCESS",
+          "ESTABLISHED_RENEW_FAILED",
+          "RENEWED/CONFIGURED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "certkeyname": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "serverurl": {
+        "type": "string"
+      },
+      "username": {
+        "type": "string"
+      }
+    },
+    "title": "authenticationadfsproxyprofile",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "adfstruststatus": "ESTABLISHED_INVALID",
+    "certkeyname": "adfs-proxy-cert",
+    "name": "Corporate ADFS Proxy Profile",
+    "password": "S3cureP@ssw0rd!",
+    "serverurl": "https://adfs-proxy.company.com/adfs/ls/",
+    "username": "svc_adfsproxy"
+  },
+  "valid_json": {
+    "adfstruststatus": "ESTABLISHED",
+    "certkeyname": "adfs-proxy-cert",
+    "name": "Corporate ADFS Proxy Profile",
+    "password": "S3cureP@ssw0rd!",
+    "serverurl": "https://adfs-proxy.company.com/adfs/ls/",
+    "username": "svc_adfsproxy"
+  },
+  "description": "Subject: Configuration Details for the Corporate ADFS Proxy Profile\n\nThe ADFS proxy profile named **Corporate ADFS Proxy Profile** has been successfully established, with its trust status currently reported as **ESTABLISHED**. The profile utilizes the certificate identified by **adfs\u2011proxy\u2011cert**, and is configured to communicate with the ADFS service at **https://adfs-proxy.company.com/adfs/ls/**. Access to the proxy is performed using the service account **svc_adfsproxy**, whose credentials are set to the password **S3cureP@ssw0rd!**. Please ensure these details are recorded in the relevant configuration management system and that the certificate remains valid for ongoing operations."
+}

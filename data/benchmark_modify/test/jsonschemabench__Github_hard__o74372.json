@@ -1,0 +1,450 @@
+{
+  "name": "o74372",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "patternProperties": {
+      "^[a-zA-Z0-9._-]+$": {
+        "$ref": "#/definitions/service"
+      }
+    },
+    "definitions": {
+      "service": {
+        "type": "object",
+        "properties": {
+          "build": {
+            "type": "string"
+          },
+          "cap_add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "cap_drop": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "command": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "container_name": {
+            "type": "string"
+          },
+          "cpu_shares": {
+            "type": "string"
+          },
+          "cpuset": {
+            "type": "string"
+          },
+          "detach": {
+            "type": "boolean"
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "dns": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dns_search": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dockerfile": {
+            "type": "string"
+          },
+          "domainname": {
+            "type": "string"
+          },
+          "entrypoint": {
+            "type": "string"
+          },
+          "env_file": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "environment": {
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "_uniqueItems": true
+              }
+            ]
+          },
+          "expose": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "extends": {
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "service"
+            ],
+            "additionalProperties": false
+          },
+          "extra_hosts": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "external_links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "labels": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "log_driver": {
+            "type": "string"
+          },
+          "log_opt": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "address"
+            ]
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "mem_limit": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "memswap_limit": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "net": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "string"
+          },
+          "ports": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "ports"
+                },
+                {
+                  "type": "number",
+                  "format": "ports"
+                }
+              ]
+            },
+            "_uniqueItems": true
+          },
+          "privileged": {
+            "type": "string"
+          },
+          "read_only": {
+            "type": "boolean"
+          },
+          "restart": {
+            "type": "string"
+          },
+          "security_opt": {
+            "type": "string"
+          },
+          "stdin_open": {
+            "type": "string"
+          },
+          "tty": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "volumes_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "working_dir": {
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "build"
+            ],
+            "not": {
+              "required": [
+                "image"
+              ]
+            }
+          },
+          {
+            "required": [
+              "image"
+            ],
+            "not": {
+              "required": [
+                "build"
+              ]
+            }
+          },
+          {
+            "required": [
+              "extends"
+            ],
+            "not": {
+              "required": [
+                "build",
+                "image"
+              ]
+            }
+          }
+        ],
+        "dependencies": {
+          "memswap_limit": [
+            "mem_limit"
+          ]
+        },
+        "additionalProperties": false
+      },
+      "string_or_list": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/definitions/list_of_strings"
+          }
+        ]
+      },
+      "list_of_strings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true
+      },
+      "list_or_dict": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          {
+            "type": "object"
+          }
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "web_container",
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "volumes": [
+        "/var/www/html:/usr/share/nginx/html:ro"
+      ],
+      "environment": {
+        "NODE_ENV": "production",
+        "API_URL": "http://api.local"
+      },
+      "restart": "always",
+      "labels": {
+        "com.example.description": "Web server"
+      },
+      "net": "frontend",
+      "dns": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "extra_hosts": [
+        "host1:192.168.1.10",
+        "host2:192.168.1.11"
+      ]
+    },
+    "db": {
+      "build": "./db",
+      "dockerfile": "Dockerfile.mysql",
+      "container_name": "db_container",
+      "environment": [
+        "MYSQL_ROOT_PASSWORD=secret",
+        "MYSQL_DATABASE=appdb"
+      ],
+      "volumes": [
+        "/var/lib/mysql:/var/lib/mysql"
+      ],
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "restart": "on-failure:5",
+      "log_driver": "json-file",
+      "log_opt": {
+        "address": "/var/log/docker.log"
+      },
+      "ports": [
+        3306
+      ]
+    },
+    "proxy": {
+      "extends": {
+        "service": "web",
+        "file": "docker-compose.yml"
+      },
+      "container_name": "proxy_container",
+      "ports": [
+        "8080:80"
+      ],
+      "environment": {
+        "PROXY_MODE": "transparent"
+      }
+    }
+  },
+  "instructions": "Could you change the \"restart\" field under \"web\" to \"always (updated)\"?",
+  "ground_truth": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "web_container",
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "volumes": [
+        "/var/www/html:/usr/share/nginx/html:ro"
+      ],
+      "environment": {
+        "NODE_ENV": "production",
+        "API_URL": "http://api.local"
+      },
+      "restart": "always (updated)",
+      "labels": {
+        "com.example.description": "Web server"
+      },
+      "net": "frontend",
+      "dns": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "extra_hosts": [
+        "host1:192.168.1.10",
+        "host2:192.168.1.11"
+      ]
+    },
+    "db": {
+      "build": "./db",
+      "dockerfile": "Dockerfile.mysql",
+      "container_name": "db_container",
+      "environment": [
+        "MYSQL_ROOT_PASSWORD=secret",
+        "MYSQL_DATABASE=appdb"
+      ],
+      "volumes": [
+        "/var/lib/mysql:/var/lib/mysql"
+      ],
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "restart": "on-failure:5",
+      "log_driver": "json-file",
+      "log_opt": {
+        "address": "/var/log/docker.log"
+      },
+      "ports": [
+        3306
+      ]
+    },
+    "proxy": {
+      "extends": {
+        "service": "web",
+        "file": "docker-compose.yml"
+      },
+      "container_name": "proxy_container",
+      "ports": [
+        "8080:80"
+      ],
+      "environment": {
+        "PROXY_MODE": "transparent"
+      }
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "web",
+      "restart"
+    ],
+    "precise_instruction": "Change \"restart\" inside \"web\" to \"always (updated)\"."
+  }
+}

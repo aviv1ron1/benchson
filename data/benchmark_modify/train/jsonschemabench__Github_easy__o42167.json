@@ -1,0 +1,49 @@
+{
+  "name": "o42167",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "result"
+    ],
+    "properties": {
+      "result": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "password"
+        ]
+      }
+    }
+  },
+  "data": {
+    "result": {
+      "login": "user@example.com",
+      "password": "S3cureP@ssw0rd!"
+    }
+  },
+  "instructions": "Change the \u201clogin\u201d field inside \u201cresult\u201d to \u201cuser@example.com (updated)\u201d.",
+  "ground_truth": {
+    "result": {
+      "login": "user@example.com (updated)",
+      "password": "S3cureP@ssw0rd!"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "result",
+      "login"
+    ],
+    "precise_instruction": "Change \"login\" inside \"result\" to \"user@example.com (updated)\"."
+  }
+}

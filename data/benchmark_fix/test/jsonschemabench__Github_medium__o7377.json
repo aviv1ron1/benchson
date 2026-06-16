@@ -1,0 +1,213 @@
+{
+  "name": "o7377",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "The name of the resource",
+        "type": "string"
+      },
+      "path": {
+        "description": "The resource file path",
+        "type": "string"
+      },
+      "ino": {
+        "description": "The ino of the file on disk",
+        "type": "number"
+      },
+      "hash": {
+        "description": "The sha1 of the resource",
+        "type": "string"
+      },
+      "size": {
+        "description": "The size of the resource",
+        "type": "number"
+      },
+      "ext": {
+        "description": "The suggested ext of the resource",
+        "type": "string"
+      },
+      "type": {
+        "description": "The resource type. Can be `forge`, `liteloader`, `resourcepack`, and etc.",
+        "type": "string"
+      },
+      "tags": {
+        "description": "The custom tag on this resource",
+        "default": [],
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "domain": {
+        "description": "The domain of the resource. This decide where (which folder) the resource go",
+        "type": "string"
+      },
+      "metadata": {
+        "description": "The resource specific metadata read from the file",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        ]
+      },
+      "source": {
+        "$ref": "#/definitions/Source",
+        "description": "Where the resource imported from?"
+      }
+    },
+    "required": [
+      "domain",
+      "ext",
+      "hash",
+      "ino",
+      "metadata",
+      "name",
+      "path",
+      "size",
+      "source",
+      "tags",
+      "type"
+    ],
+    "definitions": {
+      "Source": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "description": "The source uris.\n- For the forge mod, it will be the forge://<modid>/<version>\n- For the liteloader mod, it will be the liteloader://<name>/<version>\n- For the curseforge file, it will be the curseforge://<fileId>\n\nIf the source is remote resource, it might also contain the uri like https://host/paths",
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "date": {
+            "description": "The date of import",
+            "default": "",
+            "type": "string"
+          },
+          "github": {
+            "description": "The github info for this source. If this is imported from github release, it will present.",
+            "type": "object",
+            "properties": {
+              "owner": {
+                "type": "string"
+              },
+              "repo": {
+                "type": "string"
+              },
+              "release": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "owner",
+              "release",
+              "repo"
+            ]
+          },
+          "curseforge": {
+            "description": "The curseforge info for this source. If this is imported from curseforge, it will present.",
+            "$ref": "#/definitions/CurseforgeSource"
+          }
+        },
+        "required": [
+          "date",
+          "uri"
+        ]
+      },
+      "CurseforgeSource": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "description": "The curseforge project id",
+            "type": "number"
+          },
+          "fileId": {
+            "description": "The file id",
+            "type": "number"
+          }
+        },
+        "required": [
+          "fileId",
+          "projectId"
+        ]
+      }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "name": "Example Mod",
+    "path": "mods/example-mod-1.0.0.jar",
+    "ino": 12345678,
+    "hash": null,
+    "size": 2048576,
+    "ext": "jar",
+    "type": "forge",
+    "tags": [
+      "utility",
+      "client"
+    ],
+    "domain": "mods",
+    "metadata": {
+      "modid": "examplemod",
+      "version": "1.0.0",
+      "description": "A sample utility mod for demonstration purposes."
+    },
+    "source": {
+      "uri": [
+        "forge://examplemod/1.0.0"
+      ],
+      "date": "2024-05-20T14:30:00Z",
+      "github": {
+        "owner": "example",
+        "repo": "example-mod",
+        "release": "v1.0.0"
+      }
+    }
+  },
+  "valid_json": {
+    "name": "Example Mod",
+    "path": "mods/example-mod-1.0.0.jar",
+    "ino": 12345678,
+    "hash": "a1b2c3d4e5f67890123456789abcdef123456789",
+    "size": 2048576,
+    "ext": "jar",
+    "type": "forge",
+    "tags": [
+      "utility",
+      "client"
+    ],
+    "domain": "mods",
+    "metadata": {
+      "modid": "examplemod",
+      "version": "1.0.0",
+      "description": "A sample utility mod for demonstration purposes."
+    },
+    "source": {
+      "uri": [
+        "forge://examplemod/1.0.0"
+      ],
+      "date": "2024-05-20T14:30:00Z",
+      "github": {
+        "owner": "example",
+        "repo": "example-mod",
+        "release": "v1.0.0"
+      }
+    }
+  },
+  "description": "We've added **Example Mod** (modid\u202f=\u202f*examplemod*, version\u202f=\u202f*1.0.0*) to the **mods** domain. The file is stored as **mods/example-mod-1.0.0.jar**, an inode\u202f=\u202f12345678, with a size of\u202f2,048,576\u202fbytes and a SHA\u20111 hash of\u202f*a1b2c3d4e5f67890123456789abcdef123456789*. It is a Forge\u2011type resource (extension\u202f*.jar*) and carries the tags **utility** and **client**. The mod\u2019s description reads: \u201cA sample utility mod for demonstration purposes.\u201d\n\nThe source is logged as **forge://examplemod/1.0.0**, imported on **2024\u201105\u201120\u202fT14:30:00\u202fZ**. This originates from the GitHub release **v1.0.0** of the repository **example/example-mod**."
+}

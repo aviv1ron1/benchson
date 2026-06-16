@@ -1,0 +1,39 @@
+{
+  "name": "o47064",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Data Statistics",
+    "description": "Defines the format for describing the statistics (distribution, etc.) of a data source (TODO)",
+    "type": "object",
+    "properties": {
+      "avg": {
+        "description": "The average frequency (in ms) for data updates",
+        "type": "integer",
+        "minimum": 0
+      },
+      "max": {
+        "description": "The maximum expected frequency (in ms) for data updates",
+        "type": "integer",
+        "minimum": 0
+      },
+      "min": {
+        "description": "The minimum expected frequency (in ms) for data updates",
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  },
+  "erroneous_json": {
+    "avg": 1500,
+    "min": null,
+    "max": 3000
+  },
+  "valid_json": {
+    "avg": 1500,
+    "min": 500,
+    "max": 3000
+  },
+  "description": "Dear Team,\n\nOur latest performance metrics show that the data feed updates on average every 1\u202f500\u202fms. The shortest observed interval between updates is 500\u202fms, while the longest interval can extend up to 3\u202f000\u202fms. These figures will help us fine\u2011tune our processing pipelines and set appropriate timeout thresholds."
+}

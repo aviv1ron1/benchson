@@ -1,0 +1,81 @@
+{
+  "name": "o25107",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "DomainName"
+    ],
+    "properties": {
+      "DomainName": {
+        "type": "string"
+      },
+      "SubjectAlternativeNames": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "_uniqueItems": true
+      },
+      "IdempotencyToken": {
+        "type": "string"
+      },
+      "DomainValidationOptions": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "minItems": 1,
+        "_uniqueItems": true
+      }
+    }
+  },
+  "data": {
+    "DomainName": "myapp.example.com",
+    "SubjectAlternativeNames": [
+      "www.myapp.example.com",
+      "api.myapp.example.com"
+    ],
+    "IdempotencyToken": "f3b9c6e2-8d1a-4c5e-9f7a-1b2c3d4e5f6a",
+    "DomainValidationOptions": [
+      {
+        "DomainName": "myapp.example.com",
+        "ValidationMethod": "DNS"
+      },
+      {
+        "DomainName": "www.myapp.example.com",
+        "ValidationMethod": "EMAIL"
+      }
+    ]
+  },
+  "instructions": "Could you add another entry to the SubjectAlternativeNames list that\u2019s exactly the same as the first one?",
+  "ground_truth": {
+    "DomainName": "myapp.example.com",
+    "SubjectAlternativeNames": [
+      "www.myapp.example.com",
+      "api.myapp.example.com",
+      "www.myapp.example.com"
+    ],
+    "IdempotencyToken": "f3b9c6e2-8d1a-4c5e-9f7a-1b2c3d4e5f6a",
+    "DomainValidationOptions": [
+      {
+        "DomainName": "myapp.example.com",
+        "ValidationMethod": "DNS"
+      },
+      {
+        "DomainName": "www.myapp.example.com",
+        "ValidationMethod": "EMAIL"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "SubjectAlternativeNames"
+    ],
+    "precise_instruction": "Add another item to the \"SubjectAlternativeNames\" list, identical to its first item."
+  }
+}

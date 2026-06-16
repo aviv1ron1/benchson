@@ -1,0 +1,32 @@
+{
+  "name": "calculate_distance_3ab416d8",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "end_latitude": {
+        "description": "The latitude of the destination",
+        "type": "number"
+      },
+      "end_longitude": {
+        "description": "The longitude of the destination",
+        "type": "number"
+      },
+      "start_latitude": {
+        "description": "The latitude of the starting point",
+        "type": "number"
+      },
+      "start_longitude": {
+        "description": "The longitude of the starting point",
+        "type": "number"
+      }
+    },
+    "required": [
+      "start_latitude",
+      "start_longitude",
+      "end_latitude",
+      "end_longitude"
+    ],
+    "type": "object"
+  }
+}

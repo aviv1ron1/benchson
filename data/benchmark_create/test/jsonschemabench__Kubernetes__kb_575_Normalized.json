@@ -1,0 +1,59 @@
+{
+  "name": "kb_575_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_apis_meta_v1_Time": {
+        "_format": "date-time",
+        "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+        "type": "string"
+      }
+    },
+    "description": "NamespaceCondition contains details about state of namespace.",
+    "properties": {
+      "lastTransitionTime": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_apis_meta_v1_Time"
+      },
+      "message": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "reason": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "status": {
+        "description": "Status of the condition, one of True, False, Unknown.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "description": "Type of namespace controller condition.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "type",
+      "status"
+    ],
+    "type": "object"
+  },
+  "description": "The namespace condition was last updated on\u202f2023-09-15T12:34:56Z. Its type is **Ready**, and the current status is **True**, indicating that the namespace is active and ready for workloads. The accompanying message confirms this state: \u201cNamespace is active and ready for workloads.\u201d The condition was triggered for the reason **UserCreated**.",
+  "reference_json": {
+    "lastTransitionTime": "2023-09-15T12:34:56Z",
+    "message": "Namespace is active and ready for workloads.",
+    "reason": "UserCreated",
+    "status": "True",
+    "type": "Ready"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "o84352",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Only possible if the user was created using a third party OAuth provider.",
+    "properties": {
+      "password": {
+        "description": "A password for identifying the user.",
+        "minLength": 6,
+        "type": "string"
+      },
+      "username": {
+        "description": "Username used when locally logging in.",
+        "maxLength": 30,
+        "minLength": 3,
+        "type": "string",
+        "unique": true
+      }
+    },
+    "required": [
+      "username",
+      "password"
+    ],
+    "title": "Create local credentials",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "username": "johndoe123",
+    "password": ""
+  },
+  "valid_json": {
+    "username": "johndoe123",
+    "password": "SecurePass2024!"
+  },
+  "description": "Hello,\n\nWe have set up local login credentials for your account. Your chosen username is **johndoe123**, and the password you will use to sign in is **SecurePass2024!**. Please keep this information secure and remember that the password must be at least six characters long, which your current password satisfies.\n\nYou can now log in directly with these credentials whenever you prefer not to use the third\u2011party OAuth provider. If you have any questions or need to update your password in the future, feel free to contact support."
+}

@@ -1,0 +1,95 @@
+{
+  "name": "o14464",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Action type",
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "A name to identify the action type. **Remark**: The name is unique in the organization.",
+        "type": "string"
+      },
+      "description": {
+        "description": "A human description of the action type.",
+        "type": "string"
+      },
+      "public": {
+        "description": "Make the action type available to everybody.",
+        "type": "boolean"
+      },
+      "type": {
+        "description": "Valid URL to define the action type.",
+        "type": "string"
+      },
+      "schema": {
+        "description": "A valid JSON Schema.",
+        "type": "object"
+      }
+    }
+  },
+  "data": {
+    "name": "UserRegistrationAction",
+    "description": "Action type representing the registration of a new user in the system.",
+    "public": true,
+    "type": "https://example.org/schemas/actions/user-registration",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "User Registration Payload",
+      "type": "object",
+      "required": [
+        "username",
+        "email",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 30,
+          "pattern": "^[a-zA-Z0-9_]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "type": "string",
+          "minLength": 8
+        },
+        "referralCode": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{6}$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "instructions": "Please remove the \"properties\" field inside \"schema\".",
+  "ground_truth": {
+    "name": "UserRegistrationAction",
+    "description": "Action type representing the registration of a new user in the system.",
+    "public": true,
+    "type": "https://example.org/schemas/actions/user-registration",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "User Registration Payload",
+      "type": "object",
+      "required": [
+        "username",
+        "email",
+        "password"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "schema",
+      "properties"
+    ],
+    "precise_instruction": "Remove the \"properties\" field inside \"schema\"."
+  }
+}

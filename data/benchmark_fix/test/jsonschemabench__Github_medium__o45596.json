@@ -1,0 +1,148 @@
+{
+  "name": "o45596",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Pass",
+    "description": "A Pass Data Json Format",
+    "type": "object",
+    "properties": {
+      "passTypeIdentifier": {
+        "type": "string"
+      },
+      "formatVersion": {
+        "type": "integer",
+        "default": 1
+      },
+      "organizationName": {
+        "type": "string"
+      },
+      "serialNumber": {
+        "type": "string"
+      },
+      "teamIdentifier": {
+        "type": "string"
+      },
+      "webServiceURL": {
+        "type": "string"
+      },
+      "authenticationToken": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "foregroundColor": {
+        "type": "string",
+        "default": "rgb(255, 255, 255)"
+      },
+      "backgroundColor": {
+        "type": "string",
+        "default": "rgb(55, 117, 50)"
+      },
+      "logoText": {
+        "type": "string",
+        "default": "iVeew"
+      },
+      "locations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "default": 52.497181
+            },
+            "longitude": {
+              "type": "number",
+              "default": 13.384972
+            }
+          }
+        }
+      },
+      "relevantDate": {
+        "type": "string",
+        "default": "2014-06-07"
+      },
+      "barcode": {
+        "type": "object",
+        "properties": {
+          "messageEncoding": {
+            "type": "string",
+            "default": "utf-8"
+          },
+          "format": {
+            "type": "string",
+            "default": "PKBarcodeFormatQR"
+          },
+          "message": {
+            "type": "string",
+            "default": "---"
+          }
+        }
+      },
+      "storeCard": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "passTypeIdentifier",
+      "organizationName",
+      "description"
+    ]
+  },
+  "erroneous_json": {
+    "passTypeIdentifier": "pass.com.example.loyalty",
+    "formatVersion": null,
+    "organizationName": "Example Corp",
+    "serialNumber": "1234567890",
+    "teamIdentifier": "ABCD1234EF",
+    "webServiceURL": "https://api.example.com/passes",
+    "authenticationToken": "a1b2c3d4e5f6g7h8i9j0",
+    "description": "Loyalty Card",
+    "foregroundColor": "rgb(0, 0, 0)",
+    "backgroundColor": "rgb(255, 255, 255)",
+    "logoText": "Example",
+    "locations": [
+      {
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      }
+    ],
+    "relevantDate": "2026-07-01",
+    "barcode": {
+      "messageEncoding": "utf-8",
+      "format": "PKBarcodeFormatQR",
+      "message": "https://example.com/loyalty/123456"
+    },
+    "storeCard": {}
+  },
+  "valid_json": {
+    "passTypeIdentifier": "pass.com.example.loyalty",
+    "formatVersion": 1,
+    "organizationName": "Example Corp",
+    "serialNumber": "1234567890",
+    "teamIdentifier": "ABCD1234EF",
+    "webServiceURL": "https://api.example.com/passes",
+    "authenticationToken": "a1b2c3d4e5f6g7h8i9j0",
+    "description": "Loyalty Card",
+    "foregroundColor": "rgb(0, 0, 0)",
+    "backgroundColor": "rgb(255, 255, 255)",
+    "logoText": "Example",
+    "locations": [
+      {
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      }
+    ],
+    "relevantDate": "2026-07-01",
+    "barcode": {
+      "messageEncoding": "utf-8",
+      "format": "PKBarcodeFormatQR",
+      "message": "https://example.com/loyalty/123456"
+    },
+    "storeCard": {}
+  },
+  "description": "Dear Customer,\n\nWe are pleased to inform you that Example Corp has issued a new loyalty pass for you. The pass is identified by the string **pass.com.example.loyalty**, uses format version **1**, and carries the serial number **1234567890** under team identifier **ABCD1234EF**. It is described simply as a **Loyalty Card** and is managed through our web service at **https://api.example.com/passes**, which requires the authentication token **a1b2c3d4e5f6g7h8i9j0** for any updates.\n\nVisually, the card will display black text (**rgb(0, 0, 0)**) on a white background (**rgb(255, 255, 255)**) with the logo text \u201c**Example**\u201d. It is linked to a single location at latitude **37.7749** and longitude **-122.4194**, and becomes relevant on **2026-07-01**. Scanning the QR code (format **PKBarcodeFormatQR**, encoded in **utf-8**) reveals the URL **https://example.com/loyalty/123456**. The pass also includes an empty **storeCard** section, indicating that it functions as a store\u2011card type pass."
+}

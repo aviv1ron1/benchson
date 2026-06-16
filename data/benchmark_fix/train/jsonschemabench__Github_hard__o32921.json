@@ -1,0 +1,397 @@
+{
+  "name": "o32921",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "responseType": {
+        "description": "Response type, as defined by the Open311/GeoReport2 standard.",
+        "type": "string",
+        "enum": [
+          "realtime",
+          "batch",
+          "blackbox"
+        ]
+      },
+      "service": {
+        "description": "All requests are for a Service.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The id must be unique",
+            "type": "number",
+            "minimum": 1
+          },
+          "name": {
+            "description": "Title of the Service.",
+            "type": "string"
+          },
+          "responseType": {
+            "description": "Response type, as defined by the Open311/GeoReport2 standard.  This overrides anything set at the Provider level.",
+            "$ref": "#/definitions/responseType"
+          },
+          "group": {
+            "description": "The group this Service request type belongs to.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "group"
+        ]
+      },
+      "emailCfg": {
+        "description": "Email configuration: to, from, subject, and template.",
+        "type": "object",
+        "properties": {
+          "to": {
+            "description": "Email will be sent to this address(es).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "from": {
+            "description": "Email marked as being sent by this address and sender.",
+            "type": "array",
+            "items": {
+              "description": "The first string is the sender address, the second string is the sender name.",
+              "type": "string"
+            }
+          },
+          "subject": {
+            "description": "The subject line of the email.",
+            "type": "string"
+          },
+          "template": {
+            "description": "The Go template to use to format the email.  This is the path and filename of the template file.",
+            "type": "string"
+          }
+        }
+      },
+      "provider": {
+        "description": "A specific Service Provider interface.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "A number uniquely identifying the Service Provider.  This is only used within the Gateway system, and must be unique and unchanging. New values should be placed numerically ABOVE existing values.  Changing the values will confuse any issue ID's that may be stored in a user device.",
+            "type": "number",
+            "minimum": 1
+          },
+          "name": {
+            "description": "Identifies the Service Provider instance.  This should be unique, as it will be used in error and log messages.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL of the Service Provider interface.",
+            "type": "string"
+          },
+          "apiVersion": {
+            "description": "The API version of the Service Provider interface.  Not currently used.",
+            "type": "string"
+          },
+          "key": {
+            "description": "The API key to access the Service Provider interface.",
+            "type": "string"
+          },
+          "responseType": {
+            "description": "Response type, as defined by the Open311/GeoReport2 standard.  This sets the default value for the Provider, which can be overridden at the Service level.",
+            "$ref": "#/definitions/responseType"
+          },
+          "email": {
+            "description": "The email configuration for this Provider.  Only applies to the Email adapter.",
+            "$ref": "#/definitions/emailCfg"
+          },
+          "services": {
+            "description": "The Services of the Provider.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/service"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "responseType",
+          "services"
+        ]
+      },
+      "serviceArea": {
+        "description": "A Service Area, having one or more Service Providers.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the Area.",
+            "type": "string"
+          },
+          "providers": {
+            "description": "The list of all Providers for this Area.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/provider"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "providers"
+        ]
+      }
+    },
+    "properties": {
+      "adapter": {
+        "description": "Basic configuration info for the Adapter",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Identifies the Adapter to the Engine. This must match the Engine configuration file.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of Adapter - e.g. 'CitySourced', 'Email', etc.",
+            "type": "string"
+          },
+          "address": {
+            "description": "The IP address and port number over which the Adapter will communicate with the Engine.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "address"
+        ]
+      },
+      "monitor": {
+        "description": "Configuration data for the System Monitor.",
+        "type": "object",
+        "properties": {
+          "address": {
+            "description": "IP and port of the system monitor.",
+            "type:": "string"
+          }
+        },
+        "required": [
+          "address"
+        ]
+      },
+      "serviceGroups": {
+        "description": "The list of all top level categories for all Services.  These will be referenced in the serviceAreas.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "serviceAreas": {
+        "description": "The list of all geographic areas the Adapter services, including the list of all services for each area.",
+        "additionalProperties": {
+          "$ref": "#/definitions/serviceArea"
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "adapter": {
+      "name": "EmailAdapter",
+      "type": "Email",
+      "address": "127.0.0.1:8080"
+    },
+    "monitor": {},
+    "serviceGroups": [
+      "Public Works",
+      "Parks & Recreation",
+      "Utilities"
+    ],
+    "serviceAreas": {
+      "Downtown": {
+        "name": "Downtown",
+        "providers": [
+          {
+            "id": 1,
+            "name": "CitySourcedProvider",
+            "url": "https://api.citysourced.com/v1",
+            "apiVersion": "2.1",
+            "key": "CS-API-KEY-12345",
+            "responseType": "realtime",
+            "email": {
+              "to": [
+                "support@city.gov"
+              ],
+              "from": [
+                "noreply@city.gov",
+                "City Services"
+              ],
+              "subject": "New Service Request",
+              "template": "templates/email_notification.tmpl"
+            },
+            "services": [
+              {
+                "id": 101,
+                "name": "Pothole Repair",
+                "group": "Public Works",
+                "responseType": "realtime"
+              },
+              {
+                "id": 102,
+                "name": "Street Light Outage",
+                "group": "Public Works"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "ParkMaintenanceProvider",
+            "url": "https://api.parks.example.com",
+            "apiVersion": "1.0",
+            "key": "PK-KEY-67890",
+            "responseType": "batch",
+            "services": [
+              {
+                "id": 201,
+                "name": "Tree Trimming",
+                "group": "Parks & Recreation"
+              },
+              {
+                "id": 202,
+                "name": "Playground Equipment Repair",
+                "group": "Parks & Recreation",
+                "responseType": "batch"
+              }
+            ]
+          }
+        ]
+      },
+      "Uptown": {
+        "name": "Uptown",
+        "providers": [
+          {
+            "id": 3,
+            "name": "UtilityProvider",
+            "url": "https://api.utilityco.com",
+            "apiVersion": "3.0",
+            "key": "UTL-KEY-11223",
+            "responseType": "blackbox",
+            "services": [
+              {
+                "id": 301,
+                "name": "Water Leak Report",
+                "group": "Utilities"
+              },
+              {
+                "id": 302,
+                "name": "Power Outage",
+                "group": "Utilities",
+                "responseType": "realtime"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "valid_json": {
+    "adapter": {
+      "name": "EmailAdapter",
+      "type": "Email",
+      "address": "127.0.0.1:8080"
+    },
+    "monitor": {
+      "address": "192.168.1.100:9000"
+    },
+    "serviceGroups": [
+      "Public Works",
+      "Parks & Recreation",
+      "Utilities"
+    ],
+    "serviceAreas": {
+      "Downtown": {
+        "name": "Downtown",
+        "providers": [
+          {
+            "id": 1,
+            "name": "CitySourcedProvider",
+            "url": "https://api.citysourced.com/v1",
+            "apiVersion": "2.1",
+            "key": "CS-API-KEY-12345",
+            "responseType": "realtime",
+            "email": {
+              "to": [
+                "support@city.gov"
+              ],
+              "from": [
+                "noreply@city.gov",
+                "City Services"
+              ],
+              "subject": "New Service Request",
+              "template": "templates/email_notification.tmpl"
+            },
+            "services": [
+              {
+                "id": 101,
+                "name": "Pothole Repair",
+                "group": "Public Works",
+                "responseType": "realtime"
+              },
+              {
+                "id": 102,
+                "name": "Street Light Outage",
+                "group": "Public Works"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "ParkMaintenanceProvider",
+            "url": "https://api.parks.example.com",
+            "apiVersion": "1.0",
+            "key": "PK-KEY-67890",
+            "responseType": "batch",
+            "services": [
+              {
+                "id": 201,
+                "name": "Tree Trimming",
+                "group": "Parks & Recreation"
+              },
+              {
+                "id": 202,
+                "name": "Playground Equipment Repair",
+                "group": "Parks & Recreation",
+                "responseType": "batch"
+              }
+            ]
+          }
+        ]
+      },
+      "Uptown": {
+        "name": "Uptown",
+        "providers": [
+          {
+            "id": 3,
+            "name": "UtilityProvider",
+            "url": "https://api.utilityco.com",
+            "apiVersion": "3.0",
+            "key": "UTL-KEY-11223",
+            "responseType": "blackbox",
+            "services": [
+              {
+                "id": 301,
+                "name": "Water Leak Report",
+                "group": "Utilities"
+              },
+              {
+                "id": 302,
+                "name": "Power Outage",
+                "group": "Utilities",
+                "responseType": "realtime"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "description": "The system is configured to run the **EmailAdapter**, an Email\u2011type adapter listening on **127.0.0.1:8080**. Its health and status are monitored by a service at **192.168.1.100:9000**. All request categories are organized under the three top\u2011level groups **Public Works**, **Parks & Recreation**, and **Utilities**.  \n\nIn the **Downtown** service area two providers are registered. Provider **CitySourcedProvider** (ID\u202f1) connects to\u202fhttps://api.citysourced.com/v1, uses API version\u202f2.1 with key\u202fCS-API-KEY-12345, and operates in **realtime** mode. Email notifications for this provider are sent to **support@city.gov**, from **noreply@city.gov** (display name \u201cCity Services\u201d), with the subject line \u201cNew Service Request\u201d and the template file **templates/email_notification.tmpl**. It offers two services: **Pothole Repair** (service\u202f101, Public Works, realtime) and **Street Light Outage** (service\u202f102, Public Works, inheriting the provider\u2019s realtime mode). The second provider, **ParkMaintenanceProvider** (ID\u202f2), reaches https://api.parks.example.com, runs API version\u202f1.0 with key\u202fPK-KEY-67890, and defaults to **batch** processing. Its catalog includes **Tree Trimming** (service\u202f201, Parks & Recreation) and **Playground Equipment Repair** (service\u202f202, Parks & Recreation, explicitly batch).  \n\nThe **Uptown** area is served by **UtilityProvider** (ID\u202f3) at https://api.utilityco.com, API version\u202f3.0, key\u202fUTL-KEY-11223, and operates in **blackbox** mode. It supplies **Water Leak Report** (service\u202f301, Utilities) and **Power Outage** (service\u202f302, Utilities, realtime)."
+}

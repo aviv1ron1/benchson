@@ -1,0 +1,381 @@
+{
+  "name": "o5349",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelArtifactCreatedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "3.0.0"
+            ],
+            "default": "3.0.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "string",
+                "pattern": "^pkg:"
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "authorIdentity": {
+                "type": "string"
+              },
+              "integrityProtection": {
+                "type": "object",
+                "properties": {
+                  "signature": {
+                    "type": "string"
+                  },
+                  "alg": {
+                    "type": "string",
+                    "enum": [
+                      "HS256",
+                      "HS384",
+                      "HS512",
+                      "RS256",
+                      "RS384",
+                      "RS512",
+                      "ES256",
+                      "ES384",
+                      "ES512",
+                      "PS256",
+                      "PS384",
+                      "PS512"
+                    ]
+                  },
+                  "publicKey": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "signature",
+                  "alg"
+                ],
+                "additionalProperties": false
+              },
+              "sequenceProtection": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sequenceName": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "sequenceName",
+                    "position"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "authorIdentity"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "identity": {
+            "type": "string",
+            "pattern": "^pkg:"
+          },
+          "fileInformation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "buildCommand": {
+            "type": "string"
+          },
+          "requiresImplementation": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "ANY",
+              "EXACTLY_ONE",
+              "AT_LEAST_ONE"
+            ]
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^pkg:"
+            }
+          },
+          "implements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^pkg:"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "identity"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelArtifactCreatedEvent",
+      "version": "3.0.0",
+      "time": 1728467200,
+      "tags": [
+        "artifact",
+        "creation"
+      ],
+      "source": {
+        "domainId": "my-domain",
+        "host": "buildsystem.company.com",
+        "name": "artifactCreator",
+        "serializer": "pkg:json",
+        "uri": "https://buildsystem.company.com/artifacts/123e4567"
+      },
+      "security": {
+        "authorIdentity": "john.doe@example.com",
+        "integrityProtection": {
+          "signature": "dGVzdHNpZ25hdHVyZQ==",
+          "alg": "RS256",
+          "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "artifact-sequence",
+            "position": 42
+          }
+        ]
+      }
+    },
+    "data": {
+      "fileInformation": [
+        {
+          "name": "build.gradle",
+          "tags": [
+            "build",
+            "gradle"
+          ]
+        },
+        {
+          "name": "README.md"
+        }
+      ],
+      "buildCommand": "make all",
+      "requiresImplementation": "ANY",
+      "dependsOn": [
+        "pkg:com.example.library1",
+        "pkg:com.example.library2"
+      ],
+      "implements": [
+        "pkg:com.example.interface1"
+      ],
+      "name": "My Artifact",
+      "customData": [
+        {
+          "key": "releaseLevel",
+          "value": "beta"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9f8e7d6c-5b4a-3c2d-8e0f-9a8b7c6d5e4f"
+      }
+    ]
+  },
+  "valid_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelArtifactCreatedEvent",
+      "version": "3.0.0",
+      "time": 1728467200,
+      "tags": [
+        "artifact",
+        "creation"
+      ],
+      "source": {
+        "domainId": "my-domain",
+        "host": "buildsystem.company.com",
+        "name": "artifactCreator",
+        "serializer": "pkg:json",
+        "uri": "https://buildsystem.company.com/artifacts/123e4567"
+      },
+      "security": {
+        "authorIdentity": "john.doe@example.com",
+        "integrityProtection": {
+          "signature": "dGVzdHNpZ25hdHVyZQ==",
+          "alg": "RS256",
+          "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "artifact-sequence",
+            "position": 42
+          }
+        ]
+      }
+    },
+    "data": {
+      "identity": "pkg:com.example.myartifact",
+      "fileInformation": [
+        {
+          "name": "build.gradle",
+          "tags": [
+            "build",
+            "gradle"
+          ]
+        },
+        {
+          "name": "README.md"
+        }
+      ],
+      "buildCommand": "make all",
+      "requiresImplementation": "ANY",
+      "dependsOn": [
+        "pkg:com.example.library1",
+        "pkg:com.example.library2"
+      ],
+      "implements": [
+        "pkg:com.example.interface1"
+      ],
+      "name": "My Artifact",
+      "customData": [
+        {
+          "key": "releaseLevel",
+          "value": "beta"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9f8e7d6c-5b4a-3c2d-8e0f-9a8b7c6d5e4f"
+      }
+    ]
+  },
+  "description": "The Eiffel artifact creation event (ID\u202f123e4567-e89b-12d3-a456-426614174000) of type\u202fEiffelArtifactCreatedEvent, version\u202f3.0.0, was recorded at Unix time\u202f1728467200. It is tagged as \u201cartifact\u201d and \u201ccreation\u201d. The source of the event is the build system at buildsystem.company.com (domain\u202fmy-domain), identified by the name \u201cartifactCreator\u201d, serialized with pkg:json, and reachable via\u202fhttps://buildsystem.company.com/artifacts/123e4567. Security details list the author as john.doe@example.com; the integrity protection uses an RS256 signature\u202fdGVzdHNpZ25hdHVyZQ==\u202fwith the public key\u202fMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv..., and the event participates in the \u201cartifact\u2011sequence\u201d at position\u202f42.  \n\nThe artifact itself is identified as\u202fpkg:com.example.myartifact and is named \u201cMy Artifact\u201d. Its file set includes \u201cbuild.gradle\u201d (tagged \u201cbuild\u201d and \u201cgradle\u201d) and \u201cREADME.md\u201d. The build command used was \u201cmake all\u201d, and the artifact requires an implementation of type\u202fANY. It depends on the packages\u202fpkg:com.example.library1\u202fand\u202fpkg:com.example.library2, and it implements\u202fpkg:com.example.interface1. A custom data entry records the release level as \u201cbeta\u201d. Finally, this event is linked with a CAUSE relationship to the event\u202f9f8e7d6c-5b4a-3c2d-8e0f-9a8b7c6d5e4f."
+}

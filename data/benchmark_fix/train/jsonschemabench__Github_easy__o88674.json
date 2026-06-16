@@ -1,0 +1,49 @@
+{
+  "name": "o88674",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Shampoo push message specification",
+    "properties": {
+      "push_data": {
+        "description": "Response data from the called method",
+        "type": "object"
+      },
+      "push_event": {
+        "description": "Name of the push event",
+        "type": "string"
+      },
+      "type": {
+        "pattern": "push",
+        "type": "string"
+      }
+    },
+    "required": [
+      "type",
+      "push_event",
+      "push_data"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "type": null,
+    "push_event": "shampooRestocked",
+    "push_data": {
+      "productId": "SH12345",
+      "quantity": 35,
+      "location": "Warehouse A",
+      "timestamp": "2026-06-15T12:34:56Z"
+    }
+  },
+  "valid_json": {
+    "type": "push",
+    "push_event": "shampooRestocked",
+    "push_data": {
+      "productId": "SH12345",
+      "quantity": 35,
+      "location": "Warehouse A",
+      "timestamp": "2026-06-15T12:34:56Z"
+    }
+  },
+  "description": "Subject: Push Notification \u2013 Shampoo Restocked  \n\nA push\u2011type notification (type\u202f=\u202fpush) has been issued for the event **shampooRestocked**. The product with ID **SH12345** has been replenished with **35** units, now stored at **Warehouse\u202fA**. The restock was recorded at **2026\u201106\u201115T12:34:56Z**."
+}

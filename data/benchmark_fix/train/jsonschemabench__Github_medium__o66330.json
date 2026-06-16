@@ -1,0 +1,123 @@
+{
+  "name": "o66330",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Social fields for the user serializer",
+    "properties": {
+      "academiaProfileID": {
+        "description": "The academiaProfileID for the given user",
+        "type": "string"
+      },
+      "baiduScholar": {
+        "description": "The baiduScholar for the given user",
+        "type": "string"
+      },
+      "github": {
+        "description": "The github for the given user",
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 1,
+        "type": "array"
+      },
+      "impactStory": {
+        "description": "The impactStory for the given user",
+        "type": "string"
+      },
+      "linkedIn": {
+        "description": "The linkedIn for the given user",
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 1,
+        "type": "array"
+      },
+      "orcid": {
+        "description": "The orcid for the given user",
+        "type": "string"
+      },
+      "profileWebsites": {
+        "description": "The profileWebsites for the given user",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "researchGate": {
+        "description": "The researchGate for the given user",
+        "type": "string"
+      },
+      "researcherId": {
+        "description": "The researcherId for the given user",
+        "type": "string"
+      },
+      "scholar": {
+        "description": "The google scholar ID for the given user",
+        "type": "string"
+      },
+      "ssrn": {
+        "description": "The ssrn for the given user",
+        "type": "string"
+      },
+      "twitter": {
+        "description": "The twitter for the given user",
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 1,
+        "type": "array"
+      }
+    },
+    "title": "Social Fields",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "academiaProfileID": "A-123456",
+    "baiduScholar": "https://xueshu.baidu.com/user/abcdef",
+    "github": [
+      "https://github.com/jdoe"
+    ],
+    "impactStory": "Developed a scalable AI platform used by over 10,000 researchers.",
+    "linkedIn": [
+      99999
+    ],
+    "orcid": "0000-0002-1825-0097",
+    "profileWebsites": [
+      "https://johndoe.com",
+      "https://scholar.johndoe.edu"
+    ],
+    "researchGate": "https://www.researchgate.net/profile/John_Doe",
+    "researcherId": "R-987654321",
+    "scholar": "J6c9v6sAAAAJ",
+    "ssrn": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1234567",
+    "twitter": [
+      "https://twitter.com/johndoe"
+    ]
+  },
+  "valid_json": {
+    "academiaProfileID": "A-123456",
+    "baiduScholar": "https://xueshu.baidu.com/user/abcdef",
+    "github": [
+      "https://github.com/jdoe"
+    ],
+    "impactStory": "Developed a scalable AI platform used by over 10,000 researchers.",
+    "linkedIn": [
+      "https://www.linkedin.com/in/johndoe"
+    ],
+    "orcid": "0000-0002-1825-0097",
+    "profileWebsites": [
+      "https://johndoe.com",
+      "https://scholar.johndoe.edu"
+    ],
+    "researchGate": "https://www.researchgate.net/profile/John_Doe",
+    "researcherId": "R-987654321",
+    "scholar": "J6c9v6sAAAAJ",
+    "ssrn": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1234567",
+    "twitter": [
+      "https://twitter.com/johndoe"
+    ]
+  },
+  "description": "John Doe\u2019s professional identifiers include an Academia profile ID of **A-123456**, an ORCID of **0000-0002-1825-0097**, a ResearcherID of **R-987654321**, and a Google Scholar ID **J6c9v6sAAAAJ**. He is best known for developing a scalable AI platform that is now used by over\u202f10,000 researchers, a contribution highlighted in his impact story.  \n\nYou can view John\u2019s full scholarly presence through the following links: his Baidu Scholar page at https://xueshu.baidu.com/user/abcdef, his GitHub repository at https://github.com/jdoe, his LinkedIn profile at https://www.linkedin.com/in/johndoe, and his Twitter account at https://twitter.com/johndoe. Additional academic profiles are available on ResearchGate (https://www.researchgate.net/profile/John_Doe) and SSRN (https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1234567). For personal and institutional information, visit his websites https://johndoe.com and https://scholar.johndoe.edu."
+}

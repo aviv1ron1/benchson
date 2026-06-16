@@ -1,0 +1,71 @@
+{
+  "name": "calculate_area_78ad6e6a",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "description": "The dimensions of the shape",
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "length",
+          "width",
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (e.g. circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 5,
+      "height": 10,
+      "length": 15,
+      "radius": 3.5
+    }
+  },
+  "valid_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 5,
+      "height": 10,
+      "length": 15,
+      "radius": 3.5,
+      "width": 8
+    }
+  },
+  "description": "Subject: Design Specifications for the New Display Unit  \n\nDear Team,  \n\nThe latest design calls for a rectangular enclosure with a length of 15\u202funits, a width of 8\u202funits, and a height of 10\u202funits. For reference, the base edge of the rectangle measures 5\u202funits, which aligns with the mounting constraints we discussed in our last meeting. In addition, the assembly includes a circular cut\u2011out that requires a radius of 3.5\u202funits to accommodate the sensor housing. Please ensure that these dimensions are reflected in the CAD models and that the tolerances are checked before we move to prototyping.  \n\nBest regards,  \nAlex  \nProduct Development Lead"
+}

@@ -1,0 +1,68 @@
+{
+  "name": "generate_invoice_7aeb21da",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "description": "The list of items in the invoice",
+        "items": {
+          "properties": {
+            "name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "price",
+            "quantity"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "customer_name": "Acme Corporation"
+  },
+  "valid_json": {
+    "customer_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Widget",
+        "price": 124.99,
+        "quantity": 15
+      },
+      {
+        "name": "Heavy-Duty Gear",
+        "price": 89.5,
+        "quantity": 30
+      },
+      {
+        "name": "Safety Helmet",
+        "price": 39.99,
+        "quantity": 20
+      }
+    ]
+  },
+  "description": "Dear Acme Corporation,\n\nPlease find below the details of the items you have requested: the Industrial Widget is priced at $124.99 each, with a quantity of 15 units; the Heavy\u2011Duty Gear costs $89.5 each, with 30 units ordered; and the Safety Helmet is $39.99 per unit, with a total of 20 helmets."
+}

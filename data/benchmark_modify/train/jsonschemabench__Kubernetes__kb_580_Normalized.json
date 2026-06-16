@@ -1,0 +1,47 @@
+{
+  "name": "kb_580_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "NamespaceSpec describes the attributes on a Namespace.",
+    "properties": {
+      "finalizers": {
+        "description": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/",
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "finalizers": [
+      "kubernetes.io/namespaces",
+      "example.com/custom-finalizer",
+      null
+    ]
+  },
+  "instructions": "Could you add another entry to the \"finalizers\" list that\u2019s identical to the first item?",
+  "ground_truth": {
+    "finalizers": [
+      "kubernetes.io/namespaces",
+      "example.com/custom-finalizer",
+      null,
+      "kubernetes.io/namespaces"
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "finalizers"
+    ],
+    "precise_instruction": "Add another item to the \"finalizers\" list, identical to its first item."
+  }
+}

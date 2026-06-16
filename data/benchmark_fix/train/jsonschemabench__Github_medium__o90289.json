@@ -1,0 +1,90 @@
+{
+  "name": "o90289",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "title": "Raster Data Elevation Layer",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "RasterDataElevationLayer is a single-band raster layer used for rendering elevation.",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "A unique identifying string for the layer"
+      },
+      "layerType": {
+        "type": "string",
+        "description": "String indicating the layer type",
+        "enum": [
+          "RasterDataElevationLayer"
+        ]
+      },
+      "listMode": {
+        "type": "string",
+        "description": "To show or hide the elevation layer in the layer list",
+        "enum": [
+          "hide",
+          "show"
+        ]
+      },
+      "path": {
+        "type": "string",
+        "description": "For offline data, a path to an ArcGIS Runtime supported raster data file. A URI format is used, starting with file: followed by a file system path. A relative path must be from the file which defines the layer. For example `file:../commondata/raster_data/beijing.tif`",
+        "pattern": "^file:.+$"
+      },
+      "title": {
+        "type": "string",
+        "description": "A user-friendly string title for the layer that can be used in a table of contents. If this is not included, a title is derived from the service."
+      },
+      "visibility": {
+        "type": "boolean",
+        "description": "Boolean property determining whether the layer is initially visible in the web scene.",
+        "default": true
+      }
+    },
+    "required": [
+      "id",
+      "layerType",
+      "path",
+      "title"
+    ],
+    "additionalProperties": false,
+    "esriDocumentation": {
+      "examples": [
+        {
+          "title": "Raster Data Elevation Layer",
+          "schema": "ground_schema.json",
+          "code": {
+            "ground": {
+              "layers": [
+                {
+                  "id": "local_dem",
+                  "title": "Local DEM",
+                  "path": "file:../commondata/DEM.tif",
+                  "visibility": true,
+                  "layerType": "RasterDataElevationLayer"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "erroneous_json": {
+    "id": "elev_layer_01",
+    "layerType": "RasterDataElevationLayer",
+    "listMode": "show",
+    "title": "Region DEM Elevation",
+    "visibility": true
+  },
+  "valid_json": {
+    "id": "elev_layer_01",
+    "layerType": "RasterDataElevationLayer",
+    "listMode": "show",
+    "path": "file:../elevation/region_dem.tif",
+    "title": "Region DEM Elevation",
+    "visibility": true
+  },
+  "description": "The raster data elevation layer identified as **elev_layer_01** is a **RasterDataElevationLayer** titled **Region DEM Elevation**. Its source file is located at **file:../elevation/region_dem.tif**, and the layer is configured to appear in the layer list (list mode set to **show**).  \n\nBy default the layer is set to be visible when the scene loads, with the **visibility** flag marked **true**."
+}

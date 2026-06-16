@@ -1,0 +1,116 @@
+{
+  "name": "o90951",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "notScheduled": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/shared"
+          }
+        ],
+        "properties": {
+          "runMode": {
+            "description": "Determines the run mode of the Azure Webjob. \n\n Triggered: manually triggered \n Scheduled: runs on a specific schedule \n Continuous: runs all the time",
+            "enum": [
+              "Continuous",
+              "OnDemand"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "runMode"
+        ]
+      },
+      "scheduled": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/shared"
+          }
+        ],
+        "properties": {
+          "runMode": {
+            "description": "Determines the run mode of the Azure Webjob. \n\n Triggered: manually triggered \n Scheduled: runs on a specific schedule \n Continuous: runs all the time",
+            "enum": [
+              "Scheduled"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "webJobName",
+          "startTime",
+          "endTime",
+          "jobRecurrenceFrequency",
+          "interval"
+        ]
+      },
+      "shared": {
+        "properties": {
+          "endTime": {
+            "_format": "date-time",
+            "description": "The end time of a scheduled job. Example. 2014-06-12T00:00:00-08:00",
+            "type": "string"
+          },
+          "interval": {
+            "description": "The interval of how often the Azure Webjob should run. Use it with the 'jobRecurrenceFrequency' property.",
+            "type": "integer"
+          },
+          "jobRecurrenceFrequency": {
+            "description": "The frequency metric used with the 'interval' property.",
+            "enum": [
+              "Second",
+              "Minute",
+              "Hour",
+              "Day",
+              "Week",
+              "Month"
+            ],
+            "type": "string"
+          },
+          "startTime": {
+            "_format": "date-time",
+            "description": "The start time of a scheduled job. Example. 2014-06-11T00:00:00-08:00",
+            "type": "string"
+          },
+          "webJobName": {
+            "description": "The name of the Azure Webjob.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "oneOf": [
+      {
+        "$ref": "#/definitions/scheduled"
+      },
+      {
+        "$ref": "#/definitions/notScheduled"
+      }
+    ],
+    "required": [
+      "runMode"
+    ],
+    "title": "JSON schema for Azure Webjobs configuration files",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "webJobName": "DataProcessorJob",
+    "startTime": "2026-07-01T02:00:00Z",
+    "endTime": "2026-07-01T04:00:00Z",
+    "jobRecurrenceFrequency": "Hour",
+    "interval": 2
+  },
+  "valid_json": {
+    "runMode": "Scheduled",
+    "webJobName": "DataProcessorJob",
+    "startTime": "2026-07-01T02:00:00Z",
+    "endTime": "2026-07-01T04:00:00Z",
+    "jobRecurrenceFrequency": "Hour",
+    "interval": 2
+  },
+  "description": "The Azure WebJob **DataProcessorJob** is configured to run in **Scheduled** mode. Its first execution is slated to begin at **2026-07-01T02:00:00Z** and will conclude by **2026-07-01T04:00:00Z** on the same day.\n\nDuring this window the job will repeat automatically, running **every 2\u202fHour(s)** as defined by the recurrence settings. This schedule ensures the data processing task is invoked twice within the two\u2011hour period."
+}

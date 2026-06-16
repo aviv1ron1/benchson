@@ -1,0 +1,29 @@
+{
+  "name": "o89660",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Documentation",
+    "description": "Add documentation",
+    "type": "object",
+    "properties": {
+      "CADI_ID": {
+        "title": "CADI ID",
+        "type": "string"
+      },
+      "url": {
+        "title": "URL",
+        "type": "string"
+      },
+      "keyword": {
+        "title": "Keyword",
+        "type": "string"
+      },
+      "comment": {
+        "title": "Comment",
+        "type": "string"
+      }
+    }
+  }
+}

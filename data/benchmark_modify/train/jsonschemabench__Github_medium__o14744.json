@@ -1,0 +1,177 @@
+{
+  "name": "o14744",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "cheer": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "channel": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "userstate": {
+            "type": "object",
+            "properties": {
+              "bits": {
+                "type": "number"
+              },
+              "display-name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "bits",
+              "display-name"
+            ]
+          }
+        },
+        "required": [
+          "channel",
+          "message",
+          "userstate"
+        ]
+      }
+    },
+    "default": {
+      "monthly": {
+        "channel": "none",
+        "message": "",
+        "userstate": {
+          "bits": 0,
+          "display-name": "N/A"
+        }
+      },
+      "daily": {
+        "channel": "none",
+        "message": "",
+        "userstate": {
+          "bits": 0,
+          "display-name": "N/A"
+        }
+      }
+    },
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "daily": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "userstate": {
+            "type": "object",
+            "properties": {
+              "bits": {
+                "type": "number"
+              },
+              "display-name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "bits",
+              "display-name"
+            ]
+          }
+        },
+        "required": [
+          "channel",
+          "message",
+          "userstate"
+        ]
+      },
+      "monthly": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "userstate": {
+            "type": "object",
+            "properties": {
+              "bits": {
+                "type": "number"
+              },
+              "display-name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "bits",
+              "display-name"
+            ]
+          }
+        },
+        "required": [
+          "channel",
+          "message",
+          "userstate"
+        ]
+      }
+    },
+    "required": [
+      "daily",
+      "monthly"
+    ]
+  },
+  "data": {
+    "daily": {
+      "channel": "gaminghub",
+      "message": "Thanks for the daily cheer!",
+      "userstate": {
+        "bits": 250,
+        "display-name": "ChatUser123"
+      }
+    },
+    "monthly": {
+      "channel": "gaminghub",
+      "message": "Monthly supporter - appreciate the stream!",
+      "userstate": {
+        "bits": 5000,
+        "display-name": "SuperFan"
+      }
+    }
+  },
+  "instructions": "Please change the \u201cmessage\u201d field inside \u201cmonthly\u201d to \u201cMonthly supporter - appreciate the stream! (updated)\u201d.",
+  "ground_truth": {
+    "daily": {
+      "channel": "gaminghub",
+      "message": "Thanks for the daily cheer!",
+      "userstate": {
+        "bits": 250,
+        "display-name": "ChatUser123"
+      }
+    },
+    "monthly": {
+      "channel": "gaminghub",
+      "message": "Monthly supporter - appreciate the stream! (updated)",
+      "userstate": {
+        "bits": 5000,
+        "display-name": "SuperFan"
+      }
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "monthly",
+      "message"
+    ],
+    "precise_instruction": "Change \"message\" inside \"monthly\" to \"Monthly supporter - appreciate the stream! (updated)\"."
+  }
+}

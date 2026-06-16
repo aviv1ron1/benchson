@@ -1,0 +1,50 @@
+{
+  "name": "search_news_b53cc6ae",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "date_range": {
+        "properties": {
+          "end_date": {
+            "description": "The end date of the news articles",
+            "format": "date",
+            "type": "string"
+          },
+          "start_date": {
+            "description": "The start date of the news articles",
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "language": {
+        "description": "The language of the news articles",
+        "type": "string"
+      },
+      "query": {
+        "description": "The search query for the news",
+        "type": "string"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "date_range": null,
+    "language": "en",
+    "query": "renewable energy investment trends"
+  },
+  "valid_json": {
+    "date_range": {
+      "start_date": "2023-01-01",
+      "end_date": "2023-01-31"
+    },
+    "language": "en",
+    "query": "renewable energy investment trends"
+  },
+  "description": "Subject: Request for News Summary \u2013 Renewable Energy Investment Trends (Jan\u202f1\u202f\u2013\u202fJan\u202f31\u202f2023)\n\nHello Team,\n\nCould you please compile a concise summary of news articles covering renewable energy investment trends for the period from\u202fJanuary\u202f1,\u202f2023 through\u202fJanuary\u202f31,\u202f2023? The brief should be prepared in English and focus on notable developments, market shifts, and any policy announcements that shaped investment activity during that month.\n\nThank you for your assistance."
+}

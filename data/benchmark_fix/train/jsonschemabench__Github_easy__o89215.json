@@ -1,0 +1,35 @@
+{
+  "name": "o89215",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "License",
+    "description": "License information for the Container Application.",
+    "type": "object",
+    "required": [
+      "name"
+    ],
+    "properties": {
+      "name": {
+        "description": "The human readable license name used for the Container Application, no format imposed.",
+        "type": "string",
+        "default": "null"
+      },
+      "url": {
+        "description": "A URL to the license used for the API. MUST be in the format of a URL.",
+        "type": "string",
+        "default": "null"
+      }
+    }
+  },
+  "erroneous_json": {
+    "name": "Apache License 2.0",
+    "url": null
+  },
+  "valid_json": {
+    "name": "Apache License 2.0",
+    "url": "https://www.apache.org/licenses/LICENSE-2.0"
+  },
+  "description": "The Container Application is distributed under the Apache License\u202f2.0. For a complete description of the terms and conditions, you can view the license at\u202fhttps://www.apache.org/licenses/LICENSE-2.0."
+}

@@ -1,0 +1,102 @@
+{
+  "name": "o69975",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "PatronType",
+    "description": "JSON schema for patron_types.",
+    "additionalProperties": false,
+    "propertiesOrder": [
+      "name",
+      "description",
+      "subscription_amount"
+    ],
+    "required": [
+      "$schema",
+      "pid",
+      "name",
+      "organisation"
+    ],
+    "properties": {
+      "$schema": {
+        "title": "Schema",
+        "description": "Schema to validate patron_types records against.",
+        "type": "string",
+        "minLength": 9,
+        "default": "https://ils.rero.ch/schemas/patron_types/patron_type-v0.0.1.json"
+      },
+      "pid": {
+        "title": "Patron type ID",
+        "type": "string",
+        "minLength": 1
+      },
+      "name": {
+        "title": "Name",
+        "description": "The name of the patron type",
+        "type": "string",
+        "minLength": 2,
+        "form": {
+          "focus": true,
+          "validation": {
+            "validators": {
+              "valueAlreadyExists": {
+                "term": "patron_type_name"
+              }
+            },
+            "messages": {
+              "alreadyTakenMessage": "The patron type name is already taken."
+            }
+          }
+        }
+      },
+      "description": {
+        "title": "Description",
+        "description": "The description of the patron type.",
+        "type": "string"
+      },
+      "organisation": {
+        "title": "Organisation",
+        "type": "object",
+        "properties": {
+          "$ref": {
+            "title": "Organisation URI",
+            "type": "string",
+            "pattern": "^https://ils.rero.ch/api/organisations/.*?$"
+          }
+        }
+      },
+      "subscription_amount": {
+        "title": "Amount",
+        "description": "Yearly amount due by patrons linked to this patron type.",
+        "type": "number",
+        "default": 0,
+        "minimum": 0,
+        "form": {
+          "wrappers": [
+            "toggle-switch",
+            "form-field"
+          ],
+          "templateOptions": {
+            "toggle-switch": {
+              "label": "Yearly subscription",
+              "description": "Activation of subscription fees for patrons linked to this type."
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "Please note that the patron type identified by\u202fpt-001 is titled **Student\u202fMember**. This category is defined for patrons who are currently enrolled students and therefore qualify for reduced access. The description reads: \u201cPatrons who are enrolled students, eligible for reduced access.\u201d The record follows the specification available at\u202fhttps://ils.rero.ch/schemas/patron_types/patron_type-v0.0.1.json and is linked to the organisation located at\u202fhttps://ils.rero.ch/api/organisations/12345.  \n\nA yearly subscription fee of\u202f25.0\u202fCHF is associated with this patron type, reflecting the modest charge applied to student members.",
+  "reference_json": {
+    "$schema": "https://ils.rero.ch/schemas/patron_types/patron_type-v0.0.1.json",
+    "pid": "pt-001",
+    "name": "Student Member",
+    "description": "Patrons who are enrolled students, eligible for reduced access.",
+    "organisation": {
+      "$ref": "https://ils.rero.ch/api/organisations/12345"
+    },
+    "subscription_amount": 25.0
+  }
+}

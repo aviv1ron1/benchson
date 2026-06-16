@@ -1,0 +1,113 @@
+{
+  "name": "sp_187_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": true,
+    "description": "Schema for a SendGrid dropped event. Property descriptions derived from the SendGrid documentation: https://sendgrid.com/docs/for-developers/tracking-events/event/",
+    "properties": {
+      "category": {
+        "description": "Categories are custom tags that you set for the purpose of organizing your emails. Categories can be set as an array or string, and they will be returned as such when posted in your event endpoint.",
+        "items": {
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "string"
+        ]
+      },
+      "email": {
+        "_format": "email",
+        "description": "The email address of the recipient",
+        "type": "string"
+      },
+      "marketing_campaign_id": {
+        "description": "For emails sent through our Marketing Campaigns feature, we add Marketing Campaigns specific parameters to the Event Webhook. Both marketing_campaign_name and marketing_campaign_id are displayed as unique arguments in the event data.",
+        "type": "integer"
+      },
+      "marketing_campaign_name": {
+        "description": "For emails sent through our Marketing Campaigns feature, we add Marketing Campaigns specific parameters to the Event Webhook. Both marketing_campaign_name and marketing_campaign_id are displayed as unique arguments in the event data.",
+        "type": "string"
+      },
+      "marketing_campaign_split_id": {
+        "description": "Marketing campaign split id",
+        "type": "integer"
+      },
+      "marketing_campaign_version": {
+        "description": "Displayed in the event data for emails sent as part of an A/B Test. The value for marketing_campaign_version are returned as A, B, C, etc.",
+        "type": "string"
+      },
+      "reason": {
+        "description": "Any sort of error response returned by the receiving server that describes the reason this event type was triggered",
+        "type": "string"
+      },
+      "sg_event_id": {
+        "description": "A unique ID to this event that you can use for deduplication purposes. These IDs are up to 100 characters long and are URL safe.",
+        "maxLength": 4096,
+        "minLength": 22,
+        "type": "string"
+      },
+      "sg_message_id": {
+        "description": "A unique, internal SendGrid ID for the message. The first half of this is pulled from the smtp-id.",
+        "type": "string"
+      },
+      "smtp-id": {
+        "description": "A unique ID attached to the message by the originating system",
+        "type": "string"
+      },
+      "status": {
+        "description": "Status code string. Corresponds to HTTP status code - for example, a JSON response of 5.0.0 is the same as a 500 error response.",
+        "type": "string"
+      },
+      "timestamp": {
+        "_format": "date-time",
+        "description": "The timestamp of when the message was sent",
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "dropped",
+      "vendor": "com.sendgrid",
+      "version": "2-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "category": [
+      "newsletter",
+      "promo"
+    ],
+    "email": "user@example.com",
+    "marketing_campaign_id": 987654,
+    "marketing_campaign_name": "Spring Sale 2024",
+    "marketing_campaign_split_id": 3,
+    "marketing_campaign_version": "B",
+    "reason": "Recipient mailbox full",
+    "sg_event_id": "dK7x9Zc5W8u1v2y3t4a5b6c7d",
+    "sg_message_id": "00000123abcd.56defg@us-east-1.amazonses.com",
+    "smtp-id": null,
+    "status": "4.2.2",
+    "timestamp": "2026-06-14T12:34:56Z",
+    "extra_info": "Dropped due to temporary mailbox issue"
+  },
+  "valid_json": {
+    "category": [
+      "newsletter",
+      "promo"
+    ],
+    "email": "user@example.com",
+    "marketing_campaign_id": 987654,
+    "marketing_campaign_name": "Spring Sale 2024",
+    "marketing_campaign_split_id": 3,
+    "marketing_campaign_version": "B",
+    "reason": "Recipient mailbox full",
+    "sg_event_id": "dK7x9Zc5W8u1v2y3t4a5b6c7d",
+    "sg_message_id": "00000123abcd.56defg@us-east-1.amazonses.com",
+    "smtp-id": "<00000123abcd.56defg@us-east-1.amazonses.com>",
+    "status": "4.2.2",
+    "timestamp": "2026-06-14T12:34:56Z",
+    "extra_info": "Dropped due to temporary mailbox issue"
+  },
+  "description": "On\u202f2026\u201106\u201114 at\u202f12:34:56\u202fUTC, SendGrid logged a dropped event for the recipient **user@example.com**. The message was part of the \u201cSpring Sale\u202f2024\u201d marketing campaign (ID\u202f987654), specifically split\u202f3 and version\u202fB, and it was tagged with the categories **newsletter** and **promo**. The event is uniquely identified by the SendGrid event ID **dK7x9Zc5W8u1v2y3t4a5b6c7d**, and the underlying message carries the SendGrid message ID **00000123abcd.56defg@us-east-1.amazonses.com** and the original SMTP identifier **<00000123abcd.56defg@us-east-1.amazonses.com>**.\n\nThe drop was caused by a \u201cRecipient mailbox full\u201d condition, which corresponds to the SMTP status code **4.2.2**. An additional note recorded that the message was \u201cDropped due to temporary mailbox issue.\u201d"
+}

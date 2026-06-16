@@ -1,0 +1,90 @@
+{
+  "name": "sp_360_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Snowplow Amazon DynamoDB storage configuration",
+    "properties": {
+      "auth": {
+        "description": "Authentication method for Events Manifest",
+        "oneOf": [
+          {
+            "properties": {
+              "accessKeyId": {
+                "type": "string"
+              },
+              "secretAccessKey": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "accessKeyId",
+              "secretAccessKey"
+            ],
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "awsRegion": {
+        "type": "string"
+      },
+      "dynamodbTable": {
+        "type": "string"
+      },
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "purpose": {
+        "enum": [
+          "EVENTS_MANIFEST"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "auth",
+      "awsRegion",
+      "dynamodbTable",
+      "id",
+      "purpose"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "amazon_dynamodb_config",
+      "vendor": "com.snowplowanalytics.snowplow.storage",
+      "version": "2-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "MyDynamoDBConfig",
+    "auth": {
+      "accessKeyId": "AKIAEXAMPLEACCESS",
+      "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+    },
+    "dynamodbTable": "snowplow-events",
+    "purpose": "EVENTS_MANIFEST"
+  },
+  "valid_json": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "MyDynamoDBConfig",
+    "auth": {
+      "accessKeyId": "AKIAEXAMPLEACCESS",
+      "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+    },
+    "awsRegion": "us-east-1",
+    "dynamodbTable": "snowplow-events",
+    "purpose": "EVENTS_MANIFEST"
+  },
+  "description": "Dear Team,\n\nPlease find below the details of the Amazon\u202fDynamoDB storage configuration that we will be using for the Snowplow events manifest. The configuration is identified by the UUID **3fa85f64-5717-4562-b3fc-2c963f66afa6** and has been named **MyDynamoDBConfig** for easy reference. Authentication is handled via static credentials: the access key ID is **AKIAEXAMPLEACCESS** and the corresponding secret access key is **wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY**. The resources will be provisioned in the **us\u2011east\u20111** AWS region, targeting the DynamoDB table called **snowplow-events**. This setup is intended exclusively for the **EVENTS_MANIFEST** purpose. \n\nLet me know if any adjustments are required."
+}

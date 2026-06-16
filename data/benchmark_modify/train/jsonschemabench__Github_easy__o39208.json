@@ -1,0 +1,53 @@
+{
+  "name": "o39208",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "description": "Test Schema",
+    "type": "object",
+    "properties": {
+      "person": {
+        "$ref": "#/definitions/personDefinition"
+      }
+    },
+    "additionalProperties": false,
+    "definitions": {
+      "personDefinition": {
+        "description": "Person",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the person",
+            "type": "string",
+            "minLength": 1
+          },
+          "age": {
+            "description": "The age of the person",
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "age"
+        ]
+      }
+    }
+  },
+  "data": {
+    "person": {
+      "name": "Alice Johnson",
+      "age": 34
+    }
+  },
+  "instructions": "Please delete the person field.",
+  "ground_truth": {},
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "person"
+    ],
+    "precise_instruction": "Remove the \"person\" field."
+  }
+}

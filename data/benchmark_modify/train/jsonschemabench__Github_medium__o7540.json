@@ -1,0 +1,156 @@
+{
+  "name": "o7540",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Esquema Contenido tabla",
+    "definitions": {
+      "contenido": {
+        "type": "object",
+        "properties": {
+          "titulos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 6,
+            "maxItems": 6
+          },
+          "filas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/valoresFila"
+            },
+            "minItems": 1
+          },
+          "fuente": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "titulos",
+          "filas"
+        ]
+      },
+      "valoresFila": {
+        "type": "object",
+        "properties": {
+          "mes": {
+            "type": "string"
+          },
+          "porcentajes": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 5,
+            "maxItems": 5
+          }
+        },
+        "required": [
+          "mes",
+          "porcentajes"
+        ]
+      }
+    },
+    "type": "object",
+    "properties": {
+      "contenido": {
+        "$ref": "#/definitions/contenido"
+      }
+    },
+    "required": [
+      "contenido"
+    ]
+  },
+  "data": {
+    "contenido": {
+      "titulos": [
+        "Mes",
+        "Producto A",
+        "Producto B",
+        "Producto C",
+        "Producto D",
+        "Producto E"
+      ],
+      "filas": [
+        {
+          "mes": "Enero",
+          "porcentajes": [
+            12.5,
+            8.3,
+            15.0,
+            9.7,
+            4.2
+          ]
+        },
+        {
+          "mes": "Febrero",
+          "porcentajes": [
+            11.0,
+            7.8,
+            14.5,
+            10.2,
+            5.1
+          ]
+        },
+        {
+          "mes": "Marzo",
+          "porcentajes": [
+            13.4,
+            9.1,
+            16.2,
+            8.9,
+            3.8
+          ]
+        }
+      ],
+      "fuente": "Reporte interno de ventas 2026"
+    }
+  },
+  "instructions": "Could you remove the last item from the\u202f\"filas\"\u202flist inside\u202f\"contenido\"?",
+  "ground_truth": {
+    "contenido": {
+      "titulos": [
+        "Mes",
+        "Producto A",
+        "Producto B",
+        "Producto C",
+        "Producto D",
+        "Producto E"
+      ],
+      "filas": [
+        {
+          "mes": "Enero",
+          "porcentajes": [
+            12.5,
+            8.3,
+            15.0,
+            9.7,
+            4.2
+          ]
+        },
+        {
+          "mes": "Febrero",
+          "porcentajes": [
+            11.0,
+            7.8,
+            14.5,
+            10.2,
+            5.1
+          ]
+        }
+      ],
+      "fuente": "Reporte interno de ventas 2026"
+    }
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "contenido",
+      "filas"
+    ],
+    "precise_instruction": "Remove the last item from the \"filas\" list inside \"contenido\"."
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "name": "schema-org-place",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "anyOf": [
+      {
+        "$ref": "https://json.schemastore.org/schema-org-thing.json"
+      }
+    ],
+    "description": "This is a JSON schema representation of the schema.org Place schema: https://schema.org/Place",
+    "id": "https://json.schemastore.org/schema-org-place.json",
+    "properties": {
+      "@context": {
+        "type": "string",
+        "format": "regex",
+        "pattern": "http://schema.org",
+        "description": "override the @context property to ensure the schema.org URI is used"
+      },
+      "@type": {
+        "type": "string",
+        "format": "regex",
+        "pattern": "Place",
+        "description": "override the @type property to ensure Place is used"
+      },
+      "additionalProperty": {
+        "description": "A property-value pair representing an additional characteristics of the entity, e.g. a product feature or another characteristic for which there is no matching property in schema.org.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "description": "PropertyValue"
+        }
+      },
+      "address": {
+        "oneOf": [
+          {
+            "type": "object",
+            "description": "PostalAddress"
+          },
+          {
+            "type": "string",
+            "description": "Physical address of the item."
+          }
+        ]
+      },
+      "aggregateRating": {
+        "type": "object",
+        "description": "AggregateRating -- The overall rating, based on a collection of reviews or ratings, of the item."
+      },
+      "amenityFeature": {
+        "description": "An amenity feature (e.g. a characteristic or service) of the Accommodation. This generic property does not make a statement about whether the feature is included in an offer for the main accommodation or available at extra costs.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "description": "LocationFeatureSpecification"
+        }
+      },
+      "branchCode": {
+        "type": "string",
+        "description": "A short textual code (also called \"store code\") that uniquely identifies a place of business. The code is typically assigned by the parentOrganization and used in structured URLs."
+      },
+      "containedInPlace": {
+        "$ref": "https://json.schemastore.org/schema-org-thing.json",
+        "description": "Place"
+      },
+      "containsPlace": {
+        "$ref": "https://json.schemastore.org/schema-org-thing.json",
+        "description": "Place"
+      },
+      "event": {
+        "type": "object",
+        "description": "Event"
+      },
+      "faxNumber": {
+        "type": "string",
+        "description": "The fax number."
+      },
+      "geo": {
+        "description": "The geo coordinates of the place.",
+        "oneOf": [
+          {
+            "type": "object",
+            "description": "GeoCoordinates"
+          },
+          {
+            "type": "object",
+            "description": "GeoShape"
+          }
+        ]
+      },
+      "globalLocationNumber": {
+        "type": "string",
+        "description": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+        "format": "regex",
+        "pattern": "\\b\\d{13}\\b"
+      },
+      "hasMap": {
+        "description": "A URL to a map of the place. Supersedes map, maps.",
+        "oneOf": [
+          {
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "type": "object",
+            "description": "Map"
+          }
+        ]
+      },
+      "isicV4": {
+        "type": "string",
+        "description": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place."
+      },
+      "logo": {
+        "description": "An associated logo.",
+        "oneOf": [
+          {
+            "type": "object",
+            "description": "ImageObject"
+          },
+          {
+            "type": "string",
+            "format": "uri"
+          }
+        ]
+      },
+      "openingHoursSpecification": {
+        "type": "object",
+        "description": "OpeningHoursSpecification"
+      },
+      "photo": {
+        "description": "A photograph of this place. Supersedes photos.",
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "ImageObject"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Photograph"
+            }
+          }
+        ]
+      },
+      "review": {
+        "description": "A review of the item. Supersedes reviews.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "description": "Review"
+        }
+      },
+      "smokingAllowed": {
+        "type": "boolean",
+        "description": "Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room."
+      },
+      "specialOpeningHoursSpecification": {
+        "description": "The special opening hours of a certain place. Use this to explicitly override general opening hours brought in scope by openingHoursSpecification or openingHours.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "description": "OpeningHoursSpecification"
+        }
+      },
+      "telephone": {
+        "type": "string",
+        "description": "The telephone number."
+      }
+    },
+    "required": [
+      "@type"
+    ],
+    "title": "JSON schema for schema.org / Place",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "@context": "http://schema.org",
+    "@type": "Place",
+    "name": "Central City Library",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main St",
+      "addressLocality": "Metropolis",
+      "addressRegion": "NY",
+      "postalCode": "10101",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-555-123-4567",
+    "faxNumber": "+1-555-765-4321",
+    "url": "https://centralcitylibrary.example.com",
+    "hasMap": "https://maps.example.com/?q=Central+City+Library",
+    "globalLocationNumber": "1234567890123",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://centralcitylibrary.example.com/logo.png"
+    },
+    "photo": [
+      {
+        "@type": "ImageObject",
+        "url": "https://centralcitylibrary.example.com/photo1.jpg",
+        "caption": "Front view of the library"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.7,
+      "reviewCount": 128
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": "Jane Doe",
+        "datePublished": "2023-08-15",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 5
+        },
+        "reviewBody": "Excellent collection and helpful staff."
+      }
+    ],
+    "openingHoursSpecification": null,
+    "specialOpeningHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "16:00"
+      }
+    ],
+    "smokingAllowed": false,
+    "branchCode": "CCL-01",
+    "isicV4": "8510",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "WifiAvailable",
+        "value": true
+      }
+    ],
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Wheelchair Accessible",
+        "value": true
+      }
+    ],
+    "containedInPlace": {
+      "@type": "Place",
+      "name": "Metropolis Public Buildings"
+    },
+    "containsPlace": {
+      "@type": "Place",
+      "name": "Children's Reading Room"
+    }
+  },
+  "valid_json": {
+    "@context": "http://schema.org",
+    "@type": "Place",
+    "name": "Central City Library",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main St",
+      "addressLocality": "Metropolis",
+      "addressRegion": "NY",
+      "postalCode": "10101",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-555-123-4567",
+    "faxNumber": "+1-555-765-4321",
+    "url": "https://centralcitylibrary.example.com",
+    "hasMap": "https://maps.example.com/?q=Central+City+Library",
+    "globalLocationNumber": "1234567890123",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://centralcitylibrary.example.com/logo.png"
+    },
+    "photo": [
+      {
+        "@type": "ImageObject",
+        "url": "https://centralcitylibrary.example.com/photo1.jpg",
+        "caption": "Front view of the library"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.7,
+      "reviewCount": 128
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": "Jane Doe",
+        "datePublished": "2023-08-15",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 5
+        },
+        "reviewBody": "Excellent collection and helpful staff."
+      }
+    ],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "specialOpeningHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "16:00"
+      }
+    ],
+    "smokingAllowed": false,
+    "branchCode": "CCL-01",
+    "isicV4": "8510",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "WifiAvailable",
+        "value": true
+      }
+    ],
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Wheelchair Accessible",
+        "value": true
+      }
+    ],
+    "containedInPlace": {
+      "@type": "Place",
+      "name": "Metropolis Public Buildings"
+    },
+    "containsPlace": {
+      "@type": "Place",
+      "name": "Children's Reading Room"
+    }
+  },
+  "description": "Central City Library (branch code\u202fCCL\u201101, ISIC\u202f8510) is situated at 123\u202fMain\u202fSt, Metropolis, NY\u202f10101, United States. You can reach the library by phone at\u202f+1\u2011555\u2011123\u20114567 or by fax at\u202f+1\u2011555\u2011765\u20114321, and its website is https://centralcitylibrary.example.com. A map of the location is available at https://maps.example.com/?q=Central+City+Library, and the library\u2019s Global Location Number is\u202f1234567890123. The library\u2019s logo can be seen at https://centralcitylibrary.example.com/logo.png, and a representative photograph (captioned \u201cFront view of the library\u201d) is hosted at https://centralcitylibrary.example.com/photo1.jpg. It is part of the Metropolis Public Buildings complex and includes a dedicated Children\u2019s Reading Room within its premises.\n\nThe library holds an aggregate rating of\u202f4.7 based on\u202f128\u202freviews. One recent review by Jane\u202fDoe, dated\u202f2023\u201108\u201115, gave a perfect\u202f5\u2011star rating and praised the \u201cExcellent collection and helpful staff.\u201d Regular opening hours are Monday through Friday, 09:00\u202fto\u202f18:00, with a special Saturday schedule of 10:00\u202fto\u202f16:00. Smoking is not permitted on the premises. Additional features include Wi\u2011Fi availability (true) and wheelchair accessibility (true) as listed under amenity features and property values."
+}

@@ -1,0 +1,95 @@
+{
+  "name": "o41331",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "required": [
+      "config",
+      "inputs"
+    ],
+    "type": "object",
+    "properties": {
+      "inputs": {
+        "required": [
+          "nifti"
+        ],
+        "type": "object",
+        "properties": {
+          "nifti": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "config": {
+        "required": [
+          "save_derivatives",
+          "save_outputs",
+          "measurement"
+        ],
+        "type": "object",
+        "properties": {
+          "save_derivatives": {
+            "default": false,
+            "type": "boolean"
+          },
+          "save_outputs": {
+            "default": false,
+            "type": "boolean"
+          },
+          "measurement": {
+            "default": "auto-detect",
+            "enum": [
+              "auto-detect",
+              "functional",
+              "anatomy_t1w",
+              "anatomy_t2w"
+            ],
+            "type": "string"
+          }
+        }
+      }
+    },
+    "title": "Invocation manifest for MRIQC: No-reference image quality metrics for quality assessment of MRI (v0.9.4)"
+  },
+  "data": {
+    "config": {
+      "save_derivatives": true,
+      "save_outputs": false,
+      "measurement": "functional"
+    },
+    "inputs": {
+      "nifti": {
+        "type": "nifti"
+      }
+    }
+  },
+  "instructions": "Can you change the \u201cmeasurement\u201d field inside \u201cconfig\u201d to \u201cauto-detect\u201d?",
+  "ground_truth": {
+    "config": {
+      "save_derivatives": true,
+      "save_outputs": false,
+      "measurement": "auto-detect"
+    },
+    "inputs": {
+      "nifti": {
+        "type": "nifti"
+      }
+    }
+  },
+  "modification": {
+    "op": "set_enum",
+    "path": [
+      "config",
+      "measurement"
+    ],
+    "precise_instruction": "Change \"measurement\" inside \"config\" to \"auto-detect\"."
+  }
+}

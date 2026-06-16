@@ -1,0 +1,68 @@
+{
+  "name": "calculate_area_da13baad",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle (if shape is triangle)",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle (if shape is triangle)",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle (if shape is rectangle)",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle (if shape is circle)",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle (if shape is rectangle)",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which to calculate the area",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3,
+      "length": 0,
+      "width": 0,
+      "radius": 0
+    }
+  },
+  "valid_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3,
+      "length": 0,
+      "width": 0,
+      "radius": 0
+    }
+  },
+  "description": "Dear Team,\n\nFor the upcoming geometry report, the shape under consideration is a triangle. Its base measures **12.5** units and the height is **8.3** units. Since these dimensions pertain to a triangular figure, the rectangle-related fields\u2014length and width\u2014are recorded as **0**, and the circle radius is also **0** for completeness.\n\nPlease use these values when calculating the area and any related metrics. Let me know if any adjustments are needed."
+}

@@ -1,0 +1,459 @@
+{
+  "name": "o60770",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "additionalProperties": false,
+    "definitions": {
+      "pathType": {
+        "pattern": "^(\\/?((\\.{2})|([a-z0-9\\-]*))($|\\/))*$",
+        "type": "string"
+      }
+    },
+    "not": {
+      "allOf": [
+        {
+          "required": [
+            "cmd"
+          ]
+        },
+        {
+          "required": [
+            "args"
+          ]
+        }
+      ]
+    },
+    "properties": {
+      "acceptedResourceRoles": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "args": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "backoffFactor": {
+        "minimum": 1.0,
+        "type": "number"
+      },
+      "backoffSeconds": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "cmd": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "constraints": {},
+      "container": {
+        "additionalProperties": false,
+        "properties": {
+          "docker": {
+            "additionalProperties": false,
+            "properties": {
+              "forcePullImage": {
+                "type": "boolean"
+              },
+              "image": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "network": {
+                "type": "string"
+              },
+              "parameters": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "value"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "portMappings": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "containerPort": {
+                      "maximum": 65535,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "hostPort": {
+                      "maximum": 65535,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "protocol": {
+                      "type": "string"
+                    },
+                    "servicePort": {
+                      "maximum": 65535,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "privileged": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "image"
+            ],
+            "type": "object"
+          },
+          "type": {
+            "type": "string"
+          },
+          "volumes": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "containerPath": {
+                  "type": "string"
+                },
+                "hostPath": {
+                  "type": "string"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "cpus": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "dependencies": {
+        "items": {
+          "$ref": "#/definitions/pathType"
+        },
+        "type": "array"
+      },
+      "disk": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "env": {
+        "patternProperties": {
+          ".*": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "executor": {
+        "pattern": "^(|\\/\\/cmd|\\/?[^\\/]+(\\/[^\\/]+)*)$",
+        "type": "string"
+      },
+      "healthChecks": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "command": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "type": "object"
+            },
+            "gracePeriodSeconds": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "ignoreHttp1xx": {
+              "type": "boolean"
+            },
+            "intervalSeconds": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maxConsecutiveFailures": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "path": {
+              "type": "string"
+            },
+            "portIndex": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "protocol": {
+              "type": "string"
+            },
+            "timeoutSeconds": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "id": {
+        "pattern": "^/?(([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])\\.)*([a-z0-9]|[a-z0-9][a-z0-9\\-]*[a-z0-9])$",
+        "type": "string"
+      },
+      "instances": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "labels": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "type": "object"
+      },
+      "maxLaunchDelaySeconds": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "mem": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "ports": {
+        "items": {
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "type": "array",
+        "_uniqueItems": true
+      },
+      "requirePorts": {
+        "type": "boolean"
+      },
+      "storeUrls": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "upgradeStrategy": {
+        "additionalProperties": false,
+        "properties": {
+          "maximumOverCapacity": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "minimumHealthCapacity": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "uris": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "user": {
+        "type": "string"
+      },
+      "version": {
+        "format": "date-time",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "id": "my-app.service",
+    "cpus": 1.5,
+    "mem": 512,
+    "disk": 1000,
+    "instances": 3,
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "nginx:latest",
+        "forcePullImage": true,
+        "network": "BRIDGE",
+        "privileged": false,
+        "parameters": [],
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "hostPort": 8080,
+            "protocol": "tcp",
+            "servicePort": 9000
+          }
+        ]
+      },
+      "volumes": [
+        {
+          "containerPath": "/var/log/nginx",
+          "hostPath": "/data/nginx/log",
+          "mode": "RW"
+        }
+      ]
+    },
+    "env": {
+      "ENVIRONMENT": "production",
+      "LOG_LEVEL": "info"
+    },
+    "labels": {
+      "project": "web",
+      "team": "backend"
+    },
+    "ports": [
+      8080,
+      8443
+    ],
+    "requirePorts": false,
+    "backoffSeconds": 10,
+    "backoffFactor": 2.0,
+    "upgradeStrategy": {
+      "maximumOverCapacity": 0.2,
+      "minimumHealthCapacity": 0.5
+    },
+    "healthChecks": [
+      {
+        "path": "/health",
+        "protocol": "HTTP",
+        "gracePeriodSeconds": 30,
+        "intervalSeconds": 10,
+        "timeoutSeconds": 5,
+        "maxConsecutiveFailures": 3,
+        "portIndex": 0,
+        "ignoreHttp1xx": false
+      }
+    ],
+    "dependencies": [
+      "../lib"
+    ],
+    "storeUrls": [
+      "http://example.com/store"
+    ],
+    "uris": [
+      "http://example.com/resource.tar.gz"
+    ],
+    "user": "appuser",
+    "executor": "",
+    "constraints": [],
+    "version": "2024-09-01T12:00:00Z"
+  },
+  "instructions": "Please change the value of the\u202fteam\u202ffield inside\u202flabels\u202fto\u202f\u201cbackend (updated)\u201d.",
+  "ground_truth": {
+    "id": "my-app.service",
+    "cpus": 1.5,
+    "mem": 512,
+    "disk": 1000,
+    "instances": 3,
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "nginx:latest",
+        "forcePullImage": true,
+        "network": "BRIDGE",
+        "privileged": false,
+        "parameters": [],
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "hostPort": 8080,
+            "protocol": "tcp",
+            "servicePort": 9000
+          }
+        ]
+      },
+      "volumes": [
+        {
+          "containerPath": "/var/log/nginx",
+          "hostPath": "/data/nginx/log",
+          "mode": "RW"
+        }
+      ]
+    },
+    "env": {
+      "ENVIRONMENT": "production",
+      "LOG_LEVEL": "info"
+    },
+    "labels": {
+      "project": "web",
+      "team": "backend (updated)"
+    },
+    "ports": [
+      8080,
+      8443
+    ],
+    "requirePorts": false,
+    "backoffSeconds": 10,
+    "backoffFactor": 2.0,
+    "upgradeStrategy": {
+      "maximumOverCapacity": 0.2,
+      "minimumHealthCapacity": 0.5
+    },
+    "healthChecks": [
+      {
+        "path": "/health",
+        "protocol": "HTTP",
+        "gracePeriodSeconds": 30,
+        "intervalSeconds": 10,
+        "timeoutSeconds": 5,
+        "maxConsecutiveFailures": 3,
+        "portIndex": 0,
+        "ignoreHttp1xx": false
+      }
+    ],
+    "dependencies": [
+      "../lib"
+    ],
+    "storeUrls": [
+      "http://example.com/store"
+    ],
+    "uris": [
+      "http://example.com/resource.tar.gz"
+    ],
+    "user": "appuser",
+    "executor": "",
+    "constraints": [],
+    "version": "2024-09-01T12:00:00Z"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "labels",
+      "team"
+    ],
+    "precise_instruction": "Change \"team\" inside \"labels\" to \"backend (updated)\"."
+  }
+}

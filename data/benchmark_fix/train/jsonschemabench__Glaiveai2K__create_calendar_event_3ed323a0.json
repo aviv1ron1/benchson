@@ -1,0 +1,65 @@
+{
+  "name": "create_calendar_event_3ed323a0",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "attendees": {
+        "description": "The list of attendees for the event",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "end_time": {
+        "description": "The end time of the event in ISO 8601 format",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location of the event",
+        "type": "string"
+      },
+      "start_time": {
+        "description": "The start time of the event in ISO 8601 format",
+        "type": "string"
+      },
+      "title": {
+        "description": "The title of the event",
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "start_time",
+      "end_time",
+      "location"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "title": "Quarterly Sales Strategy Meeting",
+    "start_time": "2026-07-15T09:00:00-04:00",
+    "location": "Conference Room B, Headquarters Building, 123 Main St, Metropolis",
+    "attendees": [
+      "Alice Johnson",
+      "Bob Martinez",
+      "Carla Singh",
+      "David Lee",
+      "Evelyn Patel"
+    ]
+  },
+  "valid_json": {
+    "title": "Quarterly Sales Strategy Meeting",
+    "start_time": "2026-07-15T09:00:00-04:00",
+    "end_time": "2026-07-15T11:30:00-04:00",
+    "location": "Conference Room B, Headquarters Building, 123 Main St, Metropolis",
+    "attendees": [
+      "Alice Johnson",
+      "Bob Martinez",
+      "Carla Singh",
+      "David Lee",
+      "Evelyn Patel"
+    ]
+  },
+  "description": "Subject: Quarterly Sales Strategy Meeting  \n\nPlease join us for the **Quarterly Sales Strategy Meeting**, scheduled to run from **2026-07-15T09:00:00-04:00** until **2026-07-15T11:30:00-04:00**. The session will be held in **Conference Room B, Headquarters Building, 123 Main St, Metropolis**.  \n\nThe following team members are expected to attend: Alice Johnson, Bob Martinez, Carla Singh, David Lee, and Evelyn Patel."
+}

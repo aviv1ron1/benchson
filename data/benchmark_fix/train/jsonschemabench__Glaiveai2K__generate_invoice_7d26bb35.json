@@ -1,0 +1,85 @@
+{
+  "name": "generate_invoice_7d26bb35",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "Name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "description": "List of items in the invoice",
+        "items": {
+          "properties": {
+            "name": {
+              "description": "Name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "Price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "Quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "customer_name": null,
+    "items": [
+      {
+        "name": "Industrial Robot Arm",
+        "price": 12499.99,
+        "quantity": 2
+      },
+      {
+        "name": "Safety Sensors Package",
+        "price": 3499.5,
+        "quantity": 5
+      },
+      {
+        "name": "Installation Service",
+        "price": 1500,
+        "quantity": 1
+      }
+    ]
+  },
+  "valid_json": {
+    "customer_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Robot Arm",
+        "price": 12499.99,
+        "quantity": 2
+      },
+      {
+        "name": "Safety Sensors Package",
+        "price": 3499.5,
+        "quantity": 5
+      },
+      {
+        "name": "Installation Service",
+        "price": 1500,
+        "quantity": 1
+      }
+    ]
+  },
+  "description": "Dear Acme Corporation,\n\nThank you for your recent order. Below is a summary of the items you have requested:\u202f2\u202funits of Industrial Robot Arm at a unit price of\u202f$12,499.99 each;\u202f5\u202funits of Safety Sensors Package priced at\u202f$3,499.50 each; and\u202f1\u202funit of Installation Service billed at\u202f$1,500.00. The quantities and corresponding prices are listed exactly as shown, and the total amount due reflects the sum of these line items."
+}

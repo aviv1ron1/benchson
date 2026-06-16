@@ -1,0 +1,46 @@
+{
+  "name": "schedule_meeting_227bdb7c",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "meeting_location": {
+        "description": "The location of the meeting",
+        "type": "string"
+      },
+      "meeting_time": {
+        "description": "The time of the meeting",
+        "type": "string"
+      },
+      "meeting_title": {
+        "description": "The title of the meeting",
+        "type": "string"
+      },
+      "participants": {
+        "description": "The participants of the meeting",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "participants",
+      "meeting_title",
+      "meeting_time"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Quarterly Business Review \u2013 Meeting Details\n\nDear Team,\n\nPlease be reminded that the Quarterly Business Review is scheduled for **2026-07-01T14:30:00-04:00** and will take place in **Conference Room B, 5th Floor, Headquarters Building**. The meeting will be attended by Alice Johnson, Bob Martinez, Catherine Lee, and David Patel. Let\u2019s all come prepared to discuss our performance metrics and strategic initiatives for the upcoming quarter.",
+  "reference_json": {
+    "meeting_location": "Conference Room B, 5th Floor, Headquarters Building",
+    "meeting_time": "2026-07-01T14:30:00-04:00",
+    "meeting_title": "Quarterly Business Review",
+    "participants": [
+      "Alice Johnson",
+      "Bob Martinez",
+      "Catherine Lee",
+      "David Patel"
+    ]
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "name": "o9776",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "title": "Application Certificate",
+          "description": "Schema for a single Application Certificate",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "applicationCertificateId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "applicationId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "creationDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastUpdated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 32767
+            },
+            "deviceIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "maxItems": 1000
+            },
+            "deviceTags": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 255
+                  }
+                },
+                "additionalProperties": false
+              },
+              "maxItems": 100
+            },
+            "certificateInfo": {
+              "type": "object",
+              "properties": {
+                "serialNumber": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "fingerprint": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024
+                },
+                "commonName": {
+                  "type": "string",
+                  "maxLength": 1024
+                },
+                "issuerName": {
+                  "type": "string",
+                  "maxLength": 1024
+                },
+                "notValidBefore": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "notValidAfter": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "filterType": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "all",
+                    "whitelist",
+                    "blacklist"
+                  ]
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "none"
+                  ]
+                }
+              ]
+            },
+            "pubTopics": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            },
+            "subTopics": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024
+              }
+            }
+          }
+        }
+      },
+      "count": {
+        "type": "integer"
+      },
+      "totalCount": {
+        "type": "integer"
+      },
+      "perPage": {
+        "type": "integer"
+      },
+      "page": {
+        "type": "integer"
+      },
+      "filter": {
+        "type": "string"
+      },
+      "filterField": {
+        "type": "string"
+      },
+      "sortField": {
+        "type": "string"
+      },
+      "sortDirection": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc",
+          "ASC",
+          "DESC",
+          ""
+        ]
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "erroneous_json": {
+    "items": null,
+    "count": 1,
+    "totalCount": 1,
+    "perPage": 10,
+    "page": 1,
+    "filter": "",
+    "filterField": "status",
+    "sortField": "creationDate",
+    "sortDirection": "desc",
+    "applicationId": "7b4c5d6e7f8a9b0c1d2e3f4a"
+  },
+  "valid_json": {
+    "items": [
+      {
+        "id": "5f2a1c3e4b7d8e9f01234567",
+        "applicationCertificateId": "6a3b2c4d5e6f7a8b9c0d1e2f",
+        "applicationId": "7b4c5d6e7f8a9b0c1d2e3f4a",
+        "creationDate": "2023-08-01T12:34:56Z",
+        "lastUpdated": "2024-02-15T09:20:30Z",
+        "status": "active",
+        "description": "Certificate for temperature sensor devices.",
+        "deviceIds": [
+          "8c9d0e1f2a3b4c5d6e7f8a9b",
+          "9d0e1f2a3b4c5d6e7f8a9b0c"
+        ],
+        "deviceTags": [
+          {
+            "key": "location",
+            "value": "warehouse-12"
+          },
+          {
+            "key": "type",
+            "value": "sensor"
+          }
+        ],
+        "certificateInfo": {
+          "serialNumber": "01AB23CD45EF6789",
+          "fingerprint": "A1B2C3D4E5F60718293A4B5C6D7E8F90",
+          "commonName": "device.example.com",
+          "issuerName": "Example CA",
+          "notValidBefore": "2023-08-01T00:00:00Z",
+          "notValidAfter": "2025-08-01T00:00:00Z"
+        },
+        "filterType": "whitelist",
+        "pubTopics": [
+          "sensors/temperature",
+          "devices/status"
+        ],
+        "subTopics": [
+          "commands/reboot",
+          "updates/firmware"
+        ]
+      }
+    ],
+    "count": 1,
+    "totalCount": 1,
+    "perPage": 10,
+    "page": 1,
+    "filter": "",
+    "filterField": "status",
+    "sortField": "creationDate",
+    "sortDirection": "desc",
+    "applicationId": "7b4c5d6e7f8a9b0c1d2e3f4a"
+  },
+  "description": "Subject: Application Certificate Details \u2013 Temperature Sensor Devices  \n\nWe retrieved a single application certificate for the application **7b4c5d6e7f8a9b0c1d2e3f4a** (ID\u202f=\u202f7b4c5d6e7f8a9b0c1d2e3f4a). The result set contains **1** item (count\u202f=\u202f1, totalCount\u202f=\u202f1) displayed on page\u202f1 with a page size of\u202f10 (perPage\u202f=\u202f10). No additional filter was applied (filter\u202f=\u202f\u201c\u201d), and the list was ordered by **creationDate** in descending order (sortField\u202f=\u202fcreationDate, sortDirection\u202f=\u202fdesc).  \n\nThe certificate record (id\u202f=\u202f5f2a1c3e4b7d8e9f01234567, applicationCertificateId\u202f=\u202f6a3b2c4d5e6f7a8b9c0d1e2f) was created on **2023-08-01T12:34:56Z** and last updated on **2024-02-15T09:20:30Z**. Its status is **active** and it is described as \u201cCertificate for temperature sensor devices.\u201d The certificate applies to two devices (deviceIds\u202f=\u202f8c9d0e1f2a3b4c5d6e7f8a9b,\u202f9d0e1f2a3b4c5d6e7f8a9b0c) that carry the tags **location\u202f=\u202fwarehouse-12** and **type\u202f=\u202fsensor**.  \n\nTechnical details of the certificate are stored under certificateInfo: serial number **01AB23CD45EF6789**, SHA\u20111 fingerprint **A1B2C3D4E5F60718293A4B5C6D7E8F90**, common name **device.example.com**, issued by **Example CA**, valid from **2023-08-01T00:00:00Z** until **2025-08-01T00:00:00Z**. The filter type is set to **whitelist**. Devices may publish to the topics **sensors/temperature** and **devices/status**, and they are subscribed to **commands/reboot** and **updates/firmware**."
+}

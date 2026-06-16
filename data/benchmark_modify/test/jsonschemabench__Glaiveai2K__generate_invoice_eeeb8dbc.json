@@ -1,0 +1,88 @@
+{
+  "name": "generate_invoice_eeeb8dbc",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "billing_address": {
+        "description": "The billing address of the customer",
+        "type": "string"
+      },
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "price": {
+              "description": "The price of the product",
+              "type": "number"
+            },
+            "product": {
+              "description": "The name of the product",
+              "type": "string"
+            },
+            "quantity": {
+              "description": "The quantity of the product",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "product",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "billing_address",
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "customer_name": "John Doe",
+    "billing_address": "1234 Elm Street, Springfield, IL 62704, USA",
+    "items": [
+      {
+        "product": "Wireless Mouse",
+        "quantity": 2,
+        "price": 25.99
+      },
+      {
+        "product": "USB-C Hub",
+        "quantity": 1,
+        "price": 45.5
+      }
+    ]
+  },
+  "instructions": "Can you change billing_address to \"1234 Elm Street, Springfield, IL 62704, USA (updated)\"?",
+  "ground_truth": {
+    "customer_name": "John Doe",
+    "billing_address": "1234 Elm Street, Springfield, IL 62704, USA (updated)",
+    "items": [
+      {
+        "product": "Wireless Mouse",
+        "quantity": 2,
+        "price": 25.99
+      },
+      {
+        "product": "USB-C Hub",
+        "quantity": 1,
+        "price": 45.5
+      }
+    ]
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "billing_address"
+    ],
+    "precise_instruction": "Change \"billing_address\" to \"1234 Elm Street, Springfield, IL 62704, USA (updated)\"."
+  }
+}

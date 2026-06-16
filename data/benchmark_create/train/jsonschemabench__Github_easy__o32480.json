@@ -1,0 +1,52 @@
+{
+  "name": "o32480",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "The message id"
+      },
+      "content": {
+        "type": "string",
+        "description": "The message content"
+      },
+      "meta": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "creator": {},
+          "created": {
+            "type": [
+              "string"
+            ],
+            "description": "The subject creation date"
+          },
+          "updated": {
+            "type": [
+              "string"
+            ],
+            "description": "The subject update date"
+          }
+        }
+      }
+    }
+  },
+  "description": "Subject: Backup Completion Report \u2013 Reference ID msg-20230615-001  \n\nThe system has completed the scheduled backup and all files are stored securely. This operation was initiated by the Backup Service team in the Operations department. The backup process began on 2026-06-14T22:35:00Z and was successfully finalized after verification at 2026-06-15T08:12:45Z.",
+  "reference_json": {
+    "id": "msg-20230615-001",
+    "content": "The system has completed the scheduled backup and all files are stored securely.",
+    "meta": {
+      "creator": {
+        "name": "Backup Service",
+        "department": "Operations"
+      },
+      "created": "2026-06-14T22:35:00Z",
+      "updated": "2026-06-15T08:12:45Z"
+    }
+  }
+}

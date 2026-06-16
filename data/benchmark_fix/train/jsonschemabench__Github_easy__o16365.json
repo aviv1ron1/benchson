@@ -1,0 +1,39 @@
+{
+  "name": "o16365",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Vault Collection Expression",
+    "type": "object",
+    "properties": {
+      "vaults": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true,
+        "minItems": 1
+      }
+    },
+    "required": [
+      "vaults"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "vaults": [
+      99999,
+      "vault-2023-09",
+      "archive_vault_alpha"
+    ]
+  },
+  "valid_json": {
+    "vaults": [
+      "vault-01",
+      "vault-2023-09",
+      "archive_vault_alpha"
+    ]
+  },
+  "description": "The team should focus on the three vaults identified for the upcoming review: vault-01, vault-2023-09, and archive_vault_alpha. These entries represent the complete collection that needs to be audited and processed according to the current schedule."
+}

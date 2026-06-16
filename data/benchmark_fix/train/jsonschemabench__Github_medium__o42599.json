@@ -1,0 +1,112 @@
+{
+  "name": "o42599",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "id": "http://schemas.gdbots.io/json-schema/gdbots/forms/field/yes-no-field/1-0-0.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "_schema": {
+        "type": "string",
+        "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+        "default": "pbj:gdbots:forms:field:yes-no-field:1-0-0"
+      },
+      "name": {
+        "type": "string",
+        "pattern": "^[a-zA-Z_]{1}[\\w-]*$",
+        "description": "A unique identifier (within the form) for the field. This value is not shown to the user and should NOT change once set."
+      },
+      "maps_to": {
+        "type": "string",
+        "default": "cf",
+        "pattern": "^[a-zA-Z_]{1}\\w*$",
+        "description": "The name of the schema field the answer will map to. By default this will go to the \"cf\" field which is a \"dynamic-field\" list containing all answers filled out on the form (ref \"gdbots:forms:mixin:send-submission\")."
+      },
+      "label": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 255,
+        "description": "The main text for the question/field."
+      },
+      "placeholder": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 65535,
+        "description": "A short description to better explain this field."
+      },
+      "is_required": {
+        "type": "boolean"
+      },
+      "link_text": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 255,
+        "description": "The text that will replace the token \"{link}\" within the label or description."
+      },
+      "link_url": {
+        "type": "string",
+        "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+        "description": "The URL to use for the replaced token \"{link}\" within the label or description."
+      },
+      "pii_impact": {
+        "type": "string",
+        "enum": [
+          "unknown",
+          "high",
+          "moderate",
+          "low"
+        ]
+      },
+      "yes_label": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 255
+      },
+      "no_label": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 255
+      }
+    },
+    "required": [
+      "_schema",
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "_schema": "pbj:gdbots:forms:field:yes-no-field:1-0-0",
+    "name": "subscribe_newsletter",
+    "maps_to": "cf",
+    "label": "Would you like to receive our newsletter?",
+    "placeholder": "Select yes or no",
+    "description": "Choose whether you want to receive promotional emails and updates.",
+    "is_required": true,
+    "link_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "link_url": "https://example.com/privacy",
+    "pii_impact": "low",
+    "yes_label": "Yes, sign me up!",
+    "no_label": "No, thanks"
+  },
+  "valid_json": {
+    "_schema": "pbj:gdbots:forms:field:yes-no-field:1-0-0",
+    "name": "subscribe_newsletter",
+    "maps_to": "cf",
+    "label": "Would you like to receive our newsletter?",
+    "placeholder": "Select yes or no",
+    "description": "Choose whether you want to receive promotional emails and updates.",
+    "is_required": true,
+    "link_text": "privacy policy",
+    "link_url": "https://example.com/privacy",
+    "pii_impact": "low",
+    "yes_label": "Yes, sign me up!",
+    "no_label": "No, thanks"
+  },
+  "description": "The field identified as **subscribe_newsletter** maps to the generic answer list **cf**. It is a required entry with a low privacy\u2011impact classification. The prompt presented to users reads: \u201cWould you like to receive our newsletter?\u201d and a short description follows: \u201cChoose whether you want to receive promotional emails and updates.\u201d Users can click the **privacy policy** (https://example.com/privacy) for more information. The input box shows the placeholder text \u201cSelect yes or no\u201d.\n\nThe response options are labelled \u201cYes, sign me up!\u201d for an affirmative answer and \u201cNo, thanks\u201d for a negative answer."
+}

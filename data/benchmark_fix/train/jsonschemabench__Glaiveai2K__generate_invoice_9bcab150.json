@@ -1,0 +1,87 @@
+{
+  "name": "generate_invoice_9bcab150",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "description": "The items to be included in the invoice",
+        "items": {
+          "properties": {
+            "name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "tax_rate": {
+        "description": "The tax rate for the invoice",
+        "type": "number"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items",
+      "tax_rate"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "customer_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Widget",
+        "price": 125.5,
+        "quantity": 10
+      },
+      {
+        "name": "Heavy-Duty Gear",
+        "price": 89.99,
+        "quantity": 5
+      },
+      {
+        "name": "Precision Bolt Set",
+        "price": 12.75,
+        "quantity": 20
+      }
+    ],
+    "tax_rate": null
+  },
+  "valid_json": {
+    "customer_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Widget",
+        "price": 125.5,
+        "quantity": 10
+      },
+      {
+        "name": "Heavy-Duty Gear",
+        "price": 89.99,
+        "quantity": 5
+      },
+      {
+        "name": "Precision Bolt Set",
+        "price": 12.75,
+        "quantity": 20
+      }
+    ],
+    "tax_rate": 0.07
+  },
+  "description": "Dear Acme Corporation,\n\nPlease find below the details of the items to be included in your invoice. The order consists of ten (10) units of Industrial Widget at a unit price of $125.5 each, five (5) units of Heavy\u2011Duty Gear priced at $89.99 per unit, and twenty (20) units of Precision Bolt Set costing $12.75 per unit. The applicable tax rate for this invoice is 0.07 (7%). If you have any questions or need further clarification, feel free to reach out."
+}

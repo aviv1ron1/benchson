@@ -1,0 +1,323 @@
+{
+  "name": "o31282",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "globalSettings": {
+        "type": "object",
+        "properties": {
+          "namespaceAliases": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "alias": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "alias",
+                "namespace"
+              ]
+            }
+          },
+          "defaultParameters": {
+            "type": "array",
+            "items": {
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "parameters": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "type",
+                "parameters"
+              ]
+            }
+          }
+        }
+      },
+      "deviceGroups": {
+        "type": "array",
+        "items": {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "devices": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "deviceId": {
+                    "type": "string"
+                  },
+                  "deviceSecret": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "deviceId",
+                  "deviceSecret"
+                ]
+              }
+            },
+            "jobs": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "interval": {
+                    "type": "string"
+                  },
+                  "sourceFilter": {
+                    "$ref": "#/definitions/filter"
+                  },
+                  "intermediaFilters": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/filter"
+                    }
+                  },
+                  "sinkFilter": {
+                    "$ref": "#/definitions/filter"
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "name",
+            "devices",
+            "jobs"
+          ]
+        }
+      }
+    },
+    "required": [
+      "deviceGroups"
+    ],
+    "definitions": {
+      "filter": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ]
+      }
+    }
+  },
+  "erroneous_json": {
+    "globalSettings": {
+      "namespaceAliases": [
+        {
+          "alias": "iot",
+          "namespace": "com.example.iot"
+        },
+        {
+          "alias": "msg",
+          "namespace": "com.example.messaging"
+        }
+      ],
+      "defaultParameters": [
+        {
+          "type": "connection",
+          "parameters": {
+            "retry": 3,
+            "timeoutSeconds": 30,
+            "useSsl": true
+          }
+        },
+        {
+          "type": "logging",
+          "parameters": {
+            "level": "info",
+            "destination": "cloudwatch"
+          }
+        }
+      ]
+    }
+  },
+  "valid_json": {
+    "globalSettings": {
+      "namespaceAliases": [
+        {
+          "alias": "iot",
+          "namespace": "com.example.iot"
+        },
+        {
+          "alias": "msg",
+          "namespace": "com.example.messaging"
+        }
+      ],
+      "defaultParameters": [
+        {
+          "type": "connection",
+          "parameters": {
+            "retry": 3,
+            "timeoutSeconds": 30,
+            "useSsl": true
+          }
+        },
+        {
+          "type": "logging",
+          "parameters": {
+            "level": "info",
+            "destination": "cloudwatch"
+          }
+        }
+      ]
+    },
+    "deviceGroups": [
+      {
+        "name": "FactoryFloor",
+        "devices": [
+          {
+            "deviceId": "ff-device-001",
+            "deviceSecret": "a1b2c3d4e5f6g7h8i9j0"
+          },
+          {
+            "deviceId": "ff-device-002",
+            "deviceSecret": "z9y8x7w6v5u4t3s2r1q0"
+          }
+        ],
+        "jobs": [
+          {
+            "name": "TemperatureMonitoring",
+            "interval": "5m",
+            "sourceFilter": {
+              "name": "tempSensor",
+              "type": "sensor",
+              "parameters": {
+                "unit": "Celsius",
+                "precision": 0.1
+              }
+            },
+            "intermediaFilters": [
+              {
+                "name": "averaging",
+                "type": "aggregation",
+                "parameters": {
+                  "window": "10m",
+                  "method": "mean"
+                }
+              }
+            ],
+            "sinkFilter": {
+              "name": "dbSink",
+              "type": "database",
+              "parameters": {
+                "connectionString": "Server=db.example.com;Database=IoT;User Id=admin;Password=SecretPwd;",
+                "table": "TemperatureReadings"
+              }
+            }
+          },
+          {
+            "name": "VibrationAlert",
+            "interval": "1m",
+            "sourceFilter": {
+              "name": "vibrationSensor",
+              "type": "sensor",
+              "parameters": {
+                "unit": "Hz",
+                "threshold": 50
+              }
+            },
+            "intermediaFilters": [
+              {
+                "name": "peakDetection",
+                "type": "analysis",
+                "parameters": {
+                  "sensitivity": "high"
+                }
+              },
+              {
+                "name": "formatConverter",
+                "type": "transform",
+                "parameters": {
+                  "outputFormat": "json"
+                }
+              }
+            ],
+            "sinkFilter": {
+              "name": "alertService",
+              "type": "notification",
+              "parameters": {
+                "endpoint": "https://alerts.example.com/api",
+                "method": "POST"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Warehouse",
+        "devices": [
+          {
+            "deviceId": "wh-device-A1",
+            "deviceSecret": "k9l8m7n6o5p4q3r2s1t0"
+          },
+          {
+            "deviceId": "wh-device-B2",
+            "deviceSecret": "h1g2f3e4d5c6b7a8i9j0"
+          },
+          {
+            "deviceId": "wh-device-C3",
+            "deviceSecret": "u1v2w3x4y5z6a7b8c9d0"
+          }
+        ],
+        "jobs": [
+          {
+            "name": "InventoryScan",
+            "interval": "15m",
+            "sourceFilter": {
+              "name": "barcodeReader",
+              "type": "sensor",
+              "parameters": {
+                "format": "EAN-13"
+              }
+            },
+            "intermediaFilters": [
+              {
+                "name": "deduplication",
+                "type": "filter",
+                "parameters": {
+                  "windowSeconds": 30
+                }
+              }
+            ],
+            "sinkFilter": {
+              "name": "inventoryDb",
+              "type": "database",
+              "parameters": {
+                "connectionString": "Server=inventory-db.example.com;Database=Inventory;User Id=app;Password=InvPass;",
+                "table": "ScannedItems"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Subject: IoT Deployment Configuration \u2013 Global Settings and Device\u2011Group Details  \n\nDear Team,  \n\nPlease find below the current configuration for our IoT edge deployment. We have defined two namespace shortcuts for easier code reference: **iot** maps to `com.example.iot` and **msg** maps to `com.example.messaging`. The default connection parameters apply a retry count of **3**, a timeout of **30 seconds**, and SSL is enabled. Logging defaults to an **info** level with output directed to **cloudwatch**.  \n\n**FactoryFloor** group contains two edge devices:\u202f`ff-device-001` (secret\u202f`a1b2c3d4e5f6g7h8i9j0`) and\u202f`ff-device-002` (secret\u202f`z9y8x7w6v5u4t3s2r1q0`). It runs two jobs. The **TemperatureMonitoring** job executes every **5\u202fminutes**, pulling data from the `tempSensor` (type\u202fsensor) with unit **Celsius** and precision **0.1**. The data is first passed through an `averaging` aggregation filter (10\u2011minute window, method\u202fmean) and then written to the `dbSink` database (connection string\u202f`Server=db.example.com;Database=IoT;User Id=admin;Password=SecretPwd;`, table\u202f`TemperatureReadings`). The **VibrationAlert** job runs each **1\u202fminute**, sourcing from the `vibrationSensor` (type\u202fsensor) reporting in **Hz** with a threshold of **50**. Its pipeline includes a `peakDetection` analysis filter (sensitivity\u202fhigh) followed by a `formatConverter` transform (output format\u202fjson), and finally posts alerts to the `alertService` notification endpoint `https://alerts.example.com/api` using the **POST** method.  \n\nThe **Warehouse** group comprises three devices:\u202f`wh-device-A1` (secret\u202f`k9l8m7n6o5p4q3r2s1t0`),\u202f`wh-device-B2` (secret\u202f`h1g2f3e4d5c6b7a8i9j0`), and\u202f`wh-device-C3` (secret\u202f`u1v2w3x4y5z6a7b8c9d0`). It runs a single **InventoryScan** job on a **15\u2011minute** schedule. The source filter is `barcodeReader` (type\u202fsensor) expecting **EAN\u201113** format codes. After a `deduplication` filter (30\u2011second window), the records are stored in the `inventoryDb` database (connection string\u202f`Server=inventory-db.example.com;Database=Inventory;User Id=app;Password=InvPass;`, table\u202f`ScannedItems`).  \n\nLet me know if any adjustments are required.  \n\nBest regards,  \n[Your Name]  \nIoT Solutions Engineer"
+}

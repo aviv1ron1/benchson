@@ -1,0 +1,55 @@
+{
+  "name": "calculate_area_60e95838",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "description": "The dimensions of the shape",
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (e.g. rectangle, triangle, circle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "The component specified is a cylinder. Its primary dimensions are a radius of\u202f4.2\u202funits and a height of\u202f12.5\u202funits. Since a cylindrical shape does not rely on a rectangular base, length, or width, those measurements are recorded as zero, as is the base dimension.",
+  "reference_json": {
+    "shape": "cylinder",
+    "dimensions": {
+      "base": 0,
+      "height": 12.5,
+      "length": 0,
+      "radius": 4.2,
+      "width": 0
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "name": "o45211",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "output_item_id": {
+          "type": "number"
+        },
+        "output_item_count": {
+          "type": "number"
+        },
+        "min_rating": {
+          "type": "number"
+        },
+        "time_to_craft_ms": {
+          "type": "number"
+        },
+        "disciplines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ingredients": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "item_id": {
+                "type": "number"
+              },
+              "count": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "item_id",
+              "count"
+            ]
+          }
+        },
+        "id": {
+          "type": "number"
+        },
+        "chat_link": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "output_item_id",
+        "output_item_count",
+        "min_rating",
+        "time_to_craft_ms",
+        "disciplines",
+        "flags",
+        "ingredients",
+        "id",
+        "chat_link"
+      ]
+    },
+    "properties": {},
+    "additionalProperties": false
+  },
+  "description": "Subject: New Crafting Recipes Added \u2013 Details for Immediate Review  \n\nDear Team,  \n\nTwo new crafting recipes have been entered into the system (both classified as **CraftingRecipe**).  \n\n**Recipe\u202f#1001** produces a single unit of item **25192** and requires a minimum Alchemy discipline rating of **250**. The crafting time is **5\u202f000\u202fms**. It is flagged **AutoLearn**, meaning it will be learned automatically upon discovery. The ingredients are: two units of item **19762** and one unit of item **19986**. For reference the recipe\u2019s chat link is **[&AgEAAA==]**.  \n\n**Recipe\u202f#1002** yields **5** units of item **24590** and can be crafted by characters with either **Weaponsmith** or **Artificer** discipline, with a minimum rating of **150**. Its crafting time is **12\u202f000\u202fms** and it carries the **LearnedFromItem** flag. Required ingredients are one unit of item **19741** and three units of item **19927**. The associated chat link is **[&AgEAAAAB]**.  \n\nPlease update the relevant guides and let me know if any further clarification is needed.  \n\nBest regards,  \n[Your Name]",
+  "reference_json": [
+    {
+      "type": "CraftingRecipe",
+      "output_item_id": 25192,
+      "output_item_count": 1,
+      "min_rating": 250,
+      "time_to_craft_ms": 5000,
+      "disciplines": [
+        "Alchemy"
+      ],
+      "flags": [
+        "AutoLearn"
+      ],
+      "ingredients": [
+        {
+          "item_id": 19762,
+          "count": 2
+        },
+        {
+          "item_id": 19986,
+          "count": 1
+        }
+      ],
+      "id": 1001,
+      "chat_link": "[&AgEAAA==]"
+    },
+    {
+      "type": "CraftingRecipe",
+      "output_item_id": 24590,
+      "output_item_count": 5,
+      "min_rating": 150,
+      "time_to_craft_ms": 12000,
+      "disciplines": [
+        "Weaponsmith",
+        "Artificer"
+      ],
+      "flags": [
+        "LearnedFromItem"
+      ],
+      "ingredients": [
+        {
+          "item_id": 19741,
+          "count": 1
+        },
+        {
+          "item_id": 19927,
+          "count": 3
+        }
+      ],
+      "id": 1002,
+      "chat_link": "[&AgEAAAAB]"
+    }
+  ]
+}

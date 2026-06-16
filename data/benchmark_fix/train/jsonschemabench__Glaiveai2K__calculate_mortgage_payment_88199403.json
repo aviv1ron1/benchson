@@ -1,0 +1,45 @@
+{
+  "name": "calculate_mortgage_payment_88199403",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "down_payment": {
+        "description": "The down payment amount",
+        "type": "number"
+      },
+      "interest_rate": {
+        "description": "The annual interest rate",
+        "type": "number"
+      },
+      "mortgage_term": {
+        "description": "The term of the mortgage in years",
+        "type": "integer"
+      },
+      "property_price": {
+        "description": "The price of the property",
+        "type": "number"
+      }
+    },
+    "required": [
+      "property_price",
+      "down_payment",
+      "interest_rate",
+      "mortgage_term"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "property_price": "not-a-number",
+    "down_payment": 70000,
+    "interest_rate": 3.75,
+    "mortgage_term": 30
+  },
+  "valid_json": {
+    "property_price": 350000,
+    "down_payment": 70000,
+    "interest_rate": 3.75,
+    "mortgage_term": 30
+  },
+  "description": "Dear Ms. Rivera,\n\nI\u2019m writing to confirm the details of the home purchase we discussed. The property is listed at $350,000, and I plan to make a down\u2011payment of $70,000. Based on a 30\u2011year mortgage term at an annual interest rate of 3.75\u202f%, the loan figures should align with our preliminary calculations.\n\nPlease let me know if any additional documentation is required or if there are adjustments to be made before we proceed with the application. Thank you for your assistance."
+}

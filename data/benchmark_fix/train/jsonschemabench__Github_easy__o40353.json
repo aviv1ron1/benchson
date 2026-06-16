@@ -1,0 +1,43 @@
+{
+  "name": "o40353",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "https://letsencrypt.org/schema/01/jwk#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema for a jwk (**kty RSA/e=65537 ONLY**)",
+    "type": "object",
+    "required": [
+      "kty",
+      "e",
+      "n"
+    ],
+    "properties": {
+      "kty": {
+        "enum": [
+          "RSA"
+        ]
+      },
+      "e": {
+        "enum": [
+          "AQAB"
+        ]
+      },
+      "n": {
+        "type": "string",
+        "pattern": "^[-_=0-9A-Za-z]+$"
+      }
+    }
+  },
+  "erroneous_json": {
+    "kty": "RSA_INVALID",
+    "e": "AQAB",
+    "n": "0vx7agoebGcQSuuPiLJXZptN9nndrTIf6Fgw32sGaXbT0zD33GbhM7U-3Y18vei4GtV9QiDvNzLuFY6pD-0P1J5rf_U5nnndrcylWcetCtEP8QOA77YIXWQSdvhshgVVT0Ch5Zc0oqMZ3Qvl0K3bzoKX_G9N6w9ut6pKDQA"
+  },
+  "valid_json": {
+    "kty": "RSA",
+    "e": "AQAB",
+    "n": "0vx7agoebGcQSuuPiLJXZptN9nndrTIf6Fgw32sGaXbT0zD33GbhM7U-3Y18vei4GtV9QiDvNzLuFY6pD-0P1J5rf_U5nnndrcylWcetCtEP8QOA77YIXWQSdvhshgVVT0Ch5Zc0oqMZ3Qvl0K3bzoKX_G9N6w9ut6pKDQA"
+  },
+  "description": "Dear Team,\n\nPlease find below the details of the JSON Web Key (JWK) that we will be using for the upcoming deployment. The key type is **RSA**, the public exponent is **AQAB**, and the modulus (n) is:\n\n**0vx7agoebGcQSuuPiLJXZptN9nndrTIf6Fgw32sGaXbT0zD33GbhM7U-3Y18vei4GtV9QiDvNzLuFY6pD-0P1J5rf_U5nnndrcylWcetCtEP8QOA77YIXWQSdvhshgVVT0Ch5Zc0oqMZ3Qvl0K3bzoKX_G9N6w9ut6pKDQA**."
+}

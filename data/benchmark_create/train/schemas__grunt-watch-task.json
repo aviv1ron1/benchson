@@ -1,0 +1,194 @@
+{
+  "name": "grunt-watch-task",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": {
+      "$ref": "#/definitions/target"
+    },
+    "definitions": {
+      "target": {
+        "required": [
+          "files"
+        ],
+        "properties": {
+          "files": {
+            "type": "array",
+            "description": "One or more files to watch.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tasks": {
+            "type": "array",
+            "description": "One or more tasks to run.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "options": {
+            "$ref": "#/definitions/options"
+          }
+        }
+      },
+      "optionsWithEvents": {
+        "oneOf": [
+          {
+            "properties": {
+              "events": {
+                "description": "Specify the type watch event that trigger the specified task.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/eventType"
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "events": {
+                "$ref": "#/definitions/eventType"
+              }
+            }
+          }
+        ]
+      },
+      "eventType": {
+        "type": "string",
+        "description": "Specify the type watch event that trigger the specified task.",
+        "default": "all",
+        "enum": [
+          "all",
+          "changed",
+          "added",
+          "deleted"
+        ]
+      },
+      "options": {
+        "type": "object",
+        "description": "One or more files to watch.",
+        "allOf": [
+          {
+            "$ref": "#/definitions/optionsWithEvents"
+          }
+        ],
+        "properties": {
+          "spawn": {
+            "type": "boolean",
+            "description": "Whether to spawn task runs in a child process.",
+            "default": true
+          },
+          "interrupt": {
+            "type": "boolean",
+            "description": "As files are modified this watch task will spawn tasks in child processes.",
+            "default": false
+          },
+          "debounceDelay": {
+            "type": "integer",
+            "description": "How long to wait before emitting events in succession for the same filepath and status. For example if your Gruntfile.js file was changed, a 'changed' event will only fire again after the given milliseconds.",
+            "default": 500
+          },
+          "interval": {
+            "type": "integer",
+            "description": "The interval is passed to 'fs.watchFile'. Since 'interval' is only used by 'fs.watchFile' and this watcher also uses 'fs.watch'; it is recommended to ignore this option.",
+            "default": 100
+          },
+          "reload": {
+            "type": "boolean",
+            "description": "By default, if Gruntfile.js is being watched, then changes to it will trigger the watch task to restart, and reload the Gruntfile.js changes. When reload is set to true, changes to any of the watched files will trigger the watch task to restart. This is especially useful if your Gruntfile.js is dependent on other files.",
+            "default": false
+          },
+          "forever": {
+            "type": "boolean",
+            "description": "This is only a task level option and cannot be configured per target. By default the watch task will duck punch grunt.fatal and grunt.warn to try and prevent them from exiting the watch process. If you don't want grunt.fatal and grunt.warn to be overridden set the forever option to false.",
+            "default": true
+          },
+          "atBegin": {
+            "type": "boolean",
+            "description": "This option will trigger the run of each specified task at startup of the watcher.",
+            "default": false
+          },
+          "livereload": {
+            "type": [
+              "boolean",
+              "number"
+            ],
+            "description": "If enabled a live reload server will be started with the watch task per target. Then after the indicated tasks have run, the live reload server will be triggered with the modified files.",
+            "default": false
+          },
+          "cwd": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "Ability to set the current working directory."
+          },
+          "livereloadOnError": {
+            "type": "boolean",
+            "description": "Option to prevent the livereload if the executed tasks encountered an error. If set to  false , the livereload will only be triggered if all tasks completed successfully.",
+            "default": true
+          }
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/grunt-watch-task.json",
+    "properties": {
+      "options": {
+        "$ref": "#/definitions/options"
+      }
+    },
+    "title": "JSON schema for the Grunt Watch task",
+    "type": "object"
+  },
+  "description": "The watch task is set up with a global configuration that enables spawning child processes for each run (spawn\u202f=\u202ftrue) while keeping interrupt handling turned off. Changes are debounced for 300\u202fms, and the underlying file\u2011watcher polls every 100\u202fms (interval\u202f=\u202f100). The Gruntfile itself will not trigger a full reload (reload\u202f=\u202ffalse), but the watcher will remain active indefinitely (forever\u202f=\u202ftrue) and execute its task list as soon as it starts (atBegin\u202f=\u202ftrue). Live\u2011reload is enabled on the standard port 35729, the working directory is fixed to the **src** folder, and any errors in the tasks will still allow the livereload signal to fire (livereloadOnError\u202f=\u202ftrue). By default the watcher only reacts to \u201cchanged\u201d events.\n\nTwo specific watching targets are defined. The **scripts** target monitors all JavaScript files under **src/** (`src/**/*.js`) as well as the Gruntfile (`Gruntfile.js`). Whenever a matching file is added or deleted, it runs the linting and transpilation steps (`jshint` and `babel`). For this target, spawning is disabled (spawn\u202f=\u202ffalse), interrupt handling is enabled (interrupt\u202f=\u202ftrue), and the debounce delay is shortened to 250\u202fms. The **styles** target watches the Sass source files under **assets/css/** (`assets/css/**/*.scss`). On any change it invokes the stylesheet compilation and minification tasks (`sass` and `cssmin`). This target uses the default spawning behavior but enables live\u2011reload (livereload\u202f=\u202ftrue) and reacts only to \u201cchanged\u201d events.",
+  "reference_json": {
+    "options": {
+      "spawn": true,
+      "interrupt": false,
+      "debounceDelay": 300,
+      "interval": 100,
+      "reload": false,
+      "forever": true,
+      "atBegin": true,
+      "livereload": 35729,
+      "cwd": "src",
+      "livereloadOnError": true,
+      "events": [
+        "changed"
+      ]
+    },
+    "scripts": {
+      "files": [
+        "src/**/*.js",
+        "Gruntfile.js"
+      ],
+      "tasks": [
+        "jshint",
+        "babel"
+      ],
+      "options": {
+        "spawn": false,
+        "interrupt": true,
+        "debounceDelay": 250,
+        "events": [
+          "added",
+          "deleted"
+        ]
+      }
+    },
+    "styles": {
+      "files": [
+        "assets/css/**/*.scss"
+      ],
+      "tasks": [
+        "sass",
+        "cssmin"
+      ],
+      "options": {
+        "livereload": true,
+        "events": "changed"
+      }
+    }
+  }
+}

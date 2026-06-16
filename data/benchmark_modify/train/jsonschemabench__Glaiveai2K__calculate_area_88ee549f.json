@@ -1,0 +1,65 @@
+{
+  "name": "calculate_area_88ee549f",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "width",
+          "height",
+          "radius"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which to calculate the area",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "cylinder",
+    "dimensions": {
+      "width": 12.5,
+      "height": 20.0,
+      "radius": 6.25
+    }
+  },
+  "instructions": "Can you decrease the \"radius\" inside \"dimensions\" by 1?",
+  "ground_truth": {
+    "shape": "cylinder",
+    "dimensions": {
+      "width": 12.5,
+      "height": 20.0,
+      "radius": 5.25
+    }
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "dimensions",
+      "radius"
+    ],
+    "precise_instruction": "Decrease \"radius\" inside \"dimensions\" by 1."
+  }
+}

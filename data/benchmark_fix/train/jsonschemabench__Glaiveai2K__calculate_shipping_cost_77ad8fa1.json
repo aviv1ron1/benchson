@@ -1,0 +1,64 @@
+{
+  "name": "calculate_shipping_cost_77ad8fa1",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "destination": {
+        "description": "The destination for shipping",
+        "type": "string"
+      },
+      "dimensions": {
+        "properties": {
+          "height": {
+            "description": "The height of the item",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the item",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the item",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "height"
+        ],
+        "type": "object"
+      },
+      "weight": {
+        "description": "The weight of the item to be shipped",
+        "type": "number"
+      }
+    },
+    "required": [
+      "weight",
+      "dimensions",
+      "destination"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "destination": "Los Angeles, CA, USA",
+    "dimensions": {
+      "height": 12.5,
+      "length": 24.0,
+      "width": 18.75
+    },
+    "weight": null
+  },
+  "valid_json": {
+    "destination": "Los Angeles, CA, USA",
+    "dimensions": {
+      "height": 12.5,
+      "length": 24.0,
+      "width": 18.75
+    },
+    "weight": 7.3
+  },
+  "description": "Hello,\n\nPlease arrange shipment of the package to Los Angeles, CA, USA. The item measures 24.0 inches in length, 18.75 inches in width, and 12.5 inches in height, and it weighs 7.3 pounds.\n\nThank you."
+}

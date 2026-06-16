@@ -1,0 +1,97 @@
+{
+  "name": "aliases",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/aliases.json",
+    "additionalProperties": false,
+    "description": "An alias of the current directory\nhttps://github.com/sebglazebrook/aliases#usage",
+    "patternProperties": {
+      "^[^ ]+$": {
+        "title": "alias",
+        "description": "An alias of the current directory\nhttps://github.com/sebglazebrook/aliases#usage",
+        "type": "object",
+        "required": [
+          "command"
+        ],
+        "properties": {
+          "command": {
+            "title": "command",
+            "description": "A command of the current alias\nhttps://github.com/sebglazebrook/aliases#usage",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "ls"
+            ]
+          },
+          "confirm": {
+            "title": "confirm",
+            "description": "Whether to confirm a command execution of the current alias\nhttps://github.com/sebglazebrook/aliases#usage",
+            "type": "boolean",
+            "default": false
+          },
+          "confirmation_message": {
+            "title": "confirmation message",
+            "description": "A confirmation message of the current alias\nhttps://github.com/sebglazebrook/aliases#usage",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "Do you want to execute this command?"
+            ]
+          },
+          "conditional": {
+            "title": "conditional",
+            "description": "A conditional of the current alias\nhttps://github.com/sebglazebrook/aliases#usage",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "/bin/true"
+            ]
+          },
+          "backout_seconds": {
+            "title": "backout seconds",
+            "description": "A backout of the current alias\nhttps://github.com/sebglazebrook/aliases#usage",
+            "type": "integer",
+            "minimum": 0
+          },
+          "unit_test": {
+            "title": "conditional",
+            "description": "A unit test of the current alias\nhttps://github.com/sebglazebrook/aliases#usage",
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "[ true = true ]"
+            ]
+          },
+          "quiet": {
+            "title": "quiet",
+            "description": "Whether to display a command before execution of the current alias\nhttps://github.com/sebglazebrook/aliases#usage",
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "title": "alias",
+    "type": "object"
+  },
+  "description": "The **list** alias is a simple shortcut that runs `ls -la`. It operates silently, so the command output is shown without a preceding echo, and it does not prompt you for confirmation before executing.\n\nThe **deploy** alias runs the script `./deploy.sh`. Before it starts, you will be asked to confirm with the prompt \u201cProceed with deployment?\u201d. It only runs when the condition `/usr/bin/which docker` succeeds, and if anything goes wrong it will automatically back out after **10 seconds**. A built\u2011in unit test checks that the Git working tree is clean (`[ $(git status --porcelain) = '' ]`). Unlike the list alias, the deploy command is displayed before execution.",
+  "reference_json": {
+    "list": {
+      "command": "ls -la",
+      "confirm": false,
+      "quiet": true
+    },
+    "deploy": {
+      "command": "./deploy.sh",
+      "confirm": true,
+      "confirmation_message": "Proceed with deployment?",
+      "conditional": "/usr/bin/which docker",
+      "backout_seconds": 10,
+      "unit_test": "[ $(git status --porcelain) = '' ]",
+      "quiet": false
+    }
+  }
+}

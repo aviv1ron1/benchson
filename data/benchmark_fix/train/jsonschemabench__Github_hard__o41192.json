@@ -1,0 +1,428 @@
+{
+  "name": "o41192",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "title": "Invocation manifest for BIDS fMRIPrep: A Robust Preprocessing Pipeline for fMRI Data",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "skip-bids-validation": {
+            "default": false,
+            "type": "boolean"
+          },
+          "task-id": {
+            "default": "",
+            "type": "string"
+          },
+          "echo-idx": {
+            "default": "",
+            "type": "string"
+          },
+          "n_cpus": {
+            "default": 0,
+            "type": "integer"
+          },
+          "mem_mb": {
+            "default": 0,
+            "type": "integer"
+          },
+          "anat-only": {
+            "default": false,
+            "type": "boolean"
+          },
+          "boilerplate": {
+            "default": false,
+            "type": "boolean"
+          },
+          "md-only-boilerplate": {
+            "default": false,
+            "type": "boolean"
+          },
+          "error-on-aroma-warnings": {
+            "default": false,
+            "type": "boolean"
+          },
+          "verbose": {
+            "default": "",
+            "enum": [
+              "",
+              "v",
+              "vv",
+              "vvv"
+            ],
+            "type": "string"
+          },
+          "ignore": {
+            "default": "",
+            "type": "string"
+          },
+          "longitudinal": {
+            "default": false,
+            "type": "boolean"
+          },
+          "t2s-coreg": {
+            "default": false,
+            "type": "boolean"
+          },
+          "output-spaces": {
+            "default": "MNI152NLin2009cAsym",
+            "type": "string"
+          },
+          "bold2t1w-dof": {
+            "enum": [
+              6,
+              9,
+              12
+            ],
+            "default": 6,
+            "type": "integer"
+          },
+          "force-bbr": {
+            "default": false,
+            "type": "boolean"
+          },
+          "force-no-bbr": {
+            "default": false,
+            "type": "boolean"
+          },
+          "medial-surface-nan": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dummy-scans": {
+            "default": 0,
+            "type": "integer"
+          },
+          "use-aroma": {
+            "type": "boolean",
+            "default": false
+          },
+          "aroma-melodic-dimensionality": {
+            "default": -200,
+            "type": "integer"
+          },
+          "return-all-components": {
+            "default": false,
+            "type": "boolean"
+          },
+          "fd-spike-threshold": {
+            "default": 0.5,
+            "type": "number"
+          },
+          "dvars-spike-threshold": {
+            "default": 1.5,
+            "type": "number"
+          },
+          "skull-strip-template": {
+            "enum": [
+              "OASIS30ANTs",
+              "NKI"
+            ],
+            "default": "OASIS30ANTs",
+            "type": "string"
+          },
+          "skull-strip-fixed-seed": {
+            "default": false,
+            "type": "boolean"
+          },
+          "fmap-bspline": {
+            "default": false,
+            "type": "boolean"
+          },
+          "fmap-no-demean": {
+            "default": false,
+            "type": "boolean"
+          },
+          "use-syn-sdc": {
+            "default": false,
+            "type": "boolean"
+          },
+          "force-syn": {
+            "default": false,
+            "type": "boolean"
+          },
+          "no-submm-recon": {
+            "default": false,
+            "type": "boolean"
+          },
+          "cifti-output": {
+            "default": false,
+            "type": "boolean"
+          },
+          "fs-no-reconall": {
+            "default": false,
+            "type": "boolean"
+          },
+          "resource-monitor": {
+            "default": false,
+            "type": "boolean"
+          },
+          "reports-only": {
+            "default": false,
+            "type": "boolean"
+          },
+          "run-uuid": {
+            "default": "",
+            "type": "string"
+          },
+          "write-graph": {
+            "default": false,
+            "type": "boolean"
+          },
+          "stop-on-first-crash": {
+            "default": false,
+            "type": "boolean"
+          },
+          "notrack": {
+            "default": false,
+            "type": "boolean"
+          },
+          "gear-abort-on-bids-error": {
+            "default": false,
+            "type": "boolean"
+          },
+          "gear-log-level": {
+            "default": "INFO",
+            "type": "string",
+            "enum": [
+              "ERROR",
+              "WARNING",
+              "INFO",
+              "DEBUG"
+            ]
+          },
+          "gear-run-bids-validation": {
+            "default": true,
+            "type": "boolean"
+          },
+          "gear-save-intermediate-output": {
+            "default": false,
+            "type": "boolean"
+          },
+          "gear-intermediate-files": {
+            "default": "",
+            "type": "string"
+          },
+          "gear-intermediate-folders": {
+            "default": "",
+            "type": "string"
+          },
+          "gear-dry-run": {
+            "default": false,
+            "type": "boolean"
+          },
+          "gear-keep-output": {
+            "default": false,
+            "type": "boolean"
+          },
+          "gear-keep-fsaverage": {
+            "default": false,
+            "type": "boolean"
+          },
+          "gear-FREESURFER_LICENSE": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "required": [
+          "skip-bids-validation",
+          "task-id",
+          "echo-idx",
+          "n_cpus",
+          "mem_mb",
+          "anat-only",
+          "boilerplate",
+          "md-only-boilerplate",
+          "error-on-aroma-warnings",
+          "verbose",
+          "ignore",
+          "longitudinal",
+          "t2s-coreg",
+          "output-spaces",
+          "bold2t1w-dof",
+          "force-bbr",
+          "force-no-bbr",
+          "medial-surface-nan",
+          "dummy-scans",
+          "use-aroma",
+          "aroma-melodic-dimensionality",
+          "return-all-components",
+          "fd-spike-threshold",
+          "dvars-spike-threshold",
+          "skull-strip-template",
+          "skull-strip-fixed-seed",
+          "fmap-bspline",
+          "fmap-no-demean",
+          "use-syn-sdc",
+          "force-syn",
+          "no-submm-recon",
+          "cifti-output",
+          "fs-no-reconall",
+          "resource-monitor",
+          "reports-only",
+          "run-uuid",
+          "write-graph",
+          "stop-on-first-crash",
+          "notrack",
+          "gear-abort-on-bids-error",
+          "gear-log-level",
+          "gear-run-bids-validation",
+          "gear-save-intermediate-output",
+          "gear-intermediate-files",
+          "gear-intermediate-folders",
+          "gear-dry-run",
+          "gear-keep-output",
+          "gear-keep-fsaverage",
+          "gear-FREESURFER_LICENSE"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "object"
+          },
+          "freesurfer_license": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "required": [
+          "key"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "erroneous_json": {
+    "config": {
+      "skip-bids-validation": false,
+      "task-id": "rest",
+      "echo-idx": "1",
+      "n_cpus": 8,
+      "mem_mb": 16000,
+      "anat-only": false,
+      "boilerplate": false,
+      "md-only-boilerplate": false,
+      "error-on-aroma-warnings": false,
+      "verbose": "vv",
+      "ignore": "",
+      "longitudinal": false,
+      "t2s-coreg": false,
+      "output-spaces": "MNI152NLin2009cAsym",
+      "bold2t1w-dof": 6,
+      "force-bbr": false,
+      "force-no-bbr": false,
+      "medial-surface-nan": false,
+      "dummy-scans": 2,
+      "use-aroma": true,
+      "aroma-melodic-dimensionality": -200,
+      "return-all-components": false,
+      "fd-spike-threshold": 0.5,
+      "dvars-spike-threshold": 1.5,
+      "skull-strip-template": "OASIS30ANTs",
+      "skull-strip-fixed-seed": false,
+      "fmap-bspline": false,
+      "fmap-no-demean": false,
+      "use-syn-sdc": false,
+      "force-syn": false,
+      "no-submm-recon": false,
+      "cifti-output": false,
+      "fs-no-reconall": false,
+      "resource-monitor": false,
+      "run-uuid": "123e4567-e89b-12d3-a456-426614174000",
+      "write-graph": false,
+      "stop-on-first-crash": false,
+      "notrack": false,
+      "gear-abort-on-bids-error": false,
+      "gear-log-level": "INFO",
+      "gear-run-bids-validation": true,
+      "gear-save-intermediate-output": false,
+      "gear-intermediate-files": "",
+      "gear-intermediate-folders": "",
+      "gear-dry-run": false,
+      "gear-keep-output": false,
+      "gear-keep-fsaverage": false,
+      "gear-FREESURFER_LICENSE": "license.txt"
+    },
+    "inputs": {
+      "key": {
+        "subject": "sub-01",
+        "session": "ses-01"
+      },
+      "freesurfer_license": {
+        "path": "/opt/freesurfer/license.txt"
+      }
+    }
+  },
+  "valid_json": {
+    "config": {
+      "skip-bids-validation": false,
+      "task-id": "rest",
+      "echo-idx": "1",
+      "n_cpus": 8,
+      "mem_mb": 16000,
+      "anat-only": false,
+      "boilerplate": false,
+      "md-only-boilerplate": false,
+      "error-on-aroma-warnings": false,
+      "verbose": "vv",
+      "ignore": "",
+      "longitudinal": false,
+      "t2s-coreg": false,
+      "output-spaces": "MNI152NLin2009cAsym",
+      "bold2t1w-dof": 6,
+      "force-bbr": false,
+      "force-no-bbr": false,
+      "medial-surface-nan": false,
+      "dummy-scans": 2,
+      "use-aroma": true,
+      "aroma-melodic-dimensionality": -200,
+      "return-all-components": false,
+      "fd-spike-threshold": 0.5,
+      "dvars-spike-threshold": 1.5,
+      "skull-strip-template": "OASIS30ANTs",
+      "skull-strip-fixed-seed": false,
+      "fmap-bspline": false,
+      "fmap-no-demean": false,
+      "use-syn-sdc": false,
+      "force-syn": false,
+      "no-submm-recon": false,
+      "cifti-output": false,
+      "fs-no-reconall": false,
+      "resource-monitor": false,
+      "reports-only": false,
+      "run-uuid": "123e4567-e89b-12d3-a456-426614174000",
+      "write-graph": false,
+      "stop-on-first-crash": false,
+      "notrack": false,
+      "gear-abort-on-bids-error": false,
+      "gear-log-level": "INFO",
+      "gear-run-bids-validation": true,
+      "gear-save-intermediate-output": false,
+      "gear-intermediate-files": "",
+      "gear-intermediate-folders": "",
+      "gear-dry-run": false,
+      "gear-keep-output": false,
+      "gear-keep-fsaverage": false,
+      "gear-FREESURFER_LICENSE": "license.txt"
+    },
+    "inputs": {
+      "key": {
+        "subject": "sub-01",
+        "session": "ses-01"
+      },
+      "freesurfer_license": {
+        "path": "/opt/freesurfer/license.txt"
+      }
+    }
+  },
+  "description": "The fMRIPrep run was launched for subject **sub\u201101**, session **ses\u201101**, targeting the resting\u2011state task (task\u2011id\u202f=\u202f\u201crest\u201d) and using echo\u202f1 (echo\u2011idx\u202f=\u202f\u201c1\u201d). A unique run identifier of\u202f123e4567\u2011e89b\u201112d3\u2011a456\u2011426614174000 was assigned. The preprocessing included two dummy scans (dummy\u2011scans\u202f=\u202f2) and employed ICA\u2011AROMA (use\u2011aroma\u202f=\u202ftrue) with the default melodic dimensionality of\u202f\u2011200. No files were excluded from processing (ignore\u202f=\u202f\u201c\u201d), and BIDS validation was performed (skip\u2011bids\u2011validation\u202f=\u202ffalse, gear\u2011run\u2011bids\u2011validation\u202f=\u202ftrue). Verbosity was set to \u201cvv\u201d, and the pipeline was configured to write no boiler\u2011plate text (boilerplate\u202f=\u202ffalse, md\u2011only\u2011boilerplate\u202f=\u202ffalse). All standard preprocessing steps were run (anat\u2011only\u202f=\u202ffalse, longitudinal\u202f=\u202ffalse, t2s\u2011coreg\u202f=\u202ffalse), and the output space was limited to the MNI152NLin2009cAsym template. Coregistration of BOLD to T1w used six degrees of freedom (bold2t1w\u2011dof\u202f=\u202f6), with neither forced nor prohibited BBR (force\u2011bbr\u202f=\u202ffalse, force\u2011no\u2011bbr\u202f=\u202ffalse). The skull\u2011stripping used the OASIS30ANTs template (skull\u2011strip\u2011template\u202f=\u202f\u201cOASIS30ANTs\u201d) without a fixed random seed, and no spline interpolation or de\u2011meaning was applied to field maps (fmap\u2011bspline\u202f=\u202ffalse, fmap\u2011no\u2011demean\u202f=\u202ffalse). Surface reconstruction proceeded with the standard FreeSurfer workflow (fs\u2011no\u2011reconall\u202f=\u202ffalse, gear\u2011keep\u2011fsaverage\u202f=\u202ffalse) using the FreeSurfer license file named\u202flicense.txt (gear\u2011FREESURFER_LICENSE\u202f=\u202f\u201clicense.txt\u201d, freesurfer_license\u202fpath\u202f=\u202f\u201c/opt/freesurfer/license.txt\u201d). No additional CIFTI output, sub\u2011millimetre reconstruction, or resource monitoring was requested, and the run was not set to stop on the first crash (stop\u2011on\u2011first\u2011crash\u202f=\u202ffalse).\n\nThe computational resources allocated for this job were eight CPU cores (n_cpus\u202f=\u202f8) and 16\u202fGB of RAM (mem_mb\u202f=\u202f16000). Motion\u2011scrubbing thresholds were the defaults (framewise\u2011displacement\u202f=\u202f0.5\u202fmm, DVARS\u202f=\u202f1.5), and the pipeline was instructed not to write any execution graph, intermediate files, or intermediate folders (write\u2011graph\u202f=\u202ffalse, gear\u2011save\u2011intermediate\u2011output\u202f=\u202ffalse, gear\u2011intermediate\u2011files\u202f=\u202f\u201c\u201d, gear\u2011intermediate\u2011folders\u202f=\u202f\u201c\u201d). Logging was kept at the INFO level (gear\u2011log\u2011level\u202f=\u202f\u201cINFO\u201d), and all optional tracking was disabled (notrack\u202f=\u202ffalse, gear\u2011abort\u2011on\u2011bids\u2011error\u202f=\u202ffalse). The run was executed as a dry run? No \u2013 the dry\u2011run flag was off (gear\u2011dry\u2011run\u202f=\u202ffalse), and none of the output preservation options were enabled (gear\u2011keep\u2011output\u202f=\u202ffalse). In summary, the configuration reflects a standard fMRIPrep execution with ICA\u2011AROMA enabled, default quality\u2011control thresholds, and full BIDS compliance for the specified resting\u2011state dataset."
+}

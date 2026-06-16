@@ -1,0 +1,32 @@
+{
+  "name": "o48516",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "Cores": {
+        "type": "string"
+      },
+      "DVID datastore": {
+        "type": "string"
+      },
+      "Maximum Cores": {
+        "type": "string"
+      },
+      "Server uptime": {
+        "type": "string"
+      },
+      "Storage backend": {
+        "type": "string"
+      },
+      "Storage driver": {
+        "type": "string"
+      },
+      "version": {
+        "type": "string"
+      }
+    },
+    "type": "object",
+    "version": "0.01"
+  }
+}

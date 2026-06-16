@@ -1,0 +1,49 @@
+{
+  "name": "calculate_volume_97c0b214",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape to calculate the volume of",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "The component under review is a rectangular prism. Its three principal dimensions are as follows: a length of\u202f5.2, a width of\u202f3.1, and a height of\u202f2.0.",
+  "reference_json": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "length": 5.2,
+      "width": 3.1,
+      "height": 2.0
+    }
+  }
+}

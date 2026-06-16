@@ -1,0 +1,55 @@
+{
+  "name": "calculate_area_338d949a",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "height": {
+            "description": "The height of a triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of a rectangle or triangle base",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of a circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of a rectangle",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "length",
+          "width",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g., circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Hello Team,\n\nPlease find below the specifications for the rectangular component we discussed. The rectangle has a length of 20 units and a width of 15 units, giving it a overall footprint of 300 square units. Its vertical dimension (height) is measured at 12.5 units. Since this part is a rectangle, the radius parameter is not applicable and is recorded as 0.\n\nLet me know if any adjustments are needed or if you require additional details.",
+  "reference_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "height": 12.5,
+      "length": 20,
+      "radius": 0,
+      "width": 15
+    }
+  }
+}

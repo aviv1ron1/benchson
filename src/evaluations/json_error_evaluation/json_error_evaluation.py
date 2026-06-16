@@ -1,27 +1,46 @@
 import json
 from evaluations.evaluation import Evaluation
 from evaluations.evaluation_result import EvaluationResult
+from evaluations import metrics
 
 
 class ErrorJson(Evaluation):
     def prepare_test_case(self, test_instance_path):
-        """
-        Loads the original JSON data and ground truth from the dataset instance.
+        """Loads an invalid JSON object, its schema, and the ground-truth fix.
+
+        Expected fields: `erroneous_json`, `schema`, `valid_json` (or
+        `reference_json`), and optionally a `description` of the intended object
+        (used to help recover values that the injected error removed). `source`
+        and `subset` are echoed into the result name for slicing.
         """
         with open(test_instance_path, "r", encoding="utf-8") as f:
             test_data = json.load(f)
 
+        schema = test_data.get("schema")
         return {
             "data": test_data.get("erroneous_json"),
-            "schema": test_data.get("schema"),
-            "ground_truth": test_data.get("valid_json"),
-            "name": test_data.get("name", test_instance_path),
+            "schema": schema,
+            "ground_truth": test_data.get("valid_json", test_data.get("reference_json")),
+            "description": test_data.get("description"),
+            "name": _instance_name(test_data, schema, test_instance_path),
         }
 
     def format_for_llm(self, test_case):
-        """
-        Formats the input for the LLM.
-        """
+        """Formats the fix-it prompt for the LLM."""
+        user_content = (
+            "Please correct the following JSON so that it fully matches the given schema:\n\n"
+            "JSON:\n```json\n"
+            f"{json.dumps(test_case['data'], indent=2)}\n```\n\n"
+            "Schema:\n```json\n"
+            f"{json.dumps(test_case['schema'], indent=2)}\n```"
+        )
+        description = test_case.get("description")
+        if description:
+            user_content += (
+                "\n\nThe corrected JSON should describe the following:\n"
+                f"{description}"
+            )
+
         return [
             {
                 "role": "system",
@@ -29,59 +48,47 @@ class ErrorJson(Evaluation):
                     "You are a helpful assistant tasked with fixing JSON objects to conform precisely "
                     "to the provided JSON schema. Return ONLY the corrected JSON object, "
                     "with no additional text or explanation."
-                )
+                ),
             },
-            {
-                "role": "user",
-                "content": (
-                    "Please correct the following JSON so that it fully matches the given schema:\n\n"
-                    "JSON:\n```json\n"
-                    f"{json.dumps(test_case['data'], indent=2)}\n```\n\n"
-                    "Schema:\n```json\n"
-                    f"{json.dumps(test_case['schema'], indent=2)}\n```"
-                )
-            },
-            {
-                "role": "assistant",
-                "content": ""
-            }
+            {"role": "user", "content": user_content},
+            {"role": "assistant", "content": ""},
         ]
 
     def metric_function(self, test_case, llm_result):
+        """Scores the corrected JSON on three independent dimensions.
+
+        - json_validity (metric): 1 if the output parses as JSON, else 0.
+        - schema_compliance (primary score): 1 if the parsed output conforms to
+          the schema, else 0.
+        - semantic_fidelity (metric, only when ground truth is present): the
+          fraction of ground-truth field values recovered in the output.
         """
-        Compares the LLM's output to the expected ground truth JSON.
-        Prints details for debugging during evaluation.
-        """
-        print("\n🔍 Running metric_function")
-        print("🔸 Raw LLM result:\n", llm_result)
+        schema = test_case.get("schema")
+        ground_truth = test_case.get("ground_truth")
 
-        cleaned_json = llm_result.strip()
-        if cleaned_json.startswith("```json"):
-            cleaned_json = cleaned_json[len("```json"):].strip()
-        if cleaned_json.endswith("```"):
-            cleaned_json = cleaned_json[:-3].strip()
-        print("🔹 Cleaned JSON string:\n", cleaned_json)
+        parsed, parse_error = metrics.parse_json(llm_result)
+        valid = parsed is not None
+        result_metrics = {"json_validity": 1 if valid else 0}
 
-        try:
-            llm_output = json.loads(cleaned_json)
-            ground_truth = test_case.get('ground_truth')
+        if not valid:
+            score, explanation = 0, parse_error
+        elif schema is not None:
+            score, explanation = metrics.schema_compliance(parsed, schema)
+        else:
+            # No schema to validate against — fall back to exact match on ground truth.
+            score = 1 if parsed == ground_truth else 0
+            explanation = "matches ground truth" if score else "differs from ground truth"
 
-            print("✅ Parsed LLM output:", llm_output)
-            print("🎯 Ground truth:", ground_truth)
+        if ground_truth is not None:
+            fidelity = metrics.semantic_fidelity(ground_truth, parsed) if valid else 0.0
+            result_metrics["semantic_fidelity"] = round(fidelity, 4)
+            explanation = f"{explanation} | semantic_fidelity={result_metrics['semantic_fidelity']}"
 
-            if ground_truth is None:
-                print("⚠️ No ground truth provided — assuming valid.")
-                return EvaluationResult(score=1, explanation="No ground truth provided. Output is assumed valid.")
-
-            if llm_output == ground_truth:
-                print("✅ Match: JSON was corrected correctly.")
-                return EvaluationResult(score=1, explanation="JSON corrected exactly matches ground truth.")
-            else:
-                print("❌ Mismatch: corrected JSON does not match expected.")
-                return EvaluationResult(score=0, explanation="Corrected JSON does not match expected output.")
-
-        except json.JSONDecodeError as e:
-            print("❌ JSON decode error:", e)
-            return EvaluationResult(score=0, explanation=f"Invalid JSON format: {e}")
+        return EvaluationResult(score=score, explanation=explanation, metrics=result_metrics)
 
 
+def _instance_name(test_data, schema, path):
+    """Builds a result name that embeds source/subset for later slicing."""
+    base = test_data.get("name") or (schema or {}).get("title") or path
+    tags = [test_data[k] for k in ("source", "subset") if test_data.get(k)]
+    return f"{base} [{'/'.join(tags)}]" if tags else base

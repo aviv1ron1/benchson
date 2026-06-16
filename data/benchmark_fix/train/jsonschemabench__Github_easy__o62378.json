@@ -1,0 +1,40 @@
+{
+  "name": "o62378",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "id": "https://github.com/myedibleenso/processors-server/tree/master/src/main/resources/json/schema/document.json",
+    "properties": {
+      "text": {
+        "type": "string",
+        "id": "text"
+      },
+      "sentences": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "id": "0"
+        },
+        "id": "sentences"
+      }
+    }
+  },
+  "erroneous_json": {
+    "text": "The quick brown fox jumps over the lazy dog. It then runs into the forest.",
+    "sentences": null
+  },
+  "valid_json": {
+    "text": "The quick brown fox jumps over the lazy dog. It then runs into the forest.",
+    "sentences": [
+      {
+        "content": "The quick brown fox jumps over the lazy dog."
+      },
+      {
+        "content": "It then runs into the forest."
+      }
+    ]
+  },
+  "description": "Please find below the short narrative we will use for the reading test.\n\nThe complete text is: The quick brown fox jumps over the lazy dog. It then runs into the forest.\n\nIt is composed of two sentences:\n- The quick brown fox jumps over the lazy dog.\n- It then runs into the forest."
+}

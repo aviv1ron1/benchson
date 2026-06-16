@@ -1,0 +1,199 @@
+{
+  "name": "sp_121_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Mandrill hard bounce event",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "msg": {
+        "additionalProperties": false,
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "_version": {
+            "type": "string"
+          },
+          "bgtools_code": {
+            "type": "number"
+          },
+          "bounce_description": {
+            "type": "string"
+          },
+          "diag": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "properties": {
+              "user_id": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "resends": {
+            "type": "array"
+          },
+          "sender": {
+            "type": "string"
+          },
+          "smtp_events": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "destination_ip": {
+                  "type": "string"
+                },
+                "diag": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "integer"
+                },
+                "source_ip": {
+                  "type": "string"
+                },
+                "ts": {
+                  "_format": "date-time",
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "state": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "template": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ts": {
+            "_format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ts": {
+        "_format": "date-time",
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "message_bounced",
+      "vendor": "com.mandrill",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "_id": "a3f5c9e2-7b1d-4f8a-9c2e-5d6f7b8a9c0d",
+    "msg": {
+      "_id": "msg-20260614-001",
+      "_version": "1.0",
+      "bgtools_code": 550,
+      "bounce_description": "Mailbox full",
+      "diag": "SMTP error code 5.2.2",
+      "email": "user@example.com",
+      "metadata": {
+        "user_id": 12345,
+        "campaign": "welcome_series",
+        "priority": "high"
+      },
+      "resends": [],
+      "sender": "no-reply@myapp.com",
+      "smtp_events": [
+        {
+          "destination_ip": "192.0.2.45",
+          "diag": "550 5.2.2 Mailbox full",
+          "size": 3421,
+          "source_ip": "198.51.100.23",
+          "ts": "2026-06-14T12:34:56Z",
+          "type": "hard_bounce",
+          "detail": "Recipient's mailbox exceeded quota"
+        }
+      ],
+      "state": "bounced",
+      "subject": "Welcome to MyApp",
+      "tags": [
+        "welcome",
+        "transactional"
+      ],
+      "template": null,
+      "ts": "2026-06-14T12:30:00Z"
+    },
+    "ts": "2026-06-14T12:35:10Z"
+  },
+  "instructions": "Can you change the _id field inside msg to\u202fmsg-20260614-001\u202f(updated)?",
+  "ground_truth": {
+    "_id": "a3f5c9e2-7b1d-4f8a-9c2e-5d6f7b8a9c0d",
+    "msg": {
+      "_id": "msg-20260614-001 (updated)",
+      "_version": "1.0",
+      "bgtools_code": 550,
+      "bounce_description": "Mailbox full",
+      "diag": "SMTP error code 5.2.2",
+      "email": "user@example.com",
+      "metadata": {
+        "user_id": 12345,
+        "campaign": "welcome_series",
+        "priority": "high"
+      },
+      "resends": [],
+      "sender": "no-reply@myapp.com",
+      "smtp_events": [
+        {
+          "destination_ip": "192.0.2.45",
+          "diag": "550 5.2.2 Mailbox full",
+          "size": 3421,
+          "source_ip": "198.51.100.23",
+          "ts": "2026-06-14T12:34:56Z",
+          "type": "hard_bounce",
+          "detail": "Recipient's mailbox exceeded quota"
+        }
+      ],
+      "state": "bounced",
+      "subject": "Welcome to MyApp",
+      "tags": [
+        "welcome",
+        "transactional"
+      ],
+      "template": null,
+      "ts": "2026-06-14T12:30:00Z"
+    },
+    "ts": "2026-06-14T12:35:10Z"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "msg",
+      "_id"
+    ],
+    "precise_instruction": "Change \"_id\" inside \"msg\" to \"msg-20260614-001 (updated)\"."
+  }
+}

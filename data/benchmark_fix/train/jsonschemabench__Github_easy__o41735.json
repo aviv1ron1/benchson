@@ -1,0 +1,59 @@
+{
+  "name": "o41735",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "UiModuleDescriptor",
+    "description": "UI Module description",
+    "type": [
+      "object",
+      "null"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "npm": {
+        "description": "NPM module",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "url": {
+        "description": "URL",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "local": {
+        "description": "Local",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "args": {
+        "description": "Arguments",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  },
+  "erroneous_json": {
+    "npm": "my-ui-module",
+    "url": "https://cdn.example.com/ui-module.js",
+    "local": null,
+    "args": "--theme dark",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "npm": "my-ui-module",
+    "url": "https://cdn.example.com/ui-module.js",
+    "local": null,
+    "args": "--theme dark"
+  },
+  "description": "Please be aware that the UI component we\u2019ll be integrating is the NPM package **my-ui-module**. For deployments where the package manager isn\u2019t available, the same module can be loaded directly from the CDN at\u202fhttps://cdn.example.com/ui-module.js. There is currently no local copy of the module in the repository. When starting the module, be sure to pass the argument **--theme dark** so that the dark theme is applied."
+}

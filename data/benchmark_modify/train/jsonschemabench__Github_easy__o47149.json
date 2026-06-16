@@ -1,0 +1,50 @@
+{
+  "name": "o47149",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "choices",
+    "description": "I've got class.",
+    "type": "object",
+    "definitions": {
+      "item": {
+        "type": "string",
+        "enum": [
+          "one",
+          "two",
+          "three",
+          "marvelous breaking changes",
+          "GA",
+          "FL"
+        ]
+      }
+    },
+    "properties": {
+      "value": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/item"
+        }
+      }
+    }
+  },
+  "data": {
+    "value": [
+      "one",
+      "marvelous breaking changes",
+      "GA"
+    ]
+  },
+  "instructions": "Could you please delete all items from the \"value\" list?",
+  "ground_truth": {
+    "value": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "value"
+    ],
+    "precise_instruction": "Remove all items from the \"value\" list."
+  }
+}

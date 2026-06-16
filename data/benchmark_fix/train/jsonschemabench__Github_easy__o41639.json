@@ -1,0 +1,74 @@
+{
+  "name": "o41639",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "pets": {
+        "type": "object",
+        "properties": {
+          "dog": {
+            "type": "string"
+          },
+          "cat": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dog",
+          "cat"
+        ]
+      },
+      "morePets": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/pets"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "horse": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "horse"
+            ]
+          }
+        ]
+      }
+    },
+    "properties": {
+      "pets": {
+        "$ref": "#/definitions/pets"
+      },
+      "morePets": {
+        "$ref": "#/definitions/morePets"
+      }
+    },
+    "required": [
+      "pets",
+      "morePets"
+    ]
+  },
+  "erroneous_json": {
+    "morePets": {
+      "dog": "Rex",
+      "cat": "Mittens",
+      "horse": "Shadow"
+    }
+  },
+  "valid_json": {
+    "pets": {
+      "dog": "Buddy",
+      "cat": "Whiskers"
+    },
+    "morePets": {
+      "dog": "Rex",
+      "cat": "Mittens",
+      "horse": "Shadow"
+    }
+  },
+  "description": "I wanted to update you on the pets we\u2019re caring for at the house. Our family dog, Buddy, is doing great and still loves his morning walks, while Whiskers, our cat, spends most of the day lounging in sunny spots around the living room.\n\nAdditionally, the extended animal garden includes a few more companions. Rex is the lively dog that joins us on weekend outings, Mittens is the gentle cat who enjoys curling up by the fireplace, and Shadow is the sturdy horse that we ride through the nearby trails each Saturday."
+}

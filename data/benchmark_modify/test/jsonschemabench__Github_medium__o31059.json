@@ -1,0 +1,114 @@
+{
+  "name": "o31059",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "defaultauthorizationaction": {
+        "enum": [
+          "ALLOW",
+          "DENY"
+        ],
+        "type": "string"
+      },
+      "homepage": {
+        "type": "string"
+      },
+      "httponlycookie": {
+        "enum": [
+          "YES",
+          "NO"
+        ],
+        "type": "string"
+      },
+      "kcdaccount": {
+        "type": "string"
+      },
+      "name": {
+        "readonly": true,
+        "type": "string"
+      },
+      "persistentcookie": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "persistentcookievalidity": {
+        "type": "integer"
+      },
+      "sesstimeout": {
+        "type": "integer"
+      },
+      "sso": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "ssocredential": {
+        "enum": [
+          "PRIMARY",
+          "SECONDARY"
+        ],
+        "type": "string"
+      },
+      "ssodomain": {
+        "type": "string"
+      },
+      "tmsessionpolicybindtype": {
+        "enum": [
+          "Classic Policy",
+          "Advanced Policy"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "tmsessionpolicycount": {
+        "readonly": true,
+        "type": "integer"
+      }
+    },
+    "title": "tmsessionparameter",
+    "type": "object"
+  },
+  "data": {
+    "defaultauthorizationaction": "ALLOW",
+    "homepage": "https://www.example.com/home",
+    "httponlycookie": "YES",
+    "kcdaccount": "kcd_user",
+    "name": "SessionParam1",
+    "persistentcookie": "ON",
+    "persistentcookievalidity": 30,
+    "sesstimeout": 900,
+    "sso": "ON",
+    "ssocredential": "PRIMARY",
+    "ssodomain": "example.com",
+    "tmsessionpolicybindtype": "Classic Policy",
+    "tmsessionpolicycount": 5
+  },
+  "instructions": "Please delete the persistentcookie field.",
+  "ground_truth": {
+    "defaultauthorizationaction": "ALLOW",
+    "homepage": "https://www.example.com/home",
+    "httponlycookie": "YES",
+    "kcdaccount": "kcd_user",
+    "name": "SessionParam1",
+    "persistentcookievalidity": 30,
+    "sesstimeout": 900,
+    "sso": "ON",
+    "ssocredential": "PRIMARY",
+    "ssodomain": "example.com",
+    "tmsessionpolicybindtype": "Classic Policy",
+    "tmsessionpolicycount": 5
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "persistentcookie"
+    ],
+    "precise_instruction": "Remove the \"persistentcookie\" field."
+  }
+}

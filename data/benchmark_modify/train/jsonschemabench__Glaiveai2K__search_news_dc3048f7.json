@@ -1,0 +1,58 @@
+{
+  "name": "search_news_dc3048f7",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "category": {
+        "description": "The category of the news articles (e.g. business, sports, entertainment)",
+        "type": "string"
+      },
+      "country": {
+        "description": "The country of the news articles (e.g. US, GB, DE)",
+        "type": "string"
+      },
+      "keywords": {
+        "description": "The keywords to be used in the news search",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "language": {
+        "description": "The language of the news articles (e.g. en, de, fr)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "keywords"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "category": "technology",
+    "country": "US",
+    "keywords": [
+      "artificial intelligence",
+      "machine learning",
+      "neural networks"
+    ],
+    "language": "en"
+  },
+  "instructions": "Can you remove the first 2 items from the \"keywords\" list, please?",
+  "ground_truth": {
+    "category": "technology",
+    "country": "US",
+    "keywords": [
+      "neural networks"
+    ],
+    "language": "en"
+  },
+  "modification": {
+    "op": "array_remove_first_2",
+    "path": [
+      "keywords"
+    ],
+    "precise_instruction": "Remove the first 2 items from the \"keywords\" list."
+  }
+}

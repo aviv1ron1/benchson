@@ -1,0 +1,188 @@
+{
+  "name": "o73018",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "$id": "http://www.pucomex.serpro.gov.br/catp/produto-detalhar-retorno.schema.json",
+    "properties": {
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "integer"
+          },
+          "codigo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "descricao": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cpfCnpjRaiz": {
+            "type": "string"
+          },
+          "situacao": {
+            "type": "string"
+          },
+          "modalidade": {
+            "type": "string"
+          },
+          "ncm": {
+            "type": "string"
+          },
+          "codigoNaladi": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "codigoGPC": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "codigoGPCBrick": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "codigoUNSPSC": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "paisOrigem": {
+            "type": "string"
+          },
+          "cpfCnpjFabricante": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fabricanteConhecido": {
+            "type": "boolean"
+          },
+          "codigoOperadorEstrangeiro": {
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "atributos": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "atributo": {
+                  "type": "string"
+                },
+                "valor": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "codigosInterno": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "items": {
+      "seq": 1,
+      "codigo": "ABC123",
+      "descricao": "Produto de exemplo",
+      "cpfCnpjRaiz": "12345678901",
+      "situacao": "Ativo",
+      "modalidade": "Venda",
+      "ncm": "84713010",
+      "codigoNaladi": 456,
+      "codigoGPC": 789,
+      "codigoGPCBrick": null,
+      "codigoUNSPSC": 12345678,
+      "paisOrigem": "Brasil",
+      "cpfCnpjFabricante": null,
+      "fabricanteConhecido": false,
+      "codigoOperadorEstrangeiro": "987654",
+      "atributos": [
+        {
+          "atributo": "Cor",
+          "valor": "Azul"
+        },
+        {
+          "atributo": "Tamanho",
+          "valor": "M"
+        }
+      ],
+      "codigosInterno": [
+        "INT001",
+        "INT002"
+      ]
+    }
+  },
+  "instructions": "Please increase the \"codigoGPC\" field inside \"items\" by 1.",
+  "ground_truth": {
+    "items": {
+      "seq": 1,
+      "codigo": "ABC123",
+      "descricao": "Produto de exemplo",
+      "cpfCnpjRaiz": "12345678901",
+      "situacao": "Ativo",
+      "modalidade": "Venda",
+      "ncm": "84713010",
+      "codigoNaladi": 456,
+      "codigoGPC": 790,
+      "codigoGPCBrick": null,
+      "codigoUNSPSC": 12345678,
+      "paisOrigem": "Brasil",
+      "cpfCnpjFabricante": null,
+      "fabricanteConhecido": false,
+      "codigoOperadorEstrangeiro": "987654",
+      "atributos": [
+        {
+          "atributo": "Cor",
+          "valor": "Azul"
+        },
+        {
+          "atributo": "Tamanho",
+          "valor": "M"
+        }
+      ],
+      "codigosInterno": [
+        "INT001",
+        "INT002"
+      ]
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "items",
+      "codigoGPC"
+    ],
+    "precise_instruction": "Increase \"codigoGPC\" inside \"items\" by 1."
+  }
+}

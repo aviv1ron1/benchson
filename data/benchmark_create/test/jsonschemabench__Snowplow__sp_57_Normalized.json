@@ -1,0 +1,34 @@
+{
+  "name": "sp_57_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Google Analytics enhanced e-commerce product impression list entity",
+    "properties": {
+      "index": {
+        "maximum": 200,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "product_impression_list",
+      "vendor": "com.google.analytics.measurement-protocol",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "description": "The product impression list has been assigned the fifth slot in the sequence, with an index value of\u202f5. It is identified by the name \u201cSummer Collection,\u201d representing the curated set of items displayed to users during the campaign.",
+  "reference_json": {
+    "index": 5,
+    "name": "Summer Collection"
+  }
+}

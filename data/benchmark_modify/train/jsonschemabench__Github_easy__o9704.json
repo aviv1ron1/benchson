@@ -1,0 +1,82 @@
+{
+  "name": "o9704",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "kind": {
+        "type": "string",
+        "default": "resp",
+        "readonly": "true",
+        "description": "Defines that the message is a response"
+      },
+      "reqId": {
+        "type": "string",
+        "description": "The ID of the request that originated this response",
+        "minLength": 1,
+        "maxLength": 64,
+        "default": "0"
+      },
+      "type": {
+        "description": "Contains one of the APIs response type names",
+        "type": "string"
+      },
+      "code": {
+        "type": "integer",
+        "description": "Response code according to the HTTP status codes standard"
+      },
+      "body": {}
+    },
+    "required": [
+      "kind",
+      "reqId",
+      "code",
+      "type",
+      "body"
+    ]
+  },
+  "data": {
+    "kind": "resp",
+    "reqId": "a1b2c3d4e5f6",
+    "type": "getUserResponse",
+    "code": 200,
+    "body": {
+      "userId": "u12345",
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "roles": [
+        "admin",
+        "editor"
+      ],
+      "createdAt": "2023-08-15T12:34:56Z",
+      "active": true
+    }
+  },
+  "instructions": "Please change the \u201creqId\u201d field to \u201ca1b2c3d4e5f6 (updated)\u201d.",
+  "ground_truth": {
+    "kind": "resp",
+    "reqId": "a1b2c3d4e5f6 (updated)",
+    "type": "getUserResponse",
+    "code": 200,
+    "body": {
+      "userId": "u12345",
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "roles": [
+        "admin",
+        "editor"
+      ],
+      "createdAt": "2023-08-15T12:34:56Z",
+      "active": true
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "reqId"
+    ],
+    "precise_instruction": "Change \"reqId\" to \"a1b2c3d4e5f6 (updated)\"."
+  }
+}

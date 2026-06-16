@@ -1,0 +1,60 @@
+{
+  "name": "calculate_area_84f273e3",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of a triangle (if applicable)",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of a triangle (if applicable)",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of a rectangle (if applicable)",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of a circle (if applicable)",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of a rectangle (if applicable)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which the area needs to be calculated",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "circle"
+  },
+  "valid_json": {
+    "shape": "circle",
+    "dimensions": {
+      "radius": 7.5,
+      "length": 0,
+      "width": 0,
+      "base": 0,
+      "height": 0
+    }
+  },
+  "description": "The geometric figure to be evaluated is a circle, with a measured radius of\u202f7.5\u202funits. This radius will be used for any subsequent area or perimeter calculations.\n\nBecause a circle does not rely on rectangular or triangular dimensions, the length, width, base, and height associated with this shape are recorded as\u202f0, indicating that those measurements are not applicable in this case."
+}

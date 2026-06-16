@@ -1,0 +1,58 @@
+{
+  "name": "calculate_area_899fdb28",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "description": "The dimensions required to calculate the area",
+        "properties": {
+          "base": {
+            "description": "The base measurement of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height measurement of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which the area is to be calculated",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3
+    }
+  },
+  "instructions": "Please change the value of the shape field to \u201ctriangle (updated)\u201d.",
+  "ground_truth": {
+    "shape": "triangle (updated)",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "shape"
+    ],
+    "precise_instruction": "Change \"shape\" to \"triangle (updated)\"."
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "name": "o70372",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {
+      "IDType": {
+        "pattern": "^\\d{10}$",
+        "type": "string"
+      },
+      "ISO8601-Date": {
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "type": "string"
+      },
+      "ISO8601-Timestamp": {
+        "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?(([+-]\\d{2}(:\\d{2})?)|Z)",
+        "type": "string"
+      },
+      "LISAManagerReferenceNumberType": {
+        "pattern": "^Z\\d{6}$",
+        "type": "string"
+      },
+      "financialPeriodType": {
+        "properties": {
+          "endDate": {
+            "$ref": "#/definitions/ISO8601-Date"
+          },
+          "startDate": {
+            "$ref": "#/definitions/ISO8601-Date"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "properties": {
+      "LISAManagerReferenceNumber": {
+        "$ref": "#/definitions/LISAManagerReferenceNumberType"
+      },
+      "_links": {
+        "type": "object"
+      },
+      "accountID": {
+        "type": "string"
+      },
+      "closeDate": {
+        "$ref": "#/definitions/ISO8601-Date"
+      },
+      "deathNotification": {
+        "additionalProperties": false,
+        "properties": {
+          "DoD": {
+            "$ref": "#/definitions/ISO8601-Date"
+          },
+          "notifiedDate": {
+            "$ref": "#/definitions/ISO8601-Timestamp"
+          }
+        },
+        "required": [
+          "notifiedDate",
+          "DoD"
+        ],
+        "type": "object"
+      },
+      "financialPeriods": {
+        "items": {
+          "properties": {
+            "_links": {
+              "type": "object"
+            },
+            "financialPeriod": {
+              "$ref": "#/definitions/financialPeriodType"
+            },
+            "firstSubscribed": {
+              "$ref": "#/definitions/ISO8601-Timestamp"
+            }
+          },
+          "required": [
+            "financialPeriod",
+            "_links"
+          ],
+          "type": "object"
+        },
+        "minItems": 1,
+        "type": "array",
+        "_uniqueItems": true
+      },
+      "healthStatus": {
+        "enum": [
+          "default",
+          "dead",
+          "terminally-ill"
+        ],
+        "type": "string"
+      },
+      "investorID": {
+        "$ref": "#/definitions/IDType"
+      },
+      "openDate": {
+        "$ref": "#/definitions/ISO8601-Date"
+      },
+      "status": {
+        "enum": [
+          "open",
+          "closed",
+          "transferred-out"
+        ],
+        "type": "string"
+      },
+      "terminalIllnessNotification": {
+        "properties": {
+          "notifiedDate": {
+            "$ref": "#/definitions/ISO8601-Timestamp"
+          }
+        },
+        "required": [
+          "notifiedDate"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "accountID",
+      "LISAManagerReferenceNumber",
+      "investorID",
+      "status",
+      "openDate"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "accountID": "ACC12345",
+    "LISAManagerReferenceNumber": "Z123456",
+    "investorID": "0123456789",
+    "status": "open",
+    "openDate": "2022-01-01",
+    "closeDate": "2025-12-31",
+    "healthStatus": "default",
+    "deathNotification": {
+      "DoD": "2025-06-15",
+      "notifiedDate": "2025-06-16T09:45:00Z"
+    },
+    "terminalIllnessNotification": {
+      "notifiedDate": "2024-11-10T14:20:00Z"
+    },
+    "_links": {
+      "self": {
+        "href": "/accounts/ACC12345"
+      }
+    },
+    "financialPeriods": [
+      {
+        "_links": {
+          "self": {
+            "href": "/periods/1"
+          }
+        },
+        "financialPeriod": {
+          "startDate": "2022-01-01",
+          "endDate": "2022-12-31"
+        },
+        "firstSubscribed": "2022-01-02T08:00:00Z"
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "/periods/2"
+          }
+        },
+        "financialPeriod": {
+          "startDate": "2023-01-01",
+          "endDate": "2023-12-31"
+        }
+      }
+    ]
+  },
+  "instructions": "Could you remove the financialPeriods field?",
+  "ground_truth": {
+    "accountID": "ACC12345",
+    "LISAManagerReferenceNumber": "Z123456",
+    "investorID": "0123456789",
+    "status": "open",
+    "openDate": "2022-01-01",
+    "closeDate": "2025-12-31",
+    "healthStatus": "default",
+    "deathNotification": {
+      "DoD": "2025-06-15",
+      "notifiedDate": "2025-06-16T09:45:00Z"
+    },
+    "terminalIllnessNotification": {
+      "notifiedDate": "2024-11-10T14:20:00Z"
+    },
+    "_links": {
+      "self": {
+        "href": "/accounts/ACC12345"
+      }
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "financialPeriods"
+    ],
+    "precise_instruction": "Remove the \"financialPeriods\" field."
+  }
+}

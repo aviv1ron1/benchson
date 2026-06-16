@@ -1,0 +1,54 @@
+{
+  "name": "o42523",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "http://schemas.gdbots.io/json-schema/gdbots/common/mixin/taggable/1-0-0.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "tags": {
+        "type": "object",
+        "patternProperties": {
+          "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
+            "type": "string",
+            "pattern": "^[\\w\\/\\.:-]+$"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Tags is a map that categorizes data or tracks references in external systems. The tags names should be consistent and descriptive, e.g. fb_user_id:123, salesforce_customer_id:456."
+      }
+    },
+    "additionalProperties": true
+  },
+  "data": {
+    "name": "Sample Item",
+    "created_at": "2023-09-15T12:34:56Z",
+    "status": "active",
+    "tags": {
+      "fb_user_id": "123",
+      "salesforce_customer_id": "456",
+      "external:ref": "abc-123/xyz",
+      "_internal.note": "processed"
+    }
+  },
+  "instructions": "Please change the name to \u201cSample Item (updated)\u201d.",
+  "ground_truth": {
+    "name": "Sample Item (updated)",
+    "created_at": "2023-09-15T12:34:56Z",
+    "status": "active",
+    "tags": {
+      "fb_user_id": "123",
+      "salesforce_customer_id": "456",
+      "external:ref": "abc-123/xyz",
+      "_internal.note": "processed"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "name"
+    ],
+    "precise_instruction": "Change \"name\" to \"Sample Item (updated)\"."
+  }
+}

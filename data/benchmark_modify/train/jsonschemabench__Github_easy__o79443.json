@@ -1,0 +1,57 @@
+{
+  "name": "o79443",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "httpUri": {
+        "type": "string",
+        "allOf": [
+          {
+            "format": "uri"
+          },
+          {
+            "pattern": "^https?://"
+          }
+        ]
+      }
+    },
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "uri": {
+        "$ref": "#/definitions/httpUri"
+      },
+      "index": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "required": [
+      "name",
+      "uri"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "name": "Example Resource",
+    "uri": "https://api.example.com/v1/resource",
+    "index": 3
+  },
+  "instructions": "Could you decrement the index by 1?",
+  "ground_truth": {
+    "name": "Example Resource",
+    "uri": "https://api.example.com/v1/resource",
+    "index": 2
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "index"
+    ],
+    "precise_instruction": "Decrease \"index\" by 1."
+  }
+}

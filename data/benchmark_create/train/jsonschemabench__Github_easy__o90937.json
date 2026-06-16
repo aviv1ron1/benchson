@@ -1,0 +1,42 @@
+{
+  "name": "o90937",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+      "option": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "some text"
+          }
+        }
+      }
+    },
+    "additionalProperties": {
+      "type": "object",
+      "$ref": "#/definitions/option"
+    },
+    "properties": {
+      "knownProp": {
+        "type": "object",
+        "$ref": "#/definitions/option",
+        "title": "title",
+        "description": "text"
+      }
+    }
+  },
+  "description": "Hi team,\n\nHere\u2019s a quick update on the current feature toggles in our application: the primary setting (knownProp) is active, with its enabled flag set to true. The secondary flag, featureA, is currently turned off, as its enabled value is false. We also have featureB listed in the configuration, but it does not include an explicit enabled entry, so no state has been defined for it at this time.",
+  "reference_json": {
+    "knownProp": {
+      "enabled": true
+    },
+    "featureA": {
+      "enabled": false
+    },
+    "featureB": {}
+  }
+}

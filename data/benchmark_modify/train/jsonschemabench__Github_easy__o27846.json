@@ -1,0 +1,82 @@
+{
+  "name": "o27846",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Custom jar Specification",
+    "description": "Common specification for jars that can be uploaded by user. Also for stream-juggler engines and frameworks",
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "The unique name for a custom jar",
+        "type": "string"
+      },
+      "description": {
+        "description": "The description for a custom jar",
+        "type": "string"
+      },
+      "version": {
+        "description": "The custom jar version",
+        "type": "string"
+      },
+      "author": {
+        "description": "The custom jar author",
+        "type": "string"
+      },
+      "license": {
+        "description": "The software license type for a custom jar",
+        "type": "string"
+      },
+      "options": {
+        "description": "The json-schema for some optional parameters",
+        "type": "object"
+      }
+    },
+    "required": [
+      "name",
+      "version"
+    ]
+  },
+  "data": {
+    "name": "stream-juggler-analytics",
+    "description": "A jar providing advanced analytics operators for the Stream Juggler engine, including real-time aggregation and windowing functions.",
+    "version": "2.4.1",
+    "author": "DataFlux Labs",
+    "license": "Apache-2.0",
+    "options": {
+      "enableLogging": true,
+      "maxParallelism": 8,
+      "defaultWindowSize": "5m",
+      "supportedFormats": [
+        "json",
+        "avro",
+        "parquet"
+      ]
+    }
+  },
+  "instructions": "Please remove the description field.",
+  "ground_truth": {
+    "name": "stream-juggler-analytics",
+    "version": "2.4.1",
+    "author": "DataFlux Labs",
+    "license": "Apache-2.0",
+    "options": {
+      "enableLogging": true,
+      "maxParallelism": 8,
+      "defaultWindowSize": "5m",
+      "supportedFormats": [
+        "json",
+        "avro",
+        "parquet"
+      ]
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "description"
+    ],
+    "precise_instruction": "Remove the \"description\" field."
+  }
+}

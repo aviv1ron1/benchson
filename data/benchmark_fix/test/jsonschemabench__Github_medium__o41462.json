@@ -1,0 +1,99 @@
+{
+  "name": "o41462",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "title": "Invocation manifest for SciTran: DICOM MR Classifier",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "timezone": {
+            "type": "string",
+            "default": "UTC"
+          }
+        },
+        "required": [
+          "timezone"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "dicom": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "dicom"
+                ]
+              }
+            }
+          },
+          "classifications": {
+            "type": "object",
+            "properties": {
+              "base": {
+                "type": "string"
+              },
+              "found": {
+                "type": "boolean"
+              },
+              "value": {}
+            },
+            "required": [
+              "base",
+              "found",
+              "value"
+            ]
+          }
+        },
+        "required": [
+          "dicom",
+          "classifications"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "erroneous_json": {
+    "config": {},
+    "inputs": {
+      "dicom": {
+        "type": "dicom"
+      },
+      "classifications": {
+        "base": "T1-weighted",
+        "found": true,
+        "value": {
+          "confidence": 0.93,
+          "label": "brain"
+        }
+      }
+    }
+  },
+  "valid_json": {
+    "config": {
+      "timezone": "America/New_York"
+    },
+    "inputs": {
+      "dicom": {
+        "type": "dicom"
+      },
+      "classifications": {
+        "base": "T1-weighted",
+        "found": true,
+        "value": {
+          "confidence": 0.93,
+          "label": "brain"
+        }
+      }
+    }
+  },
+  "description": "Please note the processing parameters for the current MR study: the system is configured to use the America/New_York time zone, and the incoming file is identified as a DICOM dataset. Our classifier successfully detected a T1\u2011weighted series, confirming that the expected anatomy was found. The resulting classification labels the image as \u201cbrain\u201d with a confidence score of\u202f0.93."
+}

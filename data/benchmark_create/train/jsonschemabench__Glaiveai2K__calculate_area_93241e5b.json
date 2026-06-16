@@ -1,0 +1,82 @@
+{
+  "name": "calculate_area_93241e5b",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "oneOf": [
+      {
+        "properties": {
+          "shape": {
+            "const": "circle"
+          }
+        },
+        "required": [
+          "radius"
+        ]
+      },
+      {
+        "properties": {
+          "shape": {
+            "const": "rectangle"
+          }
+        },
+        "required": [
+          "length",
+          "width"
+        ]
+      },
+      {
+        "properties": {
+          "shape": {
+            "const": "triangle"
+          }
+        },
+        "required": [
+          "base",
+          "height"
+        ]
+      }
+    ],
+    "properties": {
+      "base": {
+        "description": "The base of the triangle",
+        "type": "number"
+      },
+      "height": {
+        "description": "The height of the triangle",
+        "type": "number"
+      },
+      "length": {
+        "description": "The length of the rectangle",
+        "type": "number"
+      },
+      "radius": {
+        "description": "The radius of the circle",
+        "type": "number"
+      },
+      "shape": {
+        "description": "The shape to calculate the area for",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      },
+      "width": {
+        "description": "The width of the rectangle",
+        "type": "number"
+      }
+    },
+    "required": [
+      "shape"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Rectangle Dimensions for Upcoming Project\n\nThe component we are planning to fabricate is a rectangle with a length of 12.5 and a width of 7.3. Please ensure these measurements are used in all related drawings and material cut lists.",
+  "reference_json": {
+    "shape": "rectangle",
+    "length": 12.5,
+    "width": 7.3
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "o78064",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "authors": {
+        "type": "array",
+        "minItems": 1,
+        "_uniqueItems": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      },
+      "license": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "title": "OpenAI Data Processing Toolkit",
+    "description": "A toolkit for efficient data preprocessing, validation, and transformation in machine learning pipelines.",
+    "license": "MIT",
+    "authors": null
+  },
+  "valid_json": {
+    "title": "OpenAI Data Processing Toolkit",
+    "description": "A toolkit for efficient data preprocessing, validation, and transformation in machine learning pipelines.",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com"
+      },
+      {
+        "name": "John Smith",
+        "email": "john.smith@example.org"
+      }
+    ]
+  },
+  "description": "The **OpenAI Data\u202fProcessing\u202fToolkit** is a compact yet powerful suite designed to streamline data preprocessing, validation, and transformation tasks within machine\u2011learning pipelines. Its purpose is to provide developers with reliable, high\u2011performance utilities that simplify handling large datasets while maintaining clarity and reproducibility in their workflows.\n\nThe toolkit is released under the permissive **MIT license**, encouraging both open\u2011source collaboration and commercial adoption. It has been authored by Jane\u202fDoe (jane.doe@example.com) and John\u202fSmith (john.smith@example.org), who combined their expertise in data engineering and machine\u2011learning to create a solution that addresses the most common challenges faced during data preparation."
+}

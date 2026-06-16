@@ -1,0 +1,81 @@
+{
+  "name": "kb_786_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.",
+    "properties": {
+      "group": {
+        "description": "Group to map volume access to Default is no group",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "readOnly": {
+        "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "registry": {
+        "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "tenant": {
+        "description": "Tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "user": {
+        "description": "User to map volume access to Defaults to serivceaccount user",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "volume": {
+        "description": "Volume is a string that references an already created Quobyte volume by name.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "registry",
+      "volume"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "registry": "quobyte-registry.example.com:7860,quobyte-registry2.example.com:7860",
+    "volume": "project-data",
+    "group": "dev-team",
+    "readOnly": false,
+    "tenant": "acme-corp",
+    "user": "app-service"
+  },
+  "instructions": "Please change the volume to\u202fproject-data (updated).",
+  "ground_truth": {
+    "registry": "quobyte-registry.example.com:7860,quobyte-registry2.example.com:7860",
+    "volume": "project-data (updated)",
+    "group": "dev-team",
+    "readOnly": false,
+    "tenant": "acme-corp",
+    "user": "app-service"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "volume"
+    ],
+    "precise_instruction": "Change \"volume\" to \"project-data (updated)\"."
+  }
+}

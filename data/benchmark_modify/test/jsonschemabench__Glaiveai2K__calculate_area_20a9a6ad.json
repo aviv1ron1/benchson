@@ -1,0 +1,65 @@
+{
+  "name": "calculate_area_20a9a6ad",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "radius"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. square, circle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "cylinder",
+    "dimensions": {
+      "length": 12.5,
+      "width": 12.5,
+      "radius": 6.2
+    }
+  },
+  "instructions": "Could you increase the width inside dimensions by 1?",
+  "ground_truth": {
+    "shape": "cylinder",
+    "dimensions": {
+      "length": 12.5,
+      "width": 13.5,
+      "radius": 6.2
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "dimensions",
+      "width"
+    ],
+    "precise_instruction": "Increase \"width\" inside \"dimensions\" by 1."
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "name": "o54546",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "LineChartData",
+    "description": "The data contained in a LineChart",
+    "type": "object",
+    "properties": {
+      "labels": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "datasets": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$"
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": [
+            "values"
+          ]
+        }
+      }
+    },
+    "required": [
+      "labels",
+      "datasets"
+    ]
+  },
+  "erroneous_json": {
+    "labels": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ]
+  },
+  "valid_json": {
+    "labels": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "datasets": [
+      {
+        "name": "Sales",
+        "color": "#4A90E2",
+        "values": [
+          1200.5,
+          1350.0,
+          1280.75,
+          1420.3,
+          1500.0,
+          1605.4,
+          1700.2
+        ]
+      },
+      {
+        "name": "Returns",
+        "color": "#D0021B",
+        "values": [
+          50.0,
+          45.5,
+          60.2,
+          55.0,
+          48.3,
+          52.7,
+          49.1
+        ]
+      },
+      {
+        "values": [
+          300.0,
+          310.5,
+          305.2,
+          320.0,
+          330.1,
+          340.8,
+          350.0
+        ]
+      }
+    ]
+  },
+  "description": "Here is the weekly overview for the past seven days, from Monday through Sunday. The sales figures (displayed in the chart using the blue shade\u202f#4A90E2) were 1,200.5 on Monday, 1,350.0 on Tuesday, 1,280.75 on Wednesday, 1,420.3 on Thursday, 1,500.0 on Friday, 1,605.4 on Saturday, and 1,700.2 on Sunday. Returns (shown in the red shade\u202f#D0021B) recorded 50.0 on Monday, 45.5 on Tuesday, 60.2 on Wednesday, 55.0 on Thursday, 48.3 on Friday, 52.7 on Saturday, and 49.1 on Sunday.\n\nA third data series, which does not have an explicit label, recorded the following values over the same period: 300.0 on Monday, 310.5 on Tuesday, 305.2 on Wednesday, 320.0 on Thursday, 330.1 on Friday, 340.8 on Saturday, and 350.0 on Sunday."
+}

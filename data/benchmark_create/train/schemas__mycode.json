@@ -1,0 +1,98 @@
+{
+  "name": "mycode",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "classification": {
+        "enum": [
+          "MyCode",
+          "LibraryCode",
+          "UnrelatedCode"
+        ]
+      },
+      "includes": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/mycode.json",
+    "properties": {
+      "Eval": {
+        "description": "Script that is executed by passing a string to the host-provided eval function.",
+        "default": "MyCode",
+        "allOf": [
+          {
+            "$ref": "#/definitions/classification"
+          }
+        ]
+      },
+      "Function": {
+        "description": "Script that is executed by passing a string to the 'Function' constructor.",
+        "default": "LibraryCode",
+        "allOf": [
+          {
+            "$ref": "#/definitions/classification"
+          }
+        ]
+      },
+      "ScriptBlock": {
+        "description": "Script that is executed by passing a string to the 'setTimeout', 'setImmediate', or 'setInterval' functions.",
+        "default": "UnrelatedCode",
+        "allOf": [
+          {
+            "$ref": "#/definitions/classification"
+          }
+        ]
+      },
+      "MyCode": {
+        "description": "An array of urls or files that are classified as 'MyCode'.",
+        "allOf": [
+          {
+            "$ref": "#/definitions/includes"
+          }
+        ]
+      },
+      "Libraries": {
+        "description": "An array of urls or files that are classified as 'LibraryCode'.",
+        "allOf": [
+          {
+            "$ref": "#/definitions/includes"
+          }
+        ]
+      },
+      "Unrelated": {
+        "description": "An array of urls or files that are classified as 'UnrelatedCode'.",
+        "allOf": [
+          {
+            "$ref": "#/definitions/includes"
+          }
+        ]
+      }
+    },
+    "title": "JSON schema for mycode.js files",
+    "type": "object"
+  },
+  "description": "Hi team,\n\nFor this build we\u2019re classifying the three script\u2011execution pathways as follows: code passed to\u202feval will be treated as **MyCode**, code instantiated via the\u202fFunction\u202fconstructor is considered **LibraryCode**, and any script strings used with\u202fsetTimeout**,\u202fsetImmediate** or\u202fsetInterval\u202fare marked as **UnrelatedCode**.\n\nThe resources that fall under each category are listed below. The **MyCode** assets include the main application script at\u202fhttps://example.com/app/main.js\u202fand the helper module\u202fsrc/utils/helpers.js. The **LibraryCode** bundle pulls in React from\u202fhttps://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js\u202fand lodash from\u202fnode_modules/lodash/lodash.js. Finally, the **UnrelatedCode** set consists of the external ad script\u202fhttps://ads.example.com/banner.js\u202fand the internal analytics tracker\u202fscripts/analytics/tracker.js.",
+  "reference_json": {
+    "Eval": "MyCode",
+    "Function": "LibraryCode",
+    "ScriptBlock": "UnrelatedCode",
+    "MyCode": [
+      "https://example.com/app/main.js",
+      "src/utils/helpers.js"
+    ],
+    "Libraries": [
+      "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js",
+      "node_modules/lodash/lodash.js"
+    ],
+    "Unrelated": [
+      "https://ads.example.com/banner.js",
+      "scripts/analytics/tracker.js"
+    ]
+  }
+}

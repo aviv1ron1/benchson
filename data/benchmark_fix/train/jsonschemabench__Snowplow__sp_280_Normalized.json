@@ -1,0 +1,680 @@
+{
+  "name": "sp_280_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for an event which has been successfully enriched and stored in Elasticsearch",
+    "patternProperties": {
+      "^contexts_.*": {
+        "type": "array"
+      },
+      "^unstruct_event_.*": {}
+    },
+    "properties": {
+      "app_id": {
+        "type": "string"
+      },
+      "base_currency": {
+        "type": "string"
+      },
+      "br_colordepth": {
+        "type": "string"
+      },
+      "br_cookies": {
+        "type": "boolean"
+      },
+      "br_family": {
+        "type": "string"
+      },
+      "br_features_director": {
+        "type": "boolean"
+      },
+      "br_features_flash": {
+        "type": "boolean"
+      },
+      "br_features_gears": {
+        "type": "boolean"
+      },
+      "br_features_java": {
+        "type": "boolean"
+      },
+      "br_features_pdf": {
+        "type": "boolean"
+      },
+      "br_features_quicktime": {
+        "type": "boolean"
+      },
+      "br_features_realplayer": {
+        "type": "boolean"
+      },
+      "br_features_silverlight": {
+        "type": "boolean"
+      },
+      "br_features_windowsmedia": {
+        "type": "boolean"
+      },
+      "br_lang": {
+        "type": "string"
+      },
+      "br_name": {
+        "type": "string"
+      },
+      "br_renderengine": {
+        "type": "string"
+      },
+      "br_type": {
+        "type": "string"
+      },
+      "br_version": {
+        "type": "string"
+      },
+      "br_viewheight": {
+        "type": "integer"
+      },
+      "br_viewwidth": {
+        "type": "integer"
+      },
+      "collector_tstamp": {
+        "type": "string"
+      },
+      "doc_charset": {
+        "type": "string"
+      },
+      "doc_height": {
+        "type": "integer"
+      },
+      "doc_width": {
+        "type": "integer"
+      },
+      "domain_sessionidx": {
+        "type": "integer"
+      },
+      "domain_userid": {
+        "type": "string"
+      },
+      "dvce_ismobile": {
+        "type": "boolean"
+      },
+      "dvce_screenheight": {
+        "type": "integer"
+      },
+      "dvce_screenwidth": {
+        "type": "integer"
+      },
+      "dvce_sent_tstamp": {
+        "type": "string"
+      },
+      "dvce_tstamp": {
+        "type": "string"
+      },
+      "dvce_type": {
+        "type": "string"
+      },
+      "etl_tags": {
+        "type": "string"
+      },
+      "etl_tstamp": {
+        "type": "string"
+      },
+      "event": {
+        "type": "string"
+      },
+      "event_id": {
+        "type": "string"
+      },
+      "geo_city": {
+        "type": "string"
+      },
+      "geo_country": {
+        "type": "string"
+      },
+      "geo_latitude": {
+        "type": "number"
+      },
+      "geo_location": {
+        "pattern": "-?[0-9]+(?:\\.[0-9+])?,-?[0-9]+(?:\\.[0-9+])?",
+        "type": "string"
+      },
+      "geo_longitude": {
+        "type": "number"
+      },
+      "geo_region": {
+        "type": "string"
+      },
+      "geo_region_name": {
+        "type": "string"
+      },
+      "geo_timezone": {
+        "type": "string"
+      },
+      "geo_zipcode": {
+        "type": "string"
+      },
+      "ip_domain": {
+        "type": "string"
+      },
+      "ip_isp": {
+        "type": "string"
+      },
+      "ip_netspeed": {
+        "type": "string"
+      },
+      "ip_org": {
+        "type": "string"
+      },
+      "mkt_campaign": {
+        "type": "string"
+      },
+      "mkt_clickid": {
+        "type": "string"
+      },
+      "mkt_content": {
+        "type": "string"
+      },
+      "mkt_medium": {
+        "type": "string"
+      },
+      "mkt_network": {
+        "type": "string"
+      },
+      "mkt_source": {
+        "type": "string"
+      },
+      "mkt_term": {
+        "type": "string"
+      },
+      "name_tracker": {
+        "type": "string"
+      },
+      "network_userid": {
+        "type": "string"
+      },
+      "os_family": {
+        "type": "string"
+      },
+      "os_manufacturer": {
+        "type": "string"
+      },
+      "os_name": {
+        "type": "string"
+      },
+      "os_timezone": {
+        "type": "string"
+      },
+      "page_referrer": {
+        "type": "string"
+      },
+      "page_title": {
+        "type": "string"
+      },
+      "page_url": {
+        "type": "string"
+      },
+      "page_urlfragment": {
+        "type": "string"
+      },
+      "page_urlhost": {
+        "type": "string"
+      },
+      "page_urlpath": {
+        "type": "string"
+      },
+      "page_urlport": {
+        "type": "integer"
+      },
+      "page_urlquery": {
+        "type": "string"
+      },
+      "page_urlscheme": {
+        "type": "string"
+      },
+      "platform": {
+        "type": "string"
+      },
+      "pp_xoffset_max": {
+        "type": "integer"
+      },
+      "pp_xoffset_min": {
+        "type": "integer"
+      },
+      "pp_yoffset_max": {
+        "type": "integer"
+      },
+      "pp_yoffset_min": {
+        "type": "integer"
+      },
+      "refr_domain_userid": {
+        "type": "string"
+      },
+      "refr_dvce_tstamp": {
+        "type": "string"
+      },
+      "refr_medium": {
+        "type": "string"
+      },
+      "refr_source": {
+        "type": "string"
+      },
+      "refr_term": {
+        "type": "string"
+      },
+      "refr_urlfragment": {
+        "type": "string"
+      },
+      "refr_urlhost": {
+        "type": "string"
+      },
+      "refr_urlpath": {
+        "type": "string"
+      },
+      "refr_urlport": {
+        "type": "integer"
+      },
+      "refr_urlquery": {
+        "type": "string"
+      },
+      "refr_urlscheme": {
+        "type": "string"
+      },
+      "se_action": {
+        "type": "string"
+      },
+      "se_category": {
+        "type": "string"
+      },
+      "se_label": {
+        "type": "string"
+      },
+      "se_property": {
+        "type": "string"
+      },
+      "se_value": {
+        "type": "string"
+      },
+      "session_id": {
+        "type": "string"
+      },
+      "ti_category": {
+        "type": "string"
+      },
+      "ti_currency": {
+        "type": "string"
+      },
+      "ti_name": {
+        "type": "string"
+      },
+      "ti_orderid": {
+        "type": "string"
+      },
+      "ti_price": {
+        "type": "number"
+      },
+      "ti_price_base": {
+        "type": "number"
+      },
+      "ti_quantity": {
+        "type": "integer"
+      },
+      "ti_sku": {
+        "type": "string"
+      },
+      "tr_affiliation": {
+        "type": "string"
+      },
+      "tr_city": {
+        "type": "string"
+      },
+      "tr_country": {
+        "type": "string"
+      },
+      "tr_currency": {
+        "type": "string"
+      },
+      "tr_orderid": {
+        "type": "string"
+      },
+      "tr_shipping": {
+        "type": "number"
+      },
+      "tr_shipping_base": {
+        "type": "number"
+      },
+      "tr_state": {
+        "type": "string"
+      },
+      "tr_tax": {
+        "type": "number"
+      },
+      "tr_tax_base": {
+        "type": "number"
+      },
+      "tr_total": {
+        "type": "number"
+      },
+      "tr_total_base": {
+        "type": "number"
+      },
+      "txn_id": {
+        "type": "integer"
+      },
+      "user_fingerprint": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "user_ipaddress": {
+        "type": "string"
+      },
+      "useragent": {
+        "type": "string"
+      },
+      "v_collector": {
+        "type": "string"
+      },
+      "v_etl": {
+        "type": "string"
+      },
+      "v_tracker": {
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "elasticsearch_enriched_event",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-1"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "app_id": "myapp",
+    "base_currency": "USD",
+    "br_colordepth": "24",
+    "br_cookies": true,
+    "br_family": "Chrome",
+    "br_features_director": false,
+    "br_features_flash": false,
+    "br_features_gears": false,
+    "br_features_java": false,
+    "br_features_pdf": true,
+    "br_features_quicktime": false,
+    "br_features_realplayer": false,
+    "br_features_silverlight": false,
+    "br_features_windowsmedia": false,
+    "br_lang": "en-US",
+    "br_name": "Chrome",
+    "br_renderengine": "WebKit",
+    "br_type": "browser",
+    "br_version": "112.0.5615.138",
+    "br_viewheight": 800,
+    "br_viewwidth": 1280,
+    "collector_tstamp": "2026-06-14T12:34:56.789Z",
+    "doc_charset": "UTF-8",
+    "doc_height": 2000,
+    "doc_width": 1200,
+    "domain_sessionidx": 3,
+    "domain_userid": "00112233-4455-6677-8899-aabbccddeeff",
+    "dvce_ismobile": false,
+    "dvce_screenheight": 1080,
+    "dvce_screenwidth": 1920,
+    "dvce_sent_tstamp": "2026-06-14T12:34:55.123Z",
+    "dvce_tstamp": "2026-06-14T12:34:55.123Z",
+    "dvce_type": "PC",
+    "etl_tags": "enriched",
+    "etl_tstamp": "2026-06-14T12:34:57.000Z",
+    "event": "page_view",
+    "event_id": "e7e5a5c2-3c9b-4f57-9b7d-0d8f5e4c2a1b",
+    "geo_city": "San Francisco",
+    "geo_country": "US",
+    "geo_latitude": 37.7749,
+    "geo_location": "37.7749,-122.4194",
+    "geo_longitude": -122.4194,
+    "geo_region": "CA",
+    "geo_region_name": "California",
+    "geo_timezone": "America/Los_Angeles",
+    "geo_zipcode": "94103",
+    "ip_domain": "example.com",
+    "ip_isp": "Comcast",
+    "ip_netspeed": "broadband",
+    "ip_org": "Example Org",
+    "mkt_campaign": "summer_sale",
+    "mkt_clickid": "abc123def",
+    "mkt_content": "banner_ad",
+    "mkt_medium": "cpc",
+    "mkt_network": "google",
+    "mkt_source": "google",
+    "mkt_term": "snowplow analytics",
+    "name_tracker": "snowplow_tracker",
+    "network_userid": "user-9876",
+    "os_family": "Windows",
+    "os_manufacturer": "Microsoft",
+    "os_name": "Windows 10",
+    "os_timezone": "America/Los_Angeles",
+    "page_referrer": "https://www.google.com/",
+    "page_title": "Welcome to My Site",
+    "page_url": "https://www.example.com/home",
+    "page_urlfragment": "",
+    "page_urlhost": "www.example.com",
+    "page_urlpath": "/home",
+    "page_urlport": 443,
+    "page_urlquery": "",
+    "page_urlscheme": "https",
+    "platform": "web",
+    "pp_xoffset_max": 640,
+    "pp_xoffset_min": 0,
+    "pp_yoffset_max": null,
+    "pp_yoffset_min": 0,
+    "refr_domain_userid": "ref-001",
+    "refr_dvce_tstamp": "2026-06-14T12:33:55.000Z",
+    "refr_medium": "referral",
+    "refr_source": "google.com",
+    "refr_term": "",
+    "refr_urlfragment": "",
+    "refr_urlhost": "www.google.com",
+    "refr_urlpath": "/search",
+    "refr_urlport": 443,
+    "refr_urlquery": "q=snowplow+analytics",
+    "refr_urlscheme": "https",
+    "se_action": "click",
+    "se_category": "navigation",
+    "se_label": "top_nav",
+    "se_property": "color",
+    "se_value": "blue",
+    "session_id": "sess-12345678",
+    "ti_category": "electronics",
+    "ti_currency": "USD",
+    "ti_name": "Smartphone",
+    "ti_orderid": "order-7890",
+    "ti_price": 699.99,
+    "ti_price_base": 699.99,
+    "ti_quantity": 1,
+    "ti_sku": "SPH-001",
+    "tr_affiliation": "Online Store",
+    "tr_city": "San Francisco",
+    "tr_country": "US",
+    "tr_currency": "USD",
+    "tr_orderid": "order-7890",
+    "tr_shipping": 15.0,
+    "tr_shipping_base": 15.0,
+    "tr_state": "CA",
+    "tr_tax": 58.0,
+    "tr_tax_base": 58.0,
+    "tr_total": 772.99,
+    "tr_total_base": 772.99,
+    "txn_id": 123456,
+    "user_fingerprint": "f5d3d58503bce9c9",
+    "user_id": "user_1234",
+    "user_ipaddress": "203.0.113.42",
+    "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.138 Safari/537.36",
+    "v_collector": "v1",
+    "v_etl": "v1",
+    "v_tracker": "v1",
+    "contexts_ua": [
+      {
+        "schema": "iglu:com.snowplowanalytics.snowplow/client_session/jsonschema/1-0-0",
+        "data": {
+          "userId": "user_1234",
+          "sessionId": "sess-12345678",
+          "previousSessionId": "sess-12345677",
+          "sessionIndex": 3,
+          "storageMechanism": "cookie"
+        }
+      }
+    ],
+    "unstruct_event_transaction": {
+      "schema": "iglu:com.snowplowanalytics.snowplow/ecommerce_transaction/jsonschema/1-0-0",
+      "data": {
+        "orderId": "order-7890",
+        "totalValue": 772.99,
+        "currency": "USD"
+      }
+    }
+  },
+  "valid_json": {
+    "app_id": "myapp",
+    "base_currency": "USD",
+    "br_colordepth": "24",
+    "br_cookies": true,
+    "br_family": "Chrome",
+    "br_features_director": false,
+    "br_features_flash": false,
+    "br_features_gears": false,
+    "br_features_java": false,
+    "br_features_pdf": true,
+    "br_features_quicktime": false,
+    "br_features_realplayer": false,
+    "br_features_silverlight": false,
+    "br_features_windowsmedia": false,
+    "br_lang": "en-US",
+    "br_name": "Chrome",
+    "br_renderengine": "WebKit",
+    "br_type": "browser",
+    "br_version": "112.0.5615.138",
+    "br_viewheight": 800,
+    "br_viewwidth": 1280,
+    "collector_tstamp": "2026-06-14T12:34:56.789Z",
+    "doc_charset": "UTF-8",
+    "doc_height": 2000,
+    "doc_width": 1200,
+    "domain_sessionidx": 3,
+    "domain_userid": "00112233-4455-6677-8899-aabbccddeeff",
+    "dvce_ismobile": false,
+    "dvce_screenheight": 1080,
+    "dvce_screenwidth": 1920,
+    "dvce_sent_tstamp": "2026-06-14T12:34:55.123Z",
+    "dvce_tstamp": "2026-06-14T12:34:55.123Z",
+    "dvce_type": "PC",
+    "etl_tags": "enriched",
+    "etl_tstamp": "2026-06-14T12:34:57.000Z",
+    "event": "page_view",
+    "event_id": "e7e5a5c2-3c9b-4f57-9b7d-0d8f5e4c2a1b",
+    "geo_city": "San Francisco",
+    "geo_country": "US",
+    "geo_latitude": 37.7749,
+    "geo_location": "37.7749,-122.4194",
+    "geo_longitude": -122.4194,
+    "geo_region": "CA",
+    "geo_region_name": "California",
+    "geo_timezone": "America/Los_Angeles",
+    "geo_zipcode": "94103",
+    "ip_domain": "example.com",
+    "ip_isp": "Comcast",
+    "ip_netspeed": "broadband",
+    "ip_org": "Example Org",
+    "mkt_campaign": "summer_sale",
+    "mkt_clickid": "abc123def",
+    "mkt_content": "banner_ad",
+    "mkt_medium": "cpc",
+    "mkt_network": "google",
+    "mkt_source": "google",
+    "mkt_term": "snowplow analytics",
+    "name_tracker": "snowplow_tracker",
+    "network_userid": "user-9876",
+    "os_family": "Windows",
+    "os_manufacturer": "Microsoft",
+    "os_name": "Windows 10",
+    "os_timezone": "America/Los_Angeles",
+    "page_referrer": "https://www.google.com/",
+    "page_title": "Welcome to My Site",
+    "page_url": "https://www.example.com/home",
+    "page_urlfragment": "",
+    "page_urlhost": "www.example.com",
+    "page_urlpath": "/home",
+    "page_urlport": 443,
+    "page_urlquery": "",
+    "page_urlscheme": "https",
+    "platform": "web",
+    "pp_xoffset_max": 640,
+    "pp_xoffset_min": 0,
+    "pp_yoffset_max": 360,
+    "pp_yoffset_min": 0,
+    "refr_domain_userid": "ref-001",
+    "refr_dvce_tstamp": "2026-06-14T12:33:55.000Z",
+    "refr_medium": "referral",
+    "refr_source": "google.com",
+    "refr_term": "",
+    "refr_urlfragment": "",
+    "refr_urlhost": "www.google.com",
+    "refr_urlpath": "/search",
+    "refr_urlport": 443,
+    "refr_urlquery": "q=snowplow+analytics",
+    "refr_urlscheme": "https",
+    "se_action": "click",
+    "se_category": "navigation",
+    "se_label": "top_nav",
+    "se_property": "color",
+    "se_value": "blue",
+    "session_id": "sess-12345678",
+    "ti_category": "electronics",
+    "ti_currency": "USD",
+    "ti_name": "Smartphone",
+    "ti_orderid": "order-7890",
+    "ti_price": 699.99,
+    "ti_price_base": 699.99,
+    "ti_quantity": 1,
+    "ti_sku": "SPH-001",
+    "tr_affiliation": "Online Store",
+    "tr_city": "San Francisco",
+    "tr_country": "US",
+    "tr_currency": "USD",
+    "tr_orderid": "order-7890",
+    "tr_shipping": 15.0,
+    "tr_shipping_base": 15.0,
+    "tr_state": "CA",
+    "tr_tax": 58.0,
+    "tr_tax_base": 58.0,
+    "tr_total": 772.99,
+    "tr_total_base": 772.99,
+    "txn_id": 123456,
+    "user_fingerprint": "f5d3d58503bce9c9",
+    "user_id": "user_1234",
+    "user_ipaddress": "203.0.113.42",
+    "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.138 Safari/537.36",
+    "v_collector": "v1",
+    "v_etl": "v1",
+    "v_tracker": "v1",
+    "contexts_ua": [
+      {
+        "schema": "iglu:com.snowplowanalytics.snowplow/client_session/jsonschema/1-0-0",
+        "data": {
+          "userId": "user_1234",
+          "sessionId": "sess-12345678",
+          "previousSessionId": "sess-12345677",
+          "sessionIndex": 3,
+          "storageMechanism": "cookie"
+        }
+      }
+    ],
+    "unstruct_event_transaction": {
+      "schema": "iglu:com.snowplowanalytics.snowplow/ecommerce_transaction/jsonschema/1-0-0",
+      "data": {
+        "orderId": "order-7890",
+        "totalValue": 772.99,
+        "currency": "USD"
+      }
+    }
+  },
+  "description": "On 2026-06-14 the Snowplow collector (v1) received a page_view event (event_id\u202fe7e5a5c2-3c9b-4f57-9b7d-0d8f5e4c2a1b) from the tracker\u202fv1 (named snowplow_tracker) for the application \u201cmyapp\u201d. The event was enriched at 2026-06-14T12:34:57.000Z and the device timestamp was 2026-06-14T12:34:55.123Z (sent at the same instant). It occurred on the web platform, using HTTPS (page_urlscheme\u202fhttps) at the URL\u202fhttps://www.example.com/home (host\u202fwww.example.com, path\u202f/home, port\u202f443, query\u202f\"\", fragment\u202fempty). The page title was \u201cWelcome to My Site\u201d, the referrer was https://www.google.com/, and the page charset was UTF\u20118 with a document size of 2000\u202fpx height and 1200\u202fpx width. The page view had a viewport of 800\u202fpx height by 1280\u202fpx width, and the page scroll offsets ranged from 0 to 640\u202fpx horizontally (pp_xoffset_min\u202f0, pp_xoffset_max\u202f640) and from 0 to 360\u202fpx vertically (pp_yoffset_min\u202f0, pp_yoffset_max\u202f360).  \n\nThe user was identified as user_1234 (domain_userid\u202f00112233-4455-6677-8899-aabbccddeeff, network_userid\u202fuser-9876) with fingerprint\u202ff5d3d58503bce9c9 and IP address\u202f203.0.113.42 (user_ipaddress). The device was a PC running Windows\u202f10 (os_name\u202fWindows\u00a010, os_family\u202fWindows, os_manufacturer\u202fMicrosoft) in the America/Los_Angeles timezone, with a screen resolution of 1920\u202fpx\u202f\u00d7\u202f1080\u202fpx, not mobile (dvce_ismobile\u202ffalse). The browser was Chrome (br_family\u202fChrome, br_name\u202fChrome) version\u202f112.0.5615.138, using the WebKit render engine, language\u202fen-US, color depth\u202f24, cookies enabled (br_cookies\u202ftrue), and PDF support enabled (br_features_pdf\u202ftrue) while all other features (director, flash, gears, java, quicktime, realplayer, silverlight, windowsmedia) were false.  \n\nGeographically the event originated from San\u202fFrancisco, CA, US (geo_city\u202fSan\u00a0Francisco, geo_region\u202fCA, geo_region_name\u202fCalifornia, geo_country\u202fUS, geo_zipcode\u202f94103, geo_latitude\u202f37.7749, geo_longitude\u202f\u2011122.4194, geo_location\u202f37.7749,-122.4194, geo_timezone\u202fAmerica/Los_Angeles). Marketing attribution showed a summer_sale campaign (mkt_campaign\u202fsummer_sale) with click ID\u202fabc123def, content\u202fbanner_ad, medium\u202fcpc, network\u202fgoogle, source\u202fgoogle, and term\u202fsnowplow analytics. The referral was a Google search (refr_source\u202fgoogle.com, refr_medium\u202freferral, refr_urlhost\u202fwww.google.com, refr_urlpath\u202f/search, refr_urlquery\u202fq=snowplow+analytics, refr_urlscheme\u202fhttps, refr_urlport\u202f443, refr_urlfragment\u202fempty, refr_term\u202fempty, refr_domain_userid\u202fref-001, refr_dvce_tstamp\u202f2026-06-14T12:33:55.000Z).  \n\nE\u2011commerce data indicated a transaction (order\u20117890) for a Smartphone (ti_name\u202fSmartphone, ti_category\u202felectronics, ti_sku\u202fSPH-001) priced at 699.99\u202fUSD (ti_price\u202f699.99, ti_price_base\u202f699.99) with quantity\u202f1, total order value 772.99\u202fUSD (tr_total\u202f772.99, tr_total_base\u202f772.99) including shipping of 15.0\u202fUSD (tr_shipping\u202f15.0, tr_shipping_base\u202f15.0) and tax of 58.0\u202fUSD (tr_tax\u202f58.0, tr_tax_base\u202f58.0). The transaction took place in San\u202fFrancisco, CA, US (tr_city\u202fSan\u00a0Francisco, tr_state\u202fCA, tr_country\u202fUS) under the affiliation \u201cOnline Store\u201d (tr_affiliation\u202fOnline\u00a0Store) and used USD as the currency (tr_currency\u202fUSD, ti_currency\u202fUSD, base_currency\u202fUSD). The transaction ID was 123456 (txn_id\u202f123456).  \n\nThe client session attached to the event (contexts_ua) reported userId\u202fuser_1234, sessionId\u202fsess-12345678, previousSessionId\u202fsess-12345677, sessionIndex\u202f3, and storageMechanism\u202fcookie. An unstructured transaction event (unstruct_event_transaction) recorded orderId\u202forder-7890, totalValue\u202f772.99, and currency\u202fUSD. Finally, the event carried the tag \u201cenriched\u201d (etl_tags\u202fenriched) and the custom event details were: action\u202fclick, category\u202fnavigation, label\u202ftop_nav, property\u202fcolor, value\u202fblue (se_action\u202fclick, se_category\u202fnavigation, se_label\u202ftop_nav, se_property\u202fcolor, se_value\u202fblue)."
+}

@@ -1,0 +1,199 @@
+{
+  "name": "o58852",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "description": "Settings schema for Mouser.",
+    "properties": {
+      "db": {
+        "properties": {
+          "userCollection": {
+            "description": "Name of the collection to be used to store user data.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "userCollection"
+        ],
+        "type": "object"
+      },
+      "paths": {
+        "default": {},
+        "description": "Paths used.",
+        "properties": {
+          "base": {
+            "_format": "uri",
+            "description": "The base URI of the web application (e.g. https://localhost:8080).",
+            "type": "string"
+          },
+          "login": {
+            "default": "login",
+            "description": "The path (relative to the base URI) to the login view.",
+            "type": "string"
+          },
+          "logout": {
+            "default": "logout",
+            "description": "The path (relative to the base URI) to the logout view.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "base",
+          "login",
+          "logout"
+        ],
+        "type": "object"
+      },
+      "providers": {
+        "description": "Authentication providers.",
+        "properties": {
+          "facebook": {
+            "properties": {
+              "appId": {
+                "type": "string"
+              },
+              "appSecret": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "appId",
+              "appSecret"
+            ],
+            "type": "object"
+          },
+          "google": {
+            "properties": {
+              "appId": {
+                "type": "string"
+              },
+              "appSecret": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "appId",
+              "appSecret"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "session": {
+        "default": {},
+        "description": "Information about the client session; how to encrypt it and when it expires.",
+        "properties": {
+          "cookieName": {
+            "default": "mouser",
+            "description": "The session's cookie name",
+            "type": "string"
+          },
+          "expiresIn": {
+            "default": 20160,
+            "description": "Amount of seconds before the session expires.",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "secret": {
+            "description": "The secret used to encrypt the session.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "secret",
+          "expiresIn",
+          "cookieName"
+        ],
+        "type": "object"
+      },
+      "token": {
+        "default": {},
+        "description": "Information about the json web token; how to encrypt it and when it expires.",
+        "properties": {
+          "expiresIn": {
+            "default": 20160,
+            "description": "Amount of seconds before the token expires.",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "secret": {
+            "description": "The secret used to encrypt the token.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "secret",
+          "expiresIn"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "db",
+      "token",
+      "session",
+      "paths",
+      "providers"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "db": {
+      "userCollection": "users"
+    },
+    "paths": {
+      "base": "https://app.example.com",
+      "login": "login",
+      "logout": "logout"
+    },
+    "providers": {
+      "facebook": {
+        "appId": "123456789012345",
+        "appSecret": "fb_secret_AbC123Xyz!"
+      },
+      "google": {
+        "appId": "987654321098765",
+        "appSecret": "google_secret_ZyX987!@#"
+      }
+    },
+    "session": {
+      "expiresIn": 86400,
+      "secret": "session_secret_!SecureKey12345"
+    },
+    "token": {
+      "expiresIn": 3600,
+      "secret": "jwt_secret_#TokenKey67890"
+    }
+  },
+  "valid_json": {
+    "db": {
+      "userCollection": "users"
+    },
+    "paths": {
+      "base": "https://app.example.com",
+      "login": "login",
+      "logout": "logout"
+    },
+    "providers": {
+      "facebook": {
+        "appId": "123456789012345",
+        "appSecret": "fb_secret_AbC123Xyz!"
+      },
+      "google": {
+        "appId": "987654321098765",
+        "appSecret": "google_secret_ZyX987!@#"
+      }
+    },
+    "session": {
+      "cookieName": "mouser",
+      "expiresIn": 86400,
+      "secret": "session_secret_!SecureKey12345"
+    },
+    "token": {
+      "expiresIn": 3600,
+      "secret": "jwt_secret_#TokenKey67890"
+    }
+  },
+  "description": "The application will store its user data in a MongoDB collection called **users**. All web traffic is rooted at the base URI **https://app.example.com**, with the login view reachable at the relative path **login** and the logout view at **logout**. For social authentication we have configured two providers: Facebook uses the App ID **123456789012345** and the secret **fb_secret_AbC123Xyz!**, while Google uses the App ID **987654321098765** and the secret **google_secret_ZyX987!@#**.  \n\nUser sessions are managed with a cookie named **mouser**; the session cookie is encrypted using the secret **session_secret_!SecureKey12345** and is set to expire after **86400** seconds (24\u202fhours). JSON Web Tokens are signed with the secret **jwt_secret_#TokenKey67890** and have a validity period of **3600** seconds (1\u202fhour)."
+}

@@ -1,0 +1,49 @@
+{
+  "name": "calculate_area_b6e5c8fd",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "radius"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (e.g., square, rectangle, circle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "The component is a cylinder measuring 10.5 in length, with a width of 5.0 and a radius of 3.2.",
+  "reference_json": {
+    "shape": "cylinder",
+    "dimensions": {
+      "length": 10.5,
+      "width": 5.0,
+      "radius": 3.2
+    }
+  }
+}

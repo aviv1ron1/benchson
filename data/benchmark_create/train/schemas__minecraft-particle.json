@@ -1,0 +1,31 @@
+{
+  "name": "minecraft-particle",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/minecraft-particle.json",
+    "description": "A particle for a Minecraft resource pack config schema",
+    "properties": {
+      "textures": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "textures"
+    ],
+    "title": "Minecraft Resource Pack Particle",
+    "type": "object"
+  },
+  "description": "Dear team,\n\nFor the upcoming resource\u2011pack update, I've compiled the list of particle textures that will be included. These assets are located in the standard Minecraft directory structure and will replace the default visuals for the corresponding effects.\n\n- assets/minecraft/textures/particle/smoke.png  \n- assets/minecraft/textures/particle/flame.png  \n- assets/minecraft/textures/particle/sparkle.png  \n\nPlease ensure these files are packaged correctly before the next build.",
+  "reference_json": {
+    "textures": [
+      "assets/minecraft/textures/particle/smoke.png",
+      "assets/minecraft/textures/particle/flame.png",
+      "assets/minecraft/textures/particle/sparkle.png"
+    ]
+  }
+}

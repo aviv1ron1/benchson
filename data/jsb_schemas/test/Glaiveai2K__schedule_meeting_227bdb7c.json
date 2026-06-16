@@ -1,0 +1,34 @@
+{
+  "name": "schedule_meeting_227bdb7c",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "meeting_location": {
+        "description": "The location of the meeting",
+        "type": "string"
+      },
+      "meeting_time": {
+        "description": "The time of the meeting",
+        "type": "string"
+      },
+      "meeting_title": {
+        "description": "The title of the meeting",
+        "type": "string"
+      },
+      "participants": {
+        "description": "The participants of the meeting",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "participants",
+      "meeting_title",
+      "meeting_time"
+    ],
+    "type": "object"
+  }
+}

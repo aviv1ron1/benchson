@@ -1,0 +1,204 @@
+{
+  "name": "o41314",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "title": "Invocation manifest for HCP: Structural Preprocessing Pipeline",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "save-on-error": {
+            "type": "boolean",
+            "default": false
+          },
+          "Subject": {
+            "type": "string"
+          },
+          "RegName": {
+            "type": "string",
+            "enum": [
+              "MSMSulc",
+              "FS"
+            ],
+            "default": "MSMSulc"
+          },
+          "BrainSize": {
+            "type": "integer",
+            "default": 150
+          },
+          "TemplateSize": {
+            "type": "string",
+            "default": "0.8mm"
+          },
+          "StructuralUnwarpDirection": {
+            "default": "z",
+            "type": "string",
+            "enum": [
+              "x",
+              "x-",
+              "y",
+              "y-",
+              "z",
+              "z-"
+            ]
+          },
+          "aseg_csv": {
+            "type": "boolean",
+            "default": true
+          },
+          "Dry-Run": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "save-on-error",
+          "RegName",
+          "BrainSize",
+          "TemplateSize",
+          "StructuralUnwarpDirection",
+          "aseg_csv",
+          "Dry-Run"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "api-key": {
+            "type": "object"
+          },
+          "T1": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "T2": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "FreeSurferLicense": {
+            "type": "object",
+            "properties": {}
+          },
+          "GradientCoeff": {
+            "type": "object",
+            "properties": {}
+          },
+          "SpinEchoPositive": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "SpinEchoNegative": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "SiemensGREMagnitude": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          },
+          "SiemensGREPhase": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "nifti"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "api-key",
+          "T1",
+          "T2",
+          "FreeSurferLicense"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "description": "The structural preprocessing will be executed for subject **sub\u2011001** using the default MSMSulc registration. The brain volume is assumed to be 150\u202fmm in size and will be matched to a 0.8\u202fmm template; distortion correction will be applied along the z\u2011axis. Automatic saving on error is disabled, and the pipeline will run in normal mode (dry\u2011run set to false). An ASEG CSV report will be generated as part of the output.\n\nAuthentication is provided via the API key **abcd1234efgh5678**. The required imaging inputs are the T1\u2011weighted NIfTI file at */data/sub-001_T1w.nii.gz* and the T2\u2011weighted NIfTI file at */data/sub-001_T2w.nii.gz*. A FreeSurfer license file located at */licenses/freesurfer.txt* is supplied. Gradient\u2011coefficient information is given in the JSON file *gradcoeff.json*. Additional spin\u2011echo and Siemens GRE data are included: the positive spin\u2011echo NIfTI at */data/sub-001_SEpos.nii.gz*, the negative spin\u2011echo NIfTI at */data/sub-001_SEneg.nii.gz*, the GRE magnitude NIfTI at */data/sub-001_GRE_mag.nii.gz*, and the GRE phase NIfTI at */data/sub-001_GRE_phase.nii.gz*.",
+  "reference_json": {
+    "config": {
+      "save-on-error": false,
+      "Subject": "sub-001",
+      "RegName": "MSMSulc",
+      "BrainSize": 150,
+      "TemplateSize": "0.8mm",
+      "StructuralUnwarpDirection": "z",
+      "aseg_csv": true,
+      "Dry-Run": false
+    },
+    "inputs": {
+      "api-key": {
+        "key": "abcd1234efgh5678"
+      },
+      "T1": {
+        "type": "nifti",
+        "path": "/data/sub-001_T1w.nii.gz"
+      },
+      "T2": {
+        "type": "nifti",
+        "path": "/data/sub-001_T2w.nii.gz"
+      },
+      "FreeSurferLicense": {
+        "license_file": "/licenses/freesurfer.txt"
+      },
+      "GradientCoeff": {
+        "type": "json",
+        "file": "gradcoeff.json"
+      },
+      "SpinEchoPositive": {
+        "type": "nifti",
+        "path": "/data/sub-001_SEpos.nii.gz"
+      },
+      "SpinEchoNegative": {
+        "type": "nifti",
+        "path": "/data/sub-001_SEneg.nii.gz"
+      },
+      "SiemensGREMagnitude": {
+        "type": "nifti",
+        "path": "/data/sub-001_GRE_mag.nii.gz"
+      },
+      "SiemensGREPhase": {
+        "type": "nifti",
+        "path": "/data/sub-001_GRE_phase.nii.gz"
+      }
+    }
+  }
+}

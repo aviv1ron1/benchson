@@ -1,0 +1,43 @@
+{
+  "name": "sp_83_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "An exception GTM server-side event.",
+    "properties": {
+      "description": {
+        "description": "The description of the exception that occurred.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "fatal": {
+        "description": "Whether or not the exception was a fatal one.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "exception",
+      "vendor": "com.google.tag-manager.server-side",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "description": "NullPointerException at com.example.Service.handleRequest(Service.java:42) caused by missing user ID.",
+    "fatal": false,
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "description": "NullPointerException at com.example.Service.handleRequest(Service.java:42) caused by missing user ID.",
+    "fatal": false
+  },
+  "description": "Subject: Exception Report \u2013 NullPointerException (Non\u2011Fatal)\n\nAn exception occurred during request handling: **NullPointerException at com.example.Service.handleRequest(Service.java:42) caused by missing user ID.** The issue was identified as non\u2011fatal, meaning processing can continue after logging the error. Please investigate the missing user ID to prevent recurrence."
+}

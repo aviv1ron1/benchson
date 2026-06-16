@@ -1,0 +1,82 @@
+{
+  "name": "sp_298_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for mobile contexts",
+    "properties": {
+      "androidIdfa": {
+        "type": "string"
+      },
+      "appleIdfa": {
+        "type": "string"
+      },
+      "appleIdfv": {
+        "type": "string"
+      },
+      "carrier": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "deviceManufacturer": {
+        "type": "string"
+      },
+      "deviceModel": {
+        "type": "string"
+      },
+      "openIdfa": {
+        "type": "string"
+      },
+      "osType": {
+        "type": "string"
+      },
+      "osVersion": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "osType",
+      "osVersion",
+      "deviceManufacturer",
+      "deviceModel"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "mobile_context",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "osType": "iOS",
+    "osVersion": "16.4",
+    "deviceManufacturer": "Apple",
+    "deviceModel": "iPhone 14 Pro",
+    "appleIdfa": "AEBE1234-5678-90AB-CDEF-1234567890AB",
+    "appleIdfv": "BEEF5678-1234-90AB-CDEF-0987654321CD",
+    "openIdfa": "C0DE1122-3344-55AA-BB33-445566778899",
+    "carrier": "Verizon"
+  },
+  "instructions": "Can you change the carrier to Verizon (updated)?",
+  "ground_truth": {
+    "osType": "iOS",
+    "osVersion": "16.4",
+    "deviceManufacturer": "Apple",
+    "deviceModel": "iPhone 14 Pro",
+    "appleIdfa": "AEBE1234-5678-90AB-CDEF-1234567890AB",
+    "appleIdfv": "BEEF5678-1234-90AB-CDEF-0987654321CD",
+    "openIdfa": "C0DE1122-3344-55AA-BB33-445566778899",
+    "carrier": "Verizon (updated)"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "carrier"
+    ],
+    "precise_instruction": "Change \"carrier\" to \"Verizon (updated)\"."
+  }
+}

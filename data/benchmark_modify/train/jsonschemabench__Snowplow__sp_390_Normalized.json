@@ -1,0 +1,129 @@
+{
+  "name": "sp_390_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": true,
+    "properties": {
+      "body": {
+        "additionalProperties": true,
+        "properties": {
+          "foreground": {
+            "type": "boolean"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "session_id": {
+            "_format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "device": {
+        "additionalProperties": true,
+        "properties": {
+          "amazon_channel": {
+            "_format": "uuid",
+            "type": "string"
+          },
+          "android_channel": {
+            "_format": "uuid",
+            "type": "string"
+          },
+          "ios_channel": {
+            "_format": "uuid",
+            "type": "string"
+          },
+          "named_user_id": {
+            "_format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "occurred": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "offset": {
+        "type": "string"
+      },
+      "processed": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "type": {
+        "pattern": "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$",
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "LOCATION",
+      "vendor": "com.urbanairship.connect",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "id": "d3b1f9c2-9e4a-4b6e-8a2f-5c1d2e7f9a4b",
+    "occurred": "2023-11-05T14:23:45Z",
+    "processed": "2023-11-05T14:24:10Z",
+    "offset": "+00:00",
+    "type": "QkFTRTY0U3RyaW5n",
+    "body": {
+      "foreground": true,
+      "latitude": "37.7749",
+      "longitude": "-122.4194",
+      "session_id": "a1c2e3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
+      "extra_info": "sample data"
+    },
+    "device": {
+      "amazon_channel": "b7c8d9e0-f1a2-3b4c-5d6e-7f8a9b0c1d2e",
+      "android_channel": "c9d0e1f2-a3b4-5c6d-7e8f-9a0b1c2d3e4f",
+      "ios_channel": "d0e1f2a3-b4c5-6d7e-8f9a-0b1c2d3e4f5g",
+      "named_user_id": "e1f2a3b4-c5d6-7e8f-9a0b-1c2d3e4f5g6h",
+      "device_model": "Pixel 7"
+    },
+    "additional_field": "extra value"
+  },
+  "instructions": "Please delete the \u201camazon_channel\u201d field inside the \u201cdevice\u201d.",
+  "ground_truth": {
+    "id": "d3b1f9c2-9e4a-4b6e-8a2f-5c1d2e7f9a4b",
+    "occurred": "2023-11-05T14:23:45Z",
+    "processed": "2023-11-05T14:24:10Z",
+    "offset": "+00:00",
+    "type": "QkFTRTY0U3RyaW5n",
+    "body": {
+      "foreground": true,
+      "latitude": "37.7749",
+      "longitude": "-122.4194",
+      "session_id": "a1c2e3d4-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
+      "extra_info": "sample data"
+    },
+    "device": {
+      "android_channel": "c9d0e1f2-a3b4-5c6d-7e8f-9a0b1c2d3e4f",
+      "ios_channel": "d0e1f2a3-b4c5-6d7e-8f9a-0b1c2d3e4f5g",
+      "named_user_id": "e1f2a3b4-c5d6-7e8f-9a0b-1c2d3e4f5g6h",
+      "device_model": "Pixel 7"
+    },
+    "additional_field": "extra value"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "device",
+      "amazon_channel"
+    ],
+    "precise_instruction": "Remove the \"amazon_channel\" field inside \"device\"."
+  }
+}

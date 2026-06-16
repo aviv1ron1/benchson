@@ -1,0 +1,52 @@
+{
+  "name": "o46526",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Project",
+    "description": "Project objects",
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Name of the project",
+        "type": "string"
+      },
+      "author": {
+        "description": "Author of the project",
+        "type": "string"
+      },
+      "description": {
+        "description": "Description of the project",
+        "type": "string"
+      },
+      "createDate": {
+        "description": "Date the project was created",
+        "type": "array"
+      },
+      "latestVersion": {
+        "description": "The latest version of the file",
+        "type": "integer"
+      }
+    }
+  },
+  "erroneous_json": {
+    "name": "EcoTracker",
+    "author": "Jane Doe",
+    "description": "A platform for tracking personal carbon footprint and providing sustainability suggestions.",
+    "createDate": [
+      "2024-03-01"
+    ],
+    "latestVersion": "not-a-number"
+  },
+  "valid_json": {
+    "name": "EcoTracker",
+    "author": "Jane Doe",
+    "description": "A platform for tracking personal carbon footprint and providing sustainability suggestions.",
+    "createDate": [
+      "2024-03-01"
+    ],
+    "latestVersion": 3
+  },
+  "description": "Subject: Project Overview \u2013 EcoTracker  \n\nI\u2019m pleased to share details about our new initiative, **EcoTracker**, authored by **Jane\u202fDoe**. This platform is designed to track personal carbon footprints and to provide actionable sustainability suggestions. The project was created on **2024\u201103\u201101**, and we have progressed to **version\u202f3** of the software."
+}

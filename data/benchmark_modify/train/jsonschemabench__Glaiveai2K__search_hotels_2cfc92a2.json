@@ -1,0 +1,61 @@
+{
+  "name": "search_hotels_2cfc92a2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "check_in_date": {
+        "description": "The check-in date",
+        "format": "date",
+        "type": "string"
+      },
+      "check_out_date": {
+        "description": "The check-out date",
+        "format": "date",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location to search for hotels",
+        "type": "string"
+      },
+      "num_guests": {
+        "description": "The number of guests",
+        "type": "integer"
+      },
+      "num_rooms": {
+        "description": "The number of rooms required",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "location",
+      "check_in_date",
+      "check_out_date",
+      "num_rooms",
+      "num_guests"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "check_in_date": "2024-07-15",
+    "check_out_date": "2024-07-20",
+    "location": "Paris, France",
+    "num_guests": 3,
+    "num_rooms": 2
+  },
+  "instructions": "Please increase num_guests by 1.",
+  "ground_truth": {
+    "check_in_date": "2024-07-15",
+    "check_out_date": "2024-07-20",
+    "location": "Paris, France",
+    "num_guests": 4,
+    "num_rooms": 2
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "num_guests"
+    ],
+    "precise_instruction": "Increase \"num_guests\" by 1."
+  }
+}

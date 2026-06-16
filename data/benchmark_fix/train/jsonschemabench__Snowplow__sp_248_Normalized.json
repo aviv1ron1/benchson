@@ -1,0 +1,59 @@
+{
+  "name": "sp_248_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Top-level schema for the validation process (Iglu-only)",
+    "properties": {
+      "data": {},
+      "schema": {
+        "pattern": "^iglu:[a-zA-Z0-9-_.]+/[a-zA-Z0-9-_]+/[a-zA-Z0-9-_]+/[0-9]+-[0-9]+-[0-9]+$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema",
+      "data"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "instance-iglu-only",
+      "vendor": "com.snowplowanalytics.self-desc",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "schema": "iglu:com.acme/events/jsonschema/1-0-0",
+    "data": {
+      "eventId": "550e8400-e29b-41d4-a716-446655440000",
+      "timestamp": "2026-06-15T12:34:56Z",
+      "user": {
+        "id": 12345,
+        "email": "user@example.com"
+      },
+      "properties": {
+        "pageUrl": "https://example.com/home",
+        "referrer": "https://google.com"
+      }
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "schema": "iglu:com.acme/events/jsonschema/1-0-0",
+    "data": {
+      "eventId": "550e8400-e29b-41d4-a716-446655440000",
+      "timestamp": "2026-06-15T12:34:56Z",
+      "user": {
+        "id": 12345,
+        "email": "user@example.com"
+      },
+      "properties": {
+        "pageUrl": "https://example.com/home",
+        "referrer": "https://google.com"
+      }
+    }
+  },
+  "description": "On 2026-06-15T12:34:56Z we recorded an event identified by the UUID\u202f550e8400-e29b-41d4-a716-446655440000. The action was performed by the registered user with ID\u202f12345, whose email address is user@example.com.\n\nThe event captured that the user visited the page at https://example.com/home, arriving via the referrer URL https://google.com. This information has been logged for further analysis and reporting."
+}

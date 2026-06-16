@@ -1,0 +1,53 @@
+{
+  "name": "o90441",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "comment": {
+        "type": "string"
+      },
+      "domain": {
+        "type": "string"
+      },
+      "expires": {
+        "format": "date-time",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "httpOnly": {
+        "type": "boolean"
+      },
+      "name": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "secure": {
+        "type": "boolean"
+      },
+      "value": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "value"
+    ],
+    "type": "object"
+  },
+  "description": "The cookie named **session_id** carries the value **a3f9b2c7d5e6f8g0h1i2j3k4l5m6n7o8** and serves as the user session identifier for our web application. This token is essential for tracking the authenticated session of each visitor and should be treated as sensitive data.\n\nIt is scoped to the domain **example.com** with a path of **/**, and it will remain valid until **2027-01-15T12:00:00Z**. For security purposes, the cookie is marked as **HttpOnly** and **Secure**, ensuring that it is transmitted only over HTTPS connections and is inaccessible to client\u2011side scripts.",
+  "reference_json": {
+    "comment": "User session identifier",
+    "domain": "example.com",
+    "expires": "2027-01-15T12:00:00Z",
+    "httpOnly": true,
+    "name": "session_id",
+    "path": "/",
+    "secure": true,
+    "value": "a3f9b2c7d5e6f8g0h1i2j3k4l5m6n7o8"
+  }
+}

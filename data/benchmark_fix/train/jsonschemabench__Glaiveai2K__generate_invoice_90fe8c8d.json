@@ -1,0 +1,57 @@
+{
+  "name": "generate_invoice_90fe8c8d",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "transaction_details": {
+        "properties": {
+          "amount": {
+            "description": "The transaction amount",
+            "type": "number"
+          },
+          "customer_name": {
+            "description": "The name of the customer",
+            "type": "string"
+          },
+          "items": {
+            "description": "The items included in the transaction",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "transaction_id": {
+            "description": "The unique identifier for the transaction",
+            "type": "string"
+          }
+        },
+        "required": [
+          "transaction_id",
+          "amount",
+          "customer_name",
+          "items"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "transaction_details"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {},
+  "valid_json": {
+    "transaction_details": {
+      "transaction_id": "TXN-20230615-8392",
+      "amount": 157.49,
+      "customer_name": "Emily Rivera",
+      "items": [
+        "Wireless Mouse",
+        "Laptop Sleeve",
+        "USB-C Hub"
+      ]
+    }
+  },
+  "description": "Dear Emily Rivera,\n\nThank you for your recent purchase. Your order, reference\u202fTXN\u201120230615\u20118392, totals $157.49 and includes the following items: a Wireless Mouse, a Laptop Sleeve, and a USB\u2011C Hub. If you have any questions about your transaction, please feel free to reach out."
+}

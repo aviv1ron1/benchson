@@ -1,0 +1,280 @@
+{
+  "name": "o30988",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "properties": {
+      "ca": {
+        "readonly": true,
+        "type": "boolean"
+      },
+      "cipherredirect": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "cipherurl": {
+        "readonly": true,
+        "type": "string"
+      },
+      "cleartextport": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "clientauth": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "clientcert": {
+        "enum": [
+          "Mandatory",
+          "Optional"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "commonname": {
+        "type": "string"
+      },
+      "crlcheck": {
+        "enum": [
+          "Mandatory",
+          "Optional"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "dh": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "dhcount": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "dhfile": {
+        "readonly": true,
+        "type": "string"
+      },
+      "dhkeyexpsizelimit": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "ersa": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "ersacount": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "nonfipsciphers": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "ocspcheck": {
+        "enum": [
+          "Mandatory",
+          "Optional"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "ocspstapling": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "redirectportrewrite": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "sendclosenotify": {
+        "enum": [
+          "YES",
+          "NO"
+        ],
+        "type": "string"
+      },
+      "serverauth": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "servicegroupname": {
+        "type": "string"
+      },
+      "servicename": {
+        "readonly": true,
+        "type": "string"
+      },
+      "sessreuse": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "sesstimeout": {
+        "type": "integer"
+      },
+      "snicert": {
+        "readonly": true,
+        "type": "boolean"
+      },
+      "snienable": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "ssl2": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "ssl3": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "sslprofile": {
+        "type": "string"
+      },
+      "sslredirect": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "sslv2redirect": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "sslv2url": {
+        "readonly": true,
+        "type": "string"
+      },
+      "strictsigdigestcheck": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "tls1": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "tls11": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "tls12": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "tls13": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      }
+    },
+    "title": "sslservicegroup",
+    "type": "object"
+  },
+  "description": "The SSL service group **sg1** (service name **svc1**) is currently configured to use a trusted CA (enabled) and to redirect clients with weak ciphers to **https://example.com/cipher**. Plain HTTP traffic is accepted on clear\u2011text port **80**, while the Common Name presented to peers is **www.example.com**. Client authentication is turned off, but the service will accept optional client certificates. Certificate revocation checking via CRL is mandatory, and OCSP checking is optional; however, OCSP stapling has been enabled to improve handshake efficiency.  \n\nDiffie\u2011Hellman support is enabled, using the parameter file **/etc/ssl/dhparams.pem** with a key\u2011exchange count of **5** and the key\u2011exchange size limit disabled. Export\u2011RSA (ERSA) is disabled, though the ERSA count is set to **10**. Non\u2011FIPS ciphers are permitted, and strict signature\u2011digest checking is enforced. The configuration disables redirect\u2011port rewriting, sets **sendCloseNotify** to **YES**, and enables server authentication. Session reuse is enabled with a timeout of **300\u202fseconds**. SNI is disabled and no SNI certificate is used. SSL\u202f2.0 is disabled while SSL\u202f3.0 is enabled; the SSL profile in use is **defaultSSLProfile**. Both SSL redirect and SSLv2 redirect are disabled, with the SSLv2 fallback URL pointing to **https://example.com/sslv2**. Finally, TLS\u202f1.0, TLS\u202f1.1, TLS\u202f1.2 and TLS\u202f1.3 are all enabled.",
+  "reference_json": {
+    "ca": true,
+    "cipherredirect": "ENABLED",
+    "cipherurl": "https://example.com/cipher",
+    "cleartextport": 80,
+    "clientauth": "DISABLED",
+    "clientcert": "Optional",
+    "commonname": "www.example.com",
+    "crlcheck": "Mandatory",
+    "dh": "ENABLED",
+    "dhcount": 5,
+    "dhfile": "/etc/ssl/dhparams.pem",
+    "dhkeyexpsizelimit": "DISABLED",
+    "ersa": "DISABLED",
+    "ersacount": 10,
+    "nonfipsciphers": "ENABLED",
+    "ocspcheck": "Optional",
+    "ocspstapling": "ENABLED",
+    "redirectportrewrite": "DISABLED",
+    "sendclosenotify": "YES",
+    "serverauth": "ENABLED",
+    "servicegroupname": "sg1",
+    "servicename": "svc1",
+    "sessreuse": "ENABLED",
+    "sesstimeout": 300,
+    "snicert": false,
+    "snienable": "DISABLED",
+    "ssl2": "DISABLED",
+    "ssl3": "ENABLED",
+    "sslprofile": "defaultSSLProfile",
+    "sslredirect": "DISABLED",
+    "sslv2redirect": "DISABLED",
+    "sslv2url": "https://example.com/sslv2",
+    "strictsigdigestcheck": "ENABLED",
+    "tls1": "ENABLED",
+    "tls11": "ENABLED",
+    "tls12": "ENABLED",
+    "tls13": "ENABLED"
+  }
+}

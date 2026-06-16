@@ -1,0 +1,68 @@
+{
+  "name": "sp_224_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a context that represents information pertaining to the current screen being viewed when an event occurs.",
+    "minProperties": 2,
+    "properties": {
+      "activity": {
+        "description": "Android specific: name of activity.",
+        "type": "string"
+      },
+      "fragment": {
+        "description": "Android specific: name of fragment.",
+        "type": "string"
+      },
+      "id": {
+        "_format": "uuid",
+        "description": "An ID from the associated screenview event.",
+        "maxLength": 36,
+        "type": "string"
+      },
+      "name": {
+        "description": "The name of the screen viewed.",
+        "type": "string"
+      },
+      "topViewController": {
+        "description": "iOS specific: class name of the top level view controller.",
+        "type": "string"
+      },
+      "type": {
+        "description": "The type of screen that was viewed e.g feed / carousel.",
+        "type": "string"
+      },
+      "viewController": {
+        "description": "iOS specific: class name of the view controller.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "id"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "screen",
+      "vendor": "com.snowplowanalytics.mobile",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": "HomeScreen",
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "activity": "com.example.app.MainActivity",
+    "fragment": null,
+    "type": "feed"
+  },
+  "valid_json": {
+    "name": "HomeScreen",
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "activity": "com.example.app.MainActivity",
+    "fragment": "HomeFragment",
+    "type": "feed"
+  },
+  "description": "Subject: Details of the Current Screen View \u2013 HomeScreen  \n\nHi Team,  \n\nDuring today's session we observed that the user was on the **HomeScreen**, which is identified by the UUID **123e4567-e89b-12d3-a456-426614174000**. This screen is rendered within the Android activity **com.example.app.MainActivity** and specifically displays the **HomeFragment** component. According to our classification, this view falls under the \u201c**feed**\u201d type of screens, indicating that it presents a stream of content to the user.  \n\nPlease let me know if you need any further breakdown of these parameters for analytics or debugging purposes."
+}

@@ -1,0 +1,74 @@
+{
+  "name": "sp_198_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": true,
+    "properties": {
+      "asm_group_id": {
+        "maximum": 32767,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "category": {
+        "items": {
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "string"
+        ]
+      },
+      "email": {
+        "type": "string"
+      },
+      "sg_event_id": {
+        "type": "string"
+      },
+      "sg_message_id": {
+        "type": "string"
+      },
+      "smtp-id": {
+        "type": "string"
+      },
+      "timestamp": {
+        "_format": "date-time",
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "unsubscribe",
+      "vendor": "com.sendgrid",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "asm_group_id": "not-a-number",
+    "category": [
+      "newsletter",
+      "promotions"
+    ],
+    "email": "user@example.com",
+    "sg_event_id": "SG1234567890",
+    "sg_message_id": "MSG1234567890",
+    "smtp-id": "<1234567890@example.com>",
+    "timestamp": "2023-08-15T14:30:00Z",
+    "unsubscribe_reason": "User requested via link"
+  },
+  "valid_json": {
+    "asm_group_id": 12345,
+    "category": [
+      "newsletter",
+      "promotions"
+    ],
+    "email": "user@example.com",
+    "sg_event_id": "SG1234567890",
+    "sg_message_id": "MSG1234567890",
+    "smtp-id": "<1234567890@example.com>",
+    "timestamp": "2023-08-15T14:30:00Z",
+    "unsubscribe_reason": "User requested via link"
+  },
+  "description": "On\u202f2023\u201108\u201115T14:30:00Z, the address\u202fuser@example.com (SMTP\u2011ID\u202f<1234567890@example.com>) submitted an unsubscribe request. The request was logged with SendGrid event ID\u202fSG1234567890 and message ID\u202fMSG1234567890, and it applies to the categories \u201cnewsletter\u201d and \u201cpromotions\u201d within ASM group\u202f12345. The user indicated the reason for unsubscribing as \u201cUser requested via link\u201d."
+}

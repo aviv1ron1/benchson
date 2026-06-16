@@ -1,0 +1,50 @@
+{
+  "name": "kb_987_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "ServiceReference holds a reference to Service.legacy.k8s.io",
+    "properties": {
+      "name": {
+        "description": "Name is the name of the service",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "namespace": {
+        "description": "Namespace is the namespace of the service",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "port": {
+        "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+        "format": "int32",
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "name": "my-service",
+    "namespace": "default",
+    "port": 443
+  },
+  "instructions": "Please remove the \u201cname\u201d field.",
+  "ground_truth": {
+    "namespace": "default",
+    "port": 443
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "name"
+    ],
+    "precise_instruction": "Remove the \"name\" field."
+  }
+}

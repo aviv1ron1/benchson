@@ -1,0 +1,92 @@
+{
+  "name": "o12283",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Mapping",
+    "description": "A mapping used by Glue to extract findings from a security tool report",
+    "type": "object",
+    "required": [
+      "task_name",
+      "app_name",
+      "mappings"
+    ],
+    "properties": {
+      "task_name": {
+        "type": "string",
+        "description": "The name of the task (tool) the produce those findings"
+      },
+      "app_name": {
+        "type": "string",
+        "description": "Path to the property in the report file that contains the target app name"
+      },
+      "mappings": {
+        "type": "array",
+        "description": "An array of mappings",
+        "items": {
+          "type": "object",
+          "required": [
+            "key"
+          ],
+          "properties": {
+            "key": {
+              "type": "string",
+              "description": "The key in the JSON report to an array that contains findings"
+            },
+            "properties": {
+              "type": "object",
+              "description": "The mapping between the items in the array and Glue's findings",
+              "required": [
+                "description",
+                "detail",
+                "source",
+                "severity",
+                "fingerprint"
+              ],
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "description": "The path on the array item to extract the description"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "The path on the array item to extract the details"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "The path on the array item to extract the source"
+                },
+                "severity": {
+                  "type": "string",
+                  "description": "The path on the array item to extract the severity"
+                },
+                "fingerprint": {
+                  "type": "string",
+                  "description": "The path on the array item to extract the fingerprint"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "The SnykScan task is set up to retrieve the target application name from the\u202fmetadata.application.name\u202ffield in the report. All vulnerability findings are taken from the\u202fvulnerabilities\u202farray, with each item mapped as follows: the issue title (\u202fissue.title\u202f) provides the description, the issue description (\u202fissue.description\u202f) supplies the detail, the issue source (\u202fissue.source\u202f) indicates the source, the issue severity level (\u202fissue.severityLevel\u202f) determines the severity, and the issue ID (\u202fissue.id\u202f) serves as the fingerprint. \n\nThis configuration enables Glue to accurately extract and record each finding reported by SnykScan, ensuring the data aligns with our security analysis workflow.",
+  "reference_json": {
+    "task_name": "SnykScan",
+    "app_name": "metadata.application.name",
+    "mappings": [
+      {
+        "key": "vulnerabilities",
+        "properties": {
+          "description": "issue.title",
+          "detail": "issue.description",
+          "source": "issue.source",
+          "severity": "issue.severityLevel",
+          "fingerprint": "issue.id"
+        }
+      }
+    ]
+  }
+}

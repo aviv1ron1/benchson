@@ -1,0 +1,48 @@
+{
+  "name": "calculate_area_06b6879e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "base": {
+        "description": "The base of the triangle (if applicable)",
+        "type": "number"
+      },
+      "height": {
+        "description": "The height of the triangle (if applicable)",
+        "type": "number"
+      },
+      "length": {
+        "description": "The length of the rectangle (if applicable)",
+        "type": "number"
+      },
+      "radius": {
+        "description": "The radius of the circle (if applicable)",
+        "type": "number"
+      },
+      "shape": {
+        "description": "The shape for which to calculate the area",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      },
+      "width": {
+        "description": "The width of the rectangle (if applicable)",
+        "type": "number"
+      }
+    },
+    "required": [
+      "shape"
+    ],
+    "type": "object"
+  },
+  "description": "The design specification calls for a triangular element with a base measuring 5.2 units and a height of 3.8 units. This shape is identified as a triangle, and the given dimensions will be used for any subsequent area calculations or material estimations.",
+  "reference_json": {
+    "shape": "triangle",
+    "base": 5.2,
+    "height": 3.8
+  }
+}

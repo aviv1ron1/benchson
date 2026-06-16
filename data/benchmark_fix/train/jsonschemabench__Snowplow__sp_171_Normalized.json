@@ -1,0 +1,45 @@
+{
+  "name": "sp_171_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": true,
+    "description": "Schema for Segment alias event (via webhook), https://segment.com/docs/integrations/webhooks/#alias",
+    "properties": {
+      "from": {
+        "type": "string"
+      },
+      "to": {
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "alias",
+      "vendor": "com.segment",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "from": null,
+    "to": "anonymous_67890",
+    "timestamp": "2026-06-15T12:34:56Z",
+    "event": "alias",
+    "context": {
+      "ip": "203.0.113.42",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    }
+  },
+  "valid_json": {
+    "from": "user_12345",
+    "to": "anonymous_67890",
+    "timestamp": "2026-06-15T12:34:56Z",
+    "event": "alias",
+    "context": {
+      "ip": "203.0.113.42",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    }
+  },
+  "description": "On\u202f2026\u201106\u201115 at\u202f12:34:56\u202fUTC the system logged an **alias** event: the known user identifier **\u201cuser_12345\u201d** was linked to the new anonymous identifier **\u201canonymous_67890.\u201d**  \n\nThe request originated from IP address **203.0.113.42**, and the client\u2019s user\u2011agent string was **\u201cMozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36.\u201d**"
+}

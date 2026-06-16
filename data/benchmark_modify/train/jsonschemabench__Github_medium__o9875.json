@@ -1,0 +1,190 @@
+{
+  "name": "o9875",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "description": {
+        "type": "string",
+        "maxLength": 32767
+      },
+      "route": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "method": {
+        "type": "string",
+        "enum": [
+          "delete",
+          "get",
+          "options",
+          "patch",
+          "post",
+          "put"
+        ]
+      },
+      "access": {
+        "type": "string",
+        "enum": [
+          "public",
+          "authenticated",
+          "group"
+        ]
+      },
+      "endpointTags": {
+        "type": "object",
+        "patternProperties": {
+          "^[0-9a-zA-Z_-]{1,255}$": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          }
+        },
+        "additionalProperties": false
+      },
+      "experienceGroupIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "maxItems": 1000
+      },
+      "staticReply": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "statusCode": {
+                "type": "number",
+                "min": 100,
+                "max": 599,
+                "integer": true
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "page",
+                  "redirect"
+                ]
+              }
+            },
+            "required": [
+              "value",
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "unauthorizedReply": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "statusCode": {
+                "type": "number",
+                "min": 100,
+                "max": 599,
+                "integer": true
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "page",
+                  "redirect"
+                ]
+              }
+            },
+            "required": [
+              "value",
+              "type"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "route",
+      "method"
+    ]
+  },
+  "data": {
+    "description": "Endpoint that provides user profile information.",
+    "route": "/api/v1/users/profile",
+    "enabled": true,
+    "method": "get",
+    "access": "authenticated",
+    "endpointTags": {
+      "category": "user",
+      "version": "v1"
+    },
+    "experienceGroupIds": [
+      "5f2d0c1a9b3e4d6f8a9b0c1d",
+      "a1b2c3d4e5f6789012345678"
+    ],
+    "staticReply": {
+      "value": "<html><body>User profile page</body></html>",
+      "statusCode": 200,
+      "type": "page"
+    },
+    "unauthorizedReply": {
+      "value": "/login",
+      "type": "redirect",
+      "statusCode": 302
+    }
+  },
+  "instructions": "Please change the value of the \"method\" field to \"delete\".",
+  "ground_truth": {
+    "description": "Endpoint that provides user profile information.",
+    "route": "/api/v1/users/profile",
+    "enabled": true,
+    "method": "delete",
+    "access": "authenticated",
+    "endpointTags": {
+      "category": "user",
+      "version": "v1"
+    },
+    "experienceGroupIds": [
+      "5f2d0c1a9b3e4d6f8a9b0c1d",
+      "a1b2c3d4e5f6789012345678"
+    ],
+    "staticReply": {
+      "value": "<html><body>User profile page</body></html>",
+      "statusCode": 200,
+      "type": "page"
+    },
+    "unauthorizedReply": {
+      "value": "/login",
+      "type": "redirect",
+      "statusCode": 302
+    }
+  },
+  "modification": {
+    "op": "set_enum",
+    "path": [
+      "method"
+    ],
+    "precise_instruction": "Change \"method\" to \"delete\"."
+  }
+}

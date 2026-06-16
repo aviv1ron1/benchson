@@ -1,0 +1,245 @@
+{
+  "name": "o61610",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "properties": {
+      "PayloadDescription": {
+        "default": "Parental Control Time Limits Payload",
+        "description": "Description of the payload",
+        "type": "string"
+      },
+      "PayloadDisplayName": {
+        "default": "Parental Control Time Limits Payload",
+        "description": "Name of the payload",
+        "type": "string"
+      },
+      "PayloadIdentifier": {
+        "default": "com.apple.familycontrols.timelimits.v2",
+        "description": "A unique identifier for the payload, dot-delimited.  Usually root PayloadIdentifier+subidentifier",
+        "type": "string"
+      },
+      "PayloadOrganization": {
+        "description": "This value describes the issuing organization of the profile, as displayed to the user",
+        "type": "string"
+      },
+      "PayloadType": {
+        "default": "com.apple.familycontrols.timelimits.v2",
+        "description": "The type of the payload, a reverse dns string",
+        "type": "string"
+      },
+      "PayloadUUID": {
+        "default": "",
+        "description": "Unique identifier for the payload (format 01234567-89AB-CDEF-0123-456789ABCDEF)",
+        "pattern": "^[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}$",
+        "type": "string"
+      },
+      "PayloadVersion": {
+        "default": 1,
+        "description": "The version of the whole configuration profile.",
+        "type": "number"
+      },
+      "familyControlsEnabled": {
+        "description": "Required. Set to true to use time limits.",
+        "type": "boolean"
+      },
+      "limits-list": {
+        "description": "Required if familyControlsEnabled is true. Time limits settings.",
+        "properties": {
+          "weekday-allowance": {
+            "description": "Weekday allowance settings",
+            "properties": {
+              "enabled": {
+                "description": "Required. Set to true to enable these settings.",
+                "type": "boolean"
+              },
+              "end": {
+                "description": "Optional. Curfew end time in the format %d:%d:%d.",
+                "type": "string"
+              },
+              "rangeType": {
+                "description": "Required. Type of day range: 0 = weekday, 1 = weekend.",
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "secondsPerDay": {
+                "description": "Optional. Seconds for that day for allowance.",
+                "type": "number"
+              },
+              "start": {
+                "description": "Optional. Curfew start time in the format %d:%d:%d.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "weekday-curfew": {
+            "description": "Weekday curfew settings",
+            "properties": {
+              "enabled": {
+                "description": "Required. Set to true to enable these settings.",
+                "type": "boolean"
+              },
+              "end": {
+                "description": "Optional. Curfew end time in the format %d:%d:%d.",
+                "type": "string"
+              },
+              "rangeType": {
+                "description": "Required. Type of day range: 0 = weekday, 1 = weekend.",
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "secondsPerDay": {
+                "description": "Optional. Seconds for that day for allowance.",
+                "type": "number"
+              },
+              "start": {
+                "description": "Optional. Curfew start time in the format %d:%d:%d.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "weekend-allowance": {
+            "description": "Weekend allowance settings",
+            "properties": {
+              "enabled": {
+                "description": "Required. Set to true to enable these settings.",
+                "type": "boolean"
+              },
+              "end": {
+                "description": "Optional. Curfew end time in the format %d:%d:%d.",
+                "type": "string"
+              },
+              "rangeType": {
+                "description": "Required. Type of day range: 0 = weekday, 1 = weekend.",
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "secondsPerDay": {
+                "description": "Optional. Seconds for that day for allowance.",
+                "type": "number"
+              },
+              "start": {
+                "description": "Optional. Curfew start time in the format %d:%d:%d.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "weekend-curfew": {
+            "description": "Weekend curfew settings",
+            "properties": {
+              "enabled": {
+                "description": "Required. Set to true to enable these settings.",
+                "type": "boolean"
+              },
+              "end": {
+                "description": "Optional. Curfew end time in the format %d:%d:%d.",
+                "type": "string"
+              },
+              "rangeType": {
+                "description": "Required. Type of day range: 0 = weekday, 1 = weekend.",
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "secondsPerDay": {
+                "description": "Optional. Seconds for that day for allowance.",
+                "type": "number"
+              },
+              "start": {
+                "description": "Optional. Curfew start time in the format %d:%d:%d.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "title": "com.apple.familycontrols.timelimits.v2",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "PayloadDescription": "Parental Control Time Limits Payload",
+    "PayloadDisplayName": "Parental Control Time Limits Payload",
+    "PayloadIdentifier": "com.example.myprofile.timelimits",
+    "PayloadOrganization": null,
+    "PayloadType": "com.apple.familycontrols.timelimits.v2",
+    "PayloadUUID": "A1B2C3D4-5678-90AB-CDEF-1234567890AB",
+    "PayloadVersion": 1,
+    "familyControlsEnabled": true,
+    "limits-list": {
+      "weekday-allowance": {
+        "enabled": true,
+        "rangeType": 0,
+        "secondsPerDay": 7200,
+        "start": "15:00:00",
+        "end": "18:00:00"
+      },
+      "weekday-curfew": {
+        "enabled": true,
+        "rangeType": 0,
+        "start": "20:00:00",
+        "end": "21:00:00"
+      },
+      "weekend-allowance": {
+        "enabled": true,
+        "rangeType": 1,
+        "secondsPerDay": 14400,
+        "start": "10:00:00",
+        "end": "14:00:00"
+      },
+      "weekend-curfew": {
+        "enabled": true,
+        "rangeType": 1,
+        "start": "22:00:00",
+        "end": "23:00:00"
+      }
+    }
+  },
+  "valid_json": {
+    "PayloadDescription": "Parental Control Time Limits Payload",
+    "PayloadDisplayName": "Parental Control Time Limits Payload",
+    "PayloadIdentifier": "com.example.myprofile.timelimits",
+    "PayloadOrganization": "Acme Corp",
+    "PayloadType": "com.apple.familycontrols.timelimits.v2",
+    "PayloadUUID": "A1B2C3D4-5678-90AB-CDEF-1234567890AB",
+    "PayloadVersion": 1,
+    "familyControlsEnabled": true,
+    "limits-list": {
+      "weekday-allowance": {
+        "enabled": true,
+        "rangeType": 0,
+        "secondsPerDay": 7200,
+        "start": "15:00:00",
+        "end": "18:00:00"
+      },
+      "weekday-curfew": {
+        "enabled": true,
+        "rangeType": 0,
+        "start": "20:00:00",
+        "end": "21:00:00"
+      },
+      "weekend-allowance": {
+        "enabled": true,
+        "rangeType": 1,
+        "secondsPerDay": 14400,
+        "start": "10:00:00",
+        "end": "14:00:00"
+      },
+      "weekend-curfew": {
+        "enabled": true,
+        "rangeType": 1,
+        "start": "22:00:00",
+        "end": "23:00:00"
+      }
+    }
+  },
+  "description": "The configuration profile, titled **Parental Control Time Limits Payload**, carries the same description and display name (\u201cParental Control Time Limits Payload\u201d). It is identified by the bundle identifier **com.example.myprofile.timelimits**, issued by **Acme Corp**, and uses the payload type **com.apple.familycontrols.timelimits.v2**. The profile\u2019s unique UUID is **A1B2C3D4-5678-90AB-CDEF-1234567890AB**, version\u202f1, and family controls are enabled.\n\nTime\u2011limit settings are defined for both weekdays (range type\u202f0) and weekends (range type\u202f1). On weekdays, the allowance is active, permitting **7200** seconds (2\u202fhours) of use from **15:00:00** to **18:00:00**, while a curfew blocks access from **20:00:00** to **21:00:00**. On weekends, the allowance allows **14400** seconds (4\u202fhours) between **10:00:00** and **14:00:00**, and a curfew restricts usage from **22:00:00** to **23:00:00**. All four sections\u2014weekday allowance, weekday curfew, weekend allowance, and weekend curfew\u2014are enabled."
+}

@@ -1,0 +1,166 @@
+{
+  "name": "o78895",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "edges": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "default": "nodesource"
+            },
+            "group": {
+              "type": "array",
+              "items": {}
+            },
+            "target": {
+              "type": "string",
+              "default": "nodetarget"
+            },
+            "view": {
+              "type": "string",
+              "default": "VS"
+            }
+          },
+          "required": [
+            "source",
+            "group",
+            "target",
+            "view"
+          ]
+        }
+      },
+      "vertices": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "info": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "OF Controller"
+                },
+                "property": {
+                  "type": "object",
+                  "properties": {
+                    "custom_label": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": [
+                    "custom_label"
+                  ]
+                },
+                "group": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "type",
+                "property",
+                "group"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "default": "ctr1"
+            }
+          },
+          "required": [
+            "info",
+            "id"
+          ]
+        }
+      }
+    },
+    "required": [
+      "edges",
+      "vertices"
+    ]
+  },
+  "erroneous_json": {
+    "vertices": [
+      {
+        "info": {
+          "type": "OF Controller",
+          "property": {
+            "custom_label": "Main Controller"
+          },
+          "group": [
+            "controllers"
+          ]
+        },
+        "id": "ctr1"
+      },
+      {
+        "info": {
+          "type": "OF Switch",
+          "property": {
+            "custom_label": "Edge Switch"
+          },
+          "group": [
+            "switches"
+          ]
+        },
+        "id": "sw1"
+      }
+    ]
+  },
+  "valid_json": {
+    "edges": [
+      {
+        "source": "NodeA",
+        "group": [
+          "group1"
+        ],
+        "target": "NodeB",
+        "view": "VS"
+      },
+      {
+        "source": "NodeB",
+        "group": [
+          "group2"
+        ],
+        "target": "NodeC",
+        "view": "VS"
+      }
+    ],
+    "vertices": [
+      {
+        "info": {
+          "type": "OF Controller",
+          "property": {
+            "custom_label": "Main Controller"
+          },
+          "group": [
+            "controllers"
+          ]
+        },
+        "id": "ctr1"
+      },
+      {
+        "info": {
+          "type": "OF Switch",
+          "property": {
+            "custom_label": "Edge Switch"
+          },
+          "group": [
+            "switches"
+          ]
+        },
+        "id": "sw1"
+      }
+    ]
+  },
+  "description": "The current network layout includes two primary devices. The first is identified as **ctr1**, an **OF Controller** labelled \u201cMain Controller\u201d, which belongs to the **controllers** group. The second device is **sw1**, an **OF Switch** labelled \u201cEdge Switch\u201d, and it is part of the **switches** group.\n\nThe topology connects these devices through two directed links, each viewed in the VS context. The first link runs from **NodeA** to **NodeB**, is associated with **group1**, and is displayed using the VS view. The second link continues from **NodeB** to **NodeC**, carries the label **group2**, and likewise uses the VS view."
+}

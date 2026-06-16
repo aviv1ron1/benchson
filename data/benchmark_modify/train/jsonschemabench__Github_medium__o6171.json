@@ -1,0 +1,128 @@
+{
+  "name": "o6171",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "inactive"
+        ]
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationKeyId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "creationDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "lastUpdated": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "key": {
+        "type": "string"
+      },
+      "status": {
+        "$ref": "#/definitions/status"
+      },
+      "secret": {
+        "type": "string"
+      },
+      "deviceIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        }
+      },
+      "deviceTags": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "id": "5f1d7c9e3a2b4c6d7e8f9a0b",
+    "applicationKeyId": "a1b2c3d4e5f60718293a4b5c",
+    "applicationId": "9e8d7c6b5a4f3e2d1c0b9a8f",
+    "creationDate": "2023-08-15T12:34:56Z",
+    "lastUpdated": "2024-02-20T09:15:30Z",
+    "key": "apiKey-XYZ123",
+    "status": "active",
+    "secret": "s3cr3tP@ssw0rd!",
+    "deviceIds": [
+      "00112233445566778899aabb",
+      "112233445566778899aabbcc",
+      "aabbccddeeff001122334455"
+    ],
+    "deviceTags": [
+      {
+        "key": "location",
+        "value": "warehouse-1"
+      },
+      {
+        "key": "type",
+        "value": "sensor"
+      }
+    ]
+  },
+  "instructions": "Please change the secret to \"s3cr3tP@ssw0rd! (updated)\".",
+  "ground_truth": {
+    "id": "5f1d7c9e3a2b4c6d7e8f9a0b",
+    "applicationKeyId": "a1b2c3d4e5f60718293a4b5c",
+    "applicationId": "9e8d7c6b5a4f3e2d1c0b9a8f",
+    "creationDate": "2023-08-15T12:34:56Z",
+    "lastUpdated": "2024-02-20T09:15:30Z",
+    "key": "apiKey-XYZ123",
+    "status": "active",
+    "secret": "s3cr3tP@ssw0rd! (updated)",
+    "deviceIds": [
+      "00112233445566778899aabb",
+      "112233445566778899aabbcc",
+      "aabbccddeeff001122334455"
+    ],
+    "deviceTags": [
+      {
+        "key": "location",
+        "value": "warehouse-1"
+      },
+      {
+        "key": "type",
+        "value": "sensor"
+      }
+    ]
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "secret"
+    ],
+    "precise_instruction": "Change \"secret\" to \"s3cr3tP@ssw0rd! (updated)\"."
+  }
+}

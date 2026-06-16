@@ -1,0 +1,102 @@
+{
+  "name": "clib",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/clib.json",
+    "additionalProperties": true,
+    "properties": {
+      "name": {
+        "description": "The name of the package\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#name",
+        "type": "string",
+        "pattern": "^[0-9a-z-_]+$"
+      },
+      "version": {
+        "description": "The semantic version number of the package. This number should also be a git tag.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#version",
+        "type": "string"
+      },
+      "src": {
+        "description": "An array of source files that make up the implementation of your package.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#src",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "dependencies": {
+        "description": "A dictionary of packages and their versions. Each entry represents a package dependency. A dependency must be a clib package.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#dependencies",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "development": {
+        "description": "Development dependencies are for testing and development purposes.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#development",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "repo": {
+        "description": "he GitHub slug for your package.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#repo",
+        "type": "string"
+      },
+      "description": {
+        "description": "A short-and-sweet description of your package.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#description",
+        "type": "string"
+      },
+      "keywords": {
+        "description": "An array of keywords which describe your package.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#keywords",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "license": {
+        "description": "The license your package is released under.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#license",
+        "type": "string"
+      },
+      "makefile": {
+        "description": "Your package's Makefile.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#makefile",
+        "type": "string"
+      },
+      "install": {
+        "description": "Define a script to install your package. This is for executables and libraries only.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#install",
+        "type": "string"
+      },
+      "uninstall": {
+        "description": "Define a script to uninstall your package.\n\nhttps://github.com/clibs/clib/wiki/Explanation-of-clib.json#uninstall",
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "description": "I\u2019m excited to announce the release of **fastjson-parser**\u202fv\u202f1.3.0, a fast JSON parsing library written in C. The source distribution consists of three files\u2014`parser.c`, `utils.c`, and the header `fastjson.h`\u2014and it depends on the **cjson** package (\u2265\u202f2.0.0). For development and testing we use **cmocka** (\u2265\u202f1.1.0). The project lives at the GitHub repository\u202f`user/fastjson-parser`, and it is released under the MIT license. In a nutshell, the library is aimed at developers needing a lightweight and speedy JSON parser; relevant keywords include **json**, **parser**, **c**, and **fast**.\n\nBelow is the makefile used to build the static library, followed by the standard install and uninstall commands:  \n\n```\nCC=gcc\nCFLAGS=-Wall -O2\nSRC=parser.c utils.c\nall: libfastjson.a\n\nlibfastjson.a: $(SRC)\n\tar rcs $@ $^\n\nclean:\n\trm -f *.o libfastjson.a\n```\n\nTo install the library system\u2011wide run `make install PREFIX=/usr/local`, and to remove it use `make uninstall PREFIX=/usr/local`.",
+  "reference_json": {
+    "name": "fastjson-parser",
+    "version": "1.3.0",
+    "src": [
+      "parser.c",
+      "utils.c",
+      "fastjson.h"
+    ],
+    "dependencies": {
+      "cjson": "^2.0.0"
+    },
+    "development": {
+      "cmocka": "^1.1.0"
+    },
+    "repo": "user/fastjson-parser",
+    "description": "A fast JSON parsing library written in C.",
+    "keywords": [
+      "json",
+      "parser",
+      "c",
+      "fast"
+    ],
+    "license": "MIT",
+    "makefile": "CC=gcc\nCFLAGS=-Wall -O2\nSRC=parser.c utils.c\nall: libfastjson.a\n\nlibfastjson.a: $(SRC)\n\tar rcs $@ $^\n\nclean:\n\trm -f *.o libfastjson.a",
+    "install": "make install PREFIX=/usr/local",
+    "uninstall": "make uninstall PREFIX=/usr/local"
+  }
+}

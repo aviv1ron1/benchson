@@ -1,0 +1,411 @@
+{
+  "name": "o5347",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelArtifactCreatedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "1.1.0"
+            ],
+            "default": "1.1.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "artifactId": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "artifactId",
+                  "version"
+                ],
+                "additionalProperties": false
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "sdm": {
+                "type": "object",
+                "properties": {
+                  "authorIdentity": {
+                    "type": "string"
+                  },
+                  "encryptedDigest": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "authorIdentity",
+                  "encryptedDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "gav": {
+            "type": "object",
+            "properties": {
+              "groupId": {
+                "type": "string"
+              },
+              "artifactId": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "groupId",
+              "artifactId",
+              "version"
+            ],
+            "additionalProperties": false
+          },
+          "fileInformation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "classifier": {
+                  "type": "string"
+                },
+                "extension": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "classifier",
+                "extension"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "buildCommand": {
+            "type": "string"
+          },
+          "requiresImplementation": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "ANY",
+              "EXACTLY_ONE",
+              "AT_LEAST_ONE"
+            ]
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "groupId": {
+                  "type": "string"
+                },
+                "artifactId": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "groupId",
+                "artifactId",
+                "version"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "implements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "groupId": {
+                  "type": "string"
+                },
+                "artifactId": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "groupId",
+                "artifactId",
+                "version"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "gav"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelArtifactCreatedEvent",
+      "time": 1723456789,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example.com",
+        "host": "build.example.com",
+        "name": "Maven Builder",
+        "serializer": {
+          "groupId": "org.apache.maven",
+          "artifactId": "maven-core",
+          "version": "3.8.4"
+        },
+        "uri": "https://build.example.com/jobs/123"
+      },
+      "security": {
+        "sdm": {
+          "authorIdentity": "john.doe@example.com",
+          "encryptedDigest": "a1b2c3d4e5f60718293a4b5c6d7e8f90"
+        }
+      }
+    },
+    "data": {
+      "gav": {
+        "groupId": "com.example",
+        "artifactId": "my-library",
+        "version": "1.0.0"
+      },
+      "fileInformation": [
+        {
+          "classifier": "sources",
+          "extension": "jar"
+        },
+        {
+          "classifier": "javadoc",
+          "extension": "jar"
+        }
+      ],
+      "buildCommand": "mvn clean install",
+      "requiresImplementation": "ANY",
+      "dependsOn": [
+        {
+          "groupId": "org.apache.commons",
+          "artifactId": "commons-lang3",
+          "version": "3.12.0"
+        }
+      ],
+      "implements": [
+        {
+          "groupId": "com.example.interfaces",
+          "artifactId": "my-interface",
+          "version": "2.1.0"
+        }
+      ],
+      "name": "My Library Artifact",
+      "customData": [
+        {
+          "key": "releaseNotes",
+          "value": "Initial release of My Library."
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9b2d5c8f-4a1e-4e2b-9d3c-7f8a6c9e0b12"
+      }
+    ]
+  },
+  "valid_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelArtifactCreatedEvent",
+      "version": "1.1.0",
+      "time": 1723456789,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example.com",
+        "host": "build.example.com",
+        "name": "Maven Builder",
+        "serializer": {
+          "groupId": "org.apache.maven",
+          "artifactId": "maven-core",
+          "version": "3.8.4"
+        },
+        "uri": "https://build.example.com/jobs/123"
+      },
+      "security": {
+        "sdm": {
+          "authorIdentity": "john.doe@example.com",
+          "encryptedDigest": "a1b2c3d4e5f60718293a4b5c6d7e8f90"
+        }
+      }
+    },
+    "data": {
+      "gav": {
+        "groupId": "com.example",
+        "artifactId": "my-library",
+        "version": "1.0.0"
+      },
+      "fileInformation": [
+        {
+          "classifier": "sources",
+          "extension": "jar"
+        },
+        {
+          "classifier": "javadoc",
+          "extension": "jar"
+        }
+      ],
+      "buildCommand": "mvn clean install",
+      "requiresImplementation": "ANY",
+      "dependsOn": [
+        {
+          "groupId": "org.apache.commons",
+          "artifactId": "commons-lang3",
+          "version": "3.12.0"
+        }
+      ],
+      "implements": [
+        {
+          "groupId": "com.example.interfaces",
+          "artifactId": "my-interface",
+          "version": "2.1.0"
+        }
+      ],
+      "name": "My Library Artifact",
+      "customData": [
+        {
+          "key": "releaseNotes",
+          "value": "Initial release of My Library."
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9b2d5c8f-4a1e-4e2b-9d3c-7f8a6c9e0b12"
+      }
+    ]
+  },
+  "description": "On\u202f1723456789 (Unix epoch) an EiffelArtifactCreatedEvent (version\u202f1.1.0) was recorded with the identifier\u202f123e4567-e89b-12d3-a456-426614174000. The event is tagged \u201cartifact\u201d and \u201crelease\u201d. It originated from the Maven Builder (host\u202fbuild.example.com, domain\u202fexample.com) whose UI endpoint is\u202fhttps://build.example.com/jobs/123. The builder uses the serializer\u202forg.apache.maven:maven-core:3.8.4. For security, the SDM section lists the author as\u202fjohn.doe@example.com and provides the encrypted digest\u202fa1b2c3d4e5f60718293a4b5c6d7e8f90.\n\nThe artifact created is identified by the GAV coordinates\u202fcom.example:my-library:1.0.0 and is named \u201cMy Library Artifact\u201d. It was produced with the command\u202f\u201cmvn clean install\u201d. Two accompanying files were generated: a sources JAR (classifier\u202fsources, extension\u202fjar) and a Javadoc JAR (classifier\u202fjavadoc, extension\u202fjar). The artifact\u2019s implementation requirement is set to\u202fANY. It declares a dependency on\u202forg.apache.commons:commons-lang3:3.12.0 and implements the interface\u202fcom.example.interfaces:my\u2011interface:2.1.0. A custom data entry records release notes: \u201cInitial release of My Library.\u201d\n\nThis event is linked to a cause event identified by\u202f9b2d5c8f-4a1e-4e2b-9d3c-7f8a6c9e0b12."
+}

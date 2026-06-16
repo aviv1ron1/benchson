@@ -1,0 +1,107 @@
+{
+  "name": "o65751",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "encoding": "utf-8",
+    "items": {
+      "properties": {
+        "character": {
+          "description": "Actual typed initial character",
+          "type": "string"
+        },
+        "contextualforms": {
+          "form": {
+            "final": {
+              "type": "string"
+            },
+            "initial": {
+              "type": "string"
+            },
+            "isolated": {
+              "type": "string"
+            },
+            "medial": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "standalone"
+          ],
+          "type": "array"
+        },
+        "id": {
+          "description": "Unicode identifier for character",
+          "type": "string"
+        },
+        "name": {
+          "description": "The character value itself",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "_uniqueItems": true
+        },
+        "transliteration": {
+          "description": "Romanization of language",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "character"
+      ],
+      "title": "Character",
+      "type": "object"
+    },
+    "required": [
+      "title"
+    ],
+    "title": "Character Set",
+    "type": "array"
+  },
+  "description": "Below is a concise reference for two basic Arabic letters:\n\n- The first entry concerns **Arabic Letter Alef** (U+0627). Its printed form is \u201c\u0627\u201d, and it is transliterated as **a**. This character belongs to the tags *Arabic* and *Letter*. In isolated and initial positions it appears as \u201c\u0627\u201d, while in the final position it takes the shape \u201c\ufe8e\u201d and in medial position it is rendered as \u201c\u0640\u0627\u201d.\n\n- The second entry describes **Arabic Letter Beh** (U+0628). Its glyph is \u201c\u0628\u201d, with the transliteration **b**, and it shares the same tags, *Arabic* and *Letter*. It also uses \u201c\u0628\u201d for both isolated and initial forms; its final form is displayed as \u201c\ufe92\u201d, and the medial form connects as \u201c\u0640\u0628\u201d.",
+  "reference_json": [
+    {
+      "character": "\u0627",
+      "contextualforms": [
+        {
+          "final": "\ufe8e",
+          "initial": "\u0627",
+          "isolated": "\u0627",
+          "medial": "\u0640\u0627"
+        }
+      ],
+      "id": "U+0627",
+      "name": "Arabic Letter Alef",
+      "tags": [
+        "Arabic",
+        "Letter"
+      ],
+      "transliteration": "a"
+    },
+    {
+      "character": "\u0628",
+      "contextualforms": [
+        {
+          "final": "\ufe90",
+          "initial": "\u0628",
+          "isolated": "\u0628",
+          "medial": "\u0640\u0628"
+        }
+      ],
+      "id": "U+0628",
+      "name": "Arabic Letter Beh",
+      "tags": [
+        "Arabic",
+        "Letter"
+      ],
+      "transliteration": "b"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "o39141",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "id",
+      "category",
+      "priority",
+      "content"
+    ],
+    "properties": {
+      "created": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "modified": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "id": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string"
+      },
+      "priority": {
+        "type": "string"
+      },
+      "content": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "created": "2024-09-10T14:23:45Z",
+    "modified": "2024-09-12T09:15:30Z",
+    "id": "task-00123",
+    "category": "maintenance",
+    "content": {
+      "description": "Replace air filters in HVAC system",
+      "notes": "Schedule for next Monday"
+    }
+  },
+  "valid_json": {
+    "created": "2024-09-10T14:23:45Z",
+    "modified": "2024-09-12T09:15:30Z",
+    "id": "task-00123",
+    "category": "maintenance",
+    "priority": "high",
+    "content": {
+      "description": "Replace air filters in HVAC system",
+      "notes": "Schedule for next Monday"
+    }
+  },
+  "description": "Task ID: task-00123  \nCreated: 2024-09-10T14:23:45Z\u2003Modified: 2024-09-12T09:15:30Z  \n\nCategory: Maintenance\u2003Priority: High  \n\nDescription: Replace air filters in HVAC system.  \nNotes: Schedule for next Monday."
+}

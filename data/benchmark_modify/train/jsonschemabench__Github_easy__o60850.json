@@ -1,0 +1,81 @@
+{
+  "name": "o60850",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://raw.githubusercontent.com/mimmi20/ua-result/master/schema/browser.json",
+    "definitions": {
+      "browser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "modus": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "version": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "bits": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "modus",
+          "version",
+          "manufacturer",
+          "bits",
+          "type"
+        ]
+      }
+    },
+    "$ref": "#/definitions/browser"
+  },
+  "data": {
+    "name": "Chrome",
+    "modus": "Desktop",
+    "version": "118.0.5993.90",
+    "manufacturer": "Google",
+    "bits": 64,
+    "type": "Web Browser"
+  },
+  "instructions": "Please increase the bits field by 1.",
+  "ground_truth": {
+    "name": "Chrome",
+    "modus": "Desktop",
+    "version": "118.0.5993.90",
+    "manufacturer": "Google",
+    "bits": 65,
+    "type": "Web Browser"
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "bits"
+    ],
+    "precise_instruction": "Increase \"bits\" by 1."
+  }
+}

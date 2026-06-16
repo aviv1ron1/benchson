@@ -1,0 +1,65 @@
+{
+  "name": "sp_31_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Google Analytics Ecommerce transaction item",
+    "properties": {
+      "category": {
+        "maxLength": 500,
+        "type": "string"
+      },
+      "code": {
+        "maxLength": 500,
+        "type": "string"
+      },
+      "currency": {
+        "maxLength": 3,
+        "minLength": 3,
+        "type": "string"
+      },
+      "name": {
+        "maxLength": 500,
+        "type": "string"
+      },
+      "price": {
+        "multipleOf": 0.01,
+        "type": "number"
+      },
+      "quantity": {
+        "type": "integer"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "item",
+      "vendor": "com.google.analytics.ecommerce",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "category": "Apparel > Men's Clothing > Shirts",
+    "code": "SHIRT-00123",
+    "currency": "USD",
+    "name": "Oxford Button-Down Shirt",
+    "price": 49.99,
+    "quantity": 1
+  },
+  "instructions": "Could you please remove the currency field?",
+  "ground_truth": {
+    "category": "Apparel > Men's Clothing > Shirts",
+    "code": "SHIRT-00123",
+    "name": "Oxford Button-Down Shirt",
+    "price": 49.99,
+    "quantity": 1
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "currency"
+    ],
+    "precise_instruction": "Remove the \"currency\" field."
+  }
+}

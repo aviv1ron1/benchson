@@ -1,0 +1,68 @@
+{
+  "name": "calculate_discounted_price_6eb0a6c0",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "discounts": {
+        "description": "The list of discounts to be applied",
+        "items": {
+          "properties": {
+            "description": {
+              "description": "A description of the discount",
+              "type": "string"
+            },
+            "percentage": {
+              "description": "The discount percentage as a decimal",
+              "type": "number"
+            }
+          },
+          "required": [
+            "percentage"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "original_price": {
+        "description": "The original price of the item",
+        "type": "number"
+      }
+    },
+    "required": [
+      "original_price",
+      "discounts"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "original_price": 199.99,
+    "discounts": [
+      {
+        "percentage": 0.1,
+        "description": "Seasonal clearance discount"
+      },
+      {
+        "percentage": 0.05,
+        "description": "Loyalty member discount"
+      }
+    ]
+  },
+  "instructions": "Could you remove the second item from the discounts list?",
+  "ground_truth": {
+    "original_price": 199.99,
+    "discounts": [
+      {
+        "percentage": 0.1,
+        "description": "Seasonal clearance discount"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_at",
+    "path": [
+      "discounts"
+    ],
+    "precise_instruction": "Remove the second item from the \"discounts\" list."
+  }
+}

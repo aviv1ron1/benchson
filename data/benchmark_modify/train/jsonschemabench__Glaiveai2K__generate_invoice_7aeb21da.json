@@ -1,0 +1,76 @@
+{
+  "name": "generate_invoice_7aeb21da",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "items": {
+        "description": "The list of items in the invoice",
+        "items": {
+          "properties": {
+            "name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "price",
+            "quantity"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "customer_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "customer_name": "Acme Corporation",
+    "items": [
+      {
+        "name": "Industrial Widget",
+        "price": 124.99,
+        "quantity": 15
+      },
+      {
+        "name": "Heavy-Duty Gear",
+        "price": 89.5,
+        "quantity": 30
+      },
+      {
+        "name": "Safety Helmet",
+        "price": 39.99,
+        "quantity": 20
+      }
+    ]
+  },
+  "instructions": "Please remove all entries from the items list.",
+  "ground_truth": {
+    "customer_name": "Acme Corporation",
+    "items": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "items"
+    ],
+    "precise_instruction": "Remove all items from the \"items\" list."
+  }
+}

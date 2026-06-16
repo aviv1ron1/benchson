@@ -1,0 +1,109 @@
+{
+  "name": "o41462",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "title": "Invocation manifest for SciTran: DICOM MR Classifier",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "config": {
+        "type": "object",
+        "properties": {
+          "timezone": {
+            "type": "string",
+            "default": "UTC"
+          }
+        },
+        "required": [
+          "timezone"
+        ]
+      },
+      "inputs": {
+        "type": "object",
+        "properties": {
+          "dicom": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "dicom"
+                ]
+              }
+            }
+          },
+          "classifications": {
+            "type": "object",
+            "properties": {
+              "base": {
+                "type": "string"
+              },
+              "found": {
+                "type": "boolean"
+              },
+              "value": {}
+            },
+            "required": [
+              "base",
+              "found",
+              "value"
+            ]
+          }
+        },
+        "required": [
+          "dicom",
+          "classifications"
+        ]
+      }
+    },
+    "required": [
+      "config",
+      "inputs"
+    ]
+  },
+  "data": {
+    "config": {
+      "timezone": "America/New_York"
+    },
+    "inputs": {
+      "dicom": {
+        "type": "dicom"
+      },
+      "classifications": {
+        "base": "T1-weighted",
+        "found": true,
+        "value": {
+          "confidence": 0.93,
+          "label": "brain"
+        }
+      }
+    }
+  },
+  "instructions": "Please update the \u201ctimezone\u201d field inside \u201cconfig\u201d to \u201cAmerica/New_York (updated)\u201d.",
+  "ground_truth": {
+    "config": {
+      "timezone": "America/New_York (updated)"
+    },
+    "inputs": {
+      "dicom": {
+        "type": "dicom"
+      },
+      "classifications": {
+        "base": "T1-weighted",
+        "found": true,
+        "value": {
+          "confidence": 0.93,
+          "label": "brain"
+        }
+      }
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "config",
+      "timezone"
+    ],
+    "precise_instruction": "Change \"timezone\" inside \"config\" to \"America/New_York (updated)\"."
+  }
+}

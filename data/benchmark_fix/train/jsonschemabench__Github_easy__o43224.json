@@ -1,0 +1,88 @@
+{
+  "name": "o43224",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "PrevSpartanRank": {
+        "type": "integer"
+      },
+      "SpartanRank": {
+        "type": "integer"
+      },
+      "PrevTotalXP": {
+        "type": "integer"
+      },
+      "TotalXP": {
+        "type": "integer"
+      },
+      "SpartanRankMatchXPScalar": {
+        "type": "number"
+      },
+      "PlayerTimePerformanceXPAward": {
+        "type": "integer"
+      },
+      "PerformanceXP": {
+        "type": [
+          "null",
+          "integer"
+        ]
+      },
+      "PlayerRankXPAward": {
+        "type": "integer"
+      },
+      "BoostAmount": {
+        "type": "integer"
+      },
+      "MatchSpeedWinAmount": {
+        "type": "integer"
+      },
+      "ObjectivesCompletedAmount": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "PrevSpartanRank",
+      "SpartanRank",
+      "PrevTotalXP",
+      "TotalXP",
+      "SpartanRankMatchXPScalar",
+      "PlayerTimePerformanceXPAward",
+      "PerformanceXP",
+      "PlayerRankXPAward",
+      "BoostAmount",
+      "MatchSpeedWinAmount",
+      "ObjectivesCompletedAmount"
+    ]
+  },
+  "erroneous_json": {
+    "PrevSpartanRank": 45,
+    "SpartanRank": 46,
+    "PrevTotalXP": 1284500,
+    "TotalXP": 1290000,
+    "SpartanRankMatchXPScalar": 1.05,
+    "PlayerTimePerformanceXPAward": 2500,
+    "PerformanceXP": 1200,
+    "PlayerRankXPAward": 3000,
+    "BoostAmount": "not-a-number",
+    "MatchSpeedWinAmount": 350,
+    "ObjectivesCompletedAmount": 150
+  },
+  "valid_json": {
+    "PrevSpartanRank": 45,
+    "SpartanRank": 46,
+    "PrevTotalXP": 1284500,
+    "TotalXP": 1290000,
+    "SpartanRankMatchXPScalar": 1.05,
+    "PlayerTimePerformanceXPAward": 2500,
+    "PerformanceXP": 1200,
+    "PlayerRankXPAward": 3000,
+    "BoostAmount": 500,
+    "MatchSpeedWinAmount": 350,
+    "ObjectivesCompletedAmount": 150
+  },
+  "description": "Congratulations on your recent match! Your Spartan rank has risen from 45 to 46, and your cumulative experience points have increased from 1,284,500 to 1,290,000. The match applied a Spartan\u2011rank XP scalar of 1.05, which helped boost your earnings across the board.\n\nFor this game you received a time\u2011performance award of 2,500 XP, an additional performance bonus of 1,200 XP, and a rank\u2011based award of 3,000 XP. You also benefited from a 500\u2011XP boost, a 350\u2011XP speed\u2011win bonus, and 150 points for the objectives you completed."
+}

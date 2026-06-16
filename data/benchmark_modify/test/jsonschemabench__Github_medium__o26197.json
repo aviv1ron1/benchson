@@ -1,0 +1,187 @@
+{
+  "name": "o26197",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "definitions": {
+      "address": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/basicAddress"
+          },
+          {
+            "properties": {
+              "Latitude": {
+                "maximum": 90,
+                "minimum": -90,
+                "type": "number"
+              },
+              "Longitude": {
+                "maximum": 180,
+                "minimum": -180,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "basicAddress": {
+        "comment": "This is an address",
+        "properties": {
+          "City": {
+            "comment": "This is a city",
+            "type": "string"
+          },
+          "State": {
+            "maxLength": 2,
+            "minLength": 2,
+            "type": "string"
+          },
+          "Street": {
+            "type": "string"
+          },
+          "ZipCode": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "unum": {
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "properties": {
+      "Loan": {
+        "description": "Loan information",
+        "properties": {
+          "AbbreviateThisReallyLongColumn": {
+            "type": "number"
+          },
+          "Amount": {
+            "type": "number"
+          },
+          "SomeSuperLongColumnNameThatDoesntFitInPostgresUnfortunately": {
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "RealEstateOwned": {
+        "patternProperties": {
+          "[0-9]+": {
+            "properties": {
+              "Address": {
+                "$ref": "#/definitions/basicAddress"
+              },
+              "RentalIncome": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "SubjectProperty": {
+        "properties": {
+          "Acreage": {
+            "$ref": "#/definitions/unum"
+          },
+          "Address": {
+            "$ref": "#/definitions/address"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "title": "Fact schema",
+    "type": "object"
+  },
+  "data": {
+    "Loan": {
+      "AbbreviateThisReallyLongColumn": 5.5,
+      "Amount": 250000,
+      "SomeSuperLongColumnNameThatDoesntFitInPostgresUnfortunately": 1.2
+    },
+    "RealEstateOwned": {
+      "1": {
+        "Address": {
+          "City": "Springfield",
+          "State": "IL",
+          "Street": "742 Evergreen Terrace",
+          "ZipCode": "62704"
+        },
+        "RentalIncome": 1200
+      },
+      "2": {
+        "Address": {
+          "City": "Madison",
+          "State": "WI",
+          "Street": "123 State St",
+          "ZipCode": "53703"
+        },
+        "RentalIncome": 1500
+      }
+    },
+    "SubjectProperty": {
+      "Acreage": 2.5,
+      "Address": {
+        "City": "Boulder",
+        "State": "CO",
+        "Street": "3450 Pearl St",
+        "ZipCode": "80302",
+        "Latitude": 40.015,
+        "Longitude": -105.2705
+      }
+    }
+  },
+  "instructions": "Can you increase the SomeSuperLongColumnNameThatDoesntFitInPostgresUnfortunately field in the Loan table by 1?",
+  "ground_truth": {
+    "Loan": {
+      "AbbreviateThisReallyLongColumn": 5.5,
+      "Amount": 250000,
+      "SomeSuperLongColumnNameThatDoesntFitInPostgresUnfortunately": 2.2
+    },
+    "RealEstateOwned": {
+      "1": {
+        "Address": {
+          "City": "Springfield",
+          "State": "IL",
+          "Street": "742 Evergreen Terrace",
+          "ZipCode": "62704"
+        },
+        "RentalIncome": 1200
+      },
+      "2": {
+        "Address": {
+          "City": "Madison",
+          "State": "WI",
+          "Street": "123 State St",
+          "ZipCode": "53703"
+        },
+        "RentalIncome": 1500
+      }
+    },
+    "SubjectProperty": {
+      "Acreage": 2.5,
+      "Address": {
+        "City": "Boulder",
+        "State": "CO",
+        "Street": "3450 Pearl St",
+        "ZipCode": "80302",
+        "Latitude": 40.015,
+        "Longitude": -105.2705
+      }
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "Loan",
+      "SomeSuperLongColumnNameThatDoesntFitInPostgresUnfortunately"
+    ],
+    "precise_instruction": "Increase \"SomeSuperLongColumnNameThatDoesntFitInPostgresUnfortunately\" inside \"Loan\" by 1."
+  }
+}

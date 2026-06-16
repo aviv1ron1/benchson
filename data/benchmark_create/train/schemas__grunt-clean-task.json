@@ -1,0 +1,69 @@
+{
+  "name": "grunt-clean-task",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": {
+      "anyOf": [
+        {
+          "$ref": "https://json.schemastore.org/grunt-task#/definitions/fileFormat"
+        },
+        {
+          "$ref": "https://json.schemastore.org/grunt-task#/definitions/dynamic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "options": {
+              "$ref": "#/definitions/options"
+            }
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "definitions": {
+      "options": {
+        "description": "Set the options for grunt-contrib-copy",
+        "type": "object",
+        "properties": {
+          "force": {
+            "description": "This overrides this task from blocking deletion of folders outside current working dir (CWD). Use with caution.",
+            "type": "boolean",
+            "default": false
+          },
+          "no-write": {
+            "description": "Will log messages of what would happen if the task was ran but doesn't actually delete the files.",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/grunt-clean-task.json",
+    "properties": {
+      "options": {
+        "$ref": "#/definitions/options"
+      }
+    },
+    "title": "JSON schema for the Grunt clean task",
+    "type": "object"
+  },
+  "description": "The clean task has been configured to run with the **force** option turned on, so it will permit deletions outside the current working directory. The **no\u2011write** flag is disabled, meaning the files will actually be removed rather than just logged.\n\nWhen executed, the task will delete all JavaScript files matching the pattern `temp/*.js` as well as everything within the `build/` folder.",
+  "reference_json": {
+    "options": {
+      "force": true,
+      "no-write": false
+    },
+    "files": [
+      "temp/*.js",
+      "build/"
+    ]
+  }
+}

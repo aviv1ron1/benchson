@@ -1,0 +1,592 @@
+{
+  "name": "o46173",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "schemas": {
+        "type": "object",
+        "properties": {
+          "baseUri": {
+            "type": "string"
+          },
+          "baseType": {
+            "type": "string"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "equivalence": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "baseUri",
+          "baseType",
+          "types",
+          "relations",
+          "equivalence"
+        ]
+      },
+      "api": {
+        "type": "object",
+        "properties": {
+          "defaultPathRelation": {
+            "type": "string"
+          },
+          "hairRelations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exampleUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bindHost": {
+            "type": "string"
+          },
+          "bindPort": {
+            "type": "integer"
+          },
+          "baseUrl": {
+            "type": "string"
+          },
+          "dataDir": {
+            "type": "string"
+          },
+          "admin": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "bindHost",
+          "bindPort",
+          "baseUrl",
+          "dataDir",
+          "admin",
+          "defaultPathRelation",
+          "hairRelations"
+        ]
+      },
+      "stats": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "enabled",
+          "cronExpression"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "cronExpression": {
+            "type": "string"
+          }
+        }
+      },
+      "redis": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "host",
+          "port",
+          "queue",
+          "maxQueueSize"
+        ],
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          },
+          "queue": {
+            "type": "string"
+          },
+          "maxQueueSize": {
+            "type": "integer"
+          }
+        }
+      },
+      "elasticsearch": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "host",
+          "port"
+        ],
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          }
+        }
+      },
+      "neo4j": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          },
+          "user": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "password": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "host",
+          "port",
+          "user",
+          "password"
+        ]
+      },
+      "core": {
+        "type": "object",
+        "properties": {
+          "batchSize": {
+            "type": "integer"
+          },
+          "batchTimeout": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "batchSize",
+          "batchTimeout"
+        ]
+      },
+      "viewer": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "language",
+          "mode",
+          "logo",
+          "color",
+          "suffixFilters"
+        ],
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "simple",
+              "advanced"
+            ]
+          },
+          "logo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "color": {
+            "type": "string"
+          },
+          "suffixFilters": {
+            "type": "array"
+          }
+        }
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "geonames": {
+            "type": "object",
+            "properties": {
+              "countries": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "extraUris": {
+                "type": "string"
+              }
+            }
+          },
+          "tgn": {
+            "type": "object",
+            "properties": {
+              "parents": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "bag": {
+            "type": "object",
+            "properties": {
+              "db": {
+                "type": "object",
+                "properties": {
+                  "host": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "integer"
+                  },
+                  "user": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "database": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "import": {
+        "type": "object",
+        "properties": {
+          "dirs": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "s3": {
+            "type": "object",
+            "properties": {
+              "region": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "accessKeyId": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "secretAccessKey": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "buckets": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "diffTool": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "logo": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "schemas",
+      "stats",
+      "api",
+      "redis",
+      "elasticsearch",
+      "neo4j",
+      "viewer",
+      "data",
+      "import",
+      "logo"
+    ]
+  },
+  "data": {
+    "schemas": {
+      "baseUri": "http://example.org/schema",
+      "baseType": "Entity",
+      "types": [
+        "Person",
+        "Place",
+        "Organization"
+      ],
+      "relations": [
+        "locatedIn",
+        "memberOf",
+        "hasPart"
+      ],
+      "equivalence": "owl:sameAs"
+    },
+    "api": {
+      "bindHost": "0.0.0.0",
+      "bindPort": 8080,
+      "baseUrl": "http://localhost:8080/api",
+      "dataDir": "/var/app/data",
+      "admin": {
+        "name": "admin",
+        "password": "s3cr3t"
+      },
+      "defaultPathRelation": "hasPart",
+      "hairRelations": [
+        "hasHair",
+        "hasColor"
+      ],
+      "exampleUrls": [
+        "http://localhost:8080/api/example1",
+        "http://localhost:8080/api/example2"
+      ]
+    },
+    "stats": {
+      "enabled": true,
+      "cronExpression": "0 0 * * *"
+    },
+    "redis": {
+      "host": "redis.local",
+      "port": 6379,
+      "queue": "taskQueue",
+      "maxQueueSize": 10000
+    },
+    "elasticsearch": {
+      "host": "es.local",
+      "port": 9200
+    },
+    "neo4j": {
+      "host": "neo4j.local",
+      "port": 7687,
+      "user": "neo4j",
+      "password": "password123"
+    },
+    "viewer": {
+      "language": "en",
+      "mode": "advanced",
+      "logo": null,
+      "color": "#336699",
+      "suffixFilters": [
+        "jpg",
+        "png",
+        "gif"
+      ]
+    },
+    "data": {
+      "geonames": {
+        "countries": [
+          "US",
+          "CA",
+          "GB"
+        ],
+        "extraUris": "http://example.org/geonames/extra"
+      },
+      "tgn": {
+        "parents": [
+          "http://example.org/tgn/parent1",
+          "http://example.org/tgn/parent2"
+        ]
+      },
+      "bag": {
+        "db": {
+          "host": "bagdb.local",
+          "port": 5432,
+          "user": "baguser",
+          "password": "bagpass",
+          "database": "bagdb"
+        }
+      }
+    },
+    "import": {
+      "dirs": [
+        "/data/import1",
+        "/data/import2"
+      ],
+      "s3": {
+        "region": "us-east-1",
+        "accessKeyId": "AKIAEXAMPLE",
+        "secretAccessKey": "abcd1234example",
+        "buckets": [
+          "my-bucket1",
+          "my-bucket2"
+        ]
+      },
+      "diffTool": "meld"
+    },
+    "logo": [
+      "http://example.org/logo1.png",
+      "http://example.org/logo2.png"
+    ]
+  },
+  "instructions": "Can you delete the first entry in the \u201crelations\u201d list inside \u201cschemas,\u201d please?",
+  "ground_truth": {
+    "schemas": {
+      "baseUri": "http://example.org/schema",
+      "baseType": "Entity",
+      "types": [
+        "Person",
+        "Place",
+        "Organization"
+      ],
+      "relations": [
+        "memberOf",
+        "hasPart"
+      ],
+      "equivalence": "owl:sameAs"
+    },
+    "api": {
+      "bindHost": "0.0.0.0",
+      "bindPort": 8080,
+      "baseUrl": "http://localhost:8080/api",
+      "dataDir": "/var/app/data",
+      "admin": {
+        "name": "admin",
+        "password": "s3cr3t"
+      },
+      "defaultPathRelation": "hasPart",
+      "hairRelations": [
+        "hasHair",
+        "hasColor"
+      ],
+      "exampleUrls": [
+        "http://localhost:8080/api/example1",
+        "http://localhost:8080/api/example2"
+      ]
+    },
+    "stats": {
+      "enabled": true,
+      "cronExpression": "0 0 * * *"
+    },
+    "redis": {
+      "host": "redis.local",
+      "port": 6379,
+      "queue": "taskQueue",
+      "maxQueueSize": 10000
+    },
+    "elasticsearch": {
+      "host": "es.local",
+      "port": 9200
+    },
+    "neo4j": {
+      "host": "neo4j.local",
+      "port": 7687,
+      "user": "neo4j",
+      "password": "password123"
+    },
+    "viewer": {
+      "language": "en",
+      "mode": "advanced",
+      "logo": null,
+      "color": "#336699",
+      "suffixFilters": [
+        "jpg",
+        "png",
+        "gif"
+      ]
+    },
+    "data": {
+      "geonames": {
+        "countries": [
+          "US",
+          "CA",
+          "GB"
+        ],
+        "extraUris": "http://example.org/geonames/extra"
+      },
+      "tgn": {
+        "parents": [
+          "http://example.org/tgn/parent1",
+          "http://example.org/tgn/parent2"
+        ]
+      },
+      "bag": {
+        "db": {
+          "host": "bagdb.local",
+          "port": 5432,
+          "user": "baguser",
+          "password": "bagpass",
+          "database": "bagdb"
+        }
+      }
+    },
+    "import": {
+      "dirs": [
+        "/data/import1",
+        "/data/import2"
+      ],
+      "s3": {
+        "region": "us-east-1",
+        "accessKeyId": "AKIAEXAMPLE",
+        "secretAccessKey": "abcd1234example",
+        "buckets": [
+          "my-bucket1",
+          "my-bucket2"
+        ]
+      },
+      "diffTool": "meld"
+    },
+    "logo": [
+      "http://example.org/logo1.png",
+      "http://example.org/logo2.png"
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "schemas",
+      "relations"
+    ],
+    "precise_instruction": "Remove the first item from the \"relations\" list inside \"schemas\"."
+  }
+}

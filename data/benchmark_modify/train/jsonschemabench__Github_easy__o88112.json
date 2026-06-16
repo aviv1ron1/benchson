@@ -1,0 +1,42 @@
+{
+  "name": "o88112",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "http://schemas.wbeme.com/json-schema/eme/accounts/mixin/account-ref/1-0-0.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "account_id": {
+        "type": "string",
+        "pattern": "^[\\w\\/\\.:-]+$",
+        "description": "The EME account that this message is associated with.",
+        "pbj": {
+          "type": "identifier",
+          "rule": "single"
+        }
+      }
+    },
+    "additionalProperties": true
+  },
+  "data": {
+    "account_id": "EME-Account_001/region1.subsection",
+    "owner": "Acme Corp",
+    "status": "active",
+    "created_at": "2023-11-15T08:30:00Z"
+  },
+  "instructions": "Please change the owner field to \u201cAcme Corp (updated)\u201d.",
+  "ground_truth": {
+    "account_id": "EME-Account_001/region1.subsection",
+    "owner": "Acme Corp (updated)",
+    "status": "active",
+    "created_at": "2023-11-15T08:30:00Z"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "owner"
+    ],
+    "precise_instruction": "Change \"owner\" to \"Acme Corp (updated)\"."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "o9939",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "orgName": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "admin",
+          "edit",
+          "collaborate",
+          "view",
+          "none"
+        ]
+      },
+      "inviteDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "ttl": {
+        "type": "number"
+      }
+    }
+  },
+  "description": "Dear admin@acme-corp.com,\n\nYou have been invited to join Acme Corporation as an **admin**. This invitation was generated on **2026-06-15T10:30:00Z** and will remain valid for **86400** seconds (24\u202fhours) from that time. Please use the link provided in this message to accept the invitation before the expiration period elapses.",
+  "reference_json": {
+    "orgName": "Acme Corporation",
+    "email": "admin@acme-corp.com",
+    "role": "admin",
+    "inviteDate": "2026-06-15T10:30:00Z",
+    "ttl": 86400
+  }
+}

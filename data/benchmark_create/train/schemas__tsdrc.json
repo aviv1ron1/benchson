@@ -1,0 +1,34 @@
+{
+  "name": "tsdrc",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": true,
+    "id": "https://json.schemastore.org/tsdrc.json",
+    "properties": {
+      "strictSSL": {
+        "type": "boolean",
+        "description": "Enabled by default, setting this option to false disables strict SSL. Passed to request package. Useful behind (corporate) proxies that act like man-in-the middle on https connections.",
+        "default": true
+      },
+      "proxy": {
+        "type": "string",
+        "description": "Any standard http-proxy as supported by the request package.",
+        "format": "uri"
+      },
+      "token": {
+        "type": "string",
+        "description": "The OAuth token can be used to boost the GitHub API rate-limit from 60 to 5000 (non-cached) requests per hour. The is token needs just 'read-only access to public information' so no additional OAuth scopes are necessary."
+      }
+    },
+    "title": "JSON schema for .tsdrc files",
+    "type": "object"
+  },
+  "description": "Hi team,\n\nPlease be aware that our current configuration has strict SSL enabled, ensuring that all HTTPS connections are verified against certificates. We've also set the HTTP proxy to\u202fhttp://proxy.example.com:8080 to route outbound traffic through our corporate gateway. For increased GitHub API limits, the OAuth token in use is\u202fghp_1a2b3c4d5e6f7g8h9i0jklmnopqrstuv.",
+  "reference_json": {
+    "strictSSL": true,
+    "proxy": "http://proxy.example.com:8080",
+    "token": "ghp_1a2b3c4d5e6f7g8h9i0jklmnopqrstuv"
+  }
+}

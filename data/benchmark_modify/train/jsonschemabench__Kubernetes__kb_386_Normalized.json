@@ -1,0 +1,45 @@
+{
+  "name": "kb_386_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "GroupVersion contains the \"group/version\" and \"version\" string of a version. It is made a struct to keep extensibility.",
+    "properties": {
+      "groupVersion": {
+        "description": "groupVersion specifies the API group and version in the form \"group/version\"",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "version": {
+        "description": "version specifies the version in the form of \"version\". This is to save the clients the trouble of splitting the GroupVersion.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "groupVersion",
+      "version"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "groupVersion": "apps/v1",
+    "version": "v1"
+  },
+  "instructions": "Please change the \"groupVersion\" field to \"apps/v1 (updated)\".",
+  "ground_truth": {
+    "groupVersion": "apps/v1 (updated)",
+    "version": "v1"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "groupVersion"
+    ],
+    "precise_instruction": "Change \"groupVersion\" to \"apps/v1 (updated)\"."
+  }
+}

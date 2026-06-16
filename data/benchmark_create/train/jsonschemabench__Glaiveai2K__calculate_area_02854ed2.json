@@ -1,0 +1,62 @@
+{
+  "name": "calculate_area_02854ed2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape to calculate the area",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "The design call specifies that the primary shape to be evaluated is a circle with a radius of\u202f5.2\u202funits. In addition to the circle, the accompanying geometric references include a rectangle measuring 10\u202funits in length and 4\u202funits in width, as well as a triangle with a base of 3\u202funits and a height of 4\u202funits.",
+  "reference_json": {
+    "shape": "circle",
+    "dimensions": {
+      "radius": 5.2,
+      "length": 10,
+      "width": 4,
+      "base": 3,
+      "height": 4
+    }
+  }
+}

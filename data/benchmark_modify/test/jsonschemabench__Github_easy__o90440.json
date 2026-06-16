@@ -1,0 +1,56 @@
+{
+  "name": "o90440",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "comment": {
+        "type": "string"
+      },
+      "compression": {
+        "type": "integer"
+      },
+      "encoding": {
+        "type": "string"
+      },
+      "mimeType": {
+        "type": "string"
+      },
+      "size": {
+        "type": "integer"
+      },
+      "text": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "size",
+      "mimeType"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "comment": "Sample data file for testing",
+    "compression": 0,
+    "encoding": "utf-8",
+    "mimeType": "application/json",
+    "size": 452,
+    "text": "{\"id\":123,\"name\":\"Example\",\"active\":true}"
+  },
+  "instructions": "Could you increase the \"compression\" by 1?",
+  "ground_truth": {
+    "comment": "Sample data file for testing",
+    "compression": 1,
+    "encoding": "utf-8",
+    "mimeType": "application/json",
+    "size": 452,
+    "text": "{\"id\":123,\"name\":\"Example\",\"active\":true}"
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "compression"
+    ],
+    "precise_instruction": "Increase \"compression\" by 1."
+  }
+}

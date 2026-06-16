@@ -1,0 +1,331 @@
+{
+  "name": "vs-nesting",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "fileExtension": {
+        "pattern": "^\\.[^/\\\\]+$"
+      },
+      "fileName": {
+        "pattern": "^[^/\\\\|:><\"?\\*]+$"
+      },
+      "ext-ext": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^(\\.[^/\\\\]+|\\*)$": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/definitions/fileExtension"
+            }
+          }
+        }
+      },
+      "file-file": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[^/\\\\|:><\"?\\*]+$": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/definitions/fileName"
+            }
+          }
+        }
+      },
+      "file-ext": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^([^/\\\\|:><\"?\\*]+|\\*)$": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/definitions/fileExtension"
+            }
+          }
+        }
+      },
+      "providers": {
+        "type": "object",
+        "properties": {
+          "addedExtension": {
+            "description": "If this exist, files with an additional extension should nest under file without additional extension. Example: file.html.css nest under file.html",
+            "type": "object",
+            "maxProperties": 0
+          },
+          "pathSegment": {
+            "description": "If this exists, files with \"extra\" extension part in the file name should nest under files without it, but having same name and last extension. Example: file.min.js nest under file.js.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "add": {
+                "description": "Add nesting rules in the order to be applied by corresponding provider, where each rule entry has a form 'child: collection of potential parents'.",
+                "properties": {
+                  ".*": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "$ref": "#/definitions/fileExtension"
+                    }
+                  }
+                }
+              },
+              "remove": {
+                "description": "Remove specified nesting rules if they are merged from higher level nesting settings.",
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "$ref": "#/definitions/fileExtension"
+                      }
+                    }
+                  },
+                  {
+                    "enum": [
+                      "*"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "extensionToExtension": {
+            "description": "Nest files with specific extensions under other specific extensions",
+            "additionalProperties": false,
+            "properties": {
+              "add": {
+                "description": "Add nesting rules in the order to be applied by corresponding provider, where each rule entry has a form 'child: collection of potential parents'.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/ext-ext"
+                  }
+                ]
+              },
+              "remove": {
+                "description": "Remove specified nesting rules if they are merged from higher level nesting settings.",
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/ext-ext"
+                  },
+                  {
+                    "enum": [
+                      "*"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "fileToFile": {
+            "description": "Nest specific file names under other specific file names",
+            "additionalProperties": false,
+            "properties": {
+              "add": {
+                "description": "Add nesting rules in the order to be applied by corresponding provider, where each rule entry has a form 'child: collection of potential parents'.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/file-file"
+                  }
+                ]
+              },
+              "remove": {
+                "description": "Remove specified nesting rules if they are merged from higher level nesting settings.",
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/file-file"
+                  },
+                  {
+                    "enum": [
+                      "*"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "fileSuffixToExtension": {
+            "description": "Nest files with specified suffixes under files with specified extensions.",
+            "additionalProperties": false,
+            "properties": {
+              "add": {
+                "description": "Add nesting rules in the order to be applied by corresponding provider, where each rule entry has a form 'child: collection of potential parents'.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/file-ext"
+                  }
+                ]
+              },
+              "remove": {
+                "description": "Remove specified nesting rules if they are merged from higher level nesting settings.",
+                "oneOf": [
+                  {
+                    "$ref": "#/definitions/file-ext"
+                  },
+                  {
+                    "enum": [
+                      "*"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "allExtensions": {
+            "description": "A greedy version of 'extensionToExtension' and has * as the only child key",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "add": {
+                "description": "Add nesting rules in the order to be applied by corresponding provider, where each rule entry has a form 'child: collection of potential parents'.",
+                "properties": {
+                  ".*": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "$ref": "#/definitions/fileExtension"
+                    }
+                  }
+                }
+              },
+              "remove": {
+                "description": "Remove specified nesting rules if they are merged from higher level nesting settings.",
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      ".*": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/fileExtension"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      "*"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/vs-nesting.json",
+    "properties": {
+      "root": {
+        "description": "Determines if this is the root nesting config file and no further inheritance is required.",
+        "type": "boolean",
+        "default": false
+      },
+      "dependentFileProviders": {
+        "description": "Contains a collection of nesting rule providers specified in the order to be applied.",
+        "type": "object",
+        "properties": {
+          "add": {
+            "description": "Add nesting rules in the order to be applied by corresponding provider, where each rule entry has a form 'child: collection of potential parents'.",
+            "allOf": [
+              {
+                "$ref": "#/definitions/providers"
+              }
+            ]
+          },
+          "remove": {
+            "description": "Remove specified nesting rules if they are merged from higher level nesting settings.",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/providers"
+              },
+              {
+                "enum": [
+                  "*"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "title": "JSON schema for Visual Studio's file nesting feature",
+    "type": "object"
+  },
+  "description": "The nesting configuration is not a root file, so it will inherit any higher\u2011level settings. It defines a single set of dependent\u2011file providers. An empty *addedExtension* section is included, indicating that files with an additional extension should be grouped under the base file but no specific extensions are listed.\n\nFor *pathSegment* rules, any file ending with \u201c.min\u201d should be nested under the same file without that segment, and existing segment\u2011based rules are completely removed. Under *extensionToExtension*, JavaScript files (\u201c.js\u201d) are to be nested under their TypeScript counterparts (\u201c.ts\u201d), and CSS files (\u201c.css\u201d) under SCSS files (\u201c.scss\u201d). Mapping from source\u2011map files (\u201c.map\u201d) to JavaScript files (\u201c.js\u201d) is explicitly removed. The *fileToFile* section adds two name\u2011based nestings: \u201cREADME.md\u201d should appear under \u201cREADME\u201d, and \u201cindex.html\u201d under \u201cindex\u201d; all other file\u2011to\u2011file rules are cleared. In the *fileSuffixToExtension* settings, any file with the suffix \u201cmin\u201d is grouped under both \u201c.js\u201d and \u201c.css\u201d files, a wildcard entry nests any other suffixed files under \u201c.txt\u201d, and the mapping from the \u201cbak\u201d suffix to \u201c.old\u201d is removed. Finally, the *allExtensions* rule adds a greedy mapping that brings every \u201c.config\u201d and \u201c.json\u201d file under a generic wildcard parent, while all previously defined all\u2011extension rules are removed.",
+  "reference_json": {
+    "root": false,
+    "dependentFileProviders": {
+      "add": {
+        "addedExtension": {},
+        "pathSegment": {
+          "add": {
+            ".*": [
+              ".min"
+            ]
+          },
+          "remove": "*"
+        },
+        "extensionToExtension": {
+          "add": {
+            ".js": [
+              ".ts"
+            ],
+            ".css": [
+              ".scss"
+            ]
+          },
+          "remove": {
+            ".map": [
+              ".js"
+            ]
+          }
+        },
+        "fileToFile": {
+          "add": {
+            "README.md": [
+              "README"
+            ],
+            "index.html": [
+              "index"
+            ]
+          },
+          "remove": "*"
+        },
+        "fileSuffixToExtension": {
+          "add": {
+            "min": [
+              ".js",
+              ".css"
+            ],
+            "*": [
+              ".txt"
+            ]
+          },
+          "remove": {
+            "bak": [
+              ".old"
+            ]
+          }
+        },
+        "allExtensions": {
+          "add": {
+            ".*": [
+              ".config",
+              ".json"
+            ]
+          },
+          "remove": "*"
+        }
+      }
+    }
+  }
+}

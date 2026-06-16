@@ -1,0 +1,77 @@
+{
+  "name": "o37624",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "address": {
+        "type": "object",
+        "properties": {
+          "streetAddress": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "streetAddress",
+          "city"
+        ]
+      },
+      "phoneNumber": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string"
+            },
+            "code": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "location",
+            "code"
+          ]
+        }
+      }
+    },
+    "required": [
+      "address",
+      "phoneNumber"
+    ]
+  },
+  "erroneous_json": {
+    "phoneNumber": [
+      {
+        "location": "home",
+        "code": 5551234
+      },
+      {
+        "location": "work",
+        "code": 5555678
+      }
+    ]
+  },
+  "valid_json": {
+    "address": {
+      "streetAddress": "123 Maple Avenue",
+      "city": "Springfield"
+    },
+    "phoneNumber": [
+      {
+        "location": "home",
+        "code": 5551234
+      },
+      {
+        "location": "work",
+        "code": 5555678
+      }
+    ]
+  },
+  "description": "Please send all correspondence to our office at 123 Maple Avenue, Springfield.\n\nFor phone contact, you can reach us at the home line 5551234 and the work line 5555678."
+}

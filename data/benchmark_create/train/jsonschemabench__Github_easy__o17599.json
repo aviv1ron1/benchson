@@ -1,0 +1,44 @@
+{
+  "name": "o17599",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "definitions": {
+      "MySubObject": {
+        "_id": "filled#",
+        "properties": {
+          "a": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "a"
+        ],
+        "type": "object"
+      }
+    },
+    "properties": {
+      "empty": {
+        "_id": "empty#"
+      },
+      "filled": {
+        "$ref": "#/definitions/MySubObject"
+      }
+    },
+    "required": [
+      "empty",
+      "filled"
+    ],
+    "type": "object"
+  },
+  "description": "Please find below the current configuration details. The element labeled **empty** carries the identifier **empty#**.  \n\nThe element labeled **filled** is identified as **filled#**, and its Boolean flag **a** is set to true.",
+  "reference_json": {
+    "empty": {
+      "_id": "empty#"
+    },
+    "filled": {
+      "_id": "filled#",
+      "a": true
+    }
+  }
+}

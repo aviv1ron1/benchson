@@ -1,0 +1,125 @@
+{
+  "name": "o39256",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "options": {
+        "properties": {
+          "nick": {
+            "type": "string"
+          },
+          "plugins": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "shell": {
+            "type": "string"
+          },
+          "ttl": {
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "strategies": {
+        "patternProperties": {
+          ".*": {
+            "properties": {
+              "jid": {
+                "type": "string"
+              },
+              "password_env": {
+                "type": "string"
+              },
+              "people": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "rooms": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "jid",
+              "password_env"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "required": [
+      "options",
+      "strategies"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "options": null,
+    "strategies": {
+      "default": {
+        "jid": "user@example.com",
+        "password_env": "BOT_PASSWORD",
+        "people": [
+          "alice@example.com",
+          "bob@example.com"
+        ],
+        "rooms": [
+          "room1@conference.example.com",
+          "room2@conference.example.com"
+        ]
+      },
+      "dev": {
+        "jid": "devuser@example.org",
+        "password_env": "DEV_BOT_PASSWORD",
+        "people": [],
+        "rooms": [
+          "devroom@conference.example.org"
+        ]
+      }
+    }
+  },
+  "valid_json": {
+    "options": {
+      "nick": "BotMaster",
+      "plugins": [
+        "logger",
+        "auth",
+        "monitor"
+      ],
+      "shell": "/bin/bash",
+      "ttl": 3600
+    },
+    "strategies": {
+      "default": {
+        "jid": "user@example.com",
+        "password_env": "BOT_PASSWORD",
+        "people": [
+          "alice@example.com",
+          "bob@example.com"
+        ],
+        "rooms": [
+          "room1@conference.example.com",
+          "room2@conference.example.com"
+        ]
+      },
+      "dev": {
+        "jid": "devuser@example.org",
+        "password_env": "DEV_BOT_PASSWORD",
+        "people": [],
+        "rooms": [
+          "devroom@conference.example.org"
+        ]
+      }
+    }
+  },
+  "description": "The bot will identify itself as **BotMaster** and run under the standard **/bin/bash** shell. Its core functionality is extended by three plugins\u2014**logger**, **auth**, and **monitor**\u2014and it is configured to stay active for a time\u2011to\u2011live of **3600 seconds** (one hour) before needing a restart.\n\nTwo deployment strategies are defined. The **default** strategy connects with the JID **user@example.com**, pulling its password from the **BOT_PASSWORD** environment variable. It is set to interact with the users **alice@example.com** and **bob@example.com**, and will join the conference rooms **room1@conference.example.com** and **room2@conference.example.com**. The **dev** strategy uses the JID **devuser@example.org**, with its password sourced from **DEV_BOT_PASSWORD**; it has no designated people contacts and will only join **devroom@conference.example.org**."
+}

@@ -1,0 +1,44 @@
+{
+  "name": "calculate_distance_d833559f",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "latitude1": {
+        "description": "The latitude of the first location",
+        "type": "number"
+      },
+      "latitude2": {
+        "description": "The latitude of the second location",
+        "type": "number"
+      },
+      "longitude1": {
+        "description": "The longitude of the first location",
+        "type": "number"
+      },
+      "longitude2": {
+        "description": "The longitude of the second location",
+        "type": "number"
+      }
+    },
+    "required": [
+      "latitude1",
+      "longitude1",
+      "latitude2",
+      "longitude2"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "latitude1": 37.7749,
+    "longitude1": -122.4194,
+    "longitude2": -118.2437
+  },
+  "valid_json": {
+    "latitude1": 37.7749,
+    "longitude1": -122.4194,
+    "latitude2": 34.0522,
+    "longitude2": -118.2437
+  },
+  "description": "The primary location is recorded at a latitude of\u202f37.7749 degrees north and a longitude of\u202f\u2011122.4194 degrees west. The secondary location sits at a latitude of\u202f34.0522 degrees north with a longitude of\u202f\u2011118.2437 degrees west."
+}

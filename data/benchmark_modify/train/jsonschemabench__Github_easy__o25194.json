@@ -1,0 +1,40 @@
+{
+  "name": "o25194",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "properties": {
+      "bar": {
+        "type": "integer",
+        "minimum": 10
+      },
+      "baz": {
+        "type": "number",
+        "minimum": 10.5
+      },
+      "qux": {
+        "type": "string",
+        "minimum": 10
+      }
+    }
+  },
+  "data": {
+    "bar": 15,
+    "baz": 12.7,
+    "qux": "Lorem ipsum"
+  },
+  "instructions": "Please increase baz by 1.",
+  "ground_truth": {
+    "bar": 15,
+    "baz": 13.7,
+    "qux": "Lorem ipsum"
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "baz"
+    ],
+    "precise_instruction": "Increase \"baz\" by 1."
+  }
+}

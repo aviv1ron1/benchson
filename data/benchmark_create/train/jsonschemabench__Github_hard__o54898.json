@@ -1,0 +1,286 @@
+{
+  "name": "o54898",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "song": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Song Title"
+          },
+          "artist": {
+            "type": "string",
+            "description": "Song Artist"
+          },
+          "audio": {
+            "type": "string",
+            "description": "Path to Audio File on Local Machine"
+          },
+          "lyrics": {
+            "type": "object",
+            "properties": {
+              "line": {
+                "type": [
+                  "object",
+                  "array"
+                ],
+                "properties": {
+                  "$": {
+                    "type": "object",
+                    "properties": {
+                      "start": {
+                        "type": "string"
+                      },
+                      "end": {
+                        "type": "string"
+                      },
+                      "class": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "start",
+                      "end"
+                    ]
+                  },
+                  "_": {
+                    "type": "string"
+                  },
+                  "highlight": {
+                    "type": [
+                      "object",
+                      "array"
+                    ],
+                    "properties": {
+                      "$": {
+                        "type": "object",
+                        "properties": {
+                          "start": {
+                            "type": "string"
+                          },
+                          "end": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "start",
+                          "end"
+                        ]
+                      },
+                      "_": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "$",
+                      "_"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "$": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string"
+                            },
+                            "end": {
+                              "type": "string"
+                            },
+                            "class": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "start",
+                            "end"
+                          ]
+                        },
+                        "_": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "$",
+                        "_"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "$"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "$": {
+                      "type": "object",
+                      "properties": {
+                        "start": {
+                          "type": "string"
+                        },
+                        "end": {
+                          "type": "string"
+                        },
+                        "class": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "start",
+                        "end"
+                      ]
+                    },
+                    "_": {
+                      "type": "string"
+                    },
+                    "highlight": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "properties": {
+                        "$": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string"
+                            },
+                            "end": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "start",
+                            "end"
+                          ]
+                        },
+                        "_": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "$",
+                        "_"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "$": {
+                            "type": "object",
+                            "properties": {
+                              "start": {
+                                "type": "string"
+                              },
+                              "end": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "start",
+                              "end"
+                            ]
+                          },
+                          "_": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "$",
+                          "_"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "$"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "line"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "artist",
+          "lyrics"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "song"
+    ]
+  },
+  "description": "The track under review is **\u201cImagine\u201d** performed by **John Lennon**. The recording is stored locally at **C:/Music/Imagine.mp3** and will be used for the upcoming audio\u2011analysis session.\n\nThe first lyric line runs from **0:00 to 0:04** and reads \u201cImagine there's no heaven.\u201d Within this segment the word **\u201cImagine\u201d** is highlighted from **0:00 to 0:02**, while the phrase **\u201cthere's no heaven\u201d** is highlighted from **0:02 to 0:04**. The second line follows immediately, spanning **0:05 to 0:09** with the text \u201cIt's easy if you try,\u201d which is highlighted in its entirety during the same interval (**0:05\u20130:09**).",
+  "reference_json": {
+    "song": {
+      "title": "Imagine",
+      "artist": "John Lennon",
+      "audio": "C:/Music/Imagine.mp3",
+      "lyrics": {
+        "line": [
+          {
+            "$": {
+              "start": "0:00",
+              "end": "0:04"
+            },
+            "_": "Imagine there's no heaven",
+            "highlight": [
+              {
+                "$": {
+                  "start": "0:00",
+                  "end": "0:02"
+                },
+                "_": "Imagine"
+              },
+              {
+                "$": {
+                  "start": "0:02",
+                  "end": "0:04"
+                },
+                "_": "there's no heaven"
+              }
+            ]
+          },
+          {
+            "$": {
+              "start": "0:05",
+              "end": "0:09"
+            },
+            "_": "It's easy if you try",
+            "highlight": {
+              "$": {
+                "start": "0:05",
+                "end": "0:09"
+              },
+              "_": "It's easy if you try"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

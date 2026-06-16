@@ -1,0 +1,54 @@
+{
+  "name": "o73409",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "A Person from Acme's catalog",
+    "ids": [
+      "id"
+    ],
+    "localized": [
+      "firstName",
+      "lastName"
+    ],
+    "properties": {
+      "age": {
+        "description": "Age in years",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "firstName": {
+        "description": "First Name",
+        "type": "string"
+      },
+      "id": {
+        "description": "Id",
+        "type": "string"
+      },
+      "lastName": {
+        "description": "Last Name",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "firstName",
+      "lastName"
+    ],
+    "title": "Person",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "id": "A1234567",
+    "firstName": "Emily",
+    "lastName": null,
+    "age": 34
+  },
+  "valid_json": {
+    "id": "A1234567",
+    "firstName": "Emily",
+    "lastName": "Harper",
+    "age": 34
+  },
+  "description": "Emily Harper, age 34, is listed in Acme\u2019s catalog under the identifier A1234567. This entry confirms her personal details for internal records and client reference."
+}

@@ -1,0 +1,39 @@
+{
+  "name": "o7230",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "nameIsType": {
+        "properties": {},
+        "type": "object"
+      },
+      "type": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "type",
+      "nameIsType"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": "Alice",
+    "type": "User",
+    "nameIsType": null
+  },
+  "valid_json": {
+    "name": "Alice",
+    "type": "User",
+    "nameIsType": {
+      "description": "This object represents the type of the name field."
+    }
+  },
+  "description": "The user record identifies Alice as a **User** type. In the accompanying metadata, the field describing the nature of the name attribute is clarified: this object represents the type of the name field."
+}

@@ -19,11 +19,24 @@ def load_config(config_path):
 
 
 def save_results(results, output_path):
-    """Saves evaluation results to a CSV file."""
+    """Saves evaluation results to a CSV file.
+
+    Each result is (eval_name, task_name, score, metrics). Any secondary metric
+    keys (e.g. semantic_fidelity) become extra columns, blank where absent.
+    """
+    metric_keys = []
+    for _, _, _, metrics in results:
+        for key in metrics:
+            if key not in metric_keys:
+                metric_keys.append(key)
+
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["Evaluation Name", "Task Name", "Score"])
-        writer.writerows(results)
+        writer.writerow(["Evaluation Name", "Task Name", "Score"] + metric_keys)
+        for eval_name, task_name, score, metrics in results:
+            row = [eval_name, task_name, score]
+            row += [metrics.get(key, "") for key in metric_keys]
+            writer.writerow(row)
     print(f"Results saved to {output_path}")
 
 

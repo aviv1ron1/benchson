@@ -1,0 +1,32 @@
+{
+  "name": "o21459",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "maxLength": 160,
+        "minLength": 5,
+        "type": "string"
+      },
+      "userId": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "name",
+      "userId"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": null,
+    "userId": 12345
+  },
+  "valid_json": {
+    "name": "Alice Johnson",
+    "userId": 12345
+  },
+  "description": "Dear Team,\n\nPlease join me in welcoming Alice Johnson, who has recently been added to our system. In our user database she is listed under the identifier 12345, which you can use for any account\u2011related queries or access permissions."
+}

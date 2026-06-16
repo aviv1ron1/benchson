@@ -1,0 +1,110 @@
+{
+  "name": "sp_344_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a size violation bad row",
+    "properties": {
+      "failure": {
+        "additionalProperties": false,
+        "description": "Information regarding the size violation",
+        "properties": {
+          "actualSizeBytes": {
+            "description": "Maximum payload size allowed by the current platform",
+            "maximum": 1073741824,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "expectation": {
+            "description": "Expectation which was not met",
+            "maxLength": 256,
+            "type": "string"
+          },
+          "maximumAllowedSizeBytes": {
+            "description": "Maximum payload size allowed by the current platform",
+            "maximum": 1073741824,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "timestamp": {
+            "_format": "date-time",
+            "description": "Timestamp at which the failure occurred",
+            "type": "string"
+          }
+        },
+        "required": [
+          "timestamp",
+          "maximumAllowedSizeBytes",
+          "actualSizeBytes"
+        ],
+        "type": "object"
+      },
+      "payload": {
+        "description": "The truncated payload that resulted in a size violation",
+        "type": "string"
+      },
+      "processor": {
+        "additionalProperties": false,
+        "description": "Information about the piece of software responsible for the creation of this size violation",
+        "properties": {
+          "artifact": {
+            "description": "Artifact responsible for the creation of this size violation",
+            "maxLength": 512,
+            "type": "string"
+          },
+          "version": {
+            "description": "Version of the artifact responsible for the creation of this size violation",
+            "maxLength": 32,
+            "pattern": "^(\\d+\\.\\d+\\.\\d+.*)$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifact",
+          "version"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "failure",
+      "payload",
+      "processor"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "size_violation",
+      "vendor": "com.snowplowanalytics.snowplow.badrows",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "failure": {
+      "timestamp": "2026-06-15T12:34:56Z",
+      "maximumAllowedSizeBytes": 52428800,
+      "actualSizeBytes": 73400320,
+      "expectation": "Payload must not exceed 50 MB limit"
+    },
+    "payload": null,
+    "processor": {
+      "artifact": "com.example.upload.handler",
+      "version": "1.3.0"
+    }
+  },
+  "valid_json": {
+    "failure": {
+      "timestamp": "2026-06-15T12:34:56Z",
+      "maximumAllowedSizeBytes": 52428800,
+      "actualSizeBytes": 73400320,
+      "expectation": "Payload must not exceed 50 MB limit"
+    },
+    "payload": "eyJ1c2VySWQiOiAiMTIzNDUiLCAiZGF0YSI6ICJ0ZXN0IGNvbnRlbnQgc3RyaW5nIHRvIGJlIHRyYW5zbHVnYXRlZC4uLiJ9",
+    "processor": {
+      "artifact": "com.example.upload.handler",
+      "version": "1.3.0"
+    }
+  },
+  "description": "On 2026-06-15T12:34:56Z the upload handler flagged a size violation. The payload, identified by the base\u201164 string **eyJ1c2VySWQiOiAiMTIzNDUiLCAiZGF0YSI6ICJ0ZXN0IGNvbnRlbnQgc3RyaW5nIHRvIGJlIHRyYW5zbHVnYXRlZC4uLiJ9**, exceeded the allowed limit: the actual size was **73\u202f400\u202f320 bytes**, while the platform caps payloads at **52\u202f428\u202f800 bytes**. The expectation that was not met is clearly stated as \u201cPayload must not exceed 50\u202fMB limit\u201d.\n\nThe responsible component was the artifact **com.example.upload.handler**, running version **1.3.0**. This information should be logged for further investigation and to adjust any client\u2011side validation that may be missing."
+}

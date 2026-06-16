@@ -1,0 +1,57 @@
+{
+  "name": "jsinspectrc",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/jsinspectrc.json",
+    "properties": {
+      "identifiers": {
+        "default": false,
+        "description": "A flag indicating whether to limit the search to nodes with matching identifiers",
+        "type": "boolean"
+      },
+      "ignore": {
+        "description": "A regular expression used for matching paths to ignore",
+        "type": "string"
+      },
+      "jsx": {
+        "default": false,
+        "description": "A flag indicating whether to process JSX files",
+        "type": "boolean"
+      },
+      "reporter": {
+        "default": "default",
+        "description": "The name of the reporter to be used",
+        "enum": [
+          "default",
+          "json",
+          "pmd"
+        ],
+        "type": "string"
+      },
+      "suppress": {
+        "default": 100,
+        "description": "The number of lines at which diffs should be suppressed. A value of 0 is off.",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "threshold": {
+        "default": 15,
+        "description": "A threshold determining the smallest subset of nodes to analyze",
+        "type": "integer"
+      }
+    },
+    "title": "JSON schema for JSInspect configuration files",
+    "type": "object"
+  },
+  "description": "Hi team,\n\nI've updated our JSInspect configuration to tighten the duplicate\u2011code analysis. We're now limiting the search to matching identifiers, and the tool will also process JSX files, which should help us catch similarities in our React components. Paths that match the regular expression `node_modules|\\.test\\.js$` are being ignored, so our third\u2011party libraries and test files won\u2019t clutter the results. The output will be generated in JSON format, which integrates nicely with our reporting pipeline. To keep the diff output manageable, the suppression threshold is set to 50 lines, and the analysis will only consider node subsets of at least 20 nodes.\n\nPlease let me know if you notice any issues or need further adjustments.",
+  "reference_json": {
+    "identifiers": true,
+    "ignore": "node_modules|\\.test\\.js$",
+    "jsx": true,
+    "reporter": "json",
+    "suppress": 50,
+    "threshold": 20
+  }
+}

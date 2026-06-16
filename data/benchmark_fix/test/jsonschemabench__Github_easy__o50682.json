@@ -1,0 +1,46 @@
+{
+  "name": "o50682",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Delete a credit card payment method from an account.",
+    "type": "object",
+    "properties": {
+      "customer": {
+        "description": "The platform's customer.",
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 96
+      },
+      "account_identifier": {
+        "description": "The identifier for the platform account to fund.",
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 96,
+        "pattern": "^[\\\\+\\\\w-]{5,96}$"
+      },
+      "cc_token": {
+        "description": "The payment token issued at registration time.",
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 96
+      }
+    },
+    "required": [
+      "customer",
+      "account_identifier",
+      "cc_token"
+    ]
+  },
+  "erroneous_json": {
+    "customer": "john_doe_92",
+    "account_identifier": "+++ww"
+  },
+  "valid_json": {
+    "customer": "john_doe_92",
+    "account_identifier": "+++ww",
+    "cc_token": "tok_12345abc"
+  },
+  "description": "Hello Team,\n\nCould you please remove the credit\u2011card payment method associated with token **tok_12345abc** for our customer **john_doe_92**? The deletion should be applied to the account identified by **+++ww**. Thank you for processing this request promptly."
+}

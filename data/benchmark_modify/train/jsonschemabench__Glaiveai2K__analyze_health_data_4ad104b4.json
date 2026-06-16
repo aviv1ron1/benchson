@@ -1,0 +1,80 @@
+{
+  "name": "analyze_health_data_4ad104b4",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "data": {
+        "items": {
+          "properties": {
+            "measurement": {
+              "description": "The type of measurement",
+              "type": "string"
+            },
+            "timestamp": {
+              "description": "The timestamp of the measurement",
+              "format": "date-time",
+              "type": "string"
+            },
+            "value": {
+              "description": "The value of the measurement",
+              "type": "number"
+            }
+          },
+          "required": [
+            "measurement",
+            "value",
+            "timestamp"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "data"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "data": [
+      {
+        "measurement": "temperature",
+        "timestamp": "2026-06-14T12:34:56Z",
+        "value": 23.5
+      },
+      {
+        "measurement": "humidity",
+        "timestamp": "2026-06-14T12:35:10Z",
+        "value": 58.2
+      },
+      {
+        "measurement": "pressure",
+        "timestamp": "2026-06-14T12:35:30Z",
+        "value": 1013.25
+      }
+    ]
+  },
+  "instructions": "Please remove the last item from the \"data\" list.",
+  "ground_truth": {
+    "data": [
+      {
+        "measurement": "temperature",
+        "timestamp": "2026-06-14T12:34:56Z",
+        "value": 23.5
+      },
+      {
+        "measurement": "humidity",
+        "timestamp": "2026-06-14T12:35:10Z",
+        "value": 58.2
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "data"
+    ],
+    "precise_instruction": "Remove the last item from the \"data\" list."
+  }
+}

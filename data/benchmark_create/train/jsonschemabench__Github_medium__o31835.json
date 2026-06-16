@@ -1,0 +1,170 @@
+{
+  "name": "o31835",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "completedfliptime": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "curflips": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "deadinterval": {
+        "type": "integer"
+      },
+      "disifaces": {
+        "readonly": true,
+        "type": "string"
+      },
+      "enaifaces": {
+        "readonly": true,
+        "type": "string"
+      },
+      "failsafe": {
+        "enum": [
+          "ON",
+          "OFF"
+        ],
+        "type": "string"
+      },
+      "flags": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "hamonifaces": {
+        "readonly": true,
+        "type": "string"
+      },
+      "haprop": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "hastatus": {
+        "enum": [
+          "ENABLED",
+          "STAYSECONDARY",
+          "DISABLED",
+          "STAYPRIMARY"
+        ],
+        "type": "string"
+      },
+      "hasync": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "hellointerval": {
+        "type": "integer"
+      },
+      "id": {
+        "type": "integer"
+      },
+      "ifaces": {
+        "readonly": true,
+        "type": "string"
+      },
+      "inc": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "ipaddress": {
+        "type": "string"
+      },
+      "masterstatetime": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "maxflips": {
+        "type": "integer"
+      },
+      "maxfliptime": {
+        "type": "integer"
+      },
+      "name": {
+        "readonly": true,
+        "type": "string"
+      },
+      "netmask": {
+        "readonly": true,
+        "type": "string"
+      },
+      "network": {
+        "readonly": true,
+        "type": "string"
+      },
+      "pfifaces": {
+        "readonly": true,
+        "type": "string"
+      },
+      "routemonitor": {
+        "readonly": true,
+        "type": "string"
+      },
+      "ssl2": {
+        "enum": [
+          "DOWN",
+          "UP",
+          "NOT PRESENT",
+          "UNKNOWN"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "state": {
+        "enum": [
+          "Primary",
+          "Secondary",
+          "UNKNOWN"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "syncvlan": {
+        "type": "integer"
+      }
+    },
+    "title": "hanode",
+    "type": "object"
+  },
+  "description": "Subject: HA Node Configuration \u2013 node01 (ID\u202f7)\n\nThe high\u2011availability node named **node01** (identifier\u202f7) is currently operating in **Primary** state. Its HA properties are **ENABLED**, with HA status **ENABLED**, HA sync **ENABLED**, and the incremental check **DISABLED**. The fail\u2011safe mechanism is set to **ON**, the SSL\u20112 link reports **UP**, and the route monitor is **enabled**. Network settings place the node at IP address **192.168.1.10** on the **192.168.1.0** network with netmask **255.255.255.0**. The primary interfaces involved are **eth0, eth1, eth2** (combined list), where **eth0** is designated as the disabled interface, **eth1** as the enabled interface, and **eth2** as the monitoring (HAMON) interface. Additionally, **eth3** serves as the PF interface.\n\nOperational timings include a hello interval of **10\u202fseconds**, a dead interval of **30\u202fseconds**, and a maximum flip time limit of **300\u202fseconds**; the most recent flip completed in **120\u202fseconds**. To date the node has performed **3** flips out of a permitted maximum of **5** flips. The sync VLAN is configured to **100**, and the master status timestamp records **1623456789**. The system flags register a value of **5**.",
+  "reference_json": {
+    "completedfliptime": 120,
+    "curflips": 3,
+    "deadinterval": 30,
+    "disifaces": "eth0",
+    "enaifaces": "eth1",
+    "failsafe": "ON",
+    "flags": 5,
+    "hamonifaces": "eth2",
+    "haprop": "ENABLED",
+    "hastatus": "ENABLED",
+    "hasync": "ENABLED",
+    "hellointerval": 10,
+    "id": 7,
+    "ifaces": "eth0,eth1,eth2",
+    "inc": "DISABLED",
+    "ipaddress": "192.168.1.10",
+    "masterstatetime": 1623456789,
+    "maxflips": 5,
+    "maxfliptime": 300,
+    "name": "node01",
+    "netmask": "255.255.255.0",
+    "network": "192.168.1.0",
+    "pfifaces": "eth3",
+    "routemonitor": "enabled",
+    "ssl2": "UP",
+    "state": "Primary",
+    "syncvlan": 100
+  }
+}

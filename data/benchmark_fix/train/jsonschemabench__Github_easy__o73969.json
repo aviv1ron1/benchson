@@ -1,0 +1,44 @@
+{
+  "name": "o73969",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "http://schlothauer.de/schemas/simple_gis_object.json",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "GIS_object",
+    "description": "A GIS object is an application defined type that owns GIS coordinates",
+    "type": "object",
+    "properties": {
+      "gis": {
+        "description": "Definition of an object that owns GIS coordinates. At minimum an object of this type owns one of the props",
+        "type": "object",
+        "properties": {
+          "center": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "required": [
+      "gis"
+    ],
+    "version": 1
+  },
+  "erroneous_json": {
+    "gis": null
+  },
+  "valid_json": {
+    "gis": {
+      "center": "POINT (13.4050 52.5200)",
+      "area": "POLYGON ((13.4000 52.5000, 13.5000 52.5000, 13.5000 52.6000, 13.4000 52.6000, 13.4000 52.5000))",
+      "route": "LINESTRING (13.4000 52.5000, 13.4500 52.5500, 13.5000 52.6000)"
+    }
+  },
+  "description": "Dear Team,\n\nPlease find below the GIS definition for the new study area in Berlin. The central reference point is defined as **POINT (13.4050 52.5200)**. The full extent of the area is captured by the polygon **POLYGON ((13.4000 52.5000, 13.5000 52.5000, 13.5000 52.6000, 13.4000 52.6000, 13.4000 52.5000))**, which outlines the boundaries we will be analysing. Additionally, the proposed travel corridor within this zone follows the route **LINESTRING (13.4000 52.5000, 13.4500 52.5500, 13.5000 52.6000)**.\n\nKindly incorporate these coordinates into your spatial models and let me know if any adjustments are required."
+}

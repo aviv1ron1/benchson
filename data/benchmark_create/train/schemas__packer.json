@@ -1,0 +1,430 @@
+{
+  "name": "packer",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/packer.json",
+    "definitions": {
+      "builder-type": {
+        "enum": [
+          "alicloud-ecs",
+          "amazon-ebs",
+          "azure-arm",
+          "azure-chroot",
+          "cloudstack",
+          "custom",
+          "digitalocean",
+          "docker",
+          "file",
+          "googlecompute",
+          "hcloud",
+          "hyperone",
+          "hyperv-iso",
+          "hyperv-vmcx",
+          "jdcloud",
+          "linode",
+          "lxc",
+          "lxd",
+          "ncloud",
+          "null",
+          "ocs-chroot",
+          "oneandone",
+          "openstack",
+          "oracle-classic",
+          "oracle-oci",
+          "osc-bsu",
+          "osc-bsusurrogate",
+          "parallels-iso",
+          "parallels-pvm",
+          "profitbricks",
+          "proxmox",
+          "qemu",
+          "scaleway",
+          "tencentcloud-cvm",
+          "triton",
+          "ucloud-uhost",
+          "vagrant",
+          "virtualbox-iso",
+          "virtualbox-ovf",
+          "virtualbox-vm",
+          "vmware-iso",
+          "vmware-vmx",
+          "vsphere-clone",
+          "vsphere-iso",
+          "yandex"
+        ]
+      },
+      "builder-vagrant": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "vagrant"
+          },
+          "add_cacert": {
+            "type": "string"
+          },
+          "add_capath": {
+            "type": "string"
+          },
+          "add_clean": {
+            "type": "boolean"
+          },
+          "add_force": {
+            "type": "boolean"
+          },
+          "add_insecure": {
+            "type": "boolean"
+          },
+          "box_name": {
+            "type": "string"
+          },
+          "box_version": {
+            "type": "string"
+          },
+          "checksum": {
+            "type": "string"
+          },
+          "checksum_type": {
+            "type": "string"
+          },
+          "global_id": {
+            "type": "string"
+          },
+          "output_dir": {
+            "type": "string"
+          },
+          "output_vagrantfile": {
+            "type": "string"
+          },
+          "package_include": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "skip_add": {
+            "type": "boolean"
+          },
+          "source_path": {
+            "type": "string"
+          },
+          "teardown_method": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          }
+        }
+      },
+      "builder-virtualbox-iso": {
+        "type": "object",
+        "properties": {
+          "bundle_iso": {
+            "type": "boolean"
+          },
+          "communicator": {
+            "type": "string"
+          },
+          "disk_size": {
+            "type": "integer"
+          },
+          "export_opts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "format": {
+            "type": "string"
+          },
+          "guest_additions_interface": {
+            "type": "string"
+          },
+          "guest_additions_mode": {
+            "type": "string"
+          },
+          "guest_additions_path": {
+            "type": "string"
+          },
+          "guest_additions_sha256": {
+            "type": "string"
+          },
+          "guest_additions_url": {
+            "type": "string"
+          },
+          "guest_os_type": {
+            "type": "string"
+          },
+          "hard_drive_interface": {
+            "type": "string"
+          },
+          "hard_drive_nonrotational": {
+            "type": "boolean"
+          },
+          "hard_driver_discard": {
+            "type": "boolean"
+          },
+          "headless": {
+            "type": "boolean"
+          },
+          "http_bind_address": {
+            "type": "integer"
+          },
+          "http_directory": {
+            "type": "string"
+          },
+          "http_port_max": {
+            "type": "integer"
+          },
+          "http_port_min": {
+            "type": "integer"
+          },
+          "iso_checksum": {
+            "type": "string"
+          },
+          "iso_interface": {
+            "type": "string"
+          },
+          "iso_target_extension": {
+            "type": "string"
+          },
+          "iso_target_path": {
+            "type": "string"
+          },
+          "iso_url": {
+            "type": "string"
+          },
+          "iso_urls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "keep_registered": {
+            "type": "boolean"
+          },
+          "nvme_port_count": {
+            "type": "integer"
+          },
+          "output_directory": {
+            "type": "string"
+          },
+          "output_filename": {
+            "type": "string"
+          },
+          "sata_port_count": {
+            "type": "integer"
+          },
+          "shutdown_command": {
+            "type": "string"
+          },
+          "skip_export": {
+            "type": "boolean"
+          },
+          "type": {
+            "const": "virtualbox-iso"
+          },
+          "virtualbox_version_file": {
+            "type": "string"
+          },
+          "vm_name": {
+            "type": "string"
+          }
+        }
+      },
+      "provisioner-ansible-local": {
+        "type": "object",
+        "properties": {
+          "playbook_file": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "playbook_file"
+        ]
+      },
+      "provisioner-shell": {
+        "type": "object",
+        "properties": {
+          "inline": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "provisioner": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "shell",
+              "ansible-local"
+            ]
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/definitions/provisioner-ansible-local"
+          },
+          {
+            "$ref": "#/definitions/provisioner-shell"
+          }
+        ],
+        "required": [
+          "type"
+        ]
+      },
+      "post-processor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "compress",
+              "upload"
+            ]
+          },
+          "endpoint": {
+            "type": "string"
+          },
+          "keep_input_artifact": {
+            "type": "boolean"
+          },
+          "only": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "tar.gz"
+            ]
+          },
+          "compression_level": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "properties": {
+      "min_packer_version": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "variables": {
+        "type": "object",
+        "patternProperties": {
+          "[a-zA-Z0-9_-]": {
+            "type": "string"
+          }
+        }
+      },
+      "builders": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/builder-vagrant"
+            },
+            {
+              "$ref": "#/definitions/builder-virtualbox-iso"
+            }
+          ]
+        }
+      },
+      "provisioners": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/provisioner"
+        }
+      },
+      "post-processors": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "vagrant",
+                "compress"
+              ]
+            },
+            {
+              "$ref": "#/definitions/post-processor"
+            }
+          ]
+        }
+      }
+    },
+    "required": [
+      "builders"
+    ],
+    "type": "object"
+  },
+  "description": "The Packer template (minimum version\u202f1.9.0) is described as an \u201cExample Packer template for Ubuntu VM using Vagrant and VirtualBox.\u201d It defines two variables \u2013\u202faws_region set to **us-west-2** and\u202fssh_username set to **ubuntu** \u2013 which can be referenced elsewhere in the build.  \n\nThe first builder is of type **vagrant** and uses the box **hashicorp/bionic64** at version **20220701.0.0**. It writes its output to the directory **output-vagrant**, does not skip adding the box (skip_add\u202f=\u202ffalse), and builds from the source path **src/** using the template file **Vagrantfile.template**. The second builder is a **virtualbox-iso** builder targeting an Ubuntu\u202f64\u2011bit guest (guest_os_type\u202f=\u202fUbuntu_64). It downloads the ISO from **http://releases.ubuntu.com/20.04/ubuntu-20.04-live-server-amd64.iso** and verifies it with the checksum **sha256:93b8958e3d12810e8f8fdfd9425ce3e74014573b7e9ef6147a7cacc9d0f248e5**. The virtual disk is sized at **40960\u202fMB**, the VM runs headless, is named **ubuntu20-virtualbox**, and its files are placed in **output-virtualbox**. The VM will be shut down with the command `echo 'packer' | sudo -S shutdown -P now`, and an HTTP server for provisioning files is served from the **http** directory.  \n\nA single shell provisioner runs two inline commands: `sudo apt-get update` followed by `sudo apt-get install -y nginx`. After the build, two post\u2011processors are applied: first a built\u2011in **compress** step, then an upload step named **s3-upload** that sends the artifact to **s3://my-bucket/packer-images/**, keeps the input artifact, applies only to the **virtualbox-iso** builder, packages the output as a **tar.gz** archive, and uses a compression level of **9**.",
+  "reference_json": {
+    "min_packer_version": "1.9.0",
+    "description": "Example Packer template for Ubuntu VM using Vagrant and VirtualBox.",
+    "variables": {
+      "aws_region": "us-west-2",
+      "ssh_username": "ubuntu"
+    },
+    "builders": [
+      {
+        "type": "vagrant",
+        "box_name": "hashicorp/bionic64",
+        "box_version": "20220701.0.0",
+        "output_dir": "output-vagrant",
+        "skip_add": false,
+        "source_path": "src/",
+        "template": "Vagrantfile.template"
+      },
+      {
+        "type": "virtualbox-iso",
+        "guest_os_type": "Ubuntu_64",
+        "iso_url": "http://releases.ubuntu.com/20.04/ubuntu-20.04-live-server-amd64.iso",
+        "iso_checksum": "sha256:93b8958e3d12810e8f8fdfd9425ce3e74014573b7e9ef6147a7cacc9d0f248e5",
+        "disk_size": 40960,
+        "headless": true,
+        "vm_name": "ubuntu20-virtualbox",
+        "output_directory": "output-virtualbox",
+        "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+        "http_directory": "http"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+          "sudo apt-get update",
+          "sudo apt-get install -y nginx"
+        ]
+      }
+    ],
+    "post-processors": [
+      "compress",
+      {
+        "type": "upload",
+        "name": "s3-upload",
+        "endpoint": "s3://my-bucket/packer-images/",
+        "keep_input_artifact": true,
+        "only": [
+          "virtualbox-iso"
+        ],
+        "format": "tar.gz",
+        "compression_level": 9
+      }
+    ]
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "name": "o9511",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "description": "Retrieve details on all exports (e.g. export templates) that a user has access to across all of their identities. The **id** returned for each export is the value that needs to be provided in order to run that export.",
+    "links": [
+      {
+        "description": "The response is the collection of exports belonging to any identity in the current user\u2019s WebAdMIT profile, including the List that each export is tied to.",
+        "href": "/api/v1/exports",
+        "http_header": {
+          "x-api-key": "0123456789abcdef0123456789abcdef"
+        },
+        "method": "GET",
+        "rel": "instances",
+        "targetSchema": {
+          "properties": {
+            "exports": {
+              "items": {
+                "properties": {
+                  "format": {
+                    "description": "Format of the file.",
+                    "enum": [
+                      "Comma-Separated Values",
+                      "Microsoft Excel",
+                      "Fixed Width Report",
+                      "Comma-Separated Values in Multiple Files"
+                    ],
+                    "example": "Comma-Separated Values",
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "Unique identifier of this export.",
+                    "example": 29897,
+                    "type": "integer"
+                  },
+                  "list_type": {
+                    "description": "Type of the list used for this export.",
+                    "enum": [
+                      "all",
+                      "clipboard",
+                      "search"
+                    ],
+                    "example": "all",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "mime_type": {
+                    "description": "MIME type of the file.",
+                    "enum": [
+                      "text/csv;charset=iso-8859-1",
+                      "application/vnd.ms-excel",
+                      "text/html",
+                      "text/plain",
+                      "application/zip"
+                    ],
+                    "example": "text/csv;charset=iso-8859-1",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Human-readable name for this export.",
+                    "example": "Nightly Banner Export",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "list_type",
+                  "format",
+                  "mime_type"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "href": {
+              "description": "Hypertext reference to this resource.",
+              "example": "/api/v1/exports",
+              "type": "string"
+            }
+          }
+        },
+        "title": "List"
+      }
+    ],
+    "properties": {
+      "exports": {
+        "items": {
+          "properties": {
+            "format": {
+              "description": "Format of the file.",
+              "enum": [
+                "Comma-Separated Values",
+                "Microsoft Excel",
+                "Fixed Width Report",
+                "Comma-Separated Values in Multiple Files"
+              ],
+              "example": "Comma-Separated Values",
+              "type": "string"
+            },
+            "id": {
+              "description": "Unique identifier of this export.",
+              "example": 29897,
+              "type": "integer"
+            },
+            "list_type": {
+              "description": "Type of the list used for this export.",
+              "enum": [
+                "all",
+                "clipboard",
+                "search"
+              ],
+              "example": "all",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mime_type": {
+              "description": "MIME type of the file.",
+              "enum": [
+                "text/csv;charset=iso-8859-1",
+                "application/vnd.ms-excel",
+                "text/html",
+                "text/plain",
+                "application/zip"
+              ],
+              "example": "text/csv;charset=iso-8859-1",
+              "type": "string"
+            },
+            "name": {
+              "description": "Human-readable name for this export.",
+              "example": "Nightly Banner Export",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "list_type",
+            "format",
+            "mime_type"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "href": {
+        "description": "Hypertext reference to this resource.",
+        "example": "/api/v1/exports",
+        "title": "href",
+        "type": "string"
+      }
+    },
+    "stability": "production",
+    "strictProperties": true,
+    "title": "Export/Report",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "exports": [
+      {
+        "id": 10234,
+        "name": "Daily Customer List Export",
+        "list_type": "search",
+        "format": "Comma-Separated Values",
+        "mime_type": "text/csv;charset=iso-8859-1"
+      },
+      {
+        "id": 20567,
+        "name": "Weekly Sales Report",
+        "list_type": "all",
+        "format": "Microsoft Excel",
+        "mime_type": "application/vnd.ms-excel"
+      },
+      {
+        "id": 30987,
+        "name": "Archived Logs Archive",
+        "list_type": "clipboard",
+        "format": "Comma-Separated Values in Multiple Files",
+        "mime_type": "application/zip"
+      }
+    ],
+    "href": null
+  },
+  "valid_json": {
+    "exports": [
+      {
+        "id": 10234,
+        "name": "Daily Customer List Export",
+        "list_type": "search",
+        "format": "Comma-Separated Values",
+        "mime_type": "text/csv;charset=iso-8859-1"
+      },
+      {
+        "id": 20567,
+        "name": "Weekly Sales Report",
+        "list_type": "all",
+        "format": "Microsoft Excel",
+        "mime_type": "application/vnd.ms-excel"
+      },
+      {
+        "id": 30987,
+        "name": "Archived Logs Archive",
+        "list_type": "clipboard",
+        "format": "Comma-Separated Values in Multiple Files",
+        "mime_type": "application/zip"
+      }
+    ],
+    "href": "/api/v1/exports"
+  },
+  "description": "Below is the current inventory of export templates you can run from the\u202f/api/v1/exports\u202fendpoint.  \n\n- **Daily Customer List Export** \u2013 ID\u202f10234 \u2013 generated from a **search**\u2011type list. The export is produced in **Comma\u2011Separated Values** format with a MIME type of\u202ftext/csv;charset=iso-8859-1.  \n- **Weekly Sales Report** \u2013 ID\u202f20567 \u2013 based on an **all**\u2011type list. This report is delivered as a **Microsoft Excel** file, MIME type\u202fapplication/vnd.ms-excel.  \n- **Archived Logs Archive** \u2013 ID\u202f30987 \u2013 created from a **clipboard**\u2011type list. It outputs **Comma\u2011Separated Values in Multiple Files**, packaged as a ZIP archive with MIME type\u202fapplication/zip."
+}

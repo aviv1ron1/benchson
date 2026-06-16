@@ -1,0 +1,68 @@
+{
+  "name": "create_invoice_9a37c78e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "client_name": {
+        "description": "The name of the client",
+        "type": "string"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "description": {
+              "description": "The description of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price per unit of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "description",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "client_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "client_name": "Acme Corporation",
+    "items": null
+  },
+  "valid_json": {
+    "client_name": "Acme Corporation",
+    "items": [
+      {
+        "description": "Premium Office Chair",
+        "price": 199.99,
+        "quantity": 15
+      },
+      {
+        "description": "Adjustable Standing Desk",
+        "price": 429.5,
+        "quantity": 7
+      },
+      {
+        "description": "Ergonomic Keyboard",
+        "price": 89.0,
+        "quantity": 20
+      }
+    ]
+  },
+  "description": "Dear Acme Corporation,\n\nThank you for your recent order. Below is a summary of the items you requested:\u202f15 units of Premium Office Chair at a unit price of $199.99,\u202f7 units of Adjustable Standing Desk at $429.5 each, and\u202f20 units of Ergonomic Keyboard priced at $89.0 per unit. If you have any questions or need further assistance, please let us know."
+}

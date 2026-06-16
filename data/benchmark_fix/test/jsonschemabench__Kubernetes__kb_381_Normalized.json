@@ -1,0 +1,46 @@
+{
+  "name": "kb_381_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.",
+    "properties": {
+      "endpoints": {
+        "description": "EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "path": {
+        "description": "Path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "readOnly": {
+        "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "endpoints",
+      "path"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "endpoints": "gluster-cluster",
+    "readOnly": false
+  },
+  "valid_json": {
+    "endpoints": "gluster-cluster",
+    "path": "/data/vol1",
+    "readOnly": false
+  },
+  "description": "The pod is configured to use a GlusterFS volume that connects through the endpoint named **gluster\u2011cluster**. The volume\u2019s data is accessed at the path **/data/vol1** on the GlusterFS server. Since the mount is intended for read\u2011write access, the `readOnly` flag is set to **false**, allowing the application inside the pod to modify files as needed."
+}

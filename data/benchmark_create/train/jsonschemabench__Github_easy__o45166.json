@@ -1,0 +1,62 @@
+{
+  "name": "o45166",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        },
+        "icon": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "order",
+        "icon"
+      ]
+    },
+    "properties": {},
+    "additionalProperties": false
+  },
+  "description": "Below is a concise overview of the core modules currently deployed in our platform, along with their identifiers, display order, and associated icon classes.\n\n- Module\u202f1 (Alpha) \u2013 ID\u202f1, order\u202f10, icon\u202ffa-user-shield: Primary module handling user authentication and session management.  \n- Module\u202f2 (Beta) \u2013 ID\u202f2, order\u202f20, icon\u202ffa-chart-line: Analytics service aggregating real-time metrics and generating reports.  \n- Module\u202f3 (Gamma) \u2013 ID\u202f3, order\u202f30, icon\u202ffa-bell: Notification system delivering email and push alerts to end users.",
+  "reference_json": [
+    {
+      "id": 1,
+      "name": "Alpha",
+      "description": "Primary module handling user authentication and session management.",
+      "order": 10,
+      "icon": "fa-user-shield"
+    },
+    {
+      "id": 2,
+      "name": "Beta",
+      "description": "Analytics service aggregating real-time metrics and generating reports.",
+      "order": 20,
+      "icon": "fa-chart-line"
+    },
+    {
+      "id": 3,
+      "name": "Gamma",
+      "description": "Notification system delivering email and push alerts to end users.",
+      "order": 30,
+      "icon": "fa-bell"
+    }
+  ]
+}

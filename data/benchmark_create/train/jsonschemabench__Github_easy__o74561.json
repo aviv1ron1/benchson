@@ -1,0 +1,75 @@
+{
+  "name": "o74561",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Wangscape terrain hypergraph schema",
+    "description": "Specifies the clique memberships of each terrain in a Wangscape configuration.",
+    "patternProperties": {
+      "^[0-9a-zA-Z_-]+$": {
+        "title": "Clique list schema",
+        "description": "Lists all the cliques which contain a certain terrain.",
+        "type": "array",
+        "items": {
+          "title": "Clique schema",
+          "description": "Specifies a terrain clique as a list of terrain IDs.",
+          "type": "array",
+          "items": {
+            "title": "Terrain ID schema",
+            "description": "Specifies a terrain type.",
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]+$"
+          },
+          "minItems": 1
+        }
+      }
+    }
+  },
+  "description": "According to the current Wangscape configuration, the terrain\u202fgrassland participates in two cliques: one pairing it with forest, and a three\u2011terrain clique that joins grassland with hill and river. The desert terrain is linked in a duo with mountain and also forms a desert\u2011oasis pair. Water\u2011related tiles are grouped as a water\u2011river pair and a larger water\u2011lake\u2011swamp triple. Finally, the high\u2011altitude terrain mountain_peak appears in two cliques, one with snow and another with rocky.",
+  "reference_json": {
+    "grassland": [
+      [
+        "grassland",
+        "forest"
+      ],
+      [
+        "grassland",
+        "hill",
+        "river"
+      ]
+    ],
+    "desert": [
+      [
+        "desert",
+        "mountain"
+      ],
+      [
+        "desert",
+        "oasis"
+      ]
+    ],
+    "water": [
+      [
+        "water",
+        "river"
+      ],
+      [
+        "water",
+        "lake",
+        "swamp"
+      ]
+    ],
+    "mountain_peak": [
+      [
+        "mountain_peak",
+        "snow"
+      ],
+      [
+        "mountain_peak",
+        "rocky"
+      ]
+    ]
+  }
+}

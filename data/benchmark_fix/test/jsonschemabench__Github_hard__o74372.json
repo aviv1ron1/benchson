@@ -1,0 +1,443 @@
+{
+  "name": "o74372",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "patternProperties": {
+      "^[a-zA-Z0-9._-]+$": {
+        "$ref": "#/definitions/service"
+      }
+    },
+    "definitions": {
+      "service": {
+        "type": "object",
+        "properties": {
+          "build": {
+            "type": "string"
+          },
+          "cap_add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "cap_drop": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "command": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "container_name": {
+            "type": "string"
+          },
+          "cpu_shares": {
+            "type": "string"
+          },
+          "cpuset": {
+            "type": "string"
+          },
+          "detach": {
+            "type": "boolean"
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "dns": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dns_search": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dockerfile": {
+            "type": "string"
+          },
+          "domainname": {
+            "type": "string"
+          },
+          "entrypoint": {
+            "type": "string"
+          },
+          "env_file": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "environment": {
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "_uniqueItems": true
+              }
+            ]
+          },
+          "expose": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "extends": {
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "service"
+            ],
+            "additionalProperties": false
+          },
+          "extra_hosts": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "external_links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "labels": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "log_driver": {
+            "type": "string"
+          },
+          "log_opt": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "address"
+            ]
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "mem_limit": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "memswap_limit": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "net": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "string"
+          },
+          "ports": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "ports"
+                },
+                {
+                  "type": "number",
+                  "format": "ports"
+                }
+              ]
+            },
+            "_uniqueItems": true
+          },
+          "privileged": {
+            "type": "string"
+          },
+          "read_only": {
+            "type": "boolean"
+          },
+          "restart": {
+            "type": "string"
+          },
+          "security_opt": {
+            "type": "string"
+          },
+          "stdin_open": {
+            "type": "string"
+          },
+          "tty": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "volumes_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "working_dir": {
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "build"
+            ],
+            "not": {
+              "required": [
+                "image"
+              ]
+            }
+          },
+          {
+            "required": [
+              "image"
+            ],
+            "not": {
+              "required": [
+                "build"
+              ]
+            }
+          },
+          {
+            "required": [
+              "extends"
+            ],
+            "not": {
+              "required": [
+                "build",
+                "image"
+              ]
+            }
+          }
+        ],
+        "dependencies": {
+          "memswap_limit": [
+            "mem_limit"
+          ]
+        },
+        "additionalProperties": false
+      },
+      "string_or_list": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/definitions/list_of_strings"
+          }
+        ]
+      },
+      "list_of_strings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true
+      },
+      "list_or_dict": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          {
+            "type": "object"
+          }
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "web_container",
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "volumes": [
+        "/var/www/html:/usr/share/nginx/html:ro"
+      ],
+      "environment": {
+        "NODE_ENV": "production",
+        "API_URL": "http://api.local"
+      },
+      "restart": "always",
+      "labels": {
+        "com.example.description": "Web server"
+      },
+      "net": "frontend",
+      "dns": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "extra_hosts": [
+        "host1:192.168.1.10",
+        "host2:192.168.1.11"
+      ]
+    },
+    "db": {
+      "build": "./db",
+      "dockerfile": "Dockerfile.mysql",
+      "container_name": "db_container",
+      "environment": [
+        "MYSQL_ROOT_PASSWORD=secret",
+        "MYSQL_DATABASE=appdb"
+      ],
+      "volumes": [
+        "/var/lib/mysql:/var/lib/mysql"
+      ],
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "restart": "on-failure:5",
+      "log_driver": "json-file",
+      "log_opt": {
+        "address": "/var/log/docker.log"
+      },
+      "ports": [
+        3306
+      ]
+    },
+    "proxy": {
+      "extends": {
+        "service": "web",
+        "file": "docker-compose.yml"
+      },
+      "container_name": "proxy_container",
+      "ports": [
+        "8080:80"
+      ],
+      "environment": {
+        "PROXY_MODE": "transparent"
+      }
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "web_container",
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "volumes": [
+        "/var/www/html:/usr/share/nginx/html:ro"
+      ],
+      "environment": {
+        "NODE_ENV": "production",
+        "API_URL": "http://api.local"
+      },
+      "restart": "always",
+      "labels": {
+        "com.example.description": "Web server"
+      },
+      "net": "frontend",
+      "dns": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ],
+      "extra_hosts": [
+        "host1:192.168.1.10",
+        "host2:192.168.1.11"
+      ]
+    },
+    "db": {
+      "build": "./db",
+      "dockerfile": "Dockerfile.mysql",
+      "container_name": "db_container",
+      "environment": [
+        "MYSQL_ROOT_PASSWORD=secret",
+        "MYSQL_DATABASE=appdb"
+      ],
+      "volumes": [
+        "/var/lib/mysql:/var/lib/mysql"
+      ],
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "restart": "on-failure:5",
+      "log_driver": "json-file",
+      "log_opt": {
+        "address": "/var/log/docker.log"
+      },
+      "ports": [
+        3306
+      ]
+    },
+    "proxy": {
+      "extends": {
+        "service": "web",
+        "file": "docker-compose.yml"
+      },
+      "container_name": "proxy_container",
+      "ports": [
+        "8080:80"
+      ],
+      "environment": {
+        "PROXY_MODE": "transparent"
+      }
+    }
+  },
+  "description": "The deployment consists of three containers. The **web** container, named **web_container**, runs the **nginx:latest** image on the **frontend** network. It exposes HTTP and HTTPS by mapping host ports\u202f80\u219280 and\u202f443\u2192443, and mounts the site source with a read\u2011only bind\u202f`/var/www/html:/usr/share/nginx/html:ro`. Its runtime environment sets `NODE_ENV=production` and `API_URL=http://api.local`. The service is configured to always restart, carries the label `com.example.description=Web server`, and uses Google\u2019s DNS servers\u202f8.8.8.8 and\u202f8.8.4.4. For internal resolution it adds two extra hosts:\u202f`host1`\u202f\u2192\u202f192.168.1.10 and\u202f`host2`\u202f\u2192\u202f192.168.1.11.\n\nThe **db** service is built from the local directory **./db** using **Dockerfile.mysql**, and the resulting container is called **db_container**. It receives the environment variables `MYSQL_ROOT_PASSWORD=secret` and `MYSQL_DATABASE=appdb`, and persists data with a volume mapping `/var/lib/mysql:/var/lib/mysql`. Memory is limited to **512\u202fm**, with a swap ceiling of **1\u202fg**, and the container will restart on failure up to five times (`on-failure:5`). Logging is handled by the **json\u2011file** driver, writing to `/var/log/docker.log`, and the MySQL port\u202f3306 is exposed directly.\n\nFinally, the **proxy** service extends the **web** definition from the same `docker-compose.yml` file. It runs in a container named **proxy_container**, forwards host port\u202f8080 to the web service\u2019s port\u202f80, and operates in transparent mode via the environment variable `PROXY_MODE=transparent`."
+}

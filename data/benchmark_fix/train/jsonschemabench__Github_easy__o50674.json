@@ -1,0 +1,61 @@
+{
+  "name": "o50674",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "id": "http://jmather.com/scope.js/counter-schema#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema for a counter type",
+    "type": "object",
+    "required": [
+      "type"
+    ],
+    "properties": {
+      "type": {
+        "type": "string",
+        "oneOf": [
+          {
+            "format": "counter"
+          }
+        ]
+      },
+      "min": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "default": null
+      },
+      "max": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "default": null
+      },
+      "step": {
+        "type": "integer",
+        "default": 1
+      },
+      "default": {
+        "type": "integer",
+        "default": 0
+      }
+    }
+  },
+  "erroneous_json": {
+    "type": "counter",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": "not-a-number"
+  },
+  "valid_json": {
+    "type": "counter",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": 10
+  },
+  "description": "The setting defines a numeric counter that operates within a range of\u202f0\u202fto\u202f100. Each increment or decrement moves the value by a step of\u202f5, and the counter is initialized at\u202f10 by default. This configuration uses the standard counter type."
+}

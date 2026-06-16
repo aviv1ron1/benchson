@@ -1,0 +1,99 @@
+{
+  "name": "generate_invoice_5e32c363",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "client_details": {
+        "properties": {
+          "email": {
+            "description": "The email address of the client",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the client",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ],
+        "type": "object"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "The name of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "client_details",
+      "items"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "items": [
+      {
+        "name": "Wireless Mouse",
+        "price": 29.99,
+        "quantity": 3
+      },
+      {
+        "name": "Mechanical Keyboard",
+        "price": 89.5,
+        "quantity": 1
+      },
+      {
+        "name": "USB-C Hub",
+        "price": 45.0,
+        "quantity": 2
+      }
+    ]
+  },
+  "valid_json": {
+    "client_details": {
+      "name": "Emily Rivera",
+      "email": "emily.rivera@example.com"
+    },
+    "items": [
+      {
+        "name": "Wireless Mouse",
+        "price": 29.99,
+        "quantity": 3
+      },
+      {
+        "name": "Mechanical Keyboard",
+        "price": 89.5,
+        "quantity": 1
+      },
+      {
+        "name": "USB-C Hub",
+        "price": 45.0,
+        "quantity": 2
+      }
+    ]
+  },
+  "description": "Dear Emily Rivera (emily.rivera@example.com),\n\nThank you for your recent purchase. Here is a summary of the items you ordered: 3 units of Wireless Mouse at $29.99 each, 1 unit of Mechanical Keyboard at $89.50 each, and 2 units of USB\u2011C Hub at $45.00 each. If you have any questions about your order, please feel free to reach out."
+}

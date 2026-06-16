@@ -1,0 +1,443 @@
+{
+  "name": "o84327",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "users",
+      "releases",
+      "companies",
+      "repos",
+      "project_types"
+    ],
+    "properties": {
+      "users": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "launchpad_id": {
+              "type": "string",
+              "pattern": "^[a-z\\d\\.-]+$"
+            },
+            "gerrit_id": {
+              "type": "string"
+            },
+            "user_name": {
+              "type": "string"
+            },
+            "emails": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z\\d_\\.-]+@([a-z\\d\\.-]+\\.)+[a-z]+$"
+              },
+              "minItems": 1
+            },
+            "companies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "company_name": {
+                    "type": "string"
+                  },
+                  "end_date": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^20\\d{2}-\\w{3}-[0-3]\\d$"
+                  }
+                },
+                "required": [
+                  "company_name",
+                  "end_date"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "launchpad_id",
+            "user_name",
+            "emails"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "releases": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "release_name": {
+              "type": "string"
+            },
+            "end_date": {
+              "type": "string",
+              "pattern": "^20\\d{2}-\\w{3}-[0-3]\\d$"
+            }
+          },
+          "required": [
+            "release_name",
+            "end_date"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "repos": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "uri": {
+              "type": "string"
+            },
+            "organization": {
+              "type": "string"
+            },
+            "module": {
+              "type": "string"
+            },
+            "releases": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "tag_from": {
+                    "type": "string"
+                  },
+                  "tag_to": {
+                    "type": "string"
+                  },
+                  "release_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "tag_from",
+                  "tag_to",
+                  "release_name"
+                ]
+              }
+            },
+            "aliases": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "uri",
+            "module",
+            "organization"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "companies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "company_name": {
+              "type": "string"
+            },
+            "domains": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z\\d\\.-]*$"
+              }
+            },
+            "aliases": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "company_name",
+            "domains"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "project_sources": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "organization": {
+              "type": "string"
+            },
+            "module_group_name": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "exclude": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "organization"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "module_groups": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "module_group_name": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "modules": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "module_group_name",
+            "modules"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "mail_lists": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "member_lists": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "voting_date": {
+        "type": "string"
+      },
+      "project_types": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[\\w-]+$"
+            },
+            "child": {
+              "type": "boolean"
+            },
+            "title": {
+              "type": "string"
+            },
+            "modules": {
+              "type": [
+                "array"
+              ],
+              "items": {
+                "type": "string",
+                "pattern": "^[\\w-]+$"
+              }
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "modules"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "releases": [
+      {
+        "release_name": "v1.0",
+        "end_date": "2025-Jan-15"
+      },
+      {
+        "release_name": "v2.0",
+        "end_date": "2026-Feb-28"
+      }
+    ],
+    "companies": [
+      {
+        "company_name": "OpenStack",
+        "domains": [
+          "openstack.org",
+          "openstack.com"
+        ],
+        "aliases": [
+          "OS"
+        ]
+      },
+      {
+        "company_name": "Canonical",
+        "domains": [
+          "canonical.com"
+        ],
+        "aliases": []
+      }
+    ],
+    "repos": [
+      {
+        "uri": "https://github.com/openstack/nova",
+        "organization": "openstack",
+        "module": "nova",
+        "releases": [
+          {
+            "tag_from": "13.0.0",
+            "tag_to": "14.0.0",
+            "release_name": "v1.0"
+          }
+        ],
+        "aliases": [
+          "nova-api"
+        ]
+      }
+    ],
+    "project_types": [
+      {
+        "id": "core",
+        "title": "Core Services",
+        "child": false,
+        "modules": [
+          "nova",
+          "neutron",
+          "cinder"
+        ]
+      },
+      {
+        "id": "networking",
+        "title": "Networking Services",
+        "child": true,
+        "modules": [
+          "neutron",
+          "neutron-fwaas"
+        ]
+      }
+    ]
+  },
+  "valid_json": {
+    "users": [
+      {
+        "launchpad_id": "alice.smith",
+        "gerrit_id": "asmith",
+        "user_name": "Alice Smith",
+        "emails": [
+          "alice.smith@example.com"
+        ],
+        "companies": [
+          {
+            "company_name": "OpenStack",
+            "end_date": "2024-Dec-31"
+          }
+        ]
+      },
+      {
+        "launchpad_id": "bob-jones",
+        "user_name": "Bob Jones",
+        "emails": [
+          "bob_jones@openstack.org"
+        ],
+        "companies": [
+          {
+            "company_name": "Canonical",
+            "end_date": null
+          }
+        ]
+      }
+    ],
+    "releases": [
+      {
+        "release_name": "v1.0",
+        "end_date": "2025-Jan-15"
+      },
+      {
+        "release_name": "v2.0",
+        "end_date": "2026-Feb-28"
+      }
+    ],
+    "companies": [
+      {
+        "company_name": "OpenStack",
+        "domains": [
+          "openstack.org",
+          "openstack.com"
+        ],
+        "aliases": [
+          "OS"
+        ]
+      },
+      {
+        "company_name": "Canonical",
+        "domains": [
+          "canonical.com"
+        ],
+        "aliases": []
+      }
+    ],
+    "repos": [
+      {
+        "uri": "https://github.com/openstack/nova",
+        "organization": "openstack",
+        "module": "nova",
+        "releases": [
+          {
+            "tag_from": "13.0.0",
+            "tag_to": "14.0.0",
+            "release_name": "v1.0"
+          }
+        ],
+        "aliases": [
+          "nova-api"
+        ]
+      }
+    ],
+    "project_types": [
+      {
+        "id": "core",
+        "title": "Core Services",
+        "child": false,
+        "modules": [
+          "nova",
+          "neutron",
+          "cinder"
+        ]
+      },
+      {
+        "id": "networking",
+        "title": "Networking Services",
+        "child": true,
+        "modules": [
+          "neutron",
+          "neutron-fwaas"
+        ]
+      }
+    ]
+  },
+  "description": "Hi team,\n\nBelow is the current snapshot of our community contributors, product releases, and project structure. Alice\u202fSmith (Launchpad\u202fID **alice.smith**, Gerrit\u202fID **asmith**) can be reached at **alice.smith@example.com** and is listed under OpenStack, where her assignment concludes on **2024\u2011Dec\u201131**. Bob\u202fJones (Launchpad\u202fID **bob-jones**) uses **bob_jones@openstack.org** as his contact address and is presently affiliated with Canonical (no end date specified).\n\nOur roadmap includes two upcoming releases: **v1.0**, scheduled to finish on **2025\u2011Jan\u201115**, and **v2.0**, slated for **2026\u2011Feb\u201128**. The two partner companies are OpenStack\u2014owning the domains **openstack.org** and **openstack.com** and commonly abbreviated as **OS**\u2014and Canonical, which operates under the domain **canonical.com** (no listed aliases).\n\nThe Nova service source lives at **https://github.com/openstack/nova** under the **openstack** organization; the module name is **nova** and it is also known by the alias **nova-api**. For the **v1.0** release, Nova progresses from tag **13.0.0** to **14.0.0**. Finally, our project taxonomy comprises two types: the **core** project (ID **core**, titled *Core Services*, not a child project) that includes the modules **nova**, **neutron**, and **cinder**, and the **networking** project (ID **networking**, titled *Networking Services*, marked as a child project) which covers **neutron** and **neutron-fwaas**."
+}

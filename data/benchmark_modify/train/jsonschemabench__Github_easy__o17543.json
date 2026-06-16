@@ -1,0 +1,77 @@
+{
+  "name": "o17543",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "WikiDataFormForm",
+    "description": "WikiDataFormForm from Tiamat",
+    "definitions": {
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "object",
+              "string",
+              "number",
+              "integer",
+              "array"
+            ]
+          },
+          "items": {
+            "ref": "#/definitions/jsonSchema"
+          },
+          "properties": {
+            "ref": "#/definitions/jsonSchema"
+          }
+        }
+      }
+    },
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 10
+      },
+      "jsonSchema": {
+        "$ref": "#/definitions/jsonSchema"
+      },
+      "uiSchema": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "name",
+      "jsonSchema"
+    ]
+  },
+  "data": {
+    "name": "UserForm",
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "type": "string"
+      }
+    },
+    "uiSchema": {}
+  },
+  "instructions": "Could you remove the uiSchema field?",
+  "ground_truth": {
+    "name": "UserForm",
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "type": "string"
+      }
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "uiSchema"
+    ],
+    "precise_instruction": "Remove the \"uiSchema\" field."
+  }
+}

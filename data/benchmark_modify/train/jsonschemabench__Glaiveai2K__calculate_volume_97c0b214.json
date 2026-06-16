@@ -1,0 +1,64 @@
+{
+  "name": "calculate_volume_97c0b214",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape to calculate the volume of",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "length": 5.2,
+      "width": 3.1,
+      "height": 2.0
+    }
+  },
+  "instructions": "Please change the shape field to\u202f\u201crectangular prism (updated)\u201d.",
+  "ground_truth": {
+    "shape": "rectangular prism (updated)",
+    "dimensions": {
+      "length": 5.2,
+      "width": 3.1,
+      "height": 2.0
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "shape"
+    ],
+    "precise_instruction": "Change \"shape\" to \"rectangular prism (updated)\"."
+  }
+}

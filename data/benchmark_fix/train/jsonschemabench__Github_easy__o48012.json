@@ -1,0 +1,65 @@
+{
+  "name": "o48012",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "Custom record schema v1.0.0",
+    "id": "http://localhost:5000/schemas/custom-record-v1.0.0.json",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Record title."
+      },
+      "description": {
+        "type": "string",
+        "description": "Description for record."
+      },
+      "references": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "custom_pid": {
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "title": "Project Alpha Documentation",
+    "description": null,
+    "references": [
+      {
+        "ref_id": "REF-2023-001",
+        "url": "https://example.com/documents/project-alpha-specs.pdf",
+        "type": "specification"
+      },
+      {
+        "ref_id": "REF-2023-002",
+        "url": "https://example.com/reports/quarterly-review-q1.pdf",
+        "type": "report"
+      }
+    ],
+    "custom_pid": "PID-2023-XYZ-7890"
+  },
+  "valid_json": {
+    "title": "Project Alpha Documentation",
+    "description": "Comprehensive record detailing the objectives, milestones, and resources for Project Alpha.",
+    "references": [
+      {
+        "ref_id": "REF-2023-001",
+        "url": "https://example.com/documents/project-alpha-specs.pdf",
+        "type": "specification"
+      },
+      {
+        "ref_id": "REF-2023-002",
+        "url": "https://example.com/reports/quarterly-review-q1.pdf",
+        "type": "report"
+      }
+    ],
+    "custom_pid": "PID-2023-XYZ-7890"
+  },
+  "description": "Subject: Project\u202fAlpha\u202fDocumentation  \n\nThe enclosed record, titled **Project Alpha Documentation**, provides a comprehensive overview of the objectives, milestones, and resources associated with Project\u202fAlpha. It serves as a central reference point for all team members and stakeholders, detailing the scope of work and the deliverables expected throughout the project lifecycle.  \n\nKey supporting documents include the specification identified as **REF\u20112023\u2011001**, which can be accessed at https://example.com/documents/project-alpha-specs.pdf, and the quarterly review report labelled **REF\u20112023\u2011002**, available via https://example.com/reports/quarterly-review-q1.pdf. Both items are essential for understanding the technical requirements and progress assessments to date.  \n\nFor internal tracking, this record is catalogued under the custom identifier **PID\u20112023\u2011XYZ\u20117890**."
+}

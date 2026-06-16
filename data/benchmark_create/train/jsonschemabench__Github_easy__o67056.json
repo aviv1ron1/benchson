@@ -1,0 +1,31 @@
+{
+  "name": "o67056",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://flynn.io/schema/controller/volume_req#",
+    "title": "Volume Request",
+    "description": "",
+    "sortIndex": 20,
+    "type": "object",
+    "require": [
+      "path"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "path": {
+        "type": "string"
+      },
+      "delete_on_stop": {
+        "type": "boolean",
+        "description": "delete the volume when the job stops"
+      }
+    }
+  },
+  "description": "Please set up a volume for the upcoming job at the filesystem location\u202f/var/lib/data.  \n\nAdditionally, configure the volume to be automatically deleted when the job stops, so that no leftover data remains after the task completes.",
+  "reference_json": {
+    "path": "/var/lib/data",
+    "delete_on_stop": true
+  }
+}

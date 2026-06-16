@@ -1,0 +1,68 @@
+{
+  "name": "o90720",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "linkerd-viz": {
+        "properties": {
+          "cpus": {
+            "default": 1.0,
+            "description": "CPU shares to allocate to linkerd-viz.",
+            "minimum": 1.0,
+            "type": "number"
+          },
+          "dcos-ui": {
+            "default": true,
+            "description": "Access linkerd-viz at http://DCOS_URL/service/linkerd-viz via the DC/OS \"Open Service\" button. If you prefer to access linkerd-viz directly (http://PUBLIC_NODE:3000), set this to false.",
+            "type": "boolean"
+          },
+          "mem": {
+            "default": 512.0,
+            "description": "Memory (MB) to allocate to linkerd-viz.",
+            "minimum": 512.0,
+            "type": "number"
+          },
+          "public-port": {
+            "default": 3000,
+            "description": "Public port. The port to access the linkerd-viz dashboard.",
+            "type": "integer"
+          },
+          "resource-role": {
+            "default": "slave_public",
+            "description": "The accepted resource role. By default, this will deploy to an agent with the \"slave_public\" role.",
+            "type": "string"
+          },
+          "stats-port": {
+            "default": 9191,
+            "description": "Stats port. The port gives the dashboard access to the backend stats server.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cpus",
+          "mem",
+          "public-port",
+          "resource-role",
+          "stats-port"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "linkerd-viz"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Linkerd\u2011Viz Deployment Configuration\n\nThe Linkerd\u2011Viz service has been configured to run with 1.5 CPU shares and 1\u202fGB (1024\u202fMB) of memory. It will be reachable on public port\u202f3000, while the backend statistics are exposed on port\u202f9191. The deployment is targeted to agents that carry the **slave_public** resource role, ensuring the service is placed on a public node. Additionally, the UI integration with DC/OS is enabled, so the dashboard can be accessed directly from the DC/OS \u201cOpen Service\u201d button at `http://DCOS_URL/service/linkerd-viz`.",
+  "reference_json": {
+    "linkerd-viz": {
+      "cpus": 1.5,
+      "mem": 1024,
+      "public-port": 3000,
+      "resource-role": "slave_public",
+      "stats-port": 9191,
+      "dcos-ui": true
+    }
+  }
+}

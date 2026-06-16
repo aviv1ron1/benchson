@@ -1,0 +1,203 @@
+{
+  "name": "o78895",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "edges": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "default": "nodesource"
+            },
+            "group": {
+              "type": "array",
+              "items": {}
+            },
+            "target": {
+              "type": "string",
+              "default": "nodetarget"
+            },
+            "view": {
+              "type": "string",
+              "default": "VS"
+            }
+          },
+          "required": [
+            "source",
+            "group",
+            "target",
+            "view"
+          ]
+        }
+      },
+      "vertices": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "info": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "OF Controller"
+                },
+                "property": {
+                  "type": "object",
+                  "properties": {
+                    "custom_label": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": [
+                    "custom_label"
+                  ]
+                },
+                "group": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "type",
+                "property",
+                "group"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "default": "ctr1"
+            }
+          },
+          "required": [
+            "info",
+            "id"
+          ]
+        }
+      }
+    },
+    "required": [
+      "edges",
+      "vertices"
+    ]
+  },
+  "data": {
+    "edges": [
+      {
+        "source": "NodeA",
+        "group": [
+          "group1"
+        ],
+        "target": "NodeB",
+        "view": "VS"
+      },
+      {
+        "source": "NodeB",
+        "group": [
+          "group2"
+        ],
+        "target": "NodeC",
+        "view": "VS"
+      }
+    ],
+    "vertices": [
+      {
+        "info": {
+          "type": "OF Controller",
+          "property": {
+            "custom_label": "Main Controller"
+          },
+          "group": [
+            "controllers"
+          ]
+        },
+        "id": "ctr1"
+      },
+      {
+        "info": {
+          "type": "OF Switch",
+          "property": {
+            "custom_label": "Edge Switch"
+          },
+          "group": [
+            "switches"
+          ]
+        },
+        "id": "sw1"
+      }
+    ]
+  },
+  "instructions": "Add a new item to the **vertices** list that\u2019s exactly the same as the first item.",
+  "ground_truth": {
+    "edges": [
+      {
+        "source": "NodeA",
+        "group": [
+          "group1"
+        ],
+        "target": "NodeB",
+        "view": "VS"
+      },
+      {
+        "source": "NodeB",
+        "group": [
+          "group2"
+        ],
+        "target": "NodeC",
+        "view": "VS"
+      }
+    ],
+    "vertices": [
+      {
+        "info": {
+          "type": "OF Controller",
+          "property": {
+            "custom_label": "Main Controller"
+          },
+          "group": [
+            "controllers"
+          ]
+        },
+        "id": "ctr1"
+      },
+      {
+        "info": {
+          "type": "OF Switch",
+          "property": {
+            "custom_label": "Edge Switch"
+          },
+          "group": [
+            "switches"
+          ]
+        },
+        "id": "sw1"
+      },
+      {
+        "info": {
+          "type": "OF Controller",
+          "property": {
+            "custom_label": "Main Controller"
+          },
+          "group": [
+            "controllers"
+          ]
+        },
+        "id": "ctr1"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "vertices"
+    ],
+    "precise_instruction": "Add another item to the \"vertices\" list, identical to its first item."
+  }
+}

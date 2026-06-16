@@ -1,0 +1,56 @@
+{
+  "name": "schedule_meeting_227bdb7c",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "meeting_location": {
+        "description": "The location of the meeting",
+        "type": "string"
+      },
+      "meeting_time": {
+        "description": "The time of the meeting",
+        "type": "string"
+      },
+      "meeting_title": {
+        "description": "The title of the meeting",
+        "type": "string"
+      },
+      "participants": {
+        "description": "The participants of the meeting",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "participants",
+      "meeting_title",
+      "meeting_time"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "meeting_location": "Conference Room B, 5th Floor, Acme Headquarters",
+    "meeting_title": "Quarterly Business Review",
+    "participants": [
+      "Alice Johnson",
+      "Bob Smith",
+      "Carlos Martinez",
+      "Dana Lee"
+    ]
+  },
+  "valid_json": {
+    "meeting_location": "Conference Room B, 5th Floor, Acme Headquarters",
+    "meeting_time": "2026-07-01T14:30:00-04:00",
+    "meeting_title": "Quarterly Business Review",
+    "participants": [
+      "Alice Johnson",
+      "Bob Smith",
+      "Carlos Martinez",
+      "Dana Lee"
+    ]
+  },
+  "description": "Subject: Quarterly Business Review \u2013 Meeting Details  \n\nDear Team,  \n\nPlease be reminded that our Quarterly Business Review will take place on **2026-07-01T14:30:00-04:00** in **Conference Room B, 5th Floor, Acme Headquarters**. This session will cover the latest performance metrics, strategic initiatives, and upcoming priorities for the next quarter.  \n\nThe meeting will be attended by **Alice Johnson**, **Bob Smith**, **Carlos Martinez**, and **Dana Lee**. Looking forward to a productive discussion."
+}

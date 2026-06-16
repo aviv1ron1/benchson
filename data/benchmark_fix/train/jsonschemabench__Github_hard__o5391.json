@@ -1,0 +1,391 @@
+{
+  "name": "o5391",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelSourceChangeSubmittedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "3.0.0"
+            ],
+            "default": "3.0.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "string",
+                "pattern": "^pkg:"
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "authorIdentity": {
+                "type": "string"
+              },
+              "integrityProtection": {
+                "type": "object",
+                "properties": {
+                  "signature": {
+                    "type": "string"
+                  },
+                  "alg": {
+                    "type": "string",
+                    "enum": [
+                      "HS256",
+                      "HS384",
+                      "HS512",
+                      "RS256",
+                      "RS384",
+                      "RS512",
+                      "ES256",
+                      "ES384",
+                      "ES512",
+                      "PS256",
+                      "PS384",
+                      "PS512"
+                    ]
+                  },
+                  "publicKey": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "signature",
+                  "alg"
+                ],
+                "additionalProperties": false
+              },
+              "sequenceProtection": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sequenceName": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "sequenceName",
+                    "position"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "authorIdentity"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "submitter": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "group": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "gitIdentifier": {
+            "type": "object",
+            "properties": {
+              "commitId": {
+                "type": "string"
+              },
+              "branch": {
+                "type": "string"
+              },
+              "repoName": {
+                "type": "string"
+              },
+              "repoUri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "commitId",
+              "repoUri"
+            ],
+            "additionalProperties": false
+          },
+          "svnIdentifier": {
+            "type": "object",
+            "properties": {
+              "revision": {
+                "type": "integer"
+              },
+              "directory": {
+                "type": "string"
+              },
+              "repoName": {
+                "type": "string"
+              },
+              "repoUri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "revision",
+              "directory",
+              "repoUri"
+            ],
+            "additionalProperties": false
+          },
+          "ccCompositeIdentifier": {
+            "type": "object",
+            "properties": {
+              "vobs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "branch": {
+                "type": "string"
+              },
+              "configSpec": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "vobs",
+              "branch",
+              "configSpec"
+            ],
+            "additionalProperties": false
+          },
+          "hgIdentifier": {
+            "type": "object",
+            "properties": {
+              "commitId": {
+                "type": "string"
+              },
+              "branch": {
+                "type": "string"
+              },
+              "repoName": {
+                "type": "string"
+              },
+              "repoUri": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "commitId",
+              "repoUri"
+            ],
+            "additionalProperties": false
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelSourceChangeSubmittedEvent",
+      "version": "3.0.0",
+      "time": 1727840000,
+      "tags": [
+        "source-change",
+        "submission"
+      ],
+      "source": {
+        "domainId": "example-domain",
+        "host": "ci.example.com",
+        "name": "Jenkins",
+        "serializer": "pkg:json",
+        "uri": "http://ci.example.com/job/123"
+      },
+      "security": {
+        "authorIdentity": "jdoe",
+        "integrityProtection": {
+          "signature": "abcdef1234567890",
+          "alg": "RS256",
+          "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "order",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9f8e7d6c-5b4a-3c2b-9a1f-0e9d8c7b6a5f"
+      }
+    ]
+  },
+  "valid_json": {
+    "meta": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "type": "EiffelSourceChangeSubmittedEvent",
+      "version": "3.0.0",
+      "time": 1727840000,
+      "tags": [
+        "source-change",
+        "submission"
+      ],
+      "source": {
+        "domainId": "example-domain",
+        "host": "ci.example.com",
+        "name": "Jenkins",
+        "serializer": "pkg:json",
+        "uri": "http://ci.example.com/job/123"
+      },
+      "security": {
+        "authorIdentity": "jdoe",
+        "integrityProtection": {
+          "signature": "abcdef1234567890",
+          "alg": "RS256",
+          "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC..."
+        },
+        "sequenceProtection": [
+          {
+            "sequenceName": "order",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "data": {
+      "submitter": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "id": "jdoe",
+        "group": "dev-team"
+      },
+      "gitIdentifier": {
+        "commitId": "a1b2c3d4e5f6g7h8i9j0",
+        "branch": "main",
+        "repoName": "example-repo",
+        "repoUri": "https://github.com/example/example-repo.git"
+      },
+      "customData": [
+        {
+          "key": "reviewed",
+          "value": true
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "9f8e7d6c-5b4a-3c2b-9a1f-0e9d8c7b6a5f"
+      }
+    ]
+  },
+  "description": "Subject: EiffelSourceChangeSubmittedEvent \u2013\u202fSource Change Submission (ID\u202f123e4567\u2011e89b\u201112d3\u2011a456\u2011426614174000)\n\nOn 2024\u201110\u201101\u202f(Unix time\u202f1727840000) the source\u2011change submission event (type\u202fEiffelSourceChangeSubmittedEvent, version\u202f3.0.0) was recorded. The event carries the tags \u201csource-change\u201d and \u201csubmission\u201d and originates from the Jenkins instance on host\u202fci.example.com (domain\u202fexample\u2011domain). The event payload was serialized as\u202fpkg:json and can be accessed at\u202fhttp://ci.example.com/job/123. Security is ensured by author\u202fjdoe, whose integrity protection includes the RSA\u2011SHA256 signature\u202fabcdef1234567890\u202fusing algorithm\u202fRS256 and the public key\u202fssh\u2011rsa\u202fAAAAB3NzaC1yc2EAAAADAQABAAABAQC\u2026\u202f. The event participates in a sequence named \u201corder\u201d at position\u202f1.\n\nThe change was submitted by John\u202fDoe (jdoe\u202f<john.doe@example.com>) from the dev\u2011team group. It references a Git commit\u202fa1b2c3d4e5f6g7h8i9j0\u202fon branch\u202fmain\u202fin repository\u202fexample\u2011repo, reachable at\u202fhttps://github.com/example/example-repo.git. Custom data marks the change as reviewed (reviewed\u202f=\u202ftrue). This submission is linked as the cause of event\u202f9f8e7d6c\u20115b4a\u20113c2b\u20119a1f\u20110e9d8c7b6a5f."
+}

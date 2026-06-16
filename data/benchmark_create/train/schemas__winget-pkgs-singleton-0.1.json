@@ -1,0 +1,84 @@
+{
+  "name": "winget-pkgs-singleton-0.1",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/winget-pkgs-singleton-0.1.json",
+    "properties": {
+      "Id": {
+        "type": "string",
+        "description": "publisher.package format"
+      },
+      "Publisher": {
+        "type": "string",
+        "description": "the name of the publisher"
+      },
+      "Name": {
+        "type": "string",
+        "description": "the name of the application"
+      },
+      "Version": {
+        "type": "string",
+        "description": "version numbering format"
+      },
+      "License": {
+        "type": "string",
+        "description": "the open source license or copyright"
+      },
+      "Installers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Arch": {
+              "type": "string",
+              "description": "enumeration of supported architectures"
+            },
+            "URL": {
+              "type": "string",
+              "description": "path to download installation file"
+            },
+            "Sha256": {
+              "type": "string",
+              "description": "SHA256 calculated from installer"
+            },
+            "InstallerType": {
+              "type": "string",
+              "description": "enumeration of supported installer types (exe, msi, msix, inno, nullsoft)",
+              "enum": [
+                "exe",
+                "msi",
+                "msix",
+                "inno",
+                "nullsoft"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "The application package\u202fcontoso.myapp, published by Contoso Ltd, is the latest release of MyApp version\u202f1.2.3. This build is distributed under the MIT license and is ready for deployment to Windows environments.\n\nTwo executable installers are available: the 32\u2011bit (x86) installer can be downloaded from\u202fhttps://downloads.contoso.com/myapp/1.2.3/MyApp-Setup-x86.exe and has the SHA\u2011256 hash\u202fd4e5f6a7b8c9d0e1f2a3b4c5d6e7f809a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6; the 64\u2011bit (x64) installer is located at\u202fhttps://downloads.contoso.com/myapp/1.2.3/MyApp-Setup-x64.exe with SHA\u2011256 hash\u202fa1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f809a1b2c3d4e5f6a7b8c9d0e1f2a3. Both installers are standard Windows\u202f.exe packages.",
+  "reference_json": {
+    "Id": "contoso.myapp",
+    "Publisher": "Contoso Ltd",
+    "Name": "MyApp",
+    "Version": "1.2.3",
+    "License": "MIT",
+    "Installers": [
+      {
+        "Arch": "x86",
+        "URL": "https://downloads.contoso.com/myapp/1.2.3/MyApp-Setup-x86.exe",
+        "Sha256": "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f809a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+        "InstallerType": "exe"
+      },
+      {
+        "Arch": "x64",
+        "URL": "https://downloads.contoso.com/myapp/1.2.3/MyApp-Setup-x64.exe",
+        "Sha256": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f809a1b2c3d4e5f6a7b8c9d0e1f2a3",
+        "InstallerType": "exe"
+      }
+    ]
+  }
+}

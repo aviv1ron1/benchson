@@ -1,0 +1,66 @@
+{
+  "name": "o39500",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "description": "schema for a currency",
+    "id": "https://raw.githubusercontent.com/eviratec/schema/master/v1/currency.json#",
+    "properties": {
+      "code": {
+        "maxLength": 4,
+        "type": "string"
+      },
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "label": {
+        "maxLength": 64,
+        "type": "string"
+      },
+      "prefix": {
+        "maxLength": 1,
+        "type": "string"
+      },
+      "separator": {
+        "properties": {
+          "decimal": {
+            "maxLength": 1,
+            "minLength": 1,
+            "type": "string"
+          },
+          "thousands": {
+            "maxLength": 1,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "thousands",
+          "decimal"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "id",
+      "code",
+      "label",
+      "separator"
+    ],
+    "type": "object"
+  },
+  "description": "Please be aware that the currency identified by the UUID\u202f3fa85f64-5717-4562-b3fc-2c963f66afa6 is the United States Dollar (code\u202fUSD), officially titled \u201cUnited States Dollar.\u201d  The standard symbol for this currency is the dollar sign\u202f($).  \n\nWhen formatting monetary values, the United States Dollar uses a period (\u201c.\u201d) as the decimal separator and a comma (\u201c,\u201d) as the thousands separator.",
+  "reference_json": {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "code": "USD",
+    "label": "United States Dollar",
+    "prefix": "$",
+    "separator": {
+      "decimal": ".",
+      "thousands": ","
+    }
+  }
+}

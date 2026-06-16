@@ -1,0 +1,271 @@
+{
+  "name": "o48073",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "projects",
+      "drivers"
+    ],
+    "properties": {
+      "projects": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z\\d\\./-]+$"
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "releases": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/release_id"
+            },
+            "wiki": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "wiki"
+          ]
+        }
+      },
+      "drivers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "project_id": {
+              "type": "string"
+            },
+            "vendor": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "maintainers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            },
+            "wiki": {
+              "type": "string"
+            },
+            "releases": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/release_id"
+              }
+            },
+            "ci": {
+              "$ref": "#/definitions/ci"
+            }
+          },
+          "required": [
+            "project_id",
+            "vendor",
+            "name"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "definitions": {
+      "user": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[^,]+$"
+          },
+          "email": {
+            "type": "string",
+            "pattern": "^[a-z\\d_\\.-]+@([a-z\\d\\.-]+\\.)+[a-z]+$"
+          },
+          "irc": {
+            "type": "string",
+            "pattern": "^[\\S]+$"
+          },
+          "launchpad_id": {
+            "type": "string",
+            "pattern": "^[\\S]+$"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "ci": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[\\S]+$"
+          },
+          "success_pattern": {
+            "type": "string"
+          },
+          "failure_pattern": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "release_id": {
+        "type": "string",
+        "pattern": "^[A-Z][a-z]+$"
+      }
+    }
+  },
+  "data": {
+    "projects": [
+      {
+        "id": "kernel/5.10",
+        "name": "Linux Kernel 5.10"
+      },
+      {
+        "id": "drivers/net",
+        "name": "Network Drivers"
+      }
+    ],
+    "releases": [
+      {
+        "id": "Jelly",
+        "wiki": "https://example.com/wiki/Jelly"
+      },
+      {
+        "id": "Kali",
+        "wiki": "https://example.com/wiki/Kali"
+      }
+    ],
+    "drivers": [
+      {
+        "project_id": "kernel/5.10",
+        "vendor": "Intel",
+        "name": "e1000e",
+        "description": "Intel Ethernet driver",
+        "maintainers": [
+          {
+            "name": "Alice Smith",
+            "email": "alice.smith@example.com",
+            "irc": "alice_irc",
+            "launchpad_id": "alice123"
+          },
+          {
+            "name": "Bob Jones",
+            "email": "bob.jones@example.org",
+            "irc": "bobj",
+            "launchpad_id": "bobj"
+          }
+        ],
+        "wiki": "https://example.com/wiki/e1000e",
+        "releases": [
+          "Jelly",
+          "Kali"
+        ],
+        "ci": {
+          "id": "ci-e1000e",
+          "success_pattern": "Build succeeded",
+          "failure_pattern": "Build failed"
+        }
+      },
+      {
+        "project_id": "drivers/net",
+        "vendor": "Realtek",
+        "name": "r8169",
+        "description": "Realtek network driver"
+      }
+    ]
+  },
+  "instructions": "Hey, could you remove the first item from the releases list?",
+  "ground_truth": {
+    "projects": [
+      {
+        "id": "kernel/5.10",
+        "name": "Linux Kernel 5.10"
+      },
+      {
+        "id": "drivers/net",
+        "name": "Network Drivers"
+      }
+    ],
+    "releases": [
+      {
+        "id": "Kali",
+        "wiki": "https://example.com/wiki/Kali"
+      }
+    ],
+    "drivers": [
+      {
+        "project_id": "kernel/5.10",
+        "vendor": "Intel",
+        "name": "e1000e",
+        "description": "Intel Ethernet driver",
+        "maintainers": [
+          {
+            "name": "Alice Smith",
+            "email": "alice.smith@example.com",
+            "irc": "alice_irc",
+            "launchpad_id": "alice123"
+          },
+          {
+            "name": "Bob Jones",
+            "email": "bob.jones@example.org",
+            "irc": "bobj",
+            "launchpad_id": "bobj"
+          }
+        ],
+        "wiki": "https://example.com/wiki/e1000e",
+        "releases": [
+          "Jelly",
+          "Kali"
+        ],
+        "ci": {
+          "id": "ci-e1000e",
+          "success_pattern": "Build succeeded",
+          "failure_pattern": "Build failed"
+        }
+      },
+      {
+        "project_id": "drivers/net",
+        "vendor": "Realtek",
+        "name": "r8169",
+        "description": "Realtek network driver"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "releases"
+    ],
+    "precise_instruction": "Remove the first item from the \"releases\" list."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "calculate_area_f5284246",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of a triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of a triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of a rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of a circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of a rectangle",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape for which the area should be calculated",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Dimensions for the Upcoming Rectangle Project\n\nThe object we\u2019re working with is a rectangle. Its measured length is 12.5 units and its width is 7.8 units. These are the primary dimensions needed for the area calculations and material estimates.\n\nFor completeness, the parameters that pertain to other shapes have been recorded as well: the base, height, and radius are all set to 0, since they are not applicable to a rectangle.",
+  "reference_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 7.8,
+      "base": 0,
+      "height": 0,
+      "radius": 0
+    }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "name": "bower",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/bower.json",
+    "patternProperties": {
+      "^_": {
+        "description": "Any property starting with _ is valid.",
+        "additionalProperties": true
+      }
+    },
+    "properties": {
+      "name": {
+        "description": "The name of your package.",
+        "type": "string",
+        "maxLength": 50,
+        "minLength": 1
+      },
+      "description": {
+        "description": "Help users identify and search for your package with a brief description.",
+        "type": "string",
+        "maxLength": 140
+      },
+      "version": {
+        "description": "A semantic version number.",
+        "type": "string"
+      },
+      "main": {
+        "description": "The primary acting files necessary to use your package.",
+        "type": [
+          "string",
+          "array"
+        ]
+      },
+      "license": {
+        "description": "SPDX license identifier or path/url to a license.",
+        "type": [
+          "string",
+          "array"
+        ],
+        "maxLength": 140
+      },
+      "ignore": {
+        "description": "A list of files for Bower to ignore when installing your package.",
+        "type": [
+          "string",
+          "array"
+        ]
+      },
+      "keywords": {
+        "description": "Used for search by keyword. Helps make your package easier to discover without people needing to know its name.",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "maxLength": 50
+        }
+      },
+      "authors": {
+        "description": "A list of people that authored the contents of the package.",
+        "type": "array",
+        "items": {
+          "type": [
+            "string",
+            "object"
+          ]
+        }
+      },
+      "homepage": {
+        "description": "URL to learn more about the package. Falls back to GitHub project if not specified and it's a GitHub endpoint.",
+        "type": "string",
+        "format": "uri"
+      },
+      "repository": {
+        "description": "The repository in which the source code can be found.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "git"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "dependencies": {
+        "description": "Dependencies are specified with a simple hash of package name to a semver compatible identifier or URL.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "devDependencies": {
+        "description": "Dependencies that are only needed for development of the package, e.g., test framework or building documentation.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "resolutions": {
+        "description": "Dependency versions to automatically resolve with if conflicts occur between packages.",
+        "type": "object"
+      },
+      "private": {
+        "description": "If you set it to  true  it will refuse to publish it. This is a way to prevent accidental publication of private repositories.",
+        "type": "boolean"
+      },
+      "exportsOverride": {
+        "description": "Used by grunt-bower-task to specify custom install locations.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "array"
+            ]
+          }
+        }
+      },
+      "moduleType": {
+        "description": "The types of modules this package exposes",
+        "type": [
+          "array",
+          "string"
+        ],
+        "items": {
+          "enum": [
+            "amd",
+            "es6",
+            "globals",
+            "node",
+            "yui"
+          ]
+        }
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "title": "JSON schema for Bower configuration files",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "name": "angular-carousel",
+    "description": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "version": "1.2.3",
+    "main": [
+      "dist/angular-carousel.js",
+      "dist/angular-carousel.css"
+    ],
+    "license": "MIT",
+    "ignore": [
+      "tests/",
+      "example/"
+    ],
+    "keywords": [
+      "angular",
+      "carousel",
+      "slider",
+      "responsive"
+    ],
+    "authors": [
+      "Jane Doe <jane@example.com>",
+      {
+        "name": "John Smith",
+        "email": "john@example.com",
+        "url": "https://github.com/johnsmith"
+      }
+    ],
+    "homepage": "https://github.com/example/angular-carousel#readme",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/example/angular-carousel.git"
+    },
+    "dependencies": {
+      "angular": ">=1.5.0 <2.0.0",
+      "jquery": "~3.5.1"
+    },
+    "devDependencies": {
+      "karma": "^6.3.0",
+      "grunt": "^1.5.3"
+    },
+    "resolutions": {
+      "angular": "1.8.2"
+    },
+    "private": false,
+    "exportsOverride": {
+      "angular-carousel": {
+        "js": "dist/angular-carousel.min.js",
+        "css": [
+          "dist/angular-carousel.min.css"
+        ]
+      }
+    },
+    "moduleType": [
+      "amd",
+      "globals"
+    ],
+    "_metadata": {
+      "maintainer": "OpenSource Community",
+      "licenseFile": "LICENSE"
+    }
+  },
+  "valid_json": {
+    "name": "angular-carousel",
+    "description": "A lightweight, responsive carousel component for AngularJS applications.",
+    "version": "1.2.3",
+    "main": [
+      "dist/angular-carousel.js",
+      "dist/angular-carousel.css"
+    ],
+    "license": "MIT",
+    "ignore": [
+      "tests/",
+      "example/"
+    ],
+    "keywords": [
+      "angular",
+      "carousel",
+      "slider",
+      "responsive"
+    ],
+    "authors": [
+      "Jane Doe <jane@example.com>",
+      {
+        "name": "John Smith",
+        "email": "john@example.com",
+        "url": "https://github.com/johnsmith"
+      }
+    ],
+    "homepage": "https://github.com/example/angular-carousel#readme",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/example/angular-carousel.git"
+    },
+    "dependencies": {
+      "angular": ">=1.5.0 <2.0.0",
+      "jquery": "~3.5.1"
+    },
+    "devDependencies": {
+      "karma": "^6.3.0",
+      "grunt": "^1.5.3"
+    },
+    "resolutions": {
+      "angular": "1.8.2"
+    },
+    "private": false,
+    "exportsOverride": {
+      "angular-carousel": {
+        "js": "dist/angular-carousel.min.js",
+        "css": [
+          "dist/angular-carousel.min.css"
+        ]
+      }
+    },
+    "moduleType": [
+      "amd",
+      "globals"
+    ],
+    "_metadata": {
+      "maintainer": "OpenSource Community",
+      "licenseFile": "LICENSE"
+    }
+  },
+  "description": "The package **angular\u2011carousel** (v1.2.3) is a lightweight, responsive carousel component for AngularJS applications. Its primary assets are the JavaScript file\u202f`dist/angular-carousel.js` and the stylesheet\u202f`dist/angular-carousel.css`. The project is released under the MIT license, and when Bower installs it will skip the `tests/` and `example/` directories. Useful keywords for discovery are\u202fangular, carousel, slider, and responsive.\n\nThe package is authored by Jane\u202fDoe\u202f<jane@example.com> and John\u202fSmith (john@example.com, https://github.com/johnsmith). More information can be found on the homepage\u202fhttps://github.com/example/angular-carousel#readme, while the source code resides in a Git repository at\u202fgit+https://github.com/example/angular-carousel.git. Runtime dependencies are Angular (>=1.5.0\u202f<\u202f2.0.0) and jQuery (~3.5.1); development dependencies include Karma (^6.3.0) and Grunt (^1.5.3). A resolution forces Angular to version\u202f1.8.2, and the package is not marked as private.\n\nFor custom installation the `exportsOverride` maps the module name\u202fangular-carousel\u202fto the minified JavaScript file\u202f`dist/angular-carousel.min.js` and the minified CSS file\u202f`dist/angular-carousel.min.css`. The package exposes AMD and globals module types. Maintenance is handled by the OpenSource Community, and the accompanying license text is stored in the\u202fLICENSE\u202ffile."
+}

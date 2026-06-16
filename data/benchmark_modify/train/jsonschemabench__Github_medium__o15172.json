@@ -1,0 +1,336 @@
+{
+  "name": "o15172",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "1.1.1",
+    "type": "object",
+    "properties": {
+      "adventure": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "alAveragePlayerLevel": {
+              "description": "Adventurers League APL; for use in homebrew.",
+              "type": "integer"
+            },
+            "alLength": {
+              "description": "Adventurers League length (in hours); for use in homebrew.",
+              "type": "object",
+              "oneOf": [
+                {
+                  "properties": {
+                    "min": {
+                      "type": "integer"
+                    },
+                    "max": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "exact": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              ]
+            },
+            "alId": {
+              "description": "Adventurers League ID; for use in homebrew.",
+              "type": "string"
+            },
+            "contents": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "headers": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "depth": {
+                              "type": "integer"
+                            },
+                            "header": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "depth",
+                            "header"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "ordinal": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "chapter",
+                          "appendix",
+                          "part",
+                          "episode",
+                          "level"
+                        ]
+                      },
+                      "identifier": {
+                        "type": [
+                          "integer",
+                          "string"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "type",
+                      "identifier"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "name"
+                ]
+              }
+            },
+            "level": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "start": {
+                      "type": "integer"
+                    },
+                    "end": {
+                      "type": "integer"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "start",
+                    "end"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "custom": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "custom"
+                  ]
+                }
+              ]
+            },
+            "published": {
+              "type": "string",
+              "format": "date"
+            },
+            "publishedOrder": {
+              "description": "A sorting order for adventures within a single source.",
+              "type": "integer"
+            },
+            "coverUrl": {
+              "type": "string"
+            },
+            "storyline": {
+              "type": "string",
+              "enum": [
+                "Starter Set",
+                "Tyranny of Dragons",
+                "Elemental Evil",
+                "Rage of Demons",
+                "Curse of Strahd",
+                "Storm King's Thunder",
+                "Tales from the Yawning Portal",
+                "Tomb of Annihilation",
+                "Waterdeep",
+                "Ravnica",
+                "Extra Life",
+                "Ghosts of Saltmarsh",
+                "Acquisitions Incorporated",
+                "Essentials Kit",
+                "Stranger Things",
+                "Baldur's Gate",
+                "Eberron",
+                "Rick and Morty",
+                "Wildemount"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "id",
+            "source",
+            "contents",
+            "level",
+            "published",
+            "storyline"
+          ]
+        }
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "adventure": [
+      {
+        "name": "Lost Mine of Phandelver",
+        "id": "lmop-001",
+        "source": "Starter Set",
+        "alAveragePlayerLevel": 1,
+        "alLength": {
+          "min": 4,
+          "max": 4,
+          "exact": "4h"
+        },
+        "alId": "AL01",
+        "contents": [
+          {
+            "name": "Chapter 1: Goblin Arrows",
+            "headers": [
+              "Introduction",
+              {
+                "depth": 2,
+                "header": "Encounter: Goblin Ambush"
+              }
+            ],
+            "ordinal": {
+              "type": "chapter",
+              "identifier": 1
+            }
+          },
+          {
+            "name": "Appendix A: Monsters",
+            "ordinal": {
+              "type": "appendix",
+              "identifier": "A"
+            }
+          }
+        ],
+        "level": {
+          "start": 1,
+          "end": 5
+        },
+        "published": "2014-07-15",
+        "publishedOrder": 1,
+        "coverUrl": "https://example.com/covers/lmop.jpg",
+        "storyline": "Starter Set"
+      },
+      {
+        "name": "Curse of Strahd",
+        "id": "cos-001",
+        "source": "Curse of Strahd",
+        "alAveragePlayerLevel": 5,
+        "alLength": {
+          "min": 10,
+          "max": 15,
+          "exact": "varied"
+        },
+        "contents": [
+          {
+            "name": "Chapter 1: Into the Mists"
+          },
+          {
+            "name": "Chapter 2: The Village of Barovia",
+            "ordinal": {
+              "type": "chapter",
+              "identifier": 2
+            }
+          }
+        ],
+        "level": {
+          "custom": "All Levels"
+        },
+        "published": "2016-03-15",
+        "publishedOrder": 3,
+        "coverUrl": "https://example.com/covers/cos.jpg",
+        "storyline": "Curse of Strahd"
+      }
+    ]
+  },
+  "instructions": "Could you delete the last entry in the **adventure** list?",
+  "ground_truth": {
+    "adventure": [
+      {
+        "name": "Lost Mine of Phandelver",
+        "id": "lmop-001",
+        "source": "Starter Set",
+        "alAveragePlayerLevel": 1,
+        "alLength": {
+          "min": 4,
+          "max": 4,
+          "exact": "4h"
+        },
+        "alId": "AL01",
+        "contents": [
+          {
+            "name": "Chapter 1: Goblin Arrows",
+            "headers": [
+              "Introduction",
+              {
+                "depth": 2,
+                "header": "Encounter: Goblin Ambush"
+              }
+            ],
+            "ordinal": {
+              "type": "chapter",
+              "identifier": 1
+            }
+          },
+          {
+            "name": "Appendix A: Monsters",
+            "ordinal": {
+              "type": "appendix",
+              "identifier": "A"
+            }
+          }
+        ],
+        "level": {
+          "start": 1,
+          "end": 5
+        },
+        "published": "2014-07-15",
+        "publishedOrder": 1,
+        "coverUrl": "https://example.com/covers/lmop.jpg",
+        "storyline": "Starter Set"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "adventure"
+    ],
+    "precise_instruction": "Remove the last item from the \"adventure\" list."
+  }
+}

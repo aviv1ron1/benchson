@@ -1,0 +1,45 @@
+{
+  "name": "o39208",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "description": "Test Schema",
+    "type": "object",
+    "properties": {
+      "person": {
+        "$ref": "#/definitions/personDefinition"
+      }
+    },
+    "additionalProperties": false,
+    "definitions": {
+      "personDefinition": {
+        "description": "Person",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the person",
+            "type": "string",
+            "minLength": 1
+          },
+          "age": {
+            "description": "The age of the person",
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "age"
+        ]
+      }
+    }
+  },
+  "description": "Dear Team,\n\nI\u2019m pleased to announce that Alice Johnson has joined our department. She brings a wealth of experience and enthusiasm to our projects. For your reference, Alice is 34 years old.",
+  "reference_json": {
+    "person": {
+      "name": "Alice Johnson",
+      "age": 34
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "name": "o67465",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "title": "Playbook syntax definition",
+    "description": "Playbooks are documents which describe the exact set of steps required to successfully start and finish a given software release. When the Release Engine begins a deployment, the actions it takes come directly from playbooks. For more information: http://release-engine.readthedocs.org/en/latest/playbooks.html",
+    "definitions": {
+      "group": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "hosts": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string"
+        }
+      },
+      "steps": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/definitions/step_types"
+        }
+      },
+      "step_types": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/step_string"
+          },
+          {
+            "$ref": "#/definitions/step_object"
+          }
+        ]
+      },
+      "step_string": {
+        "type": "string",
+        "pattern": "^[\\w]+:{1}[A-Z][\\w]+$"
+      },
+      "step_object": {
+        "type": "object",
+        "patternProperties": {
+          "^[\\w]+:{1}[A-Z][\\w]+$": {
+            "type": "object",
+            "properties": {
+              "notify": {
+                "$ref": "#/definitions/notify"
+              }
+            },
+            "minProperties": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "dynamic": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minItems": 1
+        }
+      },
+      "notify": {
+        "type": "object",
+        "properties": {
+          "started": {
+            "$ref": "#/definitions/notify_endpoints"
+          },
+          "completed": {
+            "$ref": "#/definitions/notify_endpoints"
+          },
+          "failed": {
+            "$ref": "#/definitions/notify_endpoints"
+          }
+        },
+        "additionalProperties": false
+      },
+      "notify_endpoints": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "execution": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hosts",
+            "steps",
+            "description"
+          ],
+          "properties": {
+            "hosts": {
+              "$ref": "#/definitions/hosts"
+            },
+            "steps": {
+              "$ref": "#/definitions/steps"
+            },
+            "preflight": {
+              "$ref": "#/definitions/steps"
+            },
+            "description": {
+              "$ref": "#/definitions/description"
+            }
+          }
+        }
+      }
+    },
+    "properties": {
+      "execution": {
+        "$ref": "#/definitions/execution"
+      },
+      "group": {
+        "$ref": "#/definitions/group"
+      },
+      "name": {
+        "$ref": "#/definitions/name"
+      }
+    },
+    "required": [
+      "execution",
+      "name",
+      "group"
+    ]
+  },
+  "data": {
+    "group": "release-team",
+    "name": "v1.2.3-deployment",
+    "execution": [
+      {
+        "hosts": [
+          "app-server-01",
+          "app-server-02"
+        ],
+        "description": "Deploy application containers",
+        "steps": [
+          "docker:PullImage",
+          {
+            "service:RestartService": {
+              "notify": {
+                "started": {
+                  "email": [
+                    "devops@example.com"
+                  ]
+                },
+                "completed": {
+                  "email": [
+                    "ops@example.com"
+                  ],
+                  "slack": [
+                    "#deployments"
+                  ]
+                },
+                "failed": {
+                  "email": [
+                    "alerts@example.com"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "hosts": [
+          "db-server-01"
+        ],
+        "description": "Run database migrations",
+        "preflight": [
+          "db:CheckConnection"
+        ],
+        "steps": [
+          {
+            "migrations:Apply": {
+              "notify": {
+                "completed": {
+                  "slack": [
+                    "#db-migrations"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "instructions": "Please remove the first 2 items from the \"execution\" list.",
+  "ground_truth": {
+    "group": "release-team",
+    "name": "v1.2.3-deployment",
+    "execution": []
+  },
+  "modification": {
+    "op": "array_remove_first_2",
+    "path": [
+      "execution"
+    ],
+    "precise_instruction": "Remove the first 2 items from the \"execution\" list."
+  }
+}

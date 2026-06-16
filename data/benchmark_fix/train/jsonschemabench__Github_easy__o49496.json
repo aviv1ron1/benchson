@@ -1,0 +1,126 @@
+{
+  "name": "o49496",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "copyright": [
+      "Copyright 2013 Red Hat, Inc. and/or its affiliates.",
+      "This file is part of lightblue.",
+      "This program is free software: you can redistribute it and/or modify",
+      "it under the terms of the GNU General Public License as published by",
+      "the Free Software Foundation, either version 3 of the License, or",
+      "(at your option) any later version.",
+      "This program is distributed in the hope that it will be useful,",
+      "but WITHOUT ANY WARRANTY; without even the implied warranty of",
+      "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the",
+      "GNU General Public License for more details.",
+      "You should have received a copy of the GNU General Public License",
+      "along with this program.  If not, see <http://www.gnu.org/licenses/>."
+    ],
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+      "requests": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "seq": {
+              "type": "integer",
+              "description": "Sequence of the request"
+            },
+            "op": {
+              "type": "string",
+              "description": "one of find, update, insert, delete, save"
+            },
+            "request": {
+              "type": "object",
+              "description": "one of the request types"
+            }
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "requests": null,
+    "metadata": {
+      "generatedAt": "2026-06-15T12:45:00Z",
+      "requester": "integration-service",
+      "environment": "production"
+    }
+  },
+  "valid_json": {
+    "requests": [
+      {
+        "seq": 1,
+        "op": "find",
+        "request": {
+          "entity": "customer",
+          "query": {
+            "field": "status",
+            "op": "=",
+            "value": "active"
+          },
+          "projection": {
+            "fields": [
+              "name",
+              "email",
+              "lastLogin"
+            ]
+          },
+          "limit": 25,
+          "skip": 0,
+          "sort": {
+            "lastLogin": -1
+          }
+        }
+      },
+      {
+        "seq": 2,
+        "op": "update",
+        "request": {
+          "entity": "order",
+          "query": {
+            "field": "status",
+            "op": "=",
+            "value": "pending"
+          },
+          "update": {
+            "$set": {
+              "status": "processed",
+              "processedAt": "2026-06-15T12:30:00Z"
+            }
+          },
+          "upsert": false,
+          "multi": true
+        }
+      },
+      {
+        "seq": 3,
+        "op": "insert",
+        "request": {
+          "entity": "product",
+          "document": {
+            "sku": "ABC-123",
+            "name": "Widget Pro",
+            "price": 49.99,
+            "available": true,
+            "categories": [
+              "gadgets",
+              "tools"
+            ]
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "generatedAt": "2026-06-15T12:45:00Z",
+      "requester": "integration-service",
+      "environment": "production"
+    }
+  },
+  "description": "The batch of requests was generated on 2026\u201106\u201115 at 12:45\u202fUTC by the integration\u2011service running in the production environment. Request\u202f#1 (sequence\u202f1) is a **find** operation on the **customer** entity, pulling records where the **status** field equals \u201cactive\u201d. The query returns the fields **name**, **email** and **lastLogin**, limited to 25 results, with no offset, and sorted by **lastLogin** in descending order. Request\u202f#2 (sequence\u202f2) is an **update** against the **order** entity, targeting all orders whose **status** is \u201cpending\u201d. The update sets **status** to \u201cprocessed\u201d and records the processing timestamp as\u202f2026\u201106\u201115T12:30:00Z; the operation is not an upsert and is applied to multiple matching documents. Finally, request\u202f#3 (sequence\u202f3) is an **insert** into the **product** collection, adding a new document with SKU \u201cABC\u2011123\u201d, name \u201cWidget\u202fPro\u201d, price\u202f49.99, availability set to true, and belonging to the categories \u201cgadgets\u201d and \u201ctools\u201d."
+}

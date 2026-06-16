@@ -1,0 +1,342 @@
+{
+  "name": "o54898",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "song": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Song Title"
+          },
+          "artist": {
+            "type": "string",
+            "description": "Song Artist"
+          },
+          "audio": {
+            "type": "string",
+            "description": "Path to Audio File on Local Machine"
+          },
+          "lyrics": {
+            "type": "object",
+            "properties": {
+              "line": {
+                "type": [
+                  "object",
+                  "array"
+                ],
+                "properties": {
+                  "$": {
+                    "type": "object",
+                    "properties": {
+                      "start": {
+                        "type": "string"
+                      },
+                      "end": {
+                        "type": "string"
+                      },
+                      "class": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "start",
+                      "end"
+                    ]
+                  },
+                  "_": {
+                    "type": "string"
+                  },
+                  "highlight": {
+                    "type": [
+                      "object",
+                      "array"
+                    ],
+                    "properties": {
+                      "$": {
+                        "type": "object",
+                        "properties": {
+                          "start": {
+                            "type": "string"
+                          },
+                          "end": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "start",
+                          "end"
+                        ]
+                      },
+                      "_": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "$",
+                      "_"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "$": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string"
+                            },
+                            "end": {
+                              "type": "string"
+                            },
+                            "class": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "start",
+                            "end"
+                          ]
+                        },
+                        "_": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "$",
+                        "_"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "$"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "$": {
+                      "type": "object",
+                      "properties": {
+                        "start": {
+                          "type": "string"
+                        },
+                        "end": {
+                          "type": "string"
+                        },
+                        "class": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "start",
+                        "end"
+                      ]
+                    },
+                    "_": {
+                      "type": "string"
+                    },
+                    "highlight": {
+                      "type": [
+                        "object",
+                        "array"
+                      ],
+                      "properties": {
+                        "$": {
+                          "type": "object",
+                          "properties": {
+                            "start": {
+                              "type": "string"
+                            },
+                            "end": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "start",
+                            "end"
+                          ]
+                        },
+                        "_": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "$",
+                        "_"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "$": {
+                            "type": "object",
+                            "properties": {
+                              "start": {
+                                "type": "string"
+                              },
+                              "end": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "start",
+                              "end"
+                            ]
+                          },
+                          "_": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "$",
+                          "_"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "$"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "line"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "artist",
+          "lyrics"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "song"
+    ]
+  },
+  "data": {
+    "song": {
+      "title": "Imagine",
+      "artist": "John Lennon",
+      "audio": "C:/Music/Imagine.mp3",
+      "lyrics": {
+        "line": [
+          {
+            "$": {
+              "start": "0:00",
+              "end": "0:04"
+            },
+            "_": "Imagine there's no heaven",
+            "highlight": [
+              {
+                "$": {
+                  "start": "0:00",
+                  "end": "0:02"
+                },
+                "_": "Imagine"
+              },
+              {
+                "$": {
+                  "start": "0:02",
+                  "end": "0:04"
+                },
+                "_": "there's no heaven"
+              }
+            ]
+          },
+          {
+            "$": {
+              "start": "0:05",
+              "end": "0:09"
+            },
+            "_": "It's easy if you try",
+            "highlight": {
+              "$": {
+                "start": "0:05",
+                "end": "0:09"
+              },
+              "_": "It's easy if you try"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "instructions": "Could you change the \"audio\" field inside \"song\" to \"C:/Music/Imagine.mp3 (updated)\"?",
+  "ground_truth": {
+    "song": {
+      "title": "Imagine",
+      "artist": "John Lennon",
+      "audio": "C:/Music/Imagine.mp3 (updated)",
+      "lyrics": {
+        "line": [
+          {
+            "$": {
+              "start": "0:00",
+              "end": "0:04"
+            },
+            "_": "Imagine there's no heaven",
+            "highlight": [
+              {
+                "$": {
+                  "start": "0:00",
+                  "end": "0:02"
+                },
+                "_": "Imagine"
+              },
+              {
+                "$": {
+                  "start": "0:02",
+                  "end": "0:04"
+                },
+                "_": "there's no heaven"
+              }
+            ]
+          },
+          {
+            "$": {
+              "start": "0:05",
+              "end": "0:09"
+            },
+            "_": "It's easy if you try",
+            "highlight": {
+              "$": {
+                "start": "0:05",
+                "end": "0:09"
+              },
+              "_": "It's easy if you try"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "song",
+      "audio"
+    ],
+    "precise_instruction": "Change \"audio\" inside \"song\" to \"C:/Music/Imagine.mp3 (updated)\"."
+  }
+}

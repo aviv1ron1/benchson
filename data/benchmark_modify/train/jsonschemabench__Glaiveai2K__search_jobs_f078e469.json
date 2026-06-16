@@ -1,0 +1,73 @@
+{
+  "name": "search_jobs_f078e469",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "keywords": {
+        "description": "The keywords for job search",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "location": {
+        "description": "The location for job search",
+        "type": "string"
+      },
+      "salary_range": {
+        "description": "The salary range for job search",
+        "properties": {
+          "max": {
+            "description": "The maximum salary",
+            "type": "number"
+          },
+          "min": {
+            "description": "The minimum salary",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "keywords"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "keywords": [
+      "software engineer",
+      "backend development",
+      "Java",
+      "Spring Boot"
+    ],
+    "location": "Austin, TX, USA",
+    "salary_range": {
+      "min": 90000,
+      "max": 130000
+    }
+  },
+  "instructions": "Could you increase the \"max\" in \"salary_range\" by 1?",
+  "ground_truth": {
+    "keywords": [
+      "software engineer",
+      "backend development",
+      "Java",
+      "Spring Boot"
+    ],
+    "location": "Austin, TX, USA",
+    "salary_range": {
+      "min": 90000,
+      "max": 130001
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "salary_range",
+      "max"
+    ],
+    "precise_instruction": "Increase \"max\" inside \"salary_range\" by 1."
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "name": "o42253",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "description": "This schema defines the metadata for a single document as specified by the dms-exchange-specification.",
+    "properties": {
+      "comments": {
+        "description": "Comments added to a document",
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "commentBy": {
+              "_format": "email",
+              "description": "User who has added a comment.",
+              "type": "string"
+            },
+            "commentTime": {
+              "_format": "date-time",
+              "description": "Timestamp when the comment was added.",
+              "type": "string"
+            },
+            "content": {
+              "description": "Text of the comment.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "commentBy",
+            "commentTime",
+            "content"
+          ],
+          "type": "object"
+        },
+        "minItems": 0,
+        "type": "array"
+      },
+      "context": {
+        "additionalProperties": false,
+        "description": "Information taken from the document content and are inherent to it.",
+        "properties": {
+          "documentTime": {
+            "_format": "date-time",
+            "description": "Date of the document.",
+            "type": "string"
+          },
+          "dueDateTime": {
+            "_format": "date-time",
+            "description": "A due date the document might have.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "createdBy": {
+        "_format": "email",
+        "description": "User who has triggered the export.",
+        "type": "string"
+      },
+      "createdTime": {
+        "_format": "date-time",
+        "description": "Timestamp when the container was created/exported.",
+        "type": "string"
+      },
+      "directory": {
+        "description": "If the dms works hierarchically, this field contains the directory. It is written in *nix-style, starting from the root downwards, using slashes.",
+        "type": "string"
+      },
+      "documentFiles": {
+        "description": "Groups the document-files in the given order that form a document.",
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "filename": {
+              "description": "Name of the indexed document-file inside the container.",
+              "type": "string"
+            },
+            "revisions": {
+              "description": "Revisions of a document-file.",
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "addedBy": {
+                    "_format": "email",
+                    "description": "User who has added or changed the revision.",
+                    "type": "string"
+                  },
+                  "addedTime": {
+                    "_format": "date-time",
+                    "description": "Timestamp when the revision of the document-file has been added or changed.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "addedTime"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "rotation": {
+              "default": 0,
+              "description": "Degree the document-file has to rotate clockwise to have a correct orientation.",
+              "enum": [
+                0,
+                90,
+                180,
+                270
+              ]
+            }
+          },
+          "required": [
+            "filename",
+            "revisions"
+          ],
+          "type": "object"
+        },
+        "minItems": 1,
+        "type": "array"
+      },
+      "idSystem": {
+        "description": "An id the system has provided for the document",
+        "type": "string"
+      },
+      "idUser": {
+        "description": "An id the user can define uniquely for the document",
+        "type": "string"
+      },
+      "labels": {
+        "description": "Tagging keywords",
+        "items": {
+          "type": "string"
+        },
+        "type": "array",
+        "_uniqueItems": true
+      },
+      "location": {
+        "description": "Physical location of the scanned documents, if available",
+        "type": "string"
+      },
+      "note": {
+        "description": "Free text field for document-notes, made by the users",
+        "type": "string"
+      },
+      "optionIndexed": {
+        "default": true,
+        "description": "Should the document be shown in the index (if using a search), or only when the user navigates to the document explicitly.",
+        "type": "boolean"
+      },
+      "optionOcr": {
+        "default": true,
+        "description": "Should the document be analyzed or not.",
+        "type": "boolean"
+      },
+      "project": {
+        "description": "A project the document has been associated with.",
+        "type": "string"
+      },
+      "source": {
+        "additionalProperties": false,
+        "description": "Information about the system that has created the export.",
+        "properties": {
+          "email": {
+            "_format": "email",
+            "description": "Email to contact the vendor of the system that has created the export.",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the system that has created the export.",
+            "type": "string"
+          },
+          "url": {
+            "_format": "uri",
+            "description": "Website from the vendor of the system that has created the export.",
+            "type": "string"
+          },
+          "version": {
+            "description": "Version of the system that has created the export.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "version": {
+        "description": "Valid version for this schema.",
+        "enum": [
+          "1.0.0"
+        ]
+      }
+    },
+    "required": [
+      "version",
+      "createdTime",
+      "documentFiles"
+    ],
+    "title": "dms-exchange-specification (dxs) metadata description",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "version": "1.0.0",
+    "createdTime": "2023-11-05T14:23:00Z",
+    "createdBy": "alice@example.com",
+    "directory": "/projects/alpha/documents",
+    "documentFiles": [
+      {
+        "filename": "contract.pdf",
+        "revisions": [
+          {
+            "addedBy": "bob@example.com",
+            "addedTime": "2023-10-01T09:15:00Z"
+          },
+          {
+            "addedBy": "carol@example.com",
+            "addedTime": "2023-10-15T11:30:00Z"
+          }
+        ],
+        "rotation": 0
+      },
+      {
+        "filename": "invoice.jpg",
+        "revisions": [
+          {
+            "addedTime": "2023-09-20T08:00:00Z"
+          }
+        ],
+        "rotation": 90
+      }
+    ],
+    "context": {
+      "documentTime": "2023-09-01T00:00:00Z",
+      "dueDateTime": "2023-12-31T23:59:59Z"
+    },
+    "comments": [
+      {
+        "commentBy": "dave@example.com",
+        "commentTime": "2023-11-04T12:00:00Z",
+        "content": "Please review the contract terms."
+      }
+    ],
+    "labels": [
+      "contract",
+      "legal",
+      "2023"
+    ],
+    "location": "Office Shelf A3",
+    "note": "Urgent review required.",
+    "optionIndexed": "not-a-bool",
+    "optionOcr": true,
+    "project": "Alpha Initiative",
+    "source": {
+      "name": "DocExportPro",
+      "version": "2.5.1",
+      "url": "https://docexportpro.example.com",
+      "email": "support@docexportpro.example.com"
+    },
+    "idSystem": "DXS-20231105-001",
+    "idUser": "USR-2023-Contract-01"
+  },
+  "valid_json": {
+    "version": "1.0.0",
+    "createdTime": "2023-11-05T14:23:00Z",
+    "createdBy": "alice@example.com",
+    "directory": "/projects/alpha/documents",
+    "documentFiles": [
+      {
+        "filename": "contract.pdf",
+        "revisions": [
+          {
+            "addedBy": "bob@example.com",
+            "addedTime": "2023-10-01T09:15:00Z"
+          },
+          {
+            "addedBy": "carol@example.com",
+            "addedTime": "2023-10-15T11:30:00Z"
+          }
+        ],
+        "rotation": 0
+      },
+      {
+        "filename": "invoice.jpg",
+        "revisions": [
+          {
+            "addedTime": "2023-09-20T08:00:00Z"
+          }
+        ],
+        "rotation": 90
+      }
+    ],
+    "context": {
+      "documentTime": "2023-09-01T00:00:00Z",
+      "dueDateTime": "2023-12-31T23:59:59Z"
+    },
+    "comments": [
+      {
+        "commentBy": "dave@example.com",
+        "commentTime": "2023-11-04T12:00:00Z",
+        "content": "Please review the contract terms."
+      }
+    ],
+    "labels": [
+      "contract",
+      "legal",
+      "2023"
+    ],
+    "location": "Office Shelf A3",
+    "note": "Urgent review required.",
+    "optionIndexed": true,
+    "optionOcr": true,
+    "project": "Alpha Initiative",
+    "source": {
+      "name": "DocExportPro",
+      "version": "2.5.1",
+      "url": "https://docexportpro.example.com",
+      "email": "support@docexportpro.example.com"
+    },
+    "idSystem": "DXS-20231105-001",
+    "idUser": "USR-2023-Contract-01"
+  },
+  "description": "On\u202f2023-11-05T14:23:00Z, Alice (alice@example.com) exported a document package (schema version\u202f1.0.0) from the DXS system. The export, identified by the system ID\u202fDXS-20231105-001 and the user\u2011defined ID\u202fUSR-2023-Contract-01, is stored in the directory \u201c/projects/alpha/documents\u201d and belongs to the \u201cAlpha Initiative\u201d project. It contains two files:\n\n- **contract.pdf** (rotation\u202f0\u00b0). It has two revisions: the first was added by bob@example.com on\u202f2023-10-01T09:15:00Z, and the second by carol@example.com on\u202f2023-10-15T11:30:00Z.  \n- **invoice.jpg** (rotation\u202f90\u00b0 clockwise). It has a single revision added on\u202f2023-09-20T08:00:00Z.\n\nThe document\u2019s contextual dates are a document time of\u202f2023-09-01T00:00:00Z and a due date of\u202f2023-12-31T23:59:59Z. Physically the papers are located on \u201cOffice Shelf A3\u201d. A note attached to the export reads \u201cUrgent review required.\u201d The entry is tagged with the labels\u202fcontract,\u202flegal,\u202f2023. Indexing and OCR are both enabled (optionIndexed\u202ftrue, optionOcr\u202ftrue). A comment from dave@example.com dated\u202f2023-11-04T12:00:00Z states: \u201cPlease review the contract terms.\u201d\n\nThe source of this export is the system \u201cDocExportPro\u201d version\u202f2.5.1, reachable at\u202fhttps://docexportpro.example.com, with support contact\u202fsupport@docexportpro.example.com."
+}

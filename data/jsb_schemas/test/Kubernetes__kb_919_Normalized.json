@@ -1,0 +1,19 @@
+{
+  "name": "kb_919_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "describes the attributes of a scale subresource",
+    "properties": {
+      "replicas": {
+        "description": "desired number of instances for the scaled object.",
+        "format": "int32",
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  }
+}

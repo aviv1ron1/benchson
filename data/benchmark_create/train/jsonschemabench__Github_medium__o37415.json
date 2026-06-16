@@ -1,0 +1,128 @@
+{
+  "name": "o37415",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "type": "object",
+    "properties": {
+      "$schema": {
+        "type": "string"
+      },
+      "hierarchies": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/hierarchy"
+        }
+      }
+    },
+    "required": [
+      "$schema",
+      "hierarchies"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+      "hierarchy": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "asPostfix": {
+            "type": "boolean"
+          },
+          "baseProperties": {
+            "$ref": "#/definitions/property"
+          },
+          "subTypes": {
+            "$ref": "#/definitions/subType"
+          }
+        },
+        "required": [
+          "name",
+          "path",
+          "asPostfix"
+        ],
+        "additionalProperties": false
+      },
+      "subType": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "superType": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "properties": {
+            "$ref": "#/definitions/property"
+          }
+        },
+        "required": [
+          "name",
+          "superType",
+          "properties"
+        ],
+        "additionalProperties": false
+      },
+      "property": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "description": "We have defined two distinct hierarchies for our system. The first hierarchy, **Employee**, lives under the namespace\u202f`company.hr.employee` and is not treated as a postfix element. Its primary identifier is the `employeeId` field. Within this hierarchy we have a sub\u2011type called **Manager**, which inherits from\u202fEmployee and adds a `department` attribute to capture the manager\u2019s business unit.\n\nThe second hierarchy, **Product**, is scoped to `inventory.product` and is configured to be used as a postfix. The core property for this hierarchy is `sku`, the stock\u2011keeping unit that uniquely identifies each product. A specialized sub\u2011type named **DigitalProduct** is also defined; it does not inherit from any other type (its super\u2011type is\u202fnull) and introduces a `downloadUrl` property to store the location where the digital item can be retrieved.",
+  "reference_json": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "hierarchies": [
+      {
+        "name": "Employee",
+        "path": "company.hr.employee",
+        "asPostfix": false,
+        "baseProperties": {
+          "name": "employeeId"
+        },
+        "subTypes": {
+          "name": "Manager",
+          "superType": "Employee",
+          "properties": {
+            "name": "department"
+          }
+        }
+      },
+      {
+        "name": "Product",
+        "path": "inventory.product",
+        "asPostfix": true,
+        "baseProperties": {
+          "name": "sku"
+        },
+        "subTypes": {
+          "name": "DigitalProduct",
+          "superType": null,
+          "properties": {
+            "name": "downloadUrl"
+          }
+        }
+      }
+    ]
+  }
+}

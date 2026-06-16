@@ -1,0 +1,46 @@
+{
+  "name": "kb_605_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.",
+    "properties": {
+      "path": {
+        "description": "Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "readOnly": {
+        "description": "ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "server": {
+        "description": "Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "server",
+      "path"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "path": "/export/data",
+    "readOnly": false
+  },
+  "valid_json": {
+    "server": "10.0.12.45",
+    "path": "/export/data",
+    "readOnly": false
+  },
+  "description": "The pod will use an NFS volume that points to the export located at **/export/data** on the server **10.0.12.45**. This mount is configured for read\u2011write access, so the application running in the pod can both read from and write to the shared directory for the duration of the pod\u2019s lifetime."
+}

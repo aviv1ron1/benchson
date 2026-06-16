@@ -1,0 +1,81 @@
+{
+  "name": "o67500",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "definitions": {
+      "assetPattern": {
+        "additionalProperties": false,
+        "properties": {
+          "glob": {
+            "description": "The pattern to match.",
+            "type": "string"
+          },
+          "input": {
+            "description": "The input directory path in which to apply 'glob'. Defaults to the project root.",
+            "type": "string"
+          },
+          "output": {
+            "description": "Absolute path within the output.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "glob",
+          "input",
+          "output"
+        ],
+        "type": "object"
+      }
+    },
+    "properties": {
+      "additionalTargets": {
+        "default": [],
+        "description": "List of additional targets that should be run",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "buildTarget": {
+        "default": "packagr",
+        "description": "The target used to build the library with the ng-packagr",
+        "type": "string"
+      },
+      "ngVersionPlaceholder": {
+        "default": "{{NG_VERSION}}",
+        "description": "The placeholder string that gets replaced by the corresponding angular versions for the package in your package.json",
+        "type": "string"
+      },
+      "versionPlaceholder": {
+        "default": "{{VERSION}}",
+        "description": "The placeholder string that gets replaced by the corresponding version in your package.json",
+        "type": "string"
+      }
+    },
+    "required": [
+      "buildTarget"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "buildTarget": "packagr",
+    "additionalTargets": [
+      99999,
+      "lint"
+    ],
+    "ngVersionPlaceholder": "{{NG_VERSION}}",
+    "versionPlaceholder": "{{VERSION}}"
+  },
+  "valid_json": {
+    "buildTarget": "packagr",
+    "additionalTargets": [
+      "test",
+      "lint"
+    ],
+    "ngVersionPlaceholder": "{{NG_VERSION}}",
+    "versionPlaceholder": "{{VERSION}}"
+  },
+  "description": "The project is configured to use **packagr** as its primary build target for the ng\u2011packagr library packaging process. In addition to the main build, the workflow will also execute the **test** and **lint** targets to ensure code quality and correctness before publishing.\n\nWhen the package metadata is generated, the placeholders **{{NG_VERSION}}** and **{{VERSION}}** will be substituted with the appropriate Angular version and the library\u2019s version from the package.json, respectively. This ensures that the final distributed package reflects the correct versioning information."
+}

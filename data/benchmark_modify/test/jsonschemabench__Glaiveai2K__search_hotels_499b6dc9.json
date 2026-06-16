@@ -1,0 +1,64 @@
+{
+  "name": "search_hotels_499b6dc9",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "amenities": {
+        "description": "The amenities required in the hotel",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "check_in_date": {
+        "description": "The check-in date for the hotel",
+        "type": "string"
+      },
+      "check_out_date": {
+        "description": "The check-out date for the hotel",
+        "type": "string"
+      },
+      "location": {
+        "description": "The location to search for hotels",
+        "type": "string"
+      }
+    },
+    "required": [
+      "location",
+      "check_in_date",
+      "check_out_date"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "location": "Paris, France",
+    "check_in_date": "2024-09-15",
+    "check_out_date": "2024-09-20",
+    "amenities": [
+      "Free WiFi",
+      "Breakfast included",
+      "Swimming pool",
+      "Fitness center"
+    ]
+  },
+  "instructions": "Please change the location field to \"Paris, France (updated)\".",
+  "ground_truth": {
+    "location": "Paris, France (updated)",
+    "check_in_date": "2024-09-15",
+    "check_out_date": "2024-09-20",
+    "amenities": [
+      "Free WiFi",
+      "Breakfast included",
+      "Swimming pool",
+      "Fitness center"
+    ]
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "location"
+    ],
+    "precise_instruction": "Change \"location\" to \"Paris, France (updated)\"."
+  }
+}

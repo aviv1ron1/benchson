@@ -1,0 +1,484 @@
+{
+  "name": "o62961",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "title": "Filing",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Filing represents a user submission against one or many proceedings.",
+    "required": [
+      "_metadata",
+      "filing"
+    ],
+    "type": "object",
+    "properties": {
+      "_metadata": {
+        "required": [
+          "request",
+          "response"
+        ],
+        "type": "object",
+        "properties": {
+          "request": {
+            "required": [
+              "ip",
+              "params",
+              "time",
+              "user"
+            ],
+            "type": "object",
+            "properties": {
+              "ip": {
+                "type": "string"
+              },
+              "params": {
+                "type": "null"
+              },
+              "user": {
+                "type": "null"
+              },
+              "time": {
+                "type": "string"
+              }
+            }
+          },
+          "response": {
+            "required": [
+              "time"
+            ],
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "filing": {
+        "required": [
+          "brief_comment_flag",
+          "browser",
+          "bureau_id_num",
+          "confirmation_number",
+          "date_accepted",
+          "date_comment_period",
+          "date_disseminated",
+          "date_filed",
+          "date_modified",
+          "date_pn_ex_parte",
+          "date_rcpt",
+          "date_released",
+          "date_reply_comment",
+          "date_submission",
+          "date_transmission_completed",
+          "delagated_authority_number",
+          "exparte_late_filed",
+          "fcc_record",
+          "file_numer",
+          "filed_from",
+          "filer",
+          "flag_migrated_from_rips",
+          "id_edocs",
+          "id_proceeding",
+          "id_ruleno",
+          "id_trans",
+          "id_user",
+          "id_viewing_status",
+          "path_info",
+          "reg_flex_analysis",
+          "remote_addr",
+          "remote_host",
+          "remote_ident",
+          "remote_user",
+          "report_number",
+          "ruleno",
+          "server_name",
+          "small_business_impact",
+          "subject",
+          "submission_status",
+          "submission_type",
+          "total_page_count",
+          "viewing_status"
+        ],
+        "type": "object",
+        "properties": {
+          "exparte_late_filed": {
+            "type": "boolean"
+          },
+          "date_disseminated": {
+            "type": "string"
+          },
+          "date_rcpt": {
+            "type": "string"
+          },
+          "total_page_count": {
+            "type": "integer"
+          },
+          "date_pn_ex_parte": {
+            "type": "null"
+          },
+          "file_numer": {
+            "type": "null"
+          },
+          "reg_flex_analysis": {
+            "type": "null"
+          },
+          "ruleno": {
+            "type": "null"
+          },
+          "id_viewing_status": {
+            "type": "null"
+          },
+          "subject": {
+            "type": "null"
+          },
+          "confirmation_number": {
+            "type": "string"
+          },
+          "remote_user": {
+            "type": "null"
+          },
+          "fcc_record": {
+            "type": "null"
+          },
+          "server_name": {
+            "type": "string"
+          },
+          "filed_from": {
+            "type": "string"
+          },
+          "viewing_status": {
+            "type": "string"
+          },
+          "date_filed": {
+            "type": "string"
+          },
+          "report_number": {
+            "type": "null"
+          },
+          "date_comment_period": {
+            "type": "null"
+          },
+          "id_edocs": {
+            "type": "null"
+          },
+          "filer": {
+            "required": [
+              "address",
+              "applicant_name",
+              "author_name",
+              "contact_email_id",
+              "contact_name",
+              "lawfirm_name"
+            ],
+            "type": "object",
+            "properties": {
+              "contact_email_id": {
+                "type": "string"
+              },
+              "author_name": {
+                "type": "string"
+              },
+              "lawfirm_name": {
+                "type": "string"
+              },
+              "address": {
+                "required": [
+                  "city",
+                  "country",
+                  "id_state",
+                  "line_1",
+                  "line_2",
+                  "postal_code"
+                ],
+                "type": "object",
+                "properties": {
+                  "city": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "id_state": {
+                    "type": "string"
+                  },
+                  "postal_code": {
+                    "type": "string"
+                  },
+                  "line_1": {
+                    "type": "string"
+                  },
+                  "line_2": {
+                    "type": "null"
+                  }
+                }
+              },
+              "contact_name": {
+                "type": "string"
+              },
+              "applicant_name": {
+                "type": "null"
+              }
+            }
+          },
+          "id_ruleno": {
+            "type": "null"
+          },
+          "remote_ident": {
+            "type": "null"
+          },
+          "submission_status": {
+            "required": [
+              "id",
+              "value"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "path_info": {
+            "type": "string"
+          },
+          "delagated_authority_number": {
+            "type": "null"
+          },
+          "bureau_id_num": {
+            "type": "null"
+          },
+          "id_trans": {
+            "type": "integer"
+          },
+          "id_user": {
+            "type": "integer"
+          },
+          "date_transmission_completed": {
+            "type": "string"
+          },
+          "date_modified": {
+            "type": "null"
+          },
+          "date_accepted": {
+            "type": "null"
+          },
+          "remote_addr": {
+            "type": "string"
+          },
+          "brief_comment_flag": {
+            "type": "integer"
+          },
+          "date_reply_comment": {
+            "type": "null"
+          },
+          "date_submission": {
+            "type": "string"
+          },
+          "id_proceeding": {
+            "type": "integer"
+          },
+          "flag_migrated_from_rips": {
+            "type": "null"
+          },
+          "small_business_impact": {
+            "type": "null"
+          },
+          "date_released": {
+            "type": "null"
+          },
+          "remote_host": {
+            "type": "string"
+          },
+          "submission_type": {
+            "required": [
+              "id",
+              "value"
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          },
+          "browser": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "_metadata": {
+      "request": {
+        "ip": "203.0.113.45",
+        "params": null,
+        "user": null,
+        "time": "2026-06-15T14:32:10Z"
+      },
+      "response": {
+        "time": "2026-06-15T14:32:12Z"
+      }
+    },
+    "filing": {
+      "brief_comment_flag": 0,
+      "browser": "Chrome/124.0.0",
+      "bureau_id_num": null,
+      "confirmation_number": "CN-20260615-00123",
+      "date_accepted": null,
+      "date_comment_period": null,
+      "date_disseminated": "2026-06-20",
+      "date_filed": "2026-06-15",
+      "date_modified": null,
+      "date_pn_ex_parte": null,
+      "date_rcpt": "2026-06-15",
+      "date_released": null,
+      "date_reply_comment": null,
+      "date_submission": "2026-06-15T14:30:00Z",
+      "date_transmission_completed": "2026-06-15T14:31:45Z",
+      "delagated_authority_number": null,
+      "exparte_late_filed": false,
+      "fcc_record": null,
+      "file_numer": null,
+      "filed_from": "Online Portal",
+      "filer": {
+        "address": {
+          "city": "Springfield",
+          "country": "USA",
+          "id_state": "IL",
+          "line_1": "123 Main St",
+          "line_2": null,
+          "postal_code": "62704"
+        },
+        "applicant_name": null,
+        "author_name": "John Doe",
+        "contact_email_id": "jdoe@example.com",
+        "contact_name": "John Doe",
+        "lawfirm_name": "Doe Law Associates"
+      },
+      "flag_migrated_from_rips": null,
+      "id_edocs": null,
+      "id_proceeding": 5678,
+      "id_ruleno": null,
+      "id_trans": 3456,
+      "id_user": 789,
+      "id_viewing_status": null,
+      "path_info": "/filings/2026/06/15/5678",
+      "reg_flex_analysis": null,
+      "remote_addr": "203.0.113.45",
+      "remote_host": "host.example.com",
+      "remote_ident": null,
+      "remote_user": null,
+      "report_number": null,
+      "ruleno": null,
+      "server_name": "filing-server-01",
+      "small_business_impact": null,
+      "subject": null,
+      "submission_status": {
+        "id": 1,
+        "value": null
+      },
+      "submission_type": {
+        "id": 2,
+        "value": "Electronic"
+      },
+      "total_page_count": 12,
+      "viewing_status": "Pending"
+    }
+  },
+  "instructions": "Could you increase the brief_comment_flag inside filing by 1?",
+  "ground_truth": {
+    "_metadata": {
+      "request": {
+        "ip": "203.0.113.45",
+        "params": null,
+        "user": null,
+        "time": "2026-06-15T14:32:10Z"
+      },
+      "response": {
+        "time": "2026-06-15T14:32:12Z"
+      }
+    },
+    "filing": {
+      "brief_comment_flag": 1,
+      "browser": "Chrome/124.0.0",
+      "bureau_id_num": null,
+      "confirmation_number": "CN-20260615-00123",
+      "date_accepted": null,
+      "date_comment_period": null,
+      "date_disseminated": "2026-06-20",
+      "date_filed": "2026-06-15",
+      "date_modified": null,
+      "date_pn_ex_parte": null,
+      "date_rcpt": "2026-06-15",
+      "date_released": null,
+      "date_reply_comment": null,
+      "date_submission": "2026-06-15T14:30:00Z",
+      "date_transmission_completed": "2026-06-15T14:31:45Z",
+      "delagated_authority_number": null,
+      "exparte_late_filed": false,
+      "fcc_record": null,
+      "file_numer": null,
+      "filed_from": "Online Portal",
+      "filer": {
+        "address": {
+          "city": "Springfield",
+          "country": "USA",
+          "id_state": "IL",
+          "line_1": "123 Main St",
+          "line_2": null,
+          "postal_code": "62704"
+        },
+        "applicant_name": null,
+        "author_name": "John Doe",
+        "contact_email_id": "jdoe@example.com",
+        "contact_name": "John Doe",
+        "lawfirm_name": "Doe Law Associates"
+      },
+      "flag_migrated_from_rips": null,
+      "id_edocs": null,
+      "id_proceeding": 5678,
+      "id_ruleno": null,
+      "id_trans": 3456,
+      "id_user": 789,
+      "id_viewing_status": null,
+      "path_info": "/filings/2026/06/15/5678",
+      "reg_flex_analysis": null,
+      "remote_addr": "203.0.113.45",
+      "remote_host": "host.example.com",
+      "remote_ident": null,
+      "remote_user": null,
+      "report_number": null,
+      "ruleno": null,
+      "server_name": "filing-server-01",
+      "small_business_impact": null,
+      "subject": null,
+      "submission_status": {
+        "id": 1,
+        "value": null
+      },
+      "submission_type": {
+        "id": 2,
+        "value": "Electronic"
+      },
+      "total_page_count": 12,
+      "viewing_status": "Pending"
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "filing",
+      "brief_comment_flag"
+    ],
+    "precise_instruction": "Increase \"brief_comment_flag\" inside \"filing\" by 1."
+  }
+}

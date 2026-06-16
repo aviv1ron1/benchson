@@ -1,0 +1,242 @@
+{
+  "name": "o62383",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "properties": {
+      "_id": {
+        "description": "a unique identifier for this annotation",
+        "id": "id",
+        "type": "integer"
+      },
+      "annotator-id": {
+        "_id": "annotator-id",
+        "description": "an id that identifies the annotator (ex. email address)",
+        "type": "string"
+      },
+      "coref": {
+        "_id": "coref",
+        "description": "whether or not the annotation involves coreference resolution",
+        "type": "boolean"
+      },
+      "cross-sentence": {
+        "_id": "cross-sentence",
+        "description": "whether or not the two event mentions being compared are in different sentences",
+        "type": "boolean"
+      },
+      "e1-end": {
+        "_id": "e1-end",
+        "description": "the token index that marks the end of e1",
+        "type": "integer"
+      },
+      "e1-label": {
+        "_id": "e1-label",
+        "description": "the event type of e1",
+        "type": "string"
+      },
+      "e1-sentence": {
+        "_id": "e1-sentence",
+        "description": "the text of e1",
+        "type": "string"
+      },
+      "e1-sentence-index": {
+        "_id": "e1-sentence-index",
+        "description": "the sentence index for e1",
+        "type": "integer"
+      },
+      "e1-start": {
+        "_id": "e1-start",
+        "description": "the token index that marks the start of e1",
+        "type": "integer"
+      },
+      "e1-tokens": {
+        "_id": "e1-tokens",
+        "description": "the list of tokens in e1",
+        "type": "array"
+      },
+      "e1-trigger": {
+        "_id": "e1-trigger",
+        "description": "the text of e1's trigger",
+        "type": "string"
+      },
+      "e1-trigger-end": {
+        "_id": "e1-trigger-end",
+        "description": "the token index that marks the end of e1's trigger",
+        "type": "integer"
+      },
+      "e1-trigger-start": {
+        "_id": "e1-trigger-start",
+        "description": "the token index that marks the start of e1's trigger",
+        "type": "integer"
+      },
+      "e2-end": {
+        "_id": "e2-end",
+        "description": "the token index that marks the end of e2",
+        "type": "integer"
+      },
+      "e2-label": {
+        "_id": "e2-label",
+        "description": "the event type of e2",
+        "type": "string"
+      },
+      "e2-sentence": {
+        "_id": "e2-sentence",
+        "description": "the text of e2",
+        "type": "string"
+      },
+      "e2-sentence-index": {
+        "_id": "e2-sentence-index",
+        "description": "the sentence index for e2",
+        "type": "integer"
+      },
+      "e2-start": {
+        "_id": "e2-start",
+        "description": "the token index that marks the start of e2",
+        "type": "integer"
+      },
+      "e2-tokens": {
+        "_id": "e2-tokens",
+        "description": "the list of tokens in e1",
+        "type": "array"
+      },
+      "e2-trigger": {
+        "_id": "e2-trigger",
+        "description": "the text of e1's trigger",
+        "type": "string"
+      },
+      "e2-trigger-end": {
+        "_id": "e2-trigger-end",
+        "description": "the token index that marks the end of e2's trigger",
+        "type": "integer"
+      },
+      "e2-trigger-start": {
+        "_id": "e2-trigger-start",
+        "description": "the token index that marks the start of e2's trigger",
+        "type": "integer"
+      },
+      "paper-id": {
+        "_id": "paper-id",
+        "description": "a unique identifier for the paper (PMID) from which this event pair was extracted",
+        "type": "string"
+      },
+      "relation": {
+        "_id": "relation",
+        "description": "The type of relation that holds between e1 and e2.  Values found in the corpus: \"E1 precedes E2\" (causal precedence), \"E2 precedes E1\" (causal precedence), \"E1 subsumes E2\" (E1 is a more specific or complete mention of E2), \"E2 subsumes E1\" (E2 is a more specific or complete mention of E1), \"Equivalent\" (the event mentions are equivalent), \"Bug\" (the extracted mentions incorrect), \"None\" (no relation holds), \"Other\" (some other relation holds)",
+        "enum": [
+          "E1 precedes E2",
+          "E2 precedes E1",
+          "E1 subsumes E2",
+          "E2 subsumes E1",
+          "Equivalent",
+          "Bug",
+          "None",
+          "Other"
+        ],
+        "type": "string"
+      },
+      "text": {
+        "_id": "text",
+        "description": "the text encompassing the two event mentions and their antecedents (if resolved through coreference)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "annotator-id",
+      "coref",
+      "cross-sentence",
+      "e1-end",
+      "e1-label",
+      "e1-sentence",
+      "e1-start",
+      "e1-tokens",
+      "e1-trigger",
+      "e1-trigger-end",
+      "e1-trigger-start",
+      "e2-end",
+      "e2-label",
+      "e2-sentence",
+      "e2-sentence-index",
+      "e2-start",
+      "e2-tokens",
+      "e2-trigger",
+      "e2-trigger-end",
+      "e2-trigger-start",
+      "id",
+      "paper-id",
+      "relation",
+      "text"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "id": 12345,
+    "annotator-id": "alice@example.com",
+    "coref": true,
+    "cross-sentence": true,
+    "e1-start": null,
+    "e1-end": 8,
+    "e1-label": "Gene_expression",
+    "e1-sentence": "The activation of gene X leads to increased protein synthesis.",
+    "e1-sentence-index": 0,
+    "e1-tokens": [
+      "activation",
+      "of",
+      "gene",
+      "X"
+    ],
+    "e1-trigger": "activation",
+    "e1-trigger-start": 5,
+    "e1-trigger-end": 6,
+    "e2-start": 15,
+    "e2-end": 17,
+    "e2-label": "Protein_synthesis",
+    "e2-sentence": "Protein synthesis was observed shortly after.",
+    "e2-sentence-index": 1,
+    "e2-tokens": [
+      "Protein",
+      "synthesis"
+    ],
+    "e2-trigger": "synthesis",
+    "e2-trigger-start": 16,
+    "e2-trigger-end": 17,
+    "paper-id": "12345678",
+    "relation": "E1 precedes E2",
+    "text": "The activation of gene X leads to increased protein synthesis. Protein synthesis was observed shortly after."
+  },
+  "valid_json": {
+    "id": 12345,
+    "annotator-id": "alice@example.com",
+    "coref": true,
+    "cross-sentence": true,
+    "e1-start": 5,
+    "e1-end": 8,
+    "e1-label": "Gene_expression",
+    "e1-sentence": "The activation of gene X leads to increased protein synthesis.",
+    "e1-sentence-index": 0,
+    "e1-tokens": [
+      "activation",
+      "of",
+      "gene",
+      "X"
+    ],
+    "e1-trigger": "activation",
+    "e1-trigger-start": 5,
+    "e1-trigger-end": 6,
+    "e2-start": 15,
+    "e2-end": 17,
+    "e2-label": "Protein_synthesis",
+    "e2-sentence": "Protein synthesis was observed shortly after.",
+    "e2-sentence-index": 1,
+    "e2-tokens": [
+      "Protein",
+      "synthesis"
+    ],
+    "e2-trigger": "synthesis",
+    "e2-trigger-start": 16,
+    "e2-trigger-end": 17,
+    "paper-id": "12345678",
+    "relation": "E1 precedes E2",
+    "text": "The activation of gene X leads to increased protein synthesis. Protein synthesis was observed shortly after."
+  },
+  "description": "Annotation record\u202f#12345 was entered by alice@example.com. The entry refers to data extracted from paper\u202fID\u202f12345678, and the annotator marked the pair as involving coreference (coref\u202f=\u202ftrue) with the two events occurring in different sentences (cross\u2011sentence\u202f=\u202ftrue).\n\nThe first event (E1) is a Gene_expression mention. It appears in sentence\u202f0, whose full text reads: \u201cThe activation of gene\u202fX leads to increased protein synthesis.\u201d Within this sentence the event spans token indices\u202f5\u202fthrough\u202f8 and the trigger word \u201cactivation\u201d occupies token indices\u202f5\u202fto\u202f6. The tokens that constitute the event are \u201cactivation\u201d, \u201cof\u201d, \u201cgene\u201d, \u201cX\u201d.\n\nThe second event (E2) is a Protein_synthesis mention found in sentence\u202f1: \u201cProtein synthesis was observed shortly after.\u201d This event runs from token index\u202f15\u202fto\u202f17, with the trigger \u201csynthesis\u201d covering token indices\u202f16\u202fto\u202f17. Its token list is \u201cProtein\u201d, \u201csynthesis\u201d. The annotator recorded the temporal relation as \u201cE1 precedes E2\u201d, indicating that the activation event precedes the observed synthesis. The complete text surrounding both events (including any resolved antecedents) is: \u201cThe activation of gene X leads to increased protein synthesis. Protein synthesis was observed shortly after.\u201d"
+}

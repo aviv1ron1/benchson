@@ -1,0 +1,359 @@
+{
+  "name": "o60171",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "orientation": {
+            "type": "string"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "native_id": {
+            "type": "string"
+          },
+          "licenses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "attribute_to": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "details": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "name_long": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "date_created_original": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "camera_exif": {
+            "type": "object"
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "transient_info": {
+            "type": "object"
+          },
+          "date_captured": {
+            "type": "string"
+          },
+          "location": {
+            "type": "object"
+          },
+          "attribution": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "license_name": {
+            "type": "string"
+          },
+          "url_shown_at": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "sizes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "bytes": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "content_type": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "license_name_long": {
+            "type": "string"
+          },
+          "source_dataset": {
+            "type": "string"
+          },
+          "artist_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "url_direct": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          "license_url": {
+            "type": "string"
+          },
+          "native_source_id": {
+            "type": "string"
+          },
+          "date_created_at_source": {
+            "type": "string"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "providers_list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "description": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "data": {
+      "orientation": "landscape",
+      "keywords": [
+        "sunset",
+        "beach",
+        "vacation",
+        "palmtrees"
+      ],
+      "native_id": "IMG_12345",
+      "licenses": [
+        {
+          "attribute_to": [
+            "public",
+            "non-commercial"
+          ],
+          "details": "Creative Commons Attribution-NonCommercial 4.0 International",
+          "name": "CC BY-NC 4.0",
+          "name_long": "Creative Commons Attribution Non-Commercial 4.0 International"
+        }
+      ],
+      "date_created_original": "2021-07-15T10:30:00Z",
+      "title": "Sunset over Palm Beach",
+      "camera_exif": {
+        "make": "Canon",
+        "model": "EOS 5D Mark IV",
+        "exposure_time": "1/200",
+        "aperture": "f/8.0",
+        "iso": 200
+      },
+      "source": {
+        "url": "https://example.com/gallery/sunset-palm-beach",
+        "name": "Example Photography Archive"
+      },
+      "transient_info": {
+        "upload_session": "sess_9f8b7c6d",
+        "processed": true
+      },
+      "date_captured": "2021-07-15",
+      "location": {
+        "latitude": 26.7153,
+        "longitude": -80.0534,
+        "city": "Palm Beach",
+        "country": "USA"
+      },
+      "attribution": [
+        {
+          "name": "John Doe"
+        }
+      ],
+      "license_name": "CC BY-NC 4.0",
+      "url_shown_at": {
+        "url": "https://example.com/images/IMG_12345/display"
+      },
+      "sizes": [
+        {
+          "bytes": 3456789,
+          "height": 1080,
+          "width": 1920,
+          "content_type": "image/jpeg"
+        },
+        {
+          "bytes": 9876543,
+          "height": 2160,
+          "width": 3840,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "license_name_long": "Creative Commons Attribution Non-Commercial 4.0 International",
+      "source_dataset": "BeachSunsets2021",
+      "artist_names": [
+        "John Doe"
+      ],
+      "url_direct": {
+        "url": "https://example.com/images/IMG_12345/full.jpg"
+      },
+      "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "native_source_id": "source_987654",
+      "date_created_at_source": "2021-07-15T12:00:00Z",
+      "_id": "5f4e8b9c2a3d4e6f7a8b9c0d",
+      "providers_list": [
+        {
+          "name": "ExampleProvider"
+        }
+      ],
+      "description": [
+        "A vibrant sunset captured over the tranquil waters of Palm Beach, highlighting the silhouettes of palm trees along the shoreline.",
+        "The photo showcases warm orange and pink hues reflected on the sea surface."
+      ]
+    }
+  },
+  "instructions": "Could you clear all items from the\u202fattribution\u202flist inside\u202fdata?",
+  "ground_truth": {
+    "data": {
+      "orientation": "landscape",
+      "keywords": [
+        "sunset",
+        "beach",
+        "vacation",
+        "palmtrees"
+      ],
+      "native_id": "IMG_12345",
+      "licenses": [
+        {
+          "attribute_to": [
+            "public",
+            "non-commercial"
+          ],
+          "details": "Creative Commons Attribution-NonCommercial 4.0 International",
+          "name": "CC BY-NC 4.0",
+          "name_long": "Creative Commons Attribution Non-Commercial 4.0 International"
+        }
+      ],
+      "date_created_original": "2021-07-15T10:30:00Z",
+      "title": "Sunset over Palm Beach",
+      "camera_exif": {
+        "make": "Canon",
+        "model": "EOS 5D Mark IV",
+        "exposure_time": "1/200",
+        "aperture": "f/8.0",
+        "iso": 200
+      },
+      "source": {
+        "url": "https://example.com/gallery/sunset-palm-beach",
+        "name": "Example Photography Archive"
+      },
+      "transient_info": {
+        "upload_session": "sess_9f8b7c6d",
+        "processed": true
+      },
+      "date_captured": "2021-07-15",
+      "location": {
+        "latitude": 26.7153,
+        "longitude": -80.0534,
+        "city": "Palm Beach",
+        "country": "USA"
+      },
+      "attribution": [],
+      "license_name": "CC BY-NC 4.0",
+      "url_shown_at": {
+        "url": "https://example.com/images/IMG_12345/display"
+      },
+      "sizes": [
+        {
+          "bytes": 3456789,
+          "height": 1080,
+          "width": 1920,
+          "content_type": "image/jpeg"
+        },
+        {
+          "bytes": 9876543,
+          "height": 2160,
+          "width": 3840,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "license_name_long": "Creative Commons Attribution Non-Commercial 4.0 International",
+      "source_dataset": "BeachSunsets2021",
+      "artist_names": [
+        "John Doe"
+      ],
+      "url_direct": {
+        "url": "https://example.com/images/IMG_12345/full.jpg"
+      },
+      "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "native_source_id": "source_987654",
+      "date_created_at_source": "2021-07-15T12:00:00Z",
+      "_id": "5f4e8b9c2a3d4e6f7a8b9c0d",
+      "providers_list": [
+        {
+          "name": "ExampleProvider"
+        }
+      ],
+      "description": [
+        "A vibrant sunset captured over the tranquil waters of Palm Beach, highlighting the silhouettes of palm trees along the shoreline.",
+        "The photo showcases warm orange and pink hues reflected on the sea surface."
+      ]
+    }
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "data",
+      "attribution"
+    ],
+    "precise_instruction": "Remove all items from the \"attribution\" list inside \"data\"."
+  }
+}

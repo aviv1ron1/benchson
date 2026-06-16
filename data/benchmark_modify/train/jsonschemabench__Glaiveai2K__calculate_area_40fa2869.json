@@ -1,0 +1,62 @@
+{
+  "name": "calculate_area_40fa2869",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape (for triangle or rectangle)",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape (for triangle or rectangle)",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape (for circle)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "base",
+          "height"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. triangle, rectangle, circle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 5.0,
+      "height": 3.2
+    }
+  },
+  "instructions": "Could you decrease the \u201cbase\u201d inside \u201cdimensions\u201d by 1?",
+  "ground_truth": {
+    "shape": "rectangle",
+    "dimensions": {
+      "base": 4.0,
+      "height": 3.2
+    }
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "dimensions",
+      "base"
+    ],
+    "precise_instruction": "Decrease \"base\" inside \"dimensions\" by 1."
+  }
+}

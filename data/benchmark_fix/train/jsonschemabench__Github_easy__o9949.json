@@ -1,0 +1,34 @@
+{
+  "name": "o9949",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "enum": [
+          true
+        ]
+      },
+      "accountIsLocked": {
+        "type": "boolean"
+      },
+      "twoFactorAuthEnabled": {
+        "type": "boolean"
+      }
+    }
+  },
+  "erroneous_json": {
+    "success": true,
+    "accountIsLocked": false,
+    "twoFactorAuthEnabled": "not-a-bool"
+  },
+  "valid_json": {
+    "success": true,
+    "accountIsLocked": false,
+    "twoFactorAuthEnabled": true
+  },
+  "description": "Dear User,\n\nWe are pleased to inform you that your recent request was processed successfully. Your account is currently active and not locked, and two\u2011factor authentication remains enabled on your profile."
+}

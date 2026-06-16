@@ -1,0 +1,66 @@
+{
+  "name": "o72175",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "version specific attributes of a stack",
+    "properties": {
+      "createTimestamp": {
+        "id": "createTimestamp",
+        "type": "string"
+      },
+      "projectIteration": {
+        "id": "projectIteration",
+        "type": "integer"
+      },
+      "projectStep": {
+        "id": "projectStep",
+        "type": "integer"
+      },
+      "snapshotRootPath": {
+        "id": "snapshotRootPath",
+        "type": "string"
+      },
+      "stackResolutionX": {
+        "id": "stackResolutionX",
+        "type": "number"
+      },
+      "stackResolutionY": {
+        "id": "stackResolutionY",
+        "type": "number"
+      },
+      "stackResolutionZ": {
+        "id": "stackResolutionZ",
+        "type": "number"
+      },
+      "versionNotes": {
+        "id": "versionNotes",
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "Stack Version",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "createTimestamp": "2024-03-18T14:27:05Z",
+    "projectIteration": 42,
+    "projectStep": null,
+    "snapshotRootPath": "/mnt/data/stack_snapshots/v5",
+    "stackResolutionX": 0.125,
+    "stackResolutionY": 0.125,
+    "stackResolutionZ": 0.5,
+    "versionNotes": "Adjusted Z-resolution for improved depth accuracy and added metadata for new imaging modality."
+  },
+  "valid_json": {
+    "createTimestamp": "2024-03-18T14:27:05Z",
+    "projectIteration": 42,
+    "projectStep": 7,
+    "snapshotRootPath": "/mnt/data/stack_snapshots/v5",
+    "stackResolutionX": 0.125,
+    "stackResolutionY": 0.125,
+    "stackResolutionZ": 0.5,
+    "versionNotes": "Adjusted Z-resolution for improved depth accuracy and added metadata for new imaging modality."
+  },
+  "description": "The stack version was created on\u202f2024\u201103\u201118\u202fat\u202f14:27:05\u202fUTC (timestamp\u202f2024\u201103\u201118T14:27:05Z). It corresponds to project iteration\u202f42 and project step\u202f7, with all snapshot data stored under the root directory\u202f`/mnt/data/stack_snapshots/v5`. The voxel dimensions for this version are 0.125\u202f\u00b5m in X, 0.125\u202f\u00b5m in Y, and 0.5\u202f\u00b5m in Z.  \n\nThe primary change in this release is an adjusted Z\u2011resolution to improve depth accuracy, and we have also added metadata to support the newly introduced imaging modality. These updates are summarized in the version notes: \u201cAdjusted Z-resolution for improved depth accuracy and added metadata for new imaging modality.\u201d"
+}

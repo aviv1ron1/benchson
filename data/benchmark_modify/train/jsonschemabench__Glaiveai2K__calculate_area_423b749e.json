@@ -1,0 +1,86 @@
+{
+  "name": "calculate_area_423b749e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "oneOf": [
+          {
+            "required": [
+              "length",
+              "width"
+            ]
+          },
+          {
+            "required": [
+              "base",
+              "height"
+            ]
+          },
+          {
+            "required": [
+              "radius"
+            ]
+          }
+        ],
+        "properties": {
+          "base": {
+            "description": "The base measurement",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height measurement",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length measurement",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius measurement",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width measurement",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape to calculate the area",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.0
+    }
+  },
+  "instructions": "Could you add a \"base\" field inside \"dimensions\" and set it to 1.0?",
+  "ground_truth": {
+    "shape": "rectangle",
+    "dimensions": {
+      "length": 12.5,
+      "width": 8.0,
+      "base": 1.0
+    }
+  },
+  "modification": {
+    "op": "add_field",
+    "path": [
+      "dimensions",
+      "base"
+    ],
+    "precise_instruction": "Add a \"base\" field inside \"dimensions\" set to 1.0."
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "name": "o60298",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "properties": {
+      "kafka": {
+        "description": "Rest proxy kafka service configuration",
+        "properties": {
+          "client_sasl_kerberos_service_name": {
+            "default": "kafka",
+            "description": "The Kerberos principal name that Kafka runs as. This can be defined either in Kafka's JAAS config or in Kafka's config.",
+            "title": "Kafka client sasl kerberos service name",
+            "type": "string"
+          },
+          "client_sasl_mechanism": {
+            "default": "GSSAPI",
+            "description": "SASL mechanism used for client connections. This may be any mechanism for which a security provider is available. GSSAPI is the default mechanism.",
+            "title": "Kafka client sasl mechanism",
+            "type": "string"
+          },
+          "client_security_protocol": {
+            "default": "PLAINTEXT",
+            "description": "Protocol used to communicate with brokers. Valid values are: PLAINTEXT, SSL, SASL_PLAINTEXT, SASL_SSL",
+            "title": "Kafka client security protocol",
+            "type": "string"
+          },
+          "kafkastore-bootstrap-servers": {
+            "default": "",
+            "description": "A list of Kafka brokers to connect to. For example, PLAINTEXT://kafka-0-broker.confluent-kafka.autoip.dcos.thisdcos.directory:9092,SSL://kafka-0-broker.confluent-kafka.autoip.dcos.thisdcos.directory:9092",
+            "title": "Kafka bootstrap servers",
+            "type": "string"
+          },
+          "kerberos_enabled": {
+            "default": false,
+            "description": "Enable kerberos",
+            "type": "boolean"
+          },
+          "kerberos_jaas_secret": {
+            "default": "jaas",
+            "description": "Kerberos jaas secret containing jaas config",
+            "title": "Kerberos jaas secret",
+            "type": "string"
+          },
+          "kerberos_keytab_secret": {
+            "default": "__dcos_base64___keytab",
+            "description": "Kerberos keytab secret containing keytab",
+            "title": "Kerberos keytab secret",
+            "type": "string"
+          },
+          "kerberos_krb5_secret": {
+            "default": "krb5",
+            "description": "Kerberos krb5 secret containing krb5 config",
+            "title": "Kerberos krb5 secret",
+            "type": "string"
+          },
+          "zookeeper_connect": {
+            "default": "master.mesos:2181/dcos-service-confluent-kafka",
+            "description": "... . Note slahes in a kafka service name have to be removed, all excpet the first get replaced by two underscores.",
+            "title": "Zookeeper connect",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "registry": {
+        "properties": {
+          "access-control-allow-methods": {
+            "default": "",
+            "description": "Set value to Jetty Access-Control-Allow-Origin header for specified methods",
+            "type": "string"
+          },
+          "access-control-allow-origin": {
+            "default": "",
+            "description": "Set value for Jetty Access-Control-Allow-Origin header",
+            "type": "string"
+          },
+          "ciphers": {
+            "default": "TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+            "description": "Comma-separated list of JSSE Cipher Suite Names",
+            "type": "string"
+          },
+          "cpus": {
+            "default": 1,
+            "description": "CPU shares to allocate to each schema-registry instance.",
+            "minimum": 1,
+            "type": "number"
+          },
+          "heap": {
+            "default": 256,
+            "description": "JVM heap allocation (in MB) for connect worker task; should be no greater than ~64MB less than total memory for the instance.",
+            "minimum": 256,
+            "type": "number"
+          },
+          "instances": {
+            "default": 1,
+            "description": "Number of instances to run (currently limited to 1).",
+            "maximum": 2,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "keystore_secret": {
+            "default": "",
+            "description": "Keystore secret.",
+            "title": "Keystore secret",
+            "type": "string"
+          },
+          "listener_protocol": {
+            "default": "http",
+            "description": "Registry listener protocol, http or https.",
+            "title": "Registry listener protocol",
+            "type": "string"
+          },
+          "mem": {
+            "default": 512,
+            "description": "Memory (MB) to allocate to each schema-registry instance.",
+            "minimum": 320,
+            "type": "number"
+          },
+          "name": {
+            "default": "schema-registry",
+            "description": "Service name for the schema-registry instance(s)",
+            "type": "string"
+          },
+          "role": {
+            "default": "*",
+            "description": "Deploy schema-registry only on nodes with this role.",
+            "type": "string"
+          },
+          "ssl_client_auth": {
+            "default": false,
+            "description": "Used for HTTPS. Whether or not to require the HTTPS client to authenticate via the server's trust store.",
+            "type": "boolean"
+          },
+          "user": {
+            "default": "nobody",
+            "description": "The user that the service will run as.",
+            "title": "User",
+            "type": "string"
+          },
+          "virtual_network_enabled": {
+            "default": false,
+            "description": "Enable virtual networking",
+            "type": "boolean"
+          },
+          "virtual_network_name": {
+            "default": "dcos",
+            "description": "The name of the virtual network to join",
+            "type": "string"
+          },
+          "virtual_network_plugin_labels": {
+            "default": [],
+            "description": "Labels to pass to the virtual network plugin (e.g., [{\"key\": \"key_1\", \"value\": \"value_1\"}, {\"key\": \"key_2\", \"value\": \"value_2\"}])",
+            "items": {
+              "properties": {
+                "key": {
+                  "default": "",
+                  "type": "string"
+                },
+                "value": {
+                  "default": "",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "zookeeper_namespace": {
+            "default": "dcos-service-confluent-kafka/schema-registry",
+            "description": "Zookeeper namespace for storing registry.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "cpus",
+          "mem",
+          "instances",
+          "name"
+        ],
+        "type": "object"
+      }
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "kafka": {
+      "client_sasl_kerberos_service_name": "kafka",
+      "client_sasl_mechanism": "GSSAPI",
+      "client_security_protocol": "SASL_SSL",
+      "kafkastore-bootstrap-servers": "SASL_SSL://kafka-broker-0.example.com:9092,SASL_SSL://kafka-broker-1.example.com:9092",
+      "kerberos_enabled": false,
+      "kerberos_jaas_secret": "jaas-secret",
+      "kerberos_keytab_secret": "__dcos_base64___keytab_example",
+      "kerberos_krb5_secret": "krb5-conf-secret",
+      "zookeeper_connect": "master.mesos:2181/dcos-service-confluent-kafka"
+    },
+    "registry": {
+      "access-control-allow-methods": "GET,POST,PUT,DELETE",
+      "access-control-allow-origin": "*",
+      "ciphers": "TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384",
+      "cpus": 2,
+      "heap": 512,
+      "instances": 1,
+      "keystore_secret": "keystore-secret",
+      "listener_protocol": "https",
+      "mem": 1024,
+      "role": "analytics",
+      "ssl_client_auth": true,
+      "user": "schema_user",
+      "virtual_network_enabled": true,
+      "virtual_network_name": "dcos",
+      "virtual_network_plugin_labels": [
+        {
+          "key": "env",
+          "value": "prod"
+        },
+        {
+          "key": "team",
+          "value": "data-platform"
+        }
+      ],
+      "zookeeper_namespace": "dcos-service-confluent-kafka/schema-registry"
+    }
+  },
+  "valid_json": {
+    "kafka": {
+      "client_sasl_kerberos_service_name": "kafka",
+      "client_sasl_mechanism": "GSSAPI",
+      "client_security_protocol": "SASL_SSL",
+      "kafkastore-bootstrap-servers": "SASL_SSL://kafka-broker-0.example.com:9092,SASL_SSL://kafka-broker-1.example.com:9092",
+      "kerberos_enabled": false,
+      "kerberos_jaas_secret": "jaas-secret",
+      "kerberos_keytab_secret": "__dcos_base64___keytab_example",
+      "kerberos_krb5_secret": "krb5-conf-secret",
+      "zookeeper_connect": "master.mesos:2181/dcos-service-confluent-kafka"
+    },
+    "registry": {
+      "access-control-allow-methods": "GET,POST,PUT,DELETE",
+      "access-control-allow-origin": "*",
+      "ciphers": "TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384",
+      "cpus": 2,
+      "heap": 512,
+      "instances": 1,
+      "keystore_secret": "keystore-secret",
+      "listener_protocol": "https",
+      "mem": 1024,
+      "name": "schema-registry",
+      "role": "analytics",
+      "ssl_client_auth": true,
+      "user": "schema_user",
+      "virtual_network_enabled": true,
+      "virtual_network_name": "dcos",
+      "virtual_network_plugin_labels": [
+        {
+          "key": "env",
+          "value": "prod"
+        },
+        {
+          "key": "team",
+          "value": "data-platform"
+        }
+      ],
+      "zookeeper_namespace": "dcos-service-confluent-kafka/schema-registry"
+    }
+  },
+  "description": "Subject: Configuration Summary for Kafka REST Proxy and Schema Registry  \n\nThe Kafka REST proxy is set up to use the **GSSAPI** SASL mechanism with the client security protocol\u202f**SASL_SSL**. It will connect to the two brokers at `SASL_SSL://kafka-broker-0.example.com:9092` and `SASL_SSL://kafka-broker-1.example.com:9092`. The client\u2019s Kerberos service name remains the default **kafka**, but Kerberos authentication is currently **disabled**. The associated secrets are named **jaas-secret** (JAAS configuration), **__dcos_base64___keytab_example** (keytab), and **krb5-conf-secret** (krb5 config). Zookeeper is addressed via `master.mesos:2181/dcos-service-confluent-kafka`.  \n\nThe Schema Registry service, identified as **schema\u2011registry**, runs under the user **schema_user** on the **analytics** role. It is allocated **2\u202fCPU shares**, **1\u202fGB of memory**, and a JVM heap of **512\u202fMB**. The listener is configured for **HTTPS** on the default port, using the keystore secret **keystore-secret** and the cipher suites `TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384`. Client authentication over SSL is required. HTTP CORS settings allow the methods **GET, POST, PUT, DELETE** from any origin (`*`). The service is deployed in the **dcos** virtual network, which is enabled, and the network plugin receives two labels: `env=prod` and `team=data-platform`. Its Zookeeper namespace for persistence is `dcos-service-confluent-kafka/schema-registry`. Only a single instance of the registry is planned."
+}

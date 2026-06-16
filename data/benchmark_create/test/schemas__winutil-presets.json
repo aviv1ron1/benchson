@@ -1,0 +1,47 @@
+{
+  "name": "winutil-presets",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/winutil-presets.json",
+    "title": "presets",
+    "description": "Presets\nhttps://github.com/ChrisTitusTech/winutil/blob/main/config/preset.json",
+    "type": "object",
+    "minProperties": 1,
+    "patternProperties": {
+      ".": {
+        "title": "preset category",
+        "description": "A preset category\nhttps://github.com/ChrisTitusTech/winutil/blob/main/config/preset.json",
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "description": "A preset\nhttps://github.com/ChrisTitusTech/winutil/blob/main/config/preset.json",
+          "type": "string",
+          "minLength": 1,
+          "pattern": "[^ ]"
+        }
+      }
+    },
+    "additionalProperties": false
+  },
+  "description": "Dear Team,\n\nFor the upcoming workstation rollout we\u2019ll be applying three core preset groups. The **system** preset will turn off telemetry with `disableTelemetry`, speed up boot times by enabling fast startup via `enableFastStartup`, and clean the machines of unnecessary software by executing `removeBloatware`. In the **development** preset we\u2019ll provision the usual tooling: we\u2019ll install version control with `installGit`, set up the runtime environment using `installNodeJS`, and provide our standard editor through `installVSCode`. Finally, the **privacy** preset will enhance user privacy by blocking intrusive ads (`blockAds`), disabling location tracking (`disableLocation`), and automatically clearing the browser history (`clearBrowserHistory`).  \n\nPlease review these settings and let me know if any adjustments are needed before we push the configuration to all devices.",
+  "reference_json": {
+    "system": [
+      "disableTelemetry",
+      "enableFastStartup",
+      "removeBloatware"
+    ],
+    "development": [
+      "installGit",
+      "installNodeJS",
+      "installVSCode"
+    ],
+    "privacy": [
+      "blockAds",
+      "disableLocation",
+      "clearBrowserHistory"
+    ]
+  }
+}

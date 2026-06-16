@@ -1,0 +1,140 @@
+{
+  "name": "o9784",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "deviceIds": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        "maxItems": 1000
+      },
+      "deviceTags": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            }
+          },
+          "additionalProperties": false
+        },
+        "maxItems": 100
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 32767
+      },
+      "filterType": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "all",
+              "whitelist",
+              "blacklist"
+            ]
+          },
+          {
+            "type": "string",
+            "enum": [
+              "none"
+            ]
+          }
+        ]
+      },
+      "pubTopics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      },
+      "subTopics": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "deviceIds": [
+      "0123456789abcdef01234567",
+      "abcdefabcdefabcdefabcdef",
+      "deadbeefdeadbeefdeadbeef"
+    ],
+    "deviceTags": [
+      {
+        "key": "location",
+        "value": "warehouse-1"
+      },
+      {
+        "key": "sensor_type",
+        "value": "temperature"
+      }
+    ],
+    "description": "A whitelist filter for temperature sensors deployed across multiple warehouses.",
+    "filterType": "whitelist",
+    "pubTopics": [
+      "devices/+/data",
+      "sensors/temperature"
+    ],
+    "subTopics": [
+      "commands/+/execute",
+      "updates/firmware"
+    ]
+  },
+  "instructions": "Can you add another item to the deviceIds list that\u2019s identical to the first item?",
+  "ground_truth": {
+    "deviceIds": [
+      "0123456789abcdef01234567",
+      "abcdefabcdefabcdefabcdef",
+      "deadbeefdeadbeefdeadbeef",
+      "0123456789abcdef01234567"
+    ],
+    "deviceTags": [
+      {
+        "key": "location",
+        "value": "warehouse-1"
+      },
+      {
+        "key": "sensor_type",
+        "value": "temperature"
+      }
+    ],
+    "description": "A whitelist filter for temperature sensors deployed across multiple warehouses.",
+    "filterType": "whitelist",
+    "pubTopics": [
+      "devices/+/data",
+      "sensors/temperature"
+    ],
+    "subTopics": [
+      "commands/+/execute",
+      "updates/firmware"
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "deviceIds"
+    ],
+    "precise_instruction": "Add another item to the \"deviceIds\" list, identical to its first item."
+  }
+}

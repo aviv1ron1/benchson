@@ -1,0 +1,221 @@
+{
+  "name": "o9822",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "title": "Data Table",
+          "description": "Schema for a single Data Table",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "dataTableId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "applicationId": {
+              "type": "string",
+              "pattern": "^[A-Fa-f\\d]{24}$"
+            },
+            "creationDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastUpdated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 255
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 32767
+            },
+            "columns": {
+              "type": "array",
+              "items": {
+                "title": "Data Table Column",
+                "description": "Schema for a single Data Table Column",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                  },
+                  "dataType": {
+                    "type": "string",
+                    "enum": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  },
+                  "constraint": {
+                    "type": "string",
+                    "enum": [
+                      "unique",
+                      "required",
+                      "optional"
+                    ]
+                  },
+                  "defaultValue": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "dataType",
+                  "constraint"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 50
+            }
+          }
+        }
+      },
+      "count": {
+        "type": "integer"
+      },
+      "totalCount": {
+        "type": "integer"
+      },
+      "perPage": {
+        "type": "integer"
+      },
+      "page": {
+        "type": "integer"
+      },
+      "filter": {
+        "type": "string"
+      },
+      "filterField": {
+        "type": "string"
+      },
+      "sortField": {
+        "type": "string"
+      },
+      "sortDirection": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc",
+          "ASC",
+          "DESC",
+          ""
+        ]
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      }
+    }
+  },
+  "data": {
+    "items": [
+      {
+        "id": "5f4dcc3b5aa765d61d8327de",
+        "dataTableId": "a1b2c3d4e5f60718293a4b5c",
+        "applicationId": "9e8d7c6b5a4f3e2d1c0b9a87",
+        "creationDate": "2023-08-15T12:34:56Z",
+        "lastUpdated": "2024-03-22T09:15:30Z",
+        "name": "User Information",
+        "description": "Table storing user profile details and status.",
+        "columns": [
+          {
+            "name": "username",
+            "dataType": "string",
+            "constraint": "unique",
+            "defaultValue": ""
+          },
+          {
+            "name": "age",
+            "dataType": "number",
+            "constraint": "optional",
+            "defaultValue": 0
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "constraint": "required",
+            "defaultValue": true
+          }
+        ]
+      }
+    ],
+    "count": 1,
+    "totalCount": 1,
+    "perPage": 10,
+    "page": 1,
+    "filter": "isActive:true",
+    "filterField": "isActive",
+    "sortField": "username",
+    "sortDirection": "asc",
+    "applicationId": "9e8d7c6b5a4f3e2d1c0b9a87"
+  },
+  "instructions": "Please change the filter to isActive:true (updated).",
+  "ground_truth": {
+    "items": [
+      {
+        "id": "5f4dcc3b5aa765d61d8327de",
+        "dataTableId": "a1b2c3d4e5f60718293a4b5c",
+        "applicationId": "9e8d7c6b5a4f3e2d1c0b9a87",
+        "creationDate": "2023-08-15T12:34:56Z",
+        "lastUpdated": "2024-03-22T09:15:30Z",
+        "name": "User Information",
+        "description": "Table storing user profile details and status.",
+        "columns": [
+          {
+            "name": "username",
+            "dataType": "string",
+            "constraint": "unique",
+            "defaultValue": ""
+          },
+          {
+            "name": "age",
+            "dataType": "number",
+            "constraint": "optional",
+            "defaultValue": 0
+          },
+          {
+            "name": "isActive",
+            "dataType": "boolean",
+            "constraint": "required",
+            "defaultValue": true
+          }
+        ]
+      }
+    ],
+    "count": 1,
+    "totalCount": 1,
+    "perPage": 10,
+    "page": 1,
+    "filter": "isActive:true (updated)",
+    "filterField": "isActive",
+    "sortField": "username",
+    "sortDirection": "asc",
+    "applicationId": "9e8d7c6b5a4f3e2d1c0b9a87"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "filter"
+    ],
+    "precise_instruction": "Change \"filter\" to \"isActive:true (updated)\"."
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "name": "gematik-test-patients",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/gematik-test-patients.json",
+    "title": "PatientsRepository",
+    "description": "List of all patients used for testing by gematik",
+    "type": "object",
+    "definitions": {
+      "Patient": {
+        "description": "A patient",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "alias": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "personData": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "given": {
+                    "type": "string"
+                  },
+                  "family": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "given",
+                  "family"
+                ]
+              },
+              "birthDate": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^\\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "address": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "houseNumber": {
+                    "type": "string"
+                  },
+                  "streetName": {
+                    "type": "string"
+                  },
+                  "postalCode": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  }
+                }
+              },
+              "kvnr": {
+                "type": "string"
+              },
+              "insurance": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "kvnr",
+              "insurance"
+            ]
+          },
+          "ownerTestsuite": {
+            "type": "string"
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Card"
+            }
+          },
+          "services": {
+            "type": "object",
+            "properties": {
+              "idp": {
+                "type": "object",
+                "properties": {
+                  "sectIdp": {
+                    "type": "string"
+                  }
+                }
+              },
+              "vsdm": {
+                "type": "object",
+                "properties": {
+                  "cardUpdate": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "personData"
+        ]
+      },
+      "Card": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "iccsn": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "expiryDate": {
+            "type": "string",
+            "pattern": "^\\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$"
+          }
+        },
+        "required": [
+          "iccsn",
+          "type"
+        ]
+      }
+    },
+    "properties": {
+      "patients": {
+        "type": "object",
+        "existingJavaType": "java.util.Map<String, Patient>",
+        "additionalProperties": {
+          "$ref": "#/definitions/Patient",
+          "type": "object"
+        }
+      }
+    }
+  },
+  "description": "Dear colleagues,\n\nFor the upcoming test run we have two patients registered in the gematik test repository. Patient **P001** is also known as *JohnDoe* or *JDoe*. He is a male born on **1985\u201107\u201123**; his full name is **John Doe**. His residence is at **12 Main Street, 12345 Berlin, DE**. The Krankenversichertennummer is **A123456789** and he is insured with **AOK**. This record belongs to test suite **suiteA** and includes a single HBA card (ICCSN **ICCSN1234567890**) valid until **2030\u201112\u201131**. The associated services specify an Identity Provider sector identifier **sect123** and a VSDM card\u2011update date of **2023\u201101\u201101**.\n\nPatient **P002** is listed under the alias *JaneSmith*. She was born on **19900115** (YYYYMMDD) and her name is **Jane Smith**. She lives at **5b Elm Avenue, 67890 Munich, DE**. Her KVNR is **B987654321** and she holds a **TK** insurance policy. This entry is owned by test suite **suiteB** and contains two cards: an HBA card (ICCSN **ICCSN0987654321**) expiring on **2028\u201106\u201130**, and an SMC\u2011B card (ICCSN **ICCSN1122334455**) expiring on **2026\u201103\u201115**. The service configuration for Jane includes an Identity Provider sector identifier **sect456**; no VSDM update entry is defined for her.",
+  "reference_json": {
+    "patients": {
+      "P001": {
+        "alias": [
+          "JohnDoe",
+          "JDoe"
+        ],
+        "personData": {
+          "name": {
+            "given": "John",
+            "family": "Doe"
+          },
+          "birthDate": "1985-07-23",
+          "address": {
+            "houseNumber": "12",
+            "streetName": "Main Street",
+            "postalCode": "12345",
+            "city": "Berlin",
+            "country": "DE"
+          },
+          "kvnr": "A123456789",
+          "insurance": "AOK"
+        },
+        "ownerTestsuite": "suiteA",
+        "cards": [
+          {
+            "iccsn": "ICCSN1234567890",
+            "type": "HBA",
+            "expiryDate": "2030-12-31"
+          }
+        ],
+        "services": {
+          "idp": {
+            "sectIdp": "sect123"
+          },
+          "vsdm": {
+            "cardUpdate": "2023-01-01"
+          }
+        }
+      },
+      "P002": {
+        "alias": [
+          "JaneSmith"
+        ],
+        "personData": {
+          "name": {
+            "given": "Jane",
+            "family": "Smith"
+          },
+          "birthDate": 19900115,
+          "address": {
+            "houseNumber": "5b",
+            "streetName": "Elm Avenue",
+            "postalCode": "67890",
+            "city": "Munich",
+            "country": "DE"
+          },
+          "kvnr": "B987654321",
+          "insurance": "TK"
+        },
+        "ownerTestsuite": "suiteB",
+        "cards": [
+          {
+            "iccsn": "ICCSN0987654321",
+            "type": "HBA",
+            "expiryDate": "2028-06-30"
+          },
+          {
+            "iccsn": "ICCSN1122334455",
+            "type": "SMC-B",
+            "expiryDate": "2026-03-15"
+          }
+        ],
+        "services": {
+          "idp": {
+            "sectIdp": "sect456"
+          }
+        }
+      }
+    }
+  }
+}

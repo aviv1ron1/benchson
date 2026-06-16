@@ -1,0 +1,75 @@
+{
+  "name": "o86241",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://raw.githubusercontent.com/washingtonpost/ans-schema/master/src/main/resources/schema/ans/0.5.3/utils/reference.json",
+    "title": "Representation of a normalized element",
+    "description": "This represents a reference to external content that should be denormalized",
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": [
+          "reference"
+        ]
+      },
+      "referent": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The ANS type that the provider should return.",
+            "type": "string"
+          },
+          "service": {
+            "description": "The type of interaction the provider expects. E.g., 'oembed'",
+            "type": "string"
+          },
+          "id": {
+            "description": "The id passed to the provider to retrieve an ANS document",
+            "type": "string"
+          },
+          "provider": {
+            "description": "A URL that can resolve the id into an ANS element",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "id"
+        ]
+      }
+    },
+    "required": [
+      "type",
+      "referent"
+    ]
+  },
+  "data": {
+    "type": "reference",
+    "referent": {
+      "type": "article",
+      "service": "oembed",
+      "id": "a1b2c3d4e5",
+      "provider": "https://api.example.com/articles/a1b2c3d4e5"
+    }
+  },
+  "instructions": "Please change the \"service\" field inside \"referent\" to \"oembed (updated)\".",
+  "ground_truth": {
+    "type": "reference",
+    "referent": {
+      "type": "article",
+      "service": "oembed (updated)",
+      "id": "a1b2c3d4e5",
+      "provider": "https://api.example.com/articles/a1b2c3d4e5"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "referent",
+      "service"
+    ],
+    "precise_instruction": "Change \"service\" inside \"referent\" to \"oembed (updated)\"."
+  }
+}

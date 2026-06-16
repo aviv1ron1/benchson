@@ -1,0 +1,100 @@
+{
+  "name": "o2068",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "metadata_flattened.json",
+    "description": "generate_metadata.py uses this schema to pull out data from users' metadata tsv's or xls's",
+    "type": "object",
+    "properties": {
+      "program": {
+        "type": "string"
+      },
+      "project": {
+        "type": "string"
+      },
+      "center_name": {
+        "type": "string"
+      },
+      "submitter_donor_id": {
+        "type": "string"
+      },
+      "donor_uuid": {
+        "type": "string"
+      },
+      "submitter_specimen_id": {
+        "type": "string"
+      },
+      "specimen_uuid": {
+        "type": "string"
+      },
+      "submitter_specimen_type": {
+        "type": "string"
+      },
+      "submitter_sample_id": {
+        "type": "string"
+      },
+      "sample_uuid": {
+        "type": "string"
+      },
+      "analysis_type": {
+        "type": "string"
+      },
+      "workflow_name": {
+        "type": "string"
+      },
+      "workflow_version": {
+        "type": "string"
+      },
+      "file_type": {
+        "type": "string"
+      },
+      "file_path": {
+        "type": "string"
+      }
+    }
+  },
+  "data": {
+    "program": "TCGA",
+    "project": "TCGA-BRCA",
+    "center_name": "Baylor College of Medicine",
+    "submitter_donor_id": "DONOR12345",
+    "donor_uuid": "d9b7f0a1-3c4e-45f2-8a1b-6c2d5e7f9a0b",
+    "submitter_specimen_id": "SPECIMEN67890",
+    "specimen_uuid": "a1c2e3d4-5f6b-7a8c-9d0e-1f2a3b4c5d6e",
+    "submitter_specimen_type": "Primary Tumor",
+    "submitter_sample_id": "SAMPLE112233",
+    "sample_uuid": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+    "analysis_type": "Whole Genome Sequencing",
+    "workflow_name": "GATK-WGS",
+    "workflow_version": "4.2.0.0",
+    "file_type": "BAM",
+    "file_path": "/data/tcga/brca/wgs/sample112233.bam"
+  },
+  "instructions": "Can you change the submitter_specimen_id to SPECIMEN67890 (updated)?",
+  "ground_truth": {
+    "program": "TCGA",
+    "project": "TCGA-BRCA",
+    "center_name": "Baylor College of Medicine",
+    "submitter_donor_id": "DONOR12345",
+    "donor_uuid": "d9b7f0a1-3c4e-45f2-8a1b-6c2d5e7f9a0b",
+    "submitter_specimen_id": "SPECIMEN67890 (updated)",
+    "specimen_uuid": "a1c2e3d4-5f6b-7a8c-9d0e-1f2a3b4c5d6e",
+    "submitter_specimen_type": "Primary Tumor",
+    "submitter_sample_id": "SAMPLE112233",
+    "sample_uuid": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+    "analysis_type": "Whole Genome Sequencing",
+    "workflow_name": "GATK-WGS",
+    "workflow_version": "4.2.0.0",
+    "file_type": "BAM",
+    "file_path": "/data/tcga/brca/wgs/sample112233.bam"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "submitter_specimen_id"
+    ],
+    "precise_instruction": "Change \"submitter_specimen_id\" to \"SPECIMEN67890 (updated)\"."
+  }
+}

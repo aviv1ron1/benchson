@@ -1,0 +1,64 @@
+{
+  "name": "sp_287_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a web page context",
+    "properties": {
+      "basisForProcessing": {
+        "description": "GDPR basis for data collection & processing",
+        "enum": [
+          "consent",
+          "contract",
+          "legal_obligation",
+          "vital_interests",
+          "public_task",
+          "legitimate_interests"
+        ],
+        "type": "string"
+      },
+      "documentDescription": {
+        "description": "Description of document detailing basis for processing",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "documentId": {
+        "description": "ID for document detailing basis for processing",
+        "maxLength": 255,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "documentVersion": {
+        "description": "Version of document detailing basis for processing",
+        "maxLength": 16,
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "basisForProcessing"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "gdpr",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "description": "We have determined that the lawful basis for the collection and processing of personal data is **legitimate_interests**. The relevant documentation is identified as **DOC-2023-07-15-001**, currently at **v1.2**. This document is described as follows: *Document outlining the legitimate interests pursued by the organization for processing personal data, including service improvement, analytics, and fraud prevention.*",
+  "reference_json": {
+    "basisForProcessing": "legitimate_interests",
+    "documentDescription": "Document outlining the legitimate interests pursued by the organization for processing personal data, including service improvement, analytics, and fraud prevention.",
+    "documentId": "DOC-2023-07-15-001",
+    "documentVersion": "v1.2"
+  }
+}

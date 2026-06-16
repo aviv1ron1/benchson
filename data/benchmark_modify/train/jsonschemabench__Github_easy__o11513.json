@@ -1,0 +1,79 @@
+{
+  "name": "o11513",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "CTT Gateway Status Schema",
+    "type": "object",
+    "properties": {
+      "eui": {
+        "type": "string"
+      },
+      "position": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number"
+          },
+          "lon": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "lat",
+          "lon"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "OK",
+          "UNKNOWN"
+        ]
+      },
+      "lastSeen": {
+        "type": "string"
+      },
+      "maxObservedRange": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "eui",
+      "position",
+      "status",
+      "lastSeen",
+      "maxObservedRange"
+    ]
+  },
+  "data": {
+    "eui": "70B3D57ED00001A2",
+    "position": {
+      "lat": 37.7749,
+      "lon": -122.4194
+    },
+    "status": "OK",
+    "lastSeen": "2026-06-14T12:34:56Z",
+    "maxObservedRange": 12000
+  },
+  "instructions": "Could you lower the\u202flon\u202fvalue inside\u202fposition\u202fby\u202f1?",
+  "ground_truth": {
+    "eui": "70B3D57ED00001A2",
+    "position": {
+      "lat": 37.7749,
+      "lon": -123.4194
+    },
+    "status": "OK",
+    "lastSeen": "2026-06-14T12:34:56Z",
+    "maxObservedRange": 12000
+  },
+  "modification": {
+    "op": "decrement_number",
+    "path": [
+      "position",
+      "lon"
+    ],
+    "precise_instruction": "Decrease \"lon\" inside \"position\" by 1."
+  }
+}

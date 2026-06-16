@@ -1,0 +1,66 @@
+{
+  "name": "calculate_area_756865b5",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle or triangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (circle, rectangle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": "circle",
+    "dimensions": {
+      "length": 7.4,
+      "width": 7.4,
+      "base": 7.4,
+      "height": 7.4
+    }
+  },
+  "valid_json": {
+    "shape": "circle",
+    "dimensions": {
+      "radius": 7.4,
+      "length": 7.4,
+      "width": 7.4,
+      "base": 7.4,
+      "height": 7.4
+    }
+  },
+  "description": "Please note that the object we are working with is a circle. Its defining dimension is a radius of **7.4 units**.\n\nFor completeness, the ancillary measurements have been recorded as well: the length, width, base, and height are each set to **7.4 units**. Let me know if you need any additional details or a different format for these specifications."
+}

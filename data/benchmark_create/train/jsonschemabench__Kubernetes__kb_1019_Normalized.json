@@ -1,0 +1,42 @@
+{
+  "name": "kb_1019_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_apps_v1_RollingUpdateStatefulSetStrategy": {
+        "description": "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.",
+        "properties": {
+          "partition": {
+            "_format": "int32",
+            "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "description": "StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.",
+    "properties": {
+      "rollingUpdate": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_api_apps_v1_RollingUpdateStatefulSetStrategy",
+        "description": "RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType."
+      },
+      "type": {
+        "description": "Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "description": "The StatefulSet is configured to use a **RollingUpdate** strategy for its updates. In this mode, the rollout will progress by updating pods incrementally, with the partition set to **3**, meaning that the first three replicas will remain at their current version while the remaining instances are upgraded. This configuration ensures a controlled, staged update process while maintaining service continuity.",
+  "reference_json": {
+    "rollingUpdate": {
+      "partition": 3
+    },
+    "type": "RollingUpdate"
+  }
+}

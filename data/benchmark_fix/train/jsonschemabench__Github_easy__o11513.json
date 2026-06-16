@@ -1,0 +1,71 @@
+{
+  "name": "o11513",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "CTT Gateway Status Schema",
+    "type": "object",
+    "properties": {
+      "eui": {
+        "type": "string"
+      },
+      "position": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number"
+          },
+          "lon": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "lat",
+          "lon"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "OK",
+          "UNKNOWN"
+        ]
+      },
+      "lastSeen": {
+        "type": "string"
+      },
+      "maxObservedRange": {
+        "type": "integer"
+      }
+    },
+    "required": [
+      "eui",
+      "position",
+      "status",
+      "lastSeen",
+      "maxObservedRange"
+    ]
+  },
+  "erroneous_json": {
+    "eui": "70B3D57ED00001A2",
+    "position": {
+      "lat": 37.7749,
+      "lon": -122.4194
+    },
+    "status": "OK",
+    "lastSeen": "2026-06-14T12:34:56Z",
+    "maxObservedRange": "not-a-number"
+  },
+  "valid_json": {
+    "eui": "70B3D57ED00001A2",
+    "position": {
+      "lat": 37.7749,
+      "lon": -122.4194
+    },
+    "status": "OK",
+    "lastSeen": "2026-06-14T12:34:56Z",
+    "maxObservedRange": 12000
+  },
+  "description": "The gateway identified by the EUI\u202f70B3D57ED00001A2 is positioned at latitude\u202f37.7749 and longitude\u202f\u2011122.4194. According to the latest telemetry, its status is currently **OK**, with the most recent contact recorded at\u202f2026-06-14T12:34:56Z. The device has reported a maximum observed range of\u202f12\u202f000\u202fmeters."
+}

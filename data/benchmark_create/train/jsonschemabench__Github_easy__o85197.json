@@ -1,0 +1,66 @@
+{
+  "name": "o85197",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "A MWF list component's schema definition.",
+    "properties": {
+      "config": {
+        "properties": {
+          "bare": {
+            "type": "boolean"
+          },
+          "lean": {
+            "type": "boolean"
+          },
+          "tag": {
+            "enum": [
+              "ul",
+              "ol"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "tag"
+        ],
+        "type": "object"
+      },
+      "content": {
+        "properties": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "config",
+      "content"
+    ],
+    "title": "List",
+    "type": "object"
+  },
+  "description": "The component is set up as an unordered list (`ul`) with a lean styling applied, and it is not rendered as a bare list. This configuration ensures the list appears without extra padding while still retaining its standard bullet markers.\n\nThe list contains three entries: First item, Second item, and Third item.",
+  "reference_json": {
+    "config": {
+      "tag": "ul",
+      "bare": false,
+      "lean": true
+    },
+    "content": {
+      "items": [
+        "First item",
+        "Second item",
+        "Third item"
+      ]
+    }
+  }
+}

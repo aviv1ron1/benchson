@@ -1,0 +1,51 @@
+{
+  "name": "o39452",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "name": {
+        "$ref": "#/definitions/Name"
+      },
+      "breed": {
+        "$ref": "#/definitions/Breed"
+      },
+      "age": {
+        "$ref": "#/definitions/Age"
+      },
+      "birthDate": {
+        "$ref": "#/definitions/Date"
+      }
+    },
+    "definitions": {
+      "Name": {
+        "type": "string"
+      },
+      "Age": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "Breed": {
+        "type": "string",
+        "enum": [
+          "LABRADOR",
+          "BULLDOG",
+          "YORKSHIRE"
+        ]
+      },
+      "Date": {
+        "type": "string",
+        "format": "date"
+      }
+    }
+  },
+  "description": "Hello,\n\nI\u2019d like to introduce you to Buddy, a friendly Labrador who is now five years old. He was born on April\u202f10,\u202f2019, and has grown into a well\u2011behaved, energetic companion who enjoys daily walks and fetching sticks at the park. If you\u2019re looking for a reliable and affectionate dog, Buddy would be an excellent addition to your family.",
+  "reference_json": {
+    "name": "Buddy",
+    "breed": "LABRADOR",
+    "age": 5,
+    "birthDate": "2019-04-10"
+  }
+}

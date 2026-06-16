@@ -1,0 +1,49 @@
+{
+  "name": "o9867",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "replaceExisting": {
+        "type": "boolean",
+        "default": false
+      },
+      "createUsers": {
+        "type": "boolean",
+        "default": true
+      },
+      "createGroups": {
+        "type": "boolean",
+        "default": true
+      },
+      "slug": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 63,
+        "pattern": "^[0-9a-z-]*$"
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "replaceExisting": false,
+    "createUsers": true,
+    "createGroups": true,
+    "slug": "example-project-01"
+  },
+  "instructions": "Could you please remove the\u202freplaceExisting\u202ffield?",
+  "ground_truth": {
+    "createUsers": true,
+    "createGroups": true,
+    "slug": "example-project-01"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "replaceExisting"
+    ],
+    "precise_instruction": "Remove the \"replaceExisting\" field."
+  }
+}

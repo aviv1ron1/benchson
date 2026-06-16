@@ -1,0 +1,48 @@
+{
+  "name": "o48010",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "File schema.",
+    "description": "Describe information needed for files in records.",
+    "properties": {
+      "key": {
+        "type": "string"
+      },
+      "file_id": {
+        "type": "string"
+      },
+      "bucket": {
+        "type": "string"
+      },
+      "checksum": {
+        "type": "string"
+      },
+      "size": {
+        "type": "integer"
+      },
+      "version_id": {
+        "type": "string"
+      }
+    }
+  },
+  "erroneous_json": {
+    "key": "documents/reports/annual_report_2025.pdf",
+    "file_id": "f7a9c3e2-4b6d-11ee-8c88-0242ac130003",
+    "bucket": "company-records-bucket",
+    "checksum": "3b5d5c3712955042212316173ccf37be",
+    "size": "not-a-number",
+    "version_id": "v3"
+  },
+  "valid_json": {
+    "key": "documents/reports/annual_report_2025.pdf",
+    "file_id": "f7a9c3e2-4b6d-11ee-8c88-0242ac130003",
+    "bucket": "company-records-bucket",
+    "checksum": "3b5d5c3712955042212316173ccf37be",
+    "size": 5873421,
+    "version_id": "v3"
+  },
+  "description": "The annual report for 2025 has been uploaded to our records system under the path\u202fdocuments/reports/annual_report_2025.pdf. It resides in the\u202fcompany-records-bucket\u202fand is currently stored as version\u202fv3. The file\u2019s unique identifier is\u202ff7a9c3e2-4b6d-11ee-8c88-0242ac130003, and its integrity checksum is\u202f3b5d5c3712955042212316173ccf37be.  \n\nThe document\u2019s size is\u202f5\u202f873\u202f421\u202fbytes, so please ensure any downstream processes account for this when allocating bandwidth or storage. Let me know if you need the file extracted or a copy placed in a different bucket."
+}

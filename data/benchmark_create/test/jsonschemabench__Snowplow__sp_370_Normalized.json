@@ -1,0 +1,223 @@
+{
+  "name": "sp_370_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Snowplow Redshift storage configuration",
+    "properties": {
+      "compRows": {
+        "maximum": 1000000000,
+        "minimum": 1000,
+        "type": "integer"
+      },
+      "database": {
+        "type": "string"
+      },
+      "host": {
+        "type": "string"
+      },
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "maxError": {
+        "maximum": 10000,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "password": {
+        "properties": {
+          "ec2ParameterStore": {
+            "properties": {
+              "parameterName": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "parameterName"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "ec2ParameterStore"
+        ],
+        "type": [
+          "string",
+          "object"
+        ]
+      },
+      "port": {
+        "maximum": 65535,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "purpose": {
+        "enum": [
+          "ENRICHED_EVENTS"
+        ],
+        "type": "string"
+      },
+      "roleArn": {
+        "minLength": 20,
+        "type": "string"
+      },
+      "schema": {
+        "type": "string"
+      },
+      "sshTunnel": {
+        "properties": {
+          "bastion": {
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "key": {
+                "properties": {
+                  "ec2ParameterStore": {
+                    "properties": {
+                      "parameterName": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "parameterName"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "ec2ParameterStore"
+                ],
+                "type": "object"
+              },
+              "passphrase": {
+                "type": "string"
+              },
+              "port": {
+                "maximum": 65535,
+                "minimum": 1,
+                "type": "integer"
+              },
+              "user": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "host",
+              "port",
+              "user"
+            ],
+            "type": "object"
+          },
+          "destination": {
+            "properties": {
+              "host": {
+                "type": "string"
+              },
+              "port": {
+                "maximum": 65535,
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "host",
+              "port"
+            ],
+            "type": "object"
+          },
+          "localPort": {
+            "maximum": 65535,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "bastion",
+          "destination",
+          "localPort"
+        ],
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "sslMode": {
+        "enum": [
+          "DISABLE",
+          "REQUIRE",
+          "VERIFY_CA",
+          "VERIFY_FULL"
+        ],
+        "type": "string"
+      },
+      "username": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "host",
+      "database",
+      "port",
+      "sslMode",
+      "schema",
+      "username",
+      "password",
+      "maxError",
+      "compRows",
+      "roleArn",
+      "purpose"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "redshift_config",
+      "vendor": "com.snowplowanalytics.snowplow.storage",
+      "version": "2-1-0"
+    },
+    "type": "object"
+  },
+  "description": "The Redshift storage configuration identified by UUID\u202f123e4567-e89b-12d3-a456-426614174000 is named **production_redshift**. It connects to the Redshift cluster at **redshift-cluster.company.com**, targeting the **analytics** database on port\u202f5439 with SSL mode set to **REQUIRE**. The connection uses the **public** schema and authenticates with the username **redshift_user**; the password is securely stored in EC2 Parameter Store under the key **/prod/redshift/password**. This setup permits a maximum of **100** error events, processes up to **5,000,000** rows per batch, and operates under the IAM role **arn:aws:iam::123456789012:role/RedshiftAccessRole** for the purpose **ENRICHED_EVENTS**.  \n\nTo reach the cluster from our private network we employ an SSH tunnel. The bastion host **bastion.mycompany.com** listens on port\u202f22 and is accessed with the user **ec2-user**; the SSH private key is retrieved from EC2 Parameter Store using the parameter **/prod/ssh/key**, with an optional passphrase **optionalPassphrase**. Traffic is forwarded to the destination **redshift-cluster.company.com** on port\u202f5439, while the local side of the tunnel is bound to port\u202f5432.",
+  "reference_json": {
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "name": "production_redshift",
+    "host": "redshift-cluster.company.com",
+    "database": "analytics",
+    "port": 5439,
+    "sslMode": "REQUIRE",
+    "schema": "public",
+    "username": "redshift_user",
+    "password": {
+      "ec2ParameterStore": {
+        "parameterName": "/prod/redshift/password"
+      }
+    },
+    "maxError": 100,
+    "compRows": 5000000,
+    "roleArn": "arn:aws:iam::123456789012:role/RedshiftAccessRole",
+    "purpose": "ENRICHED_EVENTS",
+    "sshTunnel": {
+      "bastion": {
+        "host": "bastion.mycompany.com",
+        "port": 22,
+        "user": "ec2-user",
+        "key": {
+          "ec2ParameterStore": {
+            "parameterName": "/prod/ssh/key"
+          }
+        },
+        "passphrase": "optionalPassphrase"
+      },
+      "destination": {
+        "host": "redshift-cluster.company.com",
+        "port": 5439
+      },
+      "localPort": 5432
+    }
+  }
+}

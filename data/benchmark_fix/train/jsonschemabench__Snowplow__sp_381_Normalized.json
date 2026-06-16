@@ -1,0 +1,72 @@
+{
+  "name": "sp_381_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": true,
+    "description": "Schema for a StatusGator status change event",
+    "properties": {
+      "currentStatus": {
+        "maxLength": 128,
+        "type": "string"
+      },
+      "faviconUrl": {
+        "_format": "uri",
+        "maxLength": 8192,
+        "type": "string"
+      },
+      "homePageUrl": {
+        "_format": "uri",
+        "maxLength": 8192,
+        "type": "string"
+      },
+      "lastStatus": {
+        "maxLength": 128,
+        "type": "string"
+      },
+      "occurredAt": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "serviceName": {
+        "maxLength": 128,
+        "type": "string"
+      },
+      "statusPageUrl": {
+        "_format": "uri",
+        "maxLength": 8192,
+        "type": "string"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "status_change",
+      "vendor": "com.statusgator",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "currentStatus": "Degraded Performance",
+    "lastStatus": "Operational",
+    "serviceName": "GitHub",
+    "occurredAt": "2026-06-15T08:30:00Z",
+    "homePageUrl": "https://github.com",
+    "statusPageUrl": "https://www.githubstatus.com",
+    "faviconUrl": null,
+    "region": "global",
+    "incidentId": "GH-2026-06-15-001"
+  },
+  "valid_json": {
+    "currentStatus": "Degraded Performance",
+    "lastStatus": "Operational",
+    "serviceName": "GitHub",
+    "occurredAt": "2026-06-15T08:30:00Z",
+    "homePageUrl": "https://github.com",
+    "statusPageUrl": "https://www.githubstatus.com",
+    "faviconUrl": "https://github.com/favicon.ico",
+    "region": "global",
+    "incidentId": "GH-2026-06-15-001"
+  },
+  "description": "Subject: GitHub Service Update \u2013 Degraded Performance (Incident\u202fGH\u20112026\u201106\u201115\u2011001)\n\nAt\u202f2026\u201106\u201115T08:30:00Z the GitHub platform entered a \u201cDegraded Performance\u201d state, transitioning from the previous \u201cOperational\u201d condition. The issue is affecting the global region and has been logged under incident ID\u202fGH\u20112026\u201106\u201115\u2011001. Users can continue to access the main site at https://github.com, and further details are available on the status page at https://www.githubstatus.com. For reference, the service\u2019s favicon is located at https://github.com/favicon.ico."
+}

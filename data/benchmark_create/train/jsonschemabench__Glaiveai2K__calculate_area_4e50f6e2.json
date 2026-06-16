@@ -1,0 +1,49 @@
+{
+  "name": "calculate_area_4e50f6e2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape, e.g. rectangle, triangle",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "The part under review is a rectangular prism. Its geometric specifications are as follows: the base measures 5.0 units, the height is 3.2 units, the length extends to 8.5 units, and the width spans 4.1 units. These dimensions define the overall size and shape of the component for the upcoming production run.",
+  "reference_json": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "base": 5.0,
+      "height": 3.2,
+      "length": 8.5,
+      "width": 4.1
+    }
+  }
+}

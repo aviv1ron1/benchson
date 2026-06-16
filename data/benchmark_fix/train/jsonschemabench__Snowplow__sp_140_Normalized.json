@@ -1,0 +1,77 @@
+{
+  "name": "sp_140_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for an app state transition event",
+    "properties": {
+      "attributes": {},
+      "isFirstRun": {
+        "type": "boolean"
+      },
+      "isUpgrade": {
+        "type": "boolean"
+      },
+      "jsonPayload": {
+        "type": "string"
+      },
+      "launchParams": {
+        "type": "string"
+      },
+      "launchReferral": {
+        "type": "string"
+      },
+      "referralApplication": {
+        "type": "string"
+      },
+      "successfullyClosed": {
+        "type": "boolean"
+      },
+      "transitionType": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "transitionType"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "appstatetransition_event",
+      "vendor": "com.mparticle.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "attributes": {
+      "userId": "12345",
+      "sessionId": "abcde-67890",
+      "deviceModel": "Pixel 7"
+    },
+    "isFirstRun": false,
+    "isUpgrade": true,
+    "jsonPayload": "{\"event\":\"app_open\",\"timestamp\":1627849200}",
+    "launchParams": "utm_source=google&utm_medium=cpc",
+    "launchReferral": "referral_code_2023",
+    "referralApplication": null,
+    "successfullyClosed": true,
+    "transitionType": "foreground_to_background"
+  },
+  "valid_json": {
+    "attributes": {
+      "userId": "12345",
+      "sessionId": "abcde-67890",
+      "deviceModel": "Pixel 7"
+    },
+    "isFirstRun": false,
+    "isUpgrade": true,
+    "jsonPayload": "{\"event\":\"app_open\",\"timestamp\":1627849200}",
+    "launchParams": "utm_source=google&utm_medium=cpc",
+    "launchReferral": "referral_code_2023",
+    "referralApplication": "com.example.myapp",
+    "successfullyClosed": true,
+    "transitionType": "foreground_to_background"
+  },
+  "description": "The recent state change for user\u202f12345 (session\u202fabcde\u201167890) on a Pixel\u202f7 device was recorded as a transition from foreground to background. This was not the first run of the app, but it was an upgrade, and the session concluded successfully. The raw event payload captured at the time was\u202f`{\"event\":\"app_open\",\"timestamp\":1627849200}`. The launch was initiated with the parameters\u202f`utm_source=google&utm_medium=cpc`, referencing the code\u202f`referral_code_2023` from the referral application\u202f`com.example.myapp`."
+}

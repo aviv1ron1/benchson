@@ -1,0 +1,61 @@
+{
+  "name": "sp_359_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Snowplow Amazon DynamoDB storage configuration",
+    "properties": {
+      "accessKeyId": {
+        "type": "string"
+      },
+      "awsRegion": {
+        "type": "string"
+      },
+      "dynamodbTable": {
+        "type": "string"
+      },
+      "id": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "purpose": {
+        "enum": [
+          "DUPLICATE_TRACKING"
+        ],
+        "type": "string"
+      },
+      "secretAccessKey": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "accessKeyId",
+      "secretAccessKey",
+      "awsRegion",
+      "dynamodbTable",
+      "purpose"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "amazon_dynamodb_config",
+      "vendor": "com.snowplowanalytics.snowplow.storage",
+      "version": "1-0-1"
+    },
+    "type": "object"
+  },
+  "description": "The Snowplow DynamoDB storage configuration named **snowplow-dynamodb-storage** (ID **3f8b2c1e-9d4a-4f7a-8b6e-2c1d5f9a7b3e**) is provisioned for **DUPLICATE_TRACKING**. It operates in the AWS region **us-east-1**, using the Access Key ID **AKIAEXAMPLEACCESSKEY** and Secret Access Key **wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY**, and points to the DynamoDB table **snowplow-events**.",
+  "reference_json": {
+    "id": "3f8b2c1e-9d4a-4f7a-8b6e-2c1d5f9a7b3e",
+    "name": "snowplow-dynamodb-storage",
+    "accessKeyId": "AKIAEXAMPLEACCESSKEY",
+    "secretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+    "awsRegion": "us-east-1",
+    "dynamodbTable": "snowplow-events",
+    "purpose": "DUPLICATE_TRACKING"
+  }
+}

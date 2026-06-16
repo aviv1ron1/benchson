@@ -1,0 +1,55 @@
+{
+  "name": "sp_166_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Pingdom incident assigned event",
+    "properties": {
+      "check": {
+        "type": "string"
+      },
+      "checkname": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "host": {
+        "type": "string"
+      },
+      "incidentid": {
+        "type": "integer"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "incident_assign",
+      "vendor": "com.pingdom",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "check": "12345",
+    "checkname": "Website HTTP Check",
+    "description": "Incident assigned to on-call engineer due to response time threshold breach.",
+    "host": "api.example.com",
+    "incidentid": 987654321
+  },
+  "instructions": "Please change \"check\" to \"12345 (updated)\".",
+  "ground_truth": {
+    "check": "12345 (updated)",
+    "checkname": "Website HTTP Check",
+    "description": "Incident assigned to on-call engineer due to response time threshold breach.",
+    "host": "api.example.com",
+    "incidentid": 987654321
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "check"
+    ],
+    "precise_instruction": "Change \"check\" to \"12345 (updated)\"."
+  }
+}

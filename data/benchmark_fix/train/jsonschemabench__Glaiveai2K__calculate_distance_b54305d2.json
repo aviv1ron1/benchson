@@ -1,0 +1,45 @@
+{
+  "name": "calculate_distance_b54305d2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "end_latitude": {
+        "description": "The latitude of the end point",
+        "type": "number"
+      },
+      "end_longitude": {
+        "description": "The longitude of the end point",
+        "type": "number"
+      },
+      "start_latitude": {
+        "description": "The latitude of the starting point",
+        "type": "number"
+      },
+      "start_longitude": {
+        "description": "The longitude of the starting point",
+        "type": "number"
+      }
+    },
+    "required": [
+      "start_latitude",
+      "start_longitude",
+      "end_latitude",
+      "end_longitude"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "start_latitude": 37.7749,
+    "start_longitude": null,
+    "end_latitude": 34.0522,
+    "end_longitude": -118.2437
+  },
+  "valid_json": {
+    "start_latitude": 37.7749,
+    "start_longitude": -122.4194,
+    "end_latitude": 34.0522,
+    "end_longitude": -118.2437
+  },
+  "description": "Subject: Route Details for Upcoming West Coast Transfer  \n\nDear Team,  \n\nPlease note that the planned transfer will start at latitude\u202f37.7749\u00b0, longitude\u202f\u2212122.4194\u00b0 (San\u202fFrancisco) and conclude at latitude\u202f34.0522\u00b0, longitude\u202f\u2212118.2437\u00b0 (Los\u202fAngeles). These coordinates define the exact points for pickup and delivery.  \n\nLet me know if any adjustments are needed.  \n\nBest regards,  \nLogistics Coordinator"
+}

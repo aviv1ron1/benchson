@@ -1,0 +1,91 @@
+{
+  "name": "o42300",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "org.eclipse.persistence.testing.jaxb.xmlelementref.attachment.Employee",
+    "type": "object",
+    "properties": {
+      "employee": {
+        "type": "object",
+        "properties": {
+          "fooA": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "Include": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "fooB": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "Include": {
+                      "type": "object",
+                      "properties": {
+                        "href": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "fooC": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "description": "Dear Team,\n\nPlease note that the employee\u2019s primary reference file (FooA) is available as an attachment at http://example.com/fooA.txt. In addition, the employee has several supplementary items (FooB): the first entry is the text \u201calpha\u201d, the second is a binary attachment hosted at http://example.com/fooB2.bin, and the third entry is the text \u201cbeta\u201d. For categorisation purposes, the employee is associated with the three tags \u201ccOne\u201d, \u201ccTwo\u201d and \u201ccThree\u201d.",
+  "reference_json": {
+    "employee": {
+      "fooA": {
+        "Include": {
+          "href": "http://example.com/fooA.txt"
+        }
+      },
+      "fooB": [
+        "alpha",
+        {
+          "Include": {
+            "href": "http://example.com/fooB2.bin"
+          }
+        },
+        "beta"
+      ],
+      "fooC": [
+        "cOne",
+        "cTwo",
+        "cThree"
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "o9949",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean",
+        "enum": [
+          true
+        ]
+      },
+      "accountIsLocked": {
+        "type": "boolean"
+      },
+      "twoFactorAuthEnabled": {
+        "type": "boolean"
+      }
+    }
+  },
+  "data": {
+    "success": true,
+    "accountIsLocked": false,
+    "twoFactorAuthEnabled": true
+  },
+  "instructions": "Could you set the \"accountIsLocked\" field to true?",
+  "ground_truth": {
+    "success": true,
+    "accountIsLocked": true,
+    "twoFactorAuthEnabled": true
+  },
+  "modification": {
+    "op": "set_bool",
+    "path": [
+      "accountIsLocked"
+    ],
+    "precise_instruction": "Set \"accountIsLocked\" to true."
+  }
+}

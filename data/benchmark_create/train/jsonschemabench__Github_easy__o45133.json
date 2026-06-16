@@ -1,0 +1,41 @@
+{
+  "name": "o45133",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "value"
+      ]
+    },
+    "properties": {},
+    "additionalProperties": false
+  },
+  "description": "Dear Team,\n\nPlease find below the latest set of measurements from our recent data collection run. Record\u202f1 reported a value of\u202f12.34, record\u202f2 reported a value of\u202f56.78, and record\u202f3 reported a value of\u202f\u20119.01.\n\nLet me know if any further analysis is required.",
+  "reference_json": [
+    {
+      "id": 1,
+      "value": 12.34
+    },
+    {
+      "id": 2,
+      "value": 56.78
+    },
+    {
+      "id": 3,
+      "value": -9.01
+    }
+  ]
+}

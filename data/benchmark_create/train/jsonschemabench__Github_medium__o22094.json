@@ -1,0 +1,84 @@
+{
+  "name": "o22094",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "appDir": {
+        "default": "app",
+        "description": "The name of the application directory.",
+        "format": "path",
+        "type": "string"
+      },
+      "appId": {
+        "default": "serverApp",
+        "description": "The appId to use withServerTransition.",
+        "format": "html-selector",
+        "type": "string"
+      },
+      "clientProject": {
+        "$default": {
+          "$source": "projectName"
+        },
+        "description": "Name of related client app.",
+        "type": "string"
+      },
+      "main": {
+        "default": "main.server.ts",
+        "description": "The name of the main entry-point file.",
+        "format": "path",
+        "type": "string"
+      },
+      "rootModuleClassName": {
+        "default": "AppServerModule",
+        "description": "The name of the root module class.",
+        "type": "string"
+      },
+      "rootModuleFileName": {
+        "default": "app.server.module.ts",
+        "description": "The name of the root module file",
+        "format": "path",
+        "type": "string"
+      },
+      "serverFileName": {
+        "default": "server.ts",
+        "description": "The name of the Express server file.",
+        "type": "string"
+      },
+      "serverPort": {
+        "default": 4000,
+        "description": "The port for the Express server.",
+        "type": "number"
+      },
+      "skipInstall": {
+        "default": false,
+        "description": "Skip installing dependency packages.",
+        "type": "boolean"
+      },
+      "tsconfigFileName": {
+        "default": "tsconfig.server",
+        "description": "The name of the TypeScript configuration file.",
+        "type": "string"
+      }
+    },
+    "required": [
+      "clientProject"
+    ],
+    "title": "Express Engine Install Options Schema",
+    "type": "object"
+  },
+  "description": "The Angular Universal project is configured to use the source folder **src/app** as its application directory, with the root component identified by the selector **app-root**. The associated client-side application is named **my-angular-client**, and the server\u2011side entry point is the file **main.server.ts**. The root server module class is **AppServerModule**, defined in **app.server.module.ts**.\n\nFor the Express engine, the server script is **server.ts**, which will listen on port **4000**. The TypeScript configuration for the server build is stored in **tsconfig.server.json**. All required packages will be installed as part of the setup (i.e., we are **not** skipping the installation step).",
+  "reference_json": {
+    "appDir": "src/app",
+    "appId": "app-root",
+    "clientProject": "my-angular-client",
+    "main": "main.server.ts",
+    "rootModuleClassName": "AppServerModule",
+    "rootModuleFileName": "app.server.module.ts",
+    "serverFileName": "server.ts",
+    "serverPort": 4000,
+    "skipInstall": false,
+    "tsconfigFileName": "tsconfig.server.json"
+  }
+}

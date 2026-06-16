@@ -1,0 +1,91 @@
+{
+  "name": "o12610",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "description": "Defines a physical Wi-Fi device and its configuration.",
+    "type": "object",
+    "properties": {
+      "channel": {
+        "type": "integer",
+        "description": "Wi-Fi channel number.",
+        "minimum": 1,
+        "maximum": 165
+      },
+      "htmode": {
+        "type": "string",
+        "enum": [
+          null,
+          "HT20",
+          "HT40+",
+          "HT40-",
+          "VHT20",
+          "VHT40",
+          "VHT80"
+        ],
+        "description": "Enable 802.11n or 802.11ac modes."
+      },
+      "hwmode": {
+        "type": "string",
+        "enum": [
+          "11b",
+          "11g",
+          "11a"
+        ],
+        "description": "Basic operating mode (11b for old hardware, 11g for 2.4 GHz, 11a for 5 GHz)."
+      },
+      "id": {
+        "type": "string",
+        "description": "Physical identifier, e.g. pci-wifi-1 or usb-wifi-0."
+      },
+      "rx_stbc": {
+        "type": "integer",
+        "description": "Indicates support for receiving frames using STBC.",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "short_gi_20": {
+        "type": "boolean",
+        "description": "Enable short guard interval (higher data rates) in 20 MHz channels, must be supported by device."
+      },
+      "short_gi_40": {
+        "type": "boolean",
+        "description": "Enable short guard interval (higher data rates) in 40 MHz channel, must be supported by device."
+      },
+      "short_gi_80": {
+        "type": "boolean",
+        "description": "Enable short guard interval (higher data rates) in 80 MHz channel, must be supported by device."
+      },
+      "tx_stbc": {
+        "type": "integer",
+        "description": "Indicates support for transmitting frames using STBC.",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  },
+  "erroneous_json": {
+    "channel": 166,
+    "htmode": "VHT80",
+    "hwmode": "11a",
+    "id": "pci-wifi-2",
+    "rx_stbc": 1,
+    "short_gi_20": true,
+    "short_gi_40": true,
+    "short_gi_80": true,
+    "tx_stbc": 1
+  },
+  "valid_json": {
+    "channel": 36,
+    "htmode": "VHT80",
+    "hwmode": "11a",
+    "id": "pci-wifi-2",
+    "rx_stbc": 1,
+    "short_gi_20": true,
+    "short_gi_40": true,
+    "short_gi_80": true,
+    "tx_stbc": 1
+  },
+  "description": "The wireless interface identified as **pci\u2011wifi\u20112** is set to operate on channel\u202f36 in the 5\u202fGHz band, using the 802.11ac VHT80 mode with a basic hardware mode of 11a. Both transmit and receive space\u2011time block coding are enabled (rx_stbc\u202f=\u202f1, tx_stbc\u202f=\u202f1), and short guard interval is active for all channel widths\u201420\u202fMHz, 40\u202fMHz and 80\u202fMHz."
+}

@@ -1,0 +1,173 @@
+{
+  "name": "htmlhint",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/htmlhint.json",
+    "properties": {
+      "alt-require": {
+        "description": "Alt of img must be present and alt of area[href] and input[type=image] must be set value.",
+        "type": "boolean",
+        "default": false
+      },
+      "attr-lowercase": {
+        "description": "Attribute name must be lowercase.",
+        "type": "boolean",
+        "default": false
+      },
+      "attr-no-duplication": {
+        "description": "The same attribute can't be specified twice.",
+        "type": "boolean",
+        "default": false
+      },
+      "attr-unsafe-chars": {
+        "description": "Attribute value can't not use unsafe chars.",
+        "type": "boolean",
+        "default": false
+      },
+      "attr-value-double-quotes": {
+        "description": "Attribute value must closed by double quotes.",
+        "type": "boolean",
+        "default": false
+      },
+      "attr-value-not-empty": {
+        "description": "Attribute must set value.",
+        "type": "boolean",
+        "default": false
+      },
+      "doctype-first": {
+        "description": "Doctype must be first.",
+        "type": "boolean",
+        "default": false
+      },
+      "doctype-html5": {
+        "description": "Doctype must be html5.",
+        "type": "boolean",
+        "default": false
+      },
+      "head-script-disabled": {
+        "description": "The script tag can not be used in head.",
+        "type": "boolean",
+        "default": false
+      },
+      "href-abs-or-rel": {
+        "description": "Href must be absolute or relative.",
+        "default": false,
+        "enum": [
+          false,
+          "abs",
+          "rel"
+        ]
+      },
+      "html-lang-require": {
+        "description": "The lang attribute of an <html> element must be present and should be valid.",
+        "type": "boolean",
+        "default": false
+      },
+      "id-class-ad-disabled": {
+        "description": "Id and class can not use ad keyword, it will blocked by adblock software.",
+        "type": "boolean",
+        "default": false
+      },
+      "id-class-value": {
+        "description": "Id and class value must meet some rules: underline, dash, hump.",
+        "default": false,
+        "enum": [
+          false,
+          "underline",
+          "dash",
+          "hump"
+        ]
+      },
+      "id-unique": {
+        "description": "ID attributes must be unique in the document.",
+        "type": "boolean",
+        "default": false
+      },
+      "inline-script-disabled": {
+        "description": "Inline script cannot be used.",
+        "type": "boolean",
+        "default": false
+      },
+      "inline-style-disabled": {
+        "description": "Inline style cannot be used.",
+        "type": "boolean",
+        "default": false
+      },
+      "space-tab-mixed-disabled": {
+        "description": "Spaces and tabs can not mixed in front of line.",
+        "default": false,
+        "enum": [
+          false,
+          "space",
+          "tab"
+        ]
+      },
+      "spec-char-escape": {
+        "description": "Special characters must be escaped.",
+        "type": "boolean",
+        "default": false
+      },
+      "src-not-empty": {
+        "description": "Src of img(script,link) must set value. Empty of src will visit current page twice.",
+        "type": "boolean",
+        "default": false
+      },
+      "style-disabled": {
+        "description": "Style tag can not be used.",
+        "type": "boolean",
+        "default": false
+      },
+      "tag-pair": {
+        "description": "Tag must be paired.",
+        "type": "boolean",
+        "default": false
+      },
+      "tag-self-close": {
+        "description": "The empty tag must closed by self.",
+        "type": "boolean",
+        "default": false
+      },
+      "tagname-lowercase": {
+        "description": "Tagname must be lowercase.",
+        "type": "boolean",
+        "default": false
+      },
+      "title-require": {
+        "description": "<title> must be present in <head> tag.",
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "title": "JSON schema for HTMLHint configuration files",
+    "type": "object"
+  },
+  "description": "Dear Development Team,\n\nPlease review the updated HTML coding standards that we\u2019ll be applying to all new pages. Every document must start with an HTML5 doctype placed at the very top, and the\u202f<html>\u202felement is required to carry a valid\u202flang\u202fattribute. All tag names should be lowercase, and every tag must be properly paired; we are no longer mandating self\u2011closing syntax for empty elements. Within the\u202f<head>\u202fsection a\u202f<title>\u202felement is compulsory, and while script tags are still permitted there, any inline scripts or inline style attributes are now forbidden. The\u202f<style>\u202ftag itself is disallowed, and all attribute values must be quoted with double quotes and cannot be empty. Attribute names are to be written in lowercase, duplicate attributes on the same element are prohibited, and we will not be checking for unsafe characters inside attribute values. All\u202fhref\u202fattributes must use absolute URLs, and\u202fsrc\u202fattributes on\u202f<img>,\u202f<script>, and\u202f<link>\u202felements must never be left empty. Special characters should always be escaped, and leading whitespace at the start of lines may contain spaces only\u2014mixing tabs with spaces is not allowed.\n\nFor element identification, each\u202fid\u202fmust be unique across the document and must not contain the substring \u201cad\u201d. Class names share the same restriction, and both IDs and classes should follow dash (hyphen\u2011separated) naming conventions. Finally, every\u202f<img>\u202fas well as\u202f<area href>\u202fand\u202f<input type=\"image\">\u202fmust include a non\u2011empty\u202falt\u202fattribute. Please ensure these rules are reflected in your code reviews and automated linting pipelines.",
+  "reference_json": {
+    "alt-require": true,
+    "attr-lowercase": true,
+    "attr-no-duplication": true,
+    "attr-unsafe-chars": false,
+    "attr-value-double-quotes": true,
+    "attr-value-not-empty": true,
+    "doctype-first": true,
+    "doctype-html5": true,
+    "head-script-disabled": false,
+    "href-abs-or-rel": "abs",
+    "html-lang-require": true,
+    "id-class-ad-disabled": true,
+    "id-class-value": "dash",
+    "id-unique": true,
+    "inline-script-disabled": true,
+    "inline-style-disabled": true,
+    "space-tab-mixed-disabled": "space",
+    "spec-char-escape": true,
+    "src-not-empty": true,
+    "style-disabled": true,
+    "tag-pair": true,
+    "tag-self-close": false,
+    "tagname-lowercase": true,
+    "title-require": true
+  }
+}

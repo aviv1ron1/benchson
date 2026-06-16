@@ -1,0 +1,258 @@
+{
+  "name": "o52827",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Schema for cocktail list",
+    "definitions": {
+      "details": {
+        "description": "Detailed non-ingredient information about a cocktail",
+        "type": "object",
+        "properties": {
+          "glassType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ice": {
+            "description": "Type of ice the drink is served with (if any). Ex: rocks, single cube, none",
+            "type": "string"
+          },
+          "color": {
+            "description": "Color of the drink. Used for creating drink images",
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of drink",
+            "enum": [
+              "Ancestrals",
+              "Sours",
+              "Spirit Forward",
+              "Duos and Trios",
+              "Champagne",
+              "Highball, Collins, Fizzes",
+              "Juleps and Smashes",
+              "Hot Drinks",
+              "Flips and Nogs",
+              "Layered Drinks and Shots",
+              "Tropical Drinks",
+              "Punch",
+              "Cobblers",
+              "Savory",
+              "Non-alcoholic",
+              "Orphans"
+            ]
+          }
+        },
+        "required": [
+          "glassType",
+          "ice",
+          "color",
+          "category"
+        ]
+      },
+      "drink-ingredient": {
+        "description": "An ingredient in the drink. May be a liquid component or a garnish",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the ingredient"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of ingredient, such as garnish or mixer"
+          },
+          "unit": {
+            "description": "Unit of measurment for the quantity. Can be null for unit measurements, such as a sugar cube",
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "oz",
+              "mL",
+              "cL",
+              null
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "quantity",
+          "unit"
+        ]
+      }
+    },
+    "properties": {
+      "drinks": {
+        "description": "Details about a cocktail",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "UUID for the drink"
+            },
+            "default": {
+              "type": "boolean",
+              "description": "Indicates whether this drink was a default or user-added"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the drink"
+            },
+            "dateCreated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "hidden": {
+              "type": "boolean"
+            },
+            "favorite": {
+              "type": "boolean"
+            },
+            "details": {
+              "$ref": "#/definitions/details"
+            },
+            "ingredients": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/drink-ingredient"
+              }
+            },
+            "source": {
+              "type": "string",
+              "description": "Source of the recipe"
+            },
+            "steps": {
+              "type": "string",
+              "description": "Instructions to make the drink"
+            }
+          },
+          "required": [
+            "id",
+            "default",
+            "name",
+            "hidden",
+            "favorite",
+            "details",
+            "ingredients",
+            "steps"
+          ]
+        }
+      }
+    }
+  },
+  "data": {
+    "drinks": [
+      {
+        "id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+        "default": true,
+        "name": "Old Fashioned",
+        "dateCreated": "2023-04-12T15:30:00Z",
+        "hidden": false,
+        "favorite": true,
+        "details": {
+          "glassType": "Rocks",
+          "ice": "Rocks",
+          "color": "Amber",
+          "category": "Spirit Forward"
+        },
+        "ingredients": [
+          {
+            "name": "Bourbon",
+            "type": "spirit",
+            "quantity": 2,
+            "unit": "oz"
+          },
+          {
+            "name": "Simple Syrup",
+            "type": "mixer",
+            "quantity": 0.25,
+            "unit": "oz"
+          },
+          {
+            "name": "Angostura Bitters",
+            "type": "garnish",
+            "quantity": 2,
+            "unit": null
+          },
+          {
+            "name": "Orange Peel",
+            "type": "garnish",
+            "quantity": 1,
+            "unit": null
+          }
+        ],
+        "source": "Classic cocktail handbook",
+        "steps": "1. Place the simple syrup and bitters in a rocks glass.\n2. Add a large ice cube.\n3. Pour the bourbon over the ice and stir gently.\n4. Express the orange peel over the drink, rim the glass with it, and drop it in as garnish."
+      },
+      {
+        "id": "f9e8d7c6-5432-10fe-dcba-9876543210fe",
+        "default": false,
+        "name": "Margarita",
+        "dateCreated": "2024-01-20T11:45:00Z",
+        "hidden": false,
+        "favorite": false,
+        "details": {
+          "glassType": "Coupe",
+          "ice": "Single cube",
+          "color": "Pale yellow",
+          "category": "Sours"
+        },
+        "ingredients": [
+          {
+            "name": "Tequila Blanco",
+            "type": "spirit",
+            "quantity": 2,
+            "unit": "oz"
+          },
+          {
+            "name": "Cointreau",
+            "type": "liqueur",
+            "quantity": 1,
+            "unit": "oz"
+          },
+          {
+            "name": "Fresh Lime Juice",
+            "type": "mixer",
+            "quantity": 1,
+            "unit": "oz"
+          },
+          {
+            "name": "Salt",
+            "type": "garnish",
+            "quantity": 1,
+            "unit": null
+          },
+          {
+            "name": "Lime Wheel",
+            "type": "garnish",
+            "quantity": 1,
+            "unit": null
+          }
+        ],
+        "source": "Modern Mixology Guide",
+        "steps": "1. Rub the rim of a chilled coupe glass with a lime wedge and dip it into salt to coat.\n2. In a shaker, combine tequila, Cointreau, and fresh lime juice with ice.\n3. Shake vigorously for 10-12 seconds.\n4. Strain into the prepared glass over a single ice cube.\n5. Garnish with a lime wheel."
+      }
+    ]
+  },
+  "instructions": "Can you remove all items from the \"drinks\" list?",
+  "ground_truth": {
+    "drinks": []
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "drinks"
+    ],
+    "precise_instruction": "Remove all items from the \"drinks\" list."
+  }
+}

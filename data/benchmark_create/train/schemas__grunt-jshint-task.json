@@ -1,0 +1,71 @@
+{
+  "name": "grunt-jshint-task",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": {
+      "anyOf": [
+        {
+          "$ref": "https://json.schemastore.org/grunt-task#/definitions/fileFormat"
+        },
+        {
+          "$ref": "https://json.schemastore.org/grunt-task#/definitions/dynamic"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "options": {
+              "$ref": "#/definitions/options"
+            }
+          }
+        }
+      ]
+    },
+    "definitions": {
+      "options": {
+        "description": "Set the options for JSHint",
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "jshintrc": {
+                "description": "Either a boolean value or a string containing the file name of the jshintrc file.",
+                "type": [
+                  "boolean",
+                  "string"
+                ],
+                "enum": [
+                  true
+                ]
+              }
+            }
+          },
+          {
+            "$ref": "https://json.schemastore.org/jshintrc#"
+          }
+        ]
+      }
+    },
+    "id": "https://json.schemastore.org/grunt-jshint-task.json",
+    "properties": {
+      "options": {
+        "$ref": "#/definitions/options"
+      }
+    },
+    "title": "JSON schema for the Grunt JSHint task",
+    "type": "object"
+  },
+  "description": "The JSHint task has been set up to rely on a\u202f.jshintrc configuration file. In the global options the\u202fjshintrc\u202fflag is enabled (true), so Grunt will automatically load the project's JSHint rules from the\u202f.jshintrc\u202ffile. Likewise, for the specific file targets, the same\u202fjshintrc\u202foption is turned on, ensuring that each file group is validated using the same external configuration.",
+  "reference_json": {
+    "options": {
+      "jshintrc": true
+    },
+    "files": {
+      "options": {
+        "jshintrc": true
+      }
+    }
+  }
+}

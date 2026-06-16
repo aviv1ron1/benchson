@@ -1,0 +1,125 @@
+{
+  "name": "partial-pdm-dockerize",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/partial-pdm-dockerize.json",
+    "$comment": "PDM Dockerize plugin table in pyproject.toml",
+    "definitions": {
+      "fnmatch-filter": {
+        "type": "string",
+        "description": "A Unix filename pattern filter",
+        "examples": [
+          "filename",
+          "filename.*",
+          "*.ext",
+          "script?/*-[!-_].sh"
+        ],
+        "x-taplo": {
+          "links": {
+            "key": "https://docs.python.org/3/library/fnmatch.html"
+          }
+        }
+      },
+      "selector": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/fnmatch-filter"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/fnmatch-filter"
+            }
+          }
+        ]
+      }
+    },
+    "properties": {
+      "include": {
+        "$ref": "#/definitions/selector",
+        "description": "fnmatch filter patterns for included PDM scripts",
+        "x-taplo": {
+          "links": {
+            "key": "https://github.com/noirbizarre/pdm-dockerize?#selecting-scripts"
+          }
+        }
+      },
+      "exclude": {
+        "$ref": "#/definitions/selector",
+        "description": "fnmatch filter patterns for excluded PDM scripts",
+        "x-taplo": {
+          "links": {
+            "key": "https://github.com/noirbizarre/pdm-dockerize?#selecting-scripts"
+          }
+        }
+      },
+      "include_bins": {
+        "$ref": "#/definitions/selector",
+        "description": "fnmatch filter patterns for included binaries",
+        "x-taplo": {
+          "links": {
+            "key": "https://github.com/noirbizarre/pdm-dockerize?#selecting-binaries"
+          }
+        }
+      },
+      "exclude_bins": {
+        "$ref": "#/definitions/selector",
+        "description": "fnmatch filter patterns for excluded binaries",
+        "x-taplo": {
+          "links": {
+            "key": "https://github.com/noirbizarre/pdm-dockerize?#selecting-binaries"
+          }
+        }
+      },
+      "env_file": {
+        "type": "string",
+        "description": "Path to a file with environment variables",
+        "x-taplo": {
+          "links": {
+            "key": "https://github.com/noirbizarre/pdm-dockerize?#loading-docker-only-environment-files"
+          }
+        }
+      },
+      "env": {
+        "type": "object",
+        "description": "Environment variables applied when running the script",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "x-taplo": {
+          "links": {
+            "key": "https://github.com/noirbizarre/pdm-dockerize?#defining-docker-only-environment-variables"
+          }
+        }
+      }
+    },
+    "type": "object",
+    "additionalProperties": false,
+    "x-taplo": {
+      "links": {
+        "key": "https://github.com/noirbizarre/pdm-dockerize?#usage"
+      }
+    }
+  },
+  "description": "Hi team,\n\nFor the Docker build we\u2019ll be running only the Python scripts that match the patterns\u202f`run-*.py` and `manage.py`, while any file following `test_*.py` will be excluded from execution. On the binary side we\u2019ll pull in everything under `bin/*` except the legacy files in `bin/old/*` and the script `bin/debug.sh`.\n\nThe container will load additional environment settings from the `.docker.env` file. On top of that we\u2019ll explicitly set three Docker\u2011only variables: `PYTHONUNBUFFERED` set to\u202f`1`, `APP_ENV` set to\u202f`production`, and `DB_HOST` set to\u202f`db`.",
+  "reference_json": {
+    "include": [
+      "run-*.py",
+      "manage.py"
+    ],
+    "exclude": "test_*.py",
+    "include_bins": "bin/*",
+    "exclude_bins": [
+      "bin/old/*",
+      "bin/debug.sh"
+    ],
+    "env_file": ".docker.env",
+    "env": {
+      "PYTHONUNBUFFERED": "1",
+      "APP_ENV": "production",
+      "DB_HOST": "db"
+    }
+  }
+}

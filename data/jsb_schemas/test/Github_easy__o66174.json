@@ -1,0 +1,29 @@
+{
+  "name": "o66174",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "Manual Instructions Environment",
+    "required": [
+      "environment_type",
+      "instructions"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "environment_type": {
+        "default": "manual-instructions-env",
+        "enum": [
+          "manual-instructions-env"
+        ],
+        "type": "string",
+        "title": "Process Type"
+      },
+      "instructions": {
+        "type": "string",
+        "title": "Instructions"
+      }
+    }
+  }
+}

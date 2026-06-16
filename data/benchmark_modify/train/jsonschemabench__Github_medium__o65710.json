@@ -1,0 +1,156 @@
+{
+  "name": "o65710",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Archive List",
+    "description": "A list of OpenTok Archives",
+    "type": "object",
+    "properties": {
+      "count": {
+        "type": "integer"
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/archive"
+        }
+      }
+    },
+    "required": [
+      "count",
+      "items"
+    ],
+    "definitions": {
+      "archive": {
+        "title": "Archive",
+        "description": "An OpenTok Archive",
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "integer"
+          },
+          "duration": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "partnerId": {
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "sessionId": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "started",
+              "stopped",
+              "failed",
+              "deleted",
+              "uploaded",
+              "expired",
+              "paused"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hasVideo": {
+            "type": "boolean"
+          },
+          "hasAudio": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "partnerId",
+          "sessionId",
+          "status"
+        ]
+      }
+    }
+  },
+  "data": {
+    "count": 2,
+    "items": [
+      {
+        "createdAt": 1697040000,
+        "duration": 3600,
+        "id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        "name": "Team Meeting",
+        "partnerId": 123456,
+        "reason": "User ended session",
+        "sessionId": "2_MX40Njc2MzYyMn5-MTY3ODkwMzY5N30",
+        "size": 104857600,
+        "status": "available",
+        "url": "https://example.com/archives/1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d.mp4",
+        "hasVideo": true,
+        "hasAudio": true
+      },
+      {
+        "createdAt": 1697126400,
+        "duration": 0,
+        "id": "abcd1234-ef56-7890-abcd-ef1234567890",
+        "name": null,
+        "partnerId": 654321,
+        "reason": "Network error",
+        "sessionId": "2_MX40NTg3ODAyMn5-MTY3OTAyMDAwM30",
+        "size": 0,
+        "status": "failed",
+        "url": null,
+        "hasVideo": false,
+        "hasAudio": false
+      }
+    ]
+  },
+  "instructions": "Please remove the last item from the items list.",
+  "ground_truth": {
+    "count": 2,
+    "items": [
+      {
+        "createdAt": 1697040000,
+        "duration": 3600,
+        "id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        "name": "Team Meeting",
+        "partnerId": 123456,
+        "reason": "User ended session",
+        "sessionId": "2_MX40Njc2MzYyMn5-MTY3ODkwMzY5N30",
+        "size": 104857600,
+        "status": "available",
+        "url": "https://example.com/archives/1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d.mp4",
+        "hasVideo": true,
+        "hasAudio": true
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "items"
+    ],
+    "precise_instruction": "Remove the last item from the \"items\" list."
+  }
+}

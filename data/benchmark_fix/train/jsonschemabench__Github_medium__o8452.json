@@ -1,0 +1,77 @@
+{
+  "name": "o8452",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "import_configured": {
+        "type": "boolean",
+        "default": false,
+        "description": "Not importing configured interfaces by default. Set this option to true if configured interfaces need to be imported."
+      },
+      "interface_filters": {
+        "$id": "/properties/interface_filters",
+        "type": "array",
+        "items": {
+          "$id": "/properties/interface_filters/items",
+          "type": "object",
+          "maxProperties": 2,
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "enum": [
+                "regex"
+              ]
+            },
+            "expr": {
+              "type": "string"
+            }
+          },
+          "title": "filter object",
+          "description": "filter object having op and expr fields",
+          "default": {},
+          "examples": [
+            {
+              "op": "regex",
+              "expr": "^ge-"
+            },
+            {
+              "op": "regex",
+              "expr": "^xe"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "import_configured": false,
+    "interface_filters": [
+      {
+        "op": "regex",
+        "expr": "^ge-"
+      },
+      {
+        "op": "regex",
+        "expr": "^xe"
+      }
+    ],
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "import_configured": false,
+    "interface_filters": [
+      {
+        "op": "regex",
+        "expr": "^ge-"
+      },
+      {
+        "op": "regex",
+        "expr": "^xe"
+      }
+    ]
+  },
+  "description": "The current import settings have been left at their default state, meaning that configured interfaces will **not** be imported automatically. This option remains disabled until it is explicitly enabled.\n\nFor interface selection, two regular\u2011expression filters are in place. The first filter matches any interface whose name begins with \u201cge\u2011\u201d (for example, ge\u20110/0/0), while the second filter captures interfaces that start with \u201cxe\u201d (such as xe\u20110/1/0). Only interfaces satisfying either of these patterns will be considered for any subsequent processing."
+}

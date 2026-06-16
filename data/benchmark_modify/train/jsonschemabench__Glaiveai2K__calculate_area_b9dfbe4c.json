@@ -1,0 +1,71 @@
+{
+  "name": "calculate_area_b9dfbe4c",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape type (e.g. rectangle, circle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "cylinder",
+    "dimensions": {
+      "base": 0,
+      "height": 12.5,
+      "length": 0,
+      "radius": 5.3,
+      "width": 0
+    }
+  },
+  "instructions": "Can you delete the \"base\" field inside the \"dimensions\" object?",
+  "ground_truth": {
+    "shape": "cylinder",
+    "dimensions": {
+      "height": 12.5,
+      "length": 0,
+      "radius": 5.3,
+      "width": 0
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "dimensions",
+      "base"
+    ],
+    "precise_instruction": "Remove the \"base\" field inside \"dimensions\"."
+  }
+}

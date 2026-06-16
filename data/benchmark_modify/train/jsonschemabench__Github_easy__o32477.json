@@ -1,0 +1,45 @@
+{
+  "name": "o32477",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "The group id"
+      },
+      "name": {
+        "type": "string",
+        "description": "The group name",
+        "minLength": 1
+      }
+    },
+    "claroline": {
+      "requiredAtCreation": [
+        "name"
+      ],
+      "ids": [
+        "id",
+        "name"
+      ]
+    }
+  },
+  "data": {
+    "id": "grp-2026-001",
+    "name": "Advanced Data Science Cohort"
+  },
+  "instructions": "Can you change the id to grp-2026-001 (updated)?",
+  "ground_truth": {
+    "id": "grp-2026-001 (updated)",
+    "name": "Advanced Data Science Cohort"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "id"
+    ],
+    "precise_instruction": "Change \"id\" to \"grp-2026-001 (updated)\"."
+  }
+}

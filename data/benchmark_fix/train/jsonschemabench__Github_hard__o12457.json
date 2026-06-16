@@ -1,0 +1,392 @@
+{
+  "name": "o12457",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+      "positiveNumber": {
+        "type": "number",
+        "minimum": 0
+      },
+      "returnTipHeightRange": {
+        "type": "number",
+        "minimum": 0.25,
+        "maximum": 1.25
+      },
+      "idleCurrentRange": {
+        "type": "number",
+        "minimum": 0.01,
+        "maximum": 1.0
+      },
+      "xyzArray": {
+        "type": "array",
+        "description": "Array of 3 numbers, [x, y, z]",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "linearEquations": {
+        "description": "Array containing any number of 3-arrays. Each inner 3-array describes a line segment: [boundary, slope, intercept]. So [1, 2, 3] would mean 'where (next_boundary > x >= 1), y = 2x + 3'",
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "liquidHandlingSpecs": {
+        "description": "Object containing linear equations for translating between uL of liquid and mm of plunger travel. There is one linear equation for aspiration and one for dispense",
+        "type": "object",
+        "required": [
+          "aspirate",
+          "dispense"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "aspirate": {
+            "$ref": "#/definitions/linearEquations"
+          },
+          "dispense": {
+            "$ref": "#/definitions/linearEquations"
+          }
+        }
+      },
+      "editConfigurations": {
+        "type": "object",
+        "description": "Object allowing you to modify a config",
+        "required": [
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": [
+              "number",
+              "array"
+            ]
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "units": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "config",
+      "mutableConfigs"
+    ],
+    "properties": {
+      "config": {
+        "description": "Version-level pipette specifications, which may vary across different versions of the same pipette",
+        "type": "object",
+        "$comment": "Example key: 'p10_single_v1.3'",
+        "patternProperties": {
+          ".*": {
+            "required": [
+              "name",
+              "top",
+              "bottom",
+              "blowout",
+              "dropTip",
+              "pickUpCurrent",
+              "pickUpDistance",
+              "pickUpIncrement",
+              "pickUpPresses",
+              "pickUpSpeed",
+              "modelOffset",
+              "plungerCurrent",
+              "dropTipCurrent",
+              "dropTipSpeed",
+              "ulPerMm",
+              "tipLength"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "description": "reference to name of this version, should match a key in corresponding pipetteNameSpecs.json file",
+                "type": "string"
+              },
+              "backCompatNames": {
+                "description": "Optional reference for name of backwards compatible pipette corresponding to a key in pipetteNameSpecs.json, only relevant to gen2 pipettes",
+                "type": "array"
+              },
+              "top": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "bottom": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "blowout": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "dropTip": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "pickUpCurrent": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "pickUpDistance": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "pickUpPresses": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "pickUpIncrement": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "pickUpSpeed": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "modelOffset": {
+                "$ref": "#/definitions/xyzArray"
+              },
+              "plungerCurrent": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "dropTipCurrent": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "dropTipSpeed": {
+                "$ref": "#/definitions/editConfigurations"
+              },
+              "ulPerMm": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/liquidHandlingSpecs"
+                }
+              },
+              "quirks": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tipLength": {
+                "type": "object",
+                "value": {
+                  "$ref": "#/definitions/positiveNumber"
+                }
+              },
+              "idleCurrent": {
+                "$ref": "#/definitions/idleCurrentRange"
+              },
+              "returnTipHeight": {
+                "$ref": "#/definitions/returnTipHeightRange"
+              },
+              "tipOverlap": {
+                "type": "object",
+                "description": "Map of tip overlap values with defaults",
+                "required": [
+                  "default"
+                ],
+                "$comment": "Other keys in here should be labware URIs",
+                "properties": {
+                  "default": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "mutableConfigs": {
+        "type": "array",
+        "description": "Array of mutable configs for a given pipette",
+        "items": {
+          "type": "string"
+        }
+      },
+      "validQuirks": {
+        "type": "array",
+        "description": "Array of valid quirks for a given pipette",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "mutableConfigs": [
+      "top",
+      "bottom",
+      "blowout",
+      "pickUpSpeed"
+    ],
+    "validQuirks": [
+      "nozzle_check",
+      "fast_tip_pickup"
+    ]
+  },
+  "valid_json": {
+    "config": {
+      "p10_single_v1.3": {
+        "name": "p10_single",
+        "top": {
+          "value": 10,
+          "min": 0,
+          "max": 12,
+          "units": "mm",
+          "type": "position",
+          "displayName": "Top Position"
+        },
+        "bottom": {
+          "value": 0,
+          "min": 0,
+          "max": 12,
+          "units": "mm",
+          "type": "position",
+          "displayName": "Bottom Position"
+        },
+        "blowout": {
+          "value": 11,
+          "min": 0,
+          "max": 12,
+          "units": "mm",
+          "type": "position",
+          "displayName": "Blowout Position"
+        },
+        "dropTip": {
+          "value": 0.5,
+          "min": 0,
+          "max": 1,
+          "units": "mm",
+          "type": "distance",
+          "displayName": "Drop Tip Travel"
+        },
+        "pickUpCurrent": {
+          "value": 0.8,
+          "min": 0,
+          "max": 1,
+          "units": "A",
+          "type": "current",
+          "displayName": "Pick Up Current"
+        },
+        "pickUpDistance": {
+          "value": 0.3,
+          "min": 0,
+          "max": 5,
+          "units": "mm",
+          "type": "distance",
+          "displayName": "Pick Up Distance"
+        },
+        "pickUpPresses": {
+          "value": 1,
+          "min": 1,
+          "max": 5,
+          "units": "count",
+          "type": "integer",
+          "displayName": "Pick Up Presses"
+        },
+        "pickUpIncrement": {
+          "value": 0.05,
+          "min": 0,
+          "max": 0.5,
+          "units": "mm",
+          "type": "distance",
+          "displayName": "Pick Up Increment"
+        },
+        "pickUpSpeed": {
+          "value": 20,
+          "min": 1,
+          "max": 100,
+          "units": "mm/s",
+          "type": "speed",
+          "displayName": "Pick Up Speed"
+        },
+        "modelOffset": [
+          0,
+          0,
+          0
+        ],
+        "plungerCurrent": {
+          "value": 0.6,
+          "min": 0,
+          "max": 1,
+          "units": "A",
+          "type": "current",
+          "displayName": "Plunger Current"
+        },
+        "dropTipCurrent": {
+          "value": 0.5,
+          "min": 0,
+          "max": 1,
+          "units": "A",
+          "type": "current",
+          "displayName": "Drop Tip Current"
+        },
+        "dropTipSpeed": {
+          "value": 30,
+          "min": 1,
+          "max": 150,
+          "units": "mm/s",
+          "type": "speed",
+          "displayName": "Drop Tip Speed"
+        },
+        "ulPerMm": [
+          {
+            "aspirate": [
+              [
+                0,
+                0.1,
+                0
+              ]
+            ],
+            "dispense": [
+              [
+                0,
+                0.12,
+                0
+              ]
+            ]
+          }
+        ],
+        "quirks": [
+          "nozzle_check"
+        ],
+        "tipLength": {
+          "value": 51.5
+        },
+        "idleCurrent": 0.15,
+        "returnTipHeight": 0.5,
+        "tipOverlap": {
+          "default": 0.2,
+          "opentrons_96_tiprack_300ul": 0.15
+        }
+      }
+    },
+    "mutableConfigs": [
+      "top",
+      "bottom",
+      "blowout",
+      "pickUpSpeed"
+    ],
+    "validQuirks": [
+      "nozzle_check",
+      "fast_tip_pickup"
+    ]
+  },
+  "description": "The laboratory is using the P10\u202fsingle\u2011channel pipette, version\u202f1.3 (identified as \u201cp10_single_v1.3\u201d). All motion limits are calibrated in millimetres: the plunger\u2019s top stop is set at 10\u202fmm (allowable range 0\u201312\u202fmm), the bottom stop at 0\u202fmm (0\u201312\u202fmm), and the blow\u2011out position at 11\u202fmm (0\u201312\u202fmm). The tip\u2011drop travel distance is 0.5\u202fmm (0\u20131\u202fmm). Pickup is performed with a current of 0.8\u202fA (0\u20131\u202fA) over a 0.3\u202fmm distance (0\u20135\u202fmm), using a single press, an incremental step of 0.05\u202fmm (0\u20130.5\u202fmm) and a speed of 20\u202fmm\u202fs\u207b\u00b9 (1\u2013100\u202fmm\u202fs\u207b\u00b9). Plunger actuation current is 0.6\u202fA (0\u20131\u202fA) and tip\u2011drop current is 0.5\u202fA (0\u20131\u202fA) with a drop\u2011tip speed of 30\u202fmm\u202fs\u207b\u00b9 (1\u2013150\u202fmm\u202fs\u207b\u00b9). The model offset is neutral at [0,\u202f0,\u202f0]\u202fmm, the tip length is 51.5\u202fmm, the idle current is set to 0.15\u202fA, and the tip\u2011return height after a drop is 0.5\u202fmm. Tip\u2011overlap defaults to 0.2\u202fmm, but for the Opentrons\u202f96\u2011tip\u2011rack\u202f300\u202f\u00b5L it is reduced to 0.15\u202fmm. The only registered quirk for this pipette is \u201cnozzle_check\u201d.\n\nThe liquid\u2011handling conversion tables are linear. For aspiration, the relationship is 0.1\u202f\u00b5L per mm of plunger travel with zero intercept; for dispensing, it is 0.12\u202f\u00b5L per mm with zero intercept. The configuration parameters that can be adjusted by the user are the top position, bottom position, blow\u2011out position, and pickup speed. Finally, the system recognises two valid quirks for this hardware: \u201cnozzle_check\u201d and \u201cfast_tip_pickup\u201d."
+}

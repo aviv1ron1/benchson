@@ -1,0 +1,70 @@
+{
+  "name": "sp_266_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a client-generated user session",
+    "properties": {
+      "previousSessionId": {
+        "_format": "uuid",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "sessionId": {
+        "_format": "uuid",
+        "type": "string"
+      },
+      "sessionIndex": {
+        "maximum": 2147483647,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "storageMechanism": {
+        "enum": [
+          "SQLITE",
+          "COOKIE_1",
+          "COOKIE_3",
+          "LOCAL_STORAGE",
+          "FLASH_LSO"
+        ]
+      },
+      "userId": {
+        "pattern": "^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$|^[0-9a-f]{16}$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "userId",
+      "sessionId",
+      "sessionIndex",
+      "previousSessionId",
+      "storageMechanism"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "client_session",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "previousSessionId": "9f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+    "sessionId": "e7b9a8c6-d5f4-3e2d-1c0b-9a8b7c6d5e4f",
+    "sessionIndex": 42,
+    "storageMechanism": "LOCAL_STORAGE",
+    "userId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "previousSessionId": "9f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+    "sessionId": "e7b9a8c6-d5f4-3e2d-1c0b-9a8b7c6d5e4f",
+    "sessionIndex": 42,
+    "storageMechanism": "LOCAL_STORAGE",
+    "userId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  },
+  "description": "Hello Team,\n\nThe latest client\u2011generated session record for user **a1b2c3d4-e5f6-7890-abcd-ef1234567890** has been captured. The current session identifier is **e7b9a8c6-d5f4-3e2d-1c0b-9a8b7c6d5e4f**, and it follows the previous session **9f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f**, which is logged as session index **42**. All session data is being persisted using the **LOCAL_STORAGE** mechanism.\n\nPlease ensure this information is stored securely and used for any subsequent analytics or debugging tasks. Let me know if any further details are required."
+}

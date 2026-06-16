@@ -1,0 +1,61 @@
+{
+  "name": "o9883",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "experienceSlugId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "applicationId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "creationDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "lastUpdated": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "slug": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 63,
+        "pattern": "^[0-9a-z-]*$"
+      },
+      "version": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 255
+      }
+    }
+  },
+  "erroneous_json": {
+    "id": "5f1e3a9b6c2d4e7f8a9b0c1d",
+    "experienceSlugId": "a9b8c7d6e5f4a3b2c1d0e9f8",
+    "applicationId": "123abc456def7890abc12345",
+    "creationDate": "2023-11-01T12:34:56Z",
+    "lastUpdated": "2024-05-10T08:20:30Z",
+    "slug": null,
+    "version": "v1.2.3"
+  },
+  "valid_json": {
+    "id": "5f1e3a9b6c2d4e7f8a9b0c1d",
+    "experienceSlugId": "a9b8c7d6e5f4a3b2c1d0e9f8",
+    "applicationId": "123abc456def7890abc12345",
+    "creationDate": "2023-11-01T12:34:56Z",
+    "lastUpdated": "2024-05-10T08:20:30Z",
+    "slug": "my-experience-2024",
+    "version": "v1.2.3"
+  },
+  "description": "Subject: Update \u2013 Experience Configuration \u201cmy\u2011experience\u20112024\u201d\n\nThe experience record (ID\u202f5f1e3a9b6c2d4e7f8a9b0c1d) linked to experience slug\u202fa9b8c7d6e5f4a3b2c1d0e9f8 and associated with application\u202f123abc456def7890abc12345 was originally created on 2023\u201111\u201101 at 12:34:56\u202fZ. The latest revision, version\u202fv1.2.3, was committed on 2024\u201105\u201110 at 08:20:30\u202fZ. This entry refers to the slug \u201cmy\u2011experience\u20112024\u201d, which should be used in all subsequent deployments and documentation."
+}

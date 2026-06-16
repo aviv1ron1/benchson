@@ -1,0 +1,55 @@
+{
+  "name": "o25107",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "required": [
+      "DomainName"
+    ],
+    "properties": {
+      "DomainName": {
+        "type": "string"
+      },
+      "SubjectAlternativeNames": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "_uniqueItems": true
+      },
+      "IdempotencyToken": {
+        "type": "string"
+      },
+      "DomainValidationOptions": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "minItems": 1,
+        "_uniqueItems": true
+      }
+    }
+  },
+  "description": "Subject: Request to provision SSL certificate for myapp.example.com  \n\nHi Team,  \n\nPlease provision an SSL certificate for the primary domain **myapp.example.com**. The certificate should also cover the SAN entries **www.myapp.example.com** and **api.myapp.example.com**. Use the idempotency token **f3b9c6e2-8d1a-4c5e-9f7a-1b2c3d4e5f6a** to ensure the request is processed only once. For domain validation, apply the DNS method for the primary domain (myapp.example.com) and the EMAIL method for the www sub\u2011domain (www.myapp.example.com).  \n\nThank you.",
+  "reference_json": {
+    "DomainName": "myapp.example.com",
+    "SubjectAlternativeNames": [
+      "www.myapp.example.com",
+      "api.myapp.example.com"
+    ],
+    "IdempotencyToken": "f3b9c6e2-8d1a-4c5e-9f7a-1b2c3d4e5f6a",
+    "DomainValidationOptions": [
+      {
+        "DomainName": "myapp.example.com",
+        "ValidationMethod": "DNS"
+      },
+      {
+        "DomainName": "www.myapp.example.com",
+        "ValidationMethod": "EMAIL"
+      }
+    ]
+  }
+}

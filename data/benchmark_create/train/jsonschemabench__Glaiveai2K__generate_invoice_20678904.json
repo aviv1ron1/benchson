@@ -1,0 +1,39 @@
+{
+  "name": "generate_invoice_20678904",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "customer_name": {
+        "description": "The name of the customer",
+        "type": "string"
+      },
+      "price_per_unit": {
+        "description": "The price per unit of the product or service",
+        "type": "number"
+      },
+      "product_name": {
+        "description": "The name of the product or service",
+        "type": "string"
+      },
+      "quantity": {
+        "description": "The quantity of the product or service",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "customer_name",
+      "product_name",
+      "quantity",
+      "price_per_unit"
+    ],
+    "type": "object"
+  },
+  "description": "Dear Alexandra Greene,\n\nThank you for your order of Premium Organic Coffee Beans. We have recorded a quantity of 25 units at a price of $12.99 per unit. Your purchase details have been logged and will be processed shortly.\n\nIf you have any questions or need further assistance, please feel free to reach out. We appreciate your business and look forward to delivering the finest coffee to you.",
+  "reference_json": {
+    "customer_name": "Alexandra Greene",
+    "product_name": "Premium Organic Coffee Beans",
+    "quantity": 25,
+    "price_per_unit": 12.99
+  }
+}

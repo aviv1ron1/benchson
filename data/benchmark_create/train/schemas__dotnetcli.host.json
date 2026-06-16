@@ -1,0 +1,67 @@
+{
+  "name": "dotnetcli.host",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+      "symbolInfo": {
+        "properties": {
+          "isHidden": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "pattern": "^(true|false)$"
+              }
+            ]
+          },
+          "longName": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "id": "https://json.schemastore.org/dotnetcli.host.json",
+    "properties": {
+      "symbolInfo": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/definitions/symbolInfo"
+        }
+      },
+      "usageExamples": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "title": "JSON schema for .NET CLI template host files",
+    "type": "object"
+  },
+  "description": "The template defines two symbols for use in the generated project. The first symbol, **MyClass**, is visible (its\u202fisHidden flag is set to\u202ffalse) and maps to the fully\u2011qualified type **MyNamespace.MyClass**; its short name remains **MyClass**. The second symbol, **Helper**, is marked as hidden (its\u202fisHidden value is the string\u202f\"true\") and corresponds to **Utilities.Helper**, with the short name **Helper**.\n\nBelow are a few command\u2011line snippets that illustrate how you can work with the generated project:\n\n- `dotnet new console -n MyApp` \u2013 creates a new console application named **MyApp**.  \n- `dotnet build MyApp.csproj` \u2013 builds the project file.  \n- `dotnet run --project MyApp` \u2013 runs the application from the **MyApp** project.",
+  "reference_json": {
+    "symbolInfo": {
+      "MyClass": {
+        "isHidden": false,
+        "longName": "MyNamespace.MyClass",
+        "shortName": "MyClass"
+      },
+      "Helper": {
+        "isHidden": "true",
+        "longName": "Utilities.Helper",
+        "shortName": "Helper"
+      }
+    },
+    "usageExamples": [
+      "dotnet new console -n MyApp",
+      "dotnet build MyApp.csproj",
+      "dotnet run --project MyApp"
+    ]
+  }
+}

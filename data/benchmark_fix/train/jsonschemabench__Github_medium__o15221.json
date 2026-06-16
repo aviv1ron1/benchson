@@ -1,0 +1,250 @@
+{
+  "name": "o15221",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "definitions": {
+      "pluginMessage": {
+        "title": "Plugin Message",
+        "type": "object",
+        "properties": {
+          "code": {
+            "title": "Code",
+            "description": "The code that represents the rule or type of issue",
+            "type": "string"
+          },
+          "messageText": {
+            "title": "Message Text",
+            "description": "The message text to be displayed for this issue",
+            "type": "string"
+          },
+          "severity": {
+            "title": "Severity",
+            "description": "The severity level of the issue",
+            "type": "string",
+            "enum": [
+              "FATAL",
+              "CRITICAL",
+              "ERROR",
+              "WARNING",
+              "CAUTION",
+              "INFO",
+              "COSMETIC"
+            ]
+          }
+        }
+      }
+    },
+    "title": "Rules Configuration",
+    "description": "A set of rules configuration options for CFLint",
+    "type": "object",
+    "properties": {
+      "rule": {
+        "title": "Rules",
+        "description": "Allows you to add a plugin for this folder that is not listed in the global configuration",
+        "type": "array",
+        "minItems": 0,
+        "items": {
+          "title": "Rule",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "className": {
+              "title": "Class Name",
+              "type": "string"
+            },
+            "message": {
+              "title": "Messages",
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "$ref": "#/definitions/pluginMessage"
+              }
+            },
+            "parameter": {
+              "title": "Parameters",
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "title": "Parameter",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "title": "Name",
+                    "type": "string"
+                  },
+                  "value": {
+                    "title": "Value"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": []
+      },
+      "excludes": {
+        "title": "Excludes",
+        "description": "An array of objects describing rules you want to be excluded from this directory and its children",
+        "type": "array",
+        "minItems": 0,
+        "items": {
+          "$ref": "#/definitions/pluginMessage"
+        },
+        "default": []
+      },
+      "includes": {
+        "title": "Includes",
+        "description": "An array of objects describing rules you want to be applied for this directory and its children",
+        "type": "array",
+        "minItems": 0,
+        "items": {
+          "$ref": "#/definitions/pluginMessage"
+        },
+        "default": []
+      },
+      "inheritParent": {
+        "title": "Inherit Parent",
+        "description": "Configures if the rules set in the global or any parent configuration should be inherited as a base set of rules",
+        "type": "boolean",
+        "default": true
+      },
+      "parameters": {
+        "title": "Parameters",
+        "description": "The set of parameters to configure, where the keys are denoted as RuleName.parameterName",
+        "type": "object",
+        "patternProperties": {
+          "^([\\w])+\\.([\\w])+$": {
+            "title": "Parameter",
+            "description": "The parameter for a particular rule whose value will be overridden. Denoted as RuleName.parameterName.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "erroneous_json": {
+    "rule": [
+      {
+        "name": "NoDeprecatedTag",
+        "className": "com.cflint.rules.NoDeprecatedTagRule",
+        "message": [
+          {
+            "code": "DEPRECATED_TAG",
+            "messageText": "Deprecated tag used in component",
+            "severity": "WARNING"
+          }
+        ],
+        "parameter": [
+          {
+            "name": "maxAgeDays",
+            "value": "365"
+          }
+        ]
+      },
+      {
+        "name": "UnusedVariable",
+        "className": "com.cflint.rules.UnusedVariableRule",
+        "message": [
+          {
+            "code": "UNUSED_VAR",
+            "messageText": "Variable is declared but never used",
+            "severity": "INFO"
+          },
+          {
+            "code": "UNUSED_VAR_CRITICAL",
+            "messageText": "Critical unused variable detected",
+            "severity": "ERROR"
+          }
+        ],
+        "parameter": [
+          {
+            "name": "ignorePattern",
+            "value": "temp_.*"
+          }
+        ]
+      }
+    ],
+    "excludes": null,
+    "includes": [
+      {
+        "code": "ENFORCE_NAMING",
+        "messageText": "Enforce naming conventions for files and tags",
+        "severity": "ERROR"
+      }
+    ],
+    "inheritParent": false,
+    "parameters": {
+      "NoDeprecatedTag.maxTagAge": "30",
+      "UnusedVariable.ignorePattern": "temp_.*"
+    }
+  },
+  "valid_json": {
+    "rule": [
+      {
+        "name": "NoDeprecatedTag",
+        "className": "com.cflint.rules.NoDeprecatedTagRule",
+        "message": [
+          {
+            "code": "DEPRECATED_TAG",
+            "messageText": "Deprecated tag used in component",
+            "severity": "WARNING"
+          }
+        ],
+        "parameter": [
+          {
+            "name": "maxAgeDays",
+            "value": "365"
+          }
+        ]
+      },
+      {
+        "name": "UnusedVariable",
+        "className": "com.cflint.rules.UnusedVariableRule",
+        "message": [
+          {
+            "code": "UNUSED_VAR",
+            "messageText": "Variable is declared but never used",
+            "severity": "INFO"
+          },
+          {
+            "code": "UNUSED_VAR_CRITICAL",
+            "messageText": "Critical unused variable detected",
+            "severity": "ERROR"
+          }
+        ],
+        "parameter": [
+          {
+            "name": "ignorePattern",
+            "value": "temp_.*"
+          }
+        ]
+      }
+    ],
+    "excludes": [
+      {
+        "code": "NO_GLOBAL_VAR",
+        "messageText": "Global variables are discouraged in this directory",
+        "severity": "INFO"
+      }
+    ],
+    "includes": [
+      {
+        "code": "ENFORCE_NAMING",
+        "messageText": "Enforce naming conventions for files and tags",
+        "severity": "ERROR"
+      }
+    ],
+    "inheritParent": false,
+    "parameters": {
+      "NoDeprecatedTag.maxTagAge": "30",
+      "UnusedVariable.ignorePattern": "temp_.*"
+    }
+  },
+  "description": "Subject: CFLint Rules Configuration for Current Project Directory  \n\nThe linting profile for this directory defines two active rules. The first, **NoDeprecatedTag**, is implemented by the class `com.cflint.rules.NoDeprecatedTagRule`. It flags the use of deprecated tags with the code **DEPRECATED_TAG**, displaying the message \u201cDeprecated tag used in component\u201d as a **WARNING**. This rule is configured with a `maxAgeDays` parameter set to **365**. The second rule, **UnusedVariable**, uses the class `com.cflint.rules.UnusedVariableRule`. It reports unused variables with two messages: a standard notice (**UNUSED_VAR**, \u201cVariable is declared but never used\u201d, **INFO**) and a critical alert (**UNUSED_VAR_CRITICAL**, \u201cCritical unused variable detected\u201d, **ERROR**). The rule\u2019s `ignorePattern` parameter is currently set to the regular expression **temp_.***.  \n\nIn addition to these rules, the configuration explicitly excludes any global\u2011variable issues, identified by code **NO_GLOBAL_VAR**, with the informational note \u201cGlobal variables are discouraged in this directory\u201d. Conversely, it includes a mandatory naming\u2011convention check, code **ENFORCE_NAMING**, which will raise an **ERROR** with the message \u201cEnforce naming conventions for files and tags\u201d. This directory does not inherit any parent or global settings (`inheritParent` is **false**). Finally, two parameter overrides are specified: `NoDeprecatedTag.maxTagAge` is limited to **30** days, and `UnusedVariable.ignorePattern` reiterates the pattern **temp_.*** for consistency."
+}

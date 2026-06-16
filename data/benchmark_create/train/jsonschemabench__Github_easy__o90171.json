@@ -1,0 +1,40 @@
+{
+  "name": "o90171",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "AuthoringInfo classBreakInfo",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "The classBreaksInfo object provides information about the class breaks associated with the Relationship renderer.",
+    "properties": {
+      "maxValue": {
+        "type": "number",
+        "description": "A numeric value used to specify the maximum value for a break."
+      },
+      "minValue": {
+        "type": "number",
+        "description": "A numeric value used to specify the minimum value for a break."
+      }
+    },
+    "additionalProperties": false,
+    "esriDocumentation": {
+      "examples": [
+        {
+          "title": "classBreak Info",
+          "code": {
+            "classBreakInfo": {
+              "minValue": 3,
+              "maxValue": 18
+            }
+          }
+        }
+      ]
+    }
+  },
+  "description": "Hi team,\n\nFor the upcoming map update, I've set the class break thresholds for the relationship renderer as follows: the lower bound begins at a value of\u202f5, and the upper bound extends to\u202f20. These limits will define the data range used to segment the visual representation, ensuring that features falling within this interval are rendered consistently according to the defined break scheme. Let me know if any adjustments are needed before we publish the layer.",
+  "reference_json": {
+    "minValue": 5,
+    "maxValue": 20
+  }
+}

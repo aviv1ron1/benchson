@@ -1,0 +1,68 @@
+{
+  "name": "calculate_discounted_price_9c048268",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "discounts": {
+        "items": {
+          "properties": {
+            "type": {
+              "description": "The type of discount (e.g. percentage, amount)",
+              "type": "string"
+            },
+            "value": {
+              "description": "The value of the discount",
+              "type": "number"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "original_price": {
+        "description": "The original price of the product",
+        "type": "number"
+      }
+    },
+    "required": [
+      "original_price",
+      "discounts"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "original_price": 199.99,
+    "discounts": [
+      {
+        "type": "percentage",
+        "value": 15
+      },
+      {
+        "type": "amount",
+        "value": 20.5
+      }
+    ]
+  },
+  "instructions": "Please remove the first item from the \"discounts\" list.",
+  "ground_truth": {
+    "original_price": 199.99,
+    "discounts": [
+      {
+        "type": "amount",
+        "value": 20.5
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "discounts"
+    ],
+    "precise_instruction": "Remove the first item from the \"discounts\" list."
+  }
+}

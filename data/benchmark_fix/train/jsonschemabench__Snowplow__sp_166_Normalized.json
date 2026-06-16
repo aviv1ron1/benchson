@@ -1,0 +1,48 @@
+{
+  "name": "sp_166_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for a Pingdom incident assigned event",
+    "properties": {
+      "check": {
+        "type": "string"
+      },
+      "checkname": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "host": {
+        "type": "string"
+      },
+      "incidentid": {
+        "type": "integer"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "incident_assign",
+      "vendor": "com.pingdom",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "check": "12345",
+    "checkname": "Website HTTP Check",
+    "description": "Incident assigned to on-call engineer due to response time threshold breach.",
+    "host": "api.example.com",
+    "incidentid": "not-a-number"
+  },
+  "valid_json": {
+    "check": "12345",
+    "checkname": "Website HTTP Check",
+    "description": "Incident assigned to on-call engineer due to response time threshold breach.",
+    "host": "api.example.com",
+    "incidentid": 987654321
+  },
+  "description": "Subject: Incident Assignment \u2013 Pingdom Check\u202f#12345\n\nDear Team,\n\nAn incident has been assigned to the on\u2011call engineer. The incident ID is **987654321**, originating from the Pingdom check **12345** titled **\u201cWebsite HTTP Check.\u201d** This check monitors the host **api.example.com**, and the assignment was triggered because the response time threshold was breached. The full description of the event reads: \u201cIncident assigned to on\u2011call engineer due to response time threshold breach.\u201d Please investigate the issue at your earliest convenience."
+}

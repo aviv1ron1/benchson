@@ -1,0 +1,81 @@
+{
+  "name": "o36596",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "startdate": {
+        "description": "Start date for the export, use pattern yyyy-MM-dd",
+        "type": "string"
+      },
+      "enddate": {
+        "description": "End date for the export, use pattern yyyy-MM-dd",
+        "type": "string"
+      },
+      "format": {
+        "description": "Export format",
+        "type": "string",
+        "enum": [
+          "PDF",
+          "ICAL"
+        ]
+      },
+      "view": {
+        "description": "View Rendering",
+        "type": "string",
+        "enum": [
+          "DAY",
+          "WEEK",
+          "LIST",
+          "NA"
+        ]
+      },
+      "resourceIds": {
+        "description": "Optional: List of resource ids if the user want to restrict export",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "additionalProperties": false,
+        "minItems": 0
+      }
+    },
+    "required": [
+      "startdate",
+      "enddate",
+      "format",
+      "view"
+    ]
+  },
+  "data": {
+    "startdate": "2023-01-01",
+    "enddate": "2023-01-31",
+    "format": "PDF",
+    "view": "WEEK",
+    "resourceIds": [
+      101,
+      202
+    ]
+  },
+  "instructions": "Please change the format to ICAL.",
+  "ground_truth": {
+    "startdate": "2023-01-01",
+    "enddate": "2023-01-31",
+    "format": "ICAL",
+    "view": "WEEK",
+    "resourceIds": [
+      101,
+      202
+    ]
+  },
+  "modification": {
+    "op": "set_enum",
+    "path": [
+      "format"
+    ],
+    "precise_instruction": "Change \"format\" to \"ICAL\"."
+  }
+}

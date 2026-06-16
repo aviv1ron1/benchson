@@ -1,0 +1,56 @@
+{
+  "name": "calculate_area_7853676d",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of a triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of a triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of a rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of a circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of a rectangle",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape to calculate the area of",
+        "enum": [
+          "circle",
+          "rectangle",
+          "triangle"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Please note that the figure under review is a triangle. Its base measures 12.5 units, and the corresponding height is 8.3 units. These dimensions will be used for the upcoming area calculation.",
+  "reference_json": {
+    "shape": "triangle",
+    "dimensions": {
+      "base": 12.5,
+      "height": 8.3
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "name": "sp_10_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "awsRegion": {
+        "type": "string"
+      },
+      "eventName": {
+        "type": "string"
+      },
+      "eventSource": {
+        "type": "string"
+      },
+      "eventTime": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "eventVersion": {
+        "type": "string"
+      },
+      "requestParameters": {
+        "additionalProperties": false,
+        "properties": {
+          "sourceIPAddress": {
+            "_format": "ipv4",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "responseElements": {
+        "additionalProperties": false,
+        "properties": {
+          "x-amz-id-2": {
+            "type": "string"
+          },
+          "x-amz-request-id": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "s3": {
+        "additionalProperties": false,
+        "properties": {
+          "bucket": {
+            "additionalProperties": false,
+            "properties": {
+              "arn": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "ownerIdentity": {
+                "additionalProperties": false,
+                "properties": {
+                  "principalId": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "configurationId": {
+            "type": "string"
+          },
+          "object": {
+            "additionalProperties": false,
+            "properties": {
+              "eTag": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "key": {
+                "type": "string"
+              },
+              "size": {
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "versionId": {
+                "type": "null"
+              }
+            },
+            "type": "object"
+          },
+          "s3SchemaVersion": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "userIdentity": {
+        "additionalProperties": false,
+        "properties": {
+          "principalId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "s3_notification_event",
+      "vendor": "com.amazon.aws.lambda",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "awsRegion": "us-west-2",
+    "eventName": "ObjectCreated:Put",
+    "eventSource": "aws:s3",
+    "eventTime": null,
+    "eventVersion": "2.1",
+    "requestParameters": {
+      "sourceIPAddress": "203.0.113.42"
+    },
+    "responseElements": {
+      "x-amz-id-2": "EXAMPLE1234567890abcdefghijklmno/pqrstu=",
+      "x-amz-request-id": "C3D13FE58DE4C810"
+    },
+    "s3": {
+      "bucket": {
+        "arn": "arn:aws:s3:::example-bucket",
+        "name": "example-bucket",
+        "ownerIdentity": {
+          "principalId": "A3NL1KOZZKExample"
+        }
+      },
+      "configurationId": "testConfigRule",
+      "object": {
+        "eTag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+        "key": "uploads/test-file.txt",
+        "size": 1024,
+        "versionId": null
+      },
+      "s3SchemaVersion": "1.0"
+    },
+    "userIdentity": {
+      "principalId": "AWS:ABCDEFGHIJKLMNEXAMPLE"
+    }
+  },
+  "valid_json": {
+    "awsRegion": "us-west-2",
+    "eventName": "ObjectCreated:Put",
+    "eventSource": "aws:s3",
+    "eventTime": "2023-11-08T14:22:35Z",
+    "eventVersion": "2.1",
+    "requestParameters": {
+      "sourceIPAddress": "203.0.113.42"
+    },
+    "responseElements": {
+      "x-amz-id-2": "EXAMPLE1234567890abcdefghijklmno/pqrstu=",
+      "x-amz-request-id": "C3D13FE58DE4C810"
+    },
+    "s3": {
+      "bucket": {
+        "arn": "arn:aws:s3:::example-bucket",
+        "name": "example-bucket",
+        "ownerIdentity": {
+          "principalId": "A3NL1KOZZKExample"
+        }
+      },
+      "configurationId": "testConfigRule",
+      "object": {
+        "eTag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+        "key": "uploads/test-file.txt",
+        "size": 1024,
+        "versionId": null
+      },
+      "s3SchemaVersion": "1.0"
+    },
+    "userIdentity": {
+      "principalId": "AWS:ABCDEFGHIJKLMNEXAMPLE"
+    }
+  },
+  "description": "On\u202f2023\u201111\u201108T14:22:35Z an **ObjectCreated:Put** event was logged from the **aws:s3** source in the **us\u2011west\u20112** region (event version\u202f2.1). The request originated from IP\u202f203.0.113.42 and returned the service identifiers **x\u2011amz\u2011id\u20112\u202f=\u202fEXAMPLE1234567890abcdefghijklmno/pqrstu=** and **x\u2011amz\u2011request\u2011id\u202f=\u202fC3D13FE58DE4C810**.  \n\nThe affected bucket is **example\u2011bucket** (ARN\u202farn:aws:s3:::example\u2011bucket) owned by principal\u202fA3NL1KOZZKExample. The operation was triggered by configuration\u202ftestConfigRule and involved the object **uploads/test\u2011file.txt**, which has an ETag of **\"d41d8cd98f00b204e9800998ecf8427e\"**, a size of\u202f1024\u202fbytes, and no version ID (null). The S3 schema version for this record is\u202f1.0.  \n\nThe user that performed the action is identified by principal\u202fAWS:ABCDEFGHIJKLMNEXAMPLE."
+}

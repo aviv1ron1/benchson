@@ -1,0 +1,45 @@
+{
+  "name": "o26578",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "initialized",
+          "running",
+          "running_canceled",
+          "stopping",
+          "stopping_canceled",
+          "stopped",
+          "shutdown",
+          "configerror"
+        ],
+        "default": "initialized",
+        "description": "der Status der StartStoppApplikation"
+      },
+      "betriebsmeldungen": {
+        "type": "boolean",
+        "default": true
+      },
+      "davconnection": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "status",
+      "betriebsmeldungen",
+      "davconnection"
+    ]
+  },
+  "description": "Sehr geehrtes Team,\n\ndie Start\u2011Stopp\u2011Applikation befindet sich derzeit im Betriebszustand **running**. Die Betriebsmeldungen sind aktiviert, sodass alle relevanten Ereignisse wie gewohnt protokolliert werden. Der DAV\u2011Zugang ist hingegen nicht aktiv \u2013 die Verbindung ist momentan deaktiviert. Bitte pr\u00fcfen Sie bei Bedarf die DAV\u2011Einstellungen, falls ein Zugriff erforderlich sein sollte.",
+  "reference_json": {
+    "status": "running",
+    "betriebsmeldungen": true,
+    "davconnection": false
+  }
+}

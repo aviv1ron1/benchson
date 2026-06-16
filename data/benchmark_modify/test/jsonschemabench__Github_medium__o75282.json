@@ -1,0 +1,245 @@
+{
+  "name": "o75282",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "A unique identifier for the asset_file.json"
+      },
+      "type": {
+        "type": "string",
+        "description": "The json_api type for any asset_file.json",
+        "pattern": "^asset_files$"
+      },
+      "attributes": {
+        "type": "object",
+        "properties": {
+          "meta_attributes": {
+            "type": "object",
+            "description": "Description for meta_attributes"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Description for updated_at"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Description for created_at"
+          },
+          "deleted_at": {
+            "type": "null",
+            "description": "Description for deleted_at"
+          },
+          "name": {
+            "type": "string",
+            "description": "Description for name"
+          },
+          "reference": {
+            "type": "string",
+            "description": "Description for reference"
+          },
+          "asset_file": {
+            "type": "string",
+            "description": "Description for asset_file"
+          },
+          "file_content_filename": {
+            "type": "string",
+            "description": "Description for file_content_filename"
+          },
+          "file_content_content_type": {
+            "type": "string",
+            "description": "Description for file_content_content_type"
+          },
+          "file_content_size": {
+            "type": "number",
+            "description": "Description for file_content_size"
+          },
+          "image_height": {
+            "type": "number",
+            "description": "Description for image_height"
+          },
+          "image_width": {
+            "type": "number",
+            "description": "Description for image_width"
+          },
+          "s3_url": {
+            "type": "string",
+            "description": "Description for s3_url"
+          }
+        }
+      },
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "asset_folder": {
+            "type": "object",
+            "properties": {
+              "links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "string"
+                  },
+                  "related": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "data": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "description": "The id and type form a pointer into the 'included' top level document property",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "The id and type form a pointer into the 'included' top level document property",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                ]
+              },
+              "meta": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "meta": {
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "definitions": {}
+  },
+  "data": {
+    "id": "af_00123",
+    "type": "asset_files",
+    "attributes": {
+      "meta_attributes": {
+        "category": "marketing",
+        "tags": [
+          "banner",
+          "2024"
+        ]
+      },
+      "updated_at": "2024-11-05T14:23:00Z",
+      "created_at": "2024-10-20T09:15:30Z",
+      "deleted_at": null,
+      "name": "Summer Campaign Banner",
+      "reference": "SCB-2024",
+      "asset_file": "summer_banner_v2.png",
+      "file_content_filename": "summer_banner_v2.png",
+      "file_content_content_type": "image/png",
+      "file_content_size": 245678,
+      "image_height": 800,
+      "image_width": 1200,
+      "s3_url": "https://s3.amazonaws.com/company-assets/summer_banner_v2.png"
+    },
+    "relationships": {
+      "asset_folder": {
+        "links": {
+          "self": "https://api.example.com/asset_files/af_00123/relationships/asset_folder",
+          "related": "https://api.example.com/asset_files/af_00123/asset_folder"
+        },
+        "data": {
+          "id": "folder_42",
+          "type": "asset_folders"
+        },
+        "meta": {
+          "position": 1
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.example.com/asset_files/af_00123"
+    },
+    "meta": {}
+  },
+  "instructions": "Could you delete the \"id\" field?",
+  "ground_truth": {
+    "type": "asset_files",
+    "attributes": {
+      "meta_attributes": {
+        "category": "marketing",
+        "tags": [
+          "banner",
+          "2024"
+        ]
+      },
+      "updated_at": "2024-11-05T14:23:00Z",
+      "created_at": "2024-10-20T09:15:30Z",
+      "deleted_at": null,
+      "name": "Summer Campaign Banner",
+      "reference": "SCB-2024",
+      "asset_file": "summer_banner_v2.png",
+      "file_content_filename": "summer_banner_v2.png",
+      "file_content_content_type": "image/png",
+      "file_content_size": 245678,
+      "image_height": 800,
+      "image_width": 1200,
+      "s3_url": "https://s3.amazonaws.com/company-assets/summer_banner_v2.png"
+    },
+    "relationships": {
+      "asset_folder": {
+        "links": {
+          "self": "https://api.example.com/asset_files/af_00123/relationships/asset_folder",
+          "related": "https://api.example.com/asset_files/af_00123/asset_folder"
+        },
+        "data": {
+          "id": "folder_42",
+          "type": "asset_folders"
+        },
+        "meta": {
+          "position": 1
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.example.com/asset_files/af_00123"
+    },
+    "meta": {}
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "id"
+    ],
+    "precise_instruction": "Remove the \"id\" field."
+  }
+}

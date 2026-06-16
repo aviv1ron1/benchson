@@ -1,0 +1,71 @@
+{
+  "name": "calculate_area_27dec4dc",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the rectangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the rectangle",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "base",
+          "height",
+          "length",
+          "width"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. circle, triangle, rectangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "shape": null,
+    "dimensions": {
+      "radius": 5.2,
+      "base": 8.0,
+      "height": 6.5,
+      "length": 12.3,
+      "width": 7.8
+    }
+  },
+  "valid_json": {
+    "shape": "rectangle",
+    "dimensions": {
+      "radius": 5.2,
+      "base": 8.0,
+      "height": 6.5,
+      "length": 12.3,
+      "width": 7.8
+    }
+  },
+  "description": "Subject: Dimensions for Upcoming Rectangle Project\n\nDear Team,\n\nPlease find below the finalized measurements for the rectangle we will be fabricating in the next phase of the project. The length of the piece is set at 12.3 units, while its width measures 7.8 units. For reference, the base of the associated triangular component is 8.0 units and its height is 6.5 units. Additionally, the design calls for a circular element with a radius of 5.2 units. All dimensions have been verified and should be used for material ordering and cut\u2011list preparation."
+}

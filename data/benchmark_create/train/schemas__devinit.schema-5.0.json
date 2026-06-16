@@ -1,0 +1,168 @@
+{
+  "name": "devinit.schema-5.0",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {
+      "runObject": {
+        "type": "object",
+        "required": [
+          "tool"
+        ],
+        "properties": {
+          "tool": {
+            "title": "The tool name",
+            "description": "The name of the tool to run.",
+            "type": "string",
+            "enum": [
+              "apt-get-install",
+              "azurecli-login",
+              "choco-install",
+              "choco-upgrade",
+              "dotnet-restore",
+              "dotnet-toolinstall",
+              "enable-iis",
+              "msi-install",
+              "npm-install",
+              "nuget-restore",
+              "require-azureartifactscredentialprovider",
+              "require-azurecli",
+              "require-choco",
+              "require-dotnetcoresdk",
+              "require-dotnetframeworksdk",
+              "require-gitsubmodule",
+              "require-mssql",
+              "require-nodejs",
+              "require-npm",
+              "require-nuget",
+              "require-psmodule",
+              "require-vcpkg",
+              "require-vscomponent",
+              "set-env",
+              "vcpkg-install",
+              "windowsfeature-disable",
+              "windowsfeature-enable",
+              "windowsfeature-list",
+              "wsl-install"
+            ]
+          },
+          "input": {
+            "title": "The tool input",
+            "description": "The input varies by tool. For example, the required version number, the package-id, the input source file or source directory.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "additionalOptions": {
+            "title": "Additional options",
+            "description": "Additional Options to be appended to the tool's command line.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "comments": {
+            "title": "Comments",
+            "description": "Comments for this tool item. For documentation only; ignored by the tool.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "id": "https://json.schemastore.org/devinit.schema-5.0.json",
+    "properties": {
+      "$schema": {
+        "type": "string"
+      },
+      "run": {
+        "title": "The list of tools to run",
+        "description": "'devinit.exe init' runs this list of tools sequentially. See also 'devinit.exe run'.",
+        "items": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/runObject"
+            }
+          ],
+          "anyOf": [
+            {
+              "$ref": "#/definitions/runObject"
+            }
+          ]
+        }
+      },
+      "comments": {
+        "title": "Comments",
+        "description": "Comments for this file. For documentation only; ignored by the tool.",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "run"
+    ],
+    "title": "Codespaces DevInit Configuration",
+    "type": "object"
+  },
+  "description": "The DevInit configuration for setting up the development environment runs a series of tools in order. First, it invokes **require-nodejs** (no additional input) to make sure that Node.js is available, as noted in the comment \u201cEnsures Node.js is available.\u201d Next, it executes **npm-install** with the input \u201c-g typescript\u201d and the extra flag \u201c--silent\u201d to install TypeScript globally, matching the comment \u201cInstall TypeScript globally.\u201d The third step calls **require-dotnetcoresdk** with the input \u201c6.0\u201d to require the .NET\u202f6 SDK, reflecting the comment \u201cRequire .NET 6 SDK.\u201d After that, **dotnet-toolinstall** is run with the input \u201cdotnet-ef\u201d and the option \u201c--global\u201d to install the EF Core CLI tool globally, as described by the comment \u201cInstall EF Core CLI tool globally.\u201d Finally, the configuration enables the Windows feature **windowsfeature-enable** with the input \u201cWeb-Server\u201d to turn on the IIS Web Server feature, per the comment \u201cEnable IIS Web Server feature.\u201d  \n\nOverall, this setup is documented with the comment: \u201cDevInit configuration for setting up development environment.\u201d",
+  "reference_json": {
+    "$schema": "https://json.schemastore.org/devinit.schema-5.0.json",
+    "run": [
+      {
+        "tool": "require-nodejs",
+        "input": null,
+        "additionalOptions": null,
+        "comments": "Ensures Node.js is available."
+      },
+      {
+        "tool": "npm-install",
+        "input": "-g typescript",
+        "additionalOptions": "--silent",
+        "comments": "Install TypeScript globally."
+      },
+      {
+        "tool": "require-dotnetcoresdk",
+        "input": "6.0",
+        "additionalOptions": null,
+        "comments": "Require .NET 6 SDK."
+      },
+      {
+        "tool": "dotnet-toolinstall",
+        "input": "dotnet-ef",
+        "additionalOptions": "--global",
+        "comments": "Install EF Core CLI tool globally."
+      },
+      {
+        "tool": "windowsfeature-enable",
+        "input": "Web-Server",
+        "additionalOptions": null,
+        "comments": "Enable IIS Web Server feature."
+      }
+    ],
+    "comments": "DevInit configuration for setting up development environment."
+  }
+}

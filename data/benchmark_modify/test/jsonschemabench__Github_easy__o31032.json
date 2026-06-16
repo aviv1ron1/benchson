@@ -1,0 +1,139 @@
+{
+  "name": "o31032",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "properties": {
+      "builtin": {
+        "enum": [
+          "MODIFIABLE",
+          "DELETABLE",
+          "IMMUTABLE",
+          "PARTITION_ALL"
+        ],
+        "type": "object"
+      },
+      "feature": {
+        "enum": [
+          "WL",
+          "WebLogging",
+          "SP",
+          "SurgeProtection",
+          "LB",
+          "LoadBalancing",
+          "CS",
+          "ContentSwitching",
+          "CR",
+          "CacheRedirection",
+          "SC",
+          "SureConnect",
+          "CMP",
+          "CMPcntl",
+          "CompressionControl",
+          "PQ",
+          "PriorityQueuing",
+          "HDOSP",
+          "HttpDoSProtection",
+          "SSLVPN",
+          "AAA",
+          "GSLB",
+          "GlobalServerLoadBalancing",
+          "SSL",
+          "SSLOffload",
+          "SSLOffloading",
+          "CF",
+          "ContentFiltering",
+          "IC",
+          "IntegratedCaching",
+          "OSPF",
+          "OSPFRouting",
+          "RIP",
+          "RIPRouting",
+          "BGP",
+          "BGPRouting",
+          "REWRITE",
+          "IPv6PT",
+          "IPv6protocoltranslation",
+          "AppFw",
+          "ApplicationFirewall",
+          "RESPONDER",
+          "HTMLInjection",
+          "push",
+          "NSPush",
+          "NetScalerPush",
+          "AppFlow",
+          "CloudBridge",
+          "ISIS",
+          "ISISRouting",
+          "CH",
+          "CallHome",
+          "AppQoE",
+          "ContentAccelerator",
+          "SYSTEM",
+          "RISE",
+          "FEO",
+          "LSN",
+          "LargeScaleNAT",
+          "RDPProxy",
+          "Rep",
+          "Reputation",
+          "URLFiltering",
+          "VideoOptimization",
+          "ForwardProxy",
+          "SSLInterception",
+          "AdaptiveTCP",
+          "CQA",
+          "CI",
+          "ContentInspection",
+          "Bot"
+        ],
+        "type": "string"
+      },
+      "globalbindtype": {
+        "enum": [
+          "SYSTEM_GLOBAL",
+          "VPN_GLOBAL",
+          "RNAT_GLOBAL"
+        ],
+        "type": "string"
+      },
+      "gotopriorityexpression": {
+        "type": "string"
+      },
+      "nextfactor": {
+        "type": "string"
+      },
+      "policyname": {
+        "type": "string"
+      },
+      "priority": {
+        "type": "integer"
+      }
+    },
+    "title": "systemglobal_authenticationtacacspolicy_binding",
+    "type": "object"
+  },
+  "data": {
+    "feature": "WebLogging",
+    "globalbindtype": "SYSTEM_GLOBAL",
+    "gotopriorityexpression": "NEXT",
+    "nextfactor": "factor1",
+    "policyname": "policy_001",
+    "priority": 10
+  },
+  "instructions": "Please remove the policyname field.",
+  "ground_truth": {
+    "feature": "WebLogging",
+    "globalbindtype": "SYSTEM_GLOBAL",
+    "gotopriorityexpression": "NEXT",
+    "nextfactor": "factor1",
+    "priority": 10
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "policyname"
+    ],
+    "precise_instruction": "Remove the \"policyname\" field."
+  }
+}

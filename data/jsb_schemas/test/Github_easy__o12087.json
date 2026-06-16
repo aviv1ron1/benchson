@@ -1,0 +1,34 @@
+{
+  "name": "o12087",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "additionalProperties": false,
+    "items": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "score",
+        "userId"
+      ],
+      "type": "object"
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "score/items",
+      "vendor": "com.nordstrom",
+      "version": "1-0-0"
+    },
+    "type": "array"
+  }
+}

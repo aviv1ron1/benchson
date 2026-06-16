@@ -1,0 +1,58 @@
+{
+  "name": "kb_365_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "definitions": {
+      "https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_apis_meta_v1_Time": {
+        "_format": "date-time",
+        "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+        "type": "string"
+      }
+    },
+    "description": "FlowSchemaCondition describes conditions for a FlowSchema.",
+    "properties": {
+      "lastTransitionTime": {
+        "$ref": "#/definitions/https:__kubernetesjsonschema_dev_master__defs_json_defs_io_k8s_apimachinery_pkg_apis_meta_v1_Time",
+        "description": "`lastTransitionTime` is the last time the condition transitioned from one status to another."
+      },
+      "message": {
+        "description": "`message` is a human-readable message indicating details about last transition.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "reason": {
+        "description": "`reason` is a unique, one-word, CamelCase reason for the condition's last transition.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "status": {
+        "description": "`status` is the status of the condition. Can be True, False, Unknown. Required.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "description": "`type` is the type of the condition. Required.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "type": "object"
+  },
+  "description": "The FlowSchema condition of type **Accepted** is currently **True**. The most recent transition took place at **2023-11-08T14:27:53Z**. This change was triggered for the reason **PriorityUpdate**, and the accompanying message explains that **\u201cThe flow schema has been successfully updated to reflect the new priority levels.\u201d**",
+  "reference_json": {
+    "lastTransitionTime": "2023-11-08T14:27:53Z",
+    "message": "The flow schema has been successfully updated to reflect the new priority levels.",
+    "reason": "PriorityUpdate",
+    "status": "True",
+    "type": "Accepted"
+  }
+}

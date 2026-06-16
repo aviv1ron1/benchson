@@ -1,0 +1,157 @@
+{
+  "name": "one-service-descriptor-schema-0.1",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/one-service-descriptor-schema-0.1.json",
+    "$ref": "#/definitions/ServiceDescriptor",
+    "definitions": {
+      "ServiceDescriptor": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Require"
+            }
+          },
+          "events": {
+            "$ref": "#/definitions/Events"
+          }
+        },
+        "required": [
+          "description",
+          "requires",
+          "events"
+        ],
+        "title": "ServiceDescriptor"
+      },
+      "Events": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "produces": {
+            "$ref": "#/definitions/Consumes"
+          },
+          "consumes": {
+            "$ref": "#/definitions/Produces"
+          }
+        },
+        "required": [
+          "consumes",
+          "produces"
+        ],
+        "title": "Events"
+      },
+      "Consumes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "title": "Consumes"
+      },
+      "Produces": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "title": "Produces"
+      },
+      "Require": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "service": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "uses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Use"
+            }
+          }
+        },
+        "required": [
+          "service",
+          "uses",
+          "version"
+        ],
+        "title": "Require"
+      },
+      "Use": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "api": {
+            "type": "string",
+            "enum": [
+              "internal",
+              "external",
+              "integration"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "REST",
+              "library"
+            ]
+          }
+        },
+        "required": [
+          "api",
+          "type"
+        ],
+        "title": "Use"
+      }
+    }
+  },
+  "description": "The Payment Processing microservice is responsible for handling incoming transaction requests and emitting status updates for each operation. It acts as the core component that processes payments, manages refunds, and notifies downstream systems of the outcome, ensuring that all payment\u2011related events are captured and broadcast appropriately.\n\nTo function, this service depends on two external components. It requires the UserService at version\u202f1.3.5, accessed both through an internal REST API and an external library integration. It also relies on the NotificationService at version\u202f2.1.0, which is used via an integration\u2011style REST API. In terms of its event contract, the microservice listens for the\u202fPaymentRequested\u202fand\u202fRefundRequested\u202fevents, and in response it publishes either\u202fPaymentCompleted\u202for\u202fPaymentFailed\u202fto indicate the final status of each transaction.",
+  "reference_json": {
+    "description": "A payment processing microservice that handles transaction requests and emits status events.",
+    "requires": [
+      {
+        "service": "UserService",
+        "version": "1.3.5",
+        "uses": [
+          {
+            "api": "internal",
+            "type": "REST"
+          },
+          {
+            "api": "external",
+            "type": "library"
+          }
+        ]
+      },
+      {
+        "service": "NotificationService",
+        "version": "2.1.0",
+        "uses": [
+          {
+            "api": "integration",
+            "type": "REST"
+          }
+        ]
+      }
+    ],
+    "events": {
+      "consumes": [
+        "PaymentRequested",
+        "RefundRequested"
+      ],
+      "produces": [
+        "PaymentCompleted",
+        "PaymentFailed"
+      ]
+    }
+  }
+}

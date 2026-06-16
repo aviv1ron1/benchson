@@ -1,0 +1,298 @@
+{
+  "name": "o82248",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "dependencies": {
+      "frequencyType": [
+        "frequencyStartTime",
+        "frequencyEndTime",
+        "frequencyHeadwaySeconds"
+      ]
+    },
+    "properties": {
+      "bikesAllowed": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "blockId": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "destinationArrivalTime": {
+        "type": "string"
+      },
+      "destinationDepartureTime": {
+        "type": "string"
+      },
+      "destinationDistTraveled": {
+        "type": "number"
+      },
+      "destinationOnestopId": {
+        "_format": "stop-onestop-id",
+        "type": "string"
+      },
+      "destinationTimepointSource": {
+        "type": "string"
+      },
+      "destinationTimezone": {
+        "type": "string"
+      },
+      "dropOffType": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "frequencyEndTime": {
+        "type": [
+          "string"
+        ]
+      },
+      "frequencyHeadwaySeconds": {
+        "type": [
+          "integer"
+        ]
+      },
+      "frequencyStartTime": {
+        "type": [
+          "string"
+        ]
+      },
+      "frequencyType": {
+        "enum": [
+          "window",
+          "exact",
+          null
+        ],
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "originArrivalTime": {
+        "type": "string"
+      },
+      "originDepartureTime": {
+        "type": "string"
+      },
+      "originDistTraveled": {
+        "type": "number"
+      },
+      "originOnestopId": {
+        "_format": "stop-onestop-id",
+        "type": "string"
+      },
+      "originTimepointSource": {
+        "type": "string"
+      },
+      "originTimezone": {
+        "type": "string"
+      },
+      "pickupType": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "routeOnestopId": {
+        "_format": "route-onestop-id",
+        "type": "string"
+      },
+      "routeStopPatternOnestopId": {
+        "type": "string"
+      },
+      "serviceAddedDates": {
+        "items": {
+          "_format": "date",
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "serviceDaysOfWeek": {
+        "items": {
+          "type": "boolean"
+        },
+        "maxItems": 7,
+        "minItems": 7,
+        "type": "array"
+      },
+      "serviceEndDate": {
+        "_format": "date",
+        "type": "string"
+      },
+      "serviceExceptDates": {
+        "items": {
+          "_format": "date",
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "serviceStartDate": {
+        "_format": "date",
+        "type": "string"
+      },
+      "shapeDistTraveled": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "tags": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "trip": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "tripHeadsign": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "tripShortName": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "wheelchairAccessible": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "windowEnd": {
+        "type": "string"
+      },
+      "windowStart": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "originOnestopId",
+      "destinationOnestopId",
+      "routeOnestopId",
+      "routeStopPatternOnestopId",
+      "originArrivalTime",
+      "originDepartureTime",
+      "destinationArrivalTime",
+      "destinationDepartureTime",
+      "originTimezone",
+      "destinationTimezone",
+      "serviceStartDate",
+      "serviceEndDate",
+      "windowStart",
+      "windowEnd"
+    ],
+    "title": "Transitland Datastore ScheduleStopPair",
+    "type": "object"
+  },
+  "data": {
+    "originOnestopId": "s-01-abc",
+    "destinationOnestopId": "s-02-def",
+    "routeOnestopId": "r-01-xyz",
+    "routeStopPatternOnestopId": "rsp-123",
+    "originArrivalTime": "08:00:00",
+    "originDepartureTime": "08:05:00",
+    "destinationArrivalTime": "09:30:00",
+    "destinationDepartureTime": "09:35:00",
+    "originTimezone": "America/New_York",
+    "destinationTimezone": "America/New_York",
+    "serviceStartDate": "2023-01-01",
+    "serviceEndDate": "2023-12-31",
+    "windowStart": "08:00:00",
+    "windowEnd": "10:00:00",
+    "bikesAllowed": true,
+    "blockId": "B123",
+    "dropOffType": "0",
+    "pickupType": "0",
+    "serviceDaysOfWeek": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    "serviceAddedDates": [
+      "2023-07-04"
+    ],
+    "serviceExceptDates": null,
+    "shapeDistTraveled": 12.5,
+    "tags": {
+      "key": "value"
+    },
+    "trip": "T12345",
+    "tripHeadsign": "Downtown",
+    "tripShortName": "D1",
+    "wheelchairAccessible": true
+  },
+  "instructions": "Could you remove the wheelchairAccessible field?",
+  "ground_truth": {
+    "originOnestopId": "s-01-abc",
+    "destinationOnestopId": "s-02-def",
+    "routeOnestopId": "r-01-xyz",
+    "routeStopPatternOnestopId": "rsp-123",
+    "originArrivalTime": "08:00:00",
+    "originDepartureTime": "08:05:00",
+    "destinationArrivalTime": "09:30:00",
+    "destinationDepartureTime": "09:35:00",
+    "originTimezone": "America/New_York",
+    "destinationTimezone": "America/New_York",
+    "serviceStartDate": "2023-01-01",
+    "serviceEndDate": "2023-12-31",
+    "windowStart": "08:00:00",
+    "windowEnd": "10:00:00",
+    "bikesAllowed": true,
+    "blockId": "B123",
+    "dropOffType": "0",
+    "pickupType": "0",
+    "serviceDaysOfWeek": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    "serviceAddedDates": [
+      "2023-07-04"
+    ],
+    "serviceExceptDates": null,
+    "shapeDistTraveled": 12.5,
+    "tags": {
+      "key": "value"
+    },
+    "trip": "T12345",
+    "tripHeadsign": "Downtown",
+    "tripShortName": "D1"
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "wheelchairAccessible"
+    ],
+    "precise_instruction": "Remove the \"wheelchairAccessible\" field."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "kb_643_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
+    "properties": {
+      "apiVersion": {
+        "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "fieldPath": {
+        "description": "Path of the field to select in the specified API version.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "fieldPath"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "apiVersion": "v1",
+    "fieldPath": "metadata.name"
+  },
+  "instructions": "Could you change the apiVersion to\u202fv1 (updated)?",
+  "ground_truth": {
+    "apiVersion": "v1 (updated)",
+    "fieldPath": "metadata.name"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "apiVersion"
+    ],
+    "precise_instruction": "Change \"apiVersion\" to \"v1 (updated)\"."
+  }
+}

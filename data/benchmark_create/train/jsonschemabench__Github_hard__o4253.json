@@ -1,0 +1,266 @@
+{
+  "name": "o4253",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "type": "array",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "minItems": 1,
+    "_uniqueItems": true,
+    "items": {
+      "type": "object",
+      "required": [
+        "type",
+        "name",
+        "description",
+        "iconImageUrl",
+        "levels",
+        "requiredLevels",
+        "category",
+        "enabled",
+        "id",
+        "contentId"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "iconImageUrl": {
+          "type": "string",
+          "minLength": 1
+        },
+        "levels": {
+          "type": "array",
+          "_uniqueItems": true,
+          "minItems": 0,
+          "items": {
+            "required": [
+              "threshold",
+              "id",
+              "contentId"
+            ],
+            "properties": {
+              "reward": {
+                "type": "object",
+                "properties": {
+                  "xp": {
+                    "type": "number"
+                  },
+                  "requisitionPacks": {
+                    "type": "array",
+                    "_uniqueItems": true,
+                    "minItems": 0,
+                    "items": {
+                      "required": [
+                        "name",
+                        "description",
+                        "largeImageUrl",
+                        "isFeatured",
+                        "isNew",
+                        "creditPrice",
+                        "isPurchasableWithCredits",
+                        "isPurchasableFromMarketplace",
+                        "merchandisingOrder",
+                        "id",
+                        "contentId"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "largeImageUrl": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "isFeatured": {
+                          "type": "boolean"
+                        },
+                        "isNew": {
+                          "type": "boolean"
+                        },
+                        "creditPrice": {
+                          "type": "number"
+                        },
+                        "isPurchasableWithCredits": {
+                          "type": "boolean"
+                        },
+                        "isPurchasableFromMarketplace": {
+                          "type": "boolean"
+                        },
+                        "xboxMarketplaceProductId": {},
+                        "xboxMarketplaceProductUrl": {},
+                        "merchandisingOrder": {
+                          "type": "number"
+                        },
+                        "flair": {},
+                        "id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "contentId": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  },
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "contentId": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "xp",
+                  "requisitionPacks",
+                  "id",
+                  "contentId"
+                ]
+              },
+              "threshold": {
+                "type": "number"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contentId": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "requiredLevels": {
+          "type": "array",
+          "items": {
+            "required": [],
+            "properties": {}
+          }
+        },
+        "reward": {},
+        "category": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "iconImageUrl": {
+              "type": "string",
+              "minLength": 1
+            },
+            "order": {
+              "type": "number"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "contentId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "name",
+            "iconImageUrl",
+            "order",
+            "id",
+            "contentId"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "description": "The achievement **First Blood** (type: achievement, ID\u202f=\u202fachv1, content ID\u202f=\u202fachvcnt1) rewards players for recording their first kill in battle. Its description reads \u201cEarn your first kill in battle,\u201d and it is represented by the icon at\u202fhttps://example.com/icons/firstblood.png. This combat\u2011focused achievement is currently enabled and belongs to the **Combat** category (category ID\u202f=\u202fcat1, content ID\u202f=\u202fcatcnt1), which uses the icon\u202fhttps://example.com/icons/combat.png and carries an order value of\u202f1. The base reward notes for the achievement are: \u201cBase achievement reward details.\u201d No prerequisite levels are required.\n\nFirst Blood progresses through two levels. The first level (ID\u202f=\u202flvl1, content ID\u202f=\u202fcnt1) is unlocked at a threshold of\u202f10 kills and grants 100\u202fXP; it does not include any requisition packs (reward ID\u202f=\u202freward1, content ID\u202f=\u202frcontent1). The second level (ID\u202f=\u202flvl2, content ID\u202f=\u202fcnt2) activates at\u202f20 kills, awarding 250\u202fXP plus a single requisition pack. The pack, named **Elite Weapon Pack**, is described as \u201cA set of elite weapons for seasoned fighters,\u201d displayed with the image\u202fhttps://example.com/packs/elite-weapon.png. It is featured, not new, costs 499 credits, can be purchased with credits, is not available from the marketplace, has a merchandising order of\u202f5, and carries the IDs pack1 (content ID\u202f=\u202fpackcnt1). This reward is recorded under reward ID\u202f=\u202freward2, content ID\u202f=\u202frcontent2.",
+  "reference_json": [
+    {
+      "type": "achievement",
+      "name": "First Blood",
+      "description": "Earn your first kill in battle.",
+      "iconImageUrl": "https://example.com/icons/firstblood.png",
+      "levels": [
+        {
+          "threshold": 10,
+          "id": "lvl1",
+          "contentId": "cnt1",
+          "reward": {
+            "xp": 100,
+            "requisitionPacks": [],
+            "id": "reward1",
+            "contentId": "rcontent1"
+          }
+        },
+        {
+          "threshold": 20,
+          "id": "lvl2",
+          "contentId": "cnt2",
+          "reward": {
+            "xp": 250,
+            "requisitionPacks": [
+              {
+                "name": "Elite Weapon Pack",
+                "description": "A set of elite weapons for seasoned fighters.",
+                "largeImageUrl": "https://example.com/packs/elite-weapon.png",
+                "isFeatured": true,
+                "isNew": false,
+                "creditPrice": 499,
+                "isPurchasableWithCredits": true,
+                "isPurchasableFromMarketplace": false,
+                "merchandisingOrder": 5,
+                "id": "pack1",
+                "contentId": "packcnt1"
+              }
+            ],
+            "id": "reward2",
+            "contentId": "rcontent2"
+          }
+        }
+      ],
+      "requiredLevels": [],
+      "reward": {
+        "notes": "Base achievement reward details"
+      },
+      "category": {
+        "name": "Combat",
+        "iconImageUrl": "https://example.com/icons/combat.png",
+        "order": 1,
+        "id": "cat1",
+        "contentId": "catcnt1"
+      },
+      "enabled": true,
+      "id": "achv1",
+      "contentId": "achvcnt1"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "name": "search_jobs_80284a76",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "keywords": {
+        "description": "The keywords related to the job",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "location": {
+        "description": "The location of the job",
+        "type": "string"
+      },
+      "salary_range": {
+        "properties": {
+          "max_salary": {
+            "description": "The maximum salary of the job",
+            "type": "number"
+          },
+          "min_salary": {
+            "description": "The minimum salary of the job",
+            "type": "number"
+          }
+        },
+        "required": [
+          "min_salary",
+          "max_salary"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "keywords": [
+      "software development",
+      "full-stack",
+      "JavaScript",
+      "Agile methodology",
+      "REST APIs"
+    ],
+    "location": "San Francisco, CA",
+    "salary_range": {
+      "min_salary": 85000
+    }
+  },
+  "valid_json": {
+    "keywords": [
+      "software development",
+      "full-stack",
+      "JavaScript",
+      "Agile methodology",
+      "REST APIs"
+    ],
+    "location": "San Francisco, CA",
+    "salary_range": {
+      "min_salary": 85000,
+      "max_salary": 120000
+    }
+  },
+  "description": "Subject: Full\u2011Stack Software Development Position \u2013 San\u202fFrancisco,\u202fCA  \n\nWe are excited to announce an opening for a full\u2011stack software developer based in San\u202fFrancisco,\u202fCA. The role focuses on JavaScript\u2011driven development within an Agile methodology framework, requiring strong experience in designing and consuming REST APIs. Candidates should be comfortable contributing across the entire software development lifecycle, from initial design through deployment and maintenance.  \n\nThe compensation package is competitive, with a salary range of $85,000 to $120,000 per year, reflective of the expertise and impact expected in this position. If you are passionate about full\u2011stack development and thrive in a collaborative, Agile environment, we encourage you to apply."
+}

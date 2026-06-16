@@ -1,0 +1,73 @@
+{
+  "name": "o8452",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "additionalProperties": false,
+    "properties": {
+      "import_configured": {
+        "type": "boolean",
+        "default": false,
+        "description": "Not importing configured interfaces by default. Set this option to true if configured interfaces need to be imported."
+      },
+      "interface_filters": {
+        "$id": "/properties/interface_filters",
+        "type": "array",
+        "items": {
+          "$id": "/properties/interface_filters/items",
+          "type": "object",
+          "maxProperties": 2,
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "enum": [
+                "regex"
+              ]
+            },
+            "expr": {
+              "type": "string"
+            }
+          },
+          "title": "filter object",
+          "description": "filter object having op and expr fields",
+          "default": {},
+          "examples": [
+            {
+              "op": "regex",
+              "expr": "^ge-"
+            },
+            {
+              "op": "regex",
+              "expr": "^xe"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "data": {
+    "import_configured": false,
+    "interface_filters": [
+      {
+        "op": "regex",
+        "expr": "^ge-"
+      },
+      {
+        "op": "regex",
+        "expr": "^xe"
+      }
+    ]
+  },
+  "instructions": "Could you please remove the\u202finterface_filters\u202ffield?",
+  "ground_truth": {
+    "import_configured": false
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "interface_filters"
+    ],
+    "precise_instruction": "Remove the \"interface_filters\" field."
+  }
+}

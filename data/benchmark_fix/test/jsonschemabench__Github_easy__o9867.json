@@ -1,0 +1,43 @@
+{
+  "name": "o9867",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "replaceExisting": {
+        "type": "boolean",
+        "default": false
+      },
+      "createUsers": {
+        "type": "boolean",
+        "default": true
+      },
+      "createGroups": {
+        "type": "boolean",
+        "default": true
+      },
+      "slug": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 63,
+        "pattern": "^[0-9a-z-]*$"
+      }
+    },
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "replaceExisting": false,
+    "createUsers": null,
+    "createGroups": true,
+    "slug": "example-project-01"
+  },
+  "valid_json": {
+    "replaceExisting": false,
+    "createUsers": true,
+    "createGroups": true,
+    "slug": "example-project-01"
+  },
+  "description": "The repository for our upcoming initiative has been registered under the slug **example\u2011project\u201101**. As we move forward with the initial setup, the provisioning plan calls for the creation of both user accounts and group structures, ensuring that the necessary permissions framework is in place from day one. No existing resources will be overwritten during this process, so the current environment will remain intact."
+}

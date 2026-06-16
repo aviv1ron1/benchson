@@ -1,0 +1,46 @@
+{
+  "name": "calculate_volume_3ab76764",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "base_radius": {
+        "description": "The radius of the cylinder base",
+        "type": "number"
+      },
+      "height": {
+        "description": "The height of the cylinder",
+        "type": "number"
+      },
+      "radius": {
+        "description": "The radius of the sphere",
+        "type": "number"
+      },
+      "shape": {
+        "description": "The shape to calculate the volume of",
+        "enum": [
+          "sphere",
+          "cube",
+          "cylinder"
+        ],
+        "type": "string"
+      },
+      "side": {
+        "description": "The length of the side of the cube",
+        "type": "number"
+      }
+    },
+    "required": [
+      "shape"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Geometry Specification Summary  \n\nThe current project focuses on calculating the volume of a cylinder. For this shape, the base radius is set to 4.5\u202funits and the height to 12.0\u202funits. In addition to the cylinder, the reference data also include parameters for a sphere, whose radius is 5.2\u202funits, and for a cube, whose side length measures 7.3\u202funits.  \n\nPlease use these dimensions when running the volume calculations, selecting the cylinder as the target shape.",
+  "reference_json": {
+    "base_radius": 4.5,
+    "height": 12.0,
+    "radius": 5.2,
+    "shape": "cylinder",
+    "side": 7.3
+  }
+}

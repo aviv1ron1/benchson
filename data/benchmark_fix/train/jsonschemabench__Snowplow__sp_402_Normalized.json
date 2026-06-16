@@ -1,0 +1,187 @@
+{
+  "name": "sp_402_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for Zendesk users",
+    "properties": {
+      "details": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "email": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "extendedRole": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "externalId": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "firstName": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "language": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "lastName": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "locale": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "organization": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "phone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "role": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "signature": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "tags": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "ticketId": {
+        "type": "integer"
+      },
+      "timeZone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": {
+        "type": "string"
+      },
+      "updatedAt": {
+        "_format": "date-time",
+        "type": "string"
+      },
+      "userId": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "ticketId",
+      "type",
+      "updatedAt",
+      "details",
+      "email",
+      "extendedRole",
+      "externalId",
+      "firstName",
+      "language",
+      "lastName",
+      "locale",
+      "notes",
+      "organization",
+      "phone",
+      "role",
+      "signature",
+      "tags",
+      "timeZone",
+      "userId"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "user",
+      "vendor": "com.zendesk.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "details": "Customer support request",
+    "extendedRole": "admin",
+    "externalId": "ext-12345",
+    "firstName": "Jane",
+    "language": "en",
+    "lastName": "Doe",
+    "locale": "en-US",
+    "notes": "VIP customer",
+    "organization": "Acme Corp",
+    "phone": "+1-555-123-4567",
+    "role": "agent",
+    "signature": "Best regards,\nJane Doe",
+    "tags": "vip,priority",
+    "ticketId": 987654,
+    "timeZone": "America/New_York",
+    "type": "user",
+    "updatedAt": "2026-06-15T12:34:56Z",
+    "userId": 112233
+  },
+  "valid_json": {
+    "details": "Customer support request",
+    "email": "jane.doe@example.com",
+    "extendedRole": "admin",
+    "externalId": "ext-12345",
+    "firstName": "Jane",
+    "language": "en",
+    "lastName": "Doe",
+    "locale": "en-US",
+    "notes": "VIP customer",
+    "organization": "Acme Corp",
+    "phone": "+1-555-123-4567",
+    "role": "agent",
+    "signature": "Best regards,\nJane Doe",
+    "tags": "vip,priority",
+    "ticketId": 987654,
+    "timeZone": "America/New_York",
+    "type": "user",
+    "updatedAt": "2026-06-15T12:34:56Z",
+    "userId": 112233
+  },
+  "description": "On\u202fJune\u202f15\u202f2026 at\u202f12:34:56\u202fUTC the user profile was updated (type\u202f=user). The record belongs to Jane\u202fDoe (user\u202fID\u202f112233), whose external identifier is\u202fext\u201112345. Jane works as an\u202fagent\u202fwith an\u202fadmin\u202fextended role for Acme\u202fCorp, speaking English (language\u202f=en, locale\u202f=en\u2011US) from the America/New_York time zone. She can be reached at\u202fjane.doe@example.com\u202for\u202f+1\u2011555\u2011123\u20114567.  \n\nThe ticket linked to this user is\u202f#987654, logged as a \u201cCustomer support request.\u201d Internally she is tagged\u202fvip,priority\u202fand noted as a VIP customer. Her profile includes the signature:  \n\nBest regards,  \nJane Doe  \n\nAll details, including notes, tags and signature, are recorded as part of the user\u2019s current information."
+}

@@ -1,0 +1,234 @@
+{
+  "name": "o91594",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "additionalProperties": false,
+    "definitions": {
+      "border": {
+        "type": "string"
+      },
+      "borders": {
+        "additionalProperties": false,
+        "properties": {
+          "bodyJoin": {
+            "$ref": "#/definitions/border"
+          },
+          "bodyLeft": {
+            "$ref": "#/definitions/border"
+          },
+          "bodyRight": {
+            "$ref": "#/definitions/border"
+          },
+          "bottomBody": {
+            "$ref": "#/definitions/border"
+          },
+          "bottomJoin": {
+            "$ref": "#/definitions/border"
+          },
+          "bottomLeft": {
+            "$ref": "#/definitions/border"
+          },
+          "bottomRight": {
+            "$ref": "#/definitions/border"
+          },
+          "joinBody": {
+            "$ref": "#/definitions/border"
+          },
+          "joinJoin": {
+            "$ref": "#/definitions/border"
+          },
+          "joinLeft": {
+            "$ref": "#/definitions/border"
+          },
+          "joinRight": {
+            "$ref": "#/definitions/border"
+          },
+          "topBody": {
+            "$ref": "#/definitions/border"
+          },
+          "topJoin": {
+            "$ref": "#/definitions/border"
+          },
+          "topLeft": {
+            "$ref": "#/definitions/border"
+          },
+          "topRight": {
+            "$ref": "#/definitions/border"
+          }
+        },
+        "type": "object"
+      },
+      "column": {
+        "additionalProperties": false,
+        "properties": {
+          "alignment": {
+            "enum": [
+              "left",
+              "right",
+              "center"
+            ],
+            "type": "string"
+          },
+          "paddingLeft": {
+            "type": "number"
+          },
+          "paddingRight": {
+            "type": "number"
+          },
+          "truncate": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          },
+          "wrapWord": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "columns": {
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[0-9]+$": {
+            "$ref": "#/definitions/column"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "properties": {
+      "border": {
+        "$ref": "#/definitions/borders"
+      },
+      "columnCount": {
+        "type": "number"
+      },
+      "columnDefault": {
+        "$ref": "#/definitions/column"
+      },
+      "columns": {
+        "$ref": "#/definitions/columns"
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "border": {
+      "bodyJoin": "\u2500",
+      "bodyLeft": "\u2502",
+      "bodyRight": "\u2502",
+      "bottomBody": "\u2500",
+      "bottomJoin": "\u2534",
+      "bottomLeft": "\u2514",
+      "bottomRight": "\u2518",
+      "joinBody": "\u2500",
+      "joinJoin": "\u253c",
+      "joinLeft": "\u251c",
+      "joinRight": "\u2524",
+      "topBody": "\u2500",
+      "topJoin": "\u252c",
+      "topLeft": "\u250c",
+      "topRight": "\u2510"
+    },
+    "columnCount": 3,
+    "columnDefault": {
+      "alignment": "left",
+      "paddingLeft": 1,
+      "paddingRight": 1,
+      "truncate": 20,
+      "width": 30,
+      "wrapWord": false
+    },
+    "columns": {
+      "0": {
+        "alignment": "center",
+        "paddingLeft": 2,
+        "paddingRight": 2,
+        "truncate": 15,
+        "width": 25,
+        "wrapWord": true
+      },
+      "1": {
+        "alignment": "right",
+        "paddingLeft": 1,
+        "paddingRight": 1,
+        "truncate": 10,
+        "width": 20,
+        "wrapWord": false
+      },
+      "2": {
+        "alignment": "left",
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "truncate": 30,
+        "width": 35,
+        "wrapWord": true
+      }
+    }
+  },
+  "instructions": "Please change the \u201cjoinRight\u201d field inside \u201cborder\u201d to \u201c\\u2524 (updated)\u201d.",
+  "ground_truth": {
+    "border": {
+      "bodyJoin": "\u2500",
+      "bodyLeft": "\u2502",
+      "bodyRight": "\u2502",
+      "bottomBody": "\u2500",
+      "bottomJoin": "\u2534",
+      "bottomLeft": "\u2514",
+      "bottomRight": "\u2518",
+      "joinBody": "\u2500",
+      "joinJoin": "\u253c",
+      "joinLeft": "\u251c",
+      "joinRight": "\u2524 (updated)",
+      "topBody": "\u2500",
+      "topJoin": "\u252c",
+      "topLeft": "\u250c",
+      "topRight": "\u2510"
+    },
+    "columnCount": 3,
+    "columnDefault": {
+      "alignment": "left",
+      "paddingLeft": 1,
+      "paddingRight": 1,
+      "truncate": 20,
+      "width": 30,
+      "wrapWord": false
+    },
+    "columns": {
+      "0": {
+        "alignment": "center",
+        "paddingLeft": 2,
+        "paddingRight": 2,
+        "truncate": 15,
+        "width": 25,
+        "wrapWord": true
+      },
+      "1": {
+        "alignment": "right",
+        "paddingLeft": 1,
+        "paddingRight": 1,
+        "truncate": 10,
+        "width": 20,
+        "wrapWord": false
+      },
+      "2": {
+        "alignment": "left",
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "truncate": 30,
+        "width": 35,
+        "wrapWord": true
+      }
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "border",
+      "joinRight"
+    ],
+    "precise_instruction": "Change \"joinRight\" inside \"border\" to \"\\u2524 (updated)\"."
+  }
+}

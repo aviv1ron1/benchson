@@ -1,0 +1,66 @@
+{
+  "name": "calculate_area_4e50f6e2",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape, e.g. rectangle, triangle",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "base": 5.0,
+      "height": 3.2,
+      "length": 8.5,
+      "width": 4.1
+    }
+  },
+  "instructions": "Could you increase the \"width\" inside \"dimensions\" by 1?",
+  "ground_truth": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "base": 5.0,
+      "height": 3.2,
+      "length": 8.5,
+      "width": 5.1
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "dimensions",
+      "width"
+    ],
+    "precise_instruction": "Increase \"width\" inside \"dimensions\" by 1."
+  }
+}

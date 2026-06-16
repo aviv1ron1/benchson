@@ -1,0 +1,284 @@
+{
+  "name": "all-contributors",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {},
+    "description": "The configuration file used by the All Contributors CLI and GitHub bot.\nhttps://allcontributors.org/docs/en/bot/configuration",
+    "id": "https://json.schemastore.org/base-04.json",
+    "properties": {
+      "projectName": {
+        "title": "Name of the project",
+        "type": "string",
+        "minLength": 0
+      },
+      "projectOwner": {
+        "title": "Name of the user the project is hosted by",
+        "type": "string",
+        "minLength": 0
+      },
+      "repoType": {
+        "title": "Type of repository",
+        "enum": [
+          "github",
+          "gitlab"
+        ],
+        "default": "github"
+      },
+      "repoHost": {
+        "title": "Points to the repository hostname",
+        "description": "Change it if you use a self-hosted repository.\nDefault: https://github.com if repoType is github, and https://gitlab.com if repoType is gitlab",
+        "type": "string",
+        "minLength": 0
+      },
+      "files": {
+        "title": "Array of files to update",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 0
+        },
+        "default": [
+          "README.md"
+        ]
+      },
+      "imageSize": {
+        "title": "Size (in px) of the user's avatar",
+        "type": "number",
+        "minimum": 0,
+        "default": 100
+      },
+      "commit": {
+        "title": "Auto-commit badge when adding contributors",
+        "type": "boolean",
+        "default": false
+      },
+      "commitConvention": {
+        "title": "Commit convention",
+        "enum": [
+          "angular",
+          "atom",
+          "ember",
+          "eslint",
+          "jshint",
+          "gitmoji",
+          "none"
+        ],
+        "default": "angular"
+      },
+      "commitType": {
+        "description": "UNDOCUMENTED: Sets Conventional Commits commit type to be used by the all contributors bot. See https://www.conventionalcommits.org.",
+        "type": "string",
+        "default": "docs"
+      },
+      "contributorsPerLine": {
+        "title": "Maximum number of columns for the contributors table",
+        "type": "number",
+        "minimum": 0,
+        "default": 7
+      },
+      "contributorsSortAlphabetically": {
+        "title": "true: Sort alphabetically. false: Display in order of addition.",
+        "type": "boolean",
+        "default": false
+      },
+      "badgeTemplate": {
+        "title": "Your own lodash template to generate the badge",
+        "type": "string",
+        "minLength": 0
+      },
+      "contributorTemplate": {
+        "title": "Your own lodash template to generate the contributor",
+        "type": "string",
+        "minLength": 0
+      },
+      "types": {
+        "title": "Custom symbols or link templates for contribution types (can override the documented types)",
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "symbol": {
+              "title": "Symbol to use for the contribution type",
+              "type": "string",
+              "minLength": 0
+            },
+            "description": {
+              "title": "Description of the contribution type",
+              "type": "string",
+              "minLength": 0
+            },
+            "link": {
+              "title": "Link to use for the contribution type",
+              "type": "string",
+              "minLength": 0
+            }
+          }
+        }
+      },
+      "linkToUsage": {
+        "title": "Adds a footer with link to usage",
+        "type": "boolean",
+        "default": true
+      },
+      "skipCi": {
+        "title": "Makes the CI ignore the commit",
+        "type": "boolean",
+        "default": true
+      },
+      "contributors": {
+        "title": "List of contributors for this project",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "login": {
+              "title": "Github username of the contributor",
+              "type": "string",
+              "minLength": 0
+            },
+            "name": {
+              "title": "Name of the contributor",
+              "type": "string",
+              "minLength": 0
+            },
+            "avatar_url": {
+              "title": "URL of the contributor's avatar",
+              "type": "string",
+              "format": "uri",
+              "minLength": 0
+            },
+            "profile": {
+              "title": "URL of the contributor's profile page or website",
+              "type": "string",
+              "format": "uri",
+              "minLength": 0
+            },
+            "contributions": {
+              "title": "Array of contributions made by the contributor",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "a11y",
+                      "audio",
+                      "blog",
+                      "bug",
+                      "business",
+                      "code",
+                      "content",
+                      "data",
+                      "design",
+                      "doc",
+                      "eventOrganizing",
+                      "example",
+                      "financial",
+                      "fundingFinding",
+                      "ideas",
+                      "infra",
+                      "maintenance",
+                      "mentoring",
+                      "platform",
+                      "plugin",
+                      "projectManagement",
+                      "promotion",
+                      "question",
+                      "research",
+                      "review",
+                      "security",
+                      "talk",
+                      "test",
+                      "tool",
+                      "translation",
+                      "tutorial",
+                      "userTesting",
+                      "video"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 0
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "login",
+            "name",
+            "avatar_url",
+            "profile",
+            "contributions"
+          ]
+        }
+      }
+    },
+    "required": [
+      "projectName",
+      "projectOwner"
+    ],
+    "title": "All Contributors configuration file",
+    "type": "object"
+  },
+  "description": "The **OpenSource Toolkit** project, owned by **open\u2011dev**, lives on GitHub at **https://github.com**. The configuration is set for a GitHub repository and will automatically update both **README.md** and **CONTRIBUTING.md** whenever contributors are added. Avatars are displayed at **120\u202fpx**, and every contribution triggers an auto\u2011commit using the **angular** commit convention with a commit type of **docs**. The contributors table will show up to **8** contributors per line and will be sorted alphabetically. Badges are generated with the lodash template **`<%= contributor.login %>`**, while individual entries follow the template **`<%= contributor.name %> - <%= contributor.profile %>`**. A usage footer is disabled (**linkToUsage: false**) and CI is not ignored (**skipCi: false**).\n\nCustom contribution types have been defined: the **code** type uses the laptop emoji **\ud83d\udcbb**, is described as \u201cCode contributions\u201d, and links to **https://github.com/open-dev/opensource-toolkit/commits**; the **doc** type uses the open\u2011book emoji **\ud83d\udcda**, is described as \u201cDocumentation updates\u201d, and links to **https://github.com/open-dev/opensource-toolkit/wiki**.\n\nThe current contributors are Alice Johnson (**login: alice123**) whose avatar is located at **https://avatars.githubusercontent.com/u/1234567?v=4**, profile at **https://github.com/alice123**, and who has contributed **code** and **doc**. The second contributor is Bob Lee (**login: bobdev**) with avatar **https://avatars.githubusercontent.com/u/2345678?v=4**, personal site **https://boblee.dev**, and contributions in **design** and **translation**.",
+  "reference_json": {
+    "projectName": "OpenSource Toolkit",
+    "projectOwner": "open-dev",
+    "repoType": "github",
+    "repoHost": "https://github.com",
+    "files": [
+      "README.md",
+      "CONTRIBUTING.md"
+    ],
+    "imageSize": 120,
+    "commit": true,
+    "commitConvention": "angular",
+    "commitType": "docs",
+    "contributorsPerLine": 8,
+    "contributorsSortAlphabetically": true,
+    "badgeTemplate": "<%= contributor.login %>",
+    "contributorTemplate": "<%= contributor.name %> - <%= contributor.profile %>",
+    "types": {
+      "code": {
+        "symbol": "\ud83d\udcbb",
+        "description": "Code contributions",
+        "link": "https://github.com/open-dev/opensource-toolkit/commits"
+      },
+      "doc": {
+        "symbol": "\ud83d\udcda",
+        "description": "Documentation updates",
+        "link": "https://github.com/open-dev/opensource-toolkit/wiki"
+      }
+    },
+    "linkToUsage": false,
+    "skipCi": false,
+    "contributors": [
+      {
+        "login": "alice123",
+        "name": "Alice Johnson",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1234567?v=4",
+        "profile": "https://github.com/alice123",
+        "contributions": [
+          "code",
+          "doc"
+        ]
+      },
+      {
+        "login": "bobdev",
+        "name": "Bob Lee",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2345678?v=4",
+        "profile": "https://boblee.dev",
+        "contributions": [
+          "design",
+          "translation"
+        ]
+      }
+    ]
+  }
+}

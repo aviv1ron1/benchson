@@ -1,0 +1,53 @@
+{
+  "name": "search_news_dc3048f7",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "category": {
+        "description": "The category of the news articles (e.g. business, sports, entertainment)",
+        "type": "string"
+      },
+      "country": {
+        "description": "The country of the news articles (e.g. US, GB, DE)",
+        "type": "string"
+      },
+      "keywords": {
+        "description": "The keywords to be used in the news search",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "language": {
+        "description": "The language of the news articles (e.g. en, de, fr)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "keywords"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "category": null,
+    "country": "US",
+    "keywords": [
+      "artificial intelligence",
+      "machine learning",
+      "neural networks"
+    ],
+    "language": "en"
+  },
+  "valid_json": {
+    "category": "technology",
+    "country": "US",
+    "keywords": [
+      "artificial intelligence",
+      "machine learning",
+      "neural networks"
+    ],
+    "language": "en"
+  },
+  "description": "Subject: Request for Technology News Feed \u2013 United States (English)\n\nHello Team,\n\nCould you please set up a news feed focused on the technology sector for the United States, delivering articles in English? The search should be centered around the keywords \u201cartificial intelligence,\u201d \u201cmachine learning,\u201d and \u201cneural networks.\u201d Let me know once the feed is ready or if you need any additional details."
+}

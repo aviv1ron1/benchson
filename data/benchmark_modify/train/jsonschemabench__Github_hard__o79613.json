@@ -1,0 +1,440 @@
+{
+  "name": "o79613",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "patternProperties": {
+      "^[a-zA-Z0-9._-]+$": {
+        "$ref": "#/definitions/service"
+      }
+    },
+    "definitions": {
+      "service": {
+        "type": "object",
+        "properties": {
+          "build": {
+            "type": "string"
+          },
+          "cap_add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "cap_drop": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "command": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "container_name": {
+            "type": "string"
+          },
+          "cpu_shares": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "cpuset": {
+            "type": "string"
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "dns": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dns_search": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "dockerfile": {
+            "type": "string"
+          },
+          "domainname": {
+            "type": "string"
+          },
+          "entrypoint": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "env_file": {
+            "$ref": "#/definitions/string_or_list"
+          },
+          "environment": {
+            "oneOf": [
+              {
+                "type": "object",
+                "patternProperties": {
+                  "^[^-]+$": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ],
+                    "format": "environment"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "_uniqueItems": true
+              }
+            ]
+          },
+          "expose": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "_uniqueItems": true
+          },
+          "extends": {
+            "type": "object",
+            "properties": {
+              "service": {
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "service"
+            ],
+            "additionalProperties": false
+          },
+          "extra_hosts": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "external_links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "ipc": {
+            "type": "string"
+          },
+          "labels": {
+            "$ref": "#/definitions/list_or_dict"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "log_driver": {
+            "type": "string"
+          },
+          "log_opt": {
+            "type": "object"
+          },
+          "mac_address": {
+            "type": "string"
+          },
+          "mem_limit": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "memswap_limit": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "net": {
+            "type": "string"
+          },
+          "pid": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ports": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "ports"
+                },
+                {
+                  "type": "number",
+                  "format": "ports"
+                }
+              ]
+            },
+            "_uniqueItems": true
+          },
+          "privileged": {
+            "type": "boolean"
+          },
+          "read_only": {
+            "type": "boolean"
+          },
+          "restart": {
+            "type": "string"
+          },
+          "security_opt": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "stdin_open": {
+            "type": "boolean"
+          },
+          "tty": {
+            "type": "boolean"
+          },
+          "user": {
+            "type": "string"
+          },
+          "volumes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "volume_driver": {
+            "type": "string"
+          },
+          "volumes_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          "working_dir": {
+            "type": "string"
+          }
+        },
+        "dependencies": {
+          "memswap_limit": [
+            "mem_limit"
+          ]
+        },
+        "additionalProperties": false
+      },
+      "string_or_list": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/definitions/list_of_strings"
+          }
+        ]
+      },
+      "list_of_strings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "_uniqueItems": true
+      },
+      "list_or_dict": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "_uniqueItems": true
+          },
+          {
+            "type": "object"
+          }
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "data": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "nginx_web",
+      "ports": [
+        "8080:80"
+      ],
+      "environment": {
+        "APP_ENV": "production",
+        "DEBUG": false,
+        "MAX_CONNECTIONS": 1000
+      },
+      "volumes": [
+        "./html:/usr/share/nginx/html"
+      ],
+      "restart": "always",
+      "cap_add": [
+        "NET_ADMIN"
+      ],
+      "labels": [
+        "com.example.project=webapp",
+        "com.example.version=1.2.3"
+      ],
+      "extra_hosts": {
+        "host.internal": "10.0.0.5"
+      },
+      "log_driver": "json-file",
+      "log_opt": {
+        "max-size": "10m",
+        "max-file": "3"
+      },
+      "command": "nginx -g 'daemon off;'",
+      "tty": true,
+      "stdin_open": false
+    },
+    "db": {
+      "image": "postgres:13",
+      "container_name": "postgres_db",
+      "ports": [
+        "5432:5432"
+      ],
+      "environment": [
+        "POSTGRES_PASSWORD=examplePassword",
+        "POSTGRES_DB=mydatabase",
+        "POSTGRES_USER=admin"
+      ],
+      "volumes": [
+        "./pgdata:/var/lib/postgresql/data"
+      ],
+      "restart": "unless-stopped",
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges"
+      ],
+      "hostname": "db.local",
+      "log_driver": "syslog",
+      "log_opt": {
+        "syslog-address": "tcp://192.168.1.100:514"
+      },
+      "tty": false,
+      "stdin_open": false
+    }
+  },
+  "instructions": "Can you remove the first item from the \"ports\" list inside \"web\"?",
+  "ground_truth": {
+    "web": {
+      "image": "nginx:latest",
+      "container_name": "nginx_web",
+      "ports": [],
+      "environment": {
+        "APP_ENV": "production",
+        "DEBUG": false,
+        "MAX_CONNECTIONS": 1000
+      },
+      "volumes": [
+        "./html:/usr/share/nginx/html"
+      ],
+      "restart": "always",
+      "cap_add": [
+        "NET_ADMIN"
+      ],
+      "labels": [
+        "com.example.project=webapp",
+        "com.example.version=1.2.3"
+      ],
+      "extra_hosts": {
+        "host.internal": "10.0.0.5"
+      },
+      "log_driver": "json-file",
+      "log_opt": {
+        "max-size": "10m",
+        "max-file": "3"
+      },
+      "command": "nginx -g 'daemon off;'",
+      "tty": true,
+      "stdin_open": false
+    },
+    "db": {
+      "image": "postgres:13",
+      "container_name": "postgres_db",
+      "ports": [
+        "5432:5432"
+      ],
+      "environment": [
+        "POSTGRES_PASSWORD=examplePassword",
+        "POSTGRES_DB=mydatabase",
+        "POSTGRES_USER=admin"
+      ],
+      "volumes": [
+        "./pgdata:/var/lib/postgresql/data"
+      ],
+      "restart": "unless-stopped",
+      "mem_limit": "512m",
+      "memswap_limit": "1g",
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges"
+      ],
+      "hostname": "db.local",
+      "log_driver": "syslog",
+      "log_opt": {
+        "syslog-address": "tcp://192.168.1.100:514"
+      },
+      "tty": false,
+      "stdin_open": false
+    }
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "web",
+      "ports"
+    ],
+    "precise_instruction": "Remove the first item from the \"ports\" list inside \"web\"."
+  }
+}

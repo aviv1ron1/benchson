@@ -1,0 +1,305 @@
+{
+  "name": "o5351",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EiffelArtifactPublishedEvent"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "1.1.0"
+            ],
+            "default": "1.1.0"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "domainId": {
+                "type": "string"
+              },
+              "host": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "serializer": {
+                "type": "object",
+                "properties": {
+                  "groupId": {
+                    "type": "string"
+                  },
+                  "artifactId": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "groupId",
+                  "artifactId",
+                  "version"
+                ],
+                "additionalProperties": false
+              },
+              "uri": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "sdm": {
+                "type": "object",
+                "properties": {
+                  "authorIdentity": {
+                    "type": "string"
+                  },
+                  "encryptedDigest": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "authorIdentity",
+                  "encryptedDigest"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "version",
+          "time"
+        ],
+        "additionalProperties": false
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "ARTIFACTORY",
+                    "NEXUS",
+                    "PLAIN",
+                    "OTHER"
+                  ]
+                },
+                "uri": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "uri"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "customData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "required": [
+                "key",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "locations"
+        ],
+        "additionalProperties": false
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+          },
+          "required": [
+            "type",
+            "target"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "meta",
+      "data",
+      "links"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "meta": {
+      "id": "3f8e2a1b-9c4d-3b3e-8a2f-1d5e6c7b8a9c",
+      "type": "EiffelArtifactPublishedEvent",
+      "version": "1.1.0",
+      "time": 1728765432,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example.com",
+        "host": "ci.example.com",
+        "name": "Jenkins",
+        "serializer": {
+          "groupId": "com.example",
+          "artifactId": "eiffel-serializer",
+          "version": "1.0.0"
+        },
+        "uri": "https://ci.example.com/job/123"
+      },
+      "security": {
+        "sdm": {
+          "authorIdentity": "john.doe@example.com",
+          "encryptedDigest": "aGVsbG9zZWNyZXQ="
+        }
+      }
+    },
+    "data": {
+      "locations": [
+        {
+          "type": "ARTIFACTORY",
+          "uri": "https://artifactory.example.com/libs-release-local/com/example/app/1.0.0/app-1.0.0.jar"
+        },
+        {
+          "type": "PLAIN",
+          "uri": "file:///tmp/app-1.0.0.jar"
+        }
+      ],
+      "customData": [
+        {
+          "key": "buildNumber",
+          "value": 12345
+        },
+        {
+          "key": "commitHash",
+          "value": "a1b2c3d4"
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "7e2f4c9a-1b2c-4d3e-9f0a-b1c2d3e4f5a6"
+      }
+    ]
+  },
+  "instructions": "Please remove the last item from the \"customData\" list inside \"data\".",
+  "ground_truth": {
+    "meta": {
+      "id": "3f8e2a1b-9c4d-3b3e-8a2f-1d5e6c7b8a9c",
+      "type": "EiffelArtifactPublishedEvent",
+      "version": "1.1.0",
+      "time": 1728765432,
+      "tags": [
+        "artifact",
+        "release"
+      ],
+      "source": {
+        "domainId": "example.com",
+        "host": "ci.example.com",
+        "name": "Jenkins",
+        "serializer": {
+          "groupId": "com.example",
+          "artifactId": "eiffel-serializer",
+          "version": "1.0.0"
+        },
+        "uri": "https://ci.example.com/job/123"
+      },
+      "security": {
+        "sdm": {
+          "authorIdentity": "john.doe@example.com",
+          "encryptedDigest": "aGVsbG9zZWNyZXQ="
+        }
+      }
+    },
+    "data": {
+      "locations": [
+        {
+          "type": "ARTIFACTORY",
+          "uri": "https://artifactory.example.com/libs-release-local/com/example/app/1.0.0/app-1.0.0.jar"
+        },
+        {
+          "type": "PLAIN",
+          "uri": "file:///tmp/app-1.0.0.jar"
+        }
+      ],
+      "customData": [
+        {
+          "key": "buildNumber",
+          "value": 12345
+        }
+      ]
+    },
+    "links": [
+      {
+        "type": "CAUSE",
+        "target": "7e2f4c9a-1b2c-4d3e-9f0a-b1c2d3e4f5a6"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_last",
+    "path": [
+      "data",
+      "customData"
+    ],
+    "precise_instruction": "Remove the last item from the \"customData\" list inside \"data\"."
+  }
+}

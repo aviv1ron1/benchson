@@ -1,0 +1,52 @@
+{
+  "name": "o66186",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Add publications",
+    "properties": {
+      "journal_title": {
+        "type": "string",
+        "title": "Journal Title"
+      },
+      "persistent_identifiers": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array",
+        "title": "Identifiers"
+      },
+      "journal_volume": {
+        "type": "integer",
+        "title": "Journal Volume"
+      },
+      "journal_year": {
+        "type": "integer",
+        "title": "Journal Year"
+      },
+      "journal_issue": {
+        "type": "integer",
+        "title": "Journal Issue"
+      },
+      "journal_page": {
+        "type": "integer",
+        "title": "Journal Page"
+      }
+    },
+    "title": "Internal Publication"
+  },
+  "description": "Dear Colleagues,\n\nI would like to draw your attention to a recent article published in the *International Journal of Advanced Materials*. The paper appears in volume\u202f47, issue\u202f7 (2023) and begins on page\u202f1123. For reference, the digital object identifier is doi:10.1016/j.ijam.2023.04.015, and the PubMed identifier is pmid:38291456.\n\nPlease feel free to cite this work in your upcoming manuscripts or reviews as appropriate.",
+  "reference_json": {
+    "journal_title": "International Journal of Advanced Materials",
+    "persistent_identifiers": [
+      "doi:10.1016/j.ijam.2023.04.015",
+      "pmid:38291456"
+    ],
+    "journal_volume": 47,
+    "journal_year": 2023,
+    "journal_issue": 7,
+    "journal_page": 1123
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "name": "o81597",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "order": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "integer"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "drinkType": {
+            "type": "string",
+            "enum": [
+              "Latte",
+              "Espresso",
+              "Cappuccino",
+              "Chai",
+              "Tea",
+              "Steamer",
+              "Hot Chocolate"
+            ]
+          },
+          "flavor": {
+            "type": "string",
+            "enum": [
+              "Carmel",
+              "Chocolate",
+              "Hazelnut",
+              "Vanilla",
+              "Peppermint",
+              "White Chocolate"
+            ]
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "Small",
+              "Medium",
+              "Large",
+              "Extra-Large",
+              "Bucket"
+            ]
+          },
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "milk": {
+            "type": "string",
+            "enum": [
+              "Non-Fat",
+              "Whole",
+              "Breve",
+              "Soy",
+              "Almond"
+            ]
+          },
+          "espressoConCard": {
+            "type": "string"
+          },
+          "totalPrice": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "orderId",
+          "customerName",
+          "drinkType",
+          "size",
+          "date",
+          "time",
+          "milk",
+          "espressoConCard",
+          "totalPrice"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "order"
+    ]
+  },
+  "erroneous_json": {
+    "order": {
+      "orderId": 10234,
+      "customerName": "Alice Johnson",
+      "drinkType": "Cappuccino",
+      "flavor": "Vanilla",
+      "size": "Medium",
+      "date": "2026-06-15",
+      "time": "14:30",
+      "espressoConCard": "Yes",
+      "totalPrice": 4.75
+    }
+  },
+  "valid_json": {
+    "order": {
+      "orderId": 10234,
+      "customerName": "Alice Johnson",
+      "drinkType": "Cappuccino",
+      "flavor": "Vanilla",
+      "size": "Medium",
+      "date": "2026-06-15",
+      "time": "14:30",
+      "milk": "Soy",
+      "espressoConCard": "Yes",
+      "totalPrice": 4.75
+    }
+  },
+  "description": "Subject: Order Confirmation \u2013 #10234  \n\nDear Alice Johnson,  \n\nThank you for visiting our caf\u00e9 today. We\u2019re happy to confirm that your order for a Medium Cappuccino, flavored with Vanilla and prepared with Soy milk, has been recorded. As you indicated, you will be using your espresso con card (Yes) for this purchase. The drink is scheduled for preparation on 2026\u201106\u201115 at 14:30, and the total amount due is $4.75.  \n\nWe look forward to serving you soon!  \n\nBest regards,  \nThe Coffee Bar Team"
+}

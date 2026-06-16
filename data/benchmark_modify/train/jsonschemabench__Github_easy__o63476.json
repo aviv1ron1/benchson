@@ -1,0 +1,187 @@
+{
+  "name": "o63476",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "definitions": {
+      "stringArray": {
+        "additionalItems": false,
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "patternProperties": {
+      ".*": {
+        "additionalProperties": false,
+        "properties": {
+          "unusedActions": {
+            "$ref": "#/definitions/stringArray"
+          },
+          "unusedFormParameters": {
+            "$ref": "#/definitions/stringArray"
+          },
+          "unusedQueryParameters": {
+            "$ref": "#/definitions/stringArray"
+          },
+          "unusedRequestHeaders": {
+            "$ref": "#/definitions/stringArray"
+          },
+          "unusedResources": {
+            "$ref": "#/definitions/stringArray"
+          },
+          "unusedResponseCodes": {
+            "$ref": "#/definitions/stringArray"
+          },
+          "unusedResponseHeaders": {
+            "$ref": "#/definitions/stringArray"
+          }
+        },
+        "required": [
+          "unusedActions",
+          "unusedResources",
+          "unusedRequestHeaders",
+          "unusedQueryParameters",
+          "unusedFormParameters",
+          "unusedResponseHeaders",
+          "unusedResponseCodes"
+        ],
+        "type": "object"
+      }
+    },
+    "type": "object"
+  },
+  "data": {
+    "endpoint1": {
+      "unusedActions": [
+        "deleteUser",
+        "updateProfile"
+      ],
+      "unusedResources": [
+        "/api/v1/users",
+        "/api/v1/profiles"
+      ],
+      "unusedRequestHeaders": [
+        "X-Deprecated-Header",
+        "X-Old-Auth"
+      ],
+      "unusedQueryParameters": [
+        "debug",
+        "legacyMode"
+      ],
+      "unusedFormParameters": [
+        "oldField",
+        "unusedToken"
+      ],
+      "unusedResponseHeaders": [
+        "X-Obsolete-Header",
+        "X-Deprecated-Info"
+      ],
+      "unusedResponseCodes": [
+        "418",
+        "511"
+      ]
+    },
+    "endpoint2": {
+      "unusedActions": [
+        "archiveData",
+        "purgeCache"
+      ],
+      "unusedResources": [
+        "/api/v2/archive",
+        "/api/v2/cache"
+      ],
+      "unusedRequestHeaders": [
+        "X-Archive-Flag",
+        "X-Cache-Control"
+      ],
+      "unusedQueryParameters": [
+        "force",
+        "skipValidation"
+      ],
+      "unusedFormParameters": [
+        "archiveId",
+        "cacheKey"
+      ],
+      "unusedResponseHeaders": [
+        "X-Archive-Status",
+        "X-Cache-Result"
+      ],
+      "unusedResponseCodes": [
+        "202",
+        "429"
+      ]
+    }
+  },
+  "instructions": "Can you keep only the first item in the \u201cunusedQueryParameters\u201d list inside \u201cendpoint1\u201d and remove the rest?",
+  "ground_truth": {
+    "endpoint1": {
+      "unusedActions": [
+        "deleteUser",
+        "updateProfile"
+      ],
+      "unusedResources": [
+        "/api/v1/users",
+        "/api/v1/profiles"
+      ],
+      "unusedRequestHeaders": [
+        "X-Deprecated-Header",
+        "X-Old-Auth"
+      ],
+      "unusedQueryParameters": [
+        "debug"
+      ],
+      "unusedFormParameters": [
+        "oldField",
+        "unusedToken"
+      ],
+      "unusedResponseHeaders": [
+        "X-Obsolete-Header",
+        "X-Deprecated-Info"
+      ],
+      "unusedResponseCodes": [
+        "418",
+        "511"
+      ]
+    },
+    "endpoint2": {
+      "unusedActions": [
+        "archiveData",
+        "purgeCache"
+      ],
+      "unusedResources": [
+        "/api/v2/archive",
+        "/api/v2/cache"
+      ],
+      "unusedRequestHeaders": [
+        "X-Archive-Flag",
+        "X-Cache-Control"
+      ],
+      "unusedQueryParameters": [
+        "force",
+        "skipValidation"
+      ],
+      "unusedFormParameters": [
+        "archiveId",
+        "cacheKey"
+      ],
+      "unusedResponseHeaders": [
+        "X-Archive-Status",
+        "X-Cache-Result"
+      ],
+      "unusedResponseCodes": [
+        "202",
+        "429"
+      ]
+    }
+  },
+  "modification": {
+    "op": "array_keep_first",
+    "path": [
+      "endpoint1",
+      "unusedQueryParameters"
+    ],
+    "precise_instruction": "Keep only the first item in the \"unusedQueryParameters\" list inside \"endpoint1\" and remove the rest."
+  }
+}

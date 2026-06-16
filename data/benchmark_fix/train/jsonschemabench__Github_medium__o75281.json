@@ -1,0 +1,213 @@
+{
+  "name": "o75281",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "A unique identifier for the address.json"
+      },
+      "type": {
+        "type": "string",
+        "description": "The json_api type for any address.json",
+        "pattern": "^addresses$"
+      },
+      "attributes": {
+        "type": "object",
+        "properties": {
+          "meta_attributes": {
+            "type": "object",
+            "description": "Description for meta_attributes"
+          },
+          "customer_account_id": {
+            "type": "number",
+            "description": "Description for customer_account_id"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "Description for first_name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Description for last_name"
+          },
+          "middle_names": {
+            "type": "string",
+            "description": "Description for middle_names"
+          },
+          "address_line_1": {
+            "type": "string",
+            "description": "Description for address_line_1"
+          },
+          "address_line_2": {
+            "type": "string",
+            "description": "Description for address_line_2"
+          },
+          "address_line_3": {
+            "type": "string",
+            "description": "Description for address_line_3"
+          },
+          "city": {
+            "type": "string",
+            "description": "Description for city"
+          },
+          "state": {
+            "type": "string",
+            "description": "Description for state"
+          },
+          "postcode": {
+            "type": "string",
+            "description": "Description for postcode"
+          },
+          "country": {
+            "type": "string",
+            "description": "Description for country"
+          },
+          "preferred_shipping": {
+            "type": "boolean",
+            "description": "Description for preferred_shipping"
+          },
+          "preferred_billing": {
+            "type": "boolean",
+            "description": "Description for preferred_billing"
+          }
+        }
+      },
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "customer_account": {
+            "type": "object",
+            "properties": {
+              "links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "string"
+                  },
+                  "related": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "data": {
+                "type": "object",
+                "description": "The id and type form a pointer into the 'included' top level document property",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "meta": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "meta": {
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "definitions": {}
+  },
+  "erroneous_json": {
+    "id": "addr_12345",
+    "type": "addresses",
+    "attributes": {
+      "meta_attributes": {
+        "source": "user_input"
+      },
+      "customer_account_id": 98765,
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "middle_names": "A.",
+      "address_line_1": "123 Main St",
+      "address_line_2": "Apt 4B",
+      "address_line_3": "",
+      "city": "Springfield",
+      "state": "IL",
+      "postcode": "62704",
+      "country": "USA",
+      "preferred_shipping": true,
+      "preferred_billing": false
+    },
+    "relationships": {
+      "customer_account": {
+        "links": {
+          "self": "https://api.example.com/addresses/addr_12345/relationships/customer_account",
+          "related": "https://api.example.com/customer_accounts/98765"
+        },
+        "data": {
+          "id": "98765",
+          "type": "customer_accounts"
+        },
+        "meta": {}
+      }
+    },
+    "links": {
+      "self": "https://api.example.com/addresses/addr_12345"
+    },
+    "meta": null
+  },
+  "valid_json": {
+    "id": "addr_12345",
+    "type": "addresses",
+    "attributes": {
+      "meta_attributes": {
+        "source": "user_input"
+      },
+      "customer_account_id": 98765,
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "middle_names": "A.",
+      "address_line_1": "123 Main St",
+      "address_line_2": "Apt 4B",
+      "address_line_3": "",
+      "city": "Springfield",
+      "state": "IL",
+      "postcode": "62704",
+      "country": "USA",
+      "preferred_shipping": true,
+      "preferred_billing": false
+    },
+    "relationships": {
+      "customer_account": {
+        "links": {
+          "self": "https://api.example.com/addresses/addr_12345/relationships/customer_account",
+          "related": "https://api.example.com/customer_accounts/98765"
+        },
+        "data": {
+          "id": "98765",
+          "type": "customer_accounts"
+        },
+        "meta": {}
+      }
+    },
+    "links": {
+      "self": "https://api.example.com/addresses/addr_12345"
+    },
+    "meta": {}
+  },
+  "description": "Subject: Address record \u2013\u202faddr_12345 (type: addresses)\n\nDear Team,\n\nPlease find below the confirmed address details for Jane A.\u202fDoe (customer account\u202f98765). The information was supplied directly by the user (source\u202f=\u202f\"user_input\") and is stored under the identifier **addr_12345**.  \n\n**Name:** Jane A.\u202fDoe  \n**Customer Account ID:** 98765  \n**Address:**  \n- 123 Main St  \n- Apt\u202f4B  \n- (no third line)  \n- Springfield, IL\u202f62704, USA  \n\nThe address has been marked as the preferred shipping location (preferred_shipping\u202f=\u202ftrue) but is not set as the preferred billing address (preferred_billing\u202f=\u202ffalse).  \n\nFor reference, the relationship to the customer account can be accessed via the following API links:  \n- Self\u2011link: https://api.example.com/addresses/addr_12345/relationships/customer_account  \n- Related resource: https://api.example.com/customer_accounts/98765  \n\nThe address record itself is available at: https://api.example.com/addresses/addr_12345. No additional metadata is attached to this entry."
+}

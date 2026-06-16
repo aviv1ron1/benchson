@@ -1,0 +1,101 @@
+{
+  "name": "calculate_gpa_50820a74",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "grades": {
+        "description": "The list of grades for courses",
+        "items": {
+          "properties": {
+            "course": {
+              "description": "The course name",
+              "type": "string"
+            },
+            "credit": {
+              "description": "The credit hours for the course",
+              "type": "number"
+            },
+            "grade": {
+              "description": "The grade for the course",
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "F"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "course",
+            "credit",
+            "grade"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "grades"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "grades": [
+      "not-an-object",
+      {
+        "course": "Calculus II",
+        "credit": 4,
+        "grade": "B"
+      },
+      {
+        "course": "World History",
+        "credit": 3,
+        "grade": "C"
+      },
+      {
+        "course": "Organic Chemistry",
+        "credit": 4,
+        "grade": "D"
+      },
+      {
+        "course": "Art History",
+        "credit": 2,
+        "grade": "A"
+      }
+    ]
+  },
+  "valid_json": {
+    "grades": [
+      {
+        "course": "Introduction to Psychology",
+        "credit": 3,
+        "grade": "A"
+      },
+      {
+        "course": "Calculus II",
+        "credit": 4,
+        "grade": "B"
+      },
+      {
+        "course": "World History",
+        "credit": 3,
+        "grade": "C"
+      },
+      {
+        "course": "Organic Chemistry",
+        "credit": 4,
+        "grade": "D"
+      },
+      {
+        "course": "Art History",
+        "credit": 2,
+        "grade": "A"
+      }
+    ]
+  },
+  "description": "Dear Academic Advisor,\n\nI would like to share my recent academic record for your reference. In Introduction to Psychology, I completed a 3\u2011credit course and earned an A. My Calculus II class was a 4\u2011credit course where I received a B. In World History, a 3\u2011credit offering, I achieved a C. I also took Organic Chemistry, a 4\u2011credit course, and earned a D. Finally, I completed Art History, a 2\u2011credit class, with an A grade.\n\nPlease let me know if you need any additional details or clarification regarding these results."
+}

@@ -1,0 +1,63 @@
+{
+  "name": "o64700",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "description": "project description file",
+    "name": "Module",
+    "properties": {
+      "require": {
+        "type": "object",
+        "description": "This is a hash of module name (keys) and version constraints (values) that are required to run this module.",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "path": {
+        "type": "object",
+        "description": "path config",
+        "properties": {
+          "modules": {
+            "type": "string",
+            "description": "modules path"
+          },
+          "applications": {
+            "type": "string",
+            "description": "applications path"
+          }
+        }
+      }
+    },
+    "required": [
+      "require",
+      "path"
+    ],
+    "type": "object"
+  },
+  "erroneous_json": {
+    "require": {
+      "moduleA": "^1.2.3",
+      "moduleB": ">=2.0.0 <3.0.0",
+      "lodash": "~4.17.15"
+    },
+    "path": {
+      "modules": "src/modules",
+      "applications": "src/apps"
+    },
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "require": {
+      "moduleA": "^1.2.3",
+      "moduleB": ">=2.0.0 <3.0.0",
+      "lodash": "~4.17.15"
+    },
+    "path": {
+      "modules": "src/modules",
+      "applications": "src/apps"
+    }
+  },
+  "description": "Hello team,\n\nFor the upcoming release, the project depends on three core libraries: **moduleA** must be at a version matching the caret range `^1.2.3`; **moduleB** should satisfy the constraint `>=2.0.0 <3.0.0`; and we are using **lodash** pinned to the tilde range `~4.17.15`. Please make sure these versions are installed before building.\n\nAll source code is organized under the `src` directory. The modules themselves reside in `src/modules`, while the application entry points can be found in `src/apps`. Let me know if any adjustments are needed."
+}

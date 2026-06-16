@@ -1,0 +1,83 @@
+{
+  "name": "o42515",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "id": "file://comment.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "_schema": {
+        "type": "string",
+        "pattern": "^pbj:([a-z0-9-]+):([a-z0-9\\.-]+):([a-z0-9-]+)?:([a-z0-9-]+):([0-9]+-[0-9]+-[0-9]+)$",
+        "default": "pbj:acme:blog:entity:comment:1-0-0"
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[\\w\\.-_]+$",
+        "pbj": {
+          "type": "identifier",
+          "rule": "single",
+          "overridable": true
+        }
+      },
+      "created_at": {
+        "type": "string",
+        "pattern": "^[1-9]{1}[0-9]{12,15}$",
+        "pbj": {
+          "type": "microtime",
+          "rule": "single"
+        }
+      },
+      "updated_at": {
+        "type": "string",
+        "pattern": "^[1-9]{1}[0-9]{12,15}$",
+        "pbj": {
+          "type": "microtime",
+          "rule": "single",
+          "useTypeDefault": false
+        }
+      },
+      "published_at": {
+        "type": "string",
+        "pattern": "^[1-9]{1}[0-9]{12,15}$",
+        "pbj": {
+          "type": "microtime",
+          "rule": "single"
+        }
+      },
+      "comment": {
+        "type": "string",
+        "minLength": 0,
+        "maxLength": 65535,
+        "pbj": {
+          "type": "text",
+          "rule": "single"
+        }
+      }
+    },
+    "required": [
+      "_schema",
+      "_id",
+      "created_at"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "_schema": "pbj:acme:blog:entity:comment:1-0-0",
+    "_id": null,
+    "created_at": "1697051234567",
+    "updated_at": "1697052234567",
+    "published_at": "1697053234567",
+    "comment": "This is a sample comment generated for testing purposes. It demonstrates a realistic text field within the allowed length."
+  },
+  "valid_json": {
+    "_schema": "pbj:acme:blog:entity:comment:1-0-0",
+    "_id": "comment_20230615_001",
+    "created_at": "1697051234567",
+    "updated_at": "1697052234567",
+    "published_at": "1697053234567",
+    "comment": "This is a sample comment generated for testing purposes. It demonstrates a realistic text field within the allowed length."
+  },
+  "description": "Subject: New comment record (ID: comment_20230615_001)\n\nThe system has logged a new comment entry identified by comment_20230615_001. According to the internal schema version\u202fpbj:acme:blog:entity:comment:1-0-0, the comment was initially created at timestamp\u202f1697051234567. It was subsequently updated at\u202f1697052234567 and made publicly visible at\u202f1697053234567. The content of the comment reads: \u201cThis is a sample comment generated for testing purposes. It demonstrates a realistic text field within the allowed length.\u201d"
+}

@@ -1,0 +1,269 @@
+{
+  "name": "o50685",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Resource Model Schema",
+    "description": "This is the schema for resource models for api-pls. For more, see https://github.com/jmeas/api-pls",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "name"
+    ],
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "plural_form": {
+        "type": "string"
+      },
+      "actions": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "create": {
+            "type": "boolean"
+          },
+          "read_one": {
+            "type": "boolean"
+          },
+          "read_many": {
+            "type": "boolean"
+          },
+          "update": {
+            "type": "boolean"
+          },
+          "delete": {
+            "type": "boolean"
+          }
+        }
+      },
+      "pagination": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "default_page_size": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "default_page_number": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "enabled": {
+                "type": "boolean"
+              }
+            }
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
+      "attributes": {
+        "type": "object",
+        "patternProperties": {
+          ".": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "nullable": {
+                    "type": "boolean"
+                  },
+                  "default": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "meta": {
+        "type": "object",
+        "patternProperties": {
+          ".": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "nullable": {
+                    "type": "boolean"
+                  },
+                  "default": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "relationships": {
+        "type": "object",
+        "patternProperties": {
+          ".": {
+            "oneOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "many-to-one",
+                  "one-to-many",
+                  "one-to-one",
+                  "many-to-many"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "resource": {
+                    "type": "string"
+                  },
+                  "cardinality": {
+                    "type": "string",
+                    "enum": [
+                      "many-to-one",
+                      "one-to-many",
+                      "one-to-one",
+                      "many-to-many"
+                    ]
+                  },
+                  "host": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "built_in_meta": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "type": "boolean"
+          },
+          "updated_at": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "erroneous_json": {
+    "name": "user",
+    "plural_form": "users",
+    "actions": {
+      "create": true,
+      "read_one": true,
+      "read_many": true,
+      "update": true,
+      "delete": false
+    },
+    "pagination": {
+      "default_page_size": 20,
+      "default_page_number": 0,
+      "enabled": true
+    },
+    "attributes": {
+      "id": {
+        "type": "integer",
+        "nullable": false
+      },
+      "email": {
+        "type": "string",
+        "nullable": false
+      },
+      "name": "string",
+      "age": {
+        "type": "integer",
+        "nullable": true,
+        "default": "0"
+      }
+    },
+    "meta": {
+      "created_by": "string",
+      "notes": {
+        "type": "string",
+        "nullable": true
+      }
+    },
+    "relationships": null,
+    "built_in_meta": {
+      "created_at": true,
+      "updated_at": true
+    }
+  },
+  "valid_json": {
+    "name": "user",
+    "plural_form": "users",
+    "actions": {
+      "create": true,
+      "read_one": true,
+      "read_many": true,
+      "update": true,
+      "delete": false
+    },
+    "pagination": {
+      "default_page_size": 20,
+      "default_page_number": 0,
+      "enabled": true
+    },
+    "attributes": {
+      "id": {
+        "type": "integer",
+        "nullable": false
+      },
+      "email": {
+        "type": "string",
+        "nullable": false
+      },
+      "name": "string",
+      "age": {
+        "type": "integer",
+        "nullable": true,
+        "default": "0"
+      }
+    },
+    "meta": {
+      "created_by": "string",
+      "notes": {
+        "type": "string",
+        "nullable": true
+      }
+    },
+    "relationships": {
+      "profile": {
+        "resource": "profile",
+        "cardinality": "one-to-one",
+        "host": true
+      },
+      "posts": "one-to-many"
+    },
+    "built_in_meta": {
+      "created_at": true,
+      "updated_at": true
+    }
+  },
+  "description": "The **user** resource (plural\u202f*users*) supports full creation, single\u2011record lookup, bulk read, and updates, while deletion is deliberately disabled. Pagination is turned on by default, serving pages that start at number\u202f0 and contain 20 entries each unless overridden.\n\nEach user record consists of an **id** (a non\u2011nullable integer) and an **email** (a non\u2011nullable string). The **name** field is a simple string, and **age** is an integer that may be null; if omitted, it defaults to \u201c0\u201d. System\u2011generated metadata includes a **created_by** string and optional **notes**, which are nullable strings. The resource is linked to a **profile** in a one\u2011to\u2011one relationship where the user acts as the host, and it also has a one\u2011to\u2011many relationship to **posts**. Built\u2011in timestamps for **created_at** and **updated_at** are both enabled."
+}

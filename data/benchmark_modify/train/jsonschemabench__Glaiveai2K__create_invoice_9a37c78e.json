@@ -1,0 +1,81 @@
+{
+  "name": "create_invoice_9a37c78e",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "client_name": {
+        "description": "The name of the client",
+        "type": "string"
+      },
+      "items": {
+        "items": {
+          "properties": {
+            "description": {
+              "description": "The description of the item",
+              "type": "string"
+            },
+            "price": {
+              "description": "The price per unit of the item",
+              "type": "number"
+            },
+            "quantity": {
+              "description": "The quantity of the item",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "description",
+            "quantity",
+            "price"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "client_name",
+      "items"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "client_name": "Acme Corporation",
+    "items": [
+      {
+        "description": "Premium Office Chair",
+        "price": 199.99,
+        "quantity": 15
+      },
+      {
+        "description": "Adjustable Standing Desk",
+        "price": 429.5,
+        "quantity": 7
+      },
+      {
+        "description": "Ergonomic Keyboard",
+        "price": 89.0,
+        "quantity": 20
+      }
+    ]
+  },
+  "instructions": "Could you remove the first 2 items from the items list?",
+  "ground_truth": {
+    "client_name": "Acme Corporation",
+    "items": [
+      {
+        "description": "Ergonomic Keyboard",
+        "price": 89.0,
+        "quantity": 20
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_remove_first_2",
+    "path": [
+      "items"
+    ],
+    "precise_instruction": "Remove the first 2 items from the \"items\" list."
+  }
+}

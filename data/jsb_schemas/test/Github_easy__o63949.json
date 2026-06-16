@@ -1,0 +1,27 @@
+{
+  "name": "o63949",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "foo": {
+        "type": "object",
+        "properties": {
+          "bar": {
+            "type": "string",
+            "default": "bar"
+          },
+          "baz": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bar",
+          "baz"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "name": "o88671",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "self": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "module": {
+            "type": "string"
+          },
+          "extra": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "type",
+          "module"
+        ]
+      },
+      "zookeeper": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "host",
+          "port"
+        ]
+      },
+      "meshblu_server": {
+        "type": "object",
+        "properties": {
+          "db_url": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          },
+          "message_timeout": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "db_url",
+          "host",
+          "port",
+          "message_timeout"
+        ]
+      }
+    },
+    "required": [
+      "self",
+      "zookeeper"
+    ]
+  },
+  "data": {
+    "self": {
+      "type": {
+        "id": "service-123",
+        "name": "MeshbluConnector",
+        "icon": "https://example.com/icon.png"
+      },
+      "module": "meshblu-connector",
+      "extra": {
+        "environment": "production",
+        "version": "1.4.2"
+      }
+    },
+    "zookeeper": {
+      "host": "zookeeper.example.com",
+      "port": 2181
+    },
+    "meshblu_server": {
+      "db_url": "postgres://meshblu:password@db.example.com:5432/meshblu",
+      "host": "meshblu.example.com",
+      "port": 443,
+      "message_timeout": 30000
+    }
+  },
+  "instructions": "Could you remove the\u202f\u201cextra\u201d\u202ffield inside\u202f\u201cself\u201d?",
+  "ground_truth": {
+    "self": {
+      "type": {
+        "id": "service-123",
+        "name": "MeshbluConnector",
+        "icon": "https://example.com/icon.png"
+      },
+      "module": "meshblu-connector"
+    },
+    "zookeeper": {
+      "host": "zookeeper.example.com",
+      "port": 2181
+    },
+    "meshblu_server": {
+      "db_url": "postgres://meshblu:password@db.example.com:5432/meshblu",
+      "host": "meshblu.example.com",
+      "port": 443,
+      "message_timeout": 30000
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "self",
+      "extra"
+    ],
+    "precise_instruction": "Remove the \"extra\" field inside \"self\"."
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "name": "o33966",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "description": "Generates Angular's @Injectable classes to access translation messages from JSON.",
+    "properties": {
+      "$schema": {
+        "type": "string"
+      },
+      "argumentType": {
+        "default": "string",
+        "description": "Type for generated arguments. Defaults to 'string', but may be set to more permissive types, such as 'string | number' or even 'any'.",
+        "type": "string"
+      },
+      "defaultLocale": {
+        "default": "en",
+        "description": "Default locale. The file name of the default locale doesn't include the locale.",
+        "type": "string"
+      },
+      "input": {
+        "default": "src/translations",
+        "description": "Folder containing the translation JSON files to read from.",
+        "type": "string"
+      },
+      "locales": {
+        "default": [
+          "en"
+        ],
+        "description": "A list of locales which can be processed",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "mapping": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "A mapping from JSON file (without extension) to the TS class name. Must be in the form: file1=Class1:file2=Class2:...",
+        "type": "object"
+      },
+      "output": {
+        "default": "src/app/messages",
+        "description": "Folder where the generated TS clases will be placed.",
+        "type": "string"
+      },
+      "separator": {
+        "default": ".",
+        "description": "File name separator between base name and locale",
+        "type": "string"
+      }
+    },
+    "title": "Options for ng-translation-gen",
+    "type": "object"
+  },
+  "erroneous_json": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "argumentType": "string | number",
+    "defaultLocale": "en",
+    "input": "src/assets/i18n",
+    "locales": [
+      "en",
+      "fr",
+      "de"
+    ],
+    "mapping": null,
+    "output": "src/app/i18n",
+    "separator": "_"
+  },
+  "valid_json": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "argumentType": "string | number",
+    "defaultLocale": "en",
+    "input": "src/assets/i18n",
+    "locales": [
+      "en",
+      "fr",
+      "de"
+    ],
+    "mapping": {
+      "common": "CommonMessages",
+      "dashboard": "DashboardMessages",
+      "profile": "UserProfileMessages"
+    },
+    "output": "src/app/i18n",
+    "separator": "_"
+  },
+  "description": "Hi team,\n\nFor the upcoming translation service generation, we\u2019ll be using the JSON files located under **src/assets/i18n**. The default language is English (en), and we\u2019ll support English, French (fr) and German (de) across the board. The generated TypeScript classes will be placed in **src/app/i18n**, and the filenames will use an underscore (\u201c_\u201d) to separate the base name from the locale suffix.\n\nThe mapping of JSON files to their corresponding injectable classes is as follows: the *common* file will become **CommonMessages**, *dashboard* will turn into **DashboardMessages**, and *profile* will be exposed as **UserProfileMessages**. All generated methods will accept arguments of type **string\u202f|\u202fnumber**. This configuration adheres to the schema defined at http://json-schema.org/draft-07/schema#."
+}

@@ -1,0 +1,83 @@
+{
+  "name": "o58320",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "title": "JSON schema for Web Application manifest files (schema extensions)",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "mjs_access_whitelist": {
+        "description": "The mjs_access_whitelist member is an array of rules that indicates the type of access the URLs matching the rule should have.",
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/mjs_access_whitelist_rule"
+        }
+      }
+    },
+    "definitions": {
+      "mjs_access_whitelist_rule": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "description": "A string that represents the URL pattern for which the rule should be applied to.",
+            "type": "string",
+            "format": "uri"
+          },
+          "apiAccess": {
+            "description": "A string that defines the type of access to the runtime API where the application is running.",
+            "enum": [
+              "none",
+              "all",
+              "AllowForWebOnly"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "mjs_access_whitelist": [
+      {
+        "url": "https://api.example.com/v1/*",
+        "apiAccess": "all"
+      },
+      {
+        "url": "https://static.example.com/assets/*",
+        "apiAccess": "AllowForWebOnly"
+      },
+      {
+        "url": "https://internal.example.local/health",
+        "apiAccess": "none"
+      }
+    ]
+  },
+  "instructions": "Could you add a new item to the\u202fmjs_access_whitelist\u202flist that\u2019s exactly the same as its first entry?",
+  "ground_truth": {
+    "mjs_access_whitelist": [
+      {
+        "url": "https://api.example.com/v1/*",
+        "apiAccess": "all"
+      },
+      {
+        "url": "https://static.example.com/assets/*",
+        "apiAccess": "AllowForWebOnly"
+      },
+      {
+        "url": "https://internal.example.local/health",
+        "apiAccess": "none"
+      },
+      {
+        "url": "https://api.example.com/v1/*",
+        "apiAccess": "all"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "mjs_access_whitelist"
+    ],
+    "precise_instruction": "Add another item to the \"mjs_access_whitelist\" list, identical to its first item."
+  }
+}

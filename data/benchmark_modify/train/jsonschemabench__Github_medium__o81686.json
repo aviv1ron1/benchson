@@ -1,0 +1,99 @@
+{
+  "name": "o81686",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "id": "https://treeherder.mozilla.org/schemas/v1/resultset-runnable-job-action-message.json#",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Notification of triggering runnable jobs on a resultset",
+    "description": "Event is dispatched when user/service asks for new runnable jobs on a resultset",
+    "type": "object",
+    "properties": {
+      "version": {
+        "title": "Message-format version",
+        "enum": [
+          1
+        ]
+      },
+      "project": {
+        "title": "Project Name",
+        "description": "Identifier for treeherder project, like `try` or `mozilla-central`.",
+        "type": "string"
+      },
+      "resultset_id": {
+        "title": "Resultset ID",
+        "description": "Project unique identifier for a resultset",
+        "type": "string"
+      },
+      "requester": {
+        "title": "Requester",
+        "description": "The requester of the action (usually an email)",
+        "type": "string"
+      },
+      "requested_jobs": {
+        "title": "Requested Jobs",
+        "description": "The buildernames and TaskLabels that should be added to a push",
+        "type": "array"
+      },
+      "decision_task_id": {
+        "title": "decision_task_id",
+        "description": "The Gecko Decision Task's Task ID for this resultset",
+        "type": "string"
+      },
+      "timestamp": {
+        "title": "timestamp",
+        "description": "The UTC timestamp",
+        "type": "string"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "version",
+      "resultset_id",
+      "project",
+      "requester",
+      "requested_jobs",
+      "decision_task_id"
+    ]
+  },
+  "data": {
+    "version": 1,
+    "project": "mozilla-central",
+    "resultset_id": "rs1234567890",
+    "requester": "ci-bot@example.com",
+    "requested_jobs": [
+      "linux64-debug",
+      "macosx64-opt",
+      {
+        "builder": "android-emu",
+        "taskLabel": "test"
+      }
+    ],
+    "decision_task_id": "d1234567890abcdef",
+    "timestamp": "2026-06-15T12:34:56Z"
+  },
+  "instructions": "Could you update the decision_task_id to d1234567890abcdef (updated)?",
+  "ground_truth": {
+    "version": 1,
+    "project": "mozilla-central",
+    "resultset_id": "rs1234567890",
+    "requester": "ci-bot@example.com",
+    "requested_jobs": [
+      "linux64-debug",
+      "macosx64-opt",
+      {
+        "builder": "android-emu",
+        "taskLabel": "test"
+      }
+    ],
+    "decision_task_id": "d1234567890abcdef (updated)",
+    "timestamp": "2026-06-15T12:34:56Z"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "decision_task_id"
+    ],
+    "precise_instruction": "Change \"decision_task_id\" to \"d1234567890abcdef (updated)\"."
+  }
+}

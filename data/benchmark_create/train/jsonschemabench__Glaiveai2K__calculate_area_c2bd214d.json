@@ -1,0 +1,56 @@
+{
+  "name": "calculate_area_c2bd214d",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "measurements": {
+        "description": "The measurements required for the shape",
+        "properties": {
+          "base": {
+            "description": "The base of the triangle",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the triangle",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the circle",
+            "type": "number"
+          },
+          "side": {
+            "description": "The length of the side of the square",
+            "type": "number"
+          }
+        },
+        "required": [
+          "radius",
+          "base",
+          "height",
+          "side"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. circle, triangle, square)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "measurements"
+    ],
+    "type": "object"
+  },
+  "description": "Subject: Geometry Specification \u2013 Triangle Parameters\n\nDear Team,\n\nFor the upcoming design review, the chosen shape is a triangle. The triangle\u2019s base measures\u202f5.2\u202funits and its height is\u202f3.8\u202funits. Although not directly used for the triangle, we also have the related dimensions on file: the radius of the associated circle is\u202f2.5\u202funits, and the side length of the referenced square is\u202f4.0\u202funits. Please ensure these measurements are reflected accurately in the relevant calculations and drawings.",
+  "reference_json": {
+    "shape": "triangle",
+    "measurements": {
+      "base": 5.2,
+      "height": 3.8,
+      "radius": 2.5,
+      "side": 4.0
+    }
+  }
+}

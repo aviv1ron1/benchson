@@ -1,0 +1,72 @@
+{
+  "name": "calculate_area_a577a04d",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "required": [
+          "base",
+          "height",
+          "length",
+          "width"
+        ],
+        "type": "object"
+      },
+      "shape": {
+        "description": "The type of shape (e.g. triangle, rectangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "base": 5.2,
+      "height": 3.8,
+      "length": 12.0,
+      "width": 7.5
+    }
+  },
+  "instructions": "Please increase the \"length\" inside \"dimensions\" by 1.",
+  "ground_truth": {
+    "shape": "rectangular prism",
+    "dimensions": {
+      "base": 5.2,
+      "height": 3.8,
+      "length": 13.0,
+      "width": 7.5
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "dimensions",
+      "length"
+    ],
+    "precise_instruction": "Increase \"length\" inside \"dimensions\" by 1."
+  }
+}

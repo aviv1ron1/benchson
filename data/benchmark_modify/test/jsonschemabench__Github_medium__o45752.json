@@ -1,0 +1,210 @@
+{
+  "name": "o45752",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "parentId": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "string"
+      },
+      "sessionName": {
+        "type": "string"
+      },
+      "author": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "colour0": {
+            "type": "string"
+          },
+          "colour1": {
+            "type": "string"
+          },
+          "colour2": {
+            "type": "string"
+          },
+          "colour3": {
+            "type": "string"
+          },
+          "colour4": {
+            "type": "string"
+          },
+          "colour5": {
+            "type": "string"
+          },
+          "colour6": {
+            "type": "string"
+          },
+          "colour7": {
+            "type": "string"
+          },
+          "colour8": {
+            "type": "string"
+          },
+          "colour9": {
+            "type": "string"
+          },
+          "colour10": {
+            "type": "string"
+          },
+          "colour11": {
+            "type": "string"
+          },
+          "colour12": {
+            "type": "string"
+          },
+          "colour13": {
+            "type": "string"
+          },
+          "colour14": {
+            "type": "string"
+          },
+          "colour15": {
+            "type": "string"
+          },
+          "colour16": {
+            "type": "string"
+          },
+          "colour17": {
+            "type": "string"
+          },
+          "colour18": {
+            "type": "string"
+          },
+          "colour19": {
+            "type": "string"
+          },
+          "colour20": {
+            "type": "string"
+          },
+          "colour21": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "colour0",
+          "colour1",
+          "colour2",
+          "colour3",
+          "colour4",
+          "colour5",
+          "colour6",
+          "colour7",
+          "colour8",
+          "colour9",
+          "colour10",
+          "colour11",
+          "colour12",
+          "colour13",
+          "colour14",
+          "colour15",
+          "colour16",
+          "colour17",
+          "colour18",
+          "colour19",
+          "colour20",
+          "colour21"
+        ]
+      }
+    },
+    "required": [
+      "name",
+      "sessionName",
+      "author",
+      "url",
+      "type",
+      "data"
+    ]
+  },
+  "data": {
+    "id": 1024,
+    "parentId": 1000,
+    "name": "Sunset Palette",
+    "sessionName": "DesignSession2024",
+    "author": "Alex Rivera",
+    "url": "https://example.com/palettes/1024",
+    "type": "colorScheme",
+    "data": {
+      "colour0": "#FF5733",
+      "colour1": "#FF8D1A",
+      "colour2": "#FFC300",
+      "colour3": "#DAF7A6",
+      "colour4": "#75FF33",
+      "colour5": "#33FF57",
+      "colour6": "#33FFBD",
+      "colour7": "#33D4FF",
+      "colour8": "#3375FF",
+      "colour9": "#8D33FF",
+      "colour10": "#FF33A8",
+      "colour11": "#FF3380",
+      "colour12": "#FF3333",
+      "colour13": "#FF6633",
+      "colour14": "#FF9A33",
+      "colour15": "#FFCE33",
+      "colour16": "#E0FF33",
+      "colour17": "#A6FF33",
+      "colour18": "#73FF33",
+      "colour19": "#33FF57",
+      "colour20": "#33FFBD",
+      "colour21": "#33D4FF"
+    }
+  },
+  "instructions": "Please change the \u201ccolour1\u201d field inside \u201cdata\u201d to \u201c#FF8D1A (updated)\u201d.",
+  "ground_truth": {
+    "id": 1024,
+    "parentId": 1000,
+    "name": "Sunset Palette",
+    "sessionName": "DesignSession2024",
+    "author": "Alex Rivera",
+    "url": "https://example.com/palettes/1024",
+    "type": "colorScheme",
+    "data": {
+      "colour0": "#FF5733",
+      "colour1": "#FF8D1A (updated)",
+      "colour2": "#FFC300",
+      "colour3": "#DAF7A6",
+      "colour4": "#75FF33",
+      "colour5": "#33FF57",
+      "colour6": "#33FFBD",
+      "colour7": "#33D4FF",
+      "colour8": "#3375FF",
+      "colour9": "#8D33FF",
+      "colour10": "#FF33A8",
+      "colour11": "#FF3380",
+      "colour12": "#FF3333",
+      "colour13": "#FF6633",
+      "colour14": "#FF9A33",
+      "colour15": "#FFCE33",
+      "colour16": "#E0FF33",
+      "colour17": "#A6FF33",
+      "colour18": "#73FF33",
+      "colour19": "#33FF57",
+      "colour20": "#33FFBD",
+      "colour21": "#33D4FF"
+    }
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "data",
+      "colour1"
+    ],
+    "precise_instruction": "Change \"colour1\" inside \"data\" to \"#FF8D1A (updated)\"."
+  }
+}

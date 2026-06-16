@@ -1,0 +1,78 @@
+{
+  "name": "o36594",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "icon": {
+        "type": "string"
+      },
+      "periodic_booking": {
+        "type": "boolean"
+      },
+      "is_available": {
+        "type": "boolean"
+      },
+      "min_delay": {
+        "description": "In seconds. The resource must be booked at least min_delay in advance",
+        "type": "integer",
+        "minimum": 0
+      },
+      "max_delay": {
+        "description": "In seconds. The resource can be booked at most max_delay in advance",
+        "type": "integer",
+        "minimum": 0
+      },
+      "color": {
+        "type": "string"
+      },
+      "validation": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "name",
+      "periodic_booking",
+      "is_available"
+    ],
+    "additionalProperties": false
+  },
+  "data": {
+    "name": "Conference Room A",
+    "periodic_booking": true,
+    "is_available": false,
+    "description": "A medium-sized conference room equipped with a projector and video\u2011conferencing system.",
+    "icon": "https://example.com/assets/icons/conference-room-a.png",
+    "min_delay": 3600,
+    "max_delay": 259200,
+    "color": "#4A90E2",
+    "validation": true
+  },
+  "instructions": "Please change the color to \"#4A90E2 (updated)\".",
+  "ground_truth": {
+    "name": "Conference Room A",
+    "periodic_booking": true,
+    "is_available": false,
+    "description": "A medium-sized conference room equipped with a projector and video\u2011conferencing system.",
+    "icon": "https://example.com/assets/icons/conference-room-a.png",
+    "min_delay": 3600,
+    "max_delay": 259200,
+    "color": "#4A90E2 (updated)",
+    "validation": true
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "color"
+    ],
+    "precise_instruction": "Change \"color\" to \"#4A90E2 (updated)\"."
+  }
+}

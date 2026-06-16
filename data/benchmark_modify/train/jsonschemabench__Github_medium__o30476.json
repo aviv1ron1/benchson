@@ -1,0 +1,130 @@
+{
+  "name": "o30476",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "properties": {
+      "failedprobes": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "lastresponse": {
+        "readonly": true,
+        "type": "string"
+      },
+      "monitor_name": {
+        "type": "string"
+      },
+      "monitor_state": {
+        "enum": [
+          "UP",
+          "DOWN",
+          "UNKNOWN",
+          "BUSY",
+          "OUT OF SERVICE",
+          "GOING OUT OF SERVICE",
+          "DOWN WHEN GOING OUT OF SERVICE",
+          "NS_EMPTY_STR",
+          "Unknown",
+          "DISABLED"
+        ],
+        "readonly": true,
+        "type": "string"
+      },
+      "monitorcurrentfailedprobes": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "monitortotalfailedprobes": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "monitortotalprobes": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "monstatcode": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "monstate": {
+        "enum": [
+          "ENABLED",
+          "DISABLED"
+        ],
+        "type": "string"
+      },
+      "monstatparam1": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "monstatparam2": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "monstatparam3": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "responsetime": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "servicename": {
+        "type": "string"
+      },
+      "totalfailedprobes": {
+        "readonly": true,
+        "type": "integer"
+      },
+      "weight": {
+        "type": "integer"
+      }
+    },
+    "title": "gslbservice_lbmonitor_binding",
+    "type": "object"
+  },
+  "data": {
+    "failedprobes": 3,
+    "lastresponse": "HTTP 200 OK",
+    "monitor_name": "http_monitor_1",
+    "monitor_state": "UP",
+    "monitorcurrentfailedprobes": 0,
+    "monitortotalfailedprobes": 5,
+    "monitortotalprobes": 100,
+    "monstatcode": 200,
+    "monstate": "ENABLED",
+    "monstatparam1": 10,
+    "monstatparam2": 5,
+    "monstatparam3": 0,
+    "responsetime": 120,
+    "servicename": "my_service",
+    "totalfailedprobes": 5,
+    "weight": 50
+  },
+  "instructions": "Could you delete the weight field?",
+  "ground_truth": {
+    "failedprobes": 3,
+    "lastresponse": "HTTP 200 OK",
+    "monitor_name": "http_monitor_1",
+    "monitor_state": "UP",
+    "monitorcurrentfailedprobes": 0,
+    "monitortotalfailedprobes": 5,
+    "monitortotalprobes": 100,
+    "monstatcode": 200,
+    "monstate": "ENABLED",
+    "monstatparam1": 10,
+    "monstatparam2": 5,
+    "monstatparam3": 0,
+    "responsetime": 120,
+    "servicename": "my_service",
+    "totalfailedprobes": 5
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "weight"
+    ],
+    "precise_instruction": "Remove the \"weight\" field."
+  }
+}

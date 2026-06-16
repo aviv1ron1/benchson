@@ -1,0 +1,53 @@
+{
+  "name": "o88676",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "Shampoo response specification",
+    "properties": {
+      "message": {
+        "description": "Human readable status message.",
+        "type": "string"
+      },
+      "request_id": {
+        "description": "The request_id of the request this is a response to.",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "response_data": {
+        "description": "Response data from the called method",
+        "type": "object"
+      },
+      "status": {
+        "description": "Status code, using the same codes as HTTP.",
+        "minimum": 100,
+        "type": "integer"
+      },
+      "type": {
+        "pattern": "response",
+        "type": "string"
+      }
+    },
+    "required": [
+      "type",
+      "status",
+      "message",
+      "response_data",
+      "request_id"
+    ],
+    "type": "object"
+  },
+  "description": "Dear Team,\n\nI\u2019m pleased to confirm that the shampoo request (ID\u202f#12345) was processed successfully. The system returned a response with status\u202f200 and a clear status message: \u201cShampoo request processed successfully.\u201d This response confirms that the operation completed without error.\n\nBelow are the details of the requested product: **SilkySmooth Daily Wash** is priced at **$8.99 USD**, is currently **in_stock**, and the recommended usage is to \u201capply to wet hair, lather, and rinse thoroughly.\u201d If you need any further information, please let me know.",
+  "reference_json": {
+    "type": "response",
+    "status": 200,
+    "message": "Shampoo request processed successfully.",
+    "response_data": {
+      "shampoo_name": "SilkySmooth Daily Wash",
+      "price_usd": 8.99,
+      "availability": "in_stock",
+      "recommended_use": "Apply to wet hair, lather, and rinse thoroughly."
+    },
+    "request_id": 12345
+  }
+}

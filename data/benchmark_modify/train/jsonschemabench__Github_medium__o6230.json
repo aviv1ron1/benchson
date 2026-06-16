@@ -1,0 +1,174 @@
+{
+  "name": "o6230",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+      "emailVerified": {
+        "type": "boolean"
+      },
+      "firstName": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "lastName": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      },
+      "companyName": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "phoneNumber": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "location": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "url": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "twoFactorAuthEnabled": {
+        "type": "boolean"
+      },
+      "fullName": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 2048
+      },
+      "twoFactorCode": {
+        "type": "string",
+        "maxLength": 2048
+      }
+    },
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "creationDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "lastUpdated": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "passwordLastUpdated": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "email": {
+        "type": "string",
+        "format": "email",
+        "maxLength": 1024
+      },
+      "emailVerified": {
+        "$ref": "#/definitions/emailVerified"
+      },
+      "firstName": {
+        "$ref": "#/definitions/firstName"
+      },
+      "lastName": {
+        "$ref": "#/definitions/lastName"
+      },
+      "companyName": {
+        "$ref": "#/definitions/companyName"
+      },
+      "phoneNumber": {
+        "$ref": "#/definitions/phoneNumber"
+      },
+      "location": {
+        "$ref": "#/definitions/location"
+      },
+      "url": {
+        "$ref": "#/definitions/url"
+      },
+      "twoFactorAuthEnabled": {
+        "$ref": "#/definitions/twoFactorAuthEnabled"
+      },
+      "fullName": {
+        "$ref": "#/definitions/fullName"
+      },
+      "userId": {
+        "type": "string",
+        "pattern": "^[A-Fa-f\\d]{24}$"
+      },
+      "summary": {
+        "type": "object",
+        "properties": {
+          "appCount": {
+            "type": "number"
+          },
+          "dashCount": {
+            "type": "number"
+          },
+          "orgCount": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "id": "5f8d04b9a6c3e2d4f1234567",
+    "creationDate": "2023-09-15T12:34:56Z",
+    "lastUpdated": "2024-05-01T08:20:30Z",
+    "passwordLastUpdated": "2024-01-10T10:15:00Z",
+    "email": "jane.doe@example.com",
+    "emailVerified": true,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "companyName": "Acme Corp",
+    "phoneNumber": "+1-555-123-4567",
+    "location": "San Francisco, CA",
+    "url": "https://www.acmecorp.com",
+    "twoFactorAuthEnabled": false,
+    "fullName": "Jane Doe",
+    "userId": "5f8d04b9a6c3e2d4f1234568",
+    "summary": {
+      "appCount": 12,
+      "dashCount": 5,
+      "orgCount": 3
+    }
+  },
+  "instructions": "Could you remove the \"userId\" field?",
+  "ground_truth": {
+    "id": "5f8d04b9a6c3e2d4f1234567",
+    "creationDate": "2023-09-15T12:34:56Z",
+    "lastUpdated": "2024-05-01T08:20:30Z",
+    "passwordLastUpdated": "2024-01-10T10:15:00Z",
+    "email": "jane.doe@example.com",
+    "emailVerified": true,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "companyName": "Acme Corp",
+    "phoneNumber": "+1-555-123-4567",
+    "location": "San Francisco, CA",
+    "url": "https://www.acmecorp.com",
+    "twoFactorAuthEnabled": false,
+    "fullName": "Jane Doe",
+    "summary": {
+      "appCount": 12,
+      "dashCount": 5,
+      "orgCount": 3
+    }
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "userId"
+    ],
+    "precise_instruction": "Remove the \"userId\" field."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "o72175",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "description": "version specific attributes of a stack",
+    "properties": {
+      "createTimestamp": {
+        "id": "createTimestamp",
+        "type": "string"
+      },
+      "projectIteration": {
+        "id": "projectIteration",
+        "type": "integer"
+      },
+      "projectStep": {
+        "id": "projectStep",
+        "type": "integer"
+      },
+      "snapshotRootPath": {
+        "id": "snapshotRootPath",
+        "type": "string"
+      },
+      "stackResolutionX": {
+        "id": "stackResolutionX",
+        "type": "number"
+      },
+      "stackResolutionY": {
+        "id": "stackResolutionY",
+        "type": "number"
+      },
+      "stackResolutionZ": {
+        "id": "stackResolutionZ",
+        "type": "number"
+      },
+      "versionNotes": {
+        "id": "versionNotes",
+        "type": "string"
+      }
+    },
+    "required": [],
+    "title": "Stack Version",
+    "type": "object"
+  },
+  "data": {
+    "createTimestamp": "2024-03-18T14:27:05Z",
+    "projectIteration": 42,
+    "projectStep": 7,
+    "snapshotRootPath": "/mnt/data/stack_snapshots/v5",
+    "stackResolutionX": 0.125,
+    "stackResolutionY": 0.125,
+    "stackResolutionZ": 0.5,
+    "versionNotes": "Adjusted Z-resolution for improved depth accuracy and added metadata for new imaging modality."
+  },
+  "instructions": "Could you please remove the \"versionNotes\" field?",
+  "ground_truth": {
+    "createTimestamp": "2024-03-18T14:27:05Z",
+    "projectIteration": 42,
+    "projectStep": 7,
+    "snapshotRootPath": "/mnt/data/stack_snapshots/v5",
+    "stackResolutionX": 0.125,
+    "stackResolutionY": 0.125,
+    "stackResolutionZ": 0.5
+  },
+  "modification": {
+    "op": "delete_field",
+    "path": [
+      "versionNotes"
+    ],
+    "precise_instruction": "Remove the \"versionNotes\" field."
+  }
+}

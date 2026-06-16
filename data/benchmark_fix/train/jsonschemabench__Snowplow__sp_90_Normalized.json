@@ -1,0 +1,44 @@
+{
+  "name": "sp_90_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "A select_content GTM server-side event.",
+    "properties": {
+      "content_type": {
+        "description": "The type of selected content.",
+        "maxLength": 4096,
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "item_id": {
+        "description": "An identifier for the item that was selected.",
+        "maxLength": 500,
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "self": {
+      "format": "jsonschema",
+      "name": "select_content",
+      "vendor": "com.google.tag-manager.server-side",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "content_type": "article",
+    "item_id": "article-2023-09-15-xyz",
+    "__invalid_field__": "invalid"
+  },
+  "valid_json": {
+    "content_type": "article",
+    "item_id": "article-2023-09-15-xyz"
+  },
+  "description": "During the recent monitoring session, the system recorded a selection event for content classified as an **article**. The specific item that was chosen carries the identifier **article-2023-09-15-xyz**. This information can be used to track user engagement with that particular article."
+}

@@ -1,0 +1,63 @@
+{
+  "name": "o6250",
+  "source": "jsonschemabench",
+  "subset": "Github_easy",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "attrInfos": {
+        "title": "Attributes",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "title": "Attribute",
+          "type": "object",
+          "properties": {
+            "key": {
+              "title": "Key",
+              "type": "string",
+              "minLength": 1
+            },
+            "valueTemplate": {
+              "title": "Value Template",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "key",
+            "valueTemplate"
+          ]
+        }
+      },
+      "deviceId": {
+        "title": "Device ID",
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "deviceId"
+    ]
+  },
+  "erroneous_json": {
+    "deviceId": "device-001",
+    "attrInfos": null
+  },
+  "valid_json": {
+    "deviceId": "device-001",
+    "attrInfos": [
+      {
+        "key": "temperature",
+        "valueTemplate": "{{value}} \u00b0C"
+      },
+      {
+        "key": "humidity",
+        "valueTemplate": "{{value}} %"
+      }
+    ]
+  },
+  "description": "Dear Team,\n\nPlease note that the sensor identified as **device-001** has been configured with two measurable attributes. The first attribute is **temperature**, which should be reported using the template\u202f`{{value}} \u00b0C` to include the numeric reading followed by the degree\u2011Celsius symbol. The second attribute is **humidity**, for which the template\u202f`{{value}} %` must be applied, appending a percent sign to the measured value. These templates will ensure that all incoming data are formatted consistently across our monitoring platform."
+}

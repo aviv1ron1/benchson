@@ -1,0 +1,141 @@
+{
+  "name": "o28612",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "material_position": {
+        "type": "number"
+      },
+      "type": {
+        "title": "Chunk type",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "display_name"
+        ]
+      },
+      "translatable": {
+        "type": "boolean"
+      },
+      "body": {
+        "type": "string"
+      },
+      "translations": {
+        "title": "Translations list",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "comments": {
+        "title": "Comments list",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "material_position",
+      "type",
+      "translatable",
+      "body",
+      "comments",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "data": {
+    "id": 123,
+    "material_position": 4,
+    "type": {
+      "id": 1,
+      "name": "paragraph",
+      "display_name": "Paragraph"
+    },
+    "translatable": true,
+    "body": "This is a sample content body for the chunk.",
+    "translations": {
+      "data": []
+    },
+    "comments": {
+      "data": [
+        {
+          "author": "Alice",
+          "text": "Great chunk!",
+          "timestamp": "2023-11-01T10:15:00Z"
+        }
+      ]
+    },
+    "created_at": "2023-10-25T08:30:00Z",
+    "updated_at": "2023-11-02T12:45:00Z"
+  },
+  "instructions": "Please change the \"created_at\" field to \"2023-10-25T08:30:00Z (updated)\".",
+  "ground_truth": {
+    "id": 123,
+    "material_position": 4,
+    "type": {
+      "id": 1,
+      "name": "paragraph",
+      "display_name": "Paragraph"
+    },
+    "translatable": true,
+    "body": "This is a sample content body for the chunk.",
+    "translations": {
+      "data": []
+    },
+    "comments": {
+      "data": [
+        {
+          "author": "Alice",
+          "text": "Great chunk!",
+          "timestamp": "2023-11-01T10:15:00Z"
+        }
+      ]
+    },
+    "created_at": "2023-10-25T08:30:00Z (updated)",
+    "updated_at": "2023-11-02T12:45:00Z"
+  },
+  "modification": {
+    "op": "set_string",
+    "path": [
+      "created_at"
+    ],
+    "precise_instruction": "Change \"created_at\" to \"2023-10-25T08:30:00Z (updated)\"."
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "name": "o61121",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "name"
+    ],
+    "properties": {
+      "name": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+/[a-z0-9-]+$",
+        "description": "Package name using 'org/name' format."
+      },
+      "type": {
+        "type": "string",
+        "description": "Either 'library' for static and shared libraries or 'project' for executable projects. The default value is 'library'."
+      },
+      "include": {
+        "type": "string",
+        "description": "Path to the directory containing header files (.h and .hpp). The default is 'include'."
+      },
+      "source": {
+        "type": "string",
+        "description": "Path to the directory containing source files (.c and .cpp). The default is 'src'."
+      },
+      "compiler": {
+        "type": "object",
+        "description": "List of supported compilers. By default one of the locally supported compilers is used.",
+        "additionalProperties": {
+          "type": "string",
+          "description": "The compiler name (key) and version constraint (value)."
+        }
+      },
+      "platform": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Supported platform. If no platform is specified then it's assumed that all platforms are supported."
+          },
+          {
+            "type": "array",
+            "description": "List of supported platforms. If no platforms are specified then it's assumed that all platforms are supported.",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "arch": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Supported architecture. The defaults are 'x86' and 'x64'."
+          },
+          {
+            "type": "array",
+            "description": "List of supported architectures. The defaults are 'x86' and 'x64'.",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "linking": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "Support only one linking type. By default supports both, the static and dynamic linking."
+          },
+          {
+            "type": "array",
+            "description": "List of supported linking types. The defaults are 'static' and 'dynamic'.",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "dependencies": {
+        "type": "object",
+        "description": "List of required dependencies.",
+        "items": {
+          "type": "string",
+          "description": "Each item contains the package name and version constraint, additionally the linking type constraint (eq. '\"org/package\": \"^5.3:static\"')."
+        }
+      },
+      "dev-dependencies": {
+        "type": "object",
+        "description": "List of required dependencies while developing (i.e. package is the root one).",
+        "items": {
+          "type": "string",
+          "description": "Each item contains the package name and version constraint, additionally the linking type constraint (eq. '\"org/package\": \"^5.3:static\"')."
+        }
+      },
+      "define": {
+        "type": "object",
+        "description": "List of preprocessor macros.",
+        "additionalProperties": false,
+        "properties": {
+          "debug": {
+            "type": "object"
+          },
+          "release": {
+            "type": "object"
+          }
+        }
+      },
+      "scripts": {
+        "type": "object",
+        "description": "List of user and system callbacks scripts.",
+        "patternProperties": {
+          ".*": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "Each item contains the script name with constraints and command (eq. '\"clear-cache:linux\": \"rm -r ./cache\"')."
+              },
+              {
+                "type": "array",
+                "description": "Each item contains the script name with constraints and commands (eq. '\"clear-cache:linux\": \"rm -r ./cache\"').",
+                "items": {
+                  "type": "string",
+                  "description": "The list of commands executed one by one. Commands are executed as long as previous command exits with status code 0."
+                }
+              }
+            ]
+          }
+        }
+      },
+      "repositories": {
+        "type": "array",
+        "description": "List of repositories to search for packages before looking up to the official one.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "Type of the repository, eq. local, git, register etc."
+            },
+            "src": {
+              "type": "string",
+              "description": "Repository source, eq. directory path for local repository etc."
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "name": "myorg/utilities",
+    "type": "library",
+    "include": "include",
+    "source": "src",
+    "compiler": {
+      "gcc": ">=9.0",
+      "clang": "^12"
+    },
+    "platform": [
+      "linux",
+      "windows"
+    ],
+    "arch": [
+      "x86",
+      "x64",
+      "arm64"
+    ],
+    "linking": [
+      "static",
+      "dynamic"
+    ],
+    "dependencies": {
+      "myorg/core": "^2.5:static",
+      "myorg/logger": "~1.3"
+    },
+    "dev-dependencies": {
+      "myorg/testing": "^0.9:dynamic"
+    },
+    "define": {
+      "debug": {
+        "ENABLE_LOGGING": "1"
+      },
+      "release": {
+        "OPTIMIZE": "2"
+      }
+    },
+    "scripts": {
+      "build:linux": "make all",
+      "clean": [
+        "rm -rf build/",
+        "rm -f *.o"
+      ],
+      "test:windows": "run-tests.bat"
+    },
+    "repositories": [
+      {
+        "type": "local",
+        "src": "/opt/packages"
+      },
+      {
+        "type": "git",
+        "src": "https://github.com/myorg/custom-packages.git"
+      }
+    ]
+  },
+  "instructions": "Add a copy of the first entry to the \u201cclean\u201d list inside \u201cscripts\u201d.",
+  "ground_truth": {
+    "name": "myorg/utilities",
+    "type": "library",
+    "include": "include",
+    "source": "src",
+    "compiler": {
+      "gcc": ">=9.0",
+      "clang": "^12"
+    },
+    "platform": [
+      "linux",
+      "windows"
+    ],
+    "arch": [
+      "x86",
+      "x64",
+      "arm64"
+    ],
+    "linking": [
+      "static",
+      "dynamic"
+    ],
+    "dependencies": {
+      "myorg/core": "^2.5:static",
+      "myorg/logger": "~1.3"
+    },
+    "dev-dependencies": {
+      "myorg/testing": "^0.9:dynamic"
+    },
+    "define": {
+      "debug": {
+        "ENABLE_LOGGING": "1"
+      },
+      "release": {
+        "OPTIMIZE": "2"
+      }
+    },
+    "scripts": {
+      "build:linux": "make all",
+      "clean": [
+        "rm -rf build/",
+        "rm -f *.o",
+        "rm -rf build/"
+      ],
+      "test:windows": "run-tests.bat"
+    },
+    "repositories": [
+      {
+        "type": "local",
+        "src": "/opt/packages"
+      },
+      {
+        "type": "git",
+        "src": "https://github.com/myorg/custom-packages.git"
+      }
+    ]
+  },
+  "modification": {
+    "op": "array_append_copy",
+    "path": [
+      "scripts",
+      "clean"
+    ],
+    "precise_instruction": "Add another item to the \"clean\" list inside \"scripts\", identical to its first item."
+  }
+}

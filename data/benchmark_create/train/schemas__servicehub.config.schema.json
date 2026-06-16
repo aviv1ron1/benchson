@@ -1,0 +1,115 @@
+{
+  "name": "servicehub.config.schema",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/servicehub.config.schema.json",
+    "properties": {
+      "controller": {
+        "type": "object",
+        "description": "Specifies the location of the controller executable and activation parameters.",
+        "required": [
+          "executable"
+        ],
+        "properties": {
+          "contextEnvironmentVariables": {
+            "type": "array",
+            "description": "Array of environment variable names. These variables are mixed-up into hash that determines the location service pipe name. The order is significant.",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "executable": {
+            "type": "string"
+          },
+          "args": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "additionalEnvironmentVariables": {
+            "type": "object",
+            "description": "An object with properties like \"environment variable name\": \"value\" that describes what environment variables to set for the Hub Controller.",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[A-Za-z0-9_/\\.]+$": {
+                "type": "string",
+                "description": "The value of the environment variable to set."
+              }
+            }
+          }
+        },
+        "hosts": {
+          "type": "object",
+          "required": [
+            "rootDir"
+          ],
+          "properties": {
+            "rootDir": {
+              "type": "string",
+              "description": "The path to the directory immediately under which are folders that contain *.servicehub.host.json files."
+            }
+          }
+        },
+        "services": {
+          "type": "object",
+          "required": [
+            "rootDir"
+          ],
+          "properties": {
+            "rootDir": {
+              "type": "string",
+              "description": "The path to the directory immediately under which are folders that contain *.servicehub.service.json files."
+            },
+            "discoveryServices": {
+              "description": "Service names of optional discovery service modules. Controller will use them to locate a service which it cannot find in the services folder.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "controller",
+      "hosts",
+      "services"
+    ],
+    "title": "Microsoft ServiceHub Configuration",
+    "type": "object"
+  },
+  "description": "Please find below the current ServiceHub configuration details. The controller is located at **C:\\Program Files\\ServiceHub\\controller.exe** and will be launched with the arguments `--verbose`, `--port 8080`. For pipe name generation the controller will incorporate the environment variables **PATH** and **USERDOMAIN** in that order. In addition, two custom variables will be set for the controller process: **CUSTOM_SETTING** is set to `Enabled` and **API_KEY** is set to `12345-abcde`.\n\nAll host definition files are expected under the directory **C:/ServiceHub/hosts**, while the service definition files reside in **C:/ServiceHub/services**. If a requested service cannot be found locally, the controller will fall back to the discovery modules named **service-discovery** and **fallback-discovery**.",
+  "reference_json": {
+    "controller": {
+      "executable": "C:\\Program Files\\ServiceHub\\controller.exe",
+      "args": [
+        "--verbose",
+        "--port",
+        "8080"
+      ],
+      "contextEnvironmentVariables": [
+        "PATH",
+        "USERDOMAIN"
+      ],
+      "additionalEnvironmentVariables": {
+        "CUSTOM_SETTING": "Enabled",
+        "API_KEY": "12345-abcde"
+      }
+    },
+    "hosts": {
+      "rootDir": "C:/ServiceHub/hosts"
+    },
+    "services": {
+      "rootDir": "C:/ServiceHub/services",
+      "discoveryServices": [
+        "service-discovery",
+        "fallback-discovery"
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "name": "sp_312_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Snowplow",
+  "schema": {
+    "additionalProperties": false,
+    "description": "Schema for referer-parser customization enrichment",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "name": {
+        "type": "string"
+      },
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "internalDomains": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "internalDomains"
+        ],
+        "type": "object"
+      },
+      "vendor": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "vendor",
+      "enabled",
+      "parameters"
+    ],
+    "self": {
+      "format": "jsonschema",
+      "name": "referer_parser",
+      "vendor": "com.snowplowanalytics.snowplow",
+      "version": "1-0-0"
+    },
+    "type": "object"
+  },
+  "data": {
+    "enabled": true,
+    "name": "refererParserEnrichment",
+    "vendor": "com.snowplowanalytics.snowplow",
+    "parameters": {
+      "internalDomains": [
+        "example.com",
+        "internal.mycompany.org",
+        "sandbox.local"
+      ]
+    }
+  },
+  "instructions": "Could you remove all items from the \"internalDomains\" list inside \"parameters\"?",
+  "ground_truth": {
+    "enabled": true,
+    "name": "refererParserEnrichment",
+    "vendor": "com.snowplowanalytics.snowplow",
+    "parameters": {
+      "internalDomains": []
+    }
+  },
+  "modification": {
+    "op": "array_clear",
+    "path": [
+      "parameters",
+      "internalDomains"
+    ],
+    "precise_instruction": "Remove all items from the \"internalDomains\" list inside \"parameters\"."
+  }
+}

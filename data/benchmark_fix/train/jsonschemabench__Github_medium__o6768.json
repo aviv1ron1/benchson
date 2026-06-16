@@ -1,0 +1,453 @@
+{
+  "name": "o6768",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://hepdata.net/submission/schemas/1.0.1/data_schema.json",
+    "title": "Data table",
+    "description": "A HEPData table comprising independent_variables and dependent_variables",
+    "type": "object",
+    "properties": {
+      "independent_variables": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "header": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "units": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  },
+                  "low": {
+                    "type": "number"
+                  },
+                  "high": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "header",
+            "values"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "dependent_variables": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "header": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "units": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            },
+            "qualifiers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  },
+                  "units": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  },
+                  "errors": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "symerror": {
+                          "type": [
+                            "number",
+                            "string"
+                          ]
+                        },
+                        "asymerror": {
+                          "type": "object",
+                          "properties": {
+                            "minus": {
+                              "type": [
+                                "number",
+                                "string"
+                              ]
+                            },
+                            "plus": {
+                              "type": [
+                                "number",
+                                "string"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "minus",
+                            "plus"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "label": {
+                          "type": "string"
+                        }
+                      },
+                      "oneOf": [
+                        {
+                          "required": [
+                            "symerror"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asymerror"
+                          ]
+                        }
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "independent_variables",
+      "dependent_variables"
+    ],
+    "additionalProperties": false
+  },
+  "erroneous_json": {
+    "independent_variables": null,
+    "dependent_variables": [
+      {
+        "header": {
+          "name": "d\u03c3/dp_T",
+          "units": "pb/GeV"
+        },
+        "qualifiers": [
+          {
+            "name": "sqrt(s)",
+            "value": 13000,
+            "units": "GeV"
+          },
+          {
+            "name": "process",
+            "value": "pp \u2192 Z"
+          }
+        ],
+        "values": [
+          {
+            "value": 15.2,
+            "errors": [
+              {
+                "symerror": 0.9,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 1.1,
+                  "plus": 1.3
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 9.8,
+            "errors": [
+              {
+                "symerror": 0.6,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.8,
+                  "plus": 1.0
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 4.3,
+            "errors": [
+              {
+                "symerror": 0.3,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.4,
+                  "plus": 0.5
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 1.7,
+            "errors": [
+              {
+                "symerror": 0.2,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.3,
+                  "plus": 0.3
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 0.6,
+            "errors": [
+              {
+                "symerror": 0.1,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.2,
+                  "plus": 0.2
+                },
+                "label": "systematic"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "valid_json": {
+    "independent_variables": [
+      {
+        "header": {
+          "name": "p_T",
+          "units": "GeV"
+        },
+        "values": [
+          {
+            "low": 5,
+            "high": 10,
+            "value": "5\u201310"
+          },
+          {
+            "low": 10,
+            "high": 20,
+            "value": "10\u201320"
+          },
+          {
+            "low": 20,
+            "high": 30,
+            "value": "20\u201330"
+          },
+          {
+            "low": 30,
+            "high": 50,
+            "value": "30\u201350"
+          },
+          {
+            "low": 50,
+            "high": 80,
+            "value": "50\u201380"
+          }
+        ]
+      },
+      {
+        "header": {
+          "name": "rapidity",
+          "units": ""
+        },
+        "values": [
+          {
+            "value": 0.0
+          },
+          {
+            "value": 0.5
+          },
+          {
+            "value": 1.0
+          },
+          {
+            "value": 1.5
+          },
+          {
+            "value": 2.0
+          }
+        ]
+      }
+    ],
+    "dependent_variables": [
+      {
+        "header": {
+          "name": "d\u03c3/dp_T",
+          "units": "pb/GeV"
+        },
+        "qualifiers": [
+          {
+            "name": "sqrt(s)",
+            "value": 13000,
+            "units": "GeV"
+          },
+          {
+            "name": "process",
+            "value": "pp \u2192 Z"
+          }
+        ],
+        "values": [
+          {
+            "value": 15.2,
+            "errors": [
+              {
+                "symerror": 0.9,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 1.1,
+                  "plus": 1.3
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 9.8,
+            "errors": [
+              {
+                "symerror": 0.6,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.8,
+                  "plus": 1.0
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 4.3,
+            "errors": [
+              {
+                "symerror": 0.3,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.4,
+                  "plus": 0.5
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 1.7,
+            "errors": [
+              {
+                "symerror": 0.2,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.3,
+                  "plus": 0.3
+                },
+                "label": "systematic"
+              }
+            ]
+          },
+          {
+            "value": 0.6,
+            "errors": [
+              {
+                "symerror": 0.1,
+                "label": "statistical"
+              },
+              {
+                "asymerror": {
+                  "minus": 0.2,
+                  "plus": 0.2
+                },
+                "label": "systematic"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "description": "The measurement presents the differential production cross\u2011section of\u202f\\(Z\\) bosons in proton\u2011proton collisions at a centre\u2011of\u2011mass energy of \\(\\sqrt{s}=13\\,\\text{TeV}\\).  The independent variables are the transverse momentum of the \\(Z\\) boson, \\(p_T\\) (in\u202fGeV), binned as 5\u201310,\u202f10\u201320,\u202f20\u201330,\u202f30\u201350 and\u202f50\u201380\u202fGeV, and the rapidity, \\(y\\), sampled at the five points 0.0,\u202f0.5,\u202f1.0,\u202f1.5 and\u202f2.0 (unitless).  The observable reported is the differential cross\u2011section \\( \\mathrm{d}\\sigma/\\mathrm{d}p_T \\) with units of pb\u202f/\u202fGeV.\n\nThe results for each \\(p_T\\) bin are:  \n\n- 5\u201310\u202fGeV: \\(15.2\\;\\text{pb/GeV}\\)\u202f\u00b1\u202f0.9\u202f(pb/GeV) (statistical)\u202f\\({}^{+1.3}_{-1.1}\\)\u202f(pb/GeV) (systematic);  \n- 10\u201320\u202fGeV: \\(9.8\\;\\text{pb/GeV}\\)\u202f\u00b1\u202f0.6\u202f(pb/GeV) (statistical)\u202f\\({}^{+1.0}_{-0.8}\\)\u202f(pb/GeV) (systematic);  \n- 20\u201330\u202fGeV: \\(4.3\\;\\text{pb/GeV}\\)\u202f\u00b1\u202f0.3\u202f(pb/GeV) (statistical)\u202f\\({}^{+0.5}_{-0.4}\\)\u202f(pb/GeV) (systematic);  \n- 30\u201350\u202fGeV: \\(1.7\\;\\text{pb/GeV}\\)\u202f\u00b1\u202f0.2\u202f(pb/GeV) (statistical)\u202f\\({}^{+0.3}_{-0.3}\\)\u202f(pb/GeV) (systematic);  \n- 50\u201380\u202fGeV: \\(0.6\\;\\text{pb/GeV}\\)\u202f\u00b1\u202f0.1\u202f(pb/GeV) (statistical)\u202f\\({}^{+0.2}_{-0.2}\\)\u202f(pb/GeV) (systematic).  \n\nThese values correspond to the specified rapidity points and fully describe the measured spectrum."
+}

@@ -1,0 +1,69 @@
+{
+  "name": "find_hotel_cd6e97f8",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "check_in_date": {
+        "description": "The desired check-in date",
+        "format": "date",
+        "type": "string"
+      },
+      "check_out_date": {
+        "description": "The desired check-out date",
+        "format": "date",
+        "type": "string"
+      },
+      "location": {
+        "description": "The desired location of the hotel",
+        "type": "string"
+      },
+      "price_range": {
+        "properties": {
+          "max": {
+            "description": "The maximum price range per night",
+            "type": "number"
+          },
+          "min": {
+            "description": "The minimum price range per night",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "required": [
+      "location",
+      "check_in_date",
+      "check_out_date"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "check_in_date": "2026-07-15",
+    "check_out_date": "2026-07-20",
+    "location": "Paris, France",
+    "price_range": {
+      "min": 120.0,
+      "max": 250.0
+    }
+  },
+  "instructions": "Please increase the \u201cmax\u201d inside \u201cprice_range\u201d by\u202f1.",
+  "ground_truth": {
+    "check_in_date": "2026-07-15",
+    "check_out_date": "2026-07-20",
+    "location": "Paris, France",
+    "price_range": {
+      "min": 120.0,
+      "max": 251.0
+    }
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "price_range",
+      "max"
+    ],
+    "precise_instruction": "Increase \"max\" inside \"price_range\" by 1."
+  }
+}

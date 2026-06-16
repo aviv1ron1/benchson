@@ -1,0 +1,159 @@
+{
+  "name": "esmrc",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/esmrc.json",
+    "additionalProperties": false,
+    "properties": {
+      "cjs": {
+        "description": "A boolean or object for toggling CJS features in ESM",
+        "default": true,
+        "oneOf": [
+          {
+            "type": "boolean",
+            "default": true
+          },
+          {
+            "type": "object",
+            "properties": {
+              "cache": {
+                "type": "boolean",
+                "description": "A boolean for storing ES modules in require.cache",
+                "default": true
+              },
+              "esModule": {
+                "type": "boolean",
+                "description": "A boolean for __esModule interoperability",
+                "default": true
+              },
+              "extensions": {
+                "type": "boolean",
+                "description": "A boolean for respecting require.extensions in ESM",
+                "default": true
+              },
+              "mutableNamespace": {
+                "$comment": "https://ponyfoo.com/articles/es6-modules-in-depth#import-all-the-things",
+                "type": "boolean",
+                "description": "A boolean for importing named exports of CJS modules",
+                "default": true
+              },
+              "namedExports": {
+                "$comment": "https://ponyfoo.com/articles/es6-modules-in-depth#importing-named-exports",
+                "type": "boolean",
+                "description": "A boolean for importing named exports of CJS modules",
+                "default": true
+              },
+              "paths": {
+                "$comment": "https://github.com/nodejs/node-eps/blob/master/002-es-modules.md#432-removal-of-non-local-dependencies",
+                "type": "boolean",
+                "description": "A boolean for following CJS path rules in ESM",
+                "default": true
+              },
+              "vars": {
+                "type": "boolean",
+                "description": "A boolean for __dirname, __filename, and require in ESM",
+                "default": true
+              },
+              "dedefault": {
+                "type": "boolean",
+                "description": "A boolean for requiring ES modules without the dangling require().default",
+                "default": false
+              },
+              "topLevelReturn": {
+                "type": "boolean",
+                "description": "A boolean for top-level return support",
+                "default": false
+              }
+            }
+          }
+        ]
+      },
+      "mainFields": {
+        "type": "array",
+        "description": "An array of fields checked when importing a package",
+        "default": [
+          "main"
+        ],
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "description": "Fields from package.json"
+        }
+      },
+      "mode": {
+        "type": "string",
+        "description": "A string describing the mode in which to detect ESM module files",
+        "default": "auto",
+        "oneOf": [
+          {
+            "$comment": "https://github.com/tc39/proposal-modules-pragma",
+            "const": "auto",
+            "description": "'auto' detect files with import, import.meta, export, 'use module', or .mjs as ESM"
+          },
+          {
+            "const": "all",
+            "description": "'all' files besides those with 'use script' or .cjs are treated as ESM"
+          },
+          {
+            "const": "strict",
+            "description": "'strict to treat only .mjs files as ESM"
+          }
+        ]
+      },
+      "await": {
+        "$comment": "https://github.com/tc39/proposal-top-level-await",
+        "type": "boolean",
+        "description": "A boolean for top-level await in modules without ESM exports. (Node 10+)",
+        "default": false
+      },
+      "force": {
+        "type": "boolean",
+        "description": "A boolean to apply these options to all module loads",
+        "default": false
+      },
+      "wasm": {
+        "$comment": "https://nodejs.org/api/globals.html#globals_webassembly",
+        "type": "boolean",
+        "description": "A boolean for WebAssembly module support. (Node 8+)",
+        "default": false
+      },
+      "cache": {
+        "type": "boolean",
+        "description": "[dev] A boolean for toggling cache creation or a cache directory path",
+        "default": true
+      },
+      "sourceMap": {
+        "type": "boolean",
+        "description": "[dev] A boolean for including inline source maps",
+        "default": false
+      }
+    },
+    "title": "Configuration files for the esm module/package in Node.js"
+  },
+  "description": "Below is the current configuration for our ESM handling in the project. We are enabling most CommonJS interoperability features: the require cache is used (`cjs.cache: true`), the `__esModule` flag is preserved (`cjs.esModule: true`), and mutable namespace imports remain allowed (`cjs.mutableNamespace: true`). We are **not** respecting custom `require.extensions` (`cjs.extensions: false`) and we have turned off automatic named\u2011export extraction (`cjs.namedExports: false`). Path resolution follows the CJS rules (`cjs.paths: true`), and the classic Node globals (`__dirname`, `__filename`, `require`) are available in ESM (`cjs.vars: true`). The special handling for default exports of ES modules is disabled (`cjs.dedefault: false`), and top\u2011level returns are not supported (`cjs.topLevelReturn: false`).  \n\nFor module resolution we prioritize the `\"module\"` field followed by `\"main\"` (`mainFields: [\"module\", \"main\"]`). The detection mode is set to **strict**, meaning only files with the `.mjs` extension are treated as ESM modules. Top\u2011level await is enabled (`await: true`), while the configuration is not forced on every load (`force: false`). WebAssembly support is turned on (`wasm: true`), and both caching (`cache: true`) and inline source maps (`sourceMap: true`) are active for development builds.",
+  "reference_json": {
+    "cjs": {
+      "cache": true,
+      "esModule": true,
+      "extensions": false,
+      "mutableNamespace": true,
+      "namedExports": false,
+      "paths": true,
+      "vars": true,
+      "dedefault": false,
+      "topLevelReturn": false
+    },
+    "mainFields": [
+      "module",
+      "main"
+    ],
+    "mode": "strict",
+    "await": true,
+    "force": false,
+    "wasm": true,
+    "cache": true,
+    "sourceMap": true
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "name": "nycrc",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://json.schemastore.org/nycrc.json",
+    "properties": {
+      "extends": {
+        "description": "Name of configuration to extend from.",
+        "type": "string"
+      },
+      "all": {
+        "description": "Whether or not to instrument all files (not just the ones touched by your test suite).",
+        "type": "boolean",
+        "default": false
+      },
+      "check-coverage": {
+        "description": "Check whether coverage is within thresholds, fail if not",
+        "type": "boolean",
+        "default": false
+      },
+      "extension": {
+        "description": "List of extensions that nyc should attempt to handle in addition to .js",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [
+          ".js",
+          ".cjs",
+          ".mjs",
+          ".ts",
+          ".tsx",
+          ".jsx"
+        ]
+      },
+      "include": {
+        "description": "List of files to include for coverage.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [
+          "**"
+        ]
+      },
+      "exclude": {
+        "description": "List of files to exclude for coverage.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [
+          "coverage/**"
+        ]
+      },
+      "reporter": {
+        "description": "The names of custom reporter to show coverage results.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [
+          "text"
+        ]
+      },
+      "report-dir": {
+        "description": "Where to put the coverage report files.",
+        "type": "string",
+        "default": "./coverage"
+      },
+      "skip-full": {
+        "description": "Don't show files with 100% statement, branch, and function coverage",
+        "type": "boolean",
+        "default": false
+      },
+      "temp-dir": {
+        "description": "Directory to output raw coverage information to.",
+        "type": "string",
+        "default": "./.nyc_output"
+      }
+    },
+    "type": "object"
+  },
+  "description": "We\u2019re extending the base configuration\u202f`@myorg/nyc-config` and have turned on full instrumentation, so every file in the project will be instrumented (`all: true`). Coverage thresholds are being enforced (`check\u2011coverage: true`), and the tool is set up to recognize a broad range of source extensions:\u202f`.js`,\u202f`.cjs`,\u202f`.mjs`,\u202f`.ts`,\u202f`.tsx`,\u202f`.jsx` and\u202f`.json`. The coverage scanner will include all JavaScript and TypeScript files under\u202f`src/**/*.js` and\u202f`src/**/*.ts`, as well as test files matching\u202f`test/**/*.js`, while explicitly excluding the\u202f`coverage/**`,\u202f`node_modules/**`, and\u202f`dist/**` directories.\n\nFor reporting, we\u2019ll generate HTML and LCOV files together with a concise text\u2011summary, all placed in the\u202f`./coverage/reports` directory. Files that already have 100\u202f% statement, branch, and function coverage will be omitted from the output (`skip-full: true`). Intermediate raw coverage data will be written to the temporary folder\u202f`./.nyc_output`.",
+  "reference_json": {
+    "extends": "@myorg/nyc-config",
+    "all": true,
+    "check-coverage": true,
+    "extension": [
+      ".js",
+      ".cjs",
+      ".mjs",
+      ".ts",
+      ".tsx",
+      ".jsx",
+      ".json"
+    ],
+    "include": [
+      "src/**/*.js",
+      "src/**/*.ts",
+      "test/**/*.js"
+    ],
+    "exclude": [
+      "coverage/**",
+      "node_modules/**",
+      "dist/**"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "./coverage/reports",
+    "skip-full": true,
+    "temp-dir": "./.nyc_output"
+  }
+}

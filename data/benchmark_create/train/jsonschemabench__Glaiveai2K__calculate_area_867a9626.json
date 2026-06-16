@@ -1,0 +1,55 @@
+{
+  "name": "calculate_area_867a9626",
+  "source": "jsonschemabench",
+  "subset": "Glaiveai2K",
+  "schema": {
+    "properties": {
+      "dimensions": {
+        "description": "The dimensions of the shape",
+        "properties": {
+          "base": {
+            "description": "The base of the shape",
+            "type": "number"
+          },
+          "height": {
+            "description": "The height of the shape",
+            "type": "number"
+          },
+          "length": {
+            "description": "The length of the shape",
+            "type": "number"
+          },
+          "radius": {
+            "description": "The radius of the shape",
+            "type": "number"
+          },
+          "width": {
+            "description": "The width of the shape",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "shape": {
+        "description": "The shape (e.g., rectangle, circle, triangle)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "shape",
+      "dimensions"
+    ],
+    "type": "object"
+  },
+  "description": "Dear Engineering Team,\n\nPlease find below the specifications for the new component we are fabricating. The part is a cylinder, and its key dimensions are as follows: the height is 12.5 units and the radius measures 4.3 units. Since a cylindrical shape does not require a base, length, or width in the traditional sense, those parameters are recorded as zero.\n\nKindly use these values for the machining schedule and confirm that the design files reflect the same dimensions. Let me know if any adjustments are needed.",
+  "reference_json": {
+    "shape": "cylinder",
+    "dimensions": {
+      "base": 0,
+      "height": 12.5,
+      "length": 0,
+      "radius": 4.3,
+      "width": 0
+    }
+  }
+}

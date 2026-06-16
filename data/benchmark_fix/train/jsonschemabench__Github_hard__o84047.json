@@ -1,0 +1,234 @@
+{
+  "name": "o84047",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "properties": {
+      "externalDatabase": {
+        "description": "If MariaDB is disabled. Use this section to specify the external database details",
+        "form": true,
+        "properties": {
+          "database": {
+            "form": true,
+            "hidden": "mariadb.enabled",
+            "title": "Database Name",
+            "type": "string"
+          },
+          "host": {
+            "form": true,
+            "hidden": "mariadb.enabled",
+            "title": "Database Host",
+            "type": "string"
+          },
+          "password": {
+            "form": true,
+            "hidden": "mariadb.enabled",
+            "title": "Database Password",
+            "type": "string"
+          },
+          "port": {
+            "form": true,
+            "hidden": "mariadb.enabled",
+            "title": "Database Port",
+            "type": "integer"
+          },
+          "user": {
+            "form": true,
+            "hidden": "mariadb.enabled",
+            "title": "Database Username",
+            "type": "string"
+          }
+        },
+        "title": "External Database Details",
+        "type": "object"
+      },
+      "ghostBlogTitle": {
+        "form": true,
+        "title": "Blog Name",
+        "type": "string"
+      },
+      "ghostEmail": {
+        "form": true,
+        "title": "Admin email",
+        "type": "string"
+      },
+      "ghostHost": {
+        "description": "Hostname used to generate application URLs",
+        "form": true,
+        "title": "Host",
+        "type": "string"
+      },
+      "ghostPassword": {
+        "description": "Defaults to a random 10-character alphanumeric string if not set",
+        "form": true,
+        "title": "Password",
+        "type": "string"
+      },
+      "ghostUsername": {
+        "form": true,
+        "title": "User",
+        "type": "string"
+      },
+      "mariadb": {
+        "form": true,
+        "properties": {
+          "enabled": {
+            "description": "Whether to deploy a mariadb server to satisfy the applications database requirements. To use an external database switch this off and configure the external database parameters",
+            "form": true,
+            "title": "Use a new MariaDB database hosted in the cluster",
+            "type": "boolean"
+          },
+          "master": {
+            "properties": {
+              "persistence": {
+                "properties": {
+                  "size": {
+                    "form": true,
+                    "hidden": {
+                      "condition": false,
+                      "value": "mariadb.enabled"
+                    },
+                    "render": "slider",
+                    "sliderMax": 100,
+                    "sliderMin": 1,
+                    "sliderUnit": "Gi",
+                    "title": "Volume Size",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "title": "MariaDB Details",
+        "type": "object"
+      },
+      "persistence": {
+        "properties": {
+          "size": {
+            "form": true,
+            "render": "slider",
+            "sliderMax": 100,
+            "sliderMin": 1,
+            "sliderUnit": "Gi",
+            "title": "Persistent Volume Size",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "resources": {
+        "description": "Configure resource requests",
+        "form": true,
+        "properties": {
+          "requests": {
+            "properties": {
+              "cpu": {
+                "form": true,
+                "render": "slider",
+                "sliderMax": 2000,
+                "sliderMin": 10,
+                "sliderUnit": "m",
+                "title": "CPU Request",
+                "type": "string"
+              },
+              "memory": {
+                "form": true,
+                "render": "slider",
+                "sliderMax": 2048,
+                "sliderMin": 10,
+                "sliderUnit": "Mi",
+                "title": "Memory Request",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "title": "Required Resources",
+        "type": "object"
+      },
+      "securityContext": {
+        "properties": {
+          "enabled": {
+            "description": "When disabled, an initContainer will be used to set required folder permissions",
+            "form": true,
+            "title": "Enable Pod Security Context",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "type": "object"
+  },
+  "erroneous_json": {
+    "externalDatabase": {
+      "database": "ghost_db",
+      "host": "db.example.com",
+      "password": "S3cureP@ssw0rd!",
+      "port": 3306,
+      "user": "ghost_user"
+    },
+    "ghostBlogTitle": "My Awesome Ghost Blog",
+    "ghostEmail": "admin@example.com",
+    "ghostHost": "blog.example.com",
+    "ghostPassword": "Gh0stP@ss123",
+    "ghostUsername": "admin",
+    "mariadb": {
+      "enabled": false,
+      "master": {
+        "persistence": {
+          "size": "10Gi"
+        }
+      }
+    },
+    "persistence": null,
+    "resources": {
+      "requests": {
+        "cpu": "500m",
+        "memory": "1024Mi"
+      }
+    },
+    "securityContext": {
+      "enabled": true
+    }
+  },
+  "valid_json": {
+    "externalDatabase": {
+      "database": "ghost_db",
+      "host": "db.example.com",
+      "password": "S3cureP@ssw0rd!",
+      "port": 3306,
+      "user": "ghost_user"
+    },
+    "ghostBlogTitle": "My Awesome Ghost Blog",
+    "ghostEmail": "admin@example.com",
+    "ghostHost": "blog.example.com",
+    "ghostPassword": "Gh0stP@ss123",
+    "ghostUsername": "admin",
+    "mariadb": {
+      "enabled": false,
+      "master": {
+        "persistence": {
+          "size": "10Gi"
+        }
+      }
+    },
+    "persistence": {
+      "size": "20Gi"
+    },
+    "resources": {
+      "requests": {
+        "cpu": "500m",
+        "memory": "1024Mi"
+      }
+    },
+    "securityContext": {
+      "enabled": true
+    }
+  },
+  "description": "The new Ghost instance will be published as **My Awesome Ghost Blog** and reachable at `blog.example.com`. The administrator account is set up with the username **admin**, password **Gh0stP@ss123**, and the admin email address **admin@example.com**.\n\nSince we are not provisioning an internal MariaDB server (`enabled = false`), the application will connect to the external database named **ghost_db** on host **db.example.com** using port **3306**. The connection will be made with the credentials **ghost_user** / **S3cureP@ssw0rd!**. Although MariaDB is disabled, the default storage allocation for its master node is defined as **10Gi**, while the Ghost application itself is allocated a persistent volume of **20Gi**.\n\nThe pod is configured to request **500m** of CPU and **1024Mi** of memory, and the security context is enabled to ensure that the container runs with the appropriate privileges."
+}

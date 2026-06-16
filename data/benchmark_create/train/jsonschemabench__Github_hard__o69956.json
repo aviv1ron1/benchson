@@ -1,0 +1,265 @@
+{
+  "name": "o69956",
+  "source": "jsonschemabench",
+  "subset": "Github_hard",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "This document describes the engine definition",
+    "description": "The meta information of engine",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The engine name"
+      },
+      "executable": {
+        "type": "string",
+        "description": "The engine executable name; by default it's equal to engine name"
+      },
+      "runLocally": {
+        "type": "boolean",
+        "description": "Way how to run engine. If engine installed locally for current project, than cant execute it with just engine name",
+        "default": false
+      },
+      "description": {
+        "type": "string",
+        "description": "The engine description"
+      },
+      "url": {
+        "type": "string",
+        "description": "The engine url or homepage",
+        "format": "uri"
+      },
+      "version": {
+        "type": "string",
+        "description": "The engine version"
+      },
+      "languages": {
+        "type": "array",
+        "description": "The list of supported languages",
+        "items": {
+          "type": "string",
+          "enum": [
+            "coffeescript",
+            "css",
+            "html",
+            "xml",
+            "javascript",
+            "json",
+            "jsx",
+            "sass",
+            "typescript",
+            "c",
+            "cpp",
+            "csharp",
+            "groovy",
+            "php",
+            "ruby",
+            "fortran",
+            "plsql",
+            "scala",
+            "objectivec",
+            "perl",
+            "swift",
+            "python",
+            "java",
+            "pug"
+          ]
+        }
+      },
+      "extensions": {
+        "type": "array",
+        "description": "Common file extensions parsed by engine",
+        "items": {
+          "type": "string"
+        }
+      },
+      "configs": {
+        "type": "array",
+        "description": "List of file names which could be treated as engine config",
+        "items": {
+          "type": "string"
+        }
+      },
+      "license": {
+        "type": "string",
+        "description": "The engine license",
+        "enum": [
+          "Unknown",
+          "AGPL-3.0",
+          "Apache-2.0",
+          "MIT",
+          "ISC"
+        ]
+      },
+      "requirements": {
+        "type": "array",
+        "description": "The engine requirements",
+        "items": {
+          "$ref": "#/definitions/requirement"
+        }
+      },
+      "areas": {
+        "type": "array",
+        "description": "The engine areas",
+        "items": {
+          "type": "string",
+          "enum": [
+            "code simplification",
+            "commented code",
+            "complexity",
+            "documentation",
+            "duplication",
+            "formatting",
+            "grammar",
+            "memory leak",
+            "security",
+            "simplification",
+            "smell",
+            "spelling",
+            "syntax",
+            "undefined element",
+            "unreachable code",
+            "unused code"
+          ]
+        }
+      },
+      "acceptMask": {
+        "type": "boolean",
+        "description": "Can use masks for multiple files analyze",
+        "default": true
+      },
+      "output": {
+        "type": "string",
+        "description": "The engine output format",
+        "enum": [
+          "json",
+          "xml"
+        ],
+        "default": "json"
+      },
+      "postfix": {
+        "type": "string",
+        "description": "Posstfix in terminal (normaly post processor)"
+      },
+      "optionsDelimiter": {
+        "type": "string",
+        "description": "Delimiter for options (space by default)",
+        "default": " "
+      },
+      "successCode": {
+        "type": "integer",
+        "description": "Success exit code"
+      },
+      "active": {
+        "type": "boolean",
+        "description": "A value indicating whether engine is active",
+        "default": true
+      },
+      "defaults": {
+        "type": "object",
+        "description": "The default configuration of engine. This property is specific for each engine"
+      },
+      "stdin": {
+        "type": "object",
+        "description": "The stdin configuration of engine. This property is specific for each engine. Must be an empty object, if engine needs no params, but supports stdin"
+      }
+    },
+    "required": [
+      "name",
+      "description",
+      "languages",
+      "license",
+      "areas"
+    ],
+    "definitions": {
+      "requirement": {
+        "type": "object",
+        "description": "The engine dependency",
+        "properties": {
+          "manager": {
+            "type": "string",
+            "description": "The manager for dependency",
+            "enum": [
+              "system",
+              "url",
+              "composer",
+              "gem",
+              "npm",
+              "pip"
+            ]
+          },
+          "package": {
+            "type": "string",
+            "description": "The package name"
+          },
+          "version": {
+            "type": "string",
+            "description": "The package version"
+          }
+        }
+      }
+    }
+  },
+  "description": "ESLint\u202f(executable\u202f\u201ceslint\u201d) is a pluggable JavaScript linter currently at version\u202f8.57.0. It is a fully active engine (active\u202f=\u202ftrue) that runs locally for the project (runLocally\u202f=\u202ftrue) and can be found at\u202fhttps://eslint.org. Distributed under the MIT license, ESLint\u2019s purpose is described as \u201cA pluggable JavaScript linter.\u201d  \n\nThe engine supports the languages JavaScript, TypeScript, JSX, JSON and CSS, and recognises the file extensions\u202f\u201c.js\u201d,\u202f\u201c.jsx\u201d,\u202f\u201c.ts\u201d,\u202f\u201c.tsx\u201d,\u202f\u201c.json\u201d and\u202f\u201c.css\u201d. Configuration files named\u202feslintrc.json,\u202feslintrc.js or\u202feslintrc.yml are automatically treated as ESLint config files. Its analysis focuses on formatting, syntax, security and code smell issues, and it accepts mask patterns for analysing multiple files at once. Results are emitted in JSON format (output\u202f=\u202fjson) using the default space as the options delimiter, with no postfix appended to the command line, and a successful run returns exit code\u202f0.  \n\nTo operate, ESLint requires the npm package\u202feslint\u202fat version\u202f^8.0.0\u202fand a system\u2011installed Node runtime (package\u202fnode\u202fwith version\u202f\u226514). By default, the engine enables the rules\u202fsemi\u202fset to \u201cerror\u201d and\u202fquotes\u202fset to \u201cerror\u201d. Although ESLint can read from\u202fstdin, no parameters are needed, so the stdin configuration is empty.",
+  "reference_json": {
+    "name": "ESLint",
+    "executable": "eslint",
+    "runLocally": true,
+    "description": "A pluggable JavaScript linter.",
+    "url": "https://eslint.org",
+    "version": "8.57.0",
+    "languages": [
+      "javascript",
+      "typescript",
+      "jsx",
+      "json",
+      "css"
+    ],
+    "extensions": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx",
+      ".json",
+      ".css"
+    ],
+    "configs": [
+      "eslintrc.json",
+      "eslintrc.js",
+      "eslintrc.yml"
+    ],
+    "license": "MIT",
+    "requirements": [
+      {
+        "manager": "npm",
+        "package": "eslint",
+        "version": "^8.0.0"
+      },
+      {
+        "manager": "system",
+        "package": "node",
+        "version": ">=14"
+      }
+    ],
+    "areas": [
+      "formatting",
+      "syntax",
+      "security",
+      "smell"
+    ],
+    "acceptMask": true,
+    "output": "json",
+    "postfix": "",
+    "optionsDelimiter": " ",
+    "successCode": 0,
+    "active": true,
+    "defaults": {
+      "rules": {
+        "semi": "error",
+        "quotes": "error"
+      }
+    },
+    "stdin": {}
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "name": "o10297",
+  "source": "jsonschemabench",
+  "subset": "Github_medium",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "rating_history": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        }
+      },
+      "score_history": {
+        "type": "object",
+        "patternProperties": {
+          "^\\d+$": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "player_id": {
+                  "type": "integer"
+                },
+                "score": {
+                  "type": "integer"
+                },
+                "rating_delta": {
+                  "type": "number"
+                },
+                "place": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "player_id",
+                "score",
+                "rating_delta",
+                "place"
+              ]
+            }
+          }
+        }
+      },
+      "players_info": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "display_name": {
+              "type": "string"
+            },
+            "tenhou_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "display_name",
+            "tenhou_id"
+          ]
+        }
+      },
+      "places_summary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "1": {
+            "type": "integer"
+          },
+          "2": {
+            "type": "integer"
+          },
+          "3": {
+            "type": "integer"
+          },
+          "4": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "total_played_games": {
+        "type": "integer"
+      },
+      "total_played_rounds": {
+        "type": "integer"
+      },
+      "win_summary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ron": {
+            "type": "integer"
+          },
+          "tsumo": {
+            "type": "integer"
+          },
+          "chombo": {
+            "type": "integer"
+          },
+          "feed": {
+            "type": "integer"
+          },
+          "tsumofeed": {
+            "type": "integer"
+          },
+          "openhand": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "ron",
+          "tsumo",
+          "chombo",
+          "feed",
+          "tsumofeed"
+        ]
+      },
+      "hands_value_summary": {
+        "type": "object",
+        "patternProperties": {
+          "^-?\\d+$": {
+            "type": "integer"
+          }
+        }
+      },
+      "yaku_summary": {
+        "type": "object",
+        "patternProperties": {
+          "^\\d+$": {
+            "type": "integer"
+          }
+        }
+      },
+      "riichi_summary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "riichi_won": {
+            "type": "integer"
+          },
+          "riichi_lost": {
+            "type": "integer"
+          },
+          "feed_under_riichi": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "riichi_won",
+          "riichi_lost",
+          "feed_under_riichi"
+        ]
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "rating_history",
+      "score_history",
+      "players_info",
+      "places_summary",
+      "total_played_games",
+      "total_played_rounds",
+      "win_summary",
+      "hands_value_summary",
+      "yaku_summary",
+      "riichi_summary"
+    ]
+  },
+  "data": {
+    "rating_history": [
+      1500,
+      1520,
+      1535,
+      1550
+    ],
+    "score_history": {
+      "1001": [
+        {
+          "player_id": 1,
+          "score": 25000,
+          "rating_delta": 12.5,
+          "place": 1
+        },
+        {
+          "player_id": 2,
+          "score": 24000,
+          "rating_delta": -5.0,
+          "place": 2
+        },
+        {
+          "player_id": 3,
+          "score": 23000,
+          "rating_delta": -3.5,
+          "place": 3
+        },
+        {
+          "player_id": 4,
+          "score": 22000,
+          "rating_delta": -4.0,
+          "place": 4
+        }
+      ],
+      "1002": [
+        {
+          "player_id": 1,
+          "score": 24000,
+          "rating_delta": 8.0,
+          "place": 2
+        },
+        {
+          "player_id": 2,
+          "score": 25000,
+          "rating_delta": 15.3,
+          "place": 1
+        },
+        {
+          "player_id": 3,
+          "score": 22000,
+          "rating_delta": -6.7,
+          "place": 4
+        },
+        {
+          "player_id": 4,
+          "score": 23000,
+          "rating_delta": -12.8,
+          "place": 3
+        }
+      ]
+    },
+    "players_info": [
+      {
+        "id": 1,
+        "display_name": "Alice",
+        "tenhou_id": "abcdef01"
+      },
+      {
+        "id": 2,
+        "display_name": "Bob",
+        "tenhou_id": "01234567"
+      },
+      {
+        "id": 3,
+        "display_name": "Charlie",
+        "tenhou_id": "89abcdef"
+      },
+      {
+        "id": 4,
+        "display_name": "Diana",
+        "tenhou_id": "fedcba98"
+      }
+    ],
+    "places_summary": {
+      "1": 20,
+      "2": 15,
+      "3": 10,
+      "4": 5
+    },
+    "total_played_games": 50,
+    "total_played_rounds": 200,
+    "win_summary": {
+      "ron": 30,
+      "tsumo": 25,
+      "chombo": 5,
+      "feed": 12,
+      "tsumofeed": 8,
+      "openhand": 2
+    },
+    "hands_value_summary": {
+      "-30": -2,
+      "-2": 15,
+      "0": 30,
+      "2": 10,
+      "30": 5
+    },
+    "yaku_summary": {
+      "1": 40,
+      "2": 30,
+      "3": 20,
+      "5": 10
+    },
+    "riichi_summary": {
+      "riichi_won": 22,
+      "riichi_lost": 18,
+      "feed_under_riichi": 7
+    }
+  },
+  "instructions": "Could you remove the first item from the rating_history list?",
+  "ground_truth": {
+    "rating_history": [
+      1520,
+      1535,
+      1550
+    ],
+    "score_history": {
+      "1001": [
+        {
+          "player_id": 1,
+          "score": 25000,
+          "rating_delta": 12.5,
+          "place": 1
+        },
+        {
+          "player_id": 2,
+          "score": 24000,
+          "rating_delta": -5.0,
+          "place": 2
+        },
+        {
+          "player_id": 3,
+          "score": 23000,
+          "rating_delta": -3.5,
+          "place": 3
+        },
+        {
+          "player_id": 4,
+          "score": 22000,
+          "rating_delta": -4.0,
+          "place": 4
+        }
+      ],
+      "1002": [
+        {
+          "player_id": 1,
+          "score": 24000,
+          "rating_delta": 8.0,
+          "place": 2
+        },
+        {
+          "player_id": 2,
+          "score": 25000,
+          "rating_delta": 15.3,
+          "place": 1
+        },
+        {
+          "player_id": 3,
+          "score": 22000,
+          "rating_delta": -6.7,
+          "place": 4
+        },
+        {
+          "player_id": 4,
+          "score": 23000,
+          "rating_delta": -12.8,
+          "place": 3
+        }
+      ]
+    },
+    "players_info": [
+      {
+        "id": 1,
+        "display_name": "Alice",
+        "tenhou_id": "abcdef01"
+      },
+      {
+        "id": 2,
+        "display_name": "Bob",
+        "tenhou_id": "01234567"
+      },
+      {
+        "id": 3,
+        "display_name": "Charlie",
+        "tenhou_id": "89abcdef"
+      },
+      {
+        "id": 4,
+        "display_name": "Diana",
+        "tenhou_id": "fedcba98"
+      }
+    ],
+    "places_summary": {
+      "1": 20,
+      "2": 15,
+      "3": 10,
+      "4": 5
+    },
+    "total_played_games": 50,
+    "total_played_rounds": 200,
+    "win_summary": {
+      "ron": 30,
+      "tsumo": 25,
+      "chombo": 5,
+      "feed": 12,
+      "tsumofeed": 8,
+      "openhand": 2
+    },
+    "hands_value_summary": {
+      "-30": -2,
+      "-2": 15,
+      "0": 30,
+      "2": 10,
+      "30": 5
+    },
+    "yaku_summary": {
+      "1": 40,
+      "2": 30,
+      "3": 20,
+      "5": 10
+    },
+    "riichi_summary": {
+      "riichi_won": 22,
+      "riichi_lost": 18,
+      "feed_under_riichi": 7
+    }
+  },
+  "modification": {
+    "op": "array_remove_first",
+    "path": [
+      "rating_history"
+    ],
+    "precise_instruction": "Remove the first item from the \"rating_history\" list."
+  }
+}

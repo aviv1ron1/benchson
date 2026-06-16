@@ -1,0 +1,249 @@
+{
+  "name": "deployed",
+  "source": "schemas",
+  "subset": null,
+  "schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://json.schemastore.org/deployed.json",
+    "additionalProperties": false,
+    "definitions": {
+      "privateKey": {
+        "description": "Buffer or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format).",
+        "type": [
+          "string",
+          "object"
+        ]
+      },
+      "passphrase": {
+        "description": "For an encrypted privateKey, this is the passphrase used to decrypt it.",
+        "type": "string",
+        "minLength": 1
+      },
+      "script": {
+        "description": "Execute script commands.",
+        "type": "string",
+        "minLength": 1
+      },
+      "backupName": {
+        "description": "Old version backup name.",
+        "type": "string",
+        "minLength": 1
+      },
+      "removeLocalDir": {
+        "description": "Delete localpath after deployment.",
+        "type": "boolean"
+      },
+      "clearRemoteDir": {
+        "description": "Empty the old version before deploying the new version.",
+        "type": "boolean"
+      }
+    },
+    "description": "JSON schema for the deployed cli config file. \n\nSee also: https://hyhello.github.io/deployed\n\n",
+    "properties": {
+      "$schema": {
+        "description": "JSON Schema for deployed.",
+        "type": "string",
+        "minLength": 1
+      },
+      "projectName": {
+        "description": "Name of project to be released.",
+        "type": "string",
+        "minLength": 1
+      },
+      "cluster": {
+        "type": "array",
+        "uniqueItems": true,
+        "description": "Alias collection of environment to be deployed.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "privateKey": {
+        "$ref": "#/definitions/privateKey"
+      },
+      "passphrase": {
+        "$ref": "#/definitions/passphrase"
+      },
+      "script": {
+        "$ref": "#/definitions/script"
+      },
+      "backupName": {
+        "$ref": "#/definitions/backupName"
+      },
+      "removeLocalDir": {
+        "$ref": "#/definitions/removeLocalDir"
+      },
+      "clearRemoteDir": {
+        "$ref": "#/definitions/clearRemoteDir"
+      },
+      "modeList": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "object",
+          "required": [
+            "mode",
+            "name",
+            "host",
+            "port",
+            "username",
+            "localPath",
+            "remotePath"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "description": "Deployment environment alias.",
+              "type": "string",
+              "minLength": 1
+            },
+            "name": {
+              "description": "Deployment environment name.",
+              "type": "string",
+              "minLength": 1
+            },
+            "host": {
+              "description": "Hostname or IP address of the server.",
+              "type": "string",
+              "minLength": 1
+            },
+            "port": {
+              "description": "Port number of the server.",
+              "type": "integer",
+              "minimum": 1
+            },
+            "username": {
+              "description": "Username for authentication.",
+              "type": "string",
+              "minLength": 1
+            },
+            "password": {
+              "description": "Password for password-based user authentication.",
+              "type": "string",
+              "minLength": 1
+            },
+            "remotePath": {
+              "description": "Deployment path.",
+              "type": "string",
+              "minLength": 2
+            },
+            "localPath": {
+              "description": "Local upload path.",
+              "type": "string",
+              "minLength": 1
+            },
+            "backupPath": {
+              "description": "Backup path.",
+              "type": "string",
+              "minLength": 2
+            },
+            "privateKey": {
+              "$ref": "#/definitions/privateKey"
+            },
+            "passphrase": {
+              "$ref": "#/definitions/passphrase"
+            },
+            "script": {
+              "$ref": "#/definitions/script"
+            },
+            "backupName": {
+              "$ref": "#/definitions/backupName"
+            },
+            "removeLocalDir": {
+              "$ref": "#/definitions/removeLocalDir"
+            },
+            "clearRemoteDir": {
+              "$ref": "#/definitions/clearRemoteDir"
+            }
+          }
+        }
+      },
+      "plugin": {
+        "description": "List of plugins to load and use.",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "items": [
+            {
+              "description": "The name of the plugin.",
+              "type": "string"
+            },
+            {
+              "description": "The options of the plugin.",
+              "type": "object"
+            }
+          ]
+        }
+      }
+    },
+    "required": [
+      "projectName",
+      "modeList"
+    ],
+    "title": "deployed cli",
+    "type": "object"
+  },
+  "description": "The deployment configuration for **awesome-web-app** follows the JSON\u2011Schema defined at\u202fhttp://json-schema.org/draft-07/schema#.  It is intended for two clusters, **staging** and **production**, and uses a global OpenSSH private key  \n\n```\n-----BEGIN OPENSSH PRIVATE KEY-----\nAAAAB3NzaC1yc2EAAAADAQABAAABAQD...\n-----END OPENSSH PRIVATE KEY-----\n```  \n\nprotected by the passphrase **s3cr3tP@ss**.  Before each release the build command `npm run build && npm prune --production` is executed.  Backups are stored under the name **backup_20230615**.  The overall settings specify that local build directories should be removed after deployment (`removeLocalDir: true`) while remote directories are left untouched by default (`clearRemoteDir: false`).  Two plugins are loaded: the standard **deployed\u2011plugin\u2011ssh**, and a custom plugin called **custom\u2011plugin** with the options `{ \"optionA\": true, \"optionB\": \"value\" }`.\n\nFor the **staging** environment (mode\u202f*staging*, name\u202f*Staging Environment*), the target server is **staging.example.com** on port\u202f22, accessed with the username **deployer** and password **stagingPass123**.  Files from the local `./dist` folder are uploaded to `/var/www/app`, with backups kept in `/var/www/backup`.  In this case the local directory is removed after the copy (`removeLocalDir: true`) and the remote path is cleared beforehand (`clearRemoteDir: true`).  \n\nThe **production** environment (mode\u202f*production*, name\u202f*Production Environment*) connects to **prod.example.com** on port\u202f2222 using the username **admin** and a dedicated private key object `{ \"type\": \"ssh\", \"key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC...\" }` protected by the passphrase **prodKeyPass**.  Deployment also uses the `./dist` directory, but the remote destination is `/srv/app` with backups stored in `/srv/backup`.  After copying, the service is restarted with the script `systemctl restart app.service`; the local directory is retained (`removeLocalDir: false`) and the remote directory is left as\u2011is (`clearRemoteDir: false`).",
+  "reference_json": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "projectName": "awesome-web-app",
+    "cluster": [
+      "staging",
+      "production"
+    ],
+    "privateKey": "-----BEGIN OPENSSH PRIVATE KEY-----\nAAAAB3NzaC1yc2EAAAADAQABAAABAQD...\n-----END OPENSSH PRIVATE KEY-----",
+    "passphrase": "s3cr3tP@ss",
+    "script": "npm run build && npm prune --production",
+    "backupName": "backup_20230615",
+    "removeLocalDir": true,
+    "clearRemoteDir": false,
+    "modeList": [
+      {
+        "mode": "staging",
+        "name": "Staging Environment",
+        "host": "staging.example.com",
+        "port": 22,
+        "username": "deployer",
+        "password": "stagingPass123",
+        "localPath": "./dist",
+        "remotePath": "/var/www/app",
+        "backupPath": "/var/www/backup",
+        "removeLocalDir": true,
+        "clearRemoteDir": true
+      },
+      {
+        "mode": "production",
+        "name": "Production Environment",
+        "host": "prod.example.com",
+        "port": 2222,
+        "username": "admin",
+        "privateKey": {
+          "type": "ssh",
+          "key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC..."
+        },
+        "passphrase": "prodKeyPass",
+        "localPath": "./dist",
+        "remotePath": "/srv/app",
+        "backupPath": "/srv/backup",
+        "script": "systemctl restart app.service",
+        "removeLocalDir": false,
+        "clearRemoteDir": false
+      }
+    ],
+    "plugin": [
+      "deployed-plugin-ssh",
+      [
+        "custom-plugin",
+        {
+          "optionA": true,
+          "optionB": "value"
+        }
+      ]
+    ]
+  }
+}

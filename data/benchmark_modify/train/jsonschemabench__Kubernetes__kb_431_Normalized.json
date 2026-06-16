@@ -1,0 +1,47 @@
+{
+  "name": "kb_431_Normalized",
+  "source": "jsonschemabench",
+  "subset": "Kubernetes",
+  "schema": {
+    "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.",
+    "properties": {
+      "max": {
+        "description": "max is the end of the range, inclusive.",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "min": {
+        "description": "min is the start of the range, inclusive.",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "min",
+      "max"
+    ],
+    "type": "object"
+  },
+  "data": {
+    "min": 1000,
+    "max": 2000
+  },
+  "instructions": "Could you increase the min by 1, please?",
+  "ground_truth": {
+    "min": 1001,
+    "max": 2000
+  },
+  "modification": {
+    "op": "increment_number",
+    "path": [
+      "min"
+    ],
+    "precise_instruction": "Increase \"min\" by 1."
+  }
+}
