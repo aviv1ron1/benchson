@@ -1,4 +1,4 @@
-![Logo](assets/benchson.png)
+<img src="assets/icons/benchson-256.png" alt="Benchson logo" width="180">
 
 # Benchson
 The GenAI JSON generation benchmark
@@ -7,11 +7,11 @@ The GenAI JSON generation benchmark
 
 JSON generation is one of the main jobs of an LLM — models emit JSON to return results, call APIs and tools, and produce structured data. Benchson measures how well a model does this across realistic, content-grounded tasks.
 
-Unlike "can the model emit *any* schema-valid object" checks (which a stub of empty strings and zeros can pass), Benchson grounds every task in a concrete object and scores the output against a ground truth. It covers three task families:
+Benchson covers three task families, which we think are the most popular and realistic tasks that models face:
 
-- **create-by-description** — given a schema and a description of an object, produce the matching JSON.
+- **create-by-description** — given a json schema and a description of an object, produce the matching JSON.
 - **fix-invalid** — given a schema-violating object, repair it.
-- **modify-by-instruction** — given an object and a free-text change (e.g. *"remove the first two items from the cart"*), return the modified JSON.
+- **modify-by-instruction** — given an object, a json schema and a free-text change (e.g. *"remove the first two items from the cart"*), return the modified JSON.
 
 Each output is scored on three independent axes: **json_validity** (parseable), **schema_compliance** (passes `jsonschema`), and **semantic_fidelity** (field values match the ground truth).
 
