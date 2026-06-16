@@ -92,6 +92,23 @@ split is scored; the `train/` split is exported for SFT — never the other way 
 > that emits chat/alpaca examples directly from schemas; the benchmark builder above
 > supersedes it for the grounded tasks.
 
+### Running via lm-evaluation-harness
+
+Besides the built-in runner (step 3), the benchmark can be scored with
+[EleutherAI's lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness).
+Ready-made task definitions live in [`lm_eval_tasks/`](lm_eval_tasks/) (`benchson_create`,
+`benchson_fix`, `benchson_modify`, and the `benchson` group):
+
+```bash
+pip install lm-eval
+lm_eval --model hf --model_args pretrained=<your-model> \
+  --tasks benchson --include_path lm_eval_tasks --apply_chat_template
+```
+
+These tasks reuse the same prompts and metrics as the native runner (prompt parity is
+verified) and can load either the local `data/benchmark_*/test/` files or the published
+HF dataset — see [`lm_eval_tasks/README.md`](lm_eval_tasks/README.md).
+
 ## Configuration
 
 The framework uses a JSON configuration file to determine:

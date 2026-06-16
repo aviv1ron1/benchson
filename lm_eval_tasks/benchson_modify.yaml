@@ -1,0 +1,27 @@
+task: benchson_modify
+dataset_path: json
+dataset_kwargs:
+  data_files:
+    test: data/benchmark_modify/test/*.json
+test_split: test
+output_type: generate_until
+doc_to_text: !function utils.doc_to_text_modify
+doc_to_target: !function utils.doc_to_target_modify
+generation_kwargs:
+  until: ["\n\n\n\n"]
+  max_gen_toks: 2048
+  do_sample: false
+  temperature: 0.0
+process_results: !function utils.process_results_modify
+metric_list:
+  - metric: json_validity
+    aggregation: mean
+    higher_is_better: true
+  - metric: schema_compliance
+    aggregation: mean
+    higher_is_better: true
+  - metric: semantic_fidelity
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1
