@@ -157,17 +157,23 @@ repo ([{code_repo}]({code_repo})) ships a ready-made scorer; two ways to use it.
 ### Option A — lm-evaluation-harness
 
 Run via [EleutherAI's lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness);
-the Benchson repo ships the task definitions in `lm_eval_tasks/`.
+the Benchson repo ships the task definitions in `lm_eval_tasks/`, already pointed at
+this dataset.
 
 ```bash
 pip install lm-eval jsonschema deepdiff
-# Grab lm_eval_tasks/ from the repo, then in each benchson_*.yaml point at this dataset:
-#   dataset_path: {hf_repo}
-#   dataset_name: create        # or fix / modify
-#   test_split: test            # (drop the local dataset_kwargs.data_files)
+
+# headline scores (one row per task family)
 lm_eval --model hf --model_args pretrained=<your-model> \\
   --tasks benchson --include_path lm_eval_tasks --apply_chat_template
+
+# per-tier breakdown (by difficulty / source: Github_easy…hard, Kubernetes, …)
+lm_eval --model hf --model_args pretrained=<your-model> \\
+  --tasks benchson_tiers --include_path lm_eval_tasks --apply_chat_template
 ```
+
+(The tasks load `{hf_repo}` by default; change `dataset_path` in
+`lm_eval_tasks/benchson_*.yaml` to evaluate a different copy.)
 
 ### Option B — standalone (no harness)
 

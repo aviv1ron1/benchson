@@ -173,6 +173,34 @@ def _score(generation, schema, reference):
     }
 
 
+# ------------------------------------------------------- per-tier filtering
+# Subset-filtered subtasks (benchson_<family>_<tier>) report scores per difficulty
+# tier / source instead of one aggregate. Each tier gets a `keep_<tier>` process_docs
+# function (registered in globals) that the generated YAMLs reference via !function.
+
+def doc_tier(doc):
+    """The tier label of a row: its `subset` (jsb) or `source` (e.g. 'schemas')."""
+    return doc.get("subset") or doc.get("source")
+
+
+def tier_fn_name(tier):
+    return "keep_" + re.sub(r"[^a-z0-9]+", "_", str(tier).lower()).strip("_")
+
+
+def _make_keep(tier):
+    def keep(dataset):
+        return dataset.filter(lambda doc: doc_tier(doc) == tier)
+    keep.__name__ = tier_fn_name(tier)
+    return keep
+
+
+# Tiers present across the benchmark; keep in sync with the imported subsets.
+TIERS = ["Github_easy", "Github_medium", "Github_hard", "Github_ultra",
+         "Kubernetes", "Snowplow", "Glaiveai2K", "schemas"]
+for _t in TIERS:
+    globals()[tier_fn_name(_t)] = _make_keep(_t)
+
+
 def process_results_create(doc, results):
     return _score(results[0], _obj(doc["schema"]), _obj(doc.get("reference_json")))
 

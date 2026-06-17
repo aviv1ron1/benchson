@@ -1,8 +1,7 @@
 task: benchson_fix
-dataset_path: json
-dataset_kwargs:
-  data_files:
-    test: data/benchmark_fix/test/*.json
+# See benchson_create.yaml for the local-run override; raw data/ files aren't loadable.
+dataset_path: aviv1ron1/Benchson
+dataset_name: fix
 test_split: test
 output_type: generate_until
 doc_to_text: !function utils.doc_to_text_fix

@@ -1,8 +1,11 @@
 task: benchson_create
-dataset_path: json
-dataset_kwargs:
-  data_files:
-    test: data/benchmark_create/test/*.json
+# Loads the published HF dataset (stringified → uniform, loadable schema). The raw
+# per-instance files under data/ are NOT directly loadable (heterogeneous nested
+# schemas). For a local run, first `export_hf.py`, then use:
+#   dataset_path: json
+#   dataset_kwargs: { data_files: { test: outputs/hf_dataset/create/test.jsonl } }
+dataset_path: aviv1ron1/Benchson
+dataset_name: create
 test_split: test
 output_type: generate_until
 doc_to_text: !function utils.doc_to_text_create

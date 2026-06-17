@@ -7,55 +7,75 @@ other tasks.
 
 ## Tasks
 
-| Task | Dataset (local) | Inputs → output |
-|---|---|---|
-| `benchson_create` | `data/benchmark_create/test/*.json` | schema + description → JSON |
-| `benchson_fix`    | `data/benchmark_fix/test/*.json`    | schema + invalid JSON → repaired JSON |
-| `benchson_modify` | `data/benchmark_modify/test/*.json` | schema + JSON + instruction → modified JSON |
-| `benchson` (group) | all three | runs them together |
+| Task | Inputs → output |
+|---|---|
+| `benchson_create` | schema + description → JSON |
+| `benchson_fix`    | schema + invalid JSON → repaired JSON |
+| `benchson_modify` | schema + JSON + instruction → modified JSON |
+| `benchson` (group) | the three families — headline scores |
+| `benchson_tiers` (group) | every family split by difficulty tier / source (`benchson_<family>_<tier>`) |
 
-Each task reports three metrics (mean-aggregated): **json_validity**,
+Each task reports three mean-aggregated metrics: **json_validity**,
 **schema_compliance**, **semantic_fidelity**. Prompts are byte-for-byte identical to
 `src/main.py`'s `format_for_llm`, so scores are comparable to the native runner.
 
+## Data source
+
+The tasks load the **published HF dataset** (`dataset_path: aviv1ron1/Benchson`,
+configs `create`/`fix`/`modify`, split `test`). The raw per-instance files under
+`data/benchmark_*/test/` are **not** directly loadable by `datasets` — each row's
+nested `schema` differs, so Arrow schema inference fails. The HF export
+(`src/export_hf.py`) serializes JSON fields to strings to give a uniform, loadable
+schema; `utils.py` accepts both strings and raw objects.
+
+To evaluate a **local** build without uploading, first run the export, then set in each
+`benchson_*.yaml`:
+
+```yaml
+dataset_path: json
+dataset_kwargs: { data_files: { test: outputs/hf_dataset/create/test.jsonl } }   # fix/modify likewise
+```
+
 ## Requirements
 
-- `pip install lm-eval` (the harness)
-- `pip install jsonschema deepdiff` (used by `utils.py` for scoring)
-- The benchmark must be built first (`data/benchmark_*/test/` populated) — see
-  [../BENCHMARK.md](../BENCHMARK.md).
+- `pip install lm-eval jsonschema deepdiff`
 
 ## Run
 
-From the **repo root** (the dataset globs are relative to the working directory):
-
 ```bash
-# all three tasks, e.g. against a local HF model
-lm_eval --model hf \
-  --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
-  --tasks benchson \
-  --include_path lm_eval_tasks \
-  --apply_chat_template \
-  --output_path results/
+# headline: one row per family
+lm_eval --model hf --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
+  --tasks benchson --include_path lm_eval_tasks --apply_chat_template --output_path results/
 
-# a single task
+# per-tier breakdown (Github_easy…hard, Kubernetes, Snowplow, Glaiveai2K, schemas, …)
 lm_eval --model hf --model_args pretrained=... \
-  --tasks benchson_modify --include_path lm_eval_tasks --apply_chat_template
+  --tasks benchson_tiers --include_path lm_eval_tasks --apply_chat_template
+
+# a single family or a single tier
+lm_eval --model hf --model_args pretrained=... \
+  --tasks benchson_modify,benchson_create_Github_hard --include_path lm_eval_tasks --apply_chat_template
 ```
 
 `--apply_chat_template` is recommended for instruct models (the prompt folds the
 system + user content into one turn). Other backends work the same way, e.g.
-`--model local-completions`/`--model openai-completions` with the appropriate
-`--model_args`.
+`--model local-completions` / `--model openai-completions`.
+
+## Per-tier tasks
+
+`benchson_tiers` and the `tiers/benchson_<family>_<tier>.yaml` files are **generated** —
+each `include:`s its base family task and filters docs to one tier via
+`utils.keep_<tier>`. The single aggregate hides a large spread across difficulty
+tiers, so use `benchson_tiers` to see it. Regenerate after rebuilding the benchmark
+(tiers are read from the data):
+
+```bash
+uv run python lm_eval_tasks/generate_tier_tasks.py
+```
 
 ## Notes
 
-- **Scoring only:** the build-time quality gates (round-trip validator, etc.) are not
-  part of scoring, so nothing is lost vs. the native runner.
-- **Held-out test only:** these tasks point at `test/`. The `train/` split is for
-  fine-tuning and is never scored.
-- **Sharing:** to run elsewhere, push the `test/` splits to the HF Hub and change
-  `dataset_path` in each YAML from `json` + local globs to the dataset repo id.
-- `utils.py` mirrors `src/evaluations/metrics.py` and the evals' `format_for_llm`.
-  If you change those, update `utils.py` (a parity check: fold each eval's
-  system+user with `\n\n` and compare to the matching `doc_to_text_*`).
+- **Scoring only:** build-time gates (round-trip validator, etc.) aren't part of scoring.
+- **Held-out test only:** tasks use the `test` split; `train` is for fine-tuning and is never scored.
+- `utils.py` mirrors `src/evaluations/metrics.py` and the evals' `format_for_llm`. If you
+  change those, update `utils.py` (parity check: fold each eval's system+user with `\n\n`
+  and compare to the matching `doc_to_text_*`).
