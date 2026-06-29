@@ -15,9 +15,11 @@ other tasks.
 | `benchson` (group) | the three families — headline scores |
 | `benchson_tiers` (group) | every family split by difficulty tier / source (`benchson_<family>_<tier>`) |
 
-Each task reports three mean-aggregated metrics: **json_validity**,
-**schema_compliance**, **semantic_fidelity**. Prompts are byte-for-byte identical to
-`src/main.py`'s `format_for_llm`, so scores are comparable to the native runner.
+Each task reports mean-aggregated **json_validity**, **schema_compliance**, and
+**semantic_fidelity**; `fix`/`modify` add **change_fidelity** (fidelity over just the
+field(s) the task changed — whole-object fidelity is dominated by unchanged fields).
+Prompts are byte-for-byte identical to `src/main.py`'s `format_for_llm`, so scores are
+comparable to the native runner.
 
 ## Data source
 

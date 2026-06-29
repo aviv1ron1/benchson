@@ -59,6 +59,44 @@ def semantic_fidelity(reference, output):
     return matches / len(leaves)
 
 
+def changed_paths(before, after):
+    """Leaf paths that differ between two objects (added, removed, or changed).
+
+    Used to score *what the task actually changed* (a fix/modify edit) rather than
+    the whole object — on a large schema, copying the many unchanged fields would
+    otherwise dilute the signal from the few that mattered.
+    """
+    bl = {p: v for p, v in _iter_leaves(before)}
+    al = {p: v for p, v in _iter_leaves(after)}
+    changed = set()
+    for p in set(bl) | set(al):
+        if p not in bl or p not in al or not _values_equal(bl[p], al[p]):
+            changed.add(p)
+    return changed
+
+
+def region_fidelity(output, reference, paths):
+    """Fraction of the given leaf paths that `output` gets right vs `reference`.
+
+    A path present in `reference` must be present and equal in `output`; a path
+    absent from `reference` (a deletion) must also be absent in `output`. Returns
+    1.0 when there are no paths to check.
+    """
+    paths = list(paths)
+    if not paths:
+        return 1.0
+    hits = 0
+    for p in paths:
+        ref_present, ref_val = _navigate(reference, p)
+        out_present, out_val = _navigate(output, p)
+        if ref_present:
+            ok = out_present and _values_equal(ref_val, out_val)
+        else:
+            ok = not out_present
+        hits += 1 if ok else 0
+    return hits / len(paths)
+
+
 def _iter_leaves(value, path=()):
     """Yields (path, value) for every leaf in a nested structure.
 
@@ -92,7 +130,20 @@ def _navigate(obj, path):
 
 
 def _values_equal(a, b):
-    """Deep value equality via deepdiff (empty diff == equal)."""
-    from deepdiff import DeepDiff
+    """JSON-aware deep value equality.
 
-    return not DeepDiff(a, b, ignore_order=True)
+    Numbers compare by value, so `10 == 10.0` (JSON has no int/float distinction
+    and a model shouldn't be penalized for emitting one form vs the other). But
+    booleans stay distinct from numbers (`true != 1`) and strings stay distinct
+    from numbers (`"10" != 10`) — those are real type differences in JSON.
+    """
+    a_bool, b_bool = isinstance(a, bool), isinstance(b, bool)
+    if a_bool or b_bool:
+        return a_bool and b_bool and a == b
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        return a == b
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(_values_equal(a[k], b[k]) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(_values_equal(x, y) for x, y in zip(a, b))
+    return a == b

@@ -118,8 +118,10 @@ not merely schema-validity. Three task families (one config each):
 - **fix** — given a schema-violating object, repair it.
 - **modify** — given an object and a free-text instruction, return the modified JSON.
 
-Each is scored on three axes: **json_validity**, **schema_compliance**, and
-**semantic_fidelity** (field values vs. the ground truth).
+Each is scored on **json_validity**, **schema_compliance**, and **semantic_fidelity**
+(field values vs. the ground truth). The fix/modify tasks add **change_fidelity** —
+fidelity over just the field(s) the task actually changed, since whole-object
+fidelity is dominated by the unchanged fields.
 
 ## Splits
 

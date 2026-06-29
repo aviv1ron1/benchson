@@ -22,6 +22,26 @@ Benchson is two things in one:
 
 The benchmark, its tasks, metrics, and build pipeline are documented in **[BENCHMARK.md](BENCHMARK.md)**.
 
+## The dataset (on Hugging Face)
+
+This repository holds the **generators and evaluations** — the generated benchmark
+data is **not** committed here (it would bloat the repo and is regenerable). The
+frozen, versioned dataset lives on the Hugging Face Hub:
+
+**👉 [`aviv1ron1/Benchson`](https://huggingface.co/datasets/aviv1ron1/Benchson)**
+
+```python
+from datasets import load_dataset
+# configs: create / fix / modify; splits: train / test
+ds = load_dataset("aviv1ron1/Benchson", "create", split="test")
+# pin a frozen release for reproducible scores:
+ds = load_dataset("aviv1ron1/Benchson", "create", revision="v2")
+```
+
+To (re)generate the data yourself from the schema corpus, see
+[Building the benchmark and training data](#building-the-benchmark-and-training-data)
+below.
+
 
 # Running Benchson
 
@@ -187,6 +207,12 @@ This allows you to test different evaluations, LLM providers, and datasets witho
 
 
 ## Datasets
+
+> **Note:** the generated benchmark datasets (`data/benchmark_*`) and the imported
+> schemas (`data/jsb_schemas`) are **git-ignored** — they live on the Hugging Face
+> Hub at [`aviv1ron1/Benchson`](https://huggingface.co/datasets/aviv1ron1/Benchson),
+> not in this repo. Recreate them locally with the import + build CLIs (see
+> [Building the benchmark](#building-the-benchmark-and-training-data)).
 
 The framework expects datasets to be placed inside the `data/` folder, but you can also load datasets from absolute path if you provide one. 
 

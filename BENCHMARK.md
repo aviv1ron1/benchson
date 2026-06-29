@@ -29,6 +29,7 @@ extra CSV columns.
 | `json_validity` | 1 if the output parses as JSON, else 0 |
 | `schema_compliance` (`Score`) | 1 if the parsed output validates against the schema, else 0 |
 | `semantic_fidelity` | fraction of ground-truth field values recovered in the output (extra output fields are not penalized) |
+| `change_fidelity` (fix / modify only) | fraction of the **changed** fields produced correctly — scores just the field(s) the task touched, since `semantic_fidelity` over the whole object is dominated by the many unchanged fields |
 
 A model can pass one axis and fail another — valid JSON with wrong values (compliance
 1, low fidelity), or malformed structure with the right content (compliance 0,

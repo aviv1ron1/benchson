@@ -79,10 +79,16 @@ class ErrorJson(Evaluation):
             score = 1 if parsed == ground_truth else 0
             explanation = "matches ground truth" if score else "differs from ground truth"
 
+        erroneous = test_case.get("data")
         if ground_truth is not None:
             fidelity = metrics.semantic_fidelity(ground_truth, parsed) if valid else 0.0
             result_metrics["semantic_fidelity"] = round(fidelity, 4)
             explanation = f"{explanation} | semantic_fidelity={result_metrics['semantic_fidelity']}"
+            # change_fidelity: did the model fix the field(s) that were actually broken?
+            if erroneous is not None:
+                paths = metrics.changed_paths(erroneous, ground_truth)
+                cf = metrics.region_fidelity(parsed, ground_truth, paths) if valid else 0.0
+                result_metrics["change_fidelity"] = round(cf, 4)
 
         return EvaluationResult(score=score, explanation=explanation, metrics=result_metrics)
 

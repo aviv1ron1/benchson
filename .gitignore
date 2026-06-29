@@ -178,3 +178,10 @@ cython_debug/
 configs/*
 !configs/example.json
 outputs/
+CLAUDE.md
+
+# Generated benchmark data — lives on HF (aviv1ron1/Benchson), regenerable
+data/benchmark_create/
+data/benchmark_fix/
+data/benchmark_modify/
+data/jsb_schemas/

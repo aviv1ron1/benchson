@@ -72,8 +72,17 @@ def _navigate(obj, path):
 
 
 def _values_equal(a, b):
-    from deepdiff import DeepDiff
-    return not DeepDiff(a, b, ignore_order=True)
+    # JSON-aware: 10 == 10.0, but true != 1 and "10" != 10. (mirror of metrics.py)
+    a_bool, b_bool = isinstance(a, bool), isinstance(b, bool)
+    if a_bool or b_bool:
+        return a_bool and b_bool and a == b
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        return a == b
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(_values_equal(a[k], b[k]) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(_values_equal(x, y) for x, y in zip(a, b))
+    return a == b
 
 
 def semantic_fidelity(reference, output):
@@ -86,6 +95,29 @@ def semantic_fidelity(reference, output):
         if found and _values_equal(value, out_value):
             matches += 1
     return matches / len(leaves)
+
+
+def changed_paths(before, after):
+    bl = {p: v for p, v in _iter_leaves(before)}
+    al = {p: v for p, v in _iter_leaves(after)}
+    out = set()
+    for p in set(bl) | set(al):
+        if p not in bl or p not in al or not _values_equal(bl[p], al[p]):
+            out.add(p)
+    return out
+
+
+def region_fidelity(output, reference, paths):
+    paths = list(paths)
+    if not paths:
+        return 1.0
+    hits = 0
+    for p in paths:
+        ref_present, ref_val = _navigate(reference, p)
+        out_present, out_val = _navigate(output, p)
+        ok = (out_present and _values_equal(ref_val, out_val)) if ref_present else (not out_present)
+        hits += 1 if ok else 0
+    return hits / len(paths)
 
 
 # --------------------------------------------------------------------- prompts
@@ -163,14 +195,19 @@ def doc_to_target_modify(doc):
 # ----------------------------------------------------------------- scoring
 # process_results(doc, results) -> {metric_name: value}; results[0] is the generation.
 
-def _score(generation, schema, reference):
+def _score(generation, schema, reference, before=None):
     parsed = parse_json(generation)
     valid = parsed is not None
-    return {
+    out = {
         "json_validity": 1 if valid else 0,
         "schema_compliance": schema_compliance(parsed, schema) if valid else 0,
         "semantic_fidelity": round(semantic_fidelity(reference, parsed), 4) if valid else 0.0,
     }
+    # change_fidelity: score only the fields the task actually changed (fix/modify).
+    if before is not None and reference is not None:
+        paths = changed_paths(before, reference)
+        out["change_fidelity"] = round(region_fidelity(parsed, reference, paths), 4) if valid else 0.0
+    return out
 
 
 # ------------------------------------------------------- per-tier filtering
@@ -206,8 +243,10 @@ def process_results_create(doc, results):
 
 
 def process_results_fix(doc, results):
-    return _score(results[0], _obj(doc["schema"]), _obj(doc.get("valid_json", doc.get("reference_json"))))
+    return _score(results[0], _obj(doc["schema"]), _obj(doc.get("valid_json", doc.get("reference_json"))),
+                  before=_obj(doc.get("erroneous_json")))
 
 
 def process_results_modify(doc, results):
-    return _score(results[0], _obj(doc.get("schema")), _obj(doc.get("ground_truth")))
+    return _score(results[0], _obj(doc.get("schema")), _obj(doc.get("ground_truth")),
+                  before=_obj(doc.get("data")))

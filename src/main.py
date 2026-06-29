@@ -79,7 +79,7 @@ def run_evaluations(config):
         results.extend(eval_result)
 
     # compute and append total score
-    total_score = sum(score for (_, _, score) in results)
+    total_score = sum(score for (_, _, score, _metrics) in results)
     instances_num = len(results)
 
     orig = Path(config.get("output_file", "results.csv"))
