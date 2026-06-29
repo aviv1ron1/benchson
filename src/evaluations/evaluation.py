@@ -88,7 +88,9 @@ class Evaluation:
                 self.observability_provider.log_evaluation(
                     trace=trace, evaluation_result=evaluation_result
                 )
-            results.append((self.name, test_case["name"], evaluation_result.score))
+            score = evaluation_result.score if evaluation_result else 0
+            metrics = evaluation_result.metrics if evaluation_result else {}
+            results.append((self.name, test_case["name"], score, metrics))
 
         return results
 

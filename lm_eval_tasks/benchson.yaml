@@ -1,0 +1,7 @@
+group: benchson
+task:
+  - benchson_create
+  - benchson_fix
+  - benchson_modify
+metadata:
+  version: 1

@@ -1,0 +1,30 @@
+task: benchson_create
+# Loads the published HF dataset (stringified → uniform, loadable schema). The raw
+# per-instance files under data/ are NOT directly loadable (heterogeneous nested
+# schemas). For a local run, first `export_hf.py`, then use:
+#   dataset_path: json
+#   dataset_kwargs: { data_files: { test: outputs/hf_dataset/create/test.jsonl } }
+dataset_path: aviv1ron1/Benchson
+dataset_name: create
+test_split: test
+output_type: generate_until
+doc_to_text: !function utils.doc_to_text_create
+doc_to_target: !function utils.doc_to_target_create
+generation_kwargs:
+  until: ["\n\n\n\n"]
+  max_gen_toks: 2048
+  do_sample: false
+  temperature: 0.0
+process_results: !function utils.process_results_create
+metric_list:
+  - metric: json_validity
+    aggregation: mean
+    higher_is_better: true
+  - metric: schema_compliance
+    aggregation: mean
+    higher_is_better: true
+  - metric: semantic_fidelity
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1

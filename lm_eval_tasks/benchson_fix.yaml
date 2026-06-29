@@ -1,0 +1,29 @@
+task: benchson_fix
+# See benchson_create.yaml for the local-run override; raw data/ files aren't loadable.
+dataset_path: aviv1ron1/Benchson
+dataset_name: fix
+test_split: test
+output_type: generate_until
+doc_to_text: !function utils.doc_to_text_fix
+doc_to_target: !function utils.doc_to_target_fix
+generation_kwargs:
+  until: ["\n\n\n\n"]
+  max_gen_toks: 2048
+  do_sample: false
+  temperature: 0.0
+process_results: !function utils.process_results_fix
+metric_list:
+  - metric: json_validity
+    aggregation: mean
+    higher_is_better: true
+  - metric: schema_compliance
+    aggregation: mean
+    higher_is_better: true
+  - metric: semantic_fidelity
+    aggregation: mean
+    higher_is_better: true
+  - metric: change_fidelity
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1
