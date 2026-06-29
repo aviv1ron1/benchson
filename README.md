@@ -13,7 +13,7 @@ Benchson covers three task families, which we think are the most popular and rea
 - **fix-invalid** — given a schema-violating object, repair it.
 - **modify-by-instruction** — given an object, a json schema and a free-text change (e.g. *"remove the first two items from the cart"*), return the modified JSON.
 
-Each output is scored on three independent axes: **json_validity** (parseable), **schema_compliance** (passes `jsonschema`), and **semantic_fidelity** (field values match the ground truth).
+Each output is scored on: **json_validity** (parseable), **schema_compliance** (passes `jsonschema`), **semantic_fidelity** (field values match the ground truth), and **exact_match** — a strict, fully-correct flag (valid + schema-compliant + *every* ground-truth field right). The fix/modify tasks also report **change_fidelity** (just the edited field(s)). `json_validity`/`semantic_fidelity` saturate and give partial credit, so **`exact_match` on the hard tiers is the headline** for ranking models (see [BENCHMARK.md](BENCHMARK.md)).
 
 Benchson is two things in one:
 
@@ -116,18 +116,28 @@ split is scored; the `train/` split is exported for SFT — never the other way 
 
 Besides the built-in runner (step 3), the benchmark can be scored with
 [EleutherAI's lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness).
-Ready-made task definitions live in [`lm_eval_tasks/`](lm_eval_tasks/) (`benchson_create`,
-`benchson_fix`, `benchson_modify`, and the `benchson` group):
+Ready-made task definitions live in [`lm_eval_tasks/`](lm_eval_tasks/): the per-family
+tasks (`benchson_create`/`fix`/`modify`), the blended `benchson` group, a
+**`benchson_hard`** group (the discriminating tiers only), and `benchson_tiers` (every
+family split by difficulty/source).
 
 ```bash
 pip install lm-eval
+# headline: strict exact_match on the hard tiers
 lm_eval --model hf --model_args pretrained=<your-model> \
-  --tasks benchson --include_path lm_eval_tasks --apply_chat_template
+  --tasks benchson_hard --include_path lm_eval_tasks --apply_chat_template
+# full per-tier breakdown
+lm_eval --model hf --model_args pretrained=<your-model> \
+  --tasks benchson_tiers --include_path lm_eval_tasks --apply_chat_template
 ```
 
 These tasks reuse the same prompts and metrics as the native runner (prompt parity is
 verified) and can load either the local `data/benchmark_*/test/` files or the published
 HF dataset — see [`lm_eval_tasks/README.md`](lm_eval_tasks/README.md).
+
+> **Reporting:** lead with `exact_match` on `benchson_hard` (or `benchson_tiers`). The
+> blended `benchson` aggregate is dominated by near-saturated easy tiers and won't
+> separate strong models.
 
 ## Configuration
 

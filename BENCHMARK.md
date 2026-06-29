@@ -94,10 +94,20 @@ uv run python src/build_benchmark.py --config configs/build_benchmark.json
 
 # 3. Run the benchmark on a target model (set its provider in the config)
 uv run python src/main.py --config configs/run_benchmark.json
+#    …or via lm-evaluation-harness (recommended for ranking — strict exact_match on the hard tiers):
+lm_eval --model hf --model_args pretrained=<model> --tasks benchson_hard \
+  --include_path lm_eval_tasks --apply_chat_template
 
 # 4. (Optional) Export the train split to chat JSONL for fine-tuning
 uv run python src/export_training.py --config configs/export_training.json
 ```
+
+> **How to report.** Lead with **`exact_match` on `benchson_hard`** (the discriminating
+> tiers: `Github_medium`/`Github_hard` + JSONSchemaStore `schemas`), or the full
+> `benchson_tiers` breakdown. The blended `benchson` aggregate is dominated by
+> near-saturated easy tiers and won't separate strong models. Note the scoring code
+> versions independently of the data — the current harness (git `v3`) scores the `v2`
+> dataset; `exact_match` is computed at scoring time, so no dataset change is involved.
 
 Stage 2 writes `data/benchmark_create/`, `data/benchmark_fix/`, and
 `data/benchmark_modify/` (each with a `test/*.json` set), plus a `manifest.json` in

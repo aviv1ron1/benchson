@@ -165,16 +165,22 @@ the Benchson repo ships the task definitions in `lm_eval_tasks/`, already pointe
 this dataset.
 
 ```bash
-pip install lm-eval jsonschema deepdiff
+pip install lm-eval jsonschema
 
-# headline scores (one row per task family)
+# headline — strict exact_match on the discriminating (hard) tiers
 lm_eval --model hf --model_args pretrained=<your-model> \\
-  --tasks benchson --include_path lm_eval_tasks --apply_chat_template
+  --tasks benchson_hard --include_path lm_eval_tasks --apply_chat_template
 
-# per-tier breakdown (by difficulty / source: Github_easy…hard, Kubernetes, …)
+# full per-tier breakdown (Github_easy…hard, Kubernetes, Snowplow, schemas, …)
 lm_eval --model hf --model_args pretrained=<your-model> \\
   --tasks benchson_tiers --include_path lm_eval_tasks --apply_chat_template
 ```
+
+**Report `exact_match` on `benchson_hard`** as the headline — `json_validity` and
+`semantic_fidelity` saturate / give partial credit, so the blended `benchson`
+aggregate won't separate strong models. The scoring harness versions independently of
+this data: `exact_match` is computed at scoring time, so a newer harness adds metrics
+without changing the dataset.
 
 (The tasks load `{hf_repo}` by default; change `dataset_path` in
 `lm_eval_tasks/benchson_*.yaml` to evaluate a different copy.)
