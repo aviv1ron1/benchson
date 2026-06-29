@@ -198,10 +198,14 @@ def doc_to_target_modify(doc):
 def _score(generation, schema, reference, before=None):
     parsed = parse_json(generation)
     valid = parsed is not None
+    compliant = schema_compliance(parsed, schema) if valid else 0
+    fidelity = semantic_fidelity(reference, parsed) if valid else 0.0
     out = {
         "json_validity": 1 if valid else 0,
-        "schema_compliance": schema_compliance(parsed, schema) if valid else 0,
-        "semantic_fidelity": round(semantic_fidelity(reference, parsed), 4) if valid else 0.0,
+        "schema_compliance": compliant,
+        "semantic_fidelity": round(fidelity, 4),
+        # exact_match: strict — valid, schema-compliant, AND every ground-truth field recovered.
+        "exact_match": 1 if (compliant == 1 and fidelity >= 1.0) else 0,
     }
     # change_fidelity: score only the fields the task actually changed (fix/modify).
     if before is not None and reference is not None:

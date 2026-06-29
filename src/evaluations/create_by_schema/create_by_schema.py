@@ -106,6 +106,9 @@ class CreateBySchema(Evaluation):
         if reference is not None:
             fidelity = metrics.semantic_fidelity(reference, parsed) if valid else 0.0
             result_metrics["semantic_fidelity"] = round(fidelity, 4)
+            # exact_match: strict, fully-correct output — valid, schema-compliant, AND
+            # every ground-truth field recovered. The unforgiving headline metric.
+            result_metrics["exact_match"] = 1 if (score == 1 and fidelity >= 1.0) else 0
             explanation = f"{explanation} | semantic_fidelity={result_metrics['semantic_fidelity']}"
 
         return EvaluationResult(score=score, explanation=explanation, metrics=result_metrics)

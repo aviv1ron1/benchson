@@ -30,6 +30,7 @@ extra CSV columns.
 | `schema_compliance` (`Score`) | 1 if the parsed output validates against the schema, else 0 |
 | `semantic_fidelity` | fraction of ground-truth field values recovered in the output (extra output fields are not penalized) |
 | `change_fidelity` (fix / modify only) | fraction of the **changed** fields produced correctly — scores just the field(s) the task touched, since `semantic_fidelity` over the whole object is dominated by the many unchanged fields |
+| `exact_match` | **strict headline**: 1 only if the output is valid, schema-compliant, **and** recovers *every* ground-truth field (`semantic_fidelity == 1.0`). Unforgiving and the most discriminating axis — `json_validity`/`semantic_fidelity` give partial credit and saturate near the top, so prefer `exact_match` (and per-tier) for ranking |
 
 A model can pass one axis and fail another — valid JSON with wrong values (compliance
 1, low fidelity), or malformed structure with the right content (compliance 0,

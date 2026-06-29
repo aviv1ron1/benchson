@@ -12,14 +12,19 @@ other tasks.
 | `benchson_create` | schema + description → JSON |
 | `benchson_fix`    | schema + invalid JSON → repaired JSON |
 | `benchson_modify` | schema + JSON + instruction → modified JSON |
-| `benchson` (group) | the three families — headline scores |
+| `benchson` (group) | the three families — blended headline |
+| `benchson_hard` (group) | the **discriminating** tiers only (Github_medium/hard + JSONSchemaStore `schemas`) — the recommended headline |
 | `benchson_tiers` (group) | every family split by difficulty tier / source (`benchson_<family>_<tier>`) |
 
-Each task reports mean-aggregated **json_validity**, **schema_compliance**, and
-**semantic_fidelity**; `fix`/`modify` add **change_fidelity** (fidelity over just the
-field(s) the task changed — whole-object fidelity is dominated by unchanged fields).
+Each task reports mean-aggregated **json_validity**, **schema_compliance**,
+**semantic_fidelity**, and **exact_match** (strict: valid + compliant + every field
+right); `fix`/`modify` also report **change_fidelity** (just the changed field(s)).
 Prompts are byte-for-byte identical to `src/main.py`'s `format_for_llm`, so scores are
 comparable to the native runner.
+
+> **Reporting tip:** `json_validity` saturates (~1.0) and `semantic_fidelity` gives
+> partial credit, so the plain `benchson` aggregate looks high. Lead with
+> **`exact_match`** and **`benchson_hard`** — that's where models actually separate.
 
 ## Data source
 

@@ -13,10 +13,14 @@ task:
   - benchson_fix_Github_medium
   - benchson_fix_Glaiveai2K
   - benchson_fix_Kubernetes
+  - benchson_fix_Snowplow
+  - benchson_fix_schemas
   - benchson_modify_Github_easy
   - benchson_modify_Github_hard
   - benchson_modify_Github_medium
   - benchson_modify_Glaiveai2K
   - benchson_modify_Kubernetes
+  - benchson_modify_Snowplow
+  - benchson_modify_schemas
 metadata:
   version: 1
