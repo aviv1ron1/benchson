@@ -89,6 +89,8 @@ class ErrorJson(Evaluation):
                 paths = metrics.changed_paths(erroneous, ground_truth)
                 cf = metrics.region_fidelity(parsed, ground_truth, paths) if valid else 0.0
                 result_metrics["change_fidelity"] = round(cf, 4)
+            # exact_match: strict, fully-correct repair (valid + schema-compliant + all fields).
+            result_metrics["exact_match"] = 1 if (score == 1 and fidelity >= 1.0) else 0
 
         return EvaluationResult(score=score, explanation=explanation, metrics=result_metrics)
 
