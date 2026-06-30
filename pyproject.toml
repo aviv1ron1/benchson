@@ -15,9 +15,29 @@ watsonx = [
 ]
 hf = [
     "transformers>=4.43",
-    "torch>=2.0",
+    "torch>=2.12.1",
     "accelerate>=0.26",
 ]
 vllm = [
-    "vllm>=0.5",
+    "vllm>=0.24.0",
+]
+
+[tool.uv]
+# The hf and vllm groups pull mutually incompatible torch pins (vllm hard-pins an
+# older torch than the hf stack's security floor below). They are never installed
+# together, so declare them conflicting and let uv resolve each independently.
+conflicts = [
+    [{ group = "hf" }, { group = "vllm" }],
+]
+# Security floors on transitive dependencies pulled in by the optional provider
+# groups above. These apply only when the package is already in the resolution
+# (they do not add new direct dependencies); they raise the minimum to a patched
+# release. See each advisory:
+#   langsmith        >=0.8.18  GHSA-f4xh-w4cj-qxq8  (arbitrary server-side file read)
+#   starlette        >=1.3.1   GHSA-82w8-qh3p-5jfq  (form-parsing DoS) + GHSA-jp82-jpqv-5vv3
+#   pydantic-settings >=2.14.2 GHSA-4xgf-cpjx-pc3j  (symlink escape from secrets_dir)
+constraint-dependencies = [
+    "langsmith>=0.8.18",
+    "starlette>=1.3.1",
+    "pydantic-settings>=2.14.2",
 ]
